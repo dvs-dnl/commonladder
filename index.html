@@ -1,912 +1,735 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Common Ladder — Find Help, Right Where You Are</title>
-<meta name="description" content="Common Ladder connects people to emergency shelter, food, health care, housing programs, legal aid, and crisis support. Free, no account required.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-<style>
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-  :root {
-    --color-primary: #1C3D6E;
-    --color-primary-dark: #142d52;
-    --color-primary-light: #2a5499;
-    --color-action: #E8911A;
-    --color-action-dark: #c97a10;
-    --color-action-light: #f0a535;
-    --color-accent: #4A9E82;
-    --color-accent-dark: #357a65;
-    --color-accent-light: #62b898;
-    --color-bg: #F8F7F4;
-    --color-text: #1A1A2E;
-    --color-white: #ffffff;
-    --color-gray-100: #f1f0ed;
-    --color-gray-200: #e2e1dd;
-    --color-gray-300: #c8c6c0;
-    --color-gray-400: #9e9b93;
-    --color-gray-500: #6b6863;
-    --color-gray-600: #4a4845;
-    --font-display: 'Manrope', system-ui, sans-serif;
-    --font-body: 'Inter', system-ui, sans-serif;
-    --radius-sm: 4px;
-    --radius-md: 8px;
-    --radius-lg: 12px;
-    --radius-xl: 20px;
-    --radius-full: 9999px;
-    --shadow-sm: 0 1px 3px rgba(0,0,0,0.08), 0 1px 2px rgba(0,0,0,0.05);
-    --shadow-md: 0 4px 6px rgba(0,0,0,0.07), 0 2px 4px rgba(0,0,0,0.06);
-    --shadow-lg: 0 10px 25px rgba(0,0,0,0.1), 0 4px 10px rgba(0,0,0,0.06);
-    --container-max: 1200px;
-    --transition-base: 250ms ease;
-  }
-
-  body {
-    font-family: var(--font-body);
-    background: var(--color-bg);
-    color: var(--color-text);
-    line-height: 1.6;
-    -webkit-font-smoothing: antialiased;
-  }
-
-  a { color: var(--color-primary); text-decoration: none; }
-  a:hover { color: var(--color-primary-dark); }
-
-  .sr-only {
-    position: absolute; width: 1px; height: 1px;
-    padding: 0; margin: -1px; overflow: hidden;
-    clip: rect(0,0,0,0); white-space: nowrap; border: 0;
-  }
-
-  .container {
-    max-width: var(--container-max);
-    margin: 0 auto;
-    padding: 0 1.5rem;
-  }
-
-  /* ── HEADER ── */
-  .site-header {
-    background: var(--color-white);
-    border-bottom: 1px solid var(--color-gray-200);
-    position: sticky;
-    top: 0;
-    z-index: 200;
-    box-shadow: var(--shadow-sm);
-  }
-  .site-header__inner {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    height: 64px;
-  }
-  .site-logo {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    text-decoration: none;
-  }
-  .site-logo__mark {
-    width: 36px;
-    height: 36px;
-  }
-  .site-logo__text {
-    font-family: var(--font-display);
-    font-size: 1.2rem;
-    font-weight: 700;
-    letter-spacing: -0.01em;
-  }
-  .site-logo__text--common { color: var(--color-primary); }
-  .site-logo__text--ladder { color: var(--color-action); }
-
-  .primary-nav__list {
-    display: flex;
-    align-items: center;
-    gap: 2rem;
-    list-style: none;
-  }
-  .primary-nav__link {
-    font-family: var(--font-body);
-    font-size: 0.9rem;
-    font-weight: 500;
-    color: var(--color-gray-600);
-    text-decoration: none;
-    transition: color var(--transition-base);
-  }
-  .primary-nav__link:hover { color: var(--color-primary); }
-
-  .btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    font-family: var(--font-display);
-    font-weight: 600;
-    border-radius: var(--radius-md);
-    text-decoration: none;
-    transition: all var(--transition-base);
-    cursor: pointer;
-    border: none;
-  }
-  .btn--primary {
-    background: var(--color-action);
-    color: var(--color-white);
-    padding: 0.5rem 1.25rem;
-    font-size: 0.9rem;
-  }
-  .btn--primary:hover { background: var(--color-action-dark); color: var(--color-white); }
-  .btn--primary-lg {
-    background: var(--color-action);
-    color: var(--color-white);
-    padding: 0.875rem 2rem;
-    font-size: 1.05rem;
-  }
-  .btn--primary-lg:hover { background: var(--color-action-dark); color: var(--color-white); }
-  .btn--ghost {
-    background: transparent;
-    color: var(--color-white);
-    padding: 0.875rem 2rem;
-    font-size: 1.05rem;
-    border: 2px solid rgba(255,255,255,0.5);
-  }
-  .btn--ghost:hover { border-color: var(--color-white); color: var(--color-white); }
-  .btn--secondary {
-    background: var(--color-white);
-    color: var(--color-primary);
-    padding: 0.75rem 1.75rem;
-    font-size: 0.95rem;
-    border: 2px solid var(--color-gray-200);
-  }
-  .btn--secondary:hover { border-color: var(--color-primary); }
-
-  @media (max-width: 768px) {
-    .primary-nav { display: none; }
-  }
-
-  /* ── HERO ── */
-  .hero {
-    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-light) 100%);
-    padding: 80px 0 72px;
-    position: relative;
-    overflow: hidden;
-  }
-  .hero::before {
-    content: '';
-    position: absolute;
-    top: -80px; right: -80px;
-    width: 400px; height: 400px;
-    background: radial-gradient(circle, rgba(232,145,26,0.15) 0%, transparent 70%);
-    border-radius: 50%;
-  }
-  .hero__inner {
-    max-width: 720px;
-    position: relative;
-    z-index: 1;
-  }
-  .hero__eyebrow {
-    display: inline-block;
-    font-family: var(--font-display);
-    font-size: 0.78rem;
-    font-weight: 700;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    color: var(--color-action-light);
-    margin-bottom: 1rem;
-  }
-  .hero__title {
-    font-family: var(--font-display);
-    font-size: clamp(2rem, 5vw, 3.25rem);
-    font-weight: 800;
-    line-height: 1.15;
-    color: var(--color-white);
-    margin-bottom: 1.25rem;
-    letter-spacing: -0.02em;
-  }
-  .hero__title em {
-    font-style: normal;
-    color: var(--color-action-light);
-  }
-  .hero__description {
-    font-size: 1.1rem;
-    color: rgba(255,255,255,0.82);
-    margin-bottom: 2.5rem;
-    max-width: 580px;
-    line-height: 1.7;
-  }
-
-  /* Zip search */
-  .hero__search {
-    display: flex;
-    gap: 0;
-    max-width: 480px;
-    border-radius: var(--radius-md);
-    overflow: hidden;
-    box-shadow: var(--shadow-lg);
-    margin-bottom: 1.5rem;
-  }
-  .hero__search-input {
-    flex: 1;
-    padding: 1rem 1.25rem;
-    font-family: var(--font-body);
-    font-size: 1rem;
-    border: none;
-    background: var(--color-white);
-    color: var(--color-text);
-    outline: none;
-  }
-  .hero__search-input::placeholder { color: var(--color-gray-400); }
-  .hero__search-btn {
-    padding: 1rem 1.5rem;
-    background: var(--color-action);
-    color: var(--color-white);
-    font-family: var(--font-display);
-    font-size: 0.95rem;
-    font-weight: 700;
-    border: none;
-    cursor: pointer;
-    white-space: nowrap;
-    transition: background var(--transition-base);
-  }
-  .hero__search-btn:hover { background: var(--color-action-dark); }
-
-  .hero__meta {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 1.25rem;
-  }
-  .hero__meta-item {
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    font-size: 0.88rem;
-    color: rgba(255,255,255,0.75);
-    font-weight: 500;
-  }
-  .hero__meta-item svg { color: var(--color-accent-light); flex-shrink: 0; }
-
-  /* ── SECTIONS ── */
-  .section { padding: 80px 0; }
-  .section--alt { background: var(--color-gray-100); }
-  .section--dark { background: var(--color-primary); }
-
-  .section-header {
-    text-align: center;
-    max-width: 640px;
-    margin: 0 auto 3rem;
-  }
-  .section-header__eyebrow {
-    display: block;
-    font-size: 0.78rem;
-    font-weight: 700;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    color: var(--color-accent);
-    margin-bottom: 0.75rem;
-  }
-  .section-header__title {
-    font-family: var(--font-display);
-    font-size: clamp(1.6rem, 3vw, 2.25rem);
-    font-weight: 800;
-    color: var(--color-primary);
-    line-height: 1.2;
-    margin-bottom: 1rem;
-    letter-spacing: -0.01em;
-  }
-  .section-header__description {
-    font-size: 1rem;
-    color: var(--color-gray-500);
-    line-height: 1.7;
-  }
-
-  /* ── CATEGORY CARDS ── */
-  .card-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 1.25rem;
-  }
-  @media (min-width: 1024px) {
-    .card-grid { grid-template-columns: repeat(3, 1fr); }
-  }
-
-  .category-card {
-    background: var(--color-white);
-    border-radius: var(--radius-lg);
-    padding: 1.75rem;
-    box-shadow: var(--shadow-sm);
-    border: 1px solid var(--color-gray-200);
-    display: flex;
-    flex-direction: column;
-    gap: 0.75rem;
-    text-decoration: none;
-    transition: transform var(--transition-base), box-shadow var(--transition-base), border-color var(--transition-base);
-    position: relative;
-    overflow: hidden;
-  }
-  .category-card::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0; right: 0;
-    height: 3px;
-    background: var(--color-action);
-    transform: scaleX(0);
-    transition: transform var(--transition-base);
-    transform-origin: left;
-  }
-  .category-card:hover {
-    transform: translateY(-3px);
-    box-shadow: var(--shadow-lg);
-    border-color: var(--color-action-light);
-  }
-  .category-card:hover::before { transform: scaleX(1); }
-
-  .category-card__icon {
-    font-size: 2rem;
-    line-height: 1;
-  }
-  .category-card__title {
-    font-family: var(--font-display);
-    font-size: 1.05rem;
-    font-weight: 700;
-    color: var(--color-primary);
-  }
-  .category-card__description {
-    font-size: 0.9rem;
-    color: var(--color-gray-500);
-    line-height: 1.6;
-    flex: 1;
-  }
-  .category-card__arrow {
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    font-size: 0.875rem;
-    font-weight: 600;
-    color: var(--color-action);
-    margin-top: 0.25rem;
-  }
-
-  /* ── HOW IT WORKS ── */
-  .steps-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-    gap: 2rem;
-    position: relative;
-  }
-  @media (min-width: 768px) {
-    .steps-grid::before {
-      content: '';
-      position: absolute;
-      top: 2rem;
-      left: calc(33.33% - 1px);
-      right: calc(33.33% - 1px);
-      height: 2px;
-      background: var(--color-gray-200);
-      z-index: 0;
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Common Ladder — Find Resources. Take the Next Step.</title>
+  <meta name="description" content="Common Ladder connects people experiencing homelessness, nonprofits, case managers, and communities with every shelter, food, health, and housing resource — updated daily, free to use.">
+  <meta property="og:title" content="Common Ladder — Every Rung, Together.">
+  <meta property="og:description" content="Find shelters, food, health care, and housing programs near you — updated daily, no account required.">
+  <meta property="og:url" content="https://www.commonladder.org">
+  <link rel="canonical" href="https://www.commonladder.org/">
+  <link rel="stylesheet" href="style.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "Common Ladder",
+    "url": "https://www.commonladder.org",
+    "description": "Civic resource platform connecting people experiencing homelessness with shelters, food, health care, and housing programs.",
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": "https://www.commonladder.org/resources?q={search_term_string}",
+      "query-input": "required name=search_term_string"
     }
   }
-
-  .step {
-    text-align: center;
-    padding: 0 1rem;
-    position: relative;
-    z-index: 1;
-  }
-  .step__number {
-    width: 56px;
-    height: 56px;
-    border-radius: 50%;
-    background: var(--color-action);
-    color: var(--color-white);
-    font-family: var(--font-display);
-    font-size: 1.25rem;
-    font-weight: 800;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 0 auto 1.25rem;
-    box-shadow: 0 4px 12px rgba(232,145,26,0.35);
-  }
-  .step__title {
-    font-family: var(--font-display);
-    font-size: 1.05rem;
-    font-weight: 700;
-    color: var(--color-primary);
-    margin-bottom: 0.75rem;
-  }
-  .step__description {
-    font-size: 0.9rem;
-    color: var(--color-gray-500);
-    line-height: 1.65;
-  }
-
-  /* ── TOOLS SECTION ── */
-  .tools-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 1.5rem;
-    max-width: 760px;
-    margin: 0 auto;
-  }
-  .tool-card {
-    background: var(--color-white);
-    border-radius: var(--radius-lg);
-    box-shadow: var(--shadow-md);
-    padding: 2rem;
-    border-top: 3px solid var(--color-accent);
-    display: flex;
-    flex-direction: column;
-    gap: 0.875rem;
-    text-decoration: none;
-    transition: transform var(--transition-base), box-shadow var(--transition-base);
-  }
-  .tool-card:hover {
-    transform: translateY(-2px);
-    box-shadow: var(--shadow-lg);
-  }
-  .tool-tag {
-    display: inline-block;
-    background: rgba(74,158,130,0.12);
-    color: var(--color-accent-dark);
-    font-size: 0.72rem;
-    font-weight: 700;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    padding: 4px 10px;
-    border-radius: var(--radius-full);
-    width: fit-content;
-  }
-  .tool-card__title {
-    font-family: var(--font-display);
-    font-size: 1.15rem;
-    font-weight: 700;
-    color: var(--color-primary);
-    line-height: 1.3;
-  }
-  .tool-card__description {
-    font-size: 0.9rem;
-    color: var(--color-gray-500);
-    line-height: 1.6;
-    flex: 1;
-  }
-  .tool-cta {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    font-size: 0.875rem;
-    font-weight: 600;
-    color: var(--color-accent);
-    margin-top: 0.25rem;
-  }
-  .tool-cta::after { content: '→'; }
-
-  /* ── CTA BAND ── */
-  .cta-band {
-    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-light) 100%);
-    padding: 72px 0;
-  }
-  .cta-band__inner {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 2.5rem;
-    flex-wrap: wrap;
-  }
-  .cta-band__content { flex: 1; min-width: 280px; }
-  .cta-band__title {
-    font-family: var(--font-display);
-    font-size: clamp(1.4rem, 3vw, 2rem);
-    font-weight: 800;
-    color: var(--color-white);
-    margin-bottom: 0.75rem;
-    letter-spacing: -0.01em;
-  }
-  .cta-band__description {
-    font-size: 1rem;
-    color: rgba(255,255,255,0.75);
-    line-height: 1.7;
-    max-width: 520px;
-  }
-  .cta-band__actions {
-    display: flex;
-    gap: 1rem;
-    flex-wrap: wrap;
-    flex-shrink: 0;
-  }
-
-  /* ── FOOTER ── */
-  .site-footer {
-    background: var(--color-primary-dark);
-    padding: 56px 0 32px;
-  }
-  .site-footer__top {
-    display: grid;
-    grid-template-columns: 2fr 1fr 1fr;
-    gap: 3rem;
-    margin-bottom: 3rem;
-    padding-bottom: 3rem;
-    border-bottom: 1px solid rgba(255,255,255,0.1);
-  }
-  @media (max-width: 768px) {
-    .site-footer__top { grid-template-columns: 1fr; gap: 2rem; }
-  }
-
-  .footer-brand__logo {
-    display: inline-flex;
-    align-items: center;
-    gap: 10px;
-    text-decoration: none;
-    margin-bottom: 1rem;
-  }
-  .footer-brand__name {
-    font-family: var(--font-display);
-    font-size: 1.15rem;
-    font-weight: 700;
-  }
-  .footer-brand__tagline {
-    font-family: var(--font-display);
-    font-size: 0.85rem;
-    font-weight: 600;
-    color: var(--color-action-light);
-    margin-bottom: 0.75rem;
-    letter-spacing: 0.02em;
-  }
-  .footer-brand__description {
-    font-size: 0.875rem;
-    color: rgba(255,255,255,0.55);
-    line-height: 1.7;
-    max-width: 320px;
-  }
-
-  .footer-nav__title {
-    font-family: var(--font-display);
-    font-size: 0.78rem;
-    font-weight: 700;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    color: rgba(255,255,255,0.45);
-    margin-bottom: 1rem;
-  }
-  .footer-nav__list { list-style: none; display: flex; flex-direction: column; gap: 0.625rem; }
-  .footer-nav__link {
-    font-size: 0.875rem;
-    color: rgba(255,255,255,0.65);
-    text-decoration: none;
-    transition: color var(--transition-base);
-  }
-  .footer-nav__link:hover { color: var(--color-white); }
-
-  .site-footer__bottom {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    gap: 1rem;
-  }
-  .site-footer__copyright {
-    font-size: 0.82rem;
-    color: rgba(255,255,255,0.35);
-  }
-  .site-footer__legal {
-    display: flex;
-    gap: 1.5rem;
-  }
-  .site-footer__legal-link {
-    font-size: 0.82rem;
-    color: rgba(255,255,255,0.35);
-    text-decoration: none;
-    transition: color var(--transition-base);
-  }
-  .site-footer__legal-link:hover { color: rgba(255,255,255,0.7); }
-
-  .section-footer {
-    text-align: center;
-    margin-top: 3rem;
-  }
-</style>
+  </script>
 </head>
 <body>
 
-<!-- Skip link -->
-<a class="sr-only" href="#main-content">Skip to main content</a>
+<!-- Navigation -->
+<nav class="nav" aria-label="Main navigation">
+  <div class="nav__inner">
+    <a href="/" class="nav__logo" aria-label="Common Ladder home">
+      <!-- Ladder SVG mark -->
+      <svg width="28" height="28" viewBox="0 0 28 28" fill="none" aria-hidden="true">
+        <rect x="4" y="2" width="3" height="24" rx="1.5" fill="white" opacity=".9"/>
+        <rect x="21" y="2" width="3" height="24" rx="1.5" fill="white" opacity=".9"/>
+        <rect x="4" y="7" width="20" height="3" rx="1.5" fill="#E8911A"/>
+        <rect x="4" y="14" width="20" height="3" rx="1.5" fill="#E8911A"/>
+        <rect x="4" y="21" width="20" height="3" rx="1.5" fill="#E8911A"/>
+      </svg>
+      common<span>ladder</span>
+    </a>
+    <button class="nav__toggle" aria-label="Toggle menu" onclick="this.nextElementSibling.classList.toggle('open')">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav__links">
+      <li><a href="/resources.html">Find Resources</a></li>
+      <li><a href="/blog.html">Blog</a></li>
+      <li><a href="/about.html">About</a></li>
+      <li><a href="/resources.html" class="nav__cta">Find Help Now</a></li>
+    </ul>
+  </div>
+</nav>
 
-<!-- ── HEADER ── -->
-<header class="site-header" role="banner">
+<!-- Hero -->
+<section class="hero">
   <div class="container">
-    <div class="site-header__inner">
+    <h1>Every resource. <em>Every next step.</em></h1>
+    <p>Find shelters, food, health care, and housing programs near you — updated daily, in plain language, no account required.</p>
+    <!-- CoC Finder Widget -->
+    <div class="finder-widget" role="search" aria-label="Find your resource navigator">
+      <div class="finder-tabs" role="tablist">
+        <button class="finder-tab active" id="tab-zip-btn" role="tab" aria-selected="true" onclick="switchFinderTab('zip')">Enter zip code</button>
+        <button class="finder-tab" id="tab-state-btn" role="tab" aria-selected="false" onclick="switchFinderTab('state')">Browse by state</button>
+      </div>
 
-      <a class="site-logo" href="/" rel="home" aria-label="Common Ladder — Go to homepage">
-        <svg class="site-logo__mark" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-          <rect width="36" height="36" rx="8" fill="#1C3D6E"/>
-          <rect x="10" y="8" width="4" height="20" rx="2" fill="white" opacity="0.9"/>
-          <rect x="22" y="8" width="4" height="20" rx="2" fill="white" opacity="0.9"/>
-          <rect x="10" y="12" width="16" height="3" rx="1.5" fill="#E8911A"/>
-          <rect x="10" y="19" width="16" height="3" rx="1.5" fill="#E8911A"/>
-        </svg>
-        <span class="site-logo__text">
-          <span class="site-logo__text--common">common</span><span class="site-logo__text--ladder">ladder</span>
-        </span>
-      </a>
+      <div id="finder-zip" class="finder-panel active" role="tabpanel">
+        <div class="finder-input-row">
+          <input type="text" id="zipInput" class="finder-input" placeholder="Your zip code" maxlength="5" inputmode="numeric" pattern="[0-9]*" autocomplete="postal-code" onkeydown="if(event.key==='Enter')findByZip()">
+          <button class="btn btn--primary" onclick="findByZip()">Find my navigator →</button>
+        </div>
+        <div id="zip-secondary" class="finder-secondary" style="display:none">
+          <p>Multiple areas found in your state — select yours:</p>
+          <select class="finder-select" id="zipCocSelect" style="width:100%" onchange="showResult(this.value)">
+            <option value="">Select your area...</option>
+          </select>
+        </div>
+        <div id="zip-error" class="finder-error" style="display:none"></div>
+      </div>
 
-      <nav class="primary-nav" id="primary-navigation" aria-label="Primary navigation">
-        <ul class="primary-nav__list">
-          <li><a class="primary-nav__link" href="/coc-finder.html">Find Resources</a></li>
-          <li><a class="primary-nav__link" href="/maricopa-navigator.html">Maricopa County</a></li>
-          <li><a class="primary-nav__link" href="#for-nonprofits">For Nonprofits</a></li>
-          <li><a class="primary-nav__link" href="#about">About</a></li>
-        </ul>
-      </nav>
+      <div id="finder-state" class="finder-panel" role="tabpanel">
+        <div class="finder-select-col">
+          <select id="stateSelect" class="finder-select" onchange="loadStateCocs(this.value)">
+            <option value="">Select your state...</option>
+          </select>
+          <select id="stateCocSelect" class="finder-select" style="display:none" onchange="showResult(this.value)">
+            <option value="">Select your area...</option>
+          </select>
+        </div>
+      </div>
 
-      <a class="btn btn--primary" href="/coc-finder.html">Find Help Now</a>
-
+      <div id="finder-result" class="finder-result" style="display:none"></div>
     </div>
   </div>
-</header>
+</section>
 
-<!-- ── MAIN ── -->
-<main id="main-content" role="main">
-
-  <!-- HERO -->
-  <section class="hero" aria-labelledby="hero-title">
-    <div class="container">
-      <div class="hero__inner">
-
-        <span class="hero__eyebrow">Free · Trusted · Always here</span>
-
-        <h1 class="hero__title" id="hero-title">
-          Find help, <em>right where you are.</em>
-        </h1>
-
-        <p class="hero__description">
-          Common Ladder connects you to emergency shelter, food, health care, housing programs, legal aid, and crisis support — no matter where you are in your journey.
-        </p>
-
-        <form class="hero__search" id="zip-form" role="search" aria-label="Find local resources">
-          <label for="resource-zip" class="sr-only">Enter your ZIP code to find local resources</label>
-          <input
-            class="hero__search-input"
-            id="resource-zip"
-            type="text"
-            inputmode="numeric"
-            pattern="[0-9]{5}"
-            maxlength="5"
-            placeholder="Enter your ZIP code..."
-            autocomplete="postal-code"
-          >
-          <button class="hero__search-btn" type="submit">Find Resources</button>
-        </form>
-
-        <div class="hero__meta">
-          <span class="hero__meta-item">
-            <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M13.78 4.22a.75.75 0 0 1 0 1.06l-7.25 7.25a.75.75 0 0 1-1.06 0L2.22 9.28a.75.75 0 0 1 1.06-1.06L6 10.94l6.72-6.72a.75.75 0 0 1 1.06 0Z"/></svg>
-            Always free
-          </span>
-          <span class="hero__meta-item">
-            <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M13.78 4.22a.75.75 0 0 1 0 1.06l-7.25 7.25a.75.75 0 0 1-1.06 0L2.22 9.28a.75.75 0 0 1 1.06-1.06L6 10.94l6.72-6.72a.75.75 0 0 1 1.06 0Z"/></svg>
-            No account required
-          </span>
-          <span class="hero__meta-item">
-            <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M13.78 4.22a.75.75 0 0 1 0 1.06l-7.25 7.25a.75.75 0 0 1-1.06 0L2.22 9.28a.75.75 0 0 1 1.06-1.06L6 10.94l6.72-6.72a.75.75 0 0 1 1.06 0Z"/></svg>
-            Updated regularly
-          </span>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- RESOURCE CATEGORIES -->
-  <section class="section" aria-labelledby="categories-title">
-    <div class="container">
-      <header class="section-header">
-        <span class="section-header__eyebrow">Browse by need</span>
-        <h2 class="section-header__title" id="categories-title">Every kind of support, in one place.</h2>
-        <p class="section-header__description">From a warm bed tonight to a permanent home — find verified resources matched to your situation.</p>
-      </header>
-
-      <div class="card-grid">
-
-        <a class="category-card" href="/coc-finder.html" aria-label="Emergency Shelter">
-          <div class="category-card__icon" aria-hidden="true">🏠</div>
-          <h3 class="category-card__title">Emergency Shelter</h3>
-          <p class="category-card__description">Safe overnight beds, warming centers, and transitional housing options near you tonight.</p>
-          <span class="category-card__arrow">Find shelter <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8.22 2.97a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.75.75 0 0 1-1.06-1.06L11.44 8.5H2.75a.75.75 0 0 1 0-1.5h8.69L8.22 4.03a.75.75 0 0 1 0-1.06z"/></svg></span>
-        </a>
-
-        <a class="category-card" href="/coc-finder.html" aria-label="Food and Meals">
-          <div class="category-card__icon" aria-hidden="true">🍽️</div>
-          <h3 class="category-card__title">Food &amp; Meals</h3>
-          <p class="category-card__description">Soup kitchens, food pantries, and free meal programs serving your neighborhood.</p>
-          <span class="category-card__arrow">Find food <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8.22 2.97a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.75.75 0 0 1-1.06-1.06L11.44 8.5H2.75a.75.75 0 0 1 0-1.5h8.69L8.22 4.03a.75.75 0 0 1 0-1.06z"/></svg></span>
-        </a>
-
-        <a class="category-card" href="/coc-finder.html" aria-label="Health and Medical">
-          <div class="category-card__icon" aria-hidden="true">❤️</div>
-          <h3 class="category-card__title">Health &amp; Medical</h3>
-          <p class="category-card__description">Free clinics, mental health services, substance use support, and dental care.</p>
-          <span class="category-card__arrow">Find health care <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8.22 2.97a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.75.75 0 0 1-1.06-1.06L11.44 8.5H2.75a.75.75 0 0 1 0-1.5h8.69L8.22 4.03a.75.75 0 0 1 0-1.06z"/></svg></span>
-        </a>
-
-        <a class="category-card" href="/maricopa-navigator.html" aria-label="Housing Programs">
-          <div class="category-card__icon" aria-hidden="true">🔑</div>
-          <h3 class="category-card__title">Housing Programs</h3>
-          <p class="category-card__description">Rental assistance, section 8, rapid rehousing, and permanent supportive housing.</p>
-          <span class="category-card__arrow">Find housing <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8.22 2.97a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.75.75 0 0 1-1.06-1.06L11.44 8.5H2.75a.75.75 0 0 1 0-1.5h8.69L8.22 4.03a.75.75 0 0 1 0-1.06z"/></svg></span>
-        </a>
-
-        <a class="category-card" href="/coc-finder.html" aria-label="Legal Aid">
-          <div class="category-card__icon" aria-hidden="true">⚖️</div>
-          <h3 class="category-card__title">Legal Aid</h3>
-          <p class="category-card__description">Free legal help with evictions, benefits, criminal records, and identification documents.</p>
-          <span class="category-card__arrow">Find legal aid <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8.22 2.97a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.75.75 0 0 1-1.06-1.06L11.44 8.5H2.75a.75.75 0 0 1 0-1.5h8.69L8.22 4.03a.75.75 0 0 1 0-1.06z"/></svg></span>
-        </a>
-
-        <a class="category-card" href="/coc-finder.html" aria-label="Crisis Support">
-          <div class="category-card__icon" aria-hidden="true">📞</div>
-          <h3 class="category-card__title">Crisis Support</h3>
-          <p class="category-card__description">24/7 hotlines, domestic violence shelters, and emergency intervention services.</p>
-          <span class="category-card__arrow">Get crisis help <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8.22 2.97a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.75.75 0 0 1-1.06-1.06L11.44 8.5H2.75a.75.75 0 0 1 0-1.5h8.69L8.22 4.03a.75.75 0 0 1 0-1.06z"/></svg></span>
-        </a>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- HOW IT WORKS -->
-  <section class="section section--alt" aria-labelledby="how-title">
-    <div class="container">
-      <header class="section-header">
-        <span class="section-header__eyebrow">Simple to use</span>
-        <h2 class="section-header__title" id="how-title">Help is three steps away.</h2>
-        <p class="section-header__description">No paperwork, no account, no judgment. Just clear, trustworthy information when you need it.</p>
-      </header>
-
-      <div class="steps-grid">
-        <div class="step">
-          <div class="step__number" aria-hidden="true">1</div>
-          <h3 class="step__title">Enter your ZIP code</h3>
-          <p class="step__description">Find verified resources near you — updated by local nonprofits and case managers.</p>
-        </div>
-        <div class="step">
-          <div class="step__number" aria-hidden="true">2</div>
-          <h3 class="step__title">Choose your need</h3>
-          <p class="step__description">Filter by shelter, food, health, housing, legal, or crisis support. See hours, eligibility, and directions.</p>
-        </div>
-        <div class="step">
-          <div class="step__number" aria-hidden="true">3</div>
-          <h3 class="step__title">Connect &amp; get help</h3>
-          <p class="step__description">Call, walk in, or share the listing. Everything is free, private, and always available.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- TOOLS -->
-  <section class="section" aria-labelledby="tools-title">
-    <div class="container">
-      <header class="section-header">
-        <span class="section-header__eyebrow">Available now</span>
-        <h2 class="section-header__title" id="tools-title">Free tools, ready to use.</h2>
-        <p class="section-header__description">No signup. No fees. Built for the people who need them and the workers who help.</p>
-      </header>
-
-      <div class="tools-grid">
-        <a class="tool-card" href="/coc-finder.html">
-          <span class="tool-tag">Nationwide</span>
-          <h3 class="tool-card__title">Continuum of Care Finder</h3>
-          <p class="tool-card__description">Find the homelessness response system serving your zip code — who runs it, how to access services, and who to contact. Works for all 50 states.</p>
-          <span class="tool-cta">Find my CoC</span>
-        </a>
-
-        <a class="tool-card" href="/maricopa-navigator.html">
-          <span class="tool-tag">Maricopa County</span>
-          <h3 class="tool-card__title">Maricopa County Resource Navigator</h3>
-          <p class="tool-card__description">Step-by-step guide to homelessness resources in the Phoenix metro area. Covers emergency shelter, coordinated entry, rapid rehousing, and more.</p>
-          <span class="tool-cta">Navigate resources</span>
-        </a>
-      </div>
-    </div>
-  </section>
-
-  <!-- NONPROFIT CTA BAND -->
-  <section class="cta-band" id="for-nonprofits" aria-labelledby="cta-title">
-    <div class="container">
-      <div class="cta-band__inner">
-        <div class="cta-band__content">
-          <h2 class="cta-band__title" id="cta-title">Are you a nonprofit or service provider?</h2>
-          <p class="cta-band__description">List your services on Common Ladder for free. Reach people who need exactly what you offer — and the case managers who connect them.</p>
-        </div>
-        <div class="cta-band__actions">
-          <a class="btn btn--primary-lg" href="mailto:dvs.dnl@gmail.com?subject=List%20our%20services%20on%20Common%20Ladder">Get in touch</a>
-          <a class="btn btn--ghost" href="#about">Learn more</a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ABOUT -->
-  <section class="section section--alt" id="about" aria-labelledby="about-title">
-    <div class="container">
-      <header class="section-header">
-        <span class="section-header__eyebrow">About Common Ladder</span>
-        <h2 class="section-header__title" id="about-title">Built to serve, not to sell.</h2>
-        <p class="section-header__description">Common Ladder is a free civic platform connecting people experiencing homelessness to shelters, food, health care, housing, legal aid, and crisis services. No ads. No data collection. No barriers.</p>
-      </header>
-      <div class="section-footer">
-        <a class="btn btn--secondary" href="mailto:dvs.dnl@gmail.com">Contact us</a>
-      </div>
-    </div>
-  </section>
-
-</main>
-
-<!-- ── FOOTER ── -->
-<footer class="site-footer" role="contentinfo">
+<!-- Who it's for -->
+<section class="section">
   <div class="container">
-    <div class="site-footer__top">
-
-      <div class="footer-brand">
-        <a class="footer-brand__logo" href="/" aria-label="Common Ladder — Go to homepage">
-          <svg width="32" height="32" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-            <rect width="36" height="36" rx="8" fill="#2a5499"/>
-            <rect x="10" y="8" width="4" height="20" rx="2" fill="white" opacity="0.9"/>
-            <rect x="22" y="8" width="4" height="20" rx="2" fill="white" opacity="0.9"/>
-            <rect x="10" y="12" width="16" height="3" rx="1.5" fill="#E8911A"/>
-            <rect x="10" y="19" width="16" height="3" rx="1.5" fill="#E8911A"/>
-          </svg>
-          <span class="footer-brand__name">
-            <span class="site-logo__text--common" style="color:rgba(255,255,255,0.9)">common</span><span class="site-logo__text--ladder" style="color:#f0a535">ladder</span>
-          </span>
-        </a>
-        <p class="footer-brand__tagline">Every rung, together.</p>
-        <p class="footer-brand__description">A civic platform connecting people experiencing homelessness to shelters, food, health care, housing, legal aid, and crisis services — always free.</p>
+    <div class="section-head">
+      <span class="eyebrow">For everyone</span>
+      <h2>One platform. Every next step.</h2>
+      <p>Whether you need help tonight, work with clients every day, or want to understand what's happening in your community — Common Ladder connects you to what you need.</p>
+    </div>
+    <div class="cards">
+      <div class="card">
+        <div class="card__icon">🏠</div>
+        <h3>People seeking help</h3>
+        <p>Find shelters, food, health care, housing programs, and more — near you, right now. Fast, no barriers, in plain language.</p>
+        <a href="/resources.html" class="btn btn--blue btn--sm">Find resources</a>
       </div>
-
-      <nav class="footer-nav" aria-label="Resources links">
-        <p class="footer-nav__title">Resources</p>
-        <ul class="footer-nav__list">
-          <li><a class="footer-nav__link" href="/coc-finder.html">CoC Finder</a></li>
-          <li><a class="footer-nav__link" href="/maricopa-navigator.html">Maricopa County</a></li>
-          <li><a class="footer-nav__link" href="/coc-finder.html">Emergency Shelter</a></li>
-          <li><a class="footer-nav__link" href="/coc-finder.html">Food &amp; Meals</a></li>
-          <li><a class="footer-nav__link" href="/coc-finder.html">Health &amp; Medical</a></li>
-          <li><a class="footer-nav__link" href="/coc-finder.html">Crisis Support</a></li>
-        </ul>
-      </nav>
-
-      <nav class="footer-nav" aria-label="Organization links">
-        <p class="footer-nav__title">Organization</p>
-        <ul class="footer-nav__list">
-          <li><a class="footer-nav__link" href="#about">About Us</a></li>
-          <li><a class="footer-nav__link" href="#for-nonprofits">For Nonprofits</a></li>
-          <li><a class="footer-nav__link" href="mailto:dvs.dnl@gmail.com">Contact</a></li>
-        </ul>
-      </nav>
-
+      <div class="card card--amber">
+        <div class="card__icon">📋</div>
+        <h3>Case managers &amp; nonprofits</h3>
+        <p>The most complete, up-to-date picture of every service in your area — so you spend less time searching and more time with clients.</p>
+        <a href="/resources.html" class="btn btn--blue btn--sm">See all resources</a>
+      </div>
+      <div class="card card--sage">
+        <div class="card__icon">🏛️</div>
+        <h3>Government &amp; policy</h3>
+        <p>Real-time visibility into what services exist, where gaps are, and what your community's residents are actually accessing.</p>
+        <a href="/about.html" class="btn btn--blue btn--sm">Request a briefing</a>
+      </div>
+      <div class="card">
+        <div class="card__icon">🤝</div>
+        <h3>Donors &amp; community</h3>
+        <p>Transparency into the local homelessness ecosystem — see which organizations are doing what, and support what's working.</p>
+        <a href="/about.html" class="btn btn--blue btn--sm">Get involved</a>
+      </div>
     </div>
+  </div>
+</section>
 
-    <div class="site-footer__bottom">
-      <p class="site-footer__copyright">&copy; 2026 Common Ladder. Free to use and share.</p>
-      <nav class="site-footer__legal" aria-label="Legal links">
-        <a class="site-footer__legal-link" href="mailto:dvs.dnl@gmail.com">Privacy</a>
-        <a class="site-footer__legal-link" href="mailto:dvs.dnl@gmail.com">Accessibility</a>
-      </nav>
+<!-- Stats -->
+<section class="section section--alt">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">The problem</span>
+      <h2>Resources exist. They're just impossible to find.</h2>
+      <p>In most cities, hundreds of programs, shelters, and services operate — but there's no single place to find all of them, understand how they connect, or navigate to the right one.</p>
     </div>
+    <div class="stats">
+      <div>
+        <div class="stat__num">650K+</div>
+        <div class="stat__label">People experiencing homelessness on any given night in the US</div>
+      </div>
+      <div>
+        <div class="stat__num">100s</div>
+        <div class="stat__label">Of organizations serving them in every major city</div>
+      </div>
+      <div>
+        <div class="stat__num">0</div>
+        <div class="stat__label">Single places to find all of them — until now</div>
+      </div>
+    </div>
+  </div>
+</section>
 
+<!-- Tools preview -->
+<section class="section">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">Free tools</span>
+      <h2>Built for Phoenix. Expanding everywhere.</h2>
+      <p>Our current tools are tailored to Maricopa County, with more regions coming soon.</p>
+    </div>
+    <div class="cards">
+      <div class="card">
+        <div class="card__icon">🗺️</div>
+        <h3>Maricopa Navigator</h3>
+        <p>Comprehensive guide to shelters, food, health, and housing programs across Maricopa County — searchable, filterable, updated regularly.</p>
+        <a href="/static-tools/maricopa-navigator.html" class="btn btn--blue btn--sm">Open navigator</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Blog preview -->
+<section class="section section--alt">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">Resources &amp; guides</span>
+      <h2>Plain-language guides on housing and homelessness</h2>
+    </div>
+    <div class="blog-grid">
+      <article class="post-card">
+        <div class="post-card__body">
+          <span class="post-card__cat">Emergency Resources</span>
+          <h3><a href="/blog/emergency-shelter-phoenix.html">Emergency Shelter in Phoenix: A Complete Guide for 2025</a></h3>
+          <p>Everything you need to know about finding emergency shelter in Phoenix — intake processes, what to bring, what to expect, and how to get a bed tonight.</p>
+        </div>
+        <div class="post-card__foot">
+          <a href="/blog/emergency-shelter-phoenix.html" class="btn btn--blue btn--sm">Read guide</a>
+        </div>
+      </article>
+      <article class="post-card">
+        <div class="post-card__body">
+          <span class="post-card__cat">For Case Managers</span>
+          <h3><a href="/blog/case-manager-guide.html">The Case Manager's Field Guide to Maricopa County Resources</a></h3>
+          <p>A practical reference for social workers and case managers navigating the Maricopa County service ecosystem — updated for 2025.</p>
+        </div>
+        <div class="post-card__foot">
+          <a href="/blog/case-manager-guide.html" class="btn btn--blue btn--sm">Read guide</a>
+        </div>
+      </article>
+      <article class="post-card">
+        <div class="post-card__body">
+          <span class="post-card__cat">Community</span>
+          <h3><a href="/blog/5-ways-to-help-phoenix.html">5 Ways to Help with Homelessness in Phoenix Right Now</a></h3>
+          <p>Practical, high-impact actions for community members who want to help — from volunteering to advocacy to understanding the issue.</p>
+        </div>
+        <div class="post-card__foot">
+          <a href="/blog/5-ways-to-help-phoenix.html" class="btn btn--blue btn--sm">Read more</a>
+        </div>
+      </article>
+    </div>
+    <div class="text-center mt-2">
+      <a href="/blog.html" class="btn btn--blue">View all articles</a>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="section">
+  <div class="container">
+    <div class="callout">
+      <h2>Every rung, together.</h2>
+      <p>Homelessness is solvable. Common Ladder connects every resource, every organization, and every person working toward that — in your city.</p>
+      <a href="/resources.html" class="btn btn--primary">Find resources near me</a>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer__grid">
+      <div class="footer__brand">
+        <h3>Common Ladder</h3>
+        <p>The civic resource platform that connects people experiencing homelessness, the organizations that serve them, and the communities that support them.</p>
+      </div>
+      <div>
+        <h4>Resources</h4>
+        <ul>
+          <li><a href="/resources.html">Find Resources</a></li>
+          <li><a href="/static-tools/maricopa-navigator.html">Maricopa Navigator</a></li>
+          <li><a href="/blog.html">Blog &amp; Guides</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>About</h4>
+        <ul>
+          <li><a href="/about.html">Our Mission</a></li>
+          <li><a href="/about.html#partners">For Partners</a></li>
+          <li><a href="/about.html#contact">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <span>&copy; 2025 Common Ladder. Free to use, always.</span>
+      <span>Built in Phoenix, AZ</span>
+    </div>
   </div>
 </footer>
 
+
 <script>
-  // ZIP form: route to CoC finder
-  document.getElementById('zip-form').addEventListener('submit', function(e) {
-    e.preventDefault();
-    const zip = document.getElementById('resource-zip').value.trim();
-    if (zip.length === 5 && /^\d+$/.test(zip)) {
-      window.location.href = '/coc-finder.html?q=' + zip;
-    } else {
-      window.location.href = '/coc-finder.html';
-    }
+// ── CoC Finder Widget ────────────────────────────────────────────────
+
+// All Maricopa County, AZ zip codes
+const MARICOPA_ZIPS = new Set([
+  85001,85002,85003,85004,85005,85006,85007,85008,85009,85010,85011,85012,85013,85014,85015,
+  85016,85017,85018,85019,85020,85021,85022,85023,85024,85025,85026,85027,85028,85029,85030,
+  85031,85032,85033,85034,85035,85036,85037,85038,85039,85040,85041,85042,85043,85044,85045,
+  85048,85050,85051,85053,85054,85083,85085,85086,85087,
+  85201,85202,85203,85204,85205,85206,85207,85208,85209,85210,85211,85212,85213,85215,85216,
+  85224,85225,85226,85228,85233,85234,85248,85249,
+  85250,85251,85252,85253,85254,85255,85256,85257,85258,85259,85260,85261,85262,85263,85264,85266,85267,85268,
+  85281,85282,85283,85284,85285,85286,85287,85288,
+  85295,85296,85297,85298,85299,
+  85301,85302,85303,85304,85305,85306,85307,85308,85309,85310,
+  85323,85326,85327,85329,85331,85335,85337,85338,85339,85340,85342,85345,
+  85351,85353,85354,85355,85361,85363,85372,85373,85374,85375,85376,85377,85378,85379,
+  85380,85381,85382,85383,85385,85387,85388,85390,85392,85395,85396,85142
+]);
+
+// Tucson / Pima County zip codes
+const TUCSON_ZIPS = new Set([
+  85701,85702,85703,85704,85705,85706,85707,85708,85709,85710,
+  85711,85712,85713,85714,85715,85716,85717,85718,85719,85720,
+  85721,85722,85723,85724,85725,85726,85728,85730,85731,85732,
+  85733,85734,85735,85736,85737,85738,85739,85740,85741,85742,
+  85743,85744,85745,85746,85747,85748,85749,85750,85751,85752,
+  85754,85755,85756,85757,85775,
+  85614,85629,85641,85653,85658,85743
+]);
+
+// Zip code range → state code
+function zipToState(zip) {
+  const z = parseInt(zip, 10);
+  if (z>=35004&&z<=36925) return 'AL';
+  if (z>=99501&&z<=99950) return 'AK';
+  if (z>=85001&&z<=86556) return 'AZ';
+  if ((z>=71601&&z<=72959)||z===75502) return 'AR';
+  if (z>=90001&&z<=96162) return 'CA';
+  if (z>=80001&&z<=81658) return 'CO';
+  if (z>=6001&&z<=6928) return 'CT';
+  if (z>=19701&&z<=19980) return 'DE';
+  if (z>=20001&&z<=20599) return 'DC';
+  if (z>=32004&&z<=34997) return 'FL';
+  if ((z>=30001&&z<=31999)||(z>=39813&&z<=39901)) return 'GA';
+  if (z>=96701&&z<=96898) return 'HI';
+  if (z>=83201&&z<=83876) return 'ID';
+  if (z>=60001&&z<=62999) return 'IL';
+  if (z>=46001&&z<=47997) return 'IN';
+  if (z>=50001&&z<=52809) return 'IA';
+  if (z>=66002&&z<=67954) return 'KS';
+  if (z>=40003&&z<=42788) return 'KY';
+  if (z>=70001&&z<=71497) return 'LA';
+  if (z>=3901&&z<=4992) return 'ME';
+  if (z>=20601&&z<=21930) return 'MD';
+  if (z>=1001&&z<=2791) return 'MA';
+  if (z>=48001&&z<=49971) return 'MI';
+  if (z>=55001&&z<=56763) return 'MN';
+  if (z>=38601&&z<=39776) return 'MS';
+  if (z>=63001&&z<=65899) return 'MO';
+  if (z>=59001&&z<=59937) return 'MT';
+  if (z>=68001&&z<=69367) return 'NE';
+  if (z>=88901&&z<=89883) return 'NV';
+  if (z>=3031&&z<=3897) return 'NH';
+  if (z>=7001&&z<=8989) return 'NJ';
+  if (z>=87001&&z<=88441) return 'NM';
+  if (z>=10001&&z<=14975) return 'NY';
+  if (z>=27006&&z<=28909) return 'NC';
+  if (z>=58001&&z<=58856) return 'ND';
+  if (z>=43001&&z<=45999) return 'OH';
+  if (z>=73001&&z<=74966) return 'OK';
+  if (z>=97001&&z<=97920) return 'OR';
+  if (z>=15001&&z<=19640) return 'PA';
+  if (z>=2801&&z<=2940) return 'RI';
+  if (z>=29001&&z<=29948) return 'SC';
+  if (z>=57001&&z<=57799) return 'SD';
+  if (z>=37010&&z<=38589) return 'TN';
+  if ((z>=73301&&z<=79999)||(z>=88510&&z<=88589)) return 'TX';
+  if (z>=84001&&z<=84784) return 'UT';
+  if (z>=5001&&z<=5907) return 'VT';
+  if (z>=20101&&z<=24658) return 'VA';
+  if (z>=98001&&z<=99403) return 'WA';
+  if (z>=24701&&z<=26886) return 'WV';
+  if (z>=53001&&z<=54990) return 'WI';
+  if (z>=82001&&z<=83128) return 'WY';
+  return null;
+}
+
+// CoC directory — navigator: URL means a tool exists; omit = coming soon
+const COC = {
+  AL:[
+    {id:'al-bham',name:'Birmingham/Jefferson, St. Clair, Shelby Counties CoC',desc:'Serves the Birmingham metro including Jefferson, St. Clair, and Shelby counties.',cities:'Birmingham, Hoover, Vestavia Hills, Trussville'},
+    {id:'al-mob', name:'Mobile City & County / Baldwin County CoC',desc:'Serves Mobile and Baldwin Counties in southwestern Alabama.',cities:'Mobile, Daphne, Fairhope, Foley'},
+    {id:'al-bos', name:'Alabama Balance of State CoC',desc:'Covers all other Alabama counties.',cities:'Huntsville, Montgomery, Tuscaloosa, Auburn'}
+  ],
+  AK:[
+    {id:'ak-anc',name:'Anchorage CoC',desc:'Lead body for homeless services across Anchorage.',cities:'Anchorage'},
+    {id:'ak-bos',name:'Alaska Balance of State CoC',desc:'Covers all areas outside Anchorage.',cities:'Fairbanks, Juneau, Sitka, Kenai'}
+  ],
+  AZ:[
+    {id:'az-maricopa',name:'Phoenix/Mesa/Maricopa County CoC',desc:'Coordinates housing and homeless services across all of Maricopa County — the largest CoC in Arizona.',cities:'Phoenix, Mesa, Scottsdale, Tempe, Chandler, Gilbert, Glendale, Peoria, Surprise',navigator:'/static-tools/maricopa-navigator.html'},
+    {id:'az-tuc', name:'Tucson/Pima County CoC',desc:'Coordinates homeless response across Pima County.',cities:'Tucson, Marana, Sahuarita, Oro Valley',navigator:'/static-tools/tucson-navigator.html'},
+    {id:'az-bos', name:'Arizona Balance of State CoC',desc:'Covers all other Arizona counties.',cities:'Flagstaff, Prescott, Yuma, Sierra Vista, Lake Havasu City'}
+  ],
+  AR:[
+    {id:'ar-lr', name:'Little Rock/Central Arkansas CoC',desc:'Lead body for the Central Arkansas region.',cities:'Little Rock, North Little Rock, Conway, Benton'},
+    {id:'ar-bos',name:'Arkansas Balance of State CoC',desc:'Covers Arkansas outside Central Arkansas.',cities:'Fort Smith, Fayetteville, Jonesboro, Texarkana'}
+  ],
+  CA:[
+    {id:'ca-la', name:'Los Angeles City & County CoC',desc:'Largest CoC in the US by population served, covering most of LA County.',cities:'Los Angeles, Burbank, Pomona, Santa Clarita, West Hollywood'},
+    {id:'ca-sd', name:'San Diego City and County CoC',desc:'Regional coordinator for all of San Diego County.',cities:'San Diego, Chula Vista, Escondido, El Cajon, Oceanside'},
+    {id:'ca-sf', name:'San Francisco CoC',desc:'Serves the City and County of San Francisco.',cities:'San Francisco'},
+    {id:'ca-oak',name:'Oakland, Berkeley/Alameda County CoC',desc:'Covers Alameda County including Oakland and Berkeley.',cities:'Oakland, Berkeley, Fremont, Hayward, San Leandro'},
+    {id:'ca-scc',name:'Santa Clara County CoC',desc:'Serves the Silicon Valley region.',cities:'San Jose, Santa Clara, Sunnyvale, Mountain View, Palo Alto'},
+    {id:'ca-sac',name:'Sacramento City & County CoC',desc:'Covers Sacramento County.',cities:'Sacramento, Elk Grove, Citrus Heights, Folsom'},
+    {id:'ca-fre',name:'Fresno City & County / Madera County CoC',desc:'Serves the Central Valley.',cities:'Fresno, Clovis, Madera'},
+    {id:'ca-riv',name:'Riverside City & County CoC',desc:'Covers Riverside County in the Inland Empire.',cities:'Riverside, Corona, Temecula, Palm Springs'},
+    {id:'ca-sbn',name:'San Bernardino City & County CoC',desc:'Covers San Bernardino County.',cities:'San Bernardino, Fontana, Ontario, Rancho Cucamonga, Victorville'},
+    {id:'ca-lb', name:'Long Beach CoC',desc:'Serves the City of Long Beach.',cities:'Long Beach'},
+    {id:'ca-pas',name:'Pasadena CoC',desc:'Serves the City of Pasadena.',cities:'Pasadena'},
+    {id:'ca-bos',name:'California Balance of State CoC',desc:'Covers California counties outside the major metro CoCs.',cities:'Bakersfield, Stockton, Modesto, Santa Barbara, Santa Rosa, Salinas'}
+  ],
+  CO:[
+    {id:'co-den',name:'Metropolitan Denver Homeless Initiative',desc:'Covers the seven-county Denver metro region.',cities:'Denver, Aurora, Lakewood, Arvada, Westminster, Centennial'},
+    {id:'co-cos',name:'Colorado Springs/El Paso County CoC',desc:'Serves El Paso County.',cities:'Colorado Springs, Fountain'},
+    {id:'co-bos',name:'Colorado Balance of State CoC',desc:'Covers Colorado outside the major metros.',cities:'Fort Collins, Boulder, Pueblo, Grand Junction'}
+  ],
+  CT:[
+    {id:'ct-htf',name:'Hartford CoC',desc:'Serves Greater Hartford.',cities:'Hartford, East Hartford, West Hartford, Manchester'},
+    {id:'ct-bpt',name:'Bridgeport, Stamford, Norwalk/Fairfield County CoC',desc:'Serves Fairfield County.',cities:'Bridgeport, Stamford, Norwalk, Danbury'},
+    {id:'ct-bos',name:'Connecticut Balance of State CoC',desc:'Covers Connecticut outside the major metros.',cities:'New Haven, Waterbury, Meriden, New Britain'}
+  ],
+  DE:[{id:'de-stw',name:'Delaware Statewide CoC',desc:'Single statewide CoC covering all of Delaware.',cities:'Wilmington, Dover, Newark, Middletown'}],
+  DC:[{id:'dc-dc', name:'District of Columbia CoC',desc:'Single CoC for Washington, D.C.',cities:'Washington, D.C.'}],
+  FL:[
+    {id:'fl-mia',name:'Miami/Dade County CoC',desc:'Serves Miami-Dade County.',cities:'Miami, Miami Beach, Coral Gables, Hialeah, Homestead'},
+    {id:'fl-brd',name:'Fort Lauderdale/Broward County CoC',desc:'Covers Broward County.',cities:'Fort Lauderdale, Hollywood, Pembroke Pines, Miramar'},
+    {id:'fl-orl',name:'Orlando/Orange, Osceola, Seminole Counties CoC',desc:'Serves Central Florida.',cities:'Orlando, Kissimmee, Sanford, Apopka'},
+    {id:'fl-tam',name:'Tampa/Hillsborough County CoC',desc:'Covers Hillsborough County.',cities:'Tampa, Plant City, Brandon'},
+    {id:'fl-pin',name:'St. Petersburg, Clearwater/Pinellas County CoC',desc:'Serves Pinellas County.',cities:'St. Petersburg, Clearwater, Largo, Dunedin'},
+    {id:'fl-jax',name:'Jacksonville-Duval, Clay Counties CoC',desc:'Covers Northeast Florida.',cities:'Jacksonville, Orange Park'},
+    {id:'fl-wpb',name:'West Palm Beach/Palm Beach County CoC',desc:'Covers Palm Beach County.',cities:'West Palm Beach, Boca Raton, Delray Beach'},
+    {id:'fl-bos',name:'Florida Balance of State CoC',desc:'Covers Florida outside the major metro CoCs.',cities:'Tallahassee, Gainesville, Pensacola, Sarasota, Naples'}
+  ],
+  GA:[
+    {id:'ga-atl',name:'Atlanta CoC',desc:'Serves the City of Atlanta.',cities:'Atlanta'},
+    {id:'ga-ful',name:'Fulton County CoC',desc:'Covers Fulton County outside Atlanta.',cities:'Sandy Springs, Alpharetta, Roswell, College Park'},
+    {id:'ga-dek',name:'DeKalb County CoC',desc:'Serves DeKalb County.',cities:'Decatur, Tucker, Stone Mountain, Chamblee'},
+    {id:'ga-bos',name:'Georgia Balance of State CoC',desc:'Covers Georgia outside metro Atlanta.',cities:'Savannah, Columbus, Augusta, Macon, Athens'}
+  ],
+  HI:[
+    {id:'hi-hnl',name:'Honolulu City & County CoC',desc:'Serves Oahu.',cities:'Honolulu, Kailua, Kaneohe, Pearl City'},
+    {id:'hi-bos',name:'Hawaii Balance of State CoC',desc:'Covers Maui, Hawaii Island, and Kauai.',cities:'Kahului, Kailua-Kona, Hilo, Lihue'}
+  ],
+  ID:[
+    {id:'id-boi',name:'Boise City/Ada County CoC',desc:'Covers the Treasure Valley including Boise.',cities:'Boise, Meridian, Nampa, Caldwell, Eagle'},
+    {id:'id-bos',name:'Idaho Balance of State CoC',desc:'Covers Idaho outside Ada County.',cities:"Pocatello, Idaho Falls, Twin Falls, Coeur d'Alene"}
+  ],
+  IL:[
+    {id:'il-chi',name:'Chicago CoC',desc:'Serves the City of Chicago.',cities:'Chicago'},
+    {id:'il-coo',name:'Cook County CoC (Suburban)',desc:'Covers suburban Cook County outside Chicago.',cities:'Evanston, Skokie, Oak Park, Cicero, Orland Park'},
+    {id:'il-dup',name:'DuPage County CoC',desc:'Serves DuPage County.',cities:'Naperville, Wheaton, Downers Grove'},
+    {id:'il-lak',name:'Lake County CoC',desc:'Covers Lake County.',cities:'Waukegan, Zion, North Chicago'},
+    {id:'il-wil',name:'Will County CoC',desc:'Serves Will County.',cities:'Joliet, Romeoville, Bolingbrook, Plainfield'},
+    {id:'il-bos',name:'Illinois Balance of State CoC',desc:'Covers downstate Illinois.',cities:'Springfield, Peoria, Rockford, Champaign, Bloomington'}
+  ],
+  IN:[
+    {id:'in-ind',name:'Indianapolis/Marion County CoC',desc:'Serves the Indianapolis metro.',cities:'Indianapolis, Lawrence, Speedway, Beech Grove'},
+    {id:'in-bos',name:'Indiana Balance of State CoC',desc:'Covers Indiana outside Indianapolis.',cities:'Fort Wayne, Evansville, South Bend, Bloomington'}
+  ],
+  IA:[
+    {id:'ia-dsm',name:'Des Moines/Polk County CoC',desc:'Serves the Des Moines metro.',cities:'Des Moines, West Des Moines, Ames, Ankeny'},
+    {id:'ia-bos',name:'Iowa Balance of State CoC',desc:'Covers most of Iowa outside Des Moines.',cities:'Cedar Rapids, Iowa City, Davenport, Waterloo'}
+  ],
+  KS:[
+    {id:'ks-wich',name:'Wichita/Sedgwick County CoC',desc:'Serves the Wichita metro.',cities:'Wichita, Derby, Andover'},
+    {id:'ks-bos', name:'Kansas Balance of State CoC',desc:'Covers Kansas outside Wichita.',cities:'Overland Park, Topeka, Lawrence, Salina, Manhattan'}
+  ],
+  KY:[
+    {id:'ky-lou',name:'Louisville-Jefferson County CoC',desc:'Serves the Louisville metro.',cities:'Louisville, Jeffersontown, Shively'},
+    {id:'ky-lex',name:'Lexington/Fayette County CoC',desc:'Covers Lexington and the surrounding area.',cities:'Lexington, Nicholasville, Georgetown'},
+    {id:'ky-bos',name:'Kentucky Balance of State CoC',desc:'Covers Kentucky outside Louisville and Lexington.',cities:'Bowling Green, Owensboro, Covington, Frankfort'}
+  ],
+  LA:[
+    {id:'la-no', name:'New Orleans/Jefferson Parish CoC',desc:'Serves Greater New Orleans.',cities:'New Orleans, Metairie, Kenner, Gretna'},
+    {id:'la-br', name:'Baton Rouge CoC',desc:'Covers East Baton Rouge Parish.',cities:'Baton Rouge, Baker, Central, Zachary'},
+    {id:'la-bos',name:'Louisiana Balance of State CoC',desc:'Covers Louisiana outside the major metros.',cities:'Shreveport, Lafayette, Lake Charles, Alexandria'}
+  ],
+  ME:[{id:'me-stw',name:'Maine Statewide CoC',desc:'Single statewide CoC covering all of Maine.',cities:'Portland, Lewiston, Bangor, Augusta'}],
+  MD:[
+    {id:'md-bc', name:'Baltimore City CoC',desc:'Serves the City of Baltimore.',cities:'Baltimore'},
+    {id:'md-bco',name:'Baltimore County CoC',desc:'Covers Baltimore County surrounding the city.',cities:'Towson, Catonsville, Dundalk, Essex'},
+    {id:'md-mon',name:'Montgomery County CoC',desc:'Serves Montgomery County.',cities:'Rockville, Bethesda, Gaithersburg, Silver Spring'},
+    {id:'md-pg', name:"Prince George's County CoC",desc:"Covers Prince George's County.",cities:'College Park, Hyattsville, Laurel, Bowie'},
+    {id:'md-bos',name:'Maryland Balance of State CoC',desc:'Covers Maryland outside the DC/Baltimore metros.',cities:'Annapolis, Frederick, Hagerstown, Salisbury'}
+  ],
+  MA:[
+    {id:'ma-bos',name:'Boston CoC',desc:'Serves the City of Boston.',cities:'Boston, Roxbury, Dorchester, Jamaica Plain'},
+    {id:'ma-cam',name:'Cambridge CoC',desc:'Serves Cambridge and Somerville.',cities:'Cambridge, Somerville'},
+    {id:'ma-stw',name:'Massachusetts Balance of State CoC',desc:'Covers Massachusetts outside Boston and Cambridge.',cities:'Worcester, Springfield, Lowell, Brockton, New Bedford'}
+  ],
+  MI:[
+    {id:'mi-det',name:'Detroit CoC',desc:'Serves the City of Detroit.',cities:'Detroit'},
+    {id:'mi-way',name:'Wayne County CoC',desc:'Covers Wayne County outside Detroit.',cities:'Dearborn, Livonia, Westland, Taylor'},
+    {id:'mi-oak',name:'Oakland County CoC',desc:'Serves Oakland County.',cities:'Troy, Pontiac, Southfield, Royal Oak'},
+    {id:'mi-gr', name:'Grand Rapids/Kent County CoC',desc:'Serves Kent County.',cities:'Grand Rapids, Wyoming, Kentwood, Walker'},
+    {id:'mi-bos',name:'Michigan Balance of State CoC',desc:'Covers Michigan outside metro Detroit and Grand Rapids.',cities:'Lansing, Flint, Kalamazoo, Saginaw, Ann Arbor'}
+  ],
+  MN:[
+    {id:'mn-hco',name:'Hennepin County CoC',desc:'Covers Hennepin County including Minneapolis.',cities:'Minneapolis, Brooklyn Park, Plymouth, Bloomington'},
+    {id:'mn-ram',name:'St. Paul/Ramsey County CoC',desc:'Covers Ramsey County including St. Paul.',cities:'St. Paul, Roseville, Maplewood'},
+    {id:'mn-bos',name:'Minnesota Balance of State CoC',desc:'Covers Minnesota outside the Twin Cities.',cities:'Rochester, Duluth, St. Cloud, Mankato'}
+  ],
+  MS:[
+    {id:'ms-jxn',name:'Jackson/Rankin, Madison Counties CoC',desc:'Serves the Jackson metro.',cities:'Jackson, Flowood, Ridgeland, Brandon'},
+    {id:'ms-bos',name:'Mississippi Balance of State CoC',desc:'Covers Mississippi outside Jackson.',cities:'Biloxi, Gulfport, Hattiesburg, Meridian, Tupelo'}
+  ],
+  MO:[
+    {id:'mo-stlc', name:'St. Louis City CoC',desc:'Serves the City of St. Louis.',cities:'St. Louis'},
+    {id:'mo-stlco',name:'St. Louis County CoC',desc:'Covers St. Louis County.',cities:'Clayton, Kirkwood, Florissant, Chesterfield'},
+    {id:'mo-kc',  name:"Kansas City/Independence/Jackson County CoC",desc:'Serves Greater Kansas City.',cities:"Kansas City, Independence, Lee's Summit, Blue Springs"},
+    {id:'mo-bos', name:'Missouri Balance of State CoC',desc:'Covers Missouri outside St. Louis and KC.',cities:'Springfield, Columbia, Joplin, St. Joseph'}
+  ],
+  MT:[{id:'mt-stw',name:'Montana Statewide CoC',desc:'Single statewide CoC.',cities:'Billings, Missoula, Great Falls, Bozeman, Helena'}],
+  NE:[{id:'ne-stw',name:'Omaha/Lincoln/Nebraska Balance of State CoC',desc:'Statewide coverage.',cities:'Omaha, Lincoln, Bellevue, Grand Island'}],
+  NV:[
+    {id:'nv-lv', name:'Las Vegas/Clark County CoC',desc:'Serves Clark County including Las Vegas.',cities:'Las Vegas, Henderson, North Las Vegas'},
+    {id:'nv-ren',name:'Reno, Sparks/Washoe County CoC',desc:'Covers Washoe County.',cities:'Reno, Sparks'},
+    {id:'nv-bos',name:'Nevada Balance of State CoC',desc:'Covers rural Nevada.',cities:'Carson City, Elko, Fallon, Winnemucca'}
+  ],
+  NH:[
+    {id:'nh-man',name:'Manchester/Nashua CoC',desc:'Serves Manchester and Nashua.',cities:'Manchester, Nashua, Concord'},
+    {id:'nh-bos',name:'New Hampshire Balance of State CoC',desc:'Covers New Hampshire outside the Nashua/Manchester corridor.',cities:'Dover, Portsmouth, Keene, Laconia'}
+  ],
+  NJ:[
+    {id:'nj-new',name:'Newark/Essex County CoC',desc:'Serves Essex County.',cities:'Newark, East Orange, Irvington, Bloomfield'},
+    {id:'nj-jc', name:'Jersey City, Bayonne/Hudson County CoC',desc:'Covers Hudson County.',cities:'Jersey City, Bayonne, Hoboken, Union City'},
+    {id:'nj-atl',name:'Atlantic City & County CoC',desc:'Serves Atlantic County.',cities:'Atlantic City, Egg Harbor Township, Galloway'},
+    {id:'nj-ber',name:'Bergen County CoC',desc:'Covers Bergen County.',cities:'Hackensack, Paramus, Fort Lee, Teaneck'},
+    {id:'nj-cam',name:'Camden City and County CoC',desc:'Serves Camden County.',cities:'Camden, Cherry Hill, Voorhees'},
+    {id:'nj-bos',name:'New Jersey Balance of State CoC',desc:'Covers New Jersey outside the major metros.',cities:'Trenton, Paterson, Monmouth County, Ocean County, Middlesex'}
+  ],
+  NM:[
+    {id:'nm-abq',name:'Albuquerque CoC',desc:'Serves the Albuquerque metro.',cities:'Albuquerque, Rio Rancho, Bernalillo'},
+    {id:'nm-bos',name:'New Mexico Balance of State CoC',desc:'Covers New Mexico outside Albuquerque.',cities:'Santa Fe, Las Cruces, Roswell, Farmington, Clovis'}
+  ],
+  NY:[
+    {id:'ny-nyc',name:'New York City CoC',desc:'Serves all five boroughs.',cities:'Manhattan, Brooklyn, Queens, The Bronx, Staten Island'},
+    {id:'ny-wch',name:'Yonkers/Mount Vernon/Westchester County CoC',desc:'Covers Westchester County.',cities:'Yonkers, Mount Vernon, New Rochelle, White Plains'},
+    {id:'ny-li', name:'Nassau, Suffolk Counties CoC',desc:'Covers Long Island.',cities:'Hempstead, Babylon, Brookhaven, Huntington, Islip'},
+    {id:'ny-alb',name:'Albany City & County CoC',desc:'Covers Albany County.',cities:'Albany, Cohoes, Watervliet'},
+    {id:'ny-roc',name:'Rochester/Monroe County CoC',desc:'Serves Monroe County.',cities:'Rochester, Irondequoit, Greece, Brighton'},
+    {id:'ny-buf',name:'Buffalo, Niagara Falls/Erie, Niagara Counties CoC',desc:'Covers Western New York.',cities:'Buffalo, Niagara Falls, Cheektowaga, Amherst'},
+    {id:'ny-syr',name:'Syracuse, Auburn/Onondaga, Oswego, Cayuga Counties CoC',desc:'Serves Central New York.',cities:'Syracuse, Auburn, Oswego'},
+    {id:'ny-bos',name:'New York Balance of State CoC',desc:'Covers New York outside the major metros.',cities:'Binghamton, Poughkeepsie, Utica, Schenectady'}
+  ],
+  NC:[
+    {id:'nc-clt',name:'Charlotte/Mecklenburg County CoC',desc:'Serves the Charlotte metro.',cities:'Charlotte, Concord, Gastonia, Kannapolis'},
+    {id:'nc-ral',name:'Raleigh/Wake County CoC',desc:'Covers Wake County.',cities:'Raleigh, Cary, Apex, Wake Forest'},
+    {id:'nc-dur',name:'Durham City and County CoC',desc:'Serves Durham County.',cities:'Durham'},
+    {id:'nc-gso',name:'Greensboro, High Point/Guilford County CoC',desc:'Covers Guilford County.',cities:'Greensboro, High Point'},
+    {id:'nc-ws', name:'Winston-Salem/Forsyth County CoC',desc:'Serves Forsyth County.',cities:'Winston-Salem, Kernersville'},
+    {id:'nc-ash',name:'Asheville/Buncombe County CoC',desc:'Covers Buncombe County.',cities:'Asheville, Weaverville'},
+    {id:'nc-bos',name:'North Carolina Balance of State CoC',desc:'Covers North Carolina outside the major metros.',cities:'Fayetteville, Wilmington, Hickory, Greenville, Rocky Mount'}
+  ],
+  ND:[{id:'nd-stw',name:'North Dakota Statewide CoC',desc:'Single statewide CoC.',cities:'Fargo, Bismarck, Grand Forks, Minot'}],
+  OH:[
+    {id:'oh-cin',name:'Cincinnati/Hamilton County CoC',desc:'Serves Hamilton County.',cities:'Cincinnati, Norwood, Blue Ash'},
+    {id:'oh-cle',name:'Cleveland/Cuyahoga County CoC',desc:'Covers Cuyahoga County.',cities:'Cleveland, Parma, Lakewood, Euclid, Cleveland Heights'},
+    {id:'oh-col',name:'Columbus/Franklin County CoC',desc:'Serves Franklin County.',cities:'Columbus, Dublin, Westerville, Hilliard, Grove City'},
+    {id:'oh-day',name:'Dayton, Kettering/Montgomery County CoC',desc:'Covers Montgomery County.',cities:'Dayton, Kettering, Huber Heights'},
+    {id:'oh-tol',name:'Toledo/Lucas County CoC',desc:'Serves Lucas County.',cities:'Toledo, Sylvania, Maumee'},
+    {id:'oh-akr',name:'Akron, Barberton/Summit County CoC',desc:'Covers Summit County.',cities:'Akron, Cuyahoga Falls, Barberton'},
+    {id:'oh-yng',name:'Youngstown/Mahoning County CoC',desc:'Serves Mahoning County.',cities:'Youngstown, Boardman, Austintown'},
+    {id:'oh-bos',name:'Ohio Balance of State CoC',desc:'Covers Ohio outside the major metro CoCs.',cities:'Canton, Springfield, Lima, Lorain, Mansfield'}
+  ],
+  OK:[
+    {id:'ok-okc',name:'Oklahoma City CoC',desc:'Serves the Oklahoma City metro.',cities:'Oklahoma City, Edmond, Moore, Norman'},
+    {id:'ok-tul',name:'Tulsa CoC',desc:'Covers the Tulsa metro.',cities:'Tulsa, Broken Arrow, Owasso, Jenks'},
+    {id:'ok-bos',name:'Oklahoma Balance of State CoC',desc:'Covers Oklahoma outside OKC and Tulsa.',cities:'Lawton, Enid, Stillwater, Muskogee'}
+  ],
+  OR:[
+    {id:'or-pdx',name:'Portland-Gresham-Multnomah County CoC',desc:'Serves Multnomah County.',cities:'Portland, Gresham, Troutdale'},
+    {id:'or-sal',name:'Salem/Marion, Polk Counties CoC',desc:'Covers Marion and Polk Counties.',cities:'Salem, Keizer, Dallas'},
+    {id:'or-eug',name:'Eugene, Springfield/Lane County CoC',desc:'Serves Lane County.',cities:'Eugene, Springfield'},
+    {id:'or-cen',name:'Central Oregon CoC',desc:'Covers Bend and Central Oregon.',cities:'Bend, Redmond, Prineville'},
+    {id:'or-bos',name:'Oregon Balance of State CoC',desc:'Covers rural Oregon outside the major metros.',cities:'Medford, Roseburg, Pendleton, Astoria'}
+  ],
+  PA:[
+    {id:'pa-phi',name:'Philadelphia CoC',desc:'Serves the City of Philadelphia.',cities:'Philadelphia'},
+    {id:'pa-pit',name:'Pittsburgh/Allegheny County CoC',desc:'Covers Allegheny County.',cities:'Pittsburgh, McKeesport, Bethel Park, Monroeville'},
+    {id:'pa-bos',name:'Pennsylvania Balance of State CoC',desc:'Covers Pennsylvania outside Philadelphia and Allegheny.',cities:'Allentown, Reading, Erie, Scranton, Lancaster, Harrisburg'}
+  ],
+  RI:[{id:'ri-stw',name:'Rhode Island Statewide CoC',desc:'Single statewide CoC for Rhode Island.',cities:'Providence, Cranston, Warwick, Pawtucket'}],
+  SC:[
+    {id:'sc-chs',name:'Charleston/Low Country CoC',desc:'Serves the Charleston region.',cities:'Charleston, North Charleston, Mount Pleasant, Summerville'},
+    {id:'sc-col',name:'Columbia/Midlands CoC',desc:'Covers the Columbia metro.',cities:'Columbia, Irmo, Forest Acres, Cayce'},
+    {id:'sc-gvl',name:'Upstate (Greenville) CoC',desc:'Serves Upstate South Carolina.',cities:'Greenville, Spartanburg, Anderson'}
+  ],
+  SD:[{id:'sd-stw',name:'South Dakota Statewide CoC',desc:'Single statewide CoC.',cities:'Sioux Falls, Rapid City, Aberdeen, Watertown'}],
+  TN:[
+    {id:'tn-mem',name:'Memphis/Shelby County CoC',desc:'Serves Shelby County.',cities:'Memphis, Bartlett, Germantown, Collierville'},
+    {id:'tn-nas',name:'Nashville-Davidson County CoC',desc:'Covers Davidson County.',cities:'Nashville, Antioch, Bellevue, Madison'},
+    {id:'tn-knx',name:'Knoxville/Knox County CoC',desc:'Serves Knox County.',cities:'Knoxville, Farragut, Powell'},
+    {id:'tn-cha',name:'Chattanooga/Southeast Tennessee CoC',desc:'Covers Hamilton County.',cities:'Chattanooga, East Ridge, Hixson'},
+    {id:'tn-bos',name:'Tennessee Balance of State CoC',desc:'Covers Tennessee outside the major metros.',cities:'Jackson, Clarksville, Murfreesboro, Kingsport, Johnson City'}
+  ],
+  TX:[
+    {id:'tx-hou',name:'Houston, Pasadena, Conroe/Harris, Ft. Bend, Montgomery, Waller Counties CoC',desc:'Covers Greater Houston.',cities:'Houston, Pasadena, The Woodlands, Sugar Land, Baytown'},
+    {id:'tx-dal',name:'Dallas City & County, Irving CoC',desc:'Serves Dallas County.',cities:'Dallas, Irving, Garland, Mesquite, Richardson'},
+    {id:'tx-fw', name:'Fort Worth/Arlington/Tarrant County CoC',desc:'Covers Tarrant County.',cities:'Fort Worth, Arlington, Grand Prairie, Mansfield'},
+    {id:'tx-aus',name:'Austin/Travis County CoC',desc:'Serves Travis County.',cities:'Austin, Round Rock, Cedar Park, Pflugerville'},
+    {id:'tx-sa', name:'San Antonio/Bexar County CoC',desc:'Covers Bexar County.',cities:'San Antonio, Converse, Universal City, Schertz'},
+    {id:'tx-ep', name:'El Paso City & County CoC',desc:'Serves El Paso County.',cities:'El Paso, Socorro, Horizon City'},
+    {id:'tx-bos',name:'Texas Balance of State CoC',desc:'Covers Texas outside the major metro CoCs.',cities:'Lubbock, Amarillo, Corpus Christi, Laredo, McAllen, Waco'}
+  ],
+  UT:[
+    {id:'ut-slc',name:'Salt Lake City & County CoC',desc:'Serves Salt Lake County.',cities:'Salt Lake City, West Valley City, Sandy, West Jordan'},
+    {id:'ut-bos',name:'Utah Balance of State CoC',desc:'Covers Utah outside Salt Lake County.',cities:'Provo, Ogden, St. George, Layton, Orem'}
+  ],
+  VT:[{id:'vt-stw',name:'Vermont Balance of State CoC',desc:'Single statewide CoC for Vermont.',cities:'Burlington, South Burlington, Rutland, Montpelier'}],
+  VA:[
+    {id:'va-ric',name:'Richmond/Henrico, Chesterfield, Hanover Counties CoC',desc:'Serves the Richmond metro.',cities:'Richmond, Henrico, Chesterfield, Midlothian'},
+    {id:'va-vb', name:'Virginia Beach CoC',desc:'Serves Virginia Beach.',cities:'Virginia Beach'},
+    {id:'va-hr', name:'Norfolk/Chesapeake/Suffolk/Hampton Roads CoC',desc:'Covers the Hampton Roads region.',cities:'Norfolk, Chesapeake, Suffolk, Portsmouth, Hampton, Newport News'},
+    {id:'va-arl',name:'Arlington County CoC',desc:'Serves Arlington County.',cities:'Arlington, Crystal City, Rosslyn'},
+    {id:'va-ffx',name:'Fairfax County CoC',desc:'Covers Fairfax County.',cities:'Fairfax, McLean, Reston, Herndon'},
+    {id:'va-bos',name:'Virginia Balance of State CoC',desc:'Covers Virginia outside the major metro CoCs.',cities:'Roanoke, Lynchburg, Charlottesville, Blacksburg, Harrisonburg'}
+  ],
+  WA:[
+    {id:'wa-sea',name:'Seattle/King County CoC',desc:'Covers King County including Seattle.',cities:'Seattle, Bellevue, Kent, Renton, Federal Way'},
+    {id:'wa-tac',name:'Tacoma, Lakewood/Pierce County CoC',desc:'Serves Pierce County.',cities:'Tacoma, Lakewood, Puyallup'},
+    {id:'wa-spo',name:'Spokane City & County CoC',desc:'Covers Spokane County.',cities:'Spokane, Spokane Valley, Cheney'},
+    {id:'wa-sno',name:'Snohomish County CoC',desc:'Serves Snohomish County.',cities:'Everett, Lynnwood, Edmonds, Marysville'},
+    {id:'wa-bos',name:'Washington Balance of State CoC',desc:'Covers Washington outside the major metros.',cities:'Vancouver, Bellingham, Yakima, Kennewick, Olympia'}
+  ],
+  WV:[{id:'wv-stw',name:'West Virginia Balance of State CoC',desc:'Statewide CoC for all of West Virginia.',cities:'Charleston, Huntington, Parkersburg, Morgantown, Wheeling'}],
+  WI:[
+    {id:'wi-mil',name:'Milwaukee City & County CoC',desc:'Serves Milwaukee County.',cities:'Milwaukee, Wauwatosa, West Allis, Greenfield'},
+    {id:'wi-mad',name:'Madison/Dane County CoC',desc:'Covers Dane County.',cities:'Madison, Fitchburg, Sun Prairie, Middleton'},
+    {id:'wi-bos',name:'Wisconsin Balance of State CoC',desc:'Covers Wisconsin outside Milwaukee and Dane Counties.',cities:'Green Bay, Racine, Kenosha, Appleton, Oshkosh, La Crosse'}
+  ],
+  WY:[{id:'wy-stw',name:'Wyoming Statewide CoC',desc:'Single statewide CoC for Wyoming.',cities:'Cheyenne, Casper, Laramie, Gillette, Rock Springs'}]
+};
+
+// ── Widget logic ─────────────────────────────────────────────────────
+
+function findByZip() {
+  const zip = document.getElementById('zipInput').value.trim();
+  const errEl = document.getElementById('zip-error');
+  const secEl = document.getElementById('zip-secondary');
+  errEl.style.display = 'none';
+  secEl.style.display = 'none';
+  document.getElementById('finder-result').style.display = 'none';
+
+  if (!/^\d{5}$/.test(zip)) {
+    errEl.textContent = 'Please enter a valid 5-digit zip code.';
+    errEl.style.display = 'block';
+    return;
+  }
+
+  const zNum = parseInt(zip, 10);
+  // Direct navigator checks — most specific first
+  if (MARICOPA_ZIPS.has(zNum)) { showResult('az-maricopa'); return; }
+  if (TUCSON_ZIPS.has(zNum))   { showResult('az-tuc');      return; }
+
+  const state = zipToState(zip);
+  if (!state || !COC[state]) {
+    errEl.textContent = "We couldn't match that zip to a CoC. Try browsing by state instead.";
+    errEl.style.display = 'block';
+    return;
+  }
+
+  const cocs = COC[state];
+  if (cocs.length === 1) {
+    showResult(cocs[0].id);
+  } else {
+    const sel = document.getElementById('zipCocSelect');
+    sel.innerHTML = '<option value="">Select your area...</option>' +
+      cocs.map(c => `<option value="${c.id}">${c.name}</option>`).join('');
+    secEl.style.display = 'block';
+  }
+}
+
+function loadStateCocs(state) {
+  const sel = document.getElementById('stateCocSelect');
+  document.getElementById('finder-result').style.display = 'none';
+  if (!state || !COC[state]) { sel.style.display = 'none'; return; }
+  const cocs = COC[state];
+  if (cocs.length === 1) {
+    sel.style.display = 'none';
+    showResult(cocs[0].id);
+  } else {
+    sel.innerHTML = '<option value="">Select your area...</option>' +
+      cocs.map(c => `<option value="${c.id}">${c.name}</option>`).join('');
+    sel.style.display = 'block';
+  }
+}
+
+function showResult(id) {
+  if (!id) return;
+  let coc = null;
+  for (const arr of Object.values(COC)) {
+    const f = arr.find(c => c.id === id);
+    if (f) { coc = f; break; }
+  }
+  if (!coc) return;
+
+  const el = document.getElementById('finder-result');
+  const shortName = coc.name.split('/')[0].split(',')[0].trim();
+
+  if (coc.navigator) {
+    el.innerHTML = `
+      <span class="finder-badge finder-badge--live">✓ Navigator available</span>
+      <h3>${coc.name}</h3>
+      <p>${coc.desc}<br><small style="color:rgba(255,255,255,.5)">Includes: ${coc.cities}</small></p>
+      <a href="${coc.navigator}" class="btn btn--primary">Open ${shortName} Navigator →</a>`;
+  } else {
+    el.innerHTML = `
+      <span class="finder-badge finder-badge--soon">Your CoC</span>
+      <h3>${coc.name}</h3>
+      <p>${coc.desc}<br><small style="color:rgba(255,255,255,.5)">Includes: ${coc.cities}</small></p>
+      <a href="https://www.hudexchange.info/programs/coc/coc-map/" target="_blank" rel="noopener" class="finder-hud">Find resources through HUD Exchange →</a>
+      <div class="finder-soon">
+        <p>A dedicated navigator for ${shortName} is on the way. Get notified when it launches:</p>
+        <div class="finder-notify">
+          <input type="email" id="notifyEmail" class="finder-notify-input" placeholder="Your email address">
+          <button class="btn btn--outline btn--sm" onclick="submitNotify()">Notify me</button>
+        </div>
+        <div id="notify-confirm" class="finder-confirm" style="display:none">✓ We'll let you know when the ${shortName} navigator is ready.</div>
+      </div>`;
+  }
+
+  el.style.display = 'block';
+  el.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+}
+
+function submitNotify() {
+  const em = document.getElementById('notifyEmail');
+  if (!em || !em.value.includes('@')) { em && em.focus(); return; }
+  document.getElementById('notify-confirm').style.display = 'block';
+  em.style.display = 'none';
+  em.nextElementSibling.style.display = 'none';
+}
+
+function switchFinderTab(tab) {
+  ['zip','state'].forEach(t => {
+    document.getElementById('finder-' + t).classList.toggle('active', t === tab);
+    document.getElementById('tab-' + t + '-btn').classList.toggle('active', t === tab);
+    document.getElementById('tab-' + t + '-btn').setAttribute('aria-selected', t === tab);
   });
+  document.getElementById('finder-result').style.display = 'none';
+  document.getElementById('zip-error').style.display = 'none';
+  document.getElementById('zip-secondary').style.display = 'none';
+}
+
+// Populate state dropdown
+(function(){
+  const STATES = {AL:'Alabama',AK:'Alaska',AZ:'Arizona',AR:'Arkansas',CA:'California',CO:'Colorado',CT:'Connecticut',DE:'Delaware',DC:'District of Columbia',FL:'Florida',GA:'Georgia',HI:'Hawaii',ID:'Idaho',IL:'Illinois',IN:'Indiana',IA:'Iowa',KS:'Kansas',KY:'Kentucky',LA:'Louisiana',ME:'Maine',MD:'Maryland',MA:'Massachusetts',MI:'Michigan',MN:'Minnesota',MS:'Mississippi',MO:'Missouri',MT:'Montana',NE:'Nebraska',NV:'Nevada',NH:'New Hampshire',NJ:'New Jersey',NM:'New Mexico',NY:'New York',NC:'North Carolina',ND:'North Dakota',OH:'Ohio',OK:'Oklahoma',OR:'Oregon',PA:'Pennsylvania',RI:'Rhode Island',SC:'South Carolina',SD:'South Dakota',TN:'Tennessee',TX:'Texas',UT:'Utah',VT:'Vermont',VA:'Virginia',WA:'Washington',WV:'West Virginia',WI:'Wisconsin',WY:'Wyoming'};
+  const sel = document.getElementById('stateSelect');
+  for (const [k,v] of Object.entries(STATES)) {
+    const o = document.createElement('option');
+    o.value = k; o.textContent = v; sel.appendChild(o);
+  }
+})();
 </script>
 
 </body>

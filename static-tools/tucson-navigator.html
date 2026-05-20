@@ -1,0 +1,832 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tucson / Pima County Homelessness Resource Navigator</title>
+<style>
+  /* ── Reset & Base ── */
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg:        #FAF7F2;
+    --primary:   #1A5276;
+    --accent:    #2E86AB;
+    --text:      #1C2B33;
+    --green:     #27AE60;
+    --green-dark:#1E8449;
+    --muted:     #6B7C85;
+    --border:    #D5D0C8;
+    --card-bg:   #FFFFFF;
+    --shadow:    0 2px 12px rgba(26,82,118,0.10);
+  }
+
+  html { font-size: 18px; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    line-height: 1.6;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  #app {
+    width: 100%;
+    max-width: 640px;
+    padding: 24px 20px 60px;
+    flex: 1;
+  }
+
+  /* ── Header badge ── */
+  .county-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: var(--primary);
+    color: #fff;
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    padding: 4px 10px;
+    border-radius: 100px;
+    margin-bottom: 28px;
+  }
+  .county-badge svg { flex-shrink: 0; }
+
+  /* ── Progress bar ── */
+  .progress-wrap { margin-bottom: 28px; }
+  .progress-label {
+    font-size: 0.78rem;
+    color: var(--muted);
+    margin-bottom: 6px;
+    font-weight: 500;
+  }
+  .progress-track {
+    background: var(--border);
+    border-radius: 100px;
+    height: 6px;
+    overflow: hidden;
+  }
+  .progress-fill {
+    background: var(--accent);
+    height: 100%;
+    border-radius: 100px;
+    transition: width 0.35s ease;
+  }
+
+  /* ── Cards ── */
+  .card {
+    background: var(--card-bg);
+    border-radius: 16px;
+    padding: 32px 28px;
+    box-shadow: var(--shadow);
+    margin-bottom: 20px;
+  }
+
+  /* ── Welcome screen ── */
+  .welcome-icon {
+    width: 56px; height: 56px;
+    background: #EBF5FB;
+    border-radius: 14px;
+    display: flex; align-items: center; justify-content: center;
+    margin-bottom: 20px;
+  }
+
+  h1 {
+    font-size: 1.55rem; font-weight: 700;
+    color: var(--primary); line-height: 1.25; margin-bottom: 14px;
+  }
+  h2 {
+    font-size: 1.25rem; font-weight: 700;
+    color: var(--primary); line-height: 1.3; margin-bottom: 12px;
+  }
+  p { margin-bottom: 14px; color: var(--text); }
+  p:last-child { margin-bottom: 0; }
+
+  .privacy-note {
+    display: flex; align-items: flex-start; gap: 8px;
+    font-size: 0.82rem; color: var(--muted);
+    background: #F0F4F7; border-radius: 8px;
+    padding: 10px 12px; margin-top: 20px;
+  }
+  .privacy-note svg { flex-shrink: 0; margin-top: 2px; }
+
+  /* ── Buttons ── */
+  .btn-primary {
+    display: block; width: 100%;
+    background: var(--green); color: #fff;
+    font-size: 1.05rem; font-weight: 700;
+    border: none; border-radius: 12px;
+    padding: 16px 20px; cursor: pointer;
+    text-align: center; min-height: 56px;
+    transition: background 0.18s, transform 0.1s;
+    margin-top: 24px;
+  }
+  .btn-primary:hover { background: var(--green-dark); }
+  .btn-primary:active { transform: scale(0.98); }
+  .btn-primary:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; }
+
+  .yn-group {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 12px; margin-top: 24px;
+  }
+  .btn-yes, .btn-no {
+    border: 2px solid transparent; border-radius: 12px;
+    font-size: 1.1rem; font-weight: 700;
+    padding: 18px 12px; min-height: 64px;
+    cursor: pointer;
+    transition: background 0.18s, transform 0.1s, border-color 0.18s;
+  }
+  .btn-yes:active, .btn-no:active { transform: scale(0.97); }
+  .btn-yes:focus-visible, .btn-no:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; }
+  .btn-yes { background: var(--green); color: #fff; }
+  .btn-yes:hover { background: var(--green-dark); }
+  .btn-no { background: #F0F4F7; color: var(--primary); border-color: var(--border); }
+  .btn-no:hover { background: #E2EBF0; border-color: var(--accent); }
+
+  .btn-restart {
+    background: none; border: 2px solid var(--border);
+    color: var(--muted); border-radius: 10px;
+    font-size: 0.9rem; font-weight: 600;
+    padding: 10px 20px; cursor: pointer;
+    transition: border-color 0.18s, color 0.18s;
+    display: flex; align-items: center; gap: 6px; margin: 0 auto;
+  }
+  .btn-restart:hover { border-color: var(--primary); color: var(--primary); }
+  .btn-restart:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; }
+
+  /* ── Question screens ── */
+  .question-text {
+    font-size: 1.3rem; font-weight: 700;
+    color: var(--text); line-height: 1.35; margin-bottom: 8px;
+  }
+  .question-sub { font-size: 0.88rem; color: var(--muted); margin-top: 4px; }
+
+  /* ── Results ── */
+  .pathway-badge {
+    display: inline-flex; align-items: center; gap: 7px;
+    font-size: 0.82rem; font-weight: 700;
+    letter-spacing: 0.04em; text-transform: uppercase;
+    padding: 5px 12px; border-radius: 100px; margin-bottom: 10px;
+  }
+  .badge-veterans  { background: #FEF9E7; color: #7D6608; border: 1.5px solid #F9E79F; }
+  .badge-youth     { background: #EBF5FB; color: #1A5276; border: 1.5px solid #AED6F1; }
+  .badge-families  { background: #EAFAF1; color: #1E8449; border: 1.5px solid #A9DFBF; }
+  .badge-chronic   { background: #F4ECF7; color: #6C3483; border: 1.5px solid #D2B4DE; }
+  .badge-adult     { background: #FEF5E7; color: #7E5109; border: 1.5px solid #FAD7A0; }
+
+  /* ── Confidence badge ── */
+  .confidence-row {
+    display: flex; align-items: center; flex-wrap: wrap;
+    gap: 8px; margin-bottom: 18px;
+  }
+  .confidence-badge {
+    display: inline-flex; align-items: center; gap: 5px;
+    font-size: 0.77rem; font-weight: 700;
+    padding: 4px 10px; border-radius: 100px;
+    cursor: pointer; border: 1.5px solid transparent;
+    background: none; position: relative;
+    user-select: none; line-height: 1.4;
+  }
+  .confidence-badge:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+  .conf-verified   { background: #EAFAF1; color: #1E8449; border-color: #A9DFBF; }
+  .conf-research   { background: #FEFCE8; color: #854D0E; border-color: #FDE68A; }
+  .conf-unverified { background: #FFF7ED; color: #9A3412; border-color: #FDBA74; }
+
+  .confidence-meta { font-size: 0.75rem; color: var(--muted); line-height: 1.4; }
+
+  .conf-tooltip {
+    position: absolute;
+    bottom: calc(100% + 10px); left: 50%; transform: translateX(-50%);
+    background: #1C2B33; color: #fff;
+    font-size: 0.74rem; font-weight: 400; line-height: 1.5;
+    padding: 9px 13px; border-radius: 8px; width: 230px;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.22);
+    pointer-events: none; opacity: 0;
+    transition: opacity 0.15s; z-index: 20;
+    text-align: left; white-space: normal;
+  }
+  .conf-tooltip::after {
+    content: ''; position: absolute; top: 100%; left: 50%;
+    transform: translateX(-50%);
+    border: 6px solid transparent; border-top-color: #1C2B33;
+  }
+  .confidence-badge:hover .conf-tooltip,
+  .confidence-badge.tooltip-open .conf-tooltip { opacity: 1; }
+
+  /* ── First-action block ── */
+  .first-action {
+    background: #EBF5FB; border-left: 4px solid var(--primary);
+    border-radius: 0 10px 10px 0; padding: 18px 20px; margin: 20px 0;
+  }
+  .first-action-label {
+    font-size: 0.75rem; font-weight: 700;
+    text-transform: uppercase; letter-spacing: 0.07em;
+    color: var(--primary); margin-bottom: 6px;
+  }
+  .first-action-text { font-size: 1.0rem; color: var(--text); line-height: 1.5; }
+
+  .call-link {
+    display: inline-flex; align-items: center; gap: 6px;
+    background: var(--green); color: #fff;
+    font-weight: 700; font-size: 1.05rem;
+    padding: 12px 20px; border-radius: 10px;
+    text-decoration: none; margin-top: 12px;
+    transition: background 0.18s;
+  }
+  .call-link:hover { background: var(--green-dark); }
+
+  .section-title {
+    font-size: 0.78rem; font-weight: 700;
+    text-transform: uppercase; letter-spacing: 0.07em;
+    color: var(--muted); margin: 24px 0 12px;
+  }
+
+  .resource-list { list-style: none; }
+  .resource-item {
+    border: 1.5px solid var(--border); border-radius: 10px;
+    padding: 14px 16px; margin-bottom: 10px; background: var(--card-bg);
+  }
+  .resource-name { font-weight: 700; color: var(--primary); font-size: 0.95rem; margin-bottom: 3px; }
+  .resource-phone { font-size: 0.92rem; color: var(--text); }
+  .resource-phone a { color: var(--accent); text-decoration: none; font-weight: 600; }
+  .resource-phone a:hover { text-decoration: underline; }
+  .resource-note { font-size: 0.82rem; color: var(--muted); margin-top: 4px; line-height: 1.4; }
+
+  .bring-section {
+    background: #FDFAF5; border: 1.5px solid var(--border);
+    border-radius: 10px; padding: 16px 18px; margin-top: 8px;
+  }
+  .bring-section .section-title { margin-top: 0; margin-bottom: 8px; }
+  .bring-list { list-style: none; padding: 0; }
+  .bring-list li {
+    padding: 4px 0 4px 20px; position: relative;
+    font-size: 0.92rem; color: var(--text);
+  }
+  .bring-list li::before { content: "✓"; position: absolute; left: 0; color: var(--green); font-weight: 700; }
+
+  .expect-section {
+    font-size: 0.92rem; color: var(--muted);
+    background: #F8F8F8; border-radius: 8px;
+    padding: 12px 14px; margin-top: 8px; line-height: 1.5;
+  }
+
+  .universal-211 {
+    border: 1.5px solid var(--accent); border-radius: 12px;
+    padding: 16px 18px; margin-top: 20px; background: #F0F8FD;
+  }
+  .universal-211 .resource-name { color: var(--accent); }
+
+  .update-note {
+    font-size: 0.78rem; color: var(--muted);
+    text-align: center; padding: 14px 0 2px;
+    border-top: 1px solid var(--border); margin-top: 22px; line-height: 1.6;
+  }
+  .update-note a { color: var(--accent); text-decoration: none; font-weight: 600; }
+  .update-note a:hover { text-decoration: underline; }
+
+  footer {
+    width: 100%; max-width: 640px;
+    padding: 16px 20px 32px; text-align: center;
+    font-size: 0.78rem; color: var(--muted); line-height: 1.7;
+  }
+  footer a { color: var(--muted); }
+  footer a:hover { color: var(--primary); }
+
+  @media print {
+    body { background: #fff; }
+    .card { box-shadow: none; border: 1px solid #ccc; }
+    .btn-restart, .progress-wrap { display: none; }
+    .call-link { background: #333 !important; }
+    a[href^="tel"]::after { content: " (" attr(href) ")"; font-size: 0.85em; }
+    .conf-tooltip { display: none; }
+  }
+
+  .screen { animation: fadeIn 0.22s ease; }
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(8px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  @media (max-width: 420px) {
+    html { font-size: 17px; }
+    .card { padding: 24px 18px; }
+    h1 { font-size: 1.35rem; }
+    .conf-tooltip { width: 200px; left: 0; transform: none; }
+    .conf-tooltip::after { left: 24px; transform: none; }
+  }
+</style>
+</head>
+<body>
+
+<div id="app"></div>
+
+<footer>
+  <span>📍 Pima County, AZ — AZ-500 &nbsp;|&nbsp; Bookmark or share this page to help someone else</span><br>
+  <a href="mailto:dvs.dnl@gmail.com?subject=Tucson%20Navigator%20update%20suggestion">Is this information out of date? Let us know.</a>
+</footer>
+
+<script>
+  /* ──────────────────────────────────────────
+     STATE
+  ────────────────────────────────────────── */
+  var state = { step: 'welcome', pathway: null };
+
+  var QUESTIONS = [
+    {
+      id: 'q1',
+      text: 'Are you a U.S. military veteran?',
+      sub: 'This includes any branch of the armed forces.',
+      next_yes: 'result_veterans',
+      next_no: 'q2'
+    },
+    {
+      id: 'q2',
+      text: 'Are you 24 years old or younger?',
+      sub: 'Youth-specific programs are available for people 24 and under.',
+      yes_label: 'Yes, 24 or younger',
+      no_label: 'No, 25 or older',
+      next_yes: 'result_youth',
+      next_no: 'q3'
+    },
+    {
+      id: 'q3',
+      text: 'Do you have children with you right now?',
+      sub: 'This includes any minors in your care.',
+      next_yes: 'result_families',
+      next_no: 'q4'
+    },
+    {
+      id: 'q4',
+      text: 'Have you been without stable housing for more than a year — or off and on for years — AND do you have a health condition that makes it harder to work or take care of yourself?',
+      sub: 'This includes physical conditions, mental health conditions, or substance use.',
+      next_yes: 'result_chronic',
+      next_no: 'result_adult'
+    }
+  ];
+
+  var Q_INDEX = { q1: 0, q2: 1, q3: 2, q4: 3 };
+
+  /* ──────────────────────────────────────────
+     CONFIDENCE TIERS
+  ────────────────────────────────────────── */
+  var CONFIDENCE_META = {
+    verified: {
+      icon: '✓', label: 'Verified', cssClass: 'conf-verified',
+      tooltip: 'Confirmed directly with the CoC or provider. Phone numbers and intake processes have been tested.'
+    },
+    research: {
+      icon: '◐', label: 'Research-based', cssClass: 'conf-research',
+      tooltip: 'Gathered from official agency websites and public records. Likely accurate but may have changed — call ahead to confirm availability and hours.'
+    },
+    unverified: {
+      icon: '?', label: 'Unverified', cssClass: 'conf-unverified',
+      tooltip: 'Based on general knowledge. Has not been checked against primary sources. Call ahead before relying on this.'
+    }
+  };
+
+  /* ──────────────────────────────────────────
+     PATHWAY DATA — TUCSON / PIMA COUNTY
+  ────────────────────────────────────────── */
+  var PATHWAYS = {
+
+    result_veterans: {
+      label: 'Veterans Pathway',
+      badgeClass: 'badge-veterans',
+      badgeIcon: '🎖',
+      headline: 'There\'s a dedicated system built for you.',
+      firstAction: 'Call the <strong>National Call Center for Homeless Veterans</strong> at <strong>1-877-4AID-VET (1-877-424-3838)</strong> — available 24/7. You do NOT need your DD-214 to call. They can start connecting you to local VA resources immediately.',
+      callNumber: 'tel:18774243838',
+      callLabel: 'Call 1-877-4AID-VET',
+      what_to_expect: 'Tucson has strong VA resources. You may qualify for HUD-VASH housing vouchers, VA-funded rapid rehousing through the SSVF program, or VA case management. The Southern Arizona VA has a dedicated Homeless Veterans team on site.',
+      bring: [
+        'DD-214 discharge papers (if you have them — not required to call)',
+        'Photo ID (if available)',
+        'Any VA card or documentation you have'
+      ],
+      resources: [
+        {
+          name: 'VA Southern Arizona Healthcare System',
+          phone: '(520) 792-1450',
+          tel: 'tel:5207921450',
+          note: '3601 S 6th Ave, Tucson. Ask for the Homeless Veterans Program when you call.'
+        },
+        {
+          name: 'Primavera Foundation — SSVF',
+          phone: '(520) 882-8333',
+          tel: 'tel:5208828333',
+          note: 'Supportive Services for Veteran Families — rapid rehousing and financial assistance.'
+        },
+        {
+          name: 'Catholic Community Services — Veterans Services',
+          phone: '(520) 623-0344',
+          tel: 'tel:5206230344',
+          note: 'Case management and housing assistance for veterans in Pima County.'
+        }
+      ],
+      confidence: {
+        level: 'research',
+        note: 'Sourced from VA Southern Arizona website and public agency directories. Last reviewed May 2026.',
+        lastChecked: 'May 2026'
+      }
+    },
+
+    result_youth: {
+      label: 'Youth Pathway',
+      badgeClass: 'badge-youth',
+      badgeIcon: '🌱',
+      headline: 'You have access to youth-specific services in Tucson.',
+      firstAction: 'Contact <strong>Youth on Their Own (YOTO)</strong> at <strong>(520) 293-1136</strong> — they serve youth ages 12–21 experiencing homelessness and are the primary youth provider in Pima County. They can help with immediate needs and connect you to shelter, school enrollment, and case management.',
+      callNumber: 'tel:5202931136',
+      callLabel: 'Call YOTO: (520) 293-1136',
+      what_to_expect: 'YOTO provides case management, help staying enrolled in school (your right under federal McKinney-Vento law), basic needs assistance, and connections to transitional housing. Their office is at 3334 E Fort Lowell Rd, Tucson. For emergency shelter, they can connect you to the right placement.',
+      bring: [
+        'Any ID you have (not always required — call ahead)',
+        'School enrollment paperwork if applicable',
+        'Nothing — walk-ins are welcome during business hours'
+      ],
+      resources: [
+        {
+          name: 'Casa de los Niños',
+          phone: '(520) 624-5600',
+          tel: 'tel:5206245600',
+          note: 'Crisis shelter and services for youth and young families.'
+        },
+        {
+          name: 'Child and Family Resources',
+          phone: '(520) 881-8940',
+          tel: 'tel:5208818940',
+          note: 'Support services and referrals for youth and families.'
+        },
+        {
+          name: '211 Arizona',
+          phone: 'Call or text 211',
+          tel: 'tel:211',
+          note: '24/7. Ask specifically about youth shelter availability tonight.'
+        }
+      ],
+      extra_note: '⚠️ Under 18? Arizona\'s Safe Harbor law means youth under 18 can access shelter without parental consent.',
+      confidence: {
+        level: 'research',
+        note: 'YOTO confirmed as primary youth provider via agency website and 211 Arizona directory. Last reviewed May 2026.',
+        lastChecked: 'May 2026'
+      }
+    },
+
+    result_families: {
+      label: 'Families Pathway',
+      badgeClass: 'badge-families',
+      badgeIcon: '🏠',
+      headline: 'Families with children are prioritized in Tucson\'s shelter system.',
+      firstAction: 'Call <strong>Primavera Foundation</strong> at <strong>(520) 882-8333</strong> — they operate family shelter and rapid rehousing programs and are a primary access point for families in Pima County\'s Coordinated Entry system.',
+      callNumber: 'tel:5208828333',
+      callLabel: 'Call Primavera: (520) 882-8333',
+      what_to_expect: 'Families with children receive priority in shelter placements. You can also get help enrolling children in school — federal McKinney-Vento law protects kids\' right to stay in their current school while experiencing homelessness. Rapid rehousing and case management are available.',
+      bring: [
+        'Birth certificates for children (helpful, often not strictly required)',
+        'Photo ID for adults',
+        'Documentation of any income or benefits',
+        'Social security cards if you have them'
+      ],
+      resources: [
+        {
+          name: 'Catholic Community Services',
+          phone: '(520) 623-0344',
+          tel: 'tel:5206230344',
+          note: 'Family shelter, rapid rehousing, and case management in Pima County.'
+        },
+        {
+          name: 'Interfaith Community Services (ICS)',
+          phone: '(520) 297-6049',
+          tel: 'tel:5202976049',
+          note: 'Emergency assistance including shelter referrals for families in northwest Tucson.'
+        },
+        {
+          name: 'Salvation Army Tucson',
+          phone: '(520) 622-5411',
+          tel: 'tel:5206225411',
+          note: '5 W. Salvation Army Place, Tucson. Emergency shelter and family services.'
+        },
+        {
+          name: '211 Arizona',
+          phone: 'Call or text 211',
+          tel: 'tel:211',
+          note: '24/7. Ask specifically about family shelter availability tonight.'
+        }
+      ],
+      confidence: {
+        level: 'research',
+        note: 'Sourced from agency websites and Pima County public records. Last reviewed May 2026.',
+        lastChecked: 'May 2026'
+      }
+    },
+
+    result_chronic: {
+      label: 'Chronic Homelessness Pathway',
+      badgeClass: 'badge-chronic',
+      badgeIcon: '🔑',
+      headline: 'Permanent supportive housing may be the right fit for you.',
+      firstAction: 'Call <strong>211</strong> and ask to be connected to the <strong>Pima County Coordinated Entry System</strong> for a VI-SPDAT assessment. This is the official process for accessing permanent supportive housing (PSH) in Tucson. You can also walk in to the <strong>Gospel Rescue Mission</strong> at 328 S Park Ave for an immediate needs assessment and referral.',
+      callNumber: 'tel:211',
+      callLabel: 'Call 211 — ask for Coordinated Entry',
+      what_to_expect: 'After your VI-SPDAT assessment you\'ll be placed on a prioritized list for Permanent Supportive Housing. Waitlists can take time — ask about bridge housing and interim support while you wait. CODAC Behavioral Health can provide integrated mental health and substance use services throughout the process.',
+      bring: [
+        'Photo ID (any form)',
+        'Documentation of health conditions if available — not required to start',
+        'Any records of prior housing or service history'
+      ],
+      resources: [
+        {
+          name: 'Gospel Rescue Mission',
+          phone: '(520) 792-1670',
+          tel: 'tel:5207921670',
+          note: '328 S Park Ave, Tucson. Emergency shelter for men; can connect to Coordinated Entry.'
+        },
+        {
+          name: 'CODAC Behavioral Health Services',
+          phone: '(520) 327-4505',
+          tel: 'tel:5203274505',
+          note: 'Integrated behavioral health, substance use treatment, and housing support.'
+        },
+        {
+          name: 'Primavera Foundation',
+          phone: '(520) 882-8333',
+          tel: 'tel:5208828333',
+          note: 'Permanent supportive housing, transitional housing, and rapid rehousing programs.'
+        },
+        {
+          name: '211 Arizona',
+          phone: 'Call or text 211',
+          tel: 'tel:211',
+          note: '24/7. Can also connect to behavioral health crisis services.'
+        }
+      ],
+      extra_note: '📋 Qualifying conditions include any physical, mental health, or substance use disorder that substantially affects daily functioning. You don\'t need a formal diagnosis to be assessed.',
+      confidence: {
+        level: 'research',
+        note: 'Sourced from agency websites and Tucson Planning Council for the Homeless (TPCH) public information. Last reviewed May 2026.',
+        lastChecked: 'May 2026'
+      }
+    },
+
+    result_adult: {
+      label: 'Single Adults Pathway',
+      badgeClass: 'badge-adult',
+      badgeIcon: '📞',
+      headline: 'Here\'s where to go for emergency shelter and housing help in Tucson.',
+      firstAction: 'Call <strong>211</strong> or go directly to the <strong>Gospel Rescue Mission</strong> at 328 S Park Ave (men\'s emergency shelter) or <strong>Primavera Foundation</strong> at <strong>(520) 882-8333</strong> (all genders, women\'s programs). Ask about same-day shelter availability and rapid rehousing.',
+      callNumber: 'tel:211',
+      callLabel: 'Call or text 211',
+      what_to_expect: 'Emergency shelter intake (ID is helpful but not always required), rapid rehousing assessment, and connection to employment, benefits, and recovery programs. Tucson has a well-connected service network — 211 can route you to the right door.',
+      bring: [
+        'Photo ID (helpful, not always required)',
+        'Social security card or number (if available)',
+        'Any documentation of income or benefits'
+      ],
+      resources: [
+        {
+          name: 'Gospel Rescue Mission',
+          phone: '(520) 792-1670',
+          tel: 'tel:5207921670',
+          note: '328 S Park Ave, Tucson. Men\'s emergency shelter — walk-in intake daily.'
+        },
+        {
+          name: 'Primavera Foundation',
+          phone: '(520) 882-8333',
+          tel: 'tel:5208828333',
+          note: 'Shelter and housing programs for women and all genders. Rapid rehousing available.'
+        },
+        {
+          name: 'Salvation Army Tucson',
+          phone: '(520) 622-5411',
+          tel: 'tel:5206225411',
+          note: '5 W. Salvation Army Place, Tucson. Emergency shelter, meals, and services.'
+        },
+        {
+          name: 'Catholic Community Services',
+          phone: '(520) 623-0344',
+          tel: 'tel:5206230344',
+          note: 'Case management, rapid rehousing, and shelter referrals across Pima County.'
+        }
+      ],
+      confidence: {
+        level: 'research',
+        note: 'Sourced from agency websites and 211 Arizona directory. Last reviewed May 2026.',
+        lastChecked: 'May 2026'
+      }
+    }
+
+  };
+
+  /* ──────────────────────────────────────────
+     RENDER ENGINE
+  ────────────────────────────────────────── */
+  function render() {
+    var app = document.getElementById('app');
+    var html = '';
+
+    html += '<div class="county-badge">';
+    html += '<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>';
+    html += 'Pima County, AZ &mdash; AZ-500</div>';
+
+    if (state.step === 'welcome') {
+      html += renderWelcome();
+    } else if (state.step.startsWith('q')) {
+      html += renderQuestion(state.step);
+    } else if (state.step.startsWith('result')) {
+      html += renderResult(state.step);
+    }
+
+    app.innerHTML = html;
+    app.className = 'screen';
+
+    var startBtn = document.getElementById('btn-start');
+    if (startBtn) startBtn.addEventListener('click', function() { goTo('q1'); });
+
+    var yesBtn = document.getElementById('btn-yes');
+    if (yesBtn) yesBtn.addEventListener('click', function() { answer(true); });
+
+    var noBtn = document.getElementById('btn-no');
+    if (noBtn) noBtn.addEventListener('click', function() { answer(false); });
+
+    document.querySelectorAll('.btn-restart').forEach(function(btn) {
+      btn.addEventListener('click', function() { goTo('welcome'); });
+    });
+
+    var confBadge = document.getElementById('conf-badge');
+    if (confBadge) {
+      confBadge.addEventListener('click', function(e) {
+        e.stopPropagation();
+        var isOpen = this.classList.contains('tooltip-open');
+        this.classList.toggle('tooltip-open', !isOpen);
+        this.setAttribute('aria-expanded', String(!isOpen));
+      });
+      document.addEventListener('click', function closeTooltip() {
+        if (confBadge) {
+          confBadge.classList.remove('tooltip-open');
+          confBadge.setAttribute('aria-expanded', 'false');
+        }
+        document.removeEventListener('click', closeTooltip);
+      });
+    }
+
+    if (state.step.startsWith('q')) {
+      document.onkeydown = function(e) {
+        if (e.key === 'y' || e.key === 'Y') answer(true);
+        if (e.key === 'n' || e.key === 'N') answer(false);
+      };
+    } else {
+      document.onkeydown = null;
+    }
+
+    var heading = app.querySelector('h1, h2, .question-text');
+    if (heading) { heading.setAttribute('tabindex', '-1'); heading.focus(); }
+  }
+
+  /* ──────────────────────────────────────────
+     SCREEN BUILDERS
+  ────────────────────────────────────────── */
+  function renderWelcome() {
+    return '<div class="card">'
+      + '<div class="welcome-icon" aria-hidden="true">'
+      + '<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#1A5276" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>'
+      + '</div>'
+      + '<h1>Find help in Tucson &amp; Pima County</h1>'
+      + '<p>Answer a few short questions and we\'ll show you the fastest way to connect with housing and shelter services in your area.</p>'
+      + '<p>Most people reach a clear answer in 1&ndash;2 questions.</p>'
+      + '<div class="privacy-note" role="note">'
+      + '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>'
+      + '<span>This tool does not collect or store any of your information.</span>'
+      + '</div>'
+      + '<button class="btn-primary" id="btn-start" aria-label="Get started — answer questions to find help">Get started &rarr;</button>'
+      + '</div>';
+  }
+
+  function renderQuestion(qid) {
+    var idx = Q_INDEX[qid];
+    var q = QUESTIONS[idx];
+    var total = QUESTIONS.length;
+    var pct = Math.round((idx / total) * 100);
+
+    return '<div class="progress-wrap" role="status" aria-label="Question ' + (idx+1) + ' of ' + total + '">'
+      + '<div class="progress-label">Question ' + (idx+1) + ' of ' + total + '</div>'
+      + '<div class="progress-track"><div class="progress-fill" style="width:' + pct + '%" aria-hidden="true"></div></div>'
+      + '</div>'
+      + '<div class="card">'
+      + '<div class="question-text">' + q.text + '</div>'
+      + (q.sub ? '<div class="question-sub">' + q.sub + '</div>' : '')
+      + '<div class="yn-group">'
+      + '<button class="btn-yes" id="btn-yes" aria-label="' + (q.yes_label || 'Yes') + '">' + (q.yes_label || 'Yes') + '</button>'
+      + '<button class="btn-no" id="btn-no" aria-label="' + (q.no_label || 'No') + '">' + (q.no_label || 'No') + '</button>'
+      + '</div>'
+      + '</div>'
+      + '<div style="text-align:center;margin-top:8px;">'
+      + '<button class="btn-restart" aria-label="Start over">'
+      + '<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 .49-4.5"/></svg>'
+      + 'Start over</button>'
+      + '</div>';
+  }
+
+  function renderConfidenceBadge(conf) {
+    var meta = CONFIDENCE_META[conf.level];
+    return '<div class="confidence-row">'
+      + '<button class="confidence-badge ' + meta.cssClass + '" id="conf-badge"'
+      + ' aria-label="Data confidence: ' + meta.label + '. Tap for details."'
+      + ' aria-expanded="false" title="' + meta.tooltip + '">'
+      + meta.icon + '&nbsp;' + meta.label
+      + '<span class="conf-tooltip" role="tooltip">' + meta.tooltip + '</span>'
+      + '</button>'
+      + '<span class="confidence-meta">Last reviewed ' + conf.lastChecked + ' &middot; Verify before relying</span>'
+      + '</div>';
+  }
+
+  function renderResult(rid) {
+    var p = PATHWAYS[rid];
+    if (!p) return '<div class="card"><p>Something went wrong. <button class="btn-restart">Start over</button></p></div>';
+
+    var html = '<div class="card">';
+
+    html += '<div class="pathway-badge ' + p.badgeClass + '" role="status">'
+      + p.badgeIcon + ' ' + p.label + '</div>';
+
+    html += renderConfidenceBadge(p.confidence);
+
+    html += '<h2>' + p.headline + '</h2>';
+
+    html += '<div class="first-action" role="region" aria-label="Your first step">'
+      + '<div class="first-action-label">Your first step</div>'
+      + '<div class="first-action-text">' + p.firstAction + '</div>'
+      + '<a class="call-link" href="' + p.callNumber + '" aria-label="' + p.callLabel + '">'
+      + '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.5 2 2 0 0 1 3.58 1.32h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 9a16 16 0 0 0 6.09 6.09l.91-.91a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 21.73 16.92z"/></svg>'
+      + p.callLabel + '</a>'
+      + '</div>';
+
+    if (p.extra_note) {
+      html += '<div class="expect-section" role="note">' + p.extra_note + '</div>';
+    }
+
+    html += '<div class="section-title">What to expect</div>'
+      + '<div class="expect-section">' + p.what_to_expect + '</div>';
+
+    html += '<div class="bring-section" role="region" aria-label="What to bring">'
+      + '<div class="section-title">Bring if possible</div>'
+      + '<ul class="bring-list">';
+    p.bring.forEach(function(item) { html += '<li>' + item + '</li>'; });
+    html += '</ul></div>';
+
+    html += '<div class="section-title">Additional resources</div>'
+      + '<ul class="resource-list" aria-label="Additional resources">';
+    p.resources.forEach(function(r) {
+      html += '<li class="resource-item">'
+        + '<div class="resource-name">' + r.name + '</div>'
+        + '<div class="resource-phone"><a href="' + r.tel + '">' + r.phone + '</a></div>'
+        + (r.note ? '<div class="resource-note">' + r.note + '</div>' : '')
+        + '</li>';
+    });
+    html += '</ul>';
+
+    html += '<div class="universal-211" role="complementary">'
+      + '<div class="resource-name">211 Arizona — Universal First Contact</div>'
+      + '<div class="resource-phone"><a href="tel:211">Call or text 211</a> &mdash; Available 24/7</div>'
+      + '<div class="resource-note">Connects to all local services: crisis shelter, food, utilities, and more. Works regardless of your situation. <a href="https://211arizona.org" target="_blank" rel="noopener">211arizona.org</a></div>'
+      + '</div>';
+
+    html += '<div class="update-note">'
+      + 'This navigator is updated regularly. If something is wrong, '
+      + '<a href="mailto:dvs.dnl@gmail.com?subject=Tucson%20Navigator%20update%20suggestion">flag it</a>.'
+      + '</div>';
+
+    html += '</div>';
+
+    html += '<div style="text-align:center;margin-top:20px;">'
+      + '<button class="btn-restart" aria-label="Start over">'
+      + '<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 .49-4.5"/></svg>'
+      + 'Start over</button>'
+      + '</div>';
+
+    return html;
+  }
+
+  /* ──────────────────────────────────────────
+     NAVIGATION
+  ────────────────────────────────────────── */
+  function goTo(step) {
+    state.step = step;
+    render();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  function answer(isYes) {
+    var q = QUESTIONS[Q_INDEX[state.step]];
+    goTo(isYes ? q.next_yes : q.next_no);
+  }
+
+  render();
+</script>
+</body>
+</html>
