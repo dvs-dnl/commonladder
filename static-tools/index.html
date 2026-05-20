@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lambs Not Lions — Free Tools to End Homelessness</title>
+<meta name="description" content="Free, practical tools to help communities find homelessness resources, connect with local systems, and take action. No signup required.">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --cream: #FAF7F2;
+    --warm-white: #FFFFFF;
+    --gold: #C8922A;
+    --gold-pale: #FDF3DC;
+    --brick: #8B3A2A;
+    --slate: #3D4B58;
+    --teal: #2E7D8A;
+    --teal-light: #E5F4F6;
+    --text: #2B2B2B;
+    --text-light: #5A5A5A;
+    --border: #DDD5C8;
+    --font-serif: 'Georgia', serif;
+    --font-body: 'Segoe UI', system-ui, sans-serif;
+    --radius: 12px;
+    --shadow: 0 2px 16px rgba(0,0,0,0.08);
+  }
+  body {
+    font-family: var(--font-body);
+    background: var(--cream);
+    color: var(--text);
+    line-height: 1.6;
+  }
+  a { color: var(--teal); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+
+  /* Header */
+  .site-header {
+    background: var(--warm-white);
+    border-bottom: 2px solid var(--gold);
+    padding: 20px;
+    text-align: center;
+  }
+  .brand { display: inline-flex; flex-direction: column; align-items: center; gap: 4px; }
+  .brand-name {
+    font-family: var(--font-serif);
+    font-size: 1.6rem;
+    color: var(--slate);
+    letter-spacing: 0.02em;
+  }
+  .brand-tagline {
+    font-size: 0.78rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--brick);
+    font-weight: 600;
+  }
+
+  /* Hero */
+  .hero {
+    max-width: 720px;
+    margin: 56px auto 0;
+    padding: 0 24px;
+    text-align: center;
+  }
+  .hero-eyebrow {
+    font-size: 0.78rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--brick);
+    font-weight: 600;
+    margin-bottom: 16px;
+  }
+  .hero h1 {
+    font-family: var(--font-serif);
+    font-size: clamp(1.8rem, 5vw, 2.8rem);
+    color: var(--slate);
+    line-height: 1.25;
+    margin-bottom: 20px;
+  }
+  .hero p {
+    font-size: 1.1rem;
+    color: var(--text-light);
+    max-width: 560px;
+    margin: 0 auto 40px;
+  }
+
+  /* Tools grid */
+  .tools-section {
+    max-width: 860px;
+    margin: 0 auto 72px;
+    padding: 0 24px;
+  }
+  .section-label {
+    font-size: 0.78rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--brick);
+    font-weight: 600;
+    margin-bottom: 24px;
+    text-align: center;
+  }
+  .tools-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 24px;
+  }
+  .tool-card {
+    background: var(--warm-white);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    padding: 32px;
+    border-top: 3px solid var(--gold);
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+  }
+  .tool-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 24px rgba(0,0,0,0.12);
+    text-decoration: none;
+  }
+  .tool-tag {
+    display: inline-block;
+    background: var(--teal-light);
+    color: var(--teal);
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 4px 10px;
+    border-radius: 20px;
+    width: fit-content;
+  }
+  .tool-card h2 {
+    font-family: var(--font-serif);
+    font-size: 1.25rem;
+    color: var(--slate);
+    line-height: 1.3;
+  }
+  .tool-card p {
+    font-size: 0.95rem;
+    color: var(--text-light);
+    flex: 1;
+  }
+  .tool-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--teal);
+    margin-top: 4px;
+  }
+  .tool-cta::after { content: '→'; }
+
+  /* Values strip */
+  .values {
+    background: var(--slate);
+    padding: 48px 24px;
+    text-align: center;
+    margin-bottom: 0;
+  }
+  .values-inner {
+    max-width: 720px;
+    margin: 0 auto;
+  }
+  .values h2 {
+    font-family: var(--font-serif);
+    color: #fff;
+    font-size: 1.5rem;
+    margin-bottom: 12px;
+  }
+  .values p {
+    color: #9aa8b5;
+    font-size: 1rem;
+    line-height: 1.7;
+  }
+
+  /* Footer */
+  .site-footer {
+    background: var(--slate);
+    border-top: 1px solid rgba(255,255,255,0.08);
+    padding: 24px;
+    text-align: center;
+  }
+  .site-footer p {
+    font-size: 0.82rem;
+    color: #6b7c88;
+  }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="brand">
+    <div class="brand-name">Lambs Not Lions</div>
+    <div class="brand-tagline">Free tools · No signup · Open to all</div>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="hero-eyebrow">Community Resource Tools</div>
+  <h1>Practical tools for people working to end homelessness.</h1>
+  <p>Free, plain-language guides and finders built for community members, case workers, and faith communities. No account required.</p>
+</section>
+
+<section class="tools-section">
+  <div class="section-label">Available now</div>
+  <div class="tools-grid">
+
+    <a class="tool-card" href="/coc-finder.html">
+      <span class="tool-tag">Nationwide</span>
+      <h2>Continuum of Care Finder</h2>
+      <p>Find the homelessness response system serving your zip code — who runs it, how to access services, and who to contact. Works for all 50 states.</p>
+      <span class="tool-cta">Find my CoC</span>
+    </a>
+
+    <a class="tool-card" href="/maricopa-navigator.html">
+      <span class="tool-tag">Maricopa County</span>
+      <h2>Maricopa County Resource Navigator</h2>
+      <p>Step-by-step guide to homelessness resources in the Phoenix metro area. Covers emergency shelter, coordinated entry, rapid rehousing, and more.</p>
+      <span class="tool-cta">Navigate resources</span>
+    </a>
+
+  </div>
+</section>
+
+<section class="values">
+  <div class="values-inner">
+    <h2>Built to serve, not to sell.</h2>
+    <p>These tools are free to use, free to share, and built without ads or data collection. If they help someone find shelter tonight or connect a community to better resources, that's enough.</p>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <p>© Lambs Not Lions, 2026 · Free to use and share · <a href="mailto:dvs.dnl@gmail.com" style="color:#6b7c88">Contact</a></p>
+</footer>
+
+</body>
+</html>
