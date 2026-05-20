@@ -22,7 +22,7 @@
 
 <nav class="nav" aria-label="Main navigation">
   <div class="nav__inner">
-    <a href="/" class="nav__logo">
+    <a href="/" class="nav__logo" aria-label="Common Ladder home">
       <svg width="28" height="28" viewBox="0 0 28 28" fill="none" aria-hidden="true">
         <rect x="4" y="2" width="3" height="24" rx="1.5" fill="white" opacity=".9"/>
         <rect x="21" y="2" width="3" height="24" rx="1.5" fill="white" opacity=".9"/>
@@ -36,7 +36,7 @@
       <span></span><span></span><span></span>
     </button>
     <ul class="nav__links">
-      <li><a href="/resources.html">Find Resources</a></li>
+      <li><a href="/resources.html" aria-current="page">Find Resources</a></li>
       <li><a href="/blog.html">Blog</a></li>
       <li><a href="/about.html">About</a></li>
       <li><a href="/resources.html" class="nav__cta">Find Help Now</a></li>
@@ -65,6 +65,12 @@
         <h3>Maricopa Navigator</h3>
         <p>Comprehensive directory of shelters, food programs, health care, mental health services, and housing programs across Maricopa County. Searchable and filterable.</p>
         <a href="/static-tools/maricopa-navigator.html" class="btn btn--primary btn--sm">Open navigator →</a>
+      </div>
+      <div class="card" style="border-top-color: var(--sage);">
+        <div class="card__icon">🗺️</div>
+        <h3>Tucson Navigator</h3>
+        <p>Directory of shelters, food programs, health care, and housing resources in Tucson and Pima County — searchable and filterable.</p>
+        <a href="/static-tools/tucson-navigator.html" class="btn btn--primary btn--sm">Open navigator →</a>
       </div>
       <div class="card">
         <div class="card__icon">📋</div>
@@ -128,6 +134,391 @@
   </div>
 </section>
 
+<!-- Resource Directory -->
+<section class="section section--alt" id="directory">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">Maricopa County</span>
+      <h2>Resource directory</h2>
+      <p>Verified listings for Phoenix and Maricopa County. Hours and availability change — always call ahead to confirm.</p>
+    </div>
+
+    <!-- Category quick-nav -->
+    <nav aria-label="Directory categories" style="display:flex; flex-wrap:wrap; gap:.5rem; justify-content:center; margin-bottom:3rem;">
+      <a href="#dir-shelter" class="resource-badge resource-badge--amber" style="text-decoration:none; font-size:.9rem; padding:.4rem .9rem;">Emergency Shelter</a>
+      <a href="#dir-food" class="resource-badge" style="text-decoration:none; font-size:.9rem; padding:.4rem .9rem;">Food Programs</a>
+      <a href="#dir-health" class="resource-badge" style="text-decoration:none; font-size:.9rem; padding:.4rem .9rem; background:var(--blue)">Health Care</a>
+      <a href="#dir-mental-health" class="resource-badge" style="text-decoration:none; font-size:.9rem; padding:.4rem .9rem; background:var(--sage)">Mental Health</a>
+      <a href="#dir-housing" class="resource-badge resource-badge--amber" style="text-decoration:none; font-size:.9rem; padding:.4rem .9rem;">Housing &amp; Case Mgmt</a>
+      <a href="#dir-veterans" class="resource-badge" style="text-decoration:none; font-size:.9rem; padding:.4rem .9rem;">Veterans</a>
+      <a href="#dir-youth" class="resource-badge" style="text-decoration:none; font-size:.9rem; padding:.4rem .9rem; background:var(--sage)">Youth (Under 25)</a>
+      <a href="#dir-legal" class="resource-badge" style="text-decoration:none; font-size:.9rem; padding:.4rem .9rem;">Legal Aid</a>
+    </nav>
+
+    <!-- Emergency Shelter -->
+    <div id="dir-shelter" style="margin-bottom:3rem; scroll-margin-top:4rem;">
+      <h3 style="font-size:1.4rem; color:var(--blue); border-bottom:3px solid var(--amber); padding-bottom:.5rem; margin-bottom:1.5rem;">Emergency Shelter</h3>
+      <div style="display:grid; gap:1rem;">
+
+        <div class="card" style="border-top-color:var(--amber);">
+          <div style="display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:.5rem;">
+            <h4 style="margin:0; color:var(--blue);">Human Services Campus (CASS)</h4>
+            <span class="resource-badge resource-badge--amber" style="font-size:.8rem;">Single Adults</span>
+          </div>
+          <p style="margin:.5rem 0; color:var(--gray); font-size:.95rem;">Arizona's largest emergency shelter campus. Walk-in intake. Coordinated Entry access on-site. Includes CASS, Lodestar Day Resource Center, Andre House, and 15+ partner organizations.</p>
+          <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap:.4rem; font-size:.9rem; color:var(--gray);">
+            <span>📍 1132 S. 12th Ave, Phoenix, AZ 85034</span>
+            <span>📞 <a href="tel:6022566945">(602) 256-6945</a></span>
+            <span>🕐 Walk-in; call for current hours</span>
+          </div>
+        </div>
+
+        <div class="card" style="border-top-color:var(--amber);">
+          <div style="display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:.5rem;">
+            <h4 style="margin:0; color:var(--blue);">UMOM New Day Centers</h4>
+            <span class="resource-badge resource-badge--amber" style="font-size:.8rem;">Families &amp; Women</span>
+          </div>
+          <p style="margin:.5rem 0; color:var(--gray); font-size:.95rem;">Arizona's largest family homeless shelter. Families with children, pregnant women, and women with children under 18. Transitional housing and wrap-around services available. Call ahead — intake is assessed individually.</p>
+          <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap:.4rem; font-size:.9rem; color:var(--gray);">
+            <span>📍 3333 E. Van Buren St, Phoenix, AZ 85008</span>
+            <span>📞 <a href="tel:6022250990">(602) 225-0990</a></span>
+            <span>🌐 <a href="https://www.umom.org" target="_blank" rel="noopener">umom.org</a></span>
+          </div>
+        </div>
+
+        <div class="card" style="border-top-color:var(--amber);">
+          <div style="display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:.5rem;">
+            <h4 style="margin:0; color:var(--blue);">Phoenix Rescue Mission</h4>
+            <span class="resource-badge resource-badge--amber" style="font-size:.8rem;">Men, Women, Families</span>
+          </div>
+          <p style="margin:.5rem 0; color:var(--gray); font-size:.95rem;">Emergency shelter, meals, case management, recovery programs, and long-term housing support. Multiple program tracks available.</p>
+          <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap:.4rem; font-size:.9rem; color:var(--gray);">
+            <span>📍 1801 S. 35th Ave, Phoenix, AZ 85009</span>
+            <span>📞 <a href="tel:6022674100">(602) 267-4100</a></span>
+            <span>🌐 <a href="https://www.phoenixrescuemission.org" target="_blank" rel="noopener">phoenixrescuemission.org</a></span>
+          </div>
+        </div>
+
+        <div class="card" style="border-top-color:var(--amber);">
+          <div style="display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:.5rem;">
+            <h4 style="margin:0; color:var(--blue);">Salvation Army — Phoenix</h4>
+            <span class="resource-badge resource-badge--amber" style="font-size:.8rem;">Men, Women, Families</span>
+          </div>
+          <p style="margin:.5rem 0; color:var(--gray); font-size:.95rem;">Emergency shelter and support services. Availability varies by program — call ahead to confirm bed availability and current intake hours.</p>
+          <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap:.4rem; font-size:.9rem; color:var(--gray);">
+            <span>📍 1625 S. 7th Ave, Phoenix, AZ 85007</span>
+            <span>📞 <a href="tel:6022674100">(602) 267-4100</a></span>
+          </div>
+        </div>
+
+        <div class="card" style="border-top-color:var(--amber);">
+          <div style="display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:.5rem;">
+            <h4 style="margin:0; color:var(--blue);">Paz de Cristo — Mesa</h4>
+            <span class="resource-badge resource-badge--amber" style="font-size:.8rem;">Adults — East Valley</span>
+          </div>
+          <p style="margin:.5rem 0; color:var(--gray); font-size:.95rem;">Daytime resource center and shelter connections for adults in the East Valley. Meals, hygiene services, and connection to overnight shelter options in the Mesa and East Valley area.</p>
+          <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap:.4rem; font-size:.9rem; color:var(--gray);">
+            <span>📍 868 W. Broadway Rd, Mesa, AZ 85210</span>
+            <span>📞 <a href="tel:4806555610">(480) 655-5610</a></span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Food Programs -->
+    <div id="dir-food" style="margin-bottom:3rem; scroll-margin-top:4rem;">
+      <h3 style="font-size:1.4rem; color:var(--blue); border-bottom:3px solid var(--sage); padding-bottom:.5rem; margin-bottom:1.5rem;">Food Programs</h3>
+      <div style="display:grid; gap:1rem;">
+
+        <div class="card">
+          <div style="display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:.5rem;">
+            <h4 style="margin:0; color:var(--blue);">Society of St. Vincent de Paul</h4>
+            <span class="resource-badge" style="font-size:.8rem; background:var(--sage);">Daily Meals</span>
+          </div>
+          <p style="margin:.5rem 0; color:var(--gray); font-size:.95rem;">Hot meals served three times daily in downtown Phoenix. No ID required. Walk-ins welcome every day of the week.</p>
+          <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap:.4rem; font-size:.9rem; color:var(--gray);">
+            <span>📍 420 W. Watkins St., Phoenix, AZ 85003</span>
+            <span>📞 <a href="tel:6022616886">(602) 261-6886</a></span>
+            <span>🕐 Breakfast 6–7:30 AM · Lunch 11:30 AM–1 PM · Dinner 4:30–6 PM</span>
+          </div>
+        </div>
+
+        <div class="card">
+          <div style="display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:.5rem;">
+            <h4 style="margin:0; color:var(--blue);">Andre House</h4>
+            <span class="resource-badge" style="font-size:.8rem; background:var(--sage);">Dinner Nightly</span>
+          </div>
+          <p style="margin:.5rem 0; color:var(--gray); font-size:.95rem;">Hot dinner every evening, no questions asked. Hygiene program also available. Can connect guests to other resources.</p>
+          <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap:.4rem; font-size:.9rem; color:var(--gray);">
+            <span>📍 1002 S. 7th Ave., Phoenix, AZ 85007</span>
+            <span>📞 <a href="tel:6022529901">(602) 252-9901</a></span>
+            <span>🕐 Dinner nightly 5:00–6:30 PM</span>
+            <span>🌐 <a href="https://www.andrehouse.org" target="_blank" rel="noopener">andrehouse.org</a></span>
+          </div>
+        </div>
+
+        <div class="card">
+          <div style="display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:.5rem;">
+            <h4 style="margin:0; color:var(--blue);">St. Mary's Food Bank</h4>
+            <span class="resource-badge" style="font-size:.8rem; background:var(--sage);">Food Bank</span>
+          </div>
+          <p style="margin:.5rem 0; color:var(--gray); font-size:.95rem;">Arizona's largest food bank. Grocery distribution at multiple Maricopa County sites. Bring a bag or box. No ID required.</p>
+          <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap:.4rem; font-size:.9rem; color:var(--gray);">
+            <span>📍 2831 N. 31st Ave., Phoenix, AZ 85009</span>
+            <span>📞 <a href="tel:6022423663">(602) 242-3663</a></span>
+            <span>🕐 Mon–Fri 9:00 AM–3:00 PM (hours vary by site)</span>
+            <span>🌐 <a href="https://www.stmarys.org" target="_blank" rel="noopener">stmarys.org</a></span>
+          </div>
+        </div>
+
+        <div class="card">
+          <div style="display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:.5rem;">
+            <h4 style="margin:0; color:var(--blue);">Lodestar Day Resource Center</h4>
+            <span class="resource-badge" style="font-size:.8rem; background:var(--sage);">Meals + Services</span>
+          </div>
+          <p style="margin:.5rem 0; color:var(--gray); font-size:.95rem;">Meals, showers, case management, and service connections for people experiencing homelessness in central Phoenix. Part of the Human Services Campus cluster.</p>
+          <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap:.4rem; font-size:.9rem; color:var(--gray);">
+            <span>📍 1125 W. Jackson St., Phoenix, AZ 85007</span>
+            <span>📞 <a href="tel:6022710311">(602) 271-0311</a></span>
+            <span>🕐 Weekdays, daytime — call ahead</span>
+          </div>
+        </div>
+
+      </div>
+      <p style="margin-top:1rem; font-size:.9rem; color:var(--gray);">For SNAP (food stamp) assistance: call <strong>(855) 432-7587</strong> or visit <a href="https://www.healthearizonaplus.gov" target="_blank" rel="noopener">healthearizonaplus.gov</a>.</p>
+    </div>
+
+    <!-- Health Care -->
+    <div id="dir-health" style="margin-bottom:3rem; scroll-margin-top:4rem;">
+      <h3 style="font-size:1.4rem; color:var(--blue); border-bottom:3px solid var(--blue); padding-bottom:.5rem; margin-bottom:1.5rem;">Health &amp; Medical Care</h3>
+      <div style="display:grid; gap:1rem;">
+
+        <div class="card" style="border-top-color:var(--blue);">
+          <div style="display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:.5rem;">
+            <h4 style="margin:0; color:var(--blue);">Circle the City</h4>
+            <span class="resource-badge" style="font-size:.8rem; background:var(--blue);">Free Primary Care</span>
+          </div>
+          <p style="margin:.5rem 0; color:var(--gray); font-size:.95rem;">The largest provider of healthcare for people experiencing homelessness in Arizona. Primary care, chronic disease management, wound care, and pharmacy — at no cost to unhoused patients. Walk-ins accepted, no insurance required. Medical respite program available for post-hospital recovery.</p>
+          <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap:.4rem; font-size:.9rem; color:var(--gray);">
+            <span>📍 1001 N. Central Ave., Phoenix, AZ 85004</span>
+            <span>📞 <a href="tel:6024415000">(602) 441-5000</a></span>
+            <span>🕐 Mon–Fri 8:00 AM–5:00 PM</span>
+            <span>🌐 <a href="https://www.circlethecity.org" target="_blank" rel="noopener">circlethecity.org</a></span>
+          </div>
+        </div>
+
+        <div class="card" style="border-top-color:var(--blue);">
+          <div style="display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:.5rem;">
+            <h4 style="margin:0; color:var(--blue);">Native Health</h4>
+            <span class="resource-badge" style="font-size:.8rem; background:var(--blue);">Medical + Dental + Behavioral</span>
+          </div>
+          <p style="margin:.5rem 0; color:var(--gray); font-size:.95rem;">Serves American Indian and Alaska Native people in Maricopa County, including those experiencing homelessness. Medical, dental, behavioral health, and substance use — sliding-fee scale, no cost for uninsured patients who qualify.</p>
+          <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap:.4rem; font-size:.9rem; color:var(--gray);">
+            <span>📍 4041 N. Central Ave., Phoenix, AZ 85012</span>
+            <span>📞 <a href="tel:6022795262">(602) 279-5262</a></span>
+            <span>🕐 Mon–Fri 7:30 AM–5:00 PM</span>
+          </div>
+        </div>
+
+        <div class="card" style="border-top-color:var(--blue);">
+          <div style="display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:.5rem;">
+            <h4 style="margin:0; color:var(--blue);">Adelante Healthcare</h4>
+            <span class="resource-badge" style="font-size:.8rem; background:var(--blue);">Community Health</span>
+          </div>
+          <p style="margin:.5rem 0; color:var(--gray); font-size:.95rem;">Federally qualified health center with multiple Phoenix-area locations. Medical, dental, and behavioral health on a sliding-fee scale. Ask about free dental clinic days and AHCCCS enrollment assistance.</p>
+          <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap:.4rem; font-size:.9rem; color:var(--gray);">
+            <span>📞 <a href="tel:4809640556">(480) 964-0556</a></span>
+            <span>🌐 <a href="https://www.adelantehealthcare.com" target="_blank" rel="noopener">adelantehealthcare.com</a></span>
+          </div>
+        </div>
+
+      </div>
+      <p style="margin-top:1rem; font-size:.9rem; color:var(--gray);">No health insurance? You may qualify for free AHCCCS coverage. Call <strong>(855) 432-7587</strong> or visit <a href="https://www.healthearizonaplus.gov" target="_blank" rel="noopener">healthearizonaplus.gov</a>.</p>
+    </div>
+
+    <!-- Mental Health -->
+    <div id="dir-mental-health" style="margin-bottom:3rem; scroll-margin-top:4rem;">
+      <h3 style="font-size:1.4rem; color:var(--blue); border-bottom:3px solid var(--sage); padding-bottom:.5rem; margin-bottom:1.5rem;">Mental Health &amp; Crisis Services</h3>
+      <div style="display:grid; gap:1rem;">
+
+        <div class="card" style="border-top-color:var(--sage);">
+          <div style="display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:.5rem;">
+            <h4 style="margin:0; color:var(--blue);">988 Suicide &amp; Crisis Lifeline</h4>
+            <span class="resource-badge" style="font-size:.8rem; background:var(--sage);">24/7 — Free</span>
+          </div>
+          <p style="margin:.5rem 0; color:var(--gray); font-size:.95rem;">Call or text <strong>988</strong> for trained crisis counselors, available 24/7. No insurance, address, or ID required. Available in English and Spanish.</p>
+          <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap:.4rem; font-size:.9rem; color:var(--gray);">
+            <span>📞 Call or text <a href="tel:988">988</a></span>
+          </div>
+        </div>
+
+        <div class="card" style="border-top-color:var(--sage);">
+          <div style="display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:.5rem;">
+            <h4 style="margin:0; color:var(--blue);">Maricopa County Crisis Services — Walk-In</h4>
+            <span class="resource-badge" style="font-size:.8rem; background:var(--sage);">24/7 Walk-In</span>
+          </div>
+          <p style="margin:.5rem 0; color:var(--gray); font-size:.95rem;">Walk-in crisis clinic open 24 hours, 7 days a week. No appointment, no insurance required. Crisis counselors can also dispatch a mobile crisis team to your location — this is not a police response.</p>
+          <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap:.4rem; font-size:.9rem; color:var(--gray);">
+            <span>📍 2601 E. Roosevelt St., Phoenix, AZ 85008</span>
+            <span>📞 <a href="tel:6022229444">(602) 222-9444</a></span>
+          </div>
+        </div>
+
+        <div class="card" style="border-top-color:var(--sage);">
+          <div style="display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:.5rem;">
+            <h4 style="margin:0; color:var(--blue);">Valle del Sol</h4>
+            <span class="resource-badge" style="font-size:.8rem; background:var(--sage);">Behavioral Health</span>
+          </div>
+          <p style="margin:.5rem 0; color:var(--gray); font-size:.95rem;">Behavioral health services across Maricopa County — therapy, psychiatric evaluation, and crisis intervention. Accepts AHCCCS and offers sliding-scale fees. Multiple locations.</p>
+          <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap:.4rem; font-size:.9rem; color:var(--gray);">
+            <span>📞 <a href="tel:6022586797">(602) 258-6797</a></span>
+            <span>🌐 <a href="https://www.valledelsol.com" target="_blank" rel="noopener">valledelsol.com</a></span>
+          </div>
+        </div>
+
+        <div class="card" style="border-top-color:var(--sage);">
+          <div style="display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:.5rem;">
+            <h4 style="margin:0; color:var(--blue);">TERROS Health</h4>
+            <span class="resource-badge" style="font-size:.8rem; background:var(--sage);">Substance Use</span>
+          </div>
+          <p style="margin:.5rem 0; color:var(--gray); font-size:.95rem;">Outpatient, residential, and detox services across Phoenix. Accepts AHCCCS. Serves adults and youth.</p>
+          <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap:.4rem; font-size:.9rem; color:var(--gray);">
+            <span>📞 <a href="tel:6026856000">(602) 685-6000</a></span>
+            <span>🌐 <a href="https://www.terros.org" target="_blank" rel="noopener">terros.org</a></span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Housing & Case Management -->
+    <div id="dir-housing" style="margin-bottom:3rem; scroll-margin-top:4rem;">
+      <h3 style="font-size:1.4rem; color:var(--blue); border-bottom:3px solid var(--amber); padding-bottom:.5rem; margin-bottom:1.5rem;">Housing Programs &amp; Case Management</h3>
+      <div style="display:grid; gap:1rem;">
+
+        <div class="card" style="border-top-color:var(--amber);">
+          <div style="display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:.5rem;">
+            <h4 style="margin:0; color:var(--blue);">Coordinated Entry System — Maricopa County</h4>
+            <span class="resource-badge resource-badge--amber" style="font-size:.8rem;">Housing Access</span>
+          </div>
+          <p style="margin:.5rem 0; color:var(--gray); font-size:.95rem;">The required pathway for accessing HUD-funded housing programs — Rapid Rehousing and Permanent Supportive Housing — in Maricopa County. Clients are assessed and matched based on need. Access through HSC, UMOM, and other designated sites. Ask a case manager or call 211 to get started.</p>
+          <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap:.4rem; font-size:.9rem; color:var(--gray);">
+            <span>📞 Start by calling <a href="tel:211">211</a></span>
+            <span>🌐 <a href="https://www.maricoparegionalcoc.org" target="_blank" rel="noopener">maricoparegionalcoc.org</a></span>
+          </div>
+        </div>
+
+        <div class="card" style="border-top-color:var(--amber);">
+          <div style="display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:.5rem;">
+            <h4 style="margin:0; color:var(--blue);">Rapid Rehousing (RRH)</h4>
+            <span class="resource-badge resource-badge--amber" style="font-size:.8rem;">Housing Assistance</span>
+          </div>
+          <p style="margin:.5rem 0; color:var(--gray); font-size:.95rem;">Short-term rental assistance and services to help people move quickly out of shelter into stable housing. Multiple providers in Maricopa County. Eligibility and availability vary. Access through Coordinated Entry.</p>
+          <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap:.4rem; font-size:.9rem; color:var(--gray);">
+            <span>📞 Access via Coordinated Entry — call <a href="tel:211">211</a></span>
+          </div>
+        </div>
+
+        <div class="card" style="border-top-color:var(--amber);">
+          <div style="display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:.5rem;">
+            <h4 style="margin:0; color:var(--blue);">Wildfire: Igniting Community Action</h4>
+            <span class="resource-badge resource-badge--amber" style="font-size:.8rem;">Prevention</span>
+          </div>
+          <p style="margin:.5rem 0; color:var(--gray); font-size:.95rem;">Emergency financial assistance and utility support for people at risk of losing housing. Homelessness prevention is more cost-effective than shelter — and often overlooked.</p>
+          <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap:.4rem; font-size:.9rem; color:var(--gray);">
+            <span>🌐 <a href="https://www.az-wildfire.org" target="_blank" rel="noopener">az-wildfire.org</a></span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Veterans -->
+    <div id="dir-veterans" style="margin-bottom:3rem; scroll-margin-top:4rem;">
+      <h3 style="font-size:1.4rem; color:var(--blue); border-bottom:3px solid var(--blue); padding-bottom:.5rem; margin-bottom:1.5rem;">Veterans Services</h3>
+      <div style="display:grid; gap:1rem;">
+
+        <div class="card" style="border-top-color:var(--blue);">
+          <div style="display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:.5rem;">
+            <h4 style="margin:0; color:var(--blue);">National Call Center for Homeless Veterans</h4>
+            <span class="resource-badge" style="font-size:.8rem; background:var(--blue);">24/7 Hotline</span>
+          </div>
+          <p style="margin:.5rem 0; color:var(--gray); font-size:.95rem;">Free, 24/7 hotline for veterans experiencing homelessness or at risk. Connects to HUD-VASH, GPD programs, and local VA resources in Phoenix.</p>
+          <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap:.4rem; font-size:.9rem; color:var(--gray);">
+            <span>📞 <a href="tel:18774243838">1-877-4AID-VET (1-877-424-3838)</a></span>
+            <span>🕐 Available 24/7</span>
+          </div>
+        </div>
+
+        <div class="card" style="border-top-color:var(--blue);">
+          <div style="display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:.5rem;">
+            <h4 style="margin:0; color:var(--blue);">Phoenix VA Healthcare System</h4>
+            <span class="resource-badge" style="font-size:.8rem; background:var(--blue);">VA Services</span>
+          </div>
+          <p style="margin:.5rem 0; color:var(--gray); font-size:.95rem;">HUD-VASH vouchers with case management, GPD transitional housing, and SSVF rapid rehousing and prevention for low-income veteran families. Contact the VA to be connected to the right program.</p>
+          <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap:.4rem; font-size:.9rem; color:var(--gray);">
+            <span>📞 <a href="tel:6022775551">(602) 277-5551</a></span>
+            <span>🌐 <a href="https://www.phoenix.va.gov" target="_blank" rel="noopener">phoenix.va.gov</a></span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Youth -->
+    <div id="dir-youth" style="margin-bottom:3rem; scroll-margin-top:4rem;">
+      <h3 style="font-size:1.4rem; color:var(--blue); border-bottom:3px solid var(--sage); padding-bottom:.5rem; margin-bottom:1.5rem;">Youth Services (Under 25)</h3>
+      <div style="display:grid; gap:1rem;">
+
+        <div class="card" style="border-top-color:var(--sage);">
+          <div style="display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:.5rem;">
+            <h4 style="margin:0; color:var(--blue);">Tumbleweed Center for Youth Development</h4>
+            <span class="resource-badge" style="font-size:.8rem; background:var(--sage);">Ages 18–24</span>
+          </div>
+          <p style="margin:.5rem 0; color:var(--gray); font-size:.95rem;">Primary provider for young adults experiencing homelessness in Phoenix. Shelter, housing programs, case management, and Youth Coordinated Entry. Standard CE processes are often inappropriate for youth — Tumbleweed operates the youth-specific pathway.</p>
+          <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap:.4rem; font-size:.9rem; color:var(--gray);">
+            <span>🌐 <a href="https://www.tumbleweed.org" target="_blank" rel="noopener">tumbleweed.org</a></span>
+          </div>
+        </div>
+
+        <div class="card" style="border-top-color:var(--sage);">
+          <div style="display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:.5rem;">
+            <h4 style="margin:0; color:var(--blue);">YOTO — Youth on Their Own</h4>
+            <span class="resource-badge" style="font-size:.8rem; background:var(--sage);">Under 24</span>
+          </div>
+          <p style="margin:.5rem 0; color:var(--gray); font-size:.95rem;">Supports unaccompanied youth and young adults experiencing homelessness. Housing placements, case management, and stabilization services not available through adult programs.</p>
+          <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap:.4rem; font-size:.9rem; color:var(--gray);">
+            <span>🌐 <a href="https://www.yoto.org" target="_blank" rel="noopener">yoto.org</a></span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Legal Aid -->
+    <div id="dir-legal" style="margin-bottom:2rem; scroll-margin-top:4rem;">
+      <h3 style="font-size:1.4rem; color:var(--blue); border-bottom:3px solid var(--blue); padding-bottom:.5rem; margin-bottom:1.5rem;">Legal Aid &amp; Benefits</h3>
+      <div style="display:grid; gap:1rem;">
+
+        <div class="card" style="border-top-color:var(--blue);">
+          <div style="display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:.5rem;">
+            <h4 style="margin:0; color:var(--blue);">Community Legal Services</h4>
+            <span class="resource-badge" style="font-size:.8rem; background:var(--blue);">Free Legal Help</span>
+          </div>
+          <p style="margin:.5rem 0; color:var(--gray); font-size:.95rem;">Free legal representation for low-income clients facing eviction, benefits denials, and other civil legal issues. Eviction defense is one of the most effective homelessness prevention tools available.</p>
+          <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap:.4rem; font-size:.9rem; color:var(--gray);">
+            <span>🌐 <a href="https://www.clsaz.org" target="_blank" rel="noopener">clsaz.org</a></span>
+          </div>
+        </div>
+
+      </div>
+      <p style="margin-top:1rem; font-size:.9rem; color:var(--gray);">Know a service that should be listed? <a href="/contact.html">Contact us</a> — listings are free and added within 48 hours.</p>
+    </div>
+
+  </div>
+</section>
+
 <!-- If you need help now callout -->
 <section class="section">
   <div class="container" style="max-width:700px">
@@ -151,20 +542,29 @@
         <ul>
           <li><a href="/resources.html">Find Resources</a></li>
           <li><a href="/static-tools/maricopa-navigator.html">Maricopa Navigator</a></li>
+          <li><a href="/static-tools/tucson-navigator.html">Tucson Navigator</a></li>
           <li><a href="/blog.html">Blog &amp; Guides</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Get Involved</h4>
+        <ul>
+          <li><a href="/nonprofits.html">For Nonprofits</a></li>
+          <li><a href="/donors.html">For Donors &amp; Volunteers</a></li>
+          <li><a href="/data-reports.html">Data &amp; Reports</a></li>
         </ul>
       </div>
       <div>
         <h4>About</h4>
         <ul>
           <li><a href="/about.html">Our Mission</a></li>
-          <li><a href="/about.html#partners">For Partners</a></li>
-          <li><a href="/about.html#contact">Contact</a></li>
+          <li><a href="/contact.html">Contact</a></li>
+          <li><a href="/privacy.html">Privacy Policy</a></li>
         </ul>
       </div>
     </div>
     <div class="footer__bottom">
-      <span>&copy; 2025 Common Ladder. Free to use, always.</span>
+      <span>&copy; 2026 Common Ladder. Free to use, always.</span>
       <span>Built in Phoenix, AZ</span>
     </div>
   </div>

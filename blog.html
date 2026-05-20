@@ -12,7 +12,7 @@
 
 <nav class="nav" aria-label="Main navigation">
   <div class="nav__inner">
-    <a href="/" class="nav__logo">
+    <a href="/" class="nav__logo" aria-label="Common Ladder home">
       <svg width="28" height="28" viewBox="0 0 28 28" fill="none" aria-hidden="true">
         <rect x="4" y="2" width="3" height="24" rx="1.5" fill="white" opacity=".9"/>
         <rect x="21" y="2" width="3" height="24" rx="1.5" fill="white" opacity=".9"/>
@@ -27,7 +27,7 @@
     </button>
     <ul class="nav__links">
       <li><a href="/resources.html">Find Resources</a></li>
-      <li><a href="/blog.html">Blog</a></li>
+      <li><a href="/blog.html" aria-current="page">Blog</a></li>
       <li><a href="/about.html">About</a></li>
       <li><a href="/resources.html" class="nav__cta">Find Help Now</a></li>
     </ul>
@@ -44,6 +44,42 @@
 <section class="section">
   <div class="container">
     <div class="blog-grid">
+
+      <article class="post-card">
+        <div class="post-card__body">
+          <span class="post-card__cat">Emergency Resources</span>
+          <h3><a href="/blog/emergency-shelter-phoenix-tonight.html">How to Find Emergency Shelter in Phoenix Tonight</a></h3>
+          <p>Real addresses, phone numbers, and step-by-step guidance for finding a shelter bed in Phoenix tonight — including options for families, veterans, and women.</p>
+        </div>
+        <div class="post-card__foot">
+          <span class="post-card__date">May 19, 2026</span>
+          <a href="/blog/emergency-shelter-phoenix-tonight.html" class="btn btn--blue btn--sm">Read guide →</a>
+        </div>
+      </article>
+
+      <article class="post-card">
+        <div class="post-card__body">
+          <span class="post-card__cat">Health Resources</span>
+          <h3><a href="/blog/free-health-clinics-phoenix.html">Free Health Clinics in Phoenix for People Experiencing Homelessness</a></h3>
+          <p>Free and low-cost medical care, mental health services, dental care, and substance use support in Phoenix — real locations, hours, and phone numbers.</p>
+        </div>
+        <div class="post-card__foot">
+          <span class="post-card__date">May 20, 2026</span>
+          <a href="/blog/free-health-clinics-phoenix.html" class="btn btn--blue btn--sm">Read guide →</a>
+        </div>
+      </article>
+
+      <article class="post-card">
+        <div class="post-card__body">
+          <span class="post-card__cat">Food Resources</span>
+          <h3><a href="/blog/free-meals-phoenix.html">Free Meals and Food Banks in Phoenix: Where to Eat Today</a></h3>
+          <p>Food banks, community meal programs, and SNAP assistance in Phoenix — organized by location and type so you can find what's open today.</p>
+        </div>
+        <div class="post-card__foot">
+          <span class="post-card__date">May 20, 2026</span>
+          <a href="/blog/free-meals-phoenix.html" class="btn btn--blue btn--sm">Read guide →</a>
+        </div>
+      </article>
 
       <article class="post-card">
         <div class="post-card__body">
@@ -81,8 +117,8 @@
     </div>
 
     <div style="text-align:center; margin-top:3rem; padding:2rem; background:var(--light); border-radius:8px;">
-      <h3 style="margin-bottom:.5rem">More guides coming soon</h3>
-      <p style="color:var(--gray)">We're publishing new guides regularly. Topics include housing rights, benefits navigation, veteran resources, and more.</p>
+      <h3 style="margin-bottom:.5rem">New guides published regularly</h3>
+      <p style="color:var(--gray)">We publish new guides on Phoenix-area resources, housing navigation, and community action. Check back often.</p>
     </div>
   </div>
 </section>
@@ -99,20 +135,29 @@
         <ul>
           <li><a href="/resources.html">Find Resources</a></li>
           <li><a href="/static-tools/maricopa-navigator.html">Maricopa Navigator</a></li>
+          <li><a href="/static-tools/tucson-navigator.html">Tucson Navigator</a></li>
           <li><a href="/blog.html">Blog &amp; Guides</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Get Involved</h4>
+        <ul>
+          <li><a href="/nonprofits.html">For Nonprofits</a></li>
+          <li><a href="/donors.html">For Donors &amp; Volunteers</a></li>
+          <li><a href="/data-reports.html">Data &amp; Reports</a></li>
         </ul>
       </div>
       <div>
         <h4>About</h4>
         <ul>
           <li><a href="/about.html">Our Mission</a></li>
-          <li><a href="/about.html#partners">For Partners</a></li>
-          <li><a href="/about.html#contact">Contact</a></li>
+          <li><a href="/contact.html">Contact</a></li>
+          <li><a href="/privacy.html">Privacy Policy</a></li>
         </ul>
       </div>
     </div>
     <div class="footer__bottom">
-      <span>&copy; 2025 Common Ladder. Free to use, always.</span>
+      <span>&copy; 2026 Common Ladder. Free to use, always.</span>
       <span>Built in Phoenix, AZ</span>
     </div>
   </div>
