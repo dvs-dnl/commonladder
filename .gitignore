@@ -1,4 +1,10 @@
+# Security
+.github-config.json
+*.env
+.env.*
+
+# macOS
 .DS_Store
-node_modules/
-*.log
-.env
+
+# Editor
+.vscode/

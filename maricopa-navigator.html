@@ -1,0 +1,1028 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Maricopa County Homelessness Resource Navigator</title>
+<style>
+  /* ── Reset & Base ── */
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg:        #FAF7F2;
+    --primary:   #1A5276;
+    --accent:    #2E86AB;
+    --text:      #1C2B33;
+    --green:     #27AE60;
+    --green-dark:#1E8449;
+    --muted:     #6B7C85;
+    --border:    #D5D0C8;
+    --card-bg:   #FFFFFF;
+    --shadow:    0 2px 12px rgba(26,82,118,0.10);
+  }
+
+  html { font-size: 18px; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    line-height: 1.6;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  /* ── Layout shell ── */
+  #app {
+    width: 100%;
+    max-width: 640px;
+    padding: 24px 20px 60px;
+    flex: 1;
+  }
+
+  /* ── Header badge ── */
+  .county-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: var(--primary);
+    color: #fff;
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    padding: 4px 10px;
+    border-radius: 100px;
+    margin-bottom: 28px;
+  }
+  .county-badge svg { flex-shrink: 0; }
+
+  /* ── Progress bar ── */
+  .progress-wrap {
+    margin-bottom: 28px;
+  }
+  .progress-label {
+    font-size: 0.78rem;
+    color: var(--muted);
+    margin-bottom: 6px;
+    font-weight: 500;
+  }
+  .progress-track {
+    background: var(--border);
+    border-radius: 100px;
+    height: 6px;
+    overflow: hidden;
+  }
+  .progress-fill {
+    background: var(--accent);
+    height: 100%;
+    border-radius: 100px;
+    transition: width 0.35s ease;
+  }
+
+  /* ── Cards ── */
+  .card {
+    background: var(--card-bg);
+    border-radius: 16px;
+    padding: 32px 28px;
+    box-shadow: var(--shadow);
+    margin-bottom: 20px;
+  }
+
+  /* ── Welcome screen ── */
+  .welcome-icon {
+    width: 56px;
+    height: 56px;
+    background: #EBF5FB;
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+  }
+  .welcome-icon svg { color: var(--primary); }
+
+  h1 {
+    font-size: 1.55rem;
+    font-weight: 700;
+    color: var(--primary);
+    line-height: 1.25;
+    margin-bottom: 14px;
+  }
+  h2 {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--primary);
+    line-height: 1.3;
+    margin-bottom: 12px;
+  }
+  p { margin-bottom: 14px; color: var(--text); }
+  p:last-child { margin-bottom: 0; }
+
+  .privacy-note {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    font-size: 0.82rem;
+    color: var(--muted);
+    background: #F0F4F7;
+    border-radius: 8px;
+    padding: 10px 12px;
+    margin-top: 20px;
+  }
+  .privacy-note svg { flex-shrink: 0; margin-top: 2px; }
+
+  /* ── Buttons ── */
+  .btn-primary {
+    display: block;
+    width: 100%;
+    background: var(--green);
+    color: #fff;
+    font-size: 1.05rem;
+    font-weight: 700;
+    border: none;
+    border-radius: 12px;
+    padding: 16px 20px;
+    cursor: pointer;
+    text-align: center;
+    min-height: 56px;
+    transition: background 0.18s, transform 0.1s;
+    margin-top: 24px;
+  }
+  .btn-primary:hover { background: var(--green-dark); }
+  .btn-primary:active { transform: scale(0.98); }
+  .btn-primary:focus-visible {
+    outline: 3px solid var(--accent);
+    outline-offset: 3px;
+  }
+
+  .yn-group {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-top: 24px;
+  }
+  .btn-yes, .btn-no {
+    border: 2px solid transparent;
+    border-radius: 12px;
+    font-size: 1.1rem;
+    font-weight: 700;
+    padding: 18px 12px;
+    min-height: 64px;
+    cursor: pointer;
+    transition: background 0.18s, transform 0.1s, border-color 0.18s;
+  }
+  .btn-yes:active, .btn-no:active { transform: scale(0.97); }
+  .btn-yes:focus-visible, .btn-no:focus-visible {
+    outline: 3px solid var(--accent);
+    outline-offset: 3px;
+  }
+  .btn-yes {
+    background: var(--green);
+    color: #fff;
+  }
+  .btn-yes:hover { background: var(--green-dark); }
+  .btn-no {
+    background: #F0F4F7;
+    color: var(--primary);
+    border-color: var(--border);
+  }
+  .btn-no:hover { background: #E2EBF0; border-color: var(--accent); }
+
+  .btn-restart {
+    background: none;
+    border: 2px solid var(--border);
+    color: var(--muted);
+    border-radius: 10px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: border-color 0.18s, color 0.18s;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin: 0 auto;
+  }
+  .btn-restart:hover { border-color: var(--primary); color: var(--primary); }
+  .btn-restart:focus-visible {
+    outline: 3px solid var(--accent);
+    outline-offset: 3px;
+  }
+
+  /* ── Question screens ── */
+  .question-text {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--text);
+    line-height: 1.35;
+    margin-bottom: 8px;
+  }
+  .question-sub {
+    font-size: 0.88rem;
+    color: var(--muted);
+    margin-top: 4px;
+  }
+
+  /* ── Results ── */
+  .pathway-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    font-size: 0.82rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    padding: 5px 12px;
+    border-radius: 100px;
+    margin-bottom: 10px;
+  }
+  .badge-veterans  { background: #FEF9E7; color: #7D6608; border: 1.5px solid #F9E79F; }
+  .badge-youth     { background: #EBF5FB; color: #1A5276; border: 1.5px solid #AED6F1; }
+  .badge-families  { background: #EAFAF1; color: #1E8449; border: 1.5px solid #A9DFBF; }
+  .badge-chronic   { background: #F4ECF7; color: #6C3483; border: 1.5px solid #D2B4DE; }
+  .badge-adult     { background: #FEF5E7; color: #7E5109; border: 1.5px solid #FAD7A0; }
+
+  /* ── Confidence badge ── */
+  .confidence-row {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 18px;
+  }
+  .confidence-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 0.77rem;
+    font-weight: 700;
+    padding: 4px 10px;
+    border-radius: 100px;
+    cursor: pointer;
+    border: 1.5px solid transparent;
+    background: none;
+    position: relative;
+    user-select: none;
+    line-height: 1.4;
+  }
+  .confidence-badge:focus-visible {
+    outline: 3px solid var(--accent);
+    outline-offset: 2px;
+  }
+  /* tier colors */
+  .conf-verified   { background: #EAFAF1; color: #1E8449; border-color: #A9DFBF; }
+  .conf-research   { background: #FEFCE8; color: #854D0E; border-color: #FDE68A; }
+  .conf-unverified { background: #FFF7ED; color: #9A3412; border-color: #FDBA74; }
+
+  .confidence-meta {
+    font-size: 0.75rem;
+    color: var(--muted);
+    line-height: 1.4;
+  }
+
+  /* Tooltip bubble */
+  .conf-tooltip {
+    position: absolute;
+    bottom: calc(100% + 10px);
+    left: 50%;
+    transform: translateX(-50%);
+    background: #1C2B33;
+    color: #fff;
+    font-size: 0.74rem;
+    font-weight: 400;
+    line-height: 1.5;
+    padding: 9px 13px;
+    border-radius: 8px;
+    width: 230px;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.22);
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.15s;
+    z-index: 20;
+    text-align: left;
+    white-space: normal;
+  }
+  .conf-tooltip::after {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    border: 6px solid transparent;
+    border-top-color: #1C2B33;
+  }
+  /* show on hover (desktop) or .open class (mobile toggle) */
+  .confidence-badge:hover .conf-tooltip,
+  .confidence-badge.tooltip-open .conf-tooltip {
+    opacity: 1;
+  }
+
+  /* ── First-action block ── */
+  .first-action {
+    background: #EBF5FB;
+    border-left: 4px solid var(--primary);
+    border-radius: 0 10px 10px 0;
+    padding: 18px 20px;
+    margin: 20px 0;
+  }
+  .first-action-label {
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+    color: var(--primary);
+    margin-bottom: 6px;
+  }
+  .first-action-text {
+    font-size: 1.0rem;
+    color: var(--text);
+    line-height: 1.5;
+  }
+
+  .call-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: var(--green);
+    color: #fff;
+    font-weight: 700;
+    font-size: 1.05rem;
+    padding: 12px 20px;
+    border-radius: 10px;
+    text-decoration: none;
+    margin-top: 12px;
+    transition: background 0.18s;
+  }
+  .call-link:hover { background: var(--green-dark); }
+
+  .section-title {
+    font-size: 0.78rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+    color: var(--muted);
+    margin: 24px 0 12px;
+  }
+
+  .resource-list { list-style: none; }
+  .resource-item {
+    border: 1.5px solid var(--border);
+    border-radius: 10px;
+    padding: 14px 16px;
+    margin-bottom: 10px;
+    background: var(--card-bg);
+  }
+  .resource-name {
+    font-weight: 700;
+    color: var(--primary);
+    font-size: 0.95rem;
+    margin-bottom: 3px;
+  }
+  .resource-phone {
+    font-size: 0.92rem;
+    color: var(--text);
+  }
+  .resource-phone a {
+    color: var(--accent);
+    text-decoration: none;
+    font-weight: 600;
+  }
+  .resource-phone a:hover { text-decoration: underline; }
+  .resource-note {
+    font-size: 0.82rem;
+    color: var(--muted);
+    margin-top: 4px;
+    line-height: 1.4;
+  }
+
+  .bring-section {
+    background: #FDFAF5;
+    border: 1.5px solid var(--border);
+    border-radius: 10px;
+    padding: 16px 18px;
+    margin-top: 8px;
+  }
+  .bring-section .section-title { margin-top: 0; margin-bottom: 8px; }
+  .bring-list {
+    list-style: none;
+    padding: 0;
+  }
+  .bring-list li {
+    padding: 4px 0 4px 20px;
+    position: relative;
+    font-size: 0.92rem;
+    color: var(--text);
+  }
+  .bring-list li::before {
+    content: "✓";
+    position: absolute;
+    left: 0;
+    color: var(--green);
+    font-weight: 700;
+  }
+
+  .expect-section {
+    font-size: 0.92rem;
+    color: var(--muted);
+    background: #F8F8F8;
+    border-radius: 8px;
+    padding: 12px 14px;
+    margin-top: 8px;
+    line-height: 1.5;
+  }
+
+  .universal-211 {
+    border: 1.5px solid var(--accent);
+    border-radius: 12px;
+    padding: 16px 18px;
+    margin-top: 20px;
+    background: #F0F8FD;
+  }
+  .universal-211 .resource-name { color: var(--accent); }
+
+  /* ── Update note (bottom of results card) ── */
+  .update-note {
+    font-size: 0.78rem;
+    color: var(--muted);
+    text-align: center;
+    padding: 14px 0 2px;
+    border-top: 1px solid var(--border);
+    margin-top: 22px;
+    line-height: 1.6;
+  }
+  .update-note a {
+    color: var(--accent);
+    text-decoration: none;
+    font-weight: 600;
+  }
+  .update-note a:hover { text-decoration: underline; }
+
+  /* ── Footer ── */
+  footer {
+    width: 100%;
+    max-width: 640px;
+    padding: 16px 20px 32px;
+    text-align: center;
+    font-size: 0.78rem;
+    color: var(--muted);
+    line-height: 1.7;
+  }
+  footer a { color: var(--muted); }
+  footer a:hover { color: var(--primary); }
+  .footer-divider { margin: 0 8px; opacity: 0.5; }
+
+  /* ── Print styles ── */
+  @media print {
+    body { background: #fff; }
+    .card { box-shadow: none; border: 1px solid #ccc; }
+    .btn-restart, .progress-wrap, footer .share-note { display: none; }
+    .call-link { background: #333 !important; }
+    a[href^="tel"]::after { content: " (" attr(href) ")"; font-size: 0.85em; }
+    .conf-tooltip { display: none; }
+    .confidence-badge { cursor: default; }
+  }
+
+  /* ── Transitions ── */
+  .screen { animation: fadeIn 0.22s ease; }
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(8px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ── Responsive tweaks ── */
+  @media (max-width: 420px) {
+    html { font-size: 17px; }
+    .card { padding: 24px 18px; }
+    h1 { font-size: 1.35rem; }
+    .conf-tooltip { width: 200px; left: 0; transform: none; }
+    .conf-tooltip::after { left: 24px; transform: none; }
+  }
+</style>
+</head>
+<body>
+
+<div id="app">
+  <!-- screens rendered by JS -->
+</div>
+
+<footer>
+  <span class="share-note">📍 Maricopa County, AZ — AZ-502 &nbsp;|&nbsp; Bookmark or share this page to help someone else</span><br>
+  <a href="mailto:dvs.dnl@gmail.com?subject=CoC%20Navigator%20update%20suggestion">Is this information out of date? Let us know.</a>
+</footer>
+
+<script>
+  /* ──────────────────────────────────────────
+     STATE
+  ────────────────────────────────────────── */
+  var state = {
+    step: 'welcome',   // welcome | q1 | q2 | q3 | q4 | result_*
+    pathway: null
+  };
+
+  var QUESTIONS = [
+    {
+      id: 'q1',
+      text: 'Are you a U.S. military veteran?',
+      sub: 'This includes any branch of the armed forces.',
+      next_yes: 'result_veterans',
+      next_no: 'q2'
+    },
+    {
+      id: 'q2',
+      text: 'Are you 24 years old or younger?',
+      sub: 'Youth-specific programs are available for people 24 and under.',
+      yes_label: 'Yes, 24 or younger',
+      no_label: 'No, 25 or older',
+      next_yes: 'result_youth',
+      next_no: 'q3'
+    },
+    {
+      id: 'q3',
+      text: 'Do you have children with you right now?',
+      sub: 'This includes any minors in your care.',
+      next_yes: 'result_families',
+      next_no: 'q4'
+    },
+    {
+      id: 'q4',
+      text: 'Have you been without stable housing for more than a year — or off and on for years — AND do you have a health condition that makes it harder to work or take care of yourself?',
+      sub: 'This includes physical conditions, mental health conditions, or substance use.',
+      next_yes: 'result_chronic',
+      next_no: 'result_adult'
+    }
+  ];
+
+  var Q_INDEX = { q1: 0, q2: 1, q3: 2, q4: 3 };
+
+  /* ──────────────────────────────────────────
+     CONFIDENCE TIERS
+     level: 'verified' | 'research' | 'unverified'
+  ────────────────────────────────────────── */
+  var CONFIDENCE_META = {
+    verified: {
+      icon: '✓',
+      label: 'Verified',
+      cssClass: 'conf-verified',
+      tooltip: 'Confirmed directly with the CoC or provider. Phone numbers and intake processes have been tested.'
+    },
+    research: {
+      icon: '◐',
+      label: 'Research-based',
+      cssClass: 'conf-research',
+      tooltip: 'This information was gathered from official agency websites and public records. It is likely accurate but may have changed — call ahead to confirm availability and hours.'
+    },
+    unverified: {
+      icon: '?',
+      label: 'Unverified',
+      cssClass: 'conf-unverified',
+      tooltip: 'Based on general knowledge. This has not been checked against primary sources. Call ahead to confirm before relying on this information.'
+    }
+  };
+
+  /* ──────────────────────────────────────────
+     PATHWAY DATA
+  ────────────────────────────────────────── */
+  var PATHWAYS = {
+
+    result_veterans: {
+      label: 'Veterans Pathway',
+      badgeClass: 'badge-veterans',
+      badgeIcon: '🎖',
+      headline: 'There\'s a dedicated system built for you.',
+      firstAction: 'Call the National Call Center for Homeless Veterans right now: <strong>1-877-4AID-VET (1-877-424-3838)</strong>. They\'re available 24 hours a day, 7 days a week. You do NOT need your DD-214 to call — they can start helping you without it.',
+      callNumber: 'tel:18774243838',
+      callLabel: 'Call 1-877-4AID-VET',
+      what_to_expect: 'You may qualify for rapid rehousing assistance, HUD-VASH housing vouchers, or dedicated Veterans case management. The VA system has strong local resources in the Phoenix metro area.',
+      bring: [
+        'DD-214 discharge papers (if you have them — not required to call)',
+        'Photo ID (if available)',
+        'Any VA documentation you have'
+      ],
+      resources: [
+        {
+          name: 'VA Phoenix Healthcare System',
+          phone: '(602) 277-5551',
+          tel: 'tel:6022775551',
+          note: 'Ask for the Homeless Veterans Program when you call.'
+        },
+        {
+          name: 'Community Bridges — SSVF',
+          phone: '(480) 969-4024',
+          tel: 'tel:4809694024',
+          note: 'Supportive Services for Veteran Families — rapid rehousing program.'
+        },
+        {
+          name: 'CASS (Central Arizona Shelter Services) — SSVF',
+          phone: '(602) 256-6945',
+          tel: 'tel:6022566945',
+          note: 'Veteran-specific rapid rehousing and shelter.'
+        }
+      ],
+      confidence: {
+        level: 'research',
+        note: 'Sourced from agency websites and public records. Last reviewed May 2026.',
+        lastChecked: 'May 2026'
+      }
+    },
+
+    result_youth: {
+      label: 'Youth Pathway',
+      badgeClass: 'badge-youth',
+      badgeIcon: '🌱',
+      headline: 'You have access to youth-specific services in Maricopa County.',
+      firstAction: 'Call <strong>HomeBase Youth Services (Native American Connections)</strong> at <strong>(602) 263-5531</strong> — they operate dorm-style emergency shelter and a drop-in center (M–F 7am–4pm) for youth 18–24. They are also a Coordinated Entry Access Point for youth. No fees; ID helpful but call to confirm requirements.',
+      callNumber: 'tel:6022635531',
+      callLabel: 'Call HomeBase Youth: (602) 263-5531',
+      what_to_expect: 'Expect emergency shelter options, transitional living programs, rapid rehousing, and job training support designed specifically for young people. Programs are non-judgmental. Drop-in center at 931 E Devonshire Ave, Phoenix offers meals, laundry, showers, and case management.',
+      bring: [
+        'Photo ID (helpful; call ahead to confirm what\'s required)',
+        'Any documentation of age if available',
+        'Nothing — drop-in center is walk-in accessible'
+      ],
+      resources: [
+        {
+          name: 'UMOM New Day Centers (Youth)',
+          phone: '(602) 249-7756',
+          tel: 'tel:6022497756',
+          note: 'Emergency shelter and services for youth and young adults.'
+        },
+        {
+          name: '211 Arizona',
+          phone: 'Call or text 211',
+          tel: 'tel:211',
+          note: '24/7 connection to all local services including crisis shelter.'
+        }
+      ],
+      extra_note: '⚠️ Under 18? Arizona\'s Safe Harbor law means youth under 18 can access shelter without parental consent. Note: Tumbleweed Center for Youth Development (formerly the primary youth provider) is no longer operating as of 2025.',
+      confidence: {
+        level: 'research',
+        note: 'HomeBase Youth Services (Native American Connections) confirmed as primary youth provider via 211 Arizona (last assured March 2026) and multiple agency directories. Tumbleweed Center for Youth Development defunct — removed May 2026. Verify hours and intake requirements before visiting.',
+        lastChecked: 'May 2026'
+      }
+    },
+
+    result_families: {
+      label: 'Families Pathway',
+      badgeClass: 'badge-families',
+      badgeIcon: '🏠',
+      headline: 'Families with children are prioritized in Maricopa\'s shelter system.',
+      firstAction: 'Call <strong>UMOM New Day Centers</strong> at <strong>(602) 249-7756</strong> — they are the largest family shelter in Arizona and can connect you to emergency shelter and rapid rehousing.',
+      callNumber: 'tel:6022497756',
+      callLabel: 'Call UMOM: (602) 249-7756',
+      what_to_expect: 'Families with children receive priority in the shelter system. You can also access case management, help enrolling kids in school (federal McKinney-Vento law protects children\'s right to stay in their current school), and rapid rehousing assistance.',
+      bring: [
+        'Birth certificates for children (helpful but not always required)',
+        'Photo ID for adults',
+        'Documentation of income or benefits (if available)',
+        'Social security cards (if you have them)'
+      ],
+      resources: [
+        {
+          name: 'Save the Family',
+          phone: '(480) 898-0228',
+          tel: 'tel:4808980228',
+          note: 'Rapid rehousing and transitional housing specifically for families.'
+        },
+        {
+          name: 'Human Services Campus',
+          phone: '(602) 256-6945',
+          tel: 'tel:6022566945',
+          note: '602 E. Adams St, Phoenix — hub connecting to multiple family providers.'
+        },
+        {
+          name: '211 Arizona',
+          phone: 'Call or text 211',
+          tel: 'tel:211',
+          note: '24/7. Ask specifically about family shelter availability.'
+        }
+      ],
+      confidence: {
+        level: 'research',
+        note: 'Sourced from agency websites and public records. Last reviewed May 2026.',
+        lastChecked: 'May 2026'
+      }
+    },
+
+    result_chronic: {
+      label: 'Chronic Homelessness Pathway',
+      badgeClass: 'badge-chronic',
+      badgeIcon: '🔑',
+      headline: 'Permanent supportive housing may be the right fit for you.',
+      firstAction: 'Go to the <strong>Human Services Campus</strong> at 602 E. Adams St, Phoenix, or call CASS at <strong>(602) 256-6945)</strong>. Ask specifically for a <strong>VI-SPDAT assessment</strong> — this is the official tool that determines your priority for Permanent Supportive Housing (PSH).',
+      callNumber: 'tel:6022566945',
+      callLabel: 'Call CASS: (602) 256-6945',
+      what_to_expect: 'After your VI-SPDAT assessment, you\'ll be placed on a prioritized list for Permanent Supportive Housing. PSH waitlists can take time — make sure to ask about bridge housing and interim support while you wait. Case management is available throughout.',
+      bring: [
+        'Photo ID (any form)',
+        'Documentation of health conditions (if available — not required to be assessed)',
+        'Any records of prior housing or service history'
+      ],
+      resources: [
+        {
+          name: 'Community Bridges',
+          phone: '(480) 969-4024',
+          tel: 'tel:4809694024',
+          note: 'Permanent supportive housing and integrated behavioral health services.'
+        },
+        {
+          name: 'Central Arizona Shelter Services (CASS)',
+          phone: '(602) 256-6945',
+          tel: 'tel:6022566945',
+          note: '230 S 12th Ave, Phoenix — largest adult shelter; entry point for PSH assessment.'
+        },
+        {
+          name: '211 Arizona',
+          phone: 'Call or text 211',
+          tel: 'tel:211',
+          note: '24/7. Can connect to behavioral health crisis services as well.'
+        }
+      ],
+      extra_note: '📋 Qualifying conditions include any physical, mental health, or substance use disorder that substantially affects daily functioning. You don\'t need a formal diagnosis to be assessed.',
+      confidence: {
+        level: 'research',
+        note: 'Sourced from agency websites and public records. Last reviewed May 2026.',
+        lastChecked: 'May 2026'
+      }
+    },
+
+    result_adult: {
+      label: 'Single Adults Pathway',
+      badgeClass: 'badge-adult',
+      badgeIcon: '📞',
+      headline: 'Here\'s where to go for emergency shelter and housing help.',
+      firstAction: 'Call <strong>211</strong> or go directly to the <strong>Human Services Campus</strong> at 602 E. Adams St, Phoenix (open daily). Ask about emergency shelter availability and rapid rehousing programs.',
+      callNumber: 'tel:211',
+      callLabel: 'Call or text 211',
+      what_to_expect: 'Emergency shelter intake (ID is helpful but not always required), rapid rehousing assessment, and connection to employment and benefits programs.',
+      bring: [
+        'Photo ID (helpful but not always required)',
+        'Social security card or number (if available)',
+        'Any documentation of income or benefits'
+      ],
+      resources: [
+        {
+          name: 'Central Arizona Shelter Services (CASS)',
+          phone: '(602) 256-6945',
+          tel: 'tel:6022566945',
+          note: '230 S 12th Ave, Phoenix — largest adult shelter in Maricopa County.'
+        },
+        {
+          name: 'St. Vincent de Paul',
+          phone: '(602) 261-6886',
+          tel: 'tel:6022616886',
+          note: 'Emergency shelter and meals.'
+        },
+        {
+          name: 'Human Services Campus',
+          phone: '(602) 256-6945',
+          tel: 'tel:6022566945',
+          note: '602 E. Adams St, Phoenix — hub connecting shelter, meals, and services.'
+        }
+      ],
+      confidence: {
+        level: 'research',
+        note: 'Sourced from agency websites and public records. Last reviewed May 2026.',
+        lastChecked: 'May 2026'
+      }
+    }
+
+  };
+
+  /* ──────────────────────────────────────────
+     RENDER ENGINE
+  ────────────────────────────────────────── */
+  function render() {
+    var app = document.getElementById('app');
+    var html = '';
+
+    // County badge always shown
+    html += '<div class="county-badge">';
+    html += '<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>';
+    html += 'Maricopa County, AZ &mdash; AZ-502</div>';
+
+    if (state.step === 'welcome') {
+      html += renderWelcome();
+    } else if (state.step.startsWith('q')) {
+      html += renderQuestion(state.step);
+    } else if (state.step.startsWith('result')) {
+      html += renderResult(state.step);
+    }
+
+    app.innerHTML = html;
+    app.className = 'screen';
+
+    // wire up events
+    var startBtn = document.getElementById('btn-start');
+    if (startBtn) startBtn.addEventListener('click', function() { goTo('q1'); });
+
+    var yesBtn = document.getElementById('btn-yes');
+    if (yesBtn) yesBtn.addEventListener('click', function() { answer(true); });
+
+    var noBtn = document.getElementById('btn-no');
+    if (noBtn) noBtn.addEventListener('click', function() { answer(false); });
+
+    var restartBtns = document.querySelectorAll('.btn-restart');
+    restartBtns.forEach(function(btn) {
+      btn.addEventListener('click', function() { goTo('welcome'); });
+    });
+
+    // Confidence badge: tap toggles tooltip on mobile; hover handles desktop
+    var confBadge = document.getElementById('conf-badge');
+    if (confBadge) {
+      confBadge.addEventListener('click', function(e) {
+        e.stopPropagation();
+        var isOpen = this.classList.contains('tooltip-open');
+        this.classList.toggle('tooltip-open', !isOpen);
+        this.setAttribute('aria-expanded', String(!isOpen));
+      });
+      // Close tooltip when tapping elsewhere
+      document.addEventListener('click', function closeTooltip() {
+        if (confBadge) {
+          confBadge.classList.remove('tooltip-open');
+          confBadge.setAttribute('aria-expanded', 'false');
+        }
+        document.removeEventListener('click', closeTooltip);
+      });
+    }
+
+    // keyboard: Y/N shortcuts on question screens
+    if (state.step.startsWith('q')) {
+      document.onkeydown = function(e) {
+        if (e.key === 'y' || e.key === 'Y') answer(true);
+        if (e.key === 'n' || e.key === 'N') answer(false);
+      };
+    } else {
+      document.onkeydown = null;
+    }
+
+    // focus management for accessibility
+    var heading = app.querySelector('h1, h2, .question-text');
+    if (heading) { heading.setAttribute('tabindex', '-1'); heading.focus(); }
+  }
+
+  /* ──────────────────────────────────────────
+     SCREEN BUILDERS
+  ────────────────────────────────────────── */
+  function renderWelcome() {
+    return '<div class="card">'
+      + '<div class="welcome-icon" aria-hidden="true">'
+      + '<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#1A5276" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>'
+      + '</div>'
+      + '<h1>Find help in Maricopa County</h1>'
+      + '<p>Answer a few short questions and we\'ll show you the fastest way to connect with housing and shelter services in your area.</p>'
+      + '<p>Most people reach a clear answer in 1&ndash;2 questions.</p>'
+      + '<div class="privacy-note" role="note">'
+      + '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>'
+      + '<span>This tool does not collect or store any of your information.</span>'
+      + '</div>'
+      + '<button class="btn-primary" id="btn-start" aria-label="Get started — answer questions to find help">Get started &rarr;</button>'
+      + '</div>';
+  }
+
+  function renderQuestion(qid) {
+    var idx = Q_INDEX[qid];
+    var q = QUESTIONS[idx];
+    var total = QUESTIONS.length;
+    var pct = Math.round((idx / total) * 100);
+
+    return '<div class="progress-wrap" role="status" aria-label="Question ' + (idx+1) + ' of ' + total + '">'
+      + '<div class="progress-label">Question ' + (idx+1) + ' of ' + total + '</div>'
+      + '<div class="progress-track"><div class="progress-fill" style="width:' + pct + '%" aria-hidden="true"></div></div>'
+      + '</div>'
+      + '<div class="card">'
+      + '<div class="question-text">' + q.text + '</div>'
+      + (q.sub ? '<div class="question-sub">' + q.sub + '</div>' : '')
+      + '<div class="yn-group">'
+      + '<button class="btn-yes" id="btn-yes" aria-label="' + (q.yes_label || 'Yes') + '">' + (q.yes_label || 'Yes') + '</button>'
+      + '<button class="btn-no" id="btn-no" aria-label="' + (q.no_label || 'No') + '">' + (q.no_label || 'No') + '</button>'
+      + '</div>'
+      + '</div>'
+      + '<div style="text-align:center;margin-top:8px;">'
+      + '<button class="btn-restart" aria-label="Start over from the beginning">'
+      + '<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 .49-4.5"/></svg>'
+      + 'Start over</button>'
+      + '</div>';
+  }
+
+  /* Renders the confidence badge row */
+  function renderConfidenceBadge(conf) {
+    var meta = CONFIDENCE_META[conf.level];
+    return '<div class="confidence-row">'
+      + '<button class="confidence-badge ' + meta.cssClass + '" id="conf-badge"'
+      + ' aria-label="Data confidence: ' + meta.label + '. Tap for details."'
+      + ' aria-expanded="false"'
+      + ' title="' + meta.tooltip + '">'
+      + meta.icon + '&nbsp;' + meta.label
+      + '<span class="conf-tooltip" role="tooltip">' + meta.tooltip + '</span>'
+      + '</button>'
+      + '<span class="confidence-meta">Last reviewed ' + conf.lastChecked + ' &middot; Verify before relying</span>'
+      + '</div>';
+  }
+
+  function renderResult(rid) {
+    var p = PATHWAYS[rid];
+    if (!p) return '<div class="card"><p>Something went wrong. <button class="btn-restart">Start over</button></p></div>';
+
+    var html = '<div class="card">';
+
+    // Pathway badge
+    html += '<div class="pathway-badge ' + p.badgeClass + '" role="status">'
+      + p.badgeIcon + ' ' + p.label
+      + '</div>';
+
+    // Confidence badge — sits between pathway badge and headline
+    html += renderConfidenceBadge(p.confidence);
+
+    html += '<h2>' + p.headline + '</h2>';
+
+    // First action box
+    html += '<div class="first-action" role="region" aria-label="Your first step">'
+      + '<div class="first-action-label">Your first step</div>'
+      + '<div class="first-action-text">' + p.firstAction + '</div>'
+      + '<a class="call-link" href="' + p.callNumber + '" aria-label="' + p.callLabel + '">'
+      + '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.5 2 2 0 0 1 3.58 1.32h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 9a16 16 0 0 0 6.09 6.09l.91-.91a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 21.73 16.92z"/></svg>'
+      + p.callLabel
+      + '</a>'
+      + '</div>';
+
+    // Extra note (youth, chronic)
+    if (p.extra_note) {
+      html += '<div class="expect-section" role="note">' + p.extra_note + '</div>';
+    }
+
+    // What to expect
+    html += '<div class="section-title">What to expect</div>'
+      + '<div class="expect-section">' + p.what_to_expect + '</div>';
+
+    // Bring / have ready
+    html += '<div class="bring-section" role="region" aria-label="What to bring or have ready">'
+      + '<div class="section-title">Bring if possible</div>'
+      + '<ul class="bring-list">';
+    p.bring.forEach(function(item) {
+      html += '<li>' + item + '</li>';
+    });
+    html += '</ul></div>';
+
+    // Additional resources
+    html += '<div class="section-title">Additional resources</div>'
+      + '<ul class="resource-list" aria-label="Additional resources">';
+    p.resources.forEach(function(r) {
+      html += '<li class="resource-item">'
+        + '<div class="resource-name">' + r.name + '</div>'
+        + '<div class="resource-phone"><a href="' + r.tel + '">' + r.phone + '</a></div>'
+        + (r.note ? '<div class="resource-note">' + r.note + '</div>' : '')
+        + '</li>';
+    });
+    html += '</ul>';
+
+    // Universal 211 block
+    html += '<div class="universal-211" role="complementary" aria-label="Universal resource">'
+      + '<div class="resource-name">211 Arizona — Universal First Contact</div>'
+      + '<div class="resource-phone"><a href="tel:211">Call or text 211</a> &mdash; Available 24/7</div>'
+      + '<div class="resource-note">Connects to all local services: crisis shelter, food, utilities, and more. Works regardless of your situation. <a href="https://211arizona.org" target="_blank" rel="noopener">211arizona.org</a></div>'
+      + '</div>';
+
+    // Update note
+    html += '<div class="update-note">'
+      + 'This navigator is updated weekly. If something is wrong, '
+      + '<a href="mailto:dvs.dnl@gmail.com?subject=CoC%20Navigator%20update%20suggestion">flag it</a>.'
+      + '</div>';
+
+    html += '</div>'; // end card
+
+    // Restart
+    html += '<div style="text-align:center;margin-top:20px;">'
+      + '<button class="btn-restart" aria-label="Start over from the beginning">'
+      + '<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 .49-4.5"/></svg>'
+      + 'Start over</button>'
+      + '</div>';
+
+    return html;
+  }
+
+  /* ──────────────────────────────────────────
+     NAVIGATION
+  ────────────────────────────────────────── */
+  function goTo(step) {
+    state.step = step;
+    render();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  function answer(isYes) {
+    var idx = Q_INDEX[state.step];
+    var q = QUESTIONS[idx];
+    var next = isYes ? q.next_yes : q.next_no;
+    goTo(next);
+  }
+
+  /* ──────────────────────────────────────────
+     INIT
+  ────────────────────────────────────────── */
+  render();
+</script>
+</body>
+</html>

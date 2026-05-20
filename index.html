@@ -1,0 +1,913 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Common Ladder — Find Help, Right Where You Are</title>
+<meta name="description" content="Common Ladder connects people to emergency shelter, food, health care, housing programs, legal aid, and crisis support. Free, no account required.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --color-primary: #1C3D6E;
+    --color-primary-dark: #142d52;
+    --color-primary-light: #2a5499;
+    --color-action: #E8911A;
+    --color-action-dark: #c97a10;
+    --color-action-light: #f0a535;
+    --color-accent: #4A9E82;
+    --color-accent-dark: #357a65;
+    --color-accent-light: #62b898;
+    --color-bg: #F8F7F4;
+    --color-text: #1A1A2E;
+    --color-white: #ffffff;
+    --color-gray-100: #f1f0ed;
+    --color-gray-200: #e2e1dd;
+    --color-gray-300: #c8c6c0;
+    --color-gray-400: #9e9b93;
+    --color-gray-500: #6b6863;
+    --color-gray-600: #4a4845;
+    --font-display: 'Manrope', system-ui, sans-serif;
+    --font-body: 'Inter', system-ui, sans-serif;
+    --radius-sm: 4px;
+    --radius-md: 8px;
+    --radius-lg: 12px;
+    --radius-xl: 20px;
+    --radius-full: 9999px;
+    --shadow-sm: 0 1px 3px rgba(0,0,0,0.08), 0 1px 2px rgba(0,0,0,0.05);
+    --shadow-md: 0 4px 6px rgba(0,0,0,0.07), 0 2px 4px rgba(0,0,0,0.06);
+    --shadow-lg: 0 10px 25px rgba(0,0,0,0.1), 0 4px 10px rgba(0,0,0,0.06);
+    --container-max: 1200px;
+    --transition-base: 250ms ease;
+  }
+
+  body {
+    font-family: var(--font-body);
+    background: var(--color-bg);
+    color: var(--color-text);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  a { color: var(--color-primary); text-decoration: none; }
+  a:hover { color: var(--color-primary-dark); }
+
+  .sr-only {
+    position: absolute; width: 1px; height: 1px;
+    padding: 0; margin: -1px; overflow: hidden;
+    clip: rect(0,0,0,0); white-space: nowrap; border: 0;
+  }
+
+  .container {
+    max-width: var(--container-max);
+    margin: 0 auto;
+    padding: 0 1.5rem;
+  }
+
+  /* ── HEADER ── */
+  .site-header {
+    background: var(--color-white);
+    border-bottom: 1px solid var(--color-gray-200);
+    position: sticky;
+    top: 0;
+    z-index: 200;
+    box-shadow: var(--shadow-sm);
+  }
+  .site-header__inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 64px;
+  }
+  .site-logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+  }
+  .site-logo__mark {
+    width: 36px;
+    height: 36px;
+  }
+  .site-logo__text {
+    font-family: var(--font-display);
+    font-size: 1.2rem;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+  }
+  .site-logo__text--common { color: var(--color-primary); }
+  .site-logo__text--ladder { color: var(--color-action); }
+
+  .primary-nav__list {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    list-style: none;
+  }
+  .primary-nav__link {
+    font-family: var(--font-body);
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--color-gray-600);
+    text-decoration: none;
+    transition: color var(--transition-base);
+  }
+  .primary-nav__link:hover { color: var(--color-primary); }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-family: var(--font-display);
+    font-weight: 600;
+    border-radius: var(--radius-md);
+    text-decoration: none;
+    transition: all var(--transition-base);
+    cursor: pointer;
+    border: none;
+  }
+  .btn--primary {
+    background: var(--color-action);
+    color: var(--color-white);
+    padding: 0.5rem 1.25rem;
+    font-size: 0.9rem;
+  }
+  .btn--primary:hover { background: var(--color-action-dark); color: var(--color-white); }
+  .btn--primary-lg {
+    background: var(--color-action);
+    color: var(--color-white);
+    padding: 0.875rem 2rem;
+    font-size: 1.05rem;
+  }
+  .btn--primary-lg:hover { background: var(--color-action-dark); color: var(--color-white); }
+  .btn--ghost {
+    background: transparent;
+    color: var(--color-white);
+    padding: 0.875rem 2rem;
+    font-size: 1.05rem;
+    border: 2px solid rgba(255,255,255,0.5);
+  }
+  .btn--ghost:hover { border-color: var(--color-white); color: var(--color-white); }
+  .btn--secondary {
+    background: var(--color-white);
+    color: var(--color-primary);
+    padding: 0.75rem 1.75rem;
+    font-size: 0.95rem;
+    border: 2px solid var(--color-gray-200);
+  }
+  .btn--secondary:hover { border-color: var(--color-primary); }
+
+  @media (max-width: 768px) {
+    .primary-nav { display: none; }
+  }
+
+  /* ── HERO ── */
+  .hero {
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-light) 100%);
+    padding: 80px 0 72px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -80px; right: -80px;
+    width: 400px; height: 400px;
+    background: radial-gradient(circle, rgba(232,145,26,0.15) 0%, transparent 70%);
+    border-radius: 50%;
+  }
+  .hero__inner {
+    max-width: 720px;
+    position: relative;
+    z-index: 1;
+  }
+  .hero__eyebrow {
+    display: inline-block;
+    font-family: var(--font-display);
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--color-action-light);
+    margin-bottom: 1rem;
+  }
+  .hero__title {
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 5vw, 3.25rem);
+    font-weight: 800;
+    line-height: 1.15;
+    color: var(--color-white);
+    margin-bottom: 1.25rem;
+    letter-spacing: -0.02em;
+  }
+  .hero__title em {
+    font-style: normal;
+    color: var(--color-action-light);
+  }
+  .hero__description {
+    font-size: 1.1rem;
+    color: rgba(255,255,255,0.82);
+    margin-bottom: 2.5rem;
+    max-width: 580px;
+    line-height: 1.7;
+  }
+
+  /* Zip search */
+  .hero__search {
+    display: flex;
+    gap: 0;
+    max-width: 480px;
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    box-shadow: var(--shadow-lg);
+    margin-bottom: 1.5rem;
+  }
+  .hero__search-input {
+    flex: 1;
+    padding: 1rem 1.25rem;
+    font-family: var(--font-body);
+    font-size: 1rem;
+    border: none;
+    background: var(--color-white);
+    color: var(--color-text);
+    outline: none;
+  }
+  .hero__search-input::placeholder { color: var(--color-gray-400); }
+  .hero__search-btn {
+    padding: 1rem 1.5rem;
+    background: var(--color-action);
+    color: var(--color-white);
+    font-family: var(--font-display);
+    font-size: 0.95rem;
+    font-weight: 700;
+    border: none;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: background var(--transition-base);
+  }
+  .hero__search-btn:hover { background: var(--color-action-dark); }
+
+  .hero__meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.25rem;
+  }
+  .hero__meta-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.88rem;
+    color: rgba(255,255,255,0.75);
+    font-weight: 500;
+  }
+  .hero__meta-item svg { color: var(--color-accent-light); flex-shrink: 0; }
+
+  /* ── SECTIONS ── */
+  .section { padding: 80px 0; }
+  .section--alt { background: var(--color-gray-100); }
+  .section--dark { background: var(--color-primary); }
+
+  .section-header {
+    text-align: center;
+    max-width: 640px;
+    margin: 0 auto 3rem;
+  }
+  .section-header__eyebrow {
+    display: block;
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--color-accent);
+    margin-bottom: 0.75rem;
+  }
+  .section-header__title {
+    font-family: var(--font-display);
+    font-size: clamp(1.6rem, 3vw, 2.25rem);
+    font-weight: 800;
+    color: var(--color-primary);
+    line-height: 1.2;
+    margin-bottom: 1rem;
+    letter-spacing: -0.01em;
+  }
+  .section-header__description {
+    font-size: 1rem;
+    color: var(--color-gray-500);
+    line-height: 1.7;
+  }
+
+  /* ── CATEGORY CARDS ── */
+  .card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.25rem;
+  }
+  @media (min-width: 1024px) {
+    .card-grid { grid-template-columns: repeat(3, 1fr); }
+  }
+
+  .category-card {
+    background: var(--color-white);
+    border-radius: var(--radius-lg);
+    padding: 1.75rem;
+    box-shadow: var(--shadow-sm);
+    border: 1px solid var(--color-gray-200);
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    text-decoration: none;
+    transition: transform var(--transition-base), box-shadow var(--transition-base), border-color var(--transition-base);
+    position: relative;
+    overflow: hidden;
+  }
+  .category-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: var(--color-action);
+    transform: scaleX(0);
+    transition: transform var(--transition-base);
+    transform-origin: left;
+  }
+  .category-card:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-lg);
+    border-color: var(--color-action-light);
+  }
+  .category-card:hover::before { transform: scaleX(1); }
+
+  .category-card__icon {
+    font-size: 2rem;
+    line-height: 1;
+  }
+  .category-card__title {
+    font-family: var(--font-display);
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--color-primary);
+  }
+  .category-card__description {
+    font-size: 0.9rem;
+    color: var(--color-gray-500);
+    line-height: 1.6;
+    flex: 1;
+  }
+  .category-card__arrow {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--color-action);
+    margin-top: 0.25rem;
+  }
+
+  /* ── HOW IT WORKS ── */
+  .steps-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 2rem;
+    position: relative;
+  }
+  @media (min-width: 768px) {
+    .steps-grid::before {
+      content: '';
+      position: absolute;
+      top: 2rem;
+      left: calc(33.33% - 1px);
+      right: calc(33.33% - 1px);
+      height: 2px;
+      background: var(--color-gray-200);
+      z-index: 0;
+    }
+  }
+
+  .step {
+    text-align: center;
+    padding: 0 1rem;
+    position: relative;
+    z-index: 1;
+  }
+  .step__number {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: var(--color-action);
+    color: var(--color-white);
+    font-family: var(--font-display);
+    font-size: 1.25rem;
+    font-weight: 800;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1.25rem;
+    box-shadow: 0 4px 12px rgba(232,145,26,0.35);
+  }
+  .step__title {
+    font-family: var(--font-display);
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--color-primary);
+    margin-bottom: 0.75rem;
+  }
+  .step__description {
+    font-size: 0.9rem;
+    color: var(--color-gray-500);
+    line-height: 1.65;
+  }
+
+  /* ── TOOLS SECTION ── */
+  .tools-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+    max-width: 760px;
+    margin: 0 auto;
+  }
+  .tool-card {
+    background: var(--color-white);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-md);
+    padding: 2rem;
+    border-top: 3px solid var(--color-accent);
+    display: flex;
+    flex-direction: column;
+    gap: 0.875rem;
+    text-decoration: none;
+    transition: transform var(--transition-base), box-shadow var(--transition-base);
+  }
+  .tool-card:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg);
+  }
+  .tool-tag {
+    display: inline-block;
+    background: rgba(74,158,130,0.12);
+    color: var(--color-accent-dark);
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 4px 10px;
+    border-radius: var(--radius-full);
+    width: fit-content;
+  }
+  .tool-card__title {
+    font-family: var(--font-display);
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--color-primary);
+    line-height: 1.3;
+  }
+  .tool-card__description {
+    font-size: 0.9rem;
+    color: var(--color-gray-500);
+    line-height: 1.6;
+    flex: 1;
+  }
+  .tool-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--color-accent);
+    margin-top: 0.25rem;
+  }
+  .tool-cta::after { content: '→'; }
+
+  /* ── CTA BAND ── */
+  .cta-band {
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-light) 100%);
+    padding: 72px 0;
+  }
+  .cta-band__inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2.5rem;
+    flex-wrap: wrap;
+  }
+  .cta-band__content { flex: 1; min-width: 280px; }
+  .cta-band__title {
+    font-family: var(--font-display);
+    font-size: clamp(1.4rem, 3vw, 2rem);
+    font-weight: 800;
+    color: var(--color-white);
+    margin-bottom: 0.75rem;
+    letter-spacing: -0.01em;
+  }
+  .cta-band__description {
+    font-size: 1rem;
+    color: rgba(255,255,255,0.75);
+    line-height: 1.7;
+    max-width: 520px;
+  }
+  .cta-band__actions {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    flex-shrink: 0;
+  }
+
+  /* ── FOOTER ── */
+  .site-footer {
+    background: var(--color-primary-dark);
+    padding: 56px 0 32px;
+  }
+  .site-footer__top {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: 3rem;
+    margin-bottom: 3rem;
+    padding-bottom: 3rem;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+  }
+  @media (max-width: 768px) {
+    .site-footer__top { grid-template-columns: 1fr; gap: 2rem; }
+  }
+
+  .footer-brand__logo {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    margin-bottom: 1rem;
+  }
+  .footer-brand__name {
+    font-family: var(--font-display);
+    font-size: 1.15rem;
+    font-weight: 700;
+  }
+  .footer-brand__tagline {
+    font-family: var(--font-display);
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--color-action-light);
+    margin-bottom: 0.75rem;
+    letter-spacing: 0.02em;
+  }
+  .footer-brand__description {
+    font-size: 0.875rem;
+    color: rgba(255,255,255,0.55);
+    line-height: 1.7;
+    max-width: 320px;
+  }
+
+  .footer-nav__title {
+    font-family: var(--font-display);
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.45);
+    margin-bottom: 1rem;
+  }
+  .footer-nav__list { list-style: none; display: flex; flex-direction: column; gap: 0.625rem; }
+  .footer-nav__link {
+    font-size: 0.875rem;
+    color: rgba(255,255,255,0.65);
+    text-decoration: none;
+    transition: color var(--transition-base);
+  }
+  .footer-nav__link:hover { color: var(--color-white); }
+
+  .site-footer__bottom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+  .site-footer__copyright {
+    font-size: 0.82rem;
+    color: rgba(255,255,255,0.35);
+  }
+  .site-footer__legal {
+    display: flex;
+    gap: 1.5rem;
+  }
+  .site-footer__legal-link {
+    font-size: 0.82rem;
+    color: rgba(255,255,255,0.35);
+    text-decoration: none;
+    transition: color var(--transition-base);
+  }
+  .site-footer__legal-link:hover { color: rgba(255,255,255,0.7); }
+
+  .section-footer {
+    text-align: center;
+    margin-top: 3rem;
+  }
+</style>
+</head>
+<body>
+
+<!-- Skip link -->
+<a class="sr-only" href="#main-content">Skip to main content</a>
+
+<!-- ── HEADER ── -->
+<header class="site-header" role="banner">
+  <div class="container">
+    <div class="site-header__inner">
+
+      <a class="site-logo" href="/" rel="home" aria-label="Common Ladder — Go to homepage">
+        <svg class="site-logo__mark" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <rect width="36" height="36" rx="8" fill="#1C3D6E"/>
+          <rect x="10" y="8" width="4" height="20" rx="2" fill="white" opacity="0.9"/>
+          <rect x="22" y="8" width="4" height="20" rx="2" fill="white" opacity="0.9"/>
+          <rect x="10" y="12" width="16" height="3" rx="1.5" fill="#E8911A"/>
+          <rect x="10" y="19" width="16" height="3" rx="1.5" fill="#E8911A"/>
+        </svg>
+        <span class="site-logo__text">
+          <span class="site-logo__text--common">common</span><span class="site-logo__text--ladder">ladder</span>
+        </span>
+      </a>
+
+      <nav class="primary-nav" id="primary-navigation" aria-label="Primary navigation">
+        <ul class="primary-nav__list">
+          <li><a class="primary-nav__link" href="/coc-finder.html">Find Resources</a></li>
+          <li><a class="primary-nav__link" href="/maricopa-navigator.html">Maricopa County</a></li>
+          <li><a class="primary-nav__link" href="#for-nonprofits">For Nonprofits</a></li>
+          <li><a class="primary-nav__link" href="#about">About</a></li>
+        </ul>
+      </nav>
+
+      <a class="btn btn--primary" href="/coc-finder.html">Find Help Now</a>
+
+    </div>
+  </div>
+</header>
+
+<!-- ── MAIN ── -->
+<main id="main-content" role="main">
+
+  <!-- HERO -->
+  <section class="hero" aria-labelledby="hero-title">
+    <div class="container">
+      <div class="hero__inner">
+
+        <span class="hero__eyebrow">Free · Trusted · Always here</span>
+
+        <h1 class="hero__title" id="hero-title">
+          Find help, <em>right where you are.</em>
+        </h1>
+
+        <p class="hero__description">
+          Common Ladder connects you to emergency shelter, food, health care, housing programs, legal aid, and crisis support — no matter where you are in your journey.
+        </p>
+
+        <form class="hero__search" id="zip-form" role="search" aria-label="Find local resources">
+          <label for="resource-zip" class="sr-only">Enter your ZIP code to find local resources</label>
+          <input
+            class="hero__search-input"
+            id="resource-zip"
+            type="text"
+            inputmode="numeric"
+            pattern="[0-9]{5}"
+            maxlength="5"
+            placeholder="Enter your ZIP code..."
+            autocomplete="postal-code"
+          >
+          <button class="hero__search-btn" type="submit">Find Resources</button>
+        </form>
+
+        <div class="hero__meta">
+          <span class="hero__meta-item">
+            <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M13.78 4.22a.75.75 0 0 1 0 1.06l-7.25 7.25a.75.75 0 0 1-1.06 0L2.22 9.28a.75.75 0 0 1 1.06-1.06L6 10.94l6.72-6.72a.75.75 0 0 1 1.06 0Z"/></svg>
+            Always free
+          </span>
+          <span class="hero__meta-item">
+            <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M13.78 4.22a.75.75 0 0 1 0 1.06l-7.25 7.25a.75.75 0 0 1-1.06 0L2.22 9.28a.75.75 0 0 1 1.06-1.06L6 10.94l6.72-6.72a.75.75 0 0 1 1.06 0Z"/></svg>
+            No account required
+          </span>
+          <span class="hero__meta-item">
+            <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M13.78 4.22a.75.75 0 0 1 0 1.06l-7.25 7.25a.75.75 0 0 1-1.06 0L2.22 9.28a.75.75 0 0 1 1.06-1.06L6 10.94l6.72-6.72a.75.75 0 0 1 1.06 0Z"/></svg>
+            Updated regularly
+          </span>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- RESOURCE CATEGORIES -->
+  <section class="section" aria-labelledby="categories-title">
+    <div class="container">
+      <header class="section-header">
+        <span class="section-header__eyebrow">Browse by need</span>
+        <h2 class="section-header__title" id="categories-title">Every kind of support, in one place.</h2>
+        <p class="section-header__description">From a warm bed tonight to a permanent home — find verified resources matched to your situation.</p>
+      </header>
+
+      <div class="card-grid">
+
+        <a class="category-card" href="/coc-finder.html" aria-label="Emergency Shelter">
+          <div class="category-card__icon" aria-hidden="true">🏠</div>
+          <h3 class="category-card__title">Emergency Shelter</h3>
+          <p class="category-card__description">Safe overnight beds, warming centers, and transitional housing options near you tonight.</p>
+          <span class="category-card__arrow">Find shelter <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8.22 2.97a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.75.75 0 0 1-1.06-1.06L11.44 8.5H2.75a.75.75 0 0 1 0-1.5h8.69L8.22 4.03a.75.75 0 0 1 0-1.06z"/></svg></span>
+        </a>
+
+        <a class="category-card" href="/coc-finder.html" aria-label="Food and Meals">
+          <div class="category-card__icon" aria-hidden="true">🍽️</div>
+          <h3 class="category-card__title">Food &amp; Meals</h3>
+          <p class="category-card__description">Soup kitchens, food pantries, and free meal programs serving your neighborhood.</p>
+          <span class="category-card__arrow">Find food <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8.22 2.97a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.75.75 0 0 1-1.06-1.06L11.44 8.5H2.75a.75.75 0 0 1 0-1.5h8.69L8.22 4.03a.75.75 0 0 1 0-1.06z"/></svg></span>
+        </a>
+
+        <a class="category-card" href="/coc-finder.html" aria-label="Health and Medical">
+          <div class="category-card__icon" aria-hidden="true">❤️</div>
+          <h3 class="category-card__title">Health &amp; Medical</h3>
+          <p class="category-card__description">Free clinics, mental health services, substance use support, and dental care.</p>
+          <span class="category-card__arrow">Find health care <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8.22 2.97a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.75.75 0 0 1-1.06-1.06L11.44 8.5H2.75a.75.75 0 0 1 0-1.5h8.69L8.22 4.03a.75.75 0 0 1 0-1.06z"/></svg></span>
+        </a>
+
+        <a class="category-card" href="/maricopa-navigator.html" aria-label="Housing Programs">
+          <div class="category-card__icon" aria-hidden="true">🔑</div>
+          <h3 class="category-card__title">Housing Programs</h3>
+          <p class="category-card__description">Rental assistance, section 8, rapid rehousing, and permanent supportive housing.</p>
+          <span class="category-card__arrow">Find housing <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8.22 2.97a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.75.75 0 0 1-1.06-1.06L11.44 8.5H2.75a.75.75 0 0 1 0-1.5h8.69L8.22 4.03a.75.75 0 0 1 0-1.06z"/></svg></span>
+        </a>
+
+        <a class="category-card" href="/coc-finder.html" aria-label="Legal Aid">
+          <div class="category-card__icon" aria-hidden="true">⚖️</div>
+          <h3 class="category-card__title">Legal Aid</h3>
+          <p class="category-card__description">Free legal help with evictions, benefits, criminal records, and identification documents.</p>
+          <span class="category-card__arrow">Find legal aid <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8.22 2.97a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.75.75 0 0 1-1.06-1.06L11.44 8.5H2.75a.75.75 0 0 1 0-1.5h8.69L8.22 4.03a.75.75 0 0 1 0-1.06z"/></svg></span>
+        </a>
+
+        <a class="category-card" href="/coc-finder.html" aria-label="Crisis Support">
+          <div class="category-card__icon" aria-hidden="true">📞</div>
+          <h3 class="category-card__title">Crisis Support</h3>
+          <p class="category-card__description">24/7 hotlines, domestic violence shelters, and emergency intervention services.</p>
+          <span class="category-card__arrow">Get crisis help <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8.22 2.97a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.75.75 0 0 1-1.06-1.06L11.44 8.5H2.75a.75.75 0 0 1 0-1.5h8.69L8.22 4.03a.75.75 0 0 1 0-1.06z"/></svg></span>
+        </a>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section class="section section--alt" aria-labelledby="how-title">
+    <div class="container">
+      <header class="section-header">
+        <span class="section-header__eyebrow">Simple to use</span>
+        <h2 class="section-header__title" id="how-title">Help is three steps away.</h2>
+        <p class="section-header__description">No paperwork, no account, no judgment. Just clear, trustworthy information when you need it.</p>
+      </header>
+
+      <div class="steps-grid">
+        <div class="step">
+          <div class="step__number" aria-hidden="true">1</div>
+          <h3 class="step__title">Enter your ZIP code</h3>
+          <p class="step__description">Find verified resources near you — updated by local nonprofits and case managers.</p>
+        </div>
+        <div class="step">
+          <div class="step__number" aria-hidden="true">2</div>
+          <h3 class="step__title">Choose your need</h3>
+          <p class="step__description">Filter by shelter, food, health, housing, legal, or crisis support. See hours, eligibility, and directions.</p>
+        </div>
+        <div class="step">
+          <div class="step__number" aria-hidden="true">3</div>
+          <h3 class="step__title">Connect &amp; get help</h3>
+          <p class="step__description">Call, walk in, or share the listing. Everything is free, private, and always available.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TOOLS -->
+  <section class="section" aria-labelledby="tools-title">
+    <div class="container">
+      <header class="section-header">
+        <span class="section-header__eyebrow">Available now</span>
+        <h2 class="section-header__title" id="tools-title">Free tools, ready to use.</h2>
+        <p class="section-header__description">No signup. No fees. Built for the people who need them and the workers who help.</p>
+      </header>
+
+      <div class="tools-grid">
+        <a class="tool-card" href="/coc-finder.html">
+          <span class="tool-tag">Nationwide</span>
+          <h3 class="tool-card__title">Continuum of Care Finder</h3>
+          <p class="tool-card__description">Find the homelessness response system serving your zip code — who runs it, how to access services, and who to contact. Works for all 50 states.</p>
+          <span class="tool-cta">Find my CoC</span>
+        </a>
+
+        <a class="tool-card" href="/maricopa-navigator.html">
+          <span class="tool-tag">Maricopa County</span>
+          <h3 class="tool-card__title">Maricopa County Resource Navigator</h3>
+          <p class="tool-card__description">Step-by-step guide to homelessness resources in the Phoenix metro area. Covers emergency shelter, coordinated entry, rapid rehousing, and more.</p>
+          <span class="tool-cta">Navigate resources</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- NONPROFIT CTA BAND -->
+  <section class="cta-band" id="for-nonprofits" aria-labelledby="cta-title">
+    <div class="container">
+      <div class="cta-band__inner">
+        <div class="cta-band__content">
+          <h2 class="cta-band__title" id="cta-title">Are you a nonprofit or service provider?</h2>
+          <p class="cta-band__description">List your services on Common Ladder for free. Reach people who need exactly what you offer — and the case managers who connect them.</p>
+        </div>
+        <div class="cta-band__actions">
+          <a class="btn btn--primary-lg" href="mailto:dvs.dnl@gmail.com?subject=List%20our%20services%20on%20Common%20Ladder">Get in touch</a>
+          <a class="btn btn--ghost" href="#about">Learn more</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="section section--alt" id="about" aria-labelledby="about-title">
+    <div class="container">
+      <header class="section-header">
+        <span class="section-header__eyebrow">About Common Ladder</span>
+        <h2 class="section-header__title" id="about-title">Built to serve, not to sell.</h2>
+        <p class="section-header__description">Common Ladder is a free civic platform connecting people experiencing homelessness to shelters, food, health care, housing, legal aid, and crisis services. No ads. No data collection. No barriers.</p>
+      </header>
+      <div class="section-footer">
+        <a class="btn btn--secondary" href="mailto:dvs.dnl@gmail.com">Contact us</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ── FOOTER ── -->
+<footer class="site-footer" role="contentinfo">
+  <div class="container">
+    <div class="site-footer__top">
+
+      <div class="footer-brand">
+        <a class="footer-brand__logo" href="/" aria-label="Common Ladder — Go to homepage">
+          <svg width="32" height="32" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <rect width="36" height="36" rx="8" fill="#2a5499"/>
+            <rect x="10" y="8" width="4" height="20" rx="2" fill="white" opacity="0.9"/>
+            <rect x="22" y="8" width="4" height="20" rx="2" fill="white" opacity="0.9"/>
+            <rect x="10" y="12" width="16" height="3" rx="1.5" fill="#E8911A"/>
+            <rect x="10" y="19" width="16" height="3" rx="1.5" fill="#E8911A"/>
+          </svg>
+          <span class="footer-brand__name">
+            <span class="site-logo__text--common" style="color:rgba(255,255,255,0.9)">common</span><span class="site-logo__text--ladder" style="color:#f0a535">ladder</span>
+          </span>
+        </a>
+        <p class="footer-brand__tagline">Every rung, together.</p>
+        <p class="footer-brand__description">A civic platform connecting people experiencing homelessness to shelters, food, health care, housing, legal aid, and crisis services — always free.</p>
+      </div>
+
+      <nav class="footer-nav" aria-label="Resources links">
+        <p class="footer-nav__title">Resources</p>
+        <ul class="footer-nav__list">
+          <li><a class="footer-nav__link" href="/coc-finder.html">CoC Finder</a></li>
+          <li><a class="footer-nav__link" href="/maricopa-navigator.html">Maricopa County</a></li>
+          <li><a class="footer-nav__link" href="/coc-finder.html">Emergency Shelter</a></li>
+          <li><a class="footer-nav__link" href="/coc-finder.html">Food &amp; Meals</a></li>
+          <li><a class="footer-nav__link" href="/coc-finder.html">Health &amp; Medical</a></li>
+          <li><a class="footer-nav__link" href="/coc-finder.html">Crisis Support</a></li>
+        </ul>
+      </nav>
+
+      <nav class="footer-nav" aria-label="Organization links">
+        <p class="footer-nav__title">Organization</p>
+        <ul class="footer-nav__list">
+          <li><a class="footer-nav__link" href="#about">About Us</a></li>
+          <li><a class="footer-nav__link" href="#for-nonprofits">For Nonprofits</a></li>
+          <li><a class="footer-nav__link" href="mailto:dvs.dnl@gmail.com">Contact</a></li>
+        </ul>
+      </nav>
+
+    </div>
+
+    <div class="site-footer__bottom">
+      <p class="site-footer__copyright">&copy; 2026 Common Ladder. Free to use and share.</p>
+      <nav class="site-footer__legal" aria-label="Legal links">
+        <a class="site-footer__legal-link" href="mailto:dvs.dnl@gmail.com">Privacy</a>
+        <a class="site-footer__legal-link" href="mailto:dvs.dnl@gmail.com">Accessibility</a>
+      </nav>
+    </div>
+
+  </div>
+</footer>
+
+<script>
+  // ZIP form: route to CoC finder
+  document.getElementById('zip-form').addEventListener('submit', function(e) {
+    e.preventDefault();
+    const zip = document.getElementById('resource-zip').value.trim();
+    if (zip.length === 5 && /^\d+$/.test(zip)) {
+      window.location.href = '/coc-finder.html?q=' + zip;
+    } else {
+      window.location.href = '/coc-finder.html';
+    }
+  });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Continuum of Care Finder — NFCEH</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --cream:#FAF7F2; --warm-white:#FFFFFF; --sand:#EFE8DC;
+    --gold:#C8922A; --gold-pale:#FDF3DC;
+    --brick:#8B3A2A; --brick-dark:#6B2A1A;
+    --slate:#3D4B58; --slate-pale:#EDF0F3;
+    --teal:#2E7D8A; --teal-light:#E5F4F6;
+    --text:#2B2B2B; --text-light:#5A5A5A; --border:#DDD5C8;
+    --font-serif:'Georgia',serif; --font-body:'Segoe UI',system-ui,sans-serif;
+    --radius:10px; --shadow:0 2px 12px rgba(0,0,0,0.08);
+  }
+  body { font-family: var(--font-body); background: var(--cream); color: var(--text); line-height: 1.6; }
+  h1, h2, h3 { font-family: var(--font-serif); color: var(--slate); }
+  .container { max-width: 820px; margin: 0 auto; padding: 30px 20px; }
+  .tool-header { text-align: center; padding: 30px 20px 20px; border-bottom: 2px solid var(--gold); margin-bottom: 30px; }
+  .eyebrow { font-size: 0.78rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--brick); font-weight: 600; }
+  .tool-header h1 { font-size: clamp(1.6rem, 4vw, 2.2rem); margin: 8px 0 10px; }
+  .tool-header p { color: var(--text-light); max-width: 580px; margin: 0 auto; }
+  .explainer { background: var(--teal-light); border-left: 4px solid var(--teal); padding: 16px 20px; border-radius: 8px; margin-bottom: 24px; font-size: 0.95rem; color: var(--slate); }
+  .search-card { background: var(--warm-white); padding: 24px; border-radius: var(--radius); box-shadow: var(--shadow); margin-bottom: 24px; }
+  .search-card label { display: block; font-weight: 600; color: var(--slate); margin-bottom: 8px; font-size: 0.95rem; }
+  .search-row { display: grid; grid-template-columns: 1fr 200px; gap: 12px; }
+  @media (max-width: 600px) { .search-row { grid-template-columns: 1fr; } }
+  .search-row input, .search-row select { padding: 12px 14px; border: 2px solid var(--border); border-radius: var(--radius); font-family: var(--font-body); font-size: 1rem; background: var(--cream); color: var(--text); }
+  .search-row input:focus, .search-row select:focus { outline: none; border-color: var(--brick); background: #fff; }
+  .results { display: grid; gap: 12px; }
+  .coc-card { background: var(--warm-white); padding: 18px 22px; border-radius: var(--radius); box-shadow: var(--shadow); border-left: 4px solid var(--brick); }
+  .coc-card h3 { font-size: 1.1rem; margin-bottom: 4px; color: var(--slate); }
+  .coc-card .state-line { font-size: 0.85rem; color: var(--text-light); margin-bottom: 8px; }
+  .coc-card .desc { font-size: 0.92rem; color: var(--text); margin-bottom: 10px; }
+  .coc-card a { color: var(--brick); text-decoration: none; font-weight: 600; font-size: 0.9rem; }
+  .coc-card a:hover { color: var(--brick-dark); text-decoration: underline; }
+  .empty { background: var(--warm-white); padding: 28px; border-radius: var(--radius); box-shadow: var(--shadow); text-align: center; color: var(--text-light); }
+  .empty strong { color: var(--slate); display: block; margin-bottom: 6px; }
+  .fallback { background: var(--gold-pale); border-left: 4px solid var(--gold); padding: 16px 20px; border-radius: 8px; margin-top: 20px; font-size: 0.92rem; }
+  .fallback a { color: var(--brick-dark); font-weight: 600; }
+  .why { margin-top: 30px; background: var(--slate-pale); padding: 20px 24px; border-radius: var(--radius); }
+  .why h3 { font-size: 1.1rem; margin-bottom: 10px; color: var(--slate); }
+  .why p { font-size: 0.92rem; }
+  .footer { text-align: center; padding: 30px 20px; color: var(--text-light); font-size: 0.85rem; }
+  .footer .tagline { font-family: var(--font-serif); font-style: italic; color: var(--brick); margin-top: 6px; }
+  .data-note { font-size: 0.8rem; color: var(--text-light); margin-top: 14px; font-style: italic; text-align: center; }
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="tool-header">
+    <div class="eyebrow">NFCEH · Local Connection</div>
+    <h1>Find Your Continuum of Care</h1>
+    <p>Every region has a federally coordinated body that organizes the local homelessness response. This is who your congregation should be in relationship with.</p>
+  </div>
+
+  <div class="explainer">
+    <strong>What is a Continuum of Care (CoC)?</strong> A CoC is the regional planning body — required by HUD — that coordinates housing and services for people experiencing homelessness in a specific geographic area. There are about 400 CoCs across the United States. Each one has a designated lead agency, runs the local Point-in-Time count, and decides how federal homelessness funds are spent. Connecting with your CoC is how a faith community moves from charity to coordination.
+  </div>
+
+  <div class="search-card">
+    <label for="stateSelect">Select your state, or search by city or CoC name</label>
+    <div class="search-row">
+      <input type="text" id="searchInput" placeholder="e.g., Atlanta, Cook County, Pierce County">
+      <select id="stateSelect">
+        <option value="">All states</option>
+      </select>
+    </div>
+  </div>
+
+  <div id="results" class="results"></div>
+  <div id="empty" class="empty" style="display:none">
+    <strong>No matching CoC in our directory.</strong>
+    Our directory includes the largest CoCs in each state. To find any CoC in the country, use HUD's official map below.
+  </div>
+
+  <div class="fallback">
+    <strong>Don't see your area?</strong> Use HUD's official, complete CoC map: <a href="https://www.hudexchange.info/programs/coc/coc-map/" target="_blank" rel="noopener">hudexchange.info/programs/coc/coc-map →</a><br>
+    Type your zip code into HUD's tool to find the CoC that covers your address.
+  </div>
+
+  <div class="why">
+    <h3>Why Connect With Your CoC?</h3>
+    <p>Your CoC already knows what's needed and what's missing. They run the local data, hold relationships with shelters and housing providers, and coordinate the use of federal funds. A faith community that connects with its CoC stops duplicating effort and starts adding capacity to a system that already exists. That's the difference between charity and coordination.</p>
+  </div>
+
+  <div class="data-note">Directory current as of 2026. CoC names and designations are updated annually by HUD; for current contacts always cross-check with the HUD Exchange map.</div>
+
+  <div class="footer">
+    National Faith Coalition to End Homelessness
+    <div class="tagline">Forward Together</div>
+  </div>
+</div>
+
+<script>
+// Curated directory of major / well-known CoCs. Not exhaustive — covers the largest jurisdictions in each state.
+// To expand: download HUD's CoC roster (annually published) and replace this array.
+const cocs = [
+  { name: "Birmingham/Jefferson, St. Clair, Shelby Counties CoC", state: "AL", desc: "Coordinates housing and homeless services for the Birmingham metro." },
+  { name: "Mobile City & County / Baldwin County CoC", state: "AL", desc: "Serves the Mobile metropolitan area and surrounding counties." },
+  { name: "Alabama Balance of State CoC", state: "AL", desc: "Covers Alabama counties outside the major metros." },
+  { name: "Anchorage CoC", state: "AK", desc: "Lead body for homeless response across Anchorage." },
+  { name: "Alaska Balance of State CoC", state: "AK", desc: "Statewide coverage outside Anchorage." },
+  { name: "Phoenix, Mesa/Maricopa County CoC", state: "AZ", desc: "Serves Maricopa County including Phoenix and Mesa." },
+  { name: "Tucson/Pima County CoC", state: "AZ", desc: "Coordinates response across Pima County." },
+  { name: "Arizona Balance of State CoC", state: "AZ", desc: "Covers Arizona counties outside Maricopa and Pima." },
+  { name: "Little Rock/Central Arkansas CoC", state: "AR", desc: "Lead body for Central Arkansas including Little Rock." },
+  { name: "Arkansas Balance of State CoC", state: "AR", desc: "Statewide coverage outside Central Arkansas." },
+  { name: "Los Angeles City & County CoC", state: "CA", desc: "Largest CoC in the country by population served; covers LA County excluding Glendale, Long Beach, and Pasadena." },
+  { name: "San Diego City and County CoC", state: "CA", desc: "Regional coordinator for San Diego County." },
+  { name: "San Francisco CoC", state: "CA", desc: "City and County of San Francisco." },
+  { name: "Oakland, Berkeley/Alameda County CoC", state: "CA", desc: "Alameda County including Oakland and Berkeley." },
+  { name: "Santa Clara County CoC", state: "CA", desc: "Silicon Valley region including San Jose." },
+  { name: "Sacramento City & County CoC", state: "CA", desc: "Sacramento County coordination body." },
+  { name: "Fresno City & County / Madera County CoC", state: "CA", desc: "Central Valley coverage." },
+  { name: "Riverside City & County CoC", state: "CA", desc: "Inland Empire — Riverside County." },
+  { name: "San Bernardino City & County CoC", state: "CA", desc: "Inland Empire — San Bernardino County." },
+  { name: "Long Beach CoC", state: "CA", desc: "City of Long Beach." },
+  { name: "Pasadena CoC", state: "CA", desc: "City of Pasadena." },
+  { name: "Glendale CoC", state: "CA", desc: "City of Glendale." },
+  { name: "Watsonville/Santa Cruz City & County CoC", state: "CA", desc: "Santa Cruz County." },
+  { name: "Salinas/Monterey, San Benito Counties CoC", state: "CA", desc: "Monterey and San Benito Counties." },
+  { name: "Santa Rosa, Petaluma/Sonoma County CoC", state: "CA", desc: "Sonoma County." },
+  { name: "Oxnard, San Buenaventura/Ventura County CoC", state: "CA", desc: "Ventura County." },
+  { name: "Santa Maria/Santa Barbara County CoC", state: "CA", desc: "Santa Barbara County." },
+  { name: "Daly/San Mateo County CoC", state: "CA", desc: "San Mateo County." },
+  { name: "Marin County CoC", state: "CA", desc: "Marin County." },
+  { name: "Vallejo/Solano County CoC", state: "CA", desc: "Solano County." },
+  { name: "Napa City & County CoC", state: "CA", desc: "Napa County." },
+  { name: "Stockton/San Joaquin County CoC", state: "CA", desc: "San Joaquin County." },
+  { name: "Visalia/Kings, Tulare Counties CoC", state: "CA", desc: "Kings and Tulare Counties." },
+  { name: "Roseville, Rocklin/Placer, Nevada Counties CoC", state: "CA", desc: "Placer and Nevada Counties." },
+  { name: "Chico, Paradise/Butte County CoC", state: "CA", desc: "Butte County." },
+  { name: "Yolo County CoC", state: "CA", desc: "Yolo County." },
+  { name: "El Dorado County CoC", state: "CA", desc: "El Dorado County." },
+  { name: "Metropolitan Denver Homeless Initiative (Denver CoC)", state: "CO", desc: "Seven-county Denver metro region." },
+  { name: "Colorado Springs/El Paso County CoC", state: "CO", desc: "El Paso County." },
+  { name: "Pikes Peak Region CoC", state: "CO", desc: "Pikes Peak region." },
+  { name: "Colorado Balance of State CoC", state: "CO", desc: "Colorado counties outside the major metros." },
+  { name: "Connecticut Balance of State CoC", state: "CT", desc: "Statewide coverage outside major cities." },
+  { name: "Hartford CoC", state: "CT", desc: "Greater Hartford region." },
+  { name: "Bridgeport, Stamford, Norwalk/Fairfield County CoC", state: "CT", desc: "Fairfield County." },
+  { name: "Delaware Statewide CoC", state: "DE", desc: "Single statewide CoC covering all of Delaware." },
+  { name: "District of Columbia CoC", state: "DC", desc: "Single CoC for Washington, D.C." },
+  { name: "Miami/Dade County CoC", state: "FL", desc: "Miami-Dade County." },
+  { name: "Fort Lauderdale/Broward County CoC", state: "FL", desc: "Broward County." },
+  { name: "Orlando/Orange, Osceola, Seminole Counties CoC", state: "FL", desc: "Central Florida — Orlando metro." },
+  { name: "Tampa/Hillsborough County CoC", state: "FL", desc: "Hillsborough County." },
+  { name: "St. Petersburg, Clearwater, Largo/Pinellas County CoC", state: "FL", desc: "Pinellas County." },
+  { name: "Jacksonville-Duval, Clay Counties CoC", state: "FL", desc: "Northeast Florida." },
+  { name: "West Palm Beach/Palm Beach County CoC", state: "FL", desc: "Palm Beach County." },
+  { name: "Florida Keys/Monroe County CoC", state: "FL", desc: "Monroe County." },
+  { name: "Florida Balance of State CoC", state: "FL", desc: "Florida counties outside the major metros." },
+  { name: "Atlanta CoC", state: "GA", desc: "City of Atlanta." },
+  { name: "Fulton County CoC", state: "GA", desc: "Fulton County (outside Atlanta city)." },
+  { name: "DeKalb County CoC", state: "GA", desc: "DeKalb County." },
+  { name: "Georgia Balance of State CoC", state: "GA", desc: "Georgia counties outside metro Atlanta." },
+  { name: "Honolulu City & County CoC", state: "HI", desc: "Oahu." },
+  { name: "Hawaii Balance of State CoC", state: "HI", desc: "Neighbor islands — Maui, Hawaii, Kauai." },
+  { name: "Boise City/Ada County CoC", state: "ID", desc: "Treasure Valley — Ada County including Boise." },
+  { name: "Idaho Balance of State CoC", state: "ID", desc: "Idaho counties outside Ada." },
+  { name: "Chicago CoC", state: "IL", desc: "City of Chicago." },
+  { name: "Cook County CoC (Suburban)", state: "IL", desc: "Suburban Cook County, outside Chicago." },
+  { name: "DuPage County CoC", state: "IL", desc: "DuPage County." },
+  { name: "Lake County CoC", state: "IL", desc: "Lake County, IL." },
+  { name: "Will County CoC", state: "IL", desc: "Will County." },
+  { name: "Illinois Balance of State CoC", state: "IL", desc: "Downstate Illinois counties." },
+  { name: "Indianapolis/Marion County CoC", state: "IN", desc: "Indianapolis metro." },
+  { name: "Indiana Balance of State CoC", state: "IN", desc: "Indiana counties outside Indianapolis." },
+  { name: "Iowa Balance of State CoC", state: "IA", desc: "Statewide coverage including most of Iowa." },
+  { name: "Des Moines/Polk County CoC", state: "IA", desc: "Des Moines metro." },
+  { name: "Kansas Balance of State CoC", state: "KS", desc: "Statewide coverage outside Wichita and KCK." },
+  { name: "Wichita/Sedgwick County CoC", state: "KS", desc: "Wichita metro." },
+  { name: "Louisville-Jefferson County CoC", state: "KY", desc: "Louisville metro." },
+  { name: "Lexington/Fayette County CoC", state: "KY", desc: "Lexington and surrounding region." },
+  { name: "Kentucky Balance of State CoC", state: "KY", desc: "Kentucky counties outside Louisville and Lexington." },
+  { name: "New Orleans/Jefferson Parish CoC", state: "LA", desc: "Greater New Orleans." },
+  { name: "Baton Rouge CoC", state: "LA", desc: "East Baton Rouge Parish." },
+  { name: "Louisiana Balance of State CoC", state: "LA", desc: "Louisiana parishes outside the major metros." },
+  { name: "Maine Statewide CoC", state: "ME", desc: "Single statewide CoC." },
+  { name: "Baltimore City CoC", state: "MD", desc: "City of Baltimore." },
+  { name: "Baltimore County CoC", state: "MD", desc: "Baltimore County (surrounding the city)." },
+  { name: "Montgomery County CoC", state: "MD", desc: "Montgomery County, MD." },
+  { name: "Prince George's County CoC", state: "MD", desc: "Prince George's County." },
+  { name: "Maryland Balance of State CoC", state: "MD", desc: "Maryland counties outside the major DC/Baltimore metros." },
+  { name: "Boston CoC", state: "MA", desc: "City of Boston." },
+  { name: "Cambridge CoC", state: "MA", desc: "City of Cambridge." },
+  { name: "Massachusetts Balance of State CoC", state: "MA", desc: "Massachusetts outside Boston and Cambridge." },
+  { name: "Detroit CoC", state: "MI", desc: "City of Detroit." },
+  { name: "Wayne County CoC", state: "MI", desc: "Wayne County outside Detroit." },
+  { name: "Oakland County CoC", state: "MI", desc: "Oakland County, MI." },
+  { name: "Grand Rapids/Kent County CoC", state: "MI", desc: "Kent County including Grand Rapids." },
+  { name: "Michigan Balance of State CoC", state: "MI", desc: "Statewide outside metro Detroit and Grand Rapids." },
+  { name: "Hennepin County CoC", state: "MN", desc: "Hennepin County including Minneapolis." },
+  { name: "St. Paul/Ramsey County CoC", state: "MN", desc: "Ramsey County including St. Paul." },
+  { name: "Minnesota Balance of State CoC", state: "MN", desc: "Statewide outside the Twin Cities." },
+  { name: "Mississippi Balance of State CoC", state: "MS", desc: "Statewide CoC for Mississippi." },
+  { name: "Jackson/Rankin, Madison Counties CoC", state: "MS", desc: "Jackson metro." },
+  { name: "St. Louis City CoC", state: "MO", desc: "City of St. Louis." },
+  { name: "St. Louis County CoC", state: "MO", desc: "St. Louis County." },
+  { name: "Kansas City/Independence/Lee's Summit/Jackson County CoC", state: "MO", desc: "Greater Kansas City." },
+  { name: "Missouri Balance of State CoC", state: "MO", desc: "Statewide outside St. Louis and KC." },
+  { name: "Montana Statewide CoC", state: "MT", desc: "Single statewide CoC." },
+  { name: "Omaha/Lincoln/Nebraska Balance of State CoC", state: "NE", desc: "Statewide coverage." },
+  { name: "Las Vegas/Clark County CoC", state: "NV", desc: "Clark County including Las Vegas." },
+  { name: "Reno, Sparks/Washoe County CoC", state: "NV", desc: "Washoe County." },
+  { name: "Nevada Balance of State CoC", state: "NV", desc: "Rural Nevada." },
+  { name: "New Hampshire Balance of State CoC", state: "NH", desc: "Statewide outside Manchester and Nashua." },
+  { name: "Manchester/Nashua CoC", state: "NH", desc: "Manchester and Nashua metro." },
+  { name: "Newark/Essex County CoC", state: "NJ", desc: "Essex County." },
+  { name: "Jersey City, Bayonne/Hudson County CoC", state: "NJ", desc: "Hudson County." },
+  { name: "Atlantic City & County CoC", state: "NJ", desc: "Atlantic County." },
+  { name: "Bergen County CoC", state: "NJ", desc: "Bergen County." },
+  { name: "Camden City and County CoC", state: "NJ", desc: "Camden County." },
+  { name: "New Jersey Balance of State CoC", state: "NJ", desc: "New Jersey counties outside the major metros." },
+  { name: "Albuquerque CoC", state: "NM", desc: "Albuquerque metro." },
+  { name: "New Mexico Balance of State CoC", state: "NM", desc: "Statewide outside Albuquerque." },
+  { name: "New York City CoC", state: "NY", desc: "All five boroughs of NYC." },
+  { name: "Yonkers/Mount Vernon/New Rochelle/Westchester County CoC", state: "NY", desc: "Westchester County." },
+  { name: "Nassau, Suffolk Counties CoC", state: "NY", desc: "Long Island." },
+  { name: "Albany City & County CoC", state: "NY", desc: "Albany County." },
+  { name: "Rochester/Irondequoit/Greece/Monroe County CoC", state: "NY", desc: "Monroe County including Rochester." },
+  { name: "Buffalo, Niagara Falls/Erie, Niagara, Orleans, Genesee, Wyoming Counties CoC", state: "NY", desc: "Western New York." },
+  { name: "Syracuse, Auburn/Onondaga, Oswego, Cayuga Counties CoC", state: "NY", desc: "Central New York." },
+  { name: "New York Balance of State CoC", state: "NY", desc: "New York counties outside major metros." },
+  { name: "Charlotte/Mecklenburg County CoC", state: "NC", desc: "Charlotte metro." },
+  { name: "Raleigh/Wake County CoC", state: "NC", desc: "Wake County including Raleigh." },
+  { name: "Durham City and County CoC", state: "NC", desc: "Durham County." },
+  { name: "Greensboro, High Point/Guilford County CoC", state: "NC", desc: "Guilford County." },
+  { name: "Winston-Salem/Forsyth County CoC", state: "NC", desc: "Forsyth County." },
+  { name: "Asheville/Buncombe County CoC", state: "NC", desc: "Buncombe County." },
+  { name: "North Carolina Balance of State CoC", state: "NC", desc: "Statewide outside major metros." },
+  { name: "North Dakota Statewide CoC", state: "ND", desc: "Single statewide CoC." },
+  { name: "Cincinnati/Hamilton County CoC", state: "OH", desc: "Hamilton County." },
+  { name: "Cleveland/Cuyahoga County CoC", state: "OH", desc: "Cuyahoga County." },
+  { name: "Columbus/Franklin County CoC", state: "OH", desc: "Franklin County." },
+  { name: "Dayton, Kettering/Montgomery County CoC", state: "OH", desc: "Montgomery County." },
+  { name: "Toledo/Lucas County CoC", state: "OH", desc: "Lucas County." },
+  { name: "Akron, Barberton/Summit County CoC", state: "OH", desc: "Summit County." },
+  { name: "Youngstown/Mahoning County CoC", state: "OH", desc: "Mahoning County." },
+  { name: "Ohio Balance of State CoC", state: "OH", desc: "Statewide outside major metros." },
+  { name: "Oklahoma City CoC", state: "OK", desc: "Oklahoma City metro." },
+  { name: "Tulsa CoC", state: "OK", desc: "Tulsa metro." },
+  { name: "Oklahoma Balance of State CoC", state: "OK", desc: "Statewide outside OKC and Tulsa." },
+  { name: "Portland-Gresham-Multnomah County CoC", state: "OR", desc: "Multnomah County." },
+  { name: "Salem/Marion, Polk Counties CoC", state: "OR", desc: "Marion and Polk Counties." },
+  { name: "Eugene, Springfield/Lane County CoC", state: "OR", desc: "Lane County." },
+  { name: "Central Oregon CoC", state: "OR", desc: "Bend and surrounding Central Oregon." },
+  { name: "Oregon Balance of State CoC", state: "OR", desc: "Rural Oregon outside the major metros." },
+  { name: "Philadelphia CoC", state: "PA", desc: "City of Philadelphia." },
+  { name: "Pittsburgh, McKeesport, Penn Hills/Allegheny County CoC", state: "PA", desc: "Allegheny County." },
+  { name: "Pennsylvania Balance of State CoC", state: "PA", desc: "Statewide outside Philadelphia and Allegheny." },
+  { name: "Rhode Island Statewide CoC", state: "RI", desc: "Single statewide CoC for Rhode Island." },
+  { name: "Charleston/Low Country CoC", state: "SC", desc: "Charleston region." },
+  { name: "Columbia/Midlands CoC", state: "SC", desc: "Columbia metro." },
+  { name: "Upstate (Greenville) CoC", state: "SC", desc: "Upstate South Carolina." },
+  { name: "South Dakota Statewide CoC", state: "SD", desc: "Single statewide CoC." },
+  { name: "Memphis/Shelby County CoC", state: "TN", desc: "Shelby County." },
+  { name: "Nashville-Davidson County CoC", state: "TN", desc: "Davidson County." },
+  { name: "Knoxville/Knox County CoC", state: "TN", desc: "Knox County." },
+  { name: "Chattanooga/Southeast Tennessee CoC", state: "TN", desc: "Hamilton County." },
+  { name: "Tennessee Balance of State CoC", state: "TN", desc: "Statewide outside major metros." },
+  { name: "Houston, Pasadena, Conroe/Harris, Ft. Bend, Montgomery, Waller Counties CoC", state: "TX", desc: "Greater Houston." },
+  { name: "Dallas City & County, Irving CoC", state: "TX", desc: "Dallas County." },
+  { name: "Fort Worth/Arlington/Tarrant County CoC", state: "TX", desc: "Tarrant County." },
+  { name: "Austin/Travis County CoC", state: "TX", desc: "Travis County." },
+  { name: "San Antonio/Bexar County CoC", state: "TX", desc: "Bexar County." },
+  { name: "El Paso City & County CoC", state: "TX", desc: "El Paso County." },
+  { name: "Texas Balance of State CoC", state: "TX", desc: "Texas counties outside the major metros." },
+  { name: "Salt Lake City & County CoC", state: "UT", desc: "Salt Lake County." },
+  { name: "Utah Balance of State CoC", state: "UT", desc: "Statewide outside Salt Lake County." },
+  { name: "Vermont Balance of State CoC", state: "VT", desc: "Single statewide CoC for Vermont." },
+  { name: "Richmond/Henrico, Chesterfield, Hanover Counties CoC", state: "VA", desc: "Richmond metro." },
+  { name: "Virginia Beach CoC", state: "VA", desc: "City of Virginia Beach." },
+  { name: "Norfolk/Chesapeake/Suffolk/Isle of Wight/Southampton CoC", state: "VA", desc: "Hampton Roads region." },
+  { name: "Arlington County CoC", state: "VA", desc: "Arlington County." },
+  { name: "Fairfax County CoC", state: "VA", desc: "Fairfax County." },
+  { name: "Virginia Balance of State CoC", state: "VA", desc: "Statewide outside major metros." },
+  { name: "Seattle/King County CoC", state: "WA", desc: "King County including Seattle." },
+  { name: "Tacoma, Lakewood/Pierce County CoC", state: "WA", desc: "Pierce County." },
+  { name: "Spokane City & County CoC", state: "WA", desc: "Spokane County." },
+  { name: "Snohomish County CoC", state: "WA", desc: "Snohomish County." },
+  { name: "Washington Balance of State CoC", state: "WA", desc: "Washington counties outside the major metros." },
+  { name: "West Virginia Balance of State CoC", state: "WV", desc: "Statewide CoC for West Virginia." },
+  { name: "Milwaukee City & County CoC", state: "WI", desc: "Milwaukee County." },
+  { name: "Madison/Dane County CoC", state: "WI", desc: "Dane County." },
+  { name: "Wisconsin Balance of State CoC", state: "WI", desc: "Statewide outside Milwaukee and Dane." },
+  { name: "Wyoming Statewide CoC", state: "WY", desc: "Single statewide CoC for Wyoming." }
+];
+
+const stateNames = { AL:"Alabama", AK:"Alaska", AZ:"Arizona", AR:"Arkansas", CA:"California", CO:"Colorado", CT:"Connecticut", DE:"Delaware", DC:"District of Columbia", FL:"Florida", GA:"Georgia", HI:"Hawaii", ID:"Idaho", IL:"Illinois", IN:"Indiana", IA:"Iowa", KS:"Kansas", KY:"Kentucky", LA:"Louisiana", ME:"Maine", MD:"Maryland", MA:"Massachusetts", MI:"Michigan", MN:"Minnesota", MS:"Mississippi", MO:"Missouri", MT:"Montana", NE:"Nebraska", NV:"Nevada", NH:"New Hampshire", NJ:"New Jersey", NM:"New Mexico", NY:"New York", NC:"North Carolina", ND:"North Dakota", OH:"Ohio", OK:"Oklahoma", OR:"Oregon", PA:"Pennsylvania", RI:"Rhode Island", SC:"South Carolina", SD:"South Dakota", TN:"Tennessee", TX:"Texas", UT:"Utah", VT:"Vermont", VA:"Virginia", WA:"Washington", WV:"West Virginia", WI:"Wisconsin", WY:"Wyoming" };
+
+const select = document.getElementById('stateSelect');
+Object.entries(stateNames).forEach(([abbr, name]) => {
+  const opt = document.createElement('option'); opt.value = abbr; opt.textContent = name; select.appendChild(opt);
+});
+
+function render() {
+  const stateFilter = select.value;
+  const term = document.getElementById('searchInput').value.toLowerCase().trim();
+  const filtered = cocs.filter(c =>
+    (!stateFilter || c.state === stateFilter) &&
+    (!term || c.name.toLowerCase().includes(term) || stateNames[c.state].toLowerCase().includes(term) || c.desc.toLowerCase().includes(term))
+  );
+  const results = document.getElementById('results');
+  const empty = document.getElementById('empty');
+  if (filtered.length === 0) {
+    results.innerHTML = '';
+    empty.style.display = 'block';
+  } else {
+    empty.style.display = 'none';
+    results.innerHTML = filtered.map(c => `
+      <div class="coc-card">
+        <h3>${c.name}</h3>
+        <div class="state-line">${stateNames[c.state]}</div>
+        <div class="desc">${c.desc}</div>
+        <a href="https://www.hudexchange.info/programs/coc/coc-map/?state=${c.state}" target="_blank" rel="noopener">Find contact info on HUD Exchange →</a>
+      </div>`).join('');
+  }
+  resize();
+}
+
+select.addEventListener('change', render);
+document.getElementById('searchInput').addEventListener('input', render);
+
+function resize() { try { window.parent.postMessage({ type:'resize', height: document.body.scrollHeight }, '*'); } catch(e){} }
+window.addEventListener('load', () => { render(); resize(); });
+new ResizeObserver(resize).observe(document.body);
+</script>
+</body>
+</html>
