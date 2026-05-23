@@ -1,316 +1,196 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>City Navigators — Common Ladder</title>
-<meta name="description" content="Free, plain-language homelessness resource navigators for the largest U.S. Continuums of Care. Pick your city to get started.">
-<link rel="canonical" href="https://www.commonladder.org/static-tools/">
-<style>
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-  :root {
-    --bg: #F8F7F4; --primary: #1C3D6E; --accent: #E8911A; --sage: #4A9E82;
-    --text: #1C2B33; --muted: #6B7C85; --card-bg: #FFFFFF;
-    --shadow: 0 2px 12px rgba(28,61,110,0.08);
-    --font-display: 'Manrope', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
-    --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  }
-  body { font-family: var(--font-body); background: var(--bg); color: var(--text); line-height: 1.6; }
-  a { color: var(--primary); text-decoration: none; }
-  a:hover { text-decoration: underline; }
-  .site-header { background: #fff; border-bottom: 2px solid var(--accent); padding: 18px 20px; }
-  .site-header__inner { max-width: 1000px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; gap: 16px; }
-  .brand { display: inline-flex; align-items: center; gap: 10px; font-family: var(--font-display); font-weight: 700; color: var(--primary); font-size: 1.15rem; }
-  .brand .rung { color: var(--accent); }
-  .nav-link { font-size: 0.92rem; color: var(--muted); font-weight: 600; }
-  .nav-link:hover { color: var(--primary); }
-  .hero { max-width: 760px; margin: 56px auto 32px; padding: 0 20px; text-align: center; }
-  .hero-eyebrow { font-size: 0.74rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--accent); font-weight: 700; margin-bottom: 14px; }
-  .hero h1 { font-family: var(--font-display); font-size: clamp(1.7rem, 4.4vw, 2.4rem); color: var(--primary); line-height: 1.25; margin-bottom: 16px; font-weight: 700; }
-  .hero p { font-size: 1.02rem; color: var(--muted); max-width: 600px; margin: 0 auto; }
-  .section { max-width: 1000px; margin: 0 auto; padding: 32px 20px; }
-  .section-label { font-size: 0.74rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--accent); font-weight: 700; margin-bottom: 16px; text-align: center; }
-  .section-head { font-family: var(--font-display); font-size: 1.4rem; color: var(--primary); text-align: center; margin-bottom: 28px; font-weight: 700; }
-  .nav-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 18px; }
-  .nav-card { background: var(--card-bg); border-radius: 12px; box-shadow: var(--shadow); padding: 22px; border-top: 3px solid var(--accent); display: flex; flex-direction: column; gap: 8px; transition: transform 0.15s ease, box-shadow 0.15s ease; text-decoration: none; color: var(--text); }
-  .nav-card:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(28,61,110,0.12); text-decoration: none; }
-  .nav-card__city { font-family: var(--font-display); font-size: 1.1rem; color: var(--primary); font-weight: 700; line-height: 1.3; }
-  .nav-card__coc { font-size: 0.74rem; color: var(--muted); letter-spacing: 0.06em; font-weight: 600; }
-  .nav-card__desc { font-size: 0.88rem; color: var(--text); flex: 1; margin-top: 4px; }
-  .nav-card__cta { font-size: 0.85rem; font-weight: 600; color: var(--accent); margin-top: 6px; }
-  .nav-card__cta::after { content: ' →'; }
-  .coming-soon { background: #FFFDE7; border: 1px solid #FDD835; border-radius: 8px; padding: 18px 22px; margin-top: 12px; }
-  .coming-soon strong { display: block; color: #5D4037; font-family: var(--font-display); margin-bottom: 8px; }
-  .coming-soon-list { font-size: 0.88rem; color: #5D4037; line-height: 1.7; }
-  .site-footer { background: var(--primary); color: rgba(255,255,255,0.85); padding: 28px 20px; text-align: center; margin-top: 60px; }
-  .site-footer a { color: var(--accent); }
-  .site-footer p { font-size: 0.85rem; }
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Local Resource Navigators — Common Ladder</title>
+  <meta name="description" content="Free, plain-language homelessness resource navigators for 30+ U.S. Continuums of Care. Pick your city to find shelters, food, health care, ID help, and housing programs near you.">
+  <meta name="theme-color" content="#1C3D6E">
+  <meta property="og:title" content="Local Resource Navigators — Common Ladder">
+  <meta property="og:description" content="30+ city-by-city homelessness resource guides. Free, plain-language, no account required.">
+  <link rel="canonical" href="https://www.commonladder.org/static-tools/">
+  <link rel="stylesheet" href="/style.css">
 </head>
 <body>
 
-<header class="site-header">
-  <div class="site-header__inner">
-    <a href="https://www.commonladder.org" class="brand" aria-label="Common Ladder home">
-      <svg width="22" height="22" viewBox="0 0 28 28" fill="none" aria-hidden="true">
-        <rect x="4" y="2" width="3" height="24" rx="1.5" fill="#1C3D6E"/>
-        <rect x="21" y="2" width="3" height="24" rx="1.5" fill="#1C3D6E"/>
+<a href="#main" class="skip-link">Skip to main content</a>
+
+<div class="crisis-bar" role="region" aria-label="Crisis help">
+  <strong>Need help right now?</strong>
+  <a href="tel:211">Call 211</a><span class="crisis-bar__sep">·</span>
+  <a href="sms:741741?body=HOME">Text HOME to 741741</a><span class="crisis-bar__sep">·</span>
+  <a href="tel:988">988 Suicide &amp; Crisis</a>
+</div>
+
+<nav class="nav" aria-label="Primary">
+  <div class="nav__inner">
+    <a href="/" class="nav__logo" aria-label="Common Ladder home">
+      <svg width="28" height="28" viewBox="0 0 28 28" fill="none" aria-hidden="true">
+        <rect x="4" y="2" width="3" height="24" rx="1.5" fill="white" opacity=".9"/>
+        <rect x="21" y="2" width="3" height="24" rx="1.5" fill="white" opacity=".9"/>
         <rect x="4" y="7" width="20" height="3" rx="1.5" fill="#E8911A"/>
         <rect x="4" y="14" width="20" height="3" rx="1.5" fill="#E8911A"/>
         <rect x="4" y="21" width="20" height="3" rx="1.5" fill="#E8911A"/>
       </svg>
-      common<span class="rung">ladder</span>
+      common<span>ladder</span>
     </a>
-    <a href="https://www.commonladder.org/resources.html" class="nav-link">Find resources →</a>
+    <button class="nav__toggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="primary-nav" onclick="this.setAttribute('aria-expanded', document.getElementById('primary-nav').classList.toggle('open') ? 'true' : 'false')">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav__links" id="primary-nav">
+      <li><a href="/resources.html">Find help</a></li>
+      <li><a href="/static-tools/" aria-current="page">Resources</a></li>
+      <li><a href="/nonprofits.html">For providers</a></li>
+      <li><a href="/learn.html">Evidence &amp; policy</a></li>
+      <li><a href="/about.html">About</a></li>
+      <li><a href="/resources.html" class="nav__cta">Find help now</a></li>
+      <li><a href="https://www.weather.gov/" rel="noreferrer" class="nav__exit" onclick="event.preventDefault();window.location.replace('https://www.weather.gov/')">Leave page</a></li>
+    </ul>
   </div>
-</header>
+</nav>
 
-<section class="hero">
-  <div class="hero-eyebrow">CoC Navigators</div>
-  <h1>Find the right help, wherever you are.</h1>
-  <p>Free, plain-language navigators for the largest U.S. Continuums of Care. Four quick questions match you to local programs — no signup, no data collection.</p>
-</section>
+<main id="main">
 
-<section class="section">
-  <div class="section-label">Available now</div>
-  <h2 class="section-head">Pick your city or county</h2>
-  <div class="nav-grid">
-
-    <a class="nav-card" href="/static-tools/nyc-navigator.html">
-      <span class="nav-card__coc">CoC NY-600</span>
-      <div class="nav-card__city">New York City</div>
-      <p class="nav-card__desc">PATH family intake, 30th Street adult intake, Covenant House NY, HOME-STAT outreach, 311 routing.</p>
-      <span class="nav-card__cta">Open navigator</span>
-    </a>
-
-    <a class="nav-card" href="/static-tools/los-angeles-navigator.html">
-      <span class="nav-card__coc">CoC CA-600</span>
-      <div class="nav-card__city">Los Angeles</div>
-      <p class="nav-card__desc">LAHSA Coordinated Entry, LA 211, Skid Row missions, VA Greater LA, SSVF veteran programs.</p>
-      <span class="nav-card__cta">Open navigator</span>
-    </a>
-
-    <a class="nav-card" href="/static-tools/chicago-navigator.html">
-      <span class="nav-card__coc">CoC IL-510</span>
-      <div class="nav-card__city">Chicago</div>
-      <p class="nav-card__desc">DFSS 311 intake, All Chicago CES, Pacific Garden Mission, Ignite youth services, Jesse Brown VA.</p>
-      <span class="nav-card__cta">Open navigator</span>
-    </a>
-
-    <a class="nav-card" href="/static-tools/seattle-navigator.html">
-      <span class="nav-card__coc">CoC WA-500</span>
-      <div class="nav-card__city">Seattle / King County</div>
-      <p class="nav-card__desc">KCRHA Regional Access Points, YWCA family intake, YouthCare, DESC, Compass Housing Alliance.</p>
-      <span class="nav-card__cta">Open navigator</span>
-    </a>
-
-    <a class="nav-card" href="/static-tools/denver-navigator.html">
-      <span class="nav-card__coc">CoC CO-503</span>
-      <div class="nav-card__city">Metro Denver</div>
-      <p class="nav-card__desc">MDHI / OneHome Coordinated Entry, Salvation Army Connection Center, Urban Peak Denver, Colorado Coalition for the Homeless.</p>
-      <span class="nav-card__cta">Open navigator</span>
-    </a>
-
-    <a class="nav-card" href="/static-tools/san-diego-navigator.html">
-      <span class="nav-card__coc">CoC CA-601</span>
-      <div class="nav-card__city">San Diego</div>
-      <p class="nav-card__desc">Father Joe's Villages, RTFH, San Diego Youth Services, Veterans Village of San Diego, Alpha Project.</p>
-      <span class="nav-card__cta">Open navigator</span>
-    </a>
-
-    <a class="nav-card" href="/static-tools/san-jose-navigator.html">
-      <span class="nav-card__coc">CoC CA-500</span>
-      <div class="nav-card__city">San Jose / Santa Clara County</div>
-      <p class="nav-card__desc">Here4You Hotline, HomeFirst Boccardo, Bill Wilson Center, LifeMoves, PATH San Jose.</p>
-      <span class="nav-card__cta">Open navigator</span>
-    </a>
-
-    <a class="nav-card" href="/static-tools/oakland-navigator.html">
-      <span class="nav-card__coc">CoC CA-502</span>
-      <div class="nav-card__city">Oakland / Alameda County</div>
-      <p class="nav-card__desc">Family Front Door, 211 Eden I&amp;R, regional HRCs, BACS Henry Robinson, Swords to Plowshares, Covenant House Oakland.</p>
-      <span class="nav-card__cta">Open navigator</span>
-    </a>
-
-    <a class="nav-card" href="/static-tools/san-francisco-navigator.html">
-      <span class="nav-card__coc">CoC CA-501</span>
-      <div class="nav-card__city">San Francisco</div>
-      <p class="nav-card__desc">HSH Coordinated Entry, 311 adult shelter waitlist, Compass Connecting Point, Larkin Street, MSC South.</p>
-      <span class="nav-card__cta">Open navigator</span>
-    </a>
-
-    <a class="nav-card" href="/static-tools/las-vegas-navigator.html">
-      <span class="nav-card__coc">CoC NV-500</span>
-      <div class="nav-card__city">Las Vegas / Clark County</div>
-      <p class="nav-card__desc">Clark County Social Service CE, The Shade Tree, NPHY, U.S.VETS Las Vegas, Catholic Charities of Southern Nevada.</p>
-      <span class="nav-card__cta">Open navigator</span>
-    </a>
-
-
-    <a class="nav-card" href="/static-tools/portland-navigator.html">
-      <span class="nav-card__coc">CoC OR-501</span>
-      <div class="nav-card__city">Portland / Multnomah County</div>
-      <p class="nav-card__desc">JOHS Coordinated Housing Access Team, Transition Projects, Outside In, p:ear, Central City Concern.</p>
-      <span class="nav-card__cta">Open navigator</span>
-    </a>
-
-    <a class="nav-card" href="/static-tools/orange-county-navigator.html">
-      <span class="nav-card__coc">CoC CA-602</span>
-      <div class="nav-card__city">Orange County</div>
-      <p class="nav-card__desc">211 OC Coordinated Entry, OC Office of Care Coordination, Family Promise, OC Rescue Mission, Mercy House, City Net.</p>
-      <span class="nav-card__cta">Open navigator</span>
-    </a>
-
-    <a class="nav-card" href="/static-tools/sacramento-navigator.html">
-      <span class="nav-card__coc">CoC CA-503</span>
-      <div class="nav-card__city">Sacramento</div>
-      <p class="nav-card__desc">Sacramento Steps Forward CAS, Wind Youth Services, Salvation Army Center of Hope, Loaves &amp; Fishes, HOPE Cooperative.</p>
-      <span class="nav-card__cta">Open navigator</span>
-    </a>
-
-    <a class="nav-card" href="/static-tools/boston-navigator.html">
-      <span class="nav-card__coc">CoC MA-500</span>
-      <div class="nav-card__city">Boston</div>
-      <p class="nav-card__desc">EA Family Right-to-Shelter, Pine Street Inn, BHCHP, NECHV veterans, Bridge Over Troubled Waters youth, Mass 211.</p>
-      <span class="nav-card__cta">Open navigator</span>
-    </a>
-
-    <a class="nav-card" href="/static-tools/washington-dc-navigator.html">
-      <span class="nav-card__coc">CoC DC-500</span>
-      <div class="nav-card__city">Washington, DC</div>
-      <p class="nav-card__desc">Hypothermia right-to-shelter, TCP Shelter Hotline, Virginia Williams Family Resource Center, Sasha Bruce, Pathways DC.</p>
-      <span class="nav-card__cta">Open navigator</span>
-    </a>
-
-    <a class="nav-card" href="/static-tools/philadelphia-navigator.html">
-      <span class="nav-card__coc">CoC PA-500</span>
-      <div class="nav-card__city">Philadelphia</div>
-      <p class="nav-card__desc">OHS Outreach Hotline 24/7, Apple Tree Family Center, Project HOME, Bethesda Project, Covenant House PA, Crescenz VA.</p>
-      <span class="nav-card__cta">Open navigator</span>
-    </a>
-
-    
-    <a class="nav-card" href="/static-tools/stockton-navigator.html">
-      <span class="nav-card__coc">CoC CA-511</span>
-      <div class="nav-card__city">Stockton / San Joaquin</div>
-      <p class="nav-card__desc">San Joaquin CoC, Family Resource & Referral Center 211, Stockton Shelter for the Homeless, Gospel Center Rescue Mission.</p>
-      <span class="nav-card__cta">Open navigator</span>
-    </a>
-
-    <a class="nav-card" href="/static-tools/honolulu-navigator.html">
-      <span class="nav-card__coc">CoC HI-501</span>
-      <div class="nav-card__city">Honolulu / Oahu</div>
-      <p class="nav-card__desc">Partners In Care CES, Institute for Human Services, RYSE, Hale Kipa, VA Pacific Islands.</p>
-      <span class="nav-card__cta">Open navigator</span>
-    </a>
-
-    <a class="nav-card" href="/static-tools/fresno-navigator.html">
-      <span class="nav-card__coc">CoC CA-514</span>
-      <div class="nav-card__city">Fresno / Madera</div>
-      <p class="nav-card__desc">FMCoC 211, Poverello House, Fresno Mission, Marjaree Mason DV crisis, Fresno EOC Sanctuary, WestCare SJVV.</p>
-      <span class="nav-card__cta">Open navigator</span>
-    </a>
-
-    <a class="nav-card" href="/static-tools/san-bernardino-navigator.html">
-      <span class="nav-card__coc">CoC CA-609</span>
-      <div class="nav-card__city">San Bernardino County</div>
-      <p class="nav-card__desc">SB County OHS, Mary's Mercy Center, Salvation Army Hospitality House, U.S.VETS Inland Empire, LightHouse SSC.</p>
-      <span class="nav-card__cta">Open navigator</span>
-    </a>
-
-    <a class="nav-card" href="/static-tools/riverside-navigator.html">
-      <span class="nav-card__coc">CoC CA-608</span>
-      <div class="nav-card__city">Riverside County</div>
-      <p class="nav-card__desc">HomeConnect CE, Path of Life Ministries, Operation SafeHouse, Coachella Valley Rescue Mission, March Veterans Village.</p>
-      <span class="nav-card__cta">Open navigator</span>
-    </a>
-
-    <a class="nav-card" href="/static-tools/long-island-navigator.html">
-      <span class="nav-card__coc">CoC NY-603</span>
-      <div class="nav-card__city">Nassau / Suffolk (Long Island)</div>
-      <p class="nav-card__desc">LICH Coordinated Entry, Nassau and Suffolk DSS shelter intake, Mercy Haven, Family Service League, Northport VA.</p>
-      <span class="nav-card__cta">Open navigator</span>
-    </a>
-
-    
-    <a class="nav-card" href="/static-tools/minneapolis-navigator.html">
-      <span class="nav-card__coc">CoC MN-500</span>
-      <div class="nav-card__city">Minneapolis / Hennepin</div>
-      <p class="nav-card__desc">Hennepin Shelter Hotline, Family Shelter Connect, MACV veterans, The Bridge for Youth, Catholic Charities Hope Street.</p>
-      <span class="nav-card__cta">Open navigator</span>
-    </a>
-
-    <a class="nav-card" href="/static-tools/miami-dade-navigator.html">
-      <span class="nav-card__coc">CoC FL-600</span>
-      <div class="nav-card__city">Miami-Dade County</div>
-      <p class="nav-card__desc">Miami-Dade Homeless Helpline (305-375-CARE), Chapman Partnership, Camillus House, Lotus House, Miami Bridge Youth.</p>
-      <span class="nav-card__cta">Open navigator</span>
-    </a>
-
-    <a class="nav-card" href="/static-tools/dallas-navigator.html">
-      <span class="nav-card__coc">CoC TX-600</span>
-      <div class="nav-card__city">Dallas</div>
-      <p class="nav-card__desc">Housing Forward Crisis Helpline, The Bridge Homeless Recovery Center, Family Gateway, Promise House, Dallas VA.</p>
-      <span class="nav-card__cta">Open navigator</span>
-    </a>
-
-    <a class="nav-card" href="/static-tools/san-antonio-navigator.html">
-      <span class="nav-card__coc">CoC TX-500</span>
-      <div class="nav-card__city">San Antonio / Bexar</div>
-      <p class="nav-card__desc">Haven for Hope, SARAH (Close to Home) Homelink CE, Roy Maas Youth Alternatives, Endeavors, Audie Murphy VA.</p>
-      <span class="nav-card__cta">Open navigator</span>
-    </a>
-
-    <a class="nav-card" href="/static-tools/long-beach-navigator.html">
-      <span class="nav-card__coc">CoC CA-606</span>
-      <div class="nav-card__city">Long Beach</div>
-      <p class="nav-card__desc">Long Beach Multi-Service Center, U.S.VETS Long Beach, LB Rescue Mission, Century Villages at Cabrillo, MHALA.</p>
-      <span class="nav-card__cta">Open navigator</span>
-    </a>
-
-    <a class="nav-card" href="/static-tools/houston-navigator.html">
-      <span class="nav-card__coc">CoC TX-700</span>
-      <div class="nav-card__city">Houston / Harris</div>
-      <p class="nav-card__desc">The Way Home / CFTH coordinated access, Star of Hope Mission, SEARCH Homeless Services, Covenant House Texas, DeBakey VA.</p>
-      <span class="nav-card__cta">Open navigator</span>
-    </a>
-
-        <a class="nav-card" href="/static-tools/maricopa-navigator.html">
-      <span class="nav-card__coc">CoC AZ-502</span>
-      <div class="nav-card__city">Maricopa County (Phoenix)</div>
-      <p class="nav-card__desc">Human Services Campus / CASS, UMOM family system, HomeBase Youth Services, VA Phoenix.</p>
-      <span class="nav-card__cta">Open navigator</span>
-    </a>
-
-    <a class="nav-card" href="/static-tools/tucson-navigator.html">
-      <span class="nav-card__coc">CoC AZ-501</span>
-      <div class="nav-card__city">Tucson / Pima County</div>
-      <p class="nav-card__desc">Tucson Pima Collaboration coordinated entry, Gospel Rescue Mission, Old Pueblo Community Services.</p>
-      <span class="nav-card__cta">Open navigator</span>
-    </a>
-
-  </div>
-
-  <div class="coming-soon" style="background:#E8F5E9;border-color:#4A9E82;">
-      <strong style="color:#2E7D32;">Coverage complete (city CoCs)</strong>
-      <div class="coming-soon-list" style="color:#2E7D32;">All city-based CoCs in the U.S. top 40 by 2024 PIT count are now live. Balance-of-state CoCs (multi-county) are deferred — see <a href="mailto:corrections.commonladder@gmail.com">our note</a>. Suggest corrections or missing providers at corrections.commonladder@gmail.com.</div>
+<section class="hero" style="padding: clamp(2.5rem,7vw,4rem) 0 clamp(3rem,7vw,4rem)">
+  <div class="container">
+    <div class="hero__inner">
+      <h1>Local resource <em>navigators.</em></h1>
+      <p>Plain-language, city-by-city guides to shelter, food, health care, ID help, and housing programs. Pick your city.</p>
     </div>
-  </section>
-
-<section class="section">
-  <div class="section-label">Other tools</div>
-  <div class="nav-grid">
-    <a class="nav-card" href="/static-tools/coc-finder.html" style="border-top-color: var(--sage);">
-      <span class="nav-card__coc">National</span>
-      <div class="nav-card__city">CoC Finder</div>
-      <p class="nav-card__desc">Find your local Continuum of Care by ZIP code — useful if your city isn't yet listed above.</p>
-      <span class="nav-card__cta">Open tool</span>
-    </a>
   </div>
 </section>
 
-<footer class="site-footer">
-  <p>© Common Ladder, 2026 · Free to use and share · <a href="mailto:corrections.commonladder@gmail.com">Suggest a correction</a></p>
+<section class="section">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">30 cities &amp; growing</span>
+      <h2>Find your community</h2>
+      <p>Each navigator is built from publicly available data, verified contacts, and feedback from local case managers. Don't see your city? <a href="/coc-finder.html">Find your CoC →</a></p>
+    </div>
+    <div class="category-grid" role="list">
+      <a href="/static-tools/maricopa-navigator.html" class="cat-tile" role="listitem"><span class="cat-tile__icon" aria-hidden="true">🌵</span><span class="cat-tile__label">Maricopa, AZ</span><span class="cat-tile__count">Phoenix metro</span></a>
+      <a href="/static-tools/tucson-navigator.html" class="cat-tile" role="listitem"><span class="cat-tile__icon" aria-hidden="true">🌵</span><span class="cat-tile__label">Tucson, AZ</span><span class="cat-tile__count">Pima County</span></a>
+      <a href="/static-tools/los-angeles-navigator.html" class="cat-tile" role="listitem"><span class="cat-tile__icon" aria-hidden="true">🌴</span><span class="cat-tile__label">Los Angeles, CA</span><span class="cat-tile__count">LA City &amp; County</span></a>
+      <a href="/static-tools/long-beach-navigator.html" class="cat-tile" role="listitem"><span class="cat-tile__icon" aria-hidden="true">🌴</span><span class="cat-tile__label">Long Beach, CA</span></a>
+      <a href="/static-tools/orange-county-navigator.html" class="cat-tile" role="listitem"><span class="cat-tile__icon" aria-hidden="true">🌴</span><span class="cat-tile__label">Orange County, CA</span></a>
+      <a href="/static-tools/san-diego-navigator.html" class="cat-tile" role="listitem"><span class="cat-tile__icon" aria-hidden="true">🌴</span><span class="cat-tile__label">San Diego, CA</span></a>
+      <a href="/static-tools/san-francisco-navigator.html" class="cat-tile" role="listitem"><span class="cat-tile__icon" aria-hidden="true">🌉</span><span class="cat-tile__label">San Francisco, CA</span></a>
+      <a href="/static-tools/oakland-navigator.html" class="cat-tile" role="listitem"><span class="cat-tile__icon" aria-hidden="true">🌉</span><span class="cat-tile__label">Oakland, CA</span><span class="cat-tile__count">Alameda County</span></a>
+      <a href="/static-tools/san-jose-navigator.html" class="cat-tile" role="listitem"><span class="cat-tile__icon" aria-hidden="true">🌉</span><span class="cat-tile__label">San Jose, CA</span><span class="cat-tile__count">Santa Clara</span></a>
+      <a href="/static-tools/sacramento-navigator.html" class="cat-tile" role="listitem"><span class="cat-tile__icon" aria-hidden="true">🌲</span><span class="cat-tile__label">Sacramento, CA</span></a>
+      <a href="/static-tools/stockton-navigator.html" class="cat-tile" role="listitem"><span class="cat-tile__icon" aria-hidden="true">🌲</span><span class="cat-tile__label">Stockton, CA</span></a>
+      <a href="/static-tools/fresno-navigator.html" class="cat-tile" role="listitem"><span class="cat-tile__icon" aria-hidden="true">🌲</span><span class="cat-tile__label">Fresno, CA</span></a>
+      <a href="/static-tools/riverside-navigator.html" class="cat-tile" role="listitem"><span class="cat-tile__icon" aria-hidden="true">☀️</span><span class="cat-tile__label">Riverside, CA</span></a>
+      <a href="/static-tools/san-bernardino-navigator.html" class="cat-tile" role="listitem"><span class="cat-tile__icon" aria-hidden="true">☀️</span><span class="cat-tile__label">San Bernardino, CA</span></a>
+      <a href="/static-tools/las-vegas-navigator.html" class="cat-tile" role="listitem"><span class="cat-tile__icon" aria-hidden="true">🎰</span><span class="cat-tile__label">Las Vegas, NV</span></a>
+      <a href="/static-tools/denver-navigator.html" class="cat-tile" role="listitem"><span class="cat-tile__icon" aria-hidden="true">⛰️</span><span class="cat-tile__label">Denver, CO</span></a>
+      <a href="/static-tools/portland-navigator.html" class="cat-tile" role="listitem"><span class="cat-tile__icon" aria-hidden="true">🌧️</span><span class="cat-tile__label">Portland, OR</span></a>
+      <a href="/static-tools/seattle-navigator.html" class="cat-tile" role="listitem"><span class="cat-tile__icon" aria-hidden="true">🌧️</span><span class="cat-tile__label">Seattle, WA</span><span class="cat-tile__count">King County</span></a>
+      <a href="/static-tools/minneapolis-navigator.html" class="cat-tile" role="listitem"><span class="cat-tile__icon" aria-hidden="true">❄️</span><span class="cat-tile__label">Minneapolis, MN</span></a>
+      <a href="/static-tools/chicago-navigator.html" class="cat-tile" role="listitem"><span class="cat-tile__icon" aria-hidden="true">🏙️</span><span class="cat-tile__label">Chicago, IL</span></a>
+      <a href="/static-tools/dallas-navigator.html" class="cat-tile" role="listitem"><span class="cat-tile__icon" aria-hidden="true">🤠</span><span class="cat-tile__label">Dallas, TX</span></a>
+      <a href="/static-tools/houston-navigator.html" class="cat-tile" role="listitem"><span class="cat-tile__icon" aria-hidden="true">🤠</span><span class="cat-tile__label">Houston, TX</span></a>
+      <a href="/static-tools/san-antonio-navigator.html" class="cat-tile" role="listitem"><span class="cat-tile__icon" aria-hidden="true">🤠</span><span class="cat-tile__label">San Antonio, TX</span></a>
+      <a href="/static-tools/miami-dade-navigator.html" class="cat-tile" role="listitem"><span class="cat-tile__icon" aria-hidden="true">🌴</span><span class="cat-tile__label">Miami-Dade, FL</span></a>
+      <a href="/static-tools/philadelphia-navigator.html" class="cat-tile" role="listitem"><span class="cat-tile__icon" aria-hidden="true">🔔</span><span class="cat-tile__label">Philadelphia, PA</span></a>
+      <a href="/static-tools/nyc-navigator.html" class="cat-tile" role="listitem"><span class="cat-tile__icon" aria-hidden="true">🗽</span><span class="cat-tile__label">New York City, NY</span></a>
+      <a href="/static-tools/long-island-navigator.html" class="cat-tile" role="listitem"><span class="cat-tile__icon" aria-hidden="true">🏖️</span><span class="cat-tile__label">Long Island, NY</span></a>
+      <a href="/static-tools/boston-navigator.html" class="cat-tile" role="listitem"><span class="cat-tile__icon" aria-hidden="true">🦞</span><span class="cat-tile__label">Boston, MA</span></a>
+      <a href="/static-tools/washington-dc-navigator.html" class="cat-tile" role="listitem"><span class="cat-tile__icon" aria-hidden="true">🏛️</span><span class="cat-tile__label">Washington, D.C.</span></a>
+      <a href="/static-tools/honolulu-navigator.html" class="cat-tile" role="listitem"><span class="cat-tile__icon" aria-hidden="true">🌺</span><span class="cat-tile__label">Honolulu, HI</span></a>
+    </div>
+  </div>
+</section>
+
+<section class="section section--alt">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">Don't see your city?</span>
+      <h2>Find your Continuum of Care</h2>
+      <p>Every county in the US is covered by a HUD-funded Continuum of Care (CoC) that coordinates homeless response. Even if Common Ladder doesn't have a navigator yet, your CoC is the right next step.</p>
+    </div>
+    <div class="text-center">
+      <a href="/coc-finder.html" class="btn btn--blue">Find your CoC by ZIP →</a>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">How navigators work</span>
+      <h2>Three things every navigator does.</h2>
+    </div>
+    <div class="cards">
+      <div class="card">
+        <div class="card__icon" aria-hidden="true">🗺️</div>
+        <h3>Maps the whole system</h3>
+        <p>Every shelter, food program, health clinic, legal aid office, and benefits navigator in one place — categorized and searchable.</p>
+      </div>
+      <div class="card card--amber">
+        <div class="card__icon" aria-hidden="true">✓</div>
+        <h3>Verified contacts</h3>
+        <p>Phone numbers, addresses, hours, eligibility, and access requirements — verified at intake and re-checked quarterly.</p>
+      </div>
+      <div class="card card--sage">
+        <div class="card__icon" aria-hidden="true">🖨️</div>
+        <h3>Printable handouts</h3>
+        <p>Every page prints cleanly so case managers can hand a paper copy to a client without internet access.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<a href="/resources.html" class="quick-help" aria-label="Find help now"><span aria-hidden="true">🚪</span> Find help now</a>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer__grid">
+      <div class="footer__brand">
+        <h3>Common Ladder</h3>
+        <p>The civic resource platform connecting people experiencing homelessness with every service in your community.</p>
+        <p style="margin-top:1rem; font-size:.8rem; opacity:.7">Built in Phoenix, AZ · Free to use, always</p>
+      </div>
+      <div>
+        <h4>Find help</h4>
+        <ul>
+          <li><a href="/resources.html">All resources</a></li>
+          <li><a href="/static-tools/">Local navigators</a></li>
+          <li><a href="/static-tools/maricopa-navigator.html">Maricopa, AZ</a></li>
+          <li><a href="/static-tools/tucson-navigator.html">Tucson, AZ</a></li>
+          <li><a href="/coc-finder.html">Find your CoC</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>For providers</h4>
+        <ul>
+          <li><a href="/nonprofits.html">Tools &amp; referrals</a></li>
+          <li><a href="/blog/case-manager-guide.html">Case manager guide</a></li>
+          <li><a href="/data-reports.html">Data &amp; reports</a></li>
+          <li><a href="/learn.html">Evidence &amp; policy</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>About</h4>
+        <ul>
+          <li><a href="/about.html">Our mission</a></li>
+          <li><a href="/about.html#methodology">Methodology</a></li>
+          <li><a href="/about.html#team">Team</a></li>
+          <li><a href="/contact.html">Contact</a></li>
+          <li><a href="/privacy.html">Privacy</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer__transparency">
+      <strong>Transparency:</strong> Common Ladder is an independent civic project. We do not sell user data, run ads, or accept payment from listed resources. Methodology, source code, and update logs are public on <a href="https://github.com/dvs-dnl/commonladder" rel="noopener">GitHub</a>.
+    </div>
+    <div class="footer__bottom">
+      <span>&copy; 2026 Common Ladder. Free to use, always.</span>
+      <span><time datetime="2026-05-22">Last updated May 22, 2026</time></span>
+    </div>
+  </div>
 </footer>
 
 </body>
