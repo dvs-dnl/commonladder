@@ -1,0 +1,957 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- Common Ladder navigator template. See NAVIGATOR_HOWTO.md for setup steps. Do NOT paste real HTML tags into this comment - it will break the document. -->
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fort Worth / Tarrant County Homelessness Resource Navigator — Common Ladder</title>
+<meta name="description" content="Find shelter, food, health care, and housing programs in Fort Worth, Arlington, and Tarrant County. Free, no signup.">
+<link rel="canonical" href="https://www.commonladder.org/static-tools/fort-worth-navigator.html">
+<style>
+  /* ── Reset & Base ── */
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    /* Navigator palette — slightly different from main site for tool readability */
+    --bg:        #FAF7F2;
+    --primary:   #1A5276;
+    --accent:    #2E86AB;
+    --text:      #1C2B33;
+    --green:     #27AE60;
+    --green-dark:#1E8449;
+    --muted:     #6B7C85;
+    --border:    #D5D0C8;
+    --card-bg:   #FFFFFF;
+    --shadow:    0 2px 12px rgba(26,82,118,0.10);
+
+    /* Common Ladder brand — used for home badge only */
+    --cl-blue:   #1C3D6E;
+    --cl-amber:  #E8911A;
+  }
+
+  html { font-size: 18px; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    line-height: 1.6;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  /* ── Layout shell ── */
+  #app {
+    width: 100%;
+    max-width: 640px;
+    padding: 24px 20px 60px;
+    flex: 1;
+  }
+
+  /* ── County badge (top of app, always visible) ── */
+  .county-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: var(--primary);
+    color: #fff;
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    padding: 4px 10px;
+    border-radius: 100px;
+    margin-bottom: 28px;
+  }
+  .county-badge svg { flex-shrink: 0; }
+
+  /* ── Question card ── */
+  .card {
+    background: var(--card-bg);
+    border-radius: 16px;
+    padding: 32px 28px;
+    box-shadow: var(--shadow);
+    margin-bottom: 16px;
+  }
+
+  .q-label {
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 14px;
+  }
+
+  .q-text {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--primary);
+    line-height: 1.35;
+    margin-bottom: 8px;
+  }
+
+  .q-sub {
+    font-size: 0.88rem;
+    color: var(--muted);
+    margin-bottom: 28px;
+  }
+
+  /* ── Buttons ── */
+  .btn-row {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+
+  .btn {
+    flex: 1;
+    min-width: 120px;
+    padding: 14px 20px;
+    border: none;
+    border-radius: 10px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.15s, transform 0.1s;
+  }
+  .btn:active { transform: scale(0.98); }
+
+  .btn-yes  { background: var(--primary); color: #fff; }
+  .btn-yes:hover  { background: #154360; }
+  .btn-no   { background: #EBF5FB; color: var(--primary); }
+  .btn-no:hover   { background: #D6EAF8; }
+
+  .btn-primary {
+    display: inline-block;
+    background: var(--green);
+    color: #fff;
+    padding: 16px 28px;
+    border-radius: 10px;
+    font-size: 1.05rem;
+    font-weight: 700;
+    text-decoration: none;
+    text-align: center;
+    margin-top: 8px;
+    transition: background 0.15s;
+  }
+  .btn-primary:hover { background: var(--green-dark); }
+
+  .btn-restart {
+    background: none;
+    border: 1.5px solid var(--border);
+    color: var(--muted);
+    font-size: 0.85rem;
+    padding: 8px 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    margin-top: 12px;
+    transition: border-color 0.15s;
+  }
+  .btn-restart:hover { border-color: var(--primary); color: var(--primary); }
+
+  /* ── Progress bar ── */
+  .progress-wrap {
+    margin-bottom: 20px;
+  }
+  .progress-bar {
+    height: 4px;
+    background: var(--border);
+    border-radius: 2px;
+    overflow: hidden;
+  }
+  .progress-fill {
+    height: 100%;
+    background: var(--accent);
+    border-radius: 2px;
+    transition: width 0.35s ease;
+  }
+  .progress-label {
+    font-size: 0.72rem;
+    color: var(--muted);
+    margin-top: 5px;
+  }
+
+  /* ── Result card ── */
+  .result-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 4px 12px;
+    border-radius: 100px;
+    font-size: 0.78rem;
+    font-weight: 700;
+    margin-bottom: 18px;
+  }
+  .badge-veterans { background: #D5E8D4; color: #27AE60; }
+  .badge-youth    { background: #D5E8D4; color: #27AE60; }
+  .badge-families { background: #DAE8FC; color: #1A5276; }
+  .badge-chronic  { background: #FFF2CC; color: #856404; }
+  .badge-adult    { background: #E8DAEF; color: #6C3483; }
+
+  .result-headline {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--primary);
+    line-height: 1.35;
+    margin-bottom: 20px;
+  }
+
+  .first-action {
+    background: #EBF5FB;
+    border-left: 4px solid var(--accent);
+    border-radius: 0 10px 10px 0;
+    padding: 16px 18px;
+    font-size: 0.95rem;
+    margin-bottom: 20px;
+  }
+
+  .section-head {
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin: 22px 0 10px;
+  }
+
+  .what-to-expect {
+    font-size: 0.93rem;
+    color: var(--text);
+    line-height: 1.6;
+    margin-bottom: 4px;
+  }
+
+  /* ── Bring list ── */
+  .bring-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  .bring-list li {
+    display: flex;
+    gap: 8px;
+    font-size: 0.9rem;
+    padding: 5px 0;
+    border-bottom: 1px solid var(--border);
+    color: var(--text);
+  }
+  .bring-list li:last-child { border-bottom: none; }
+  .bring-list li::before { content: "✓"; color: var(--green); font-weight: 700; flex-shrink: 0; }
+
+  /* ── Resource cards ── */
+  .resource-card {
+    border: 1.5px solid var(--border);
+    border-radius: 10px;
+    padding: 14px 16px;
+    margin-bottom: 10px;
+  }
+  .resource-card__name {
+    font-weight: 700;
+    font-size: 0.95rem;
+    color: var(--primary);
+    margin-bottom: 2px;
+  }
+  .resource-card__phone {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--green-dark);
+    text-decoration: none;
+    display: inline-block;
+    margin-bottom: 3px;
+  }
+  .resource-card__note {
+    font-size: 0.82rem;
+    color: var(--muted);
+  }
+
+  /* ── Extra note ── */
+  .extra-note {
+    background: #FFFDE7;
+    border: 1px solid #FDD835;
+    border-radius: 8px;
+    padding: 12px 14px;
+    font-size: 0.88rem;
+    color: #5D4037;
+    margin-top: 16px;
+  }
+
+  /* ── Confidence badge ── */
+  .conf-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    padding: 3px 10px;
+    border-radius: 100px;
+    margin-top: 20px;
+    cursor: help;
+    position: relative;
+  }
+  .conf-verified   { background: #D5E8D4; color: #27AE60; }
+  .conf-research   { background: #DAE8FC; color: #1A5276; }
+  .conf-unverified { background: #FFE6CC; color: #D6760C; }
+  .conf-tooltip {
+    display: none;
+    position: absolute;
+    bottom: calc(100% + 8px);
+    left: 50%;
+    transform: translateX(-50%);
+    background: #1C2B33;
+    color: #fff;
+    font-size: 0.75rem;
+    font-weight: 400;
+    line-height: 1.5;
+    padding: 10px 14px;
+    border-radius: 8px;
+    width: 260px;
+    z-index: 10;
+    pointer-events: none;
+  }
+  .conf-tooltip::after {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    border: 6px solid transparent;
+    border-top-color: #1C2B33;
+  }
+  .conf-badge:hover .conf-tooltip,
+  .conf-badge.open  .conf-tooltip { display: block; }
+
+  /* ── Welcome screen ── */
+  .welcome-title {
+    font-size: 1.6rem;
+    font-weight: 800;
+    color: var(--primary);
+    line-height: 1.25;
+    margin-bottom: 12px;
+  }
+  .welcome-sub {
+    font-size: 1rem;
+    color: var(--muted);
+    margin-bottom: 28px;
+  }
+  .welcome-start {
+    background: var(--primary);
+    color: #fff;
+    border: none;
+    border-radius: 12px;
+    padding: 18px 32px;
+    font-size: 1.05rem;
+    font-weight: 700;
+    cursor: pointer;
+    width: 100%;
+    transition: background 0.15s;
+  }
+  .welcome-start:hover { background: #154360; }
+
+  /* ── Footer ── */
+  footer {
+    text-align: center;
+    padding: 20px 20px 32px;
+    font-size: 0.8rem;
+    color: var(--muted);
+    line-height: 1.8;
+    max-width: 640px;
+    width: 100%;
+  }
+  footer a { color: var(--muted); }
+  footer a:hover { color: var(--primary); }
+  .footer-divider { margin: 0 8px; opacity: 0.5; }
+
+  /* ── Common Ladder home badge (fixed top-right) ── */
+  .cl-home {
+    position: fixed;
+    top: 14px;
+    right: 16px;
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    background: var(--cl-blue);
+    color: #fff;
+    text-decoration: none;
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.01em;
+    padding: 7px 13px 7px 9px;
+    border-radius: 100px;
+    box-shadow: 0 2px 10px rgba(28,61,110,0.25);
+    z-index: 999;
+    transition: background 0.15s;
+  }
+  .cl-home:hover { background: #163260; }
+  .cl-home__rung { color: var(--cl-amber); }
+
+  /* ── Print styles ── */
+  @media print {
+    .btn-restart, .progress-wrap, footer .share-note { display: none; }
+    .cl-home { display: none; }
+  }
+
+  /* ── Mobile ── */
+  @media (max-width: 480px) {
+    html { font-size: 16px; }
+    .card { padding: 24px 18px; }
+    .cl-home span { display: none; } /* icon only on small screens */
+    .cl-home { padding: 8px 10px; }
+    .conf-tooltip { width: 200px; left: 0; transform: none; }
+    .conf-tooltip::after { left: 24px; transform: none; }
+  }
+</style>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+
+<a href="#main" class="skip-link">Skip to main content</a>
+
+<div class="crisis-bar" role="region" aria-label="Crisis help">
+  <strong>Need help right now?</strong>
+  <a href="tel:211">Call 211</a><span class="crisis-bar__sep">·</span>
+  <a href="sms:741741?body=HOME">Text HOME to 741741</a><span class="crisis-bar__sep">·</span>
+  <a href="tel:988">988 Suicide &amp; Crisis</a>
+</div>
+
+<nav class="nav" aria-label="Primary">
+  <div class="nav__inner">
+    <a href="/" class="nav__logo" aria-label="Common Ladder home">
+      <svg width="28" height="28" viewBox="0 0 28 28" fill="none" aria-hidden="true">
+        <rect x="4" y="2" width="3" height="24" rx="1.5" fill="white" opacity=".9"/>
+        <rect x="21" y="2" width="3" height="24" rx="1.5" fill="white" opacity=".9"/>
+        <rect x="4" y="7" width="20" height="3" rx="1.5" fill="#E8911A"/>
+        <rect x="4" y="14" width="20" height="3" rx="1.5" fill="#E8911A"/>
+        <rect x="4" y="21" width="20" height="3" rx="1.5" fill="#E8911A"/>
+      </svg>
+      common<span>ladder</span>
+    </a>
+    <button class="nav__toggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="primary-nav" onclick="this.setAttribute('aria-expanded', document.getElementById('primary-nav').classList.toggle('open') ? 'true' : 'false')">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav__links" id="primary-nav">
+      <li><a href="/resources.html">Find help</a></li>
+      <li><a href="/static-tools/">Resources</a></li>
+      <li><a href="/nonprofits.html">For providers</a></li>
+      <li><a href="/learn.html">Evidence &amp; policy</a></li>
+      <li><a href="/about.html">About</a></li>
+      <li><a href="/resources.html" class="nav__cta">Find help now</a></li>
+      <li><a href="https://www.weather.gov/" rel="noreferrer" class="nav__exit" onclick="event.preventDefault();window.location.replace('https://www.weather.gov/')">Leave page</a></li>
+    </ul>
+  </div>
+</nav>
+
+
+
+
+
+<!-- Common Ladder home badge — always present, fixed top-right -->
+<a href="https://www.commonladder.org" class="cl-home" aria-label="Return to Common Ladder home">
+  <svg width="18" height="18" viewBox="0 0 28 28" fill="none" aria-hidden="true">
+    <rect x="4" y="2" width="3" height="24" rx="1.5" fill="white" opacity=".9"/>
+    <rect x="21" y="2" width="3" height="24" rx="1.5" fill="white" opacity=".9"/>
+    <rect x="4" y="7" width="20" height="3" rx="1.5" fill="#E8911A"/>
+    <rect x="4" y="14" width="20" height="3" rx="1.5" fill="#E8911A"/>
+    <rect x="4" y="21" width="20" height="3" rx="1.5" fill="#E8911A"/>
+  </svg>
+  <span>common<span class="cl-home__rung">ladder</span></span>
+</a>
+
+<!-- App shell — all screens rendered by JS into here -->
+<div id="app"></div>
+
+<!-- Footer — update CoC ID and location text -->
+<a href="/resources.html" class="quick-help" aria-label="Find help now"><span aria-hidden="true">🚪</span> Find help now</a>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer__grid">
+      <div class="footer__brand">
+        <h3>Common Ladder</h3>
+        <p>The civic resource platform connecting people experiencing homelessness with every service in your community.</p>
+        <p style="margin-top:1rem; font-size:.8rem; opacity:.7">Built in Phoenix, AZ · Free to use, always</p>
+      </div>
+      <div>
+        <h4>Find help</h4>
+        <ul>
+          <li><a href="/resources.html">All resources</a></li>
+          <li><a href="/static-tools/">Local navigators</a></li>
+          <li><a href="/static-tools/maricopa-navigator.html">Maricopa, AZ</a></li>
+          <li><a href="/static-tools/tucson-navigator.html">Tucson, AZ</a></li>
+          <li><a href="/coc-finder.html">Find your CoC</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>For providers</h4>
+        <ul>
+          <li><a href="/nonprofits.html">Tools &amp; referrals</a></li>
+          <li><a href="/blog/case-manager-guide.html">Case manager guide</a></li>
+          <li><a href="/data-reports.html">Data &amp; reports</a></li>
+          <li><a href="/learn.html">Evidence &amp; policy</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>About</h4>
+        <ul>
+          <li><a href="/about.html">Our mission</a></li>
+          <li><a href="/about.html#methodology">Methodology</a></li>
+          <li><a href="/about.html#team">Team</a></li>
+          <li><a href="/contact.html">Contact</a></li>
+          <li><a href="/privacy.html">Privacy</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer__transparency">
+      <strong>Transparency:</strong> Common Ladder is an independent civic project. We do not sell user data, run ads, or accept payment from listed resources. Methodology, source code, and update logs are public on <a href="https://github.com/dvs-dnl/commonladder" rel="noopener">GitHub</a>.
+    </div>
+    <div class="footer__bottom">
+      <span>&copy; 2026 Common Ladder. Free to use, always.</span>
+      <span><time datetime="2026-05-22">Last updated May 22, 2026</time></span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  /* ═══════════════════════════════════════════════════════════
+     STATE
+  ═══════════════════════════════════════════════════════════ */
+  var state = {
+    step: 'welcome',   // welcome | q1 | q2 | q3 | q4 | result_*
+    pathway: null
+  };
+
+  /* ═══════════════════════════════════════════════════════════
+     QUESTIONS
+     Standard across all navigators — do not change the flow.
+     Only change label text if local terminology differs.
+  ═══════════════════════════════════════════════════════════ */
+  var QUESTIONS = [
+    {
+      id: 'q1',
+      text: 'Are you a U.S. military veteran?',
+      sub: 'This includes any branch of the armed forces.',
+      next_yes: 'result_veterans',
+      next_no: 'q2'
+    },
+    {
+      id: 'q2',
+      text: 'Are you 24 years old or younger?',
+      sub: 'Youth-specific programs are available for people 24 and under.',
+      yes_label: 'Yes, 24 or younger',
+      no_label: 'No, 25 or older',
+      next_yes: 'result_youth',
+      next_no: 'q3'
+    },
+    {
+      id: 'q3',
+      text: 'Do you have children with you right now?',
+      sub: 'This includes any minors in your care.',
+      next_yes: 'result_families',
+      next_no: 'q4'
+    },
+    {
+      id: 'q4',
+      text: 'Have you been without stable housing for more than a year — or off and on for years — AND do you have a health condition that makes it harder to work or take care of yourself?',
+      sub: 'This includes physical conditions, mental health conditions, or substance use.',
+      next_yes: 'result_chronic',
+      next_no: 'result_adult'
+    }
+  ];
+
+  var Q_INDEX = { q1: 0, q2: 1, q3: 2, q4: 3 };
+
+  /* ═══════════════════════════════════════════════════════════
+     CONFIDENCE TIERS
+     Apply to every pathway. Be honest about what's verified.
+     level: 'verified' | 'research' | 'unverified'
+  ═══════════════════════════════════════════════════════════ */
+  var CONFIDENCE_META = {
+    verified: {
+      icon: '✓',
+      label: 'Verified',
+      cssClass: 'conf-verified',
+      tooltip: 'Confirmed directly with the CoC or provider. Phone numbers and intake processes have been tested.'
+    },
+    research: {
+      icon: '◐',
+      label: 'Research-based',
+      cssClass: 'conf-research',
+      tooltip: 'Gathered from official agency websites and public records. Likely accurate but may have changed — call ahead to confirm.'
+    },
+    unverified: {
+      icon: '?',
+      label: 'Unverified',
+      cssClass: 'conf-unverified',
+      tooltip: 'Based on general knowledge. Not checked against primary sources. Call ahead before relying on this information.'
+    }
+  };
+
+  /* ═══════════════════════════════════════════════════════════
+     PATHWAY DATA
+     Fill in all [REPLACE] markers below.
+     Each pathway needs: firstAction + callNumber + resources.
+     Keep firstAction to one clear sentence + phone number.
+     resources: 3 is ideal; 2 minimum; 4 maximum.
+  ═══════════════════════════════════════════════════════════ */
+  var PATHWAYS = {
+
+    result_veterans: {
+      label: "Veterans Pathway",
+      badgeClass: "badge-veterans",
+      badgeIcon: "\ud83c\udf96",
+      headline: "There's a dedicated system built for you.",
+      firstAction: "Call <strong>Catholic Charities Fort Worth Veteran Services (SSVF)</strong> at <strong>(817) 413-3921</strong> \u2014 rental assistance and case management for honorably discharged veterans facing eviction/homelessness. Or call <strong>VA Fort Worth Clinic</strong> at <strong>(817) 730-0000</strong>.",
+      callNumber: "tel:8174133921",
+      callLabel: "Call CCFW Vet Services: (817) 413-3921",
+      what_to_expect: "VA North Texas Fort Worth VA Clinic at 2201 SE Loop 820 has a Homeless Veterans Program. Catholic Charities Fort Worth at 249 W. Thornhill runs SSVF veteran rental assistance. Liberty House Inc. (operated by MHMR of Tarrant County) is a Safe Haven for homeless veterans with PTSD and/or substance use.",
+      bring: [
+        "DD-214 discharge papers (if you have them \u2014 not required to call)",
+        "Photo ID (if available)",
+        "Any VA documentation you have",
+      ],
+      resources: [
+        {
+          name: "Liberty House Inc. (MHMR Tarrant)",
+          phone: "(817) 569-4300",
+          tel: "tel:8175694300",
+          note: "Safe Haven for homeless veterans with PTSD/SUD."
+        },
+        {
+          name: "VA Fort Worth Clinic",
+          phone: "1-800-443-9672",
+          tel: "tel:18004439672",
+          note: "Toll-free. 2201 SE Loop 820. Homeless veteran program."
+        },
+        {
+          name: "National Call Center for Homeless Veterans",
+          phone: "1-877-424-3838",
+          tel: "tel:18774243838",
+          note: "24/7."
+        },
+      ],
+      confidence: {
+        level: "research",
+        note: "Numbers from partnershiphome.org, va.gov/north-texas-health-care, texvet.org. Last reviewed May 2026.",
+        lastChecked: "May 2026"
+      }
+    },
+
+    result_youth: {
+      label: "Youth Pathway",
+      badgeClass: "badge-youth",
+      badgeIcon: "\ud83c\udf31",
+      headline: "ACH Pat O'Neal Youth Emergency Shelter is the only 24-hour youth shelter in Tarrant County.",
+      firstAction: "Call <strong>ACH Child and Family Services</strong> at <strong>(817) 335-4673</strong> (817-335-HOPE) \u2014 24/7 line. Pat O'Neal Youth Emergency Shelter at 3712 Wichita St, Fort Worth \u2014 only 24-hour emergency shelter in Tarrant County for runaway/homeless/trafficked youth ages 5\u201317.",
+      callNumber: "tel:8173354673",
+      callLabel: "Call ACH: 1-817-335-HOPE",
+      what_to_expect: "ACH Child and Family Services runs the only 24-hour youth shelter in Tarrant County. Lena Pope provides children/youth counseling, substance use services, and early learning at 3200 Sanguinet St (referral partner, not shelter). For transition-age youth (18\u201324), Samaritan House Youth Rapid Rehousing at (817) 907-1390 is the local pathway.",
+      bring: [
+        "Photo ID (helpful \u2014 not required for crisis services)",
+        "Anything important you can carry",
+        "Nothing required for the 24-hour line",
+      ],
+      resources: [
+        {
+          name: "Lena Pope",
+          phone: "(817) 255-2500",
+          tel: "tel:8172552500",
+          note: "3200 Sanguinet St. Counseling, SUD, early learning, family support."
+        },
+        {
+          name: "Samaritan House Youth Program",
+          phone: "(817) 907-1390",
+          tel: "tel:8179071390",
+          note: "Youth Rapid Rehousing for transition-age youth."
+        },
+        {
+          name: "211 Texas",
+          phone: "211",
+          tel: "tel:211",
+          note: "Or 1-877-541-7905. 24/7."
+        },
+      ],
+      extra_note: "\u26a0\ufe0f Under 18? ACH's 24-hour HOPE line is for you.",
+      confidence: {
+        level: "research",
+        note: "Numbers from achservices.org, lenapope.org, samaritanhouse.org. Last reviewed May 2026.",
+        lastChecked: "May 2026"
+      }
+    },
+
+    result_families: {
+      label: "Families Pathway",
+      badgeClass: "badge-families",
+      badgeIcon: "\ud83c\udfe0",
+      headline: "Center for Transforming Lives and Salvation Army Mabee serve families.",
+      firstAction: "Call <strong>Center for Transforming Lives</strong> at <strong>(817) 332-6191</strong> \u2014 permanent and transitional housing for single mothers and children, financial coaching, child care, clinical/trauma services. Or call <strong>Salvation Army Mabee Center Fort Worth</strong> at <strong>(817) 344-1800</strong>, 1855 E. Lancaster Ave.",
+      callNumber: "tel:8173326191",
+      callLabel: "Call CTL: (817) 332-6191",
+      what_to_expect: "Center for Transforming Lives serves single mothers and children. Salvation Army Mabee Center is family/individual emergency shelter at 1855 E. Lancaster. Catholic Charities Fort Worth at 249 W. Thornhill provides diocese-wide case management, financial coaching, immigration/refugee services, and pregnancy/parenting support.",
+      bring: [
+        "Photo ID for adults (if available)",
+        "Birth certificates for children (helpful but not always required)",
+        "Documentation of income or benefits (if available)",
+        "Social security cards (if you have them)",
+      ],
+      resources: [
+        {
+          name: "Salvation Army Mabee Center",
+          phone: "(817) 344-1800",
+          tel: "tel:8173441800",
+          note: "1855 E. Lancaster Ave. Family/individual emergency shelter."
+        },
+        {
+          name: "Catholic Charities Fort Worth (main)",
+          phone: "(817) 534-0814",
+          tel: "tel:8175340814",
+          note: "Case management, financial coaching, immigration/refugee, parenting."
+        },
+        {
+          name: "211 Texas",
+          phone: "211",
+          tel: "tel:211",
+          note: "Or 1-877-541-7905. 24/7."
+        },
+      ],
+      confidence: {
+        level: "research",
+        note: "Numbers from transforminglives.org, salvationarmyusa.org, catholiccharitiesfortworth.org. Last reviewed May 2026.",
+        lastChecked: "May 2026"
+      }
+    },
+
+    result_chronic: {
+      label: "Chronic Homelessness Pathway",
+      badgeClass: "badge-chronic",
+      badgeIcon: "\ud83d\udd11",
+      headline: "Partnership Home (TCHC) Coordinated Entry is the chronic pathway.",
+      firstAction: "Call the <strong>Partnership Home (TCHC) Homeless Helpline</strong> at <strong>(817) 996-8800</strong> (call or text) \u2014 M\u2013Th 8am\u20134pm, F 8am\u20132pm. Lead agency for TX-601 Coordinated Entry and HMIS administrator.",
+      callNumber: "tel:8179968800",
+      callLabel: "Call Partnership Home: (817) 996-8800",
+      what_to_expect: "Tarrant County Homeless Coalition (TCHC) operates as Partnership Home. Presbyterian Night Shelter is the largest shelter in Tarrant County (men, women, women with children) at (817) 632-7400 \u2014 women/children prescreening: (817) 632-7429. Union Gospel Mission Tarrant runs emergency shelter, family program, and recovery from the Welcome Center.",
+      bring: [
+        "Photo ID (any form)",
+        "Documentation of health conditions (if available \u2014 not required to be assessed)",
+        "Any records of prior housing or service history",
+      ],
+      resources: [
+        {
+          name: "Presbyterian Night Shelter",
+          phone: "(817) 632-7400",
+          tel: "tel:8176327400",
+          note: "Largest shelter in Tarrant County. Women/children prescreen: 817-632-7429."
+        },
+        {
+          name: "Union Gospel Mission of Tarrant County",
+          phone: "(817) 338-1187",
+          tel: "tel:8173381187",
+          note: "Welcome Center / main. Shelter, family, recovery."
+        },
+        {
+          name: "Partnership Home (admin)",
+          phone: "(817) 509-3635",
+          tel: "tel:8175093635",
+          note: "Office line."
+        },
+      ],
+      extra_note: "\ud83d\udccb Qualifying conditions include physical, mental health, or substance use disorders that substantially affect daily functioning. You don't need a formal diagnosis to be assessed.",
+      confidence: {
+        level: "research",
+        note: "Numbers from partnershiphome.org, journeyhome.org, ugm-tc.org. Last reviewed May 2026.",
+        lastChecked: "May 2026"
+      }
+    },
+
+    result_adult: {
+      label: "Single Adults Pathway",
+      badgeClass: "badge-adult",
+      badgeIcon: "\ud83d\udcde",
+      headline: "Presbyterian Night Shelter is the largest single-adult shelter in Tarrant County.",
+      firstAction: "Call <strong>Presbyterian Night Shelter</strong> at <strong>(817) 632-7400</strong> \u2014 largest single-adult shelter in Tarrant County serving men and women.",
+      callNumber: "tel:8176327400",
+      callLabel: "Call Presbyterian: (817) 632-7400",
+      what_to_expect: "Presbyterian Night Shelter is the largest shelter in Tarrant County. Union Gospel Mission of Tarrant County operates a Welcome Center for intake at (817) 338-1187. Salvation Army Mabee Center at 1855 E. Lancaster provides adult shelter, social services, and case management.",
+      bring: [
+        "Photo ID (helpful but not always required)",
+        "Social security card or number (if available)",
+        "Any documentation of income or benefits",
+      ],
+      resources: [
+        {
+          name: "Union Gospel Mission of Tarrant County",
+          phone: "(817) 338-1187",
+          tel: "tel:8173381187",
+          note: "Welcome Center / intake."
+        },
+        {
+          name: "Salvation Army Mabee Center",
+          phone: "(817) 344-1800",
+          tel: "tel:8173441800",
+          note: "1855 E. Lancaster. Adult shelter, social services."
+        },
+        {
+          name: "211 Texas",
+          phone: "211",
+          tel: "tel:211",
+          note: "Or 1-877-541-7905. 24/7."
+        },
+      ],
+      confidence: {
+        level: "research",
+        note: "Numbers from journeyhome.org, ugm-tc.org, salvationarmyusa.org. Last reviewed May 2026.",
+        lastChecked: "May 2026"
+      }
+    }
+
+  }; // end PATHWAYS
+
+  /* ═══════════════════════════════════════════════════════════
+     RENDER ENGINE — do not modify below this line
+     unless fixing a structural bug.
+  ═══════════════════════════════════════════════════════════ */
+  function render() {
+    var app = document.getElementById('app');
+    var html = '';
+
+    // County badge always shown at top
+    html += '<div class="county-badge">';
+    html += '<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>';
+    // [REPLACE: Update county/CoC name and ID in the text below]
+    html += 'Tarrant County, TX &mdash; TX-601</div>';
+
+    if (state.step === 'welcome') {
+      html += renderWelcome();
+    } else if (state.step.startsWith('result_')) {
+      html += renderResult(state.step);
+    } else {
+      html += renderQuestion(state.step);
+    }
+
+    app.innerHTML = html;
+  }
+
+  function renderWelcome() {
+    return '<div class="card">' +
+      '<div class="welcome-title">Find the right help.<br>Answer 4 quick questions.</div>' +
+      '<div class="welcome-sub">We\'ll match you to the services and programs most likely to help — based on your situation, not a generic list.</div>' +
+      '<button class="welcome-start" onclick="goTo(\'q1\')">Get started &rarr;</button>' +
+      '</div>' +
+      '<div style="font-size:0.8rem; color:var(--muted); text-align:center; margin-top:12px;">No personal information collected. Free to use.</div>';
+  }
+
+  function renderQuestion(qid) {
+    var q = QUESTIONS[Q_INDEX[qid]];
+    var stepNum = Q_INDEX[qid] + 1;
+    var pct = Math.round((stepNum / QUESTIONS.length) * 100);
+    var html = '';
+
+    html += '<div class="progress-wrap">' +
+      '<div class="progress-bar"><div class="progress-fill" style="width:' + pct + '%"></div></div>' +
+      '<div class="progress-label">Question ' + stepNum + ' of ' + QUESTIONS.length + '</div>' +
+      '</div>';
+
+    html += '<div class="card">' +
+      '<div class="q-label">Question ' + stepNum + '</div>' +
+      '<div class="q-text">' + q.text + '</div>' +
+      '<div class="q-sub">' + q.sub + '</div>' +
+      '<div class="btn-row">' +
+      '<button class="btn btn-yes" onclick="answer(true)">' + (q.yes_label || 'Yes') + '</button>' +
+      '<button class="btn btn-no"  onclick="answer(false)">' + (q.no_label  || 'No')  + '</button>' +
+      '</div>' +
+      '</div>';
+
+    if (Q_INDEX[qid] > 0) {
+      html += '<button class="btn-restart" onclick="history.back()">← Back</button>';
+    }
+
+    return html;
+  }
+
+  function renderConfidenceBadge(conf) {
+    var meta = CONFIDENCE_META[conf.level];
+    return '<span class="conf-badge ' + meta.cssClass + '" onclick="this.classList.toggle(\'open\')" tabindex="0" role="button" aria-label="Information confidence: ' + meta.label + '">' +
+      meta.icon + ' ' + meta.label +
+      ' &mdash; Last checked: ' + conf.lastChecked +
+      '<span class="conf-tooltip">' + meta.tooltip + (conf.note ? '<br><br>' + conf.note : '') + '</span>' +
+      '</span>';
+  }
+
+  function renderResult(rid) {
+    var p = PATHWAYS[rid];
+    var html = '';
+
+    html += '<div class="card">';
+    html += '<span class="result-badge ' + p.badgeClass + '">' + p.badgeIcon + ' ' + p.label + '</span>';
+    html += '<div class="result-headline">' + p.headline + '</div>';
+
+    // First action block
+    html += '<div class="first-action">' + p.firstAction + '</div>';
+    html += '<a href="' + p.callNumber + '" class="btn-primary">' + p.callLabel + '</a>';
+
+    // What to expect
+    html += '<div class="section-head">What to expect</div>';
+    html += '<div class="what-to-expect">' + p.what_to_expect + '</div>';
+
+    // What to bring
+    html += '<div class="section-head">What to bring</div>';
+    html += '<ul class="bring-list">';
+    p.bring.forEach(function(item) { html += '<li>' + item + '</li>'; });
+    html += '</ul>';
+
+    // Additional resources
+    html += '<div class="section-head">Additional resources</div>';
+    p.resources.forEach(function(r) {
+      html += '<div class="resource-card">';
+      html += '<div class="resource-card__name">' + r.name + '</div>';
+      html += '<a href="' + r.tel + '" class="resource-card__phone">' + r.phone + '</a>';
+      if (r.note) html += '<div class="resource-card__note">' + r.note + '</div>';
+      html += '</div>';
+    });
+
+    // Extra note (optional)
+    if (p.extra_note) {
+      html += '<div class="extra-note">' + p.extra_note + '</div>';
+    }
+
+    // Confidence badge
+    html += renderConfidenceBadge(p.confidence);
+
+    html += '</div>'; // end card
+
+    // Restart
+    html += '<button class="btn-restart" onclick="goTo(\'welcome\')">← Start over</button>';
+
+    return html;
+  }
+
+  function goTo(step) {
+    state.step = step;
+    render();
+    window.scrollTo(0, 0);
+  }
+
+  function answer(isYes) {
+    var q = QUESTIONS[Q_INDEX[state.step]];
+    var next = isYes ? q.next_yes : q.next_no;
+    if (next.startsWith('result_')) {
+      state.pathway = next;
+    }
+    goTo(next);
+  }
+
+  // Tooltip close on outside click
+  document.addEventListener('click', function(e) {
+    if (!e.target.closest('.conf-badge')) {
+      document.querySelectorAll('.conf-badge.open').forEach(function(el) {
+        el.classList.remove('open');
+      });
+    }
+  });
+
+  // Initial render
+  render();
+</script>
+</body>
+</html>
