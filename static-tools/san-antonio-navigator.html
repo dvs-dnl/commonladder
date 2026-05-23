@@ -1,0 +1,881 @@
+<!DOCTYPE html>
+<html lang="en">
+<!--
+  ╔══════════════════════════════════════════════════════════════╗
+  ║   COMMON LADDER — NAVIGATOR TEMPLATE                        ║
+  ║   Copy this file to create a new city/county navigator.     ║
+  ║   Search for [REPLACE] to find every placeholder.           ║
+  ║   File naming: [city-or-county]-navigator.html              ║
+  ╚══════════════════════════════════════════════════════════════╝
+
+  REQUIRED STEPS FOR EACH NEW NAVIGATOR:
+  1. Update <title>San Antonio / Bexar County Homelessness Resource Navigator — Common Ladder</title>
+<meta name="description" content="Find shelter, food, health care, and housing programs in San Antonio and Bexar County. Free, no signup.">
+<link rel="canonical" href="https://www.commonladder.org/static-tools/san-antonio-navigator.html">
+<style>
+  /* ── Reset & Base ── */
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    /* Navigator palette — slightly different from main site for tool readability */
+    --bg:        #FAF7F2;
+    --primary:   #1A5276;
+    --accent:    #2E86AB;
+    --text:      #1C2B33;
+    --green:     #27AE60;
+    --green-dark:#1E8449;
+    --muted:     #6B7C85;
+    --border:    #D5D0C8;
+    --card-bg:   #FFFFFF;
+    --shadow:    0 2px 12px rgba(26,82,118,0.10);
+
+    /* Common Ladder brand — used for home badge only */
+    --cl-blue:   #1C3D6E;
+    --cl-amber:  #E8911A;
+  }
+
+  html { font-size: 18px; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    line-height: 1.6;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  /* ── Layout shell ── */
+  #app {
+    width: 100%;
+    max-width: 640px;
+    padding: 24px 20px 60px;
+    flex: 1;
+  }
+
+  /* ── County badge (top of app, always visible) ── */
+  .county-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: var(--primary);
+    color: #fff;
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    padding: 4px 10px;
+    border-radius: 100px;
+    margin-bottom: 28px;
+  }
+  .county-badge svg { flex-shrink: 0; }
+
+  /* ── Question card ── */
+  .card {
+    background: var(--card-bg);
+    border-radius: 16px;
+    padding: 32px 28px;
+    box-shadow: var(--shadow);
+    margin-bottom: 16px;
+  }
+
+  .q-label {
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 14px;
+  }
+
+  .q-text {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--primary);
+    line-height: 1.35;
+    margin-bottom: 8px;
+  }
+
+  .q-sub {
+    font-size: 0.88rem;
+    color: var(--muted);
+    margin-bottom: 28px;
+  }
+
+  /* ── Buttons ── */
+  .btn-row {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+
+  .btn {
+    flex: 1;
+    min-width: 120px;
+    padding: 14px 20px;
+    border: none;
+    border-radius: 10px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.15s, transform 0.1s;
+  }
+  .btn:active { transform: scale(0.98); }
+
+  .btn-yes  { background: var(--primary); color: #fff; }
+  .btn-yes:hover  { background: #154360; }
+  .btn-no   { background: #EBF5FB; color: var(--primary); }
+  .btn-no:hover   { background: #D6EAF8; }
+
+  .btn-primary {
+    display: inline-block;
+    background: var(--green);
+    color: #fff;
+    padding: 16px 28px;
+    border-radius: 10px;
+    font-size: 1.05rem;
+    font-weight: 700;
+    text-decoration: none;
+    text-align: center;
+    margin-top: 8px;
+    transition: background 0.15s;
+  }
+  .btn-primary:hover { background: var(--green-dark); }
+
+  .btn-restart {
+    background: none;
+    border: 1.5px solid var(--border);
+    color: var(--muted);
+    font-size: 0.85rem;
+    padding: 8px 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    margin-top: 12px;
+    transition: border-color 0.15s;
+  }
+  .btn-restart:hover { border-color: var(--primary); color: var(--primary); }
+
+  /* ── Progress bar ── */
+  .progress-wrap {
+    margin-bottom: 20px;
+  }
+  .progress-bar {
+    height: 4px;
+    background: var(--border);
+    border-radius: 2px;
+    overflow: hidden;
+  }
+  .progress-fill {
+    height: 100%;
+    background: var(--accent);
+    border-radius: 2px;
+    transition: width 0.35s ease;
+  }
+  .progress-label {
+    font-size: 0.72rem;
+    color: var(--muted);
+    margin-top: 5px;
+  }
+
+  /* ── Result card ── */
+  .result-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 4px 12px;
+    border-radius: 100px;
+    font-size: 0.78rem;
+    font-weight: 700;
+    margin-bottom: 18px;
+  }
+  .badge-veterans { background: #D5E8D4; color: #27AE60; }
+  .badge-youth    { background: #D5E8D4; color: #27AE60; }
+  .badge-families { background: #DAE8FC; color: #1A5276; }
+  .badge-chronic  { background: #FFF2CC; color: #856404; }
+  .badge-adult    { background: #E8DAEF; color: #6C3483; }
+
+  .result-headline {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--primary);
+    line-height: 1.35;
+    margin-bottom: 20px;
+  }
+
+  .first-action {
+    background: #EBF5FB;
+    border-left: 4px solid var(--accent);
+    border-radius: 0 10px 10px 0;
+    padding: 16px 18px;
+    font-size: 0.95rem;
+    margin-bottom: 20px;
+  }
+
+  .section-head {
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin: 22px 0 10px;
+  }
+
+  .what-to-expect {
+    font-size: 0.93rem;
+    color: var(--text);
+    line-height: 1.6;
+    margin-bottom: 4px;
+  }
+
+  /* ── Bring list ── */
+  .bring-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  .bring-list li {
+    display: flex;
+    gap: 8px;
+    font-size: 0.9rem;
+    padding: 5px 0;
+    border-bottom: 1px solid var(--border);
+    color: var(--text);
+  }
+  .bring-list li:last-child { border-bottom: none; }
+  .bring-list li::before { content: "✓"; color: var(--green); font-weight: 700; flex-shrink: 0; }
+
+  /* ── Resource cards ── */
+  .resource-card {
+    border: 1.5px solid var(--border);
+    border-radius: 10px;
+    padding: 14px 16px;
+    margin-bottom: 10px;
+  }
+  .resource-card__name {
+    font-weight: 700;
+    font-size: 0.95rem;
+    color: var(--primary);
+    margin-bottom: 2px;
+  }
+  .resource-card__phone {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--green-dark);
+    text-decoration: none;
+    display: inline-block;
+    margin-bottom: 3px;
+  }
+  .resource-card__note {
+    font-size: 0.82rem;
+    color: var(--muted);
+  }
+
+  /* ── Extra note ── */
+  .extra-note {
+    background: #FFFDE7;
+    border: 1px solid #FDD835;
+    border-radius: 8px;
+    padding: 12px 14px;
+    font-size: 0.88rem;
+    color: #5D4037;
+    margin-top: 16px;
+  }
+
+  /* ── Confidence badge ── */
+  .conf-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    padding: 3px 10px;
+    border-radius: 100px;
+    margin-top: 20px;
+    cursor: help;
+    position: relative;
+  }
+  .conf-verified   { background: #D5E8D4; color: #27AE60; }
+  .conf-research   { background: #DAE8FC; color: #1A5276; }
+  .conf-unverified { background: #FFE6CC; color: #D6760C; }
+  .conf-tooltip {
+    display: none;
+    position: absolute;
+    bottom: calc(100% + 8px);
+    left: 50%;
+    transform: translateX(-50%);
+    background: #1C2B33;
+    color: #fff;
+    font-size: 0.75rem;
+    font-weight: 400;
+    line-height: 1.5;
+    padding: 10px 14px;
+    border-radius: 8px;
+    width: 260px;
+    z-index: 10;
+    pointer-events: none;
+  }
+  .conf-tooltip::after {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    border: 6px solid transparent;
+    border-top-color: #1C2B33;
+  }
+  .conf-badge:hover .conf-tooltip,
+  .conf-badge.open  .conf-tooltip { display: block; }
+
+  /* ── Welcome screen ── */
+  .welcome-title {
+    font-size: 1.6rem;
+    font-weight: 800;
+    color: var(--primary);
+    line-height: 1.25;
+    margin-bottom: 12px;
+  }
+  .welcome-sub {
+    font-size: 1rem;
+    color: var(--muted);
+    margin-bottom: 28px;
+  }
+  .welcome-start {
+    background: var(--primary);
+    color: #fff;
+    border: none;
+    border-radius: 12px;
+    padding: 18px 32px;
+    font-size: 1.05rem;
+    font-weight: 700;
+    cursor: pointer;
+    width: 100%;
+    transition: background 0.15s;
+  }
+  .welcome-start:hover { background: #154360; }
+
+  /* ── Footer ── */
+  footer {
+    text-align: center;
+    padding: 20px 20px 32px;
+    font-size: 0.8rem;
+    color: var(--muted);
+    line-height: 1.8;
+    max-width: 640px;
+    width: 100%;
+  }
+  footer a { color: var(--muted); }
+  footer a:hover { color: var(--primary); }
+  .footer-divider { margin: 0 8px; opacity: 0.5; }
+
+  /* ── Common Ladder home badge (fixed top-right) ── */
+  .cl-home {
+    position: fixed;
+    top: 14px;
+    right: 16px;
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    background: var(--cl-blue);
+    color: #fff;
+    text-decoration: none;
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.01em;
+    padding: 7px 13px 7px 9px;
+    border-radius: 100px;
+    box-shadow: 0 2px 10px rgba(28,61,110,0.25);
+    z-index: 999;
+    transition: background 0.15s;
+  }
+  .cl-home:hover { background: #163260; }
+  .cl-home__rung { color: var(--cl-amber); }
+
+  /* ── Print styles ── */
+  @media print {
+    .btn-restart, .progress-wrap, footer .share-note { display: none; }
+    .cl-home { display: none; }
+  }
+
+  /* ── Mobile ── */
+  @media (max-width: 480px) {
+    html { font-size: 16px; }
+    .card { padding: 24px 18px; }
+    .cl-home span { display: none; } /* icon only on small screens */
+    .cl-home { padding: 8px 10px; }
+    .conf-tooltip { width: 200px; left: 0; transform: none; }
+    .conf-tooltip::after { left: 24px; transform: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- Common Ladder home badge — always present, fixed top-right -->
+<a href="https://www.commonladder.org" class="cl-home" aria-label="Return to Common Ladder home">
+  <svg width="18" height="18" viewBox="0 0 28 28" fill="none" aria-hidden="true">
+    <rect x="4" y="2" width="3" height="24" rx="1.5" fill="white" opacity=".9"/>
+    <rect x="21" y="2" width="3" height="24" rx="1.5" fill="white" opacity=".9"/>
+    <rect x="4" y="7" width="20" height="3" rx="1.5" fill="#E8911A"/>
+    <rect x="4" y="14" width="20" height="3" rx="1.5" fill="#E8911A"/>
+    <rect x="4" y="21" width="20" height="3" rx="1.5" fill="#E8911A"/>
+  </svg>
+  <span>common<span class="cl-home__rung">ladder</span></span>
+</a>
+
+<!-- App shell — all screens rendered by JS into here -->
+<div id="app"></div>
+
+<!-- Footer — update CoC ID and location text -->
+<footer>
+  <span class="share-note">
+    📍 Bexar County, TX — TX-500
+    &nbsp;|&nbsp; Bookmark or share this page to help someone else
+  </span><br>
+  <a href="mailto:corrections.commonladder@gmail.com?subject=CoC%20Navigator%20update%20suggestion">Is this information out of date? Let us know.</a>
+  <span class="footer-divider">|</span>
+  <a href="https://www.commonladder.org">commonladder.org</a>
+</footer>
+
+<script>
+  /* ═══════════════════════════════════════════════════════════
+     STATE
+  ═══════════════════════════════════════════════════════════ */
+  var state = {
+    step: 'welcome',   // welcome | q1 | q2 | q3 | q4 | result_*
+    pathway: null
+  };
+
+  /* ═══════════════════════════════════════════════════════════
+     QUESTIONS
+     Standard across all navigators — do not change the flow.
+     Only change label text if local terminology differs.
+  ═══════════════════════════════════════════════════════════ */
+  var QUESTIONS = [
+    {
+      id: 'q1',
+      text: 'Are you a U.S. military veteran?',
+      sub: 'This includes any branch of the armed forces.',
+      next_yes: 'result_veterans',
+      next_no: 'q2'
+    },
+    {
+      id: 'q2',
+      text: 'Are you 24 years old or younger?',
+      sub: 'Youth-specific programs are available for people 24 and under.',
+      yes_label: 'Yes, 24 or younger',
+      no_label: 'No, 25 or older',
+      next_yes: 'result_youth',
+      next_no: 'q3'
+    },
+    {
+      id: 'q3',
+      text: 'Do you have children with you right now?',
+      sub: 'This includes any minors in your care.',
+      next_yes: 'result_families',
+      next_no: 'q4'
+    },
+    {
+      id: 'q4',
+      text: 'Have you been without stable housing for more than a year — or off and on for years — AND do you have a health condition that makes it harder to work or take care of yourself?',
+      sub: 'This includes physical conditions, mental health conditions, or substance use.',
+      next_yes: 'result_chronic',
+      next_no: 'result_adult'
+    }
+  ];
+
+  var Q_INDEX = { q1: 0, q2: 1, q3: 2, q4: 3 };
+
+  /* ═══════════════════════════════════════════════════════════
+     CONFIDENCE TIERS
+     Apply to every pathway. Be honest about what's verified.
+     level: 'verified' | 'research' | 'unverified'
+  ═══════════════════════════════════════════════════════════ */
+  var CONFIDENCE_META = {
+    verified: {
+      icon: '✓',
+      label: 'Verified',
+      cssClass: 'conf-verified',
+      tooltip: 'Confirmed directly with the CoC or provider. Phone numbers and intake processes have been tested.'
+    },
+    research: {
+      icon: '◐',
+      label: 'Research-based',
+      cssClass: 'conf-research',
+      tooltip: 'Gathered from official agency websites and public records. Likely accurate but may have changed — call ahead to confirm.'
+    },
+    unverified: {
+      icon: '?',
+      label: 'Unverified',
+      cssClass: 'conf-unverified',
+      tooltip: 'Based on general knowledge. Not checked against primary sources. Call ahead before relying on this information.'
+    }
+  };
+
+  /* ═══════════════════════════════════════════════════════════
+     PATHWAY DATA
+     Fill in all [REPLACE] markers below.
+     Each pathway needs: firstAction + callNumber + resources.
+     Keep firstAction to one clear sentence + phone number.
+     resources: 3 is ideal; 2 minimum; 4 maximum.
+  ═══════════════════════════════════════════════════════════ */
+  var PATHWAYS = {
+
+    result_veterans: {
+      label: "Veterans Pathway",
+      badgeClass: "badge-veterans",
+      badgeIcon: "\ud83c\udf96",
+      headline: "There's a dedicated system built for you.",
+      firstAction: "Call <strong>Audie L. Murphy VA Hospital</strong> at <strong>(210) 617-5300</strong> (or toll-free 1-877-469-5300) \u2014 ask for homeless veteran services. Or call <strong>American GI Forum National Veterans Outreach Program (NVOP)</strong> at <strong>(210) 223-4088</strong> \u2014 long-running San Antonio veteran housing/employment provider at 610 N Main Ave.",
+      callNumber: "tel:2106175300",
+      callLabel: "Call Audie Murphy VA: (210) 617-5300",
+      what_to_expect: "South Texas Veterans Health Care System operates Audie L. Murphy VA Hospital. American GI Forum NVOP runs veteran housing and employment programs. Bexar County Department of Military and Veterans Services at 1422 E Grayson St provides claims and benefits.",
+      bring: [
+        "DD-214 discharge papers (if you have them \u2014 not required to call)",
+        "Photo ID (if available)",
+        "Any VA documentation you have",
+      ],
+      resources: [
+        {
+          name: "Bexar County Veterans Services",
+          phone: "(210) 335-6775",
+          tel: "tel:2103356775",
+          note: "1422 E Grayson St. Claims, benefits, transition."
+        },
+        {
+          name: "Audie Murphy VA Welcome Center",
+          phone: "(210) 949-3981",
+          tel: "tel:2109493981",
+          note: "Enrollment for homeless-at-risk veterans."
+        },
+        {
+          name: "National Call Center for Homeless Veterans",
+          phone: "1-877-424-3838",
+          tel: "tel:18774243838",
+          note: "24/7. Available everywhere."
+        },
+      ],
+      confidence: {
+        level: "research",
+        note: "Numbers from va.gov/south-texas-health-care, agif-nvop.org, bexar.org. Last reviewed May 2026.",
+        lastChecked: "May 2026"
+      }
+    },
+
+    result_youth: {
+      label: "Youth Pathway",
+      badgeClass: "badge-youth",
+      badgeIcon: "\ud83c\udf31",
+      headline: "Roy Maas Youth Alternatives runs the 24-hour youth crisis line.",
+      firstAction: "Call <strong>Roy Maas Youth Alternatives (RMYA) Emergency Services Hotline</strong> at <strong>(210) 340-8090</strong> \u2014 24-hour San Antonio youth crisis intake. Gateway to Bridge Emergency Shelter and TurningPoint TLP.",
+      callNumber: "tel:2103408090",
+      callLabel: "Call RMYA 24-hr: (210) 340-8090",
+      what_to_expect: "RMYA operates the youth emergency shelter intake and a Family Counseling & Resource Center for non-emergency services. THRU Project provides mentoring, rent-free housing, and support for foster youth ages 14\u201325. SJRC Texas case-manages for youth removed by DFPS.",
+      bring: [
+        "Photo ID (helpful \u2014 not required for crisis services)",
+        "Anything important you can carry",
+        "Nothing required for the 24-hour line",
+      ],
+      resources: [
+        {
+          name: "RMYA Family Counseling & Resource Center",
+          phone: "(210) 340-8077",
+          tel: "tel:2103408077",
+          note: "Non-emergency youth/family services."
+        },
+        {
+          name: "THRU Project (foster youth)",
+          phone: "(210) 852-0220",
+          tel: "tel:2108520220",
+          note: "Mentoring, rent-free housing, support for ages 14\u201325."
+        },
+        {
+          name: "SJRC Texas \u2014 San Antonio",
+          phone: "(210) 592-1156",
+          tel: "tel:2105921156",
+          note: "Case management for youth removed by DFPS."
+        },
+      ],
+      extra_note: "\u26a0\ufe0f Under 18? RMYA's 24-hour line is for you.",
+      confidence: {
+        level: "research",
+        note: "Numbers from rmya.org, thruproject.org, sjrctexas.org. Last reviewed May 2026.",
+        lastChecked: "May 2026"
+      }
+    },
+
+    result_families: {
+      label: "Families Pathway",
+      badgeClass: "badge-families",
+      badgeIcon: "\ud83c\udfe0",
+      headline: "Haven for Hope is the integrated family + adult campus.",
+      firstAction: "Go to or call <strong>Haven for Hope</strong> at <strong>(210) 220-2100</strong> (main) or <strong>(210) 220-2132</strong> (intake) \u2014 1 Haven for Hope Way, San Antonio 78207. Walk-in family intake.",
+      callNumber: "tel:2102202100",
+      callLabel: "Call Haven for Hope: (210) 220-2100",
+      what_to_expect: "Haven for Hope is San Antonio's famous integrated campus. Endeavors (Family Endeavors) is a major San Antonio-based provider running Fairweather Family Lodge (PSH for women + children) and homelessness prevention. SA Hope Center provides case management at 321 N General McMullen.",
+      bring: [
+        "Photo ID for adults (if available)",
+        "Birth certificates for children (helpful but not always required)",
+        "Documentation of income or benefits (if available)",
+        "Social security cards (if you have them)",
+      ],
+      resources: [
+        {
+          name: "Endeavors (Family Endeavors)",
+          phone: "1-833-828-6439",
+          tel: "tel:18338286439",
+          note: "San Antonio HQ. Fairweather Family Lodge PSH for women + children, prevention."
+        },
+        {
+          name: "SA Hope Center",
+          phone: "(210) 732-3776",
+          tel: "tel:2107323776",
+          note: "321 N General McMullen. Case management & wraparound for families."
+        },
+        {
+          name: "211 Texas",
+          phone: "211",
+          tel: "tel:211",
+          note: "Or 1-877-541-7905. 24/7."
+        },
+      ],
+      confidence: {
+        level: "research",
+        note: "Numbers from havenforhope.org, endeavors.org, sahopecenter.org. Last reviewed May 2026.",
+        lastChecked: "May 2026"
+      }
+    },
+
+    result_chronic: {
+      label: "Chronic Homelessness Pathway",
+      badgeClass: "badge-chronic",
+      badgeIcon: "\ud83d\udd11",
+      headline: "Haven for Hope and SARAH/Close to Home are the chronic pathway.",
+      firstAction: "Call <strong>SARAH (Close to Home) Homelink Coordinated Entry</strong> at <strong>(210) 207-1799</strong> \u2014 Bexar County's CoC-mandated CES. Or call <strong>Haven for Hope</strong> at <strong>(210) 220-2100</strong> for direct campus intake.",
+      callNumber: "tel:2102071799",
+      callLabel: "Call Homelink CE: (210) 207-1799",
+      what_to_expect: "South Alamo Regional Alliance for the Homeless (SARAH) is the CoC lead agency, now operating as Close to Home. Homelink is the CES intake. Haven for Hope's Prospects Courtyard is the low-barrier walk-in safe sleeping site. Endeavors operates PSH for chronically homeless women with disabilities.",
+      bring: [
+        "Photo ID (any form)",
+        "Documentation of health conditions (if available \u2014 not required to be assessed)",
+        "Any records of prior housing or service history",
+      ],
+      resources: [
+        {
+          name: "Haven for Hope (intake)",
+          phone: "(210) 220-2132",
+          tel: "tel:2102202132",
+          note: "Direct intake line. Email: intakeinfo@havenforhope.org."
+        },
+        {
+          name: "Endeavors \u2014 Fairweather Family Lodge",
+          phone: "1-833-828-6439",
+          tel: "tel:18338286439",
+          note: "PSH for chronically homeless women with disabilities."
+        },
+        {
+          name: "211 Texas",
+          phone: "211",
+          tel: "tel:211",
+          note: "Or 1-877-541-7905. 24/7."
+        },
+      ],
+      extra_note: "\ud83d\udccb Qualifying conditions include physical, mental health, or substance use disorders that substantially affect daily functioning. You don't need a formal diagnosis to be assessed.",
+      confidence: {
+        level: "research",
+        note: "Numbers from havenforhope.org, SARAH/Close to Home, endeavors.org. Last reviewed May 2026.",
+        lastChecked: "May 2026"
+      }
+    },
+
+    result_adult: {
+      label: "Single Adults Pathway",
+      badgeClass: "badge-adult",
+      badgeIcon: "\ud83d\udcde",
+      headline: "Haven for Hope is the largest single-adult campus.",
+      firstAction: "Go to <strong>Haven for Hope</strong> at <strong>1 Haven for Hope Way, San Antonio 78207</strong>. Call <strong>(210) 220-2100</strong>. Prospects Courtyard is the low-barrier walk-in safe sleeping. Or call <strong>San Antonio Rescue Mission</strong> at <strong>(210) 222-9736</strong> (men, 907 E Quincy, 5:30pm check-in).",
+      callNumber: "tel:2102202100",
+      callLabel: "Call Haven for Hope: (210) 220-2100",
+      what_to_expect: "Haven for Hope is the largest single-adult campus in San Antonio. San Antonio Rescue Mission has a men's shelter at 907 E Quincy. Salvation Army San Antonio (515 W Elmira St) operates a 24-hour emergency shelter \u2014 the only Bexar County shelter able to keep complete family units together.",
+      bring: [
+        "Photo ID (helpful but not always required)",
+        "Social security card or number (if available)",
+        "Any documentation of income or benefits",
+      ],
+      resources: [
+        {
+          name: "San Antonio Rescue Mission",
+          phone: "(210) 222-9736",
+          tel: "tel:2102229736",
+          note: "907 E Quincy. Men's shelter. Check-in 5:30 PM."
+        },
+        {
+          name: "Salvation Army San Antonio \u2014 Hope Center",
+          phone: "(210) 352-2046",
+          tel: "tel:2103522046",
+          note: "515 W Elmira St. 24-hr emergency shelter."
+        },
+        {
+          name: "211 Texas",
+          phone: "211",
+          tel: "tel:211",
+          note: "Or 1-877-541-7905. 24/7."
+        },
+      ],
+      confidence: {
+        level: "research",
+        note: "Numbers from havenforhope.org, sarescuemission.org, salvationarmysanantonio.org. Last reviewed May 2026.",
+        lastChecked: "May 2026"
+      }
+    }
+
+  }; // end PATHWAYS
+
+  /* ═══════════════════════════════════════════════════════════
+     RENDER ENGINE — do not modify below this line
+     unless fixing a structural bug.
+  ═══════════════════════════════════════════════════════════ */
+  function render() {
+    var app = document.getElementById('app');
+    var html = '';
+
+    // County badge always shown at top
+    html += '<div class="county-badge">';
+    html += '<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>';
+    // [REPLACE: Update county/CoC name and ID in the text below]
+    html += 'Bexar County, TX &mdash; TX-500</div>';
+
+    if (state.step === 'welcome') {
+      html += renderWelcome();
+    } else if (state.step.startsWith('result_')) {
+      html += renderResult(state.step);
+    } else {
+      html += renderQuestion(state.step);
+    }
+
+    app.innerHTML = html;
+  }
+
+  function renderWelcome() {
+    return '<div class="card">' +
+      '<div class="welcome-title">Find the right help.<br>Answer 4 quick questions.</div>' +
+      '<div class="welcome-sub">We\'ll match you to the services and programs most likely to help — based on your situation, not a generic list.</div>' +
+      '<button class="welcome-start" onclick="goTo(\'q1\')">Get started &rarr;</button>' +
+      '</div>' +
+      '<div style="font-size:0.8rem; color:var(--muted); text-align:center; margin-top:12px;">No personal information collected. Free to use.</div>';
+  }
+
+  function renderQuestion(qid) {
+    var q = QUESTIONS[Q_INDEX[qid]];
+    var stepNum = Q_INDEX[qid] + 1;
+    var pct = Math.round((stepNum / QUESTIONS.length) * 100);
+    var html = '';
+
+    html += '<div class="progress-wrap">' +
+      '<div class="progress-bar"><div class="progress-fill" style="width:' + pct + '%"></div></div>' +
+      '<div class="progress-label">Question ' + stepNum + ' of ' + QUESTIONS.length + '</div>' +
+      '</div>';
+
+    html += '<div class="card">' +
+      '<div class="q-label">Question ' + stepNum + '</div>' +
+      '<div class="q-text">' + q.text + '</div>' +
+      '<div class="q-sub">' + q.sub + '</div>' +
+      '<div class="btn-row">' +
+      '<button class="btn btn-yes" onclick="answer(true)">' + (q.yes_label || 'Yes') + '</button>' +
+      '<button class="btn btn-no"  onclick="answer(false)">' + (q.no_label  || 'No')  + '</button>' +
+      '</div>' +
+      '</div>';
+
+    if (Q_INDEX[qid] > 0) {
+      html += '<button class="btn-restart" onclick="history.back()">← Back</button>';
+    }
+
+    return html;
+  }
+
+  function renderConfidenceBadge(conf) {
+    var meta = CONFIDENCE_META[conf.level];
+    return '<span class="conf-badge ' + meta.cssClass + '" onclick="this.classList.toggle(\'open\')" tabindex="0" role="button" aria-label="Information confidence: ' + meta.label + '">' +
+      meta.icon + ' ' + meta.label +
+      ' &mdash; Last checked: ' + conf.lastChecked +
+      '<span class="conf-tooltip">' + meta.tooltip + (conf.note ? '<br><br>' + conf.note : '') + '</span>' +
+      '</span>';
+  }
+
+  function renderResult(rid) {
+    var p = PATHWAYS[rid];
+    var html = '';
+
+    html += '<div class="card">';
+    html += '<span class="result-badge ' + p.badgeClass + '">' + p.badgeIcon + ' ' + p.label + '</span>';
+    html += '<div class="result-headline">' + p.headline + '</div>';
+
+    // First action block
+    html += '<div class="first-action">' + p.firstAction + '</div>';
+    html += '<a href="' + p.callNumber + '" class="btn-primary">' + p.callLabel + '</a>';
+
+    // What to expect
+    html += '<div class="section-head">What to expect</div>';
+    html += '<div class="what-to-expect">' + p.what_to_expect + '</div>';
+
+    // What to bring
+    html += '<div class="section-head">What to bring</div>';
+    html += '<ul class="bring-list">';
+    p.bring.forEach(function(item) { html += '<li>' + item + '</li>'; });
+    html += '</ul>';
+
+    // Additional resources
+    html += '<div class="section-head">Additional resources</div>';
+    p.resources.forEach(function(r) {
+      html += '<div class="resource-card">';
+      html += '<div class="resource-card__name">' + r.name + '</div>';
+      html += '<a href="' + r.tel + '" class="resource-card__phone">' + r.phone + '</a>';
+      if (r.note) html += '<div class="resource-card__note">' + r.note + '</div>';
+      html += '</div>';
+    });
+
+    // Extra note (optional)
+    if (p.extra_note) {
+      html += '<div class="extra-note">' + p.extra_note + '</div>';
+    }
+
+    // Confidence badge
+    html += renderConfidenceBadge(p.confidence);
+
+    html += '</div>'; // end card
+
+    // Restart
+    html += '<button class="btn-restart" onclick="goTo(\'welcome\')">← Start over</button>';
+
+    return html;
+  }
+
+  function goTo(step) {
+    state.step = step;
+    render();
+    window.scrollTo(0, 0);
+  }
+
+  function answer(isYes) {
+    var q = QUESTIONS[Q_INDEX[state.step]];
+    var next = isYes ? q.next_yes : q.next_no;
+    if (next.startsWith('result_')) {
+      state.pathway = next;
+    }
+    goTo(next);
+  }
+
+  // Tooltip close on outside click
+  document.addEventListener('click', function(e) {
+    if (!e.target.closest('.conf-badge')) {
+      document.querySelectorAll('.conf-badge.open').forEach(function(el) {
+        el.classList.remove('open');
+      });
+    }
+  });
+
+  // Initial render
+  render();
+</script>
+</body>
+</html>
