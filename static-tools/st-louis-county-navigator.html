@@ -1,0 +1,887 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- Common Ladder navigator template. See NAVIGATOR_HOWTO.md for setup steps. Do NOT paste real HTML tags into this comment - it will break the document. -->
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>St. Louis County Homelessness Resource Navigator — Common Ladder</title>
+<meta name="description" content="Find shelter, food, health care, and housing programs in St. Louis County, Missouri. Free, no signup.">
+<link rel="canonical" href="https://www.commonladder.org/static-tools/st-louis-county-navigator.html">
+<style>
+  /* ── Reset & Base ── */
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    /* Navigator palette — slightly different from main site for tool readability */
+    --bg:        #FAF7F2;
+    --primary:   #1A5276;
+    --accent:    #2E86AB;
+    --text:      #1C2B33;
+    --green:     #27AE60;
+    --green-dark:#1E8449;
+    --muted:     #6B7C85;
+    --border:    #D5D0C8;
+    --card-bg:   #FFFFFF;
+    --shadow:    0 2px 12px rgba(26,82,118,0.10);
+
+    /* Common Ladder brand — used for home badge only */
+    --cl-blue:   #1C3D6E;
+    --cl-amber:  #E8911A;
+  }
+
+  html { font-size: 18px; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    line-height: 1.6;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  /* ── Layout shell ── */
+  #app {
+    width: 100%;
+    max-width: 640px;
+    padding: 24px 20px 60px;
+    flex: 1;
+  }
+
+  /* ── County badge (top of app, always visible) ── */
+  .county-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: var(--primary);
+    color: #fff;
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    padding: 4px 10px;
+    border-radius: 100px;
+    margin-bottom: 28px;
+  }
+  .county-badge svg { flex-shrink: 0; }
+
+  /* ── Question card ── */
+  .card {
+    background: var(--card-bg);
+    border-radius: 16px;
+    padding: 32px 28px;
+    box-shadow: var(--shadow);
+    margin-bottom: 16px;
+  }
+
+  .q-label {
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 14px;
+  }
+
+  .q-text {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--primary);
+    line-height: 1.35;
+    margin-bottom: 8px;
+  }
+
+  .q-sub {
+    font-size: 0.88rem;
+    color: var(--muted);
+    margin-bottom: 28px;
+  }
+
+  /* ── Buttons ── */
+  .btn-row {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+
+  .btn {
+    flex: 1;
+    min-width: 120px;
+    padding: 14px 20px;
+    border: none;
+    border-radius: 10px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.15s, transform 0.1s;
+  }
+  .btn:active { transform: scale(0.98); }
+
+  .btn-yes  { background: var(--primary); color: #fff; }
+  .btn-yes:hover  { background: #154360; }
+  .btn-no   { background: #EBF5FB; color: var(--primary); }
+  .btn-no:hover   { background: #D6EAF8; }
+
+  .btn-primary {
+    display: inline-block;
+    background: var(--green);
+    color: #fff;
+    padding: 16px 28px;
+    border-radius: 10px;
+    font-size: 1.05rem;
+    font-weight: 700;
+    text-decoration: none;
+    text-align: center;
+    margin-top: 8px;
+    transition: background 0.15s;
+  }
+  .btn-primary:hover { background: var(--green-dark); }
+
+  .btn-restart {
+    background: none;
+    border: 1.5px solid var(--border);
+    color: var(--muted);
+    font-size: 0.85rem;
+    padding: 8px 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    margin-top: 12px;
+    transition: border-color 0.15s;
+  }
+  .btn-restart:hover { border-color: var(--primary); color: var(--primary); }
+
+  /* ── Progress bar ── */
+  .progress-wrap {
+    margin-bottom: 20px;
+  }
+  .progress-bar {
+    height: 4px;
+    background: var(--border);
+    border-radius: 2px;
+    overflow: hidden;
+  }
+  .progress-fill {
+    height: 100%;
+    background: var(--accent);
+    border-radius: 2px;
+    transition: width 0.35s ease;
+  }
+  .progress-label {
+    font-size: 0.72rem;
+    color: var(--muted);
+    margin-top: 5px;
+  }
+
+  /* ── Result card ── */
+  .result-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 4px 12px;
+    border-radius: 100px;
+    font-size: 0.78rem;
+    font-weight: 700;
+    margin-bottom: 18px;
+  }
+  .badge-veterans { background: #D5E8D4; color: #27AE60; }
+  .badge-youth    { background: #D5E8D4; color: #27AE60; }
+  .badge-families { background: #DAE8FC; color: #1A5276; }
+  .badge-chronic  { background: #FFF2CC; color: #856404; }
+  .badge-adult    { background: #E8DAEF; color: #6C3483; }
+
+  .result-headline {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--primary);
+    line-height: 1.35;
+    margin-bottom: 20px;
+  }
+
+  .first-action {
+    background: #EBF5FB;
+    border-left: 4px solid var(--accent);
+    border-radius: 0 10px 10px 0;
+    padding: 16px 18px;
+    font-size: 0.95rem;
+    margin-bottom: 20px;
+  }
+
+  .section-head {
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin: 22px 0 10px;
+  }
+
+  .what-to-expect {
+    font-size: 0.93rem;
+    color: var(--text);
+    line-height: 1.6;
+    margin-bottom: 4px;
+  }
+
+  /* ── Bring list ── */
+  .bring-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  .bring-list li {
+    display: flex;
+    gap: 8px;
+    font-size: 0.9rem;
+    padding: 5px 0;
+    border-bottom: 1px solid var(--border);
+    color: var(--text);
+  }
+  .bring-list li:last-child { border-bottom: none; }
+  .bring-list li::before { content: "✓"; color: var(--green); font-weight: 700; flex-shrink: 0; }
+
+  /* ── Resource cards ── */
+  .resource-card {
+    border: 1.5px solid var(--border);
+    border-radius: 10px;
+    padding: 14px 16px;
+    margin-bottom: 10px;
+  }
+  .resource-card__name {
+    font-weight: 700;
+    font-size: 0.95rem;
+    color: var(--primary);
+    margin-bottom: 2px;
+  }
+  .resource-card__phone {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--green-dark);
+    text-decoration: none;
+    display: inline-block;
+    margin-bottom: 3px;
+  }
+  .resource-card__note {
+    font-size: 0.82rem;
+    color: var(--muted);
+  }
+
+  /* ── Extra note ── */
+  .extra-note {
+    background: #FFFDE7;
+    border: 1px solid #FDD835;
+    border-radius: 8px;
+    padding: 12px 14px;
+    font-size: 0.88rem;
+    color: #5D4037;
+    margin-top: 16px;
+  }
+
+  /* ── Confidence badge ── */
+  .conf-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    padding: 3px 10px;
+    border-radius: 100px;
+    margin-top: 20px;
+    cursor: help;
+    position: relative;
+  }
+  .conf-verified   { background: #D5E8D4; color: #27AE60; }
+  .conf-research   { background: #DAE8FC; color: #1A5276; }
+  .conf-unverified { background: #FFE6CC; color: #D6760C; }
+  .conf-tooltip {
+    display: none;
+    position: absolute;
+    bottom: calc(100% + 8px);
+    left: 50%;
+    transform: translateX(-50%);
+    background: #1C2B33;
+    color: #fff;
+    font-size: 0.75rem;
+    font-weight: 400;
+    line-height: 1.5;
+    padding: 10px 14px;
+    border-radius: 8px;
+    width: 260px;
+    z-index: 10;
+    pointer-events: none;
+  }
+  .conf-tooltip::after {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    border: 6px solid transparent;
+    border-top-color: #1C2B33;
+  }
+  .conf-badge:hover .conf-tooltip,
+  .conf-badge.open  .conf-tooltip { display: block; }
+
+  /* ── Welcome screen ── */
+  .welcome-title {
+    font-size: 1.6rem;
+    font-weight: 800;
+    color: var(--primary);
+    line-height: 1.25;
+    margin-bottom: 12px;
+  }
+  .welcome-sub {
+    font-size: 1rem;
+    color: var(--muted);
+    margin-bottom: 28px;
+  }
+  .welcome-start {
+    background: var(--primary);
+    color: #fff;
+    border: none;
+    border-radius: 12px;
+    padding: 18px 32px;
+    font-size: 1.05rem;
+    font-weight: 700;
+    cursor: pointer;
+    width: 100%;
+    transition: background 0.15s;
+  }
+  .welcome-start:hover { background: #154360; }
+
+  /* ── Footer ── */
+  footer {
+    text-align: center;
+    padding: 20px 20px 32px;
+    font-size: 0.8rem;
+    color: var(--muted);
+    line-height: 1.8;
+    max-width: 640px;
+    width: 100%;
+  }
+  footer a { color: var(--muted); }
+  footer a:hover { color: var(--primary); }
+  .footer-divider { margin: 0 8px; opacity: 0.5; }
+
+  /* ── Common Ladder home badge (fixed top-right) ── */
+  .cl-home {
+    position: fixed;
+    top: 14px;
+    right: 16px;
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    background: var(--cl-blue);
+    color: #fff;
+    text-decoration: none;
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.01em;
+    padding: 7px 13px 7px 9px;
+    border-radius: 100px;
+    box-shadow: 0 2px 10px rgba(28,61,110,0.25);
+    z-index: 999;
+    transition: background 0.15s;
+  }
+  .cl-home:hover { background: #163260; }
+  .cl-home__rung { color: var(--cl-amber); }
+
+  /* ── Print styles ── */
+  @media print {
+    .btn-restart, .progress-wrap, footer .share-note { display: none; }
+    .cl-home { display: none; }
+  }
+
+  /* ── Mobile ── */
+  @media (max-width: 480px) {
+    html { font-size: 16px; }
+    .card { padding: 24px 18px; }
+    .cl-home span { display: none; } /* icon only on small screens */
+    .cl-home { padding: 8px 10px; }
+    .conf-tooltip { width: 200px; left: 0; transform: none; }
+    .conf-tooltip::after { left: 24px; transform: none; }
+  }
+</style>
+</head>
+<body>
+
+<a href="#main" class="skip-link">Skip to main content</a>
+
+<div class="crisis-bar" role="region" aria-label="Crisis help">
+  <strong>Need help right now?</strong>
+  <a href="tel:211">Call 211</a><span class="crisis-bar__sep">·</span>
+  <a href="sms:741741?body=HOME">Text HOME to 741741</a><span class="crisis-bar__sep">·</span>
+  <a href="tel:988">988 Suicide &amp; Crisis</a>
+</div>
+
+
+
+<!-- Common Ladder home badge — always present, fixed top-right -->
+<a href="https://www.commonladder.org" class="cl-home" aria-label="Return to Common Ladder home">
+  <svg width="18" height="18" viewBox="0 0 28 28" fill="none" aria-hidden="true">
+    <rect x="4" y="2" width="3" height="24" rx="1.5" fill="white" opacity=".9"/>
+    <rect x="21" y="2" width="3" height="24" rx="1.5" fill="white" opacity=".9"/>
+    <rect x="4" y="7" width="20" height="3" rx="1.5" fill="#E8911A"/>
+    <rect x="4" y="14" width="20" height="3" rx="1.5" fill="#E8911A"/>
+    <rect x="4" y="21" width="20" height="3" rx="1.5" fill="#E8911A"/>
+  </svg>
+  <span>common<span class="cl-home__rung">ladder</span></span>
+</a>
+
+<!-- App shell — all screens rendered by JS into here -->
+<div id="app"></div>
+
+<!-- Footer — update CoC ID and location text -->
+<footer>
+  <span class="share-note">
+    📍 St. Louis County, MO — MO-501
+    &nbsp;|&nbsp; Bookmark or share this page to help someone else
+  </span><br>
+  <a href="mailto:corrections.commonladder@gmail.com?subject=CoC%20Navigator%20update%20suggestion">Is this information out of date? Let us know.</a>
+  <span class="footer-divider">|</span>
+  <a href="https://www.commonladder.org">commonladder.org</a>
+</footer>
+
+<script>
+  /* ═══════════════════════════════════════════════════════════
+     STATE
+  ═══════════════════════════════════════════════════════════ */
+  var state = {
+    step: 'welcome',   // welcome | q1 | q2 | q3 | q4 | result_*
+    pathway: null
+  };
+
+  /* ═══════════════════════════════════════════════════════════
+     QUESTIONS
+     Standard across all navigators — do not change the flow.
+     Only change label text if local terminology differs.
+  ═══════════════════════════════════════════════════════════ */
+  var QUESTIONS = [
+    {
+      id: 'q1',
+      text: 'Are you a U.S. military veteran?',
+      sub: 'This includes any branch of the armed forces.',
+      next_yes: 'result_veterans',
+      next_no: 'q2'
+    },
+    {
+      id: 'q2',
+      text: 'Are you 24 years old or younger?',
+      sub: 'Youth-specific programs are available for people 24 and under.',
+      yes_label: 'Yes, 24 or younger',
+      no_label: 'No, 25 or older',
+      next_yes: 'result_youth',
+      next_no: 'q3'
+    },
+    {
+      id: 'q3',
+      text: 'Do you have children with you right now?',
+      sub: 'This includes any minors in your care.',
+      next_yes: 'result_families',
+      next_no: 'q4'
+    },
+    {
+      id: 'q4',
+      text: 'Have you been without stable housing for more than a year — or off and on for years — AND do you have a health condition that makes it harder to work or take care of yourself?',
+      sub: 'This includes physical conditions, mental health conditions, or substance use.',
+      next_yes: 'result_chronic',
+      next_no: 'result_adult'
+    }
+  ];
+
+  var Q_INDEX = { q1: 0, q2: 1, q3: 2, q4: 3 };
+
+  /* ═══════════════════════════════════════════════════════════
+     CONFIDENCE TIERS
+     Apply to every pathway. Be honest about what's verified.
+     level: 'verified' | 'research' | 'unverified'
+  ═══════════════════════════════════════════════════════════ */
+  var CONFIDENCE_META = {
+    verified: {
+      icon: '✓',
+      label: 'Verified',
+      cssClass: 'conf-verified',
+      tooltip: 'Confirmed directly with the CoC or provider. Phone numbers and intake processes have been tested.'
+    },
+    research: {
+      icon: '◐',
+      label: 'Research-based',
+      cssClass: 'conf-research',
+      tooltip: 'Gathered from official agency websites and public records. Likely accurate but may have changed — call ahead to confirm.'
+    },
+    unverified: {
+      icon: '?',
+      label: 'Unverified',
+      cssClass: 'conf-unverified',
+      tooltip: 'Based on general knowledge. Not checked against primary sources. Call ahead before relying on this information.'
+    }
+  };
+
+  /* ═══════════════════════════════════════════════════════════
+     PATHWAY DATA
+     Fill in all [REPLACE] markers below.
+     Each pathway needs: firstAction + callNumber + resources.
+     Keep firstAction to one clear sentence + phone number.
+     resources: 3 is ideal; 2 minimum; 4 maximum.
+  ═══════════════════════════════════════════════════════════ */
+  var PATHWAYS = {
+
+    result_veterans: {
+      label: "Veterans Pathway",
+      badgeClass: "badge-veterans",
+      badgeIcon: "🎖",
+      headline: "There's a dedicated system built for you.",
+      firstAction: "Call the <strong>National Call Center for Homeless Veterans</strong> at <strong>1-877-424-3838</strong> (24/7). Or call <strong>VA St. Louis HCHV intake</strong> at <strong>(314) 652-4100, ext. 55460</strong> — the VA's homeless veteran care team at Jefferson Barracks &amp; John Cochran.",
+      callNumber: "tel:18774243838",
+      callLabel: "Call VA Homeless: 1-877-424-3838",
+      what_to_expect: "VA St. Louis Health Care System runs HCHV (Health Care for Homeless Veterans) and HUD-VASH for the St. Louis metro. St. Patrick Center is the regional SSVF (Supportive Services for Veteran Families) grantee covering both St. Louis County and St. Louis City — rapid re-housing, prevention, case management. You do not need to be enrolled in VA care to call the National Call Center.",
+      bring: [
+        "DD-214 discharge papers (if you have them — not required to call)",
+        "Photo ID (if available)",
+        "Any VA documentation you have",
+      ],
+      resources: [
+        {
+          name: "VA St. Louis HCHV",
+          phone: "(314) 652-4100 ext. 55460",
+          tel: "tel:3146524100",
+          note: "Jefferson Barracks &amp; John Cochran. VA homeless veteran care team."
+        },
+        {
+          name: "St. Patrick Center SSVF",
+          phone: "(314) 356-0657",
+          tel: "tel:3143560657",
+          note: "SSVF grantee for St. Louis County, City, and surrounding counties."
+        },
+        {
+          name: "Veterans Crisis Line / 988",
+          phone: "988",
+          tel: "tel:988",
+          note: "Press 1. 24/7 confidential crisis support for any veteran."
+        },
+      ],
+      confidence: {
+        level: "research",
+        note: "Numbers from va.gov/st-louis-health-care/health-services/homeless-veteran-care, stpatrickcenter.org/contact, va.gov/homeless/nationalcallcenter. Last reviewed May 2026.",
+        lastChecked: "May 2026"
+      }
+    },
+
+    result_youth: {
+      label: "Youth Pathway",
+      badgeClass: "badge-youth",
+      badgeIcon: "🌱",
+      headline: "Covenant House Missouri is the 24/7 emergency shelter for youth 16–24.",
+      firstAction: "Call <strong>Covenant House Missouri</strong> at <strong>(314) 533-2241</strong> (24/7) — 2727 N. Kingshighway Blvd., St. Louis. Emergency shelter, transitional housing, and trafficking response for youth ages 16–24. Or call the <strong>National Runaway Safeline</strong> at <strong>1-800-786-2929</strong> (24/7).",
+      callNumber: "tel:3145332241",
+      callLabel: "Call Covenant House MO: (314) 533-2241",
+      what_to_expect: "Covenant House Missouri is the primary unaccompanied-youth shelter for the St. Louis metro, serving both County and City referrals. Epworth runs a drop-in center and 24/7 helpline for youth 11–20 in north St. Louis County (Normandy). Youth In Need covers St. Charles County and takes referrals from west County. The National Runaway Safeline can arrange Home Free bus tickets for youth 12–21.",
+      bring: [
+        "Photo ID (helpful — not required for crisis services)",
+        "Anything important you can carry",
+        "Nothing required to call the crisis line",
+      ],
+      resources: [
+        {
+          name: "Epworth 24/7 Helpline",
+          phone: "1-800-899-5437",
+          tel: "tel:18008995437",
+          note: "Plus drop-in center 7520 Natural Bridge Rd, Normandy. Youth 11–20."
+        },
+        {
+          name: "Youth In Need 24-Hour Help",
+          phone: "(636) 946-5600",
+          tel: "tel:6369465600",
+          note: "St. Charles-based, takes referrals from St. Louis County. Ages 10–18."
+        },
+        {
+          name: "National Runaway Safeline",
+          phone: "1-800-786-2929",
+          tel: "tel:18007862929",
+          note: "24/7 federal RHY hotline. Call or text. Home Free bus tickets."
+        },
+      ],
+      extra_note: "⚠️ Under 18? Covenant House and Epworth both know local rules about unaccompanied minors. They will help.",
+      confidence: {
+        level: "research",
+        note: "Numbers from covenanthousemo.org, epworth.org/services/epworth-drop-in-center, youthinneed.org, 1800runaway.org. Last reviewed May 2026.",
+        lastChecked: "May 2026"
+      }
+    },
+
+    result_families: {
+      label: "Families Pathway",
+      badgeClass: "badge-families",
+      badgeIcon: "🏠",
+      headline: "211 is the front door for shelter and housing in St. Louis County.",
+      firstAction: "Dial <strong>2-1-1</strong> (or <strong>1-800-427-4626</strong>) — United Way 211 is the St. Louis County CoC's official Coordinated Entry access point. Free, 24/7, multilingual. Ask for shelter or housing placement for a family.",
+      callNumber: "tel:211",
+      callLabel: "Call 211 (United Way)",
+      what_to_expect: "St. Louis County's CoC (MO-501) designates 211 as the single front door for anyone trying to access shelter or housing. Salvation Army Family Haven on West Page Ave is a 74-bed transitional family shelter physically located in the County. Our Lady's Inn serves pregnant women and their children. Safe Connections and ALIVE run 24/7 DV crisis lines that route survivors to confidential emergency shelter.",
+      bring: [
+        "Photo ID for adults (if available)",
+        "Birth certificates for children (helpful but not always required)",
+        "Documentation of income or benefits (if available)",
+        "Social security cards (if you have them)",
+      ],
+      resources: [
+        {
+          name: "Salvation Army Family Haven",
+          phone: "(314) 423-7770",
+          tel: "tel:3144237770",
+          note: "10740 W. Page Ave, 63132. 74-bed transitional family shelter — in the County."
+        },
+        {
+          name: "Our Lady's Inn (St. Louis)",
+          phone: "(314) 351-4590",
+          tel: "tel:3143514590",
+          note: "Maternity home + shelter for pregnant women and their children, 24/7."
+        },
+        {
+          name: "Safe Connections (DV crisis)",
+          phone: "(314) 531-2003",
+          tel: "tel:3145312003",
+          note: "24/7 DV helpline. Call or text. Regional DV shelter referrals."
+        },
+      ],
+      confidence: {
+        level: "research",
+        note: "Numbers from stlcountycoc.com/coordinated-entry, salvationarmyusa.org/mo/saint-louis/west-page-avenue, ourladysinn.org/need-help, safeconnections.org. Last reviewed May 2026.",
+        lastChecked: "May 2026"
+      }
+    },
+
+    result_chronic: {
+      label: "Chronic Homelessness Pathway",
+      badgeClass: "badge-chronic",
+      badgeIcon: "🔑",
+      headline: "211 + Behavioral Health Response coordinate PSH and crisis outreach.",
+      firstAction: "Dial <strong>2-1-1</strong> (or <strong>1-800-427-4626</strong>) for Coordinated Entry intake. For mental health or substance use crisis, call <strong>Behavioral Health Response</strong> at <strong>1-800-811-4760</strong> (24/7) — mobile crisis and telehealth across Eastern Missouri.",
+      callNumber: "tel:211",
+      callLabel: "Call 211 (United Way)",
+      what_to_expect: "St. Louis County CoC routes Permanent Supportive Housing referrals through 211 + the County's Homeless Services Program. BHR runs the regional 24/7 behavioral health crisis line — mobile crisis dispatch, telehealth, and outreach. Places for People offers behavioral health, substance-use, and supportive case management (no shelter — refers to 211). Independence Center runs Clubhouse-model supportive housing for adults with serious mental illness.",
+      bring: [
+        "Photo ID (any form)",
+        "Documentation of health conditions (if available — not required to be assessed)",
+        "Any records of prior housing or service history",
+      ],
+      resources: [
+        {
+          name: "Behavioral Health Response",
+          phone: "1-800-811-4760",
+          tel: "tel:18008114760",
+          note: "24/7 regional crisis line. Mobile crisis + telehealth. Also dial 988."
+        },
+        {
+          name: "Places for People",
+          phone: "(314) 535-5600",
+          tel: "tel:3145355600",
+          note: "1001 Lynch St. Behavioral health + supportive case management."
+        },
+        {
+          name: "Independence Center",
+          phone: "(314) 533-4245",
+          tel: "tel:3145334245",
+          note: "Clubhouse + supported housing for adults with serious mental illness."
+        },
+      ],
+      extra_note: "📋 Qualifying conditions include physical, mental health, or substance use disorders that substantially affect daily functioning. You don't need a formal diagnosis to be assessed.",
+      confidence: {
+        level: "research",
+        note: "Numbers from stlcountycoc.com/coordinated-entry, stlouiscountymo.gov mental-health-centers page, placesforpeople.org/contact-us, independencecenter.org/our-programs/housing, 988lifeline.org. Last reviewed May 2026.",
+        lastChecked: "May 2026"
+      }
+    },
+
+    result_adult: {
+      label: "Single Adults Pathway",
+      badgeClass: "badge-adult",
+      badgeIcon: "📞",
+      headline: "Peter &amp; Paul + St. Patrick Center are the main adult intakes.",
+      firstAction: "Call <strong>Peter &amp; Paul Community Services</strong> at <strong>(314) 588-7111</strong> — year-round emergency shelter for single adult men (Soulard / Jugan Shelter). Or walk in to the <strong>St. Patrick Center Welcome Center</strong>, 800 N. Tucker Blvd., at <strong>(314) 802-0700</strong> — intake at 8 AM and 1 PM Mon–Fri.",
+      callNumber: "tel:3145887111",
+      callLabel: "Call Peter & Paul: (314) 588-7111",
+      what_to_expect: "St. Louis County CoC routes single-adult shelter intake through 211 + the Welcome Center model. Peter &amp; Paul runs year-round men's shelter, Positive Directions (HIV/AIDS), and Garfield Place (SMI supportive housing). St. Patrick Center is the metro's largest adult intake / day-services point. Sts. Joachim &amp; Ann Care Service covers western County residents and the St. Charles / Lincoln / Warren tri-county.",
+      bring: [
+        "Photo ID (helpful but not always required)",
+        "Social security card or number (if available)",
+        "Any documentation of income or benefits",
+      ],
+      resources: [
+        {
+          name: "St. Patrick Center Welcome Center",
+          phone: "(314) 802-0700",
+          tel: "tel:3148020700",
+          note: "800 N. Tucker Blvd. Walk-in Mon–Fri 8 AM &amp; 1 PM. Largest adult intake."
+        },
+        {
+          name: "Sts. Joachim &amp; Ann Care Service",
+          phone: "(636) 441-1302",
+          tel: "tel:6364411302",
+          note: "St. Charles-based — covers west County + tri-county region."
+        },
+        {
+          name: "211 (CES intake)",
+          phone: "211",
+          tel: "tel:211",
+          note: "Or 1-800-427-4626. Required Coordinated Entry call for shelter."
+        },
+      ],
+      confidence: {
+        level: "research",
+        note: "Numbers from ppcsinc.org, stpatrickcenter.org/get-help, jacares.org, stlcountycoc.com/coordinated-entry. Last reviewed May 2026.",
+        lastChecked: "May 2026"
+      }
+    }
+
+  }; // end PATHWAYS
+
+  /* ═══════════════════════════════════════════════════════════
+     RENDER ENGINE — do not modify below this line
+     unless fixing a structural bug.
+  ═══════════════════════════════════════════════════════════ */
+  function render() {
+    var app = document.getElementById('app');
+    var html = '';
+
+    // County badge always shown at top
+    html += '<div class="county-badge">';
+    html += '<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>';
+    // [REPLACE: Update county/CoC name and ID in the text below]
+    html += 'St. Louis County, MO &mdash; MO-501</div></div>';
+
+    if (state.step === 'welcome') {
+      html += renderWelcome();
+    } else if (state.step.startsWith('result_')) {
+      html += renderResult(state.step);
+    } else {
+      html += renderQuestion(state.step);
+    }
+
+    app.innerHTML = html;
+  }
+
+  function renderWelcome() {
+    return '<div class="card">' +
+      '<div class="welcome-title">Find the right help.<br>Answer 4 quick questions.</div>' +
+      '<div class="welcome-sub">We\'ll match you to the services and programs most likely to help — based on your situation, not a generic list.</div>' +
+      '<button class="welcome-start" onclick="goTo(\'q1\')">Get started &rarr;</button>' +
+      '</div>' +
+      '<div style="font-size:0.8rem; color:var(--muted); text-align:center; margin-top:12px;">No personal information collected. Free to use.</div>';
+  }
+
+  function renderQuestion(qid) {
+    var q = QUESTIONS[Q_INDEX[qid]];
+    var stepNum = Q_INDEX[qid] + 1;
+    var pct = Math.round((stepNum / QUESTIONS.length) * 100);
+    var html = '';
+
+    html += '<div class="progress-wrap">' +
+      '<div class="progress-bar"><div class="progress-fill" style="width:' + pct + '%"></div></div>' +
+      '<div class="progress-label">Question ' + stepNum + ' of ' + QUESTIONS.length + '</div>' +
+      '</div>';
+
+    html += '<div class="card">' +
+      '<div class="q-label">Question ' + stepNum + '</div>' +
+      '<div class="q-text">' + q.text + '</div>' +
+      '<div class="q-sub">' + q.sub + '</div>' +
+      '<div class="btn-row">' +
+      '<button class="btn btn-yes" onclick="answer(true)">' + (q.yes_label || 'Yes') + '</button>' +
+      '<button class="btn btn-no"  onclick="answer(false)">' + (q.no_label  || 'No')  + '</button>' +
+      '</div>' +
+      '</div>';
+
+    if (Q_INDEX[qid] > 0) {
+      html += '<button class="btn-restart" onclick="history.back()">← Back</button>';
+    }
+
+    return html;
+  }
+
+  function renderConfidenceBadge(conf) {
+    var meta = CONFIDENCE_META[conf.level];
+    return '<span class="conf-badge ' + meta.cssClass + '" onclick="this.classList.toggle(\'open\')" tabindex="0" role="button" aria-label="Information confidence: ' + meta.label + '">' +
+      meta.icon + ' ' + meta.label +
+      ' &mdash; Last checked: ' + conf.lastChecked +
+      '<span class="conf-tooltip">' + meta.tooltip + (conf.note ? '<br><br>' + conf.note : '') + '</span>' +
+      '</span>';
+  }
+
+  function renderResult(rid) {
+    var p = PATHWAYS[rid];
+    var html = '';
+
+    html += '<div class="card">';
+    html += '<span class="result-badge ' + p.badgeClass + '">' + p.badgeIcon + ' ' + p.label + '</span>';
+    html += '<div class="result-headline">' + p.headline + '</div>';
+
+    // First action block
+    html += '<div class="first-action">' + p.firstAction + '</div>';
+    html += '<a href="' + p.callNumber + '" class="btn-primary">' + p.callLabel + '</a>';
+
+    // What to expect
+    html += '<div class="section-head">What to expect</div>';
+    html += '<div class="what-to-expect">' + p.what_to_expect + '</div>';
+
+    // What to bring
+    html += '<div class="section-head">What to bring</div>';
+    html += '<ul class="bring-list">';
+    p.bring.forEach(function(item) { html += '<li>' + item + '</li>'; });
+    html += '</ul>';
+
+    // Additional resources
+    html += '<div class="section-head">Additional resources</div>';
+    p.resources.forEach(function(r) {
+      html += '<div class="resource-card">';
+      html += '<div class="resource-card__name">' + r.name + '</div>';
+      html += '<a href="' + r.tel + '" class="resource-card__phone">' + r.phone + '</a>';
+      if (r.note) html += '<div class="resource-card__note">' + r.note + '</div>';
+      html += '</div>';
+    });
+
+    // Extra note (optional)
+    if (p.extra_note) {
+      html += '<div class="extra-note">' + p.extra_note + '</div>';
+    }
+
+    // Confidence badge
+    html += renderConfidenceBadge(p.confidence);
+
+    html += '</div>'; // end card
+
+    // Restart
+    html += '<button class="btn-restart" onclick="goTo(\'welcome\')">← Start over</button>';
+
+    return html;
+  }
+
+  function goTo(step) {
+    state.step = step;
+    render();
+    window.scrollTo(0, 0);
+  }
+
+  function answer(isYes) {
+    var q = QUESTIONS[Q_INDEX[state.step]];
+    var next = isYes ? q.next_yes : q.next_no;
+    if (next.startsWith('result_')) {
+      state.pathway = next;
+    }
+    goTo(next);
+  }
+
+  // Tooltip close on outside click
+  document.addEventListener('click', function(e) {
+    if (!e.target.closest('.conf-badge')) {
+      document.querySelectorAll('.conf-badge.open').forEach(function(el) {
+        el.classList.remove('open');
+      });
+    }
+  });
+
+  // Initial render
+  render();
+</script>
+</body>
+</html>
