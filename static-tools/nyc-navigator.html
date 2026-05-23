@@ -1,0 +1,884 @@
+<!DOCTYPE html>
+<html lang="en">
+<!--
+  ╔══════════════════════════════════════════════════════════════╗
+  ║   COMMON LADDER — NAVIGATOR TEMPLATE                        ║
+  ║   Copy this file to create a new city/county navigator.     ║
+  ║   Search for [REPLACE] to find every placeholder.           ║
+  ║   File naming: [city-or-county]-navigator.html              ║
+  ╚══════════════════════════════════════════════════════════════╝
+
+  REQUIRED STEPS FOR EACH NEW NAVIGATOR:
+  1. Update <title>New York City Homelessness Resource Navigator — Common Ladder</title>
+<meta name="description" content="Find shelter, food, health care, and housing programs in New York City. Answer a few questions to get resources matched to your situation. Free, no signup.">
+<link rel="canonical" href="https://www.commonladder.org/static-tools/nyc-navigator.html">
+<style>
+  /* ── Reset & Base ── */
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    /* Navigator palette — slightly different from main site for tool readability */
+    --bg:        #FAF7F2;
+    --primary:   #1A5276;
+    --accent:    #2E86AB;
+    --text:      #1C2B33;
+    --green:     #27AE60;
+    --green-dark:#1E8449;
+    --muted:     #6B7C85;
+    --border:    #D5D0C8;
+    --card-bg:   #FFFFFF;
+    --shadow:    0 2px 12px rgba(26,82,118,0.10);
+
+    /* Common Ladder brand — used for home badge only */
+    --cl-blue:   #1C3D6E;
+    --cl-amber:  #E8911A;
+  }
+
+  html { font-size: 18px; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    line-height: 1.6;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  /* ── Layout shell ── */
+  #app {
+    width: 100%;
+    max-width: 640px;
+    padding: 24px 20px 60px;
+    flex: 1;
+  }
+
+  /* ── County badge (top of app, always visible) ── */
+  .county-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: var(--primary);
+    color: #fff;
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    padding: 4px 10px;
+    border-radius: 100px;
+    margin-bottom: 28px;
+  }
+  .county-badge svg { flex-shrink: 0; }
+
+  /* ── Question card ── */
+  .card {
+    background: var(--card-bg);
+    border-radius: 16px;
+    padding: 32px 28px;
+    box-shadow: var(--shadow);
+    margin-bottom: 16px;
+  }
+
+  .q-label {
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 14px;
+  }
+
+  .q-text {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--primary);
+    line-height: 1.35;
+    margin-bottom: 8px;
+  }
+
+  .q-sub {
+    font-size: 0.88rem;
+    color: var(--muted);
+    margin-bottom: 28px;
+  }
+
+  /* ── Buttons ── */
+  .btn-row {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+
+  .btn {
+    flex: 1;
+    min-width: 120px;
+    padding: 14px 20px;
+    border: none;
+    border-radius: 10px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.15s, transform 0.1s;
+  }
+  .btn:active { transform: scale(0.98); }
+
+  .btn-yes  { background: var(--primary); color: #fff; }
+  .btn-yes:hover  { background: #154360; }
+  .btn-no   { background: #EBF5FB; color: var(--primary); }
+  .btn-no:hover   { background: #D6EAF8; }
+
+  .btn-primary {
+    display: inline-block;
+    background: var(--green);
+    color: #fff;
+    padding: 16px 28px;
+    border-radius: 10px;
+    font-size: 1.05rem;
+    font-weight: 700;
+    text-decoration: none;
+    text-align: center;
+    margin-top: 8px;
+    transition: background 0.15s;
+  }
+  .btn-primary:hover { background: var(--green-dark); }
+
+  .btn-restart {
+    background: none;
+    border: 1.5px solid var(--border);
+    color: var(--muted);
+    font-size: 0.85rem;
+    padding: 8px 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    margin-top: 12px;
+    transition: border-color 0.15s;
+  }
+  .btn-restart:hover { border-color: var(--primary); color: var(--primary); }
+
+  /* ── Progress bar ── */
+  .progress-wrap {
+    margin-bottom: 20px;
+  }
+  .progress-bar {
+    height: 4px;
+    background: var(--border);
+    border-radius: 2px;
+    overflow: hidden;
+  }
+  .progress-fill {
+    height: 100%;
+    background: var(--accent);
+    border-radius: 2px;
+    transition: width 0.35s ease;
+  }
+  .progress-label {
+    font-size: 0.72rem;
+    color: var(--muted);
+    margin-top: 5px;
+  }
+
+  /* ── Result card ── */
+  .result-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 4px 12px;
+    border-radius: 100px;
+    font-size: 0.78rem;
+    font-weight: 700;
+    margin-bottom: 18px;
+  }
+  .badge-veterans { background: #D5E8D4; color: #27AE60; }
+  .badge-youth    { background: #D5E8D4; color: #27AE60; }
+  .badge-families { background: #DAE8FC; color: #1A5276; }
+  .badge-chronic  { background: #FFF2CC; color: #856404; }
+  .badge-adult    { background: #E8DAEF; color: #6C3483; }
+
+  .result-headline {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--primary);
+    line-height: 1.35;
+    margin-bottom: 20px;
+  }
+
+  .first-action {
+    background: #EBF5FB;
+    border-left: 4px solid var(--accent);
+    border-radius: 0 10px 10px 0;
+    padding: 16px 18px;
+    font-size: 0.95rem;
+    margin-bottom: 20px;
+  }
+
+  .section-head {
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin: 22px 0 10px;
+  }
+
+  .what-to-expect {
+    font-size: 0.93rem;
+    color: var(--text);
+    line-height: 1.6;
+    margin-bottom: 4px;
+  }
+
+  /* ── Bring list ── */
+  .bring-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  .bring-list li {
+    display: flex;
+    gap: 8px;
+    font-size: 0.9rem;
+    padding: 5px 0;
+    border-bottom: 1px solid var(--border);
+    color: var(--text);
+  }
+  .bring-list li:last-child { border-bottom: none; }
+  .bring-list li::before { content: "✓"; color: var(--green); font-weight: 700; flex-shrink: 0; }
+
+  /* ── Resource cards ── */
+  .resource-card {
+    border: 1.5px solid var(--border);
+    border-radius: 10px;
+    padding: 14px 16px;
+    margin-bottom: 10px;
+  }
+  .resource-card__name {
+    font-weight: 700;
+    font-size: 0.95rem;
+    color: var(--primary);
+    margin-bottom: 2px;
+  }
+  .resource-card__phone {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--green-dark);
+    text-decoration: none;
+    display: inline-block;
+    margin-bottom: 3px;
+  }
+  .resource-card__note {
+    font-size: 0.82rem;
+    color: var(--muted);
+  }
+
+  /* ── Extra note ── */
+  .extra-note {
+    background: #FFFDE7;
+    border: 1px solid #FDD835;
+    border-radius: 8px;
+    padding: 12px 14px;
+    font-size: 0.88rem;
+    color: #5D4037;
+    margin-top: 16px;
+  }
+
+  /* ── Confidence badge ── */
+  .conf-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    padding: 3px 10px;
+    border-radius: 100px;
+    margin-top: 20px;
+    cursor: help;
+    position: relative;
+  }
+  .conf-verified   { background: #D5E8D4; color: #27AE60; }
+  .conf-research   { background: #DAE8FC; color: #1A5276; }
+  .conf-unverified { background: #FFE6CC; color: #D6760C; }
+  .conf-tooltip {
+    display: none;
+    position: absolute;
+    bottom: calc(100% + 8px);
+    left: 50%;
+    transform: translateX(-50%);
+    background: #1C2B33;
+    color: #fff;
+    font-size: 0.75rem;
+    font-weight: 400;
+    line-height: 1.5;
+    padding: 10px 14px;
+    border-radius: 8px;
+    width: 260px;
+    z-index: 10;
+    pointer-events: none;
+  }
+  .conf-tooltip::after {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    border: 6px solid transparent;
+    border-top-color: #1C2B33;
+  }
+  .conf-badge:hover .conf-tooltip,
+  .conf-badge.open  .conf-tooltip { display: block; }
+
+  /* ── Welcome screen ── */
+  .welcome-title {
+    font-size: 1.6rem;
+    font-weight: 800;
+    color: var(--primary);
+    line-height: 1.25;
+    margin-bottom: 12px;
+  }
+  .welcome-sub {
+    font-size: 1rem;
+    color: var(--muted);
+    margin-bottom: 28px;
+  }
+  .welcome-start {
+    background: var(--primary);
+    color: #fff;
+    border: none;
+    border-radius: 12px;
+    padding: 18px 32px;
+    font-size: 1.05rem;
+    font-weight: 700;
+    cursor: pointer;
+    width: 100%;
+    transition: background 0.15s;
+  }
+  .welcome-start:hover { background: #154360; }
+
+  /* ── Footer ── */
+  footer {
+    text-align: center;
+    padding: 20px 20px 32px;
+    font-size: 0.8rem;
+    color: var(--muted);
+    line-height: 1.8;
+    max-width: 640px;
+    width: 100%;
+  }
+  footer a { color: var(--muted); }
+  footer a:hover { color: var(--primary); }
+  .footer-divider { margin: 0 8px; opacity: 0.5; }
+
+  /* ── Common Ladder home badge (fixed top-right) ── */
+  .cl-home {
+    position: fixed;
+    top: 14px;
+    right: 16px;
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    background: var(--cl-blue);
+    color: #fff;
+    text-decoration: none;
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.01em;
+    padding: 7px 13px 7px 9px;
+    border-radius: 100px;
+    box-shadow: 0 2px 10px rgba(28,61,110,0.25);
+    z-index: 999;
+    transition: background 0.15s;
+  }
+  .cl-home:hover { background: #163260; }
+  .cl-home__rung { color: var(--cl-amber); }
+
+  /* ── Print styles ── */
+  @media print {
+    .btn-restart, .progress-wrap, footer .share-note { display: none; }
+    .cl-home { display: none; }
+  }
+
+  /* ── Mobile ── */
+  @media (max-width: 480px) {
+    html { font-size: 16px; }
+    .card { padding: 24px 18px; }
+    .cl-home span { display: none; } /* icon only on small screens */
+    .cl-home { padding: 8px 10px; }
+    .conf-tooltip { width: 200px; left: 0; transform: none; }
+    .conf-tooltip::after { left: 24px; transform: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- Common Ladder home badge — always present, fixed top-right -->
+<a href="https://www.commonladder.org" class="cl-home" aria-label="Return to Common Ladder home">
+  <svg width="18" height="18" viewBox="0 0 28 28" fill="none" aria-hidden="true">
+    <rect x="4" y="2" width="3" height="24" rx="1.5" fill="white" opacity=".9"/>
+    <rect x="21" y="2" width="3" height="24" rx="1.5" fill="white" opacity=".9"/>
+    <rect x="4" y="7" width="20" height="3" rx="1.5" fill="#E8911A"/>
+    <rect x="4" y="14" width="20" height="3" rx="1.5" fill="#E8911A"/>
+    <rect x="4" y="21" width="20" height="3" rx="1.5" fill="#E8911A"/>
+  </svg>
+  <span>common<span class="cl-home__rung">ladder</span></span>
+</a>
+
+<!-- App shell — all screens rendered by JS into here -->
+<div id="app"></div>
+
+<!-- Footer — update CoC ID and location text -->
+<footer>
+  <span class="share-note">
+    📍 New York City, NY — NY-600
+    &nbsp;|&nbsp; Bookmark or share this page to help someone else
+  </span><br>
+  <a href="mailto:corrections.commonladder@gmail.com?subject=CoC%20Navigator%20update%20suggestion">Is this information out of date? Let us know.</a>
+  <span class="footer-divider">|</span>
+  <a href="https://www.commonladder.org">commonladder.org</a>
+</footer>
+
+<script>
+  /* ═══════════════════════════════════════════════════════════
+     STATE
+  ═══════════════════════════════════════════════════════════ */
+  var state = {
+    step: 'welcome',   // welcome | q1 | q2 | q3 | q4 | result_*
+    pathway: null
+  };
+
+  /* ═══════════════════════════════════════════════════════════
+     QUESTIONS
+     Standard across all navigators — do not change the flow.
+     Only change label text if local terminology differs.
+  ═══════════════════════════════════════════════════════════ */
+  var QUESTIONS = [
+    {
+      id: 'q1',
+      text: 'Are you a U.S. military veteran?',
+      sub: 'This includes any branch of the armed forces.',
+      next_yes: 'result_veterans',
+      next_no: 'q2'
+    },
+    {
+      id: 'q2',
+      text: 'Are you 24 years old or younger?',
+      sub: 'Youth-specific programs are available for people 24 and under.',
+      yes_label: 'Yes, 24 or younger',
+      no_label: 'No, 25 or older',
+      next_yes: 'result_youth',
+      next_no: 'q3'
+    },
+    {
+      id: 'q3',
+      text: 'Do you have children with you right now?',
+      sub: 'This includes any minors in your care.',
+      next_yes: 'result_families',
+      next_no: 'q4'
+    },
+    {
+      id: 'q4',
+      text: 'Have you been without stable housing for more than a year — or off and on for years — AND do you have a health condition that makes it harder to work or take care of yourself?',
+      sub: 'This includes physical conditions, mental health conditions, or substance use.',
+      next_yes: 'result_chronic',
+      next_no: 'result_adult'
+    }
+  ];
+
+  var Q_INDEX = { q1: 0, q2: 1, q3: 2, q4: 3 };
+
+  /* ═══════════════════════════════════════════════════════════
+     CONFIDENCE TIERS
+     Apply to every pathway. Be honest about what's verified.
+     level: 'verified' | 'research' | 'unverified'
+  ═══════════════════════════════════════════════════════════ */
+  var CONFIDENCE_META = {
+    verified: {
+      icon: '✓',
+      label: 'Verified',
+      cssClass: 'conf-verified',
+      tooltip: 'Confirmed directly with the CoC or provider. Phone numbers and intake processes have been tested.'
+    },
+    research: {
+      icon: '◐',
+      label: 'Research-based',
+      cssClass: 'conf-research',
+      tooltip: 'Gathered from official agency websites and public records. Likely accurate but may have changed — call ahead to confirm.'
+    },
+    unverified: {
+      icon: '?',
+      label: 'Unverified',
+      cssClass: 'conf-unverified',
+      tooltip: 'Based on general knowledge. Not checked against primary sources. Call ahead before relying on this information.'
+    }
+  };
+
+  /* ═══════════════════════════════════════════════════════════
+     PATHWAY DATA
+     Fill in all [REPLACE] markers below.
+     Each pathway needs: firstAction + callNumber + resources.
+     Keep firstAction to one clear sentence + phone number.
+     resources: 3 is ideal; 2 minimum; 4 maximum.
+  ═══════════════════════════════════════════════════════════ */
+  var PATHWAYS = {
+
+    result_veterans: {
+      label: "Veterans Pathway",
+      badgeClass: "badge-veterans",
+      badgeIcon: "\ud83c\udf96",
+      headline: "There's a dedicated system built for you.",
+      firstAction: "Call the National Call Center for Homeless Veterans right now: <strong>1-877-4AID-VET (1-877-424-3838)</strong>. Available 24/7. You do NOT need your DD-214 to call.",
+      callNumber: "tel:18774243838",
+      callLabel: "Call 1-877-4AID-VET",
+      what_to_expect: "NYC veterans have access to VA NY Harbor Healthcare (Manhattan, Brooklyn, St. Albans campuses), HUD-VASH vouchers, and SSVF rapid rehousing through Volunteers of America\u2013Greater New York. Ask for the Homeless Veteran Program when you call the VA main line.",
+      bring: [
+        "DD-214 discharge papers (if you have them \u2014 not required to call)",
+        "Photo ID (if available)",
+        "Any VA documentation you have",
+      ],
+      resources: [
+        {
+          name: "VA NY Harbor Healthcare System \u2014 Manhattan Campus",
+          phone: "(212) 686-7500",
+          tel: "tel:2126867500",
+          note: "Main hospital line. Ask for the Homeless Veteran Care coordinator."
+        },
+        {
+          name: "Volunteers of America\u2013Greater New York (SSVF)",
+          phone: "(212) 873-2600",
+          tel: "tel:2128732600",
+          note: "Supportive Services for Veteran Families \u2014 rapid rehousing & prevention across all 5 boroughs."
+        },
+        {
+          name: "National Call Center for Homeless Veterans",
+          phone: "1-877-424-3838",
+          tel: "tel:18774243838",
+          note: "24/7. Can connect you to any VA homeless program nationwide."
+        },
+      ],
+      confidence: {
+        level: "research",
+        note: "Phone numbers sourced from VA.gov and VOA-GNY official site. Last reviewed May 2026.",
+        lastChecked: "May 2026"
+      }
+    },
+
+    result_youth: {
+      label: "Youth Pathway",
+      badgeClass: "badge-youth",
+      badgeIcon: "\ud83c\udf31",
+      headline: "You have access to NYC youth-specific shelter and services.",
+      firstAction: "Call <strong>Covenant House New York</strong> at <strong>(212) 613-0300</strong>. Crisis shelter for ages 16\u201324, open 24/7/365 at 460 W 41st St, Manhattan. Walk-in welcome.",
+      callNumber: "tel:2126130300",
+      callLabel: "Call Covenant House NY: (212) 613-0300",
+      what_to_expect: "Covenant House offers immediate crisis beds, meals, showers, and case management. For LGBTQ+ youth, the Ali Forney Center 24-hour drop-in is a strong alternative. Safe Horizon Streetwork Project runs drop-in centers in Harlem and the Lower East Side for youth under 25.",
+      bring: [
+        "Photo ID if you have one \u2014 not required to access drop-in services",
+        "Anything important you can carry (medications, ID, paperwork)",
+        "Nothing required to walk in to Covenant House",
+      ],
+      resources: [
+        {
+          name: "Safe Horizon Streetwork Project (Harlem Drop-In)",
+          phone: "(212) 695-2220",
+          tel: "tel:2126952220",
+          note: "Drop-in for street-involved youth under 25. 209 W 125th St, 2nd Fl."
+        },
+        {
+          name: "Ali Forney Center (LGBTQ+ youth, 24-hr drop-in)",
+          phone: "(212) 206-0574",
+          tel: "tel:2122060574",
+          note: "307 W 38th St, 3rd Fl. Food, medical, mental health, housing referrals."
+        },
+        {
+          name: "NYC 311",
+          phone: "311",
+          tel: "tel:311",
+          note: "Citywide referrals for youth shelter, runaway services, and outreach."
+        },
+      ],
+      extra_note: "\u26a0\ufe0f Under 18? NYC has runaway/homeless youth (RHY) shelters that allow access without parental consent. Call Covenant House or Safe Horizon for guidance \u2014 they will not call your parents without your permission.",
+      confidence: {
+        level: "research",
+        note: "Phone numbers verified against Covenant House NY, Safe Horizon, and Ali Forney Center official sites. Last reviewed May 2026.",
+        lastChecked: "May 2026"
+      }
+    },
+
+    result_families: {
+      label: "Families Pathway",
+      badgeClass: "badge-families",
+      badgeIcon: "\ud83c\udfe0",
+      headline: "PATH is the only family shelter intake in NYC \u2014 and they cannot turn you away.",
+      firstAction: "Go to <strong>PATH (Prevention Assistance and Temporary Housing)</strong> at <strong>151 East 151st Street, Bronx, NY 10451</strong>. Open 24/7; applications processed 9am\u20135pm. Call <strong>(718) 503-6400</strong> with questions.",
+      callNumber: "tel:7185036400",
+      callLabel: "Call PATH: (718) 503-6400",
+      what_to_expect: "NYC has a constitutional right to shelter for families with children \u2014 you cannot be turned away. PATH is the single citywide intake. Bring everyone in your household. Expect a long process the first day; you may be given temporary placement while eligibility is determined. Children have the right to stay in their current school under McKinney-Vento.",
+      bring: [
+        "Photo ID for adults (if available)",
+        "Birth certificates for children (helpful)",
+        "Social security cards (if you have them)",
+        "Proof of last address or eviction (if available)",
+        "Documentation of income or benefits",
+      ],
+      resources: [
+        {
+          name: "HRA Homebase \u2014 Homelessness Prevention",
+          phone: "311",
+          tel: "tel:311",
+          note: "If you're at risk but not yet in shelter, ask 311 for your local Homebase office (one in each borough)."
+        },
+        {
+          name: "PATH Intake Center",
+          phone: "(718) 503-6400",
+          tel: "tel:7185036400",
+          note: "151 East 151st Street, Bronx \u2014 the only NYC family shelter intake."
+        },
+        {
+          name: "NYC 311",
+          phone: "311",
+          tel: "tel:311",
+          note: "24/7. Family shelter info, eviction prevention, HRA benefits."
+        },
+      ],
+      confidence: {
+        level: "research",
+        note: "PATH address and phone verified on nyc.gov/site/dhs. Homebase access via 311 confirmed on HRA pages. Last reviewed May 2026.",
+        lastChecked: "May 2026"
+      }
+    },
+
+    result_chronic: {
+      label: "Chronic Homelessness Pathway",
+      badgeClass: "badge-chronic",
+      badgeIcon: "\ud83d\udd11",
+      headline: "NYC has a right to shelter \u2014 and a pathway to permanent supportive housing.",
+      firstAction: "Call <strong>311</strong> and ask to be connected to a <strong>HOME-STAT outreach team</strong>. They operate 24/7/365 in all five boroughs and can help you start the path to Permanent Supportive Housing (PSH). Walk-in shelter is also a right \u2014 see the Single Adults pathway for intake locations.",
+      callNumber: "tel:311",
+      callLabel: "Call 311 \u2014 ask for HOME-STAT outreach",
+      what_to_expect: "Permanent Supportive Housing in NYC is accessed through the HRA 2010e application, usually submitted by a case manager or provider. Outreach teams can connect you to a provider that will help you apply. While you wait, you have a right to walk into adult shelter intake at any time (see Single Adults pathway).",
+      bring: [
+        "Photo ID (any form, if available)",
+        "Documentation of any health conditions (helpful but not required)",
+        "Any prior shelter or service history records",
+      ],
+      resources: [
+        {
+          name: "HOME-STAT Street Outreach (via 311)",
+          phone: "311",
+          tel: "tel:311",
+          note: "24/7 outreach in all 5 boroughs. Run by BRC, Goddard Riverside, Breaking Ground, and others."
+        },
+        {
+          name: "HRA Supportive Housing Info",
+          phone: "311",
+          tel: "tel:311",
+          note: "Ask 311 for the HRA Supportive Housing 2010e process. Providers submit applications on your behalf."
+        },
+        {
+          name: "NYC 311",
+          phone: "311",
+          tel: "tel:311",
+          note: "Citywide entry to shelter, outreach, and benefits."
+        },
+      ],
+      extra_note: "\ud83d\udccb Qualifying conditions for PSH include serious mental illness, substance use disorder, HIV/AIDS, or chronic medical conditions. You don't need a formal diagnosis to start \u2014 outreach teams will help with the documentation.",
+      confidence: {
+        level: "research",
+        note: "HOME-STAT and HRA supportive housing pathways sourced from nyc.gov DHS and HRA official pages. Last reviewed May 2026.",
+        lastChecked: "May 2026"
+      }
+    },
+
+    result_adult: {
+      label: "Single Adults Pathway",
+      badgeClass: "badge-adult",
+      badgeIcon: "\ud83d\udcde",
+      headline: "NYC has a right to shelter \u2014 walk in any time, day or night.",
+      firstAction: "Single men: walk in to <strong>30th Street Men's Intake</strong> at <strong>400\u2013430 East 30th Street, Manhattan</strong>, 24/7. Single women: walk in to <strong>HELP Women's Center, 116 Williams Avenue, Brooklyn</strong>, or <strong>Franklin Women's Center, 1122 Franklin Avenue, Bronx</strong> \u2014 also 24/7. Or call <strong>311</strong> for current intake locations.",
+      callNumber: "tel:311",
+      callLabel: "Call 311 for current intake info",
+      what_to_expect: "NYC's Callahan v. Carey consent decree guarantees a bed to any adult who requests one. Intake involves a needs assessment (mental health, medical, substance use) so you can be placed in the right facility. Expect to wait \u2014 bring water, a phone charger, and patience. Intake centers operate 24/7. Note: intake locations have changed in the past \u2014 call 311 to confirm before traveling.",
+      bring: [
+        "Photo ID if you have one (helpful, not required by right-to-shelter)",
+        "Social security card or number (if available)",
+        "Medications and any medical documentation",
+        "Any documentation of income or benefits",
+      ],
+      resources: [
+        {
+          name: "Franklin Women's Center (DHS women's intake)",
+          phone: "(929) 281-2330",
+          tel: "tel:9292812330",
+          note: "1122 Franklin Avenue, Bronx. Women's intake & assessment, 24/7."
+        },
+        {
+          name: "30th Street Men's Intake (DHS)",
+          phone: "311",
+          tel: "tel:311",
+          note: "400\u2013430 East 30th Street, Manhattan. Walk-in 24/7. Call 311 to confirm current location."
+        },
+        {
+          name: "NYC 311",
+          phone: "311",
+          tel: "tel:311",
+          note: "24/7 citywide info for shelter intake, outreach, and benefits."
+        },
+      ],
+      extra_note: "\u26a0\ufe0f DHS intake locations can change. Confirm the current adult intake address by calling 311 before traveling, especially if you have a long way to go.",
+      confidence: {
+        level: "research",
+        note: "Intake locations and Franklin Women's Center phone sourced from nyc.gov DHS pages. NYC right-to-shelter is established by Callahan v. Carey. Last reviewed May 2026.",
+        lastChecked: "May 2026"
+      }
+    }
+
+  }; // end PATHWAYS
+
+  /* ═══════════════════════════════════════════════════════════
+     RENDER ENGINE — do not modify below this line
+     unless fixing a structural bug.
+  ═══════════════════════════════════════════════════════════ */
+  function render() {
+    var app = document.getElementById('app');
+    var html = '';
+
+    // County badge always shown at top
+    html += '<div class="county-badge">';
+    html += '<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>';
+    // [REPLACE: Update county/CoC name and ID in the text below]
+    html += 'New York City, NY &mdash; NY-600</div>';
+
+    if (state.step === 'welcome') {
+      html += renderWelcome();
+    } else if (state.step.startsWith('result_')) {
+      html += renderResult(state.step);
+    } else {
+      html += renderQuestion(state.step);
+    }
+
+    app.innerHTML = html;
+  }
+
+  function renderWelcome() {
+    return '<div class="card">' +
+      '<div class="welcome-title">Find the right help.<br>Answer 4 quick questions.</div>' +
+      '<div class="welcome-sub">We\'ll match you to the services and programs most likely to help — based on your situation, not a generic list.</div>' +
+      '<button class="welcome-start" onclick="goTo(\'q1\')">Get started &rarr;</button>' +
+      '</div>' +
+      '<div style="font-size:0.8rem; color:var(--muted); text-align:center; margin-top:12px;">No personal information collected. Free to use.</div>';
+  }
+
+  function renderQuestion(qid) {
+    var q = QUESTIONS[Q_INDEX[qid]];
+    var stepNum = Q_INDEX[qid] + 1;
+    var pct = Math.round((stepNum / QUESTIONS.length) * 100);
+    var html = '';
+
+    html += '<div class="progress-wrap">' +
+      '<div class="progress-bar"><div class="progress-fill" style="width:' + pct + '%"></div></div>' +
+      '<div class="progress-label">Question ' + stepNum + ' of ' + QUESTIONS.length + '</div>' +
+      '</div>';
+
+    html += '<div class="card">' +
+      '<div class="q-label">Question ' + stepNum + '</div>' +
+      '<div class="q-text">' + q.text + '</div>' +
+      '<div class="q-sub">' + q.sub + '</div>' +
+      '<div class="btn-row">' +
+      '<button class="btn btn-yes" onclick="answer(true)">' + (q.yes_label || 'Yes') + '</button>' +
+      '<button class="btn btn-no"  onclick="answer(false)">' + (q.no_label  || 'No')  + '</button>' +
+      '</div>' +
+      '</div>';
+
+    if (Q_INDEX[qid] > 0) {
+      html += '<button class="btn-restart" onclick="history.back()">← Back</button>';
+    }
+
+    return html;
+  }
+
+  function renderConfidenceBadge(conf) {
+    var meta = CONFIDENCE_META[conf.level];
+    return '<span class="conf-badge ' + meta.cssClass + '" onclick="this.classList.toggle(\'open\')" tabindex="0" role="button" aria-label="Information confidence: ' + meta.label + '">' +
+      meta.icon + ' ' + meta.label +
+      ' &mdash; Last checked: ' + conf.lastChecked +
+      '<span class="conf-tooltip">' + meta.tooltip + (conf.note ? '<br><br>' + conf.note : '') + '</span>' +
+      '</span>';
+  }
+
+  function renderResult(rid) {
+    var p = PATHWAYS[rid];
+    var html = '';
+
+    html += '<div class="card">';
+    html += '<span class="result-badge ' + p.badgeClass + '">' + p.badgeIcon + ' ' + p.label + '</span>';
+    html += '<div class="result-headline">' + p.headline + '</div>';
+
+    // First action block
+    html += '<div class="first-action">' + p.firstAction + '</div>';
+    html += '<a href="' + p.callNumber + '" class="btn-primary">' + p.callLabel + '</a>';
+
+    // What to expect
+    html += '<div class="section-head">What to expect</div>';
+    html += '<div class="what-to-expect">' + p.what_to_expect + '</div>';
+
+    // What to bring
+    html += '<div class="section-head">What to bring</div>';
+    html += '<ul class="bring-list">';
+    p.bring.forEach(function(item) { html += '<li>' + item + '</li>'; });
+    html += '</ul>';
+
+    // Additional resources
+    html += '<div class="section-head">Additional resources</div>';
+    p.resources.forEach(function(r) {
+      html += '<div class="resource-card">';
+      html += '<div class="resource-card__name">' + r.name + '</div>';
+      html += '<a href="' + r.tel + '" class="resource-card__phone">' + r.phone + '</a>';
+      if (r.note) html += '<div class="resource-card__note">' + r.note + '</div>';
+      html += '</div>';
+    });
+
+    // Extra note (optional)
+    if (p.extra_note) {
+      html += '<div class="extra-note">' + p.extra_note + '</div>';
+    }
+
+    // Confidence badge
+    html += renderConfidenceBadge(p.confidence);
+
+    html += '</div>'; // end card
+
+    // Restart
+    html += '<button class="btn-restart" onclick="goTo(\'welcome\')">← Start over</button>';
+
+    return html;
+  }
+
+  function goTo(step) {
+    state.step = step;
+    render();
+    window.scrollTo(0, 0);
+  }
+
+  function answer(isYes) {
+    var q = QUESTIONS[Q_INDEX[state.step]];
+    var next = isYes ? q.next_yes : q.next_no;
+    if (next.startsWith('result_')) {
+      state.pathway = next;
+    }
+    goTo(next);
+  }
+
+  // Tooltip close on outside click
+  document.addEventListener('click', function(e) {
+    if (!e.target.closest('.conf-badge')) {
+      document.querySelectorAll('.conf-badge.open').forEach(function(el) {
+        el.classList.remove('open');
+      });
+    }
+  });
+
+  // Initial render
+  render();
+</script>
+</body>
+</html>

@@ -3,231 +3,151 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Lambs Not Lions — Free Tools to End Homelessness</title>
-<meta name="description" content="Free, practical tools to help communities find homelessness resources, connect with local systems, and take action. No signup required.">
+<title>City Navigators — Common Ladder</title>
+<meta name="description" content="Free, plain-language homelessness resource navigators for the largest U.S. Continuums of Care. Pick your city to get started.">
+<link rel="canonical" href="https://www.commonladder.org/static-tools/">
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   :root {
-    --cream: #FAF7F2;
-    --warm-white: #FFFFFF;
-    --gold: #C8922A;
-    --gold-pale: #FDF3DC;
-    --brick: #8B3A2A;
-    --slate: #3D4B58;
-    --teal: #2E7D8A;
-    --teal-light: #E5F4F6;
-    --text: #2B2B2B;
-    --text-light: #5A5A5A;
-    --border: #DDD5C8;
-    --font-serif: 'Georgia', serif;
-    --font-body: 'Segoe UI', system-ui, sans-serif;
-    --radius: 12px;
-    --shadow: 0 2px 16px rgba(0,0,0,0.08);
+    --bg: #F8F7F4;
+    --primary: #1C3D6E;
+    --accent: #E8911A;
+    --sage: #4A9E82;
+    --text: #1C2B33;
+    --muted: #6B7C85;
+    --border: #D5D0C8;
+    --card-bg: #FFFFFF;
+    --shadow: 0 2px 12px rgba(28,61,110,0.08);
+    --font-display: 'Manrope', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+    --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   }
-  body {
-    font-family: var(--font-body);
-    background: var(--cream);
-    color: var(--text);
-    line-height: 1.6;
-  }
-  a { color: var(--teal); text-decoration: none; }
+  body { font-family: var(--font-body); background: var(--bg); color: var(--text); line-height: 1.6; }
+  a { color: var(--primary); text-decoration: none; }
   a:hover { text-decoration: underline; }
-
-  /* Header */
-  .site-header {
-    background: var(--warm-white);
-    border-bottom: 2px solid var(--gold);
-    padding: 20px;
-    text-align: center;
-  }
-  .brand { display: inline-flex; flex-direction: column; align-items: center; gap: 4px; }
-  .brand-name {
-    font-family: var(--font-serif);
-    font-size: 1.6rem;
-    color: var(--slate);
-    letter-spacing: 0.02em;
-  }
-  .brand-tagline {
-    font-size: 0.78rem;
-    letter-spacing: 0.16em;
-    text-transform: uppercase;
-    color: var(--brick);
-    font-weight: 600;
-  }
-
-  /* Hero */
-  .hero {
-    max-width: 720px;
-    margin: 56px auto 0;
-    padding: 0 24px;
-    text-align: center;
-  }
-  .hero-eyebrow {
-    font-size: 0.78rem;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    color: var(--brick);
-    font-weight: 600;
-    margin-bottom: 16px;
-  }
-  .hero h1 {
-    font-family: var(--font-serif);
-    font-size: clamp(1.8rem, 5vw, 2.8rem);
-    color: var(--slate);
-    line-height: 1.25;
-    margin-bottom: 20px;
-  }
-  .hero p {
-    font-size: 1.1rem;
-    color: var(--text-light);
-    max-width: 560px;
-    margin: 0 auto 40px;
-  }
-
-  /* Tools grid */
-  .tools-section {
-    max-width: 860px;
-    margin: 0 auto 72px;
-    padding: 0 24px;
-  }
-  .section-label {
-    font-size: 0.78rem;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    color: var(--brick);
-    font-weight: 600;
-    margin-bottom: 24px;
-    text-align: center;
-  }
-  .tools-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-    gap: 24px;
-  }
-  .tool-card {
-    background: var(--warm-white);
-    border-radius: var(--radius);
-    box-shadow: var(--shadow);
-    padding: 32px;
-    border-top: 3px solid var(--gold);
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-    transition: transform 0.15s ease, box-shadow 0.15s ease;
-  }
-  .tool-card:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 24px rgba(0,0,0,0.12);
-    text-decoration: none;
-  }
-  .tool-tag {
-    display: inline-block;
-    background: var(--teal-light);
-    color: var(--teal);
-    font-size: 0.72rem;
-    font-weight: 700;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    padding: 4px 10px;
-    border-radius: 20px;
-    width: fit-content;
-  }
-  .tool-card h2 {
-    font-family: var(--font-serif);
-    font-size: 1.25rem;
-    color: var(--slate);
-    line-height: 1.3;
-  }
-  .tool-card p {
-    font-size: 0.95rem;
-    color: var(--text-light);
-    flex: 1;
-  }
-  .tool-cta {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    font-size: 0.9rem;
-    font-weight: 600;
-    color: var(--teal);
-    margin-top: 4px;
-  }
-  .tool-cta::after { content: '→'; }
-
-  /* Values strip */
-  .values {
-    background: var(--slate);
-    padding: 48px 24px;
-    text-align: center;
-    margin-bottom: 0;
-  }
-  .values-inner {
-    max-width: 720px;
-    margin: 0 auto;
-  }
-  .values h2 {
-    font-family: var(--font-serif);
-    color: #fff;
-    font-size: 1.5rem;
-    margin-bottom: 12px;
-  }
-  .values p {
-    color: #9aa8b5;
-    font-size: 1rem;
-    line-height: 1.7;
-  }
-
-  /* Footer */
-  .site-footer {
-    background: var(--slate);
-    border-top: 1px solid rgba(255,255,255,0.08);
-    padding: 24px;
-    text-align: center;
-  }
-  .site-footer p {
-    font-size: 0.82rem;
-    color: #6b7c88;
-  }
+  .site-header { background: #fff; border-bottom: 2px solid var(--accent); padding: 18px 20px; }
+  .site-header__inner { max-width: 1000px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+  .brand { display: inline-flex; align-items: center; gap: 10px; font-family: var(--font-display); font-weight: 700; color: var(--primary); font-size: 1.15rem; text-decoration: none; }
+  .brand .rung { color: var(--accent); }
+  .nav-link { font-size: 0.92rem; color: var(--muted); font-weight: 600; }
+  .nav-link:hover { color: var(--primary); }
+  .hero { max-width: 760px; margin: 56px auto 32px; padding: 0 20px; text-align: center; }
+  .hero-eyebrow { font-size: 0.74rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--accent); font-weight: 700; margin-bottom: 14px; }
+  .hero h1 { font-family: var(--font-display); font-size: clamp(1.7rem, 4.4vw, 2.4rem); color: var(--primary); line-height: 1.25; margin-bottom: 16px; font-weight: 700; }
+  .hero p { font-size: 1.02rem; color: var(--muted); max-width: 600px; margin: 0 auto; }
+  .section { max-width: 1000px; margin: 0 auto; padding: 32px 20px; }
+  .section-label { font-size: 0.74rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--accent); font-weight: 700; margin-bottom: 16px; text-align: center; }
+  .section-head { font-family: var(--font-display); font-size: 1.4rem; color: var(--primary); text-align: center; margin-bottom: 28px; font-weight: 700; }
+  .nav-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 18px; }
+  .nav-card { background: var(--card-bg); border-radius: 12px; box-shadow: var(--shadow); padding: 22px 22px; border-top: 3px solid var(--accent); display: flex; flex-direction: column; gap: 8px; transition: transform 0.15s ease, box-shadow 0.15s ease; text-decoration: none; color: var(--text); }
+  .nav-card:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(28,61,110,0.12); text-decoration: none; }
+  .nav-card__city { font-family: var(--font-display); font-size: 1.1rem; color: var(--primary); font-weight: 700; line-height: 1.3; }
+  .nav-card__coc { font-size: 0.74rem; color: var(--muted); letter-spacing: 0.06em; font-weight: 600; }
+  .nav-card__desc { font-size: 0.88rem; color: var(--text); flex: 1; margin-top: 4px; }
+  .nav-card__cta { font-size: 0.85rem; font-weight: 600; color: var(--accent); margin-top: 6px; }
+  .nav-card__cta::after { content: ' →'; }
+  .coming-soon { background: #FFFDE7; border: 1px solid #FDD835; border-radius: 8px; padding: 18px 22px; margin-top: 12px; }
+  .coming-soon strong { display: block; color: #5D4037; font-family: var(--font-display); margin-bottom: 8px; }
+  .coming-soon-list { font-size: 0.88rem; color: #5D4037; line-height: 1.7; }
+  .site-footer { background: var(--primary); color: rgba(255,255,255,0.85); padding: 28px 20px; text-align: center; margin-top: 60px; }
+  .site-footer a { color: var(--accent); }
+  .site-footer p { font-size: 0.85rem; }
 </style>
 </head>
 <body>
 
 <header class="site-header">
-  <div class="brand">
-    <div class="brand-name">Lambs Not Lions</div>
-    <div class="brand-tagline">Free tools · No signup · Open to all</div>
+  <div class="site-header__inner">
+    <a href="https://www.commonladder.org" class="brand" aria-label="Common Ladder home">
+      <svg width="22" height="22" viewBox="0 0 28 28" fill="none" aria-hidden="true">
+        <rect x="4" y="2" width="3" height="24" rx="1.5" fill="#1C3D6E"/>
+        <rect x="21" y="2" width="3" height="24" rx="1.5" fill="#1C3D6E"/>
+        <rect x="4" y="7" width="20" height="3" rx="1.5" fill="#E8911A"/>
+        <rect x="4" y="14" width="20" height="3" rx="1.5" fill="#E8911A"/>
+        <rect x="4" y="21" width="20" height="3" rx="1.5" fill="#E8911A"/>
+      </svg>
+      common<span class="rung">ladder</span>
+    </a>
+    <a href="https://www.commonladder.org/resources.html" class="nav-link">Find resources →</a>
   </div>
 </header>
 
 <section class="hero">
-  <div class="hero-eyebrow">Community Resource Tools</div>
-  <h1>Practical tools for people working to end homelessness.</h1>
-  <p>Free, plain-language guides and finders built for community members, case workers, and faith communities. No account required.</p>
+  <div class="hero-eyebrow">CoC Navigators</div>
+  <h1>Find the right help, wherever you are.</h1>
+  <p>Free, plain-language navigators for the largest U.S. Continuums of Care. Four quick questions match you to local programs — no signup, no data collection.</p>
 </section>
 
-<section class="tools-section">
+<section class="section">
   <div class="section-label">Available now</div>
-  <div class="tools-grid">
+  <h2 class="section-head">Pick your city or county</h2>
+  <div class="nav-grid">
 
-    <a class="tool-card" href="/maricopa-navigator.html">
-      <span class="tool-tag">Maricopa County</span>
-      <h2>Maricopa County Resource Navigator</h2>
-      <p>Step-by-step guide to homelessness resources in the Phoenix metro area. Covers emergency shelter, coordinated entry, rapid rehousing, and more.</p>
-      <span class="tool-cta">Navigate resources</span>
+    <a class="nav-card" href="/static-tools/nyc-navigator.html">
+      <span class="nav-card__coc">CoC NY-600</span>
+      <div class="nav-card__city">New York City</div>
+      <p class="nav-card__desc">PATH family intake, 30th Street adult intake, Covenant House NY, HOME-STAT outreach, and 311 routing.</p>
+      <span class="nav-card__cta">Open navigator</span>
+    </a>
+
+    <a class="nav-card" href="/static-tools/los-angeles-navigator.html">
+      <span class="nav-card__coc">CoC CA-600</span>
+      <div class="nav-card__city">Los Angeles</div>
+      <p class="nav-card__desc">LAHSA Coordinated Entry, LA 211, Skid Row missions, VA Greater LA, SSVF veteran programs.</p>
+      <span class="nav-card__cta">Open navigator</span>
+    </a>
+
+    <a class="nav-card" href="/static-tools/chicago-navigator.html">
+      <span class="nav-card__coc">CoC IL-510</span>
+      <div class="nav-card__city">Chicago</div>
+      <p class="nav-card__desc">DFSS 311 intake, All Chicago CES, Pacific Garden Mission, Ignite youth services, Jesse Brown VA.</p>
+      <span class="nav-card__cta">Open navigator</span>
+    </a>
+
+    <a class="nav-card" href="/static-tools/seattle-navigator.html">
+      <span class="nav-card__coc">CoC WA-500</span>
+      <div class="nav-card__city">Seattle / King County</div>
+      <p class="nav-card__desc">KCRHA Regional Access Points, YWCA family intake, YouthCare, DESC, Compass Housing Alliance.</p>
+      <span class="nav-card__cta">Open navigator</span>
+    </a>
+
+    <a class="nav-card" href="/static-tools/maricopa-navigator.html">
+      <span class="nav-card__coc">CoC AZ-502</span>
+      <div class="nav-card__city">Maricopa County (Phoenix)</div>
+      <p class="nav-card__desc">Human Services Campus / CASS, UMOM family system, HomeBase Youth Services, VA Phoenix.</p>
+      <span class="nav-card__cta">Open navigator</span>
+    </a>
+
+    <a class="nav-card" href="/static-tools/tucson-navigator.html">
+      <span class="nav-card__coc">CoC AZ-501</span>
+      <div class="nav-card__city">Tucson / Pima County</div>
+      <p class="nav-card__desc">Tucson Pima Collaboration to End Homelessness, Gospel Rescue Mission, Old Pueblo Community Services.</p>
+      <span class="nav-card__cta">Open navigator</span>
     </a>
 
   </div>
+
+  <div class="coming-soon">
+    <strong>Coming soon</strong>
+    <div class="coming-soon-list">
+      Building navigators for the next CoCs in the U.S. top 40 by 2024 PIT count: San Diego, San Jose/Santa Clara, Oakland/Alameda, San Francisco, Las Vegas, Portland, Orange County, Sacramento, Boston, Washington DC, Philadelphia, Stockton, Honolulu, Fresno, San Bernardino, Riverside, Nassau/Suffolk, Minneapolis/Hennepin, Miami-Dade, Dallas, San Antonio, Long Beach, Houston, Metro Denver. <a href="mailto:corrections.commonladder@gmail.com">Tell us your city</a>.
+    </div>
+  </div>
 </section>
 
-<section class="values">
-  <div class="values-inner">
-    <h2>Built to serve, not to sell.</h2>
-    <p>These tools are free to use, free to share, and built without ads or data collection. If they help someone find shelter tonight or connect a community to better resources, that's enough.</p>
+<section class="section">
+  <div class="section-label">Other tools</div>
+  <div class="nav-grid">
+    <a class="nav-card" href="/static-tools/coc-finder.html" style="border-top-color: var(--sage);">
+      <span class="nav-card__coc">National</span>
+      <div class="nav-card__city">CoC Finder</div>
+      <p class="nav-card__desc">Find your local Continuum of Care by ZIP code — useful if your city isn't yet listed above.</p>
+      <span class="nav-card__cta">Open tool</span>
+    </a>
   </div>
 </section>
 
 <footer class="site-footer">
-  <p>© Lambs Not Lions, 2026 · Free to use and share · <a href="mailto:dvs.dnl@gmail.com" style="color:#6b7c88">Contact</a></p>
+  <p>© Common Ladder, 2026 · Free to use and share · <a href="mailto:corrections.commonladder@gmail.com">Suggest a correction</a></p>
 </footer>
 
 </body>
