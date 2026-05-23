@@ -1,0 +1,867 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Learn About Homelessness — Common Ladder</title>
+  <meta name="description" content="Interactive tools, data visualizations, research reports, and plain-language guides on homelessness in America — built for everyone from people seeking help to policy makers.">
+  <link rel="canonical" href="https://www.commonladder.org/learn.html">
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+  <style>
+    /* ── Learn page-specific styles ─────────────────────────────── */
+    .learn-section-label {
+      display: inline-flex;
+      align-items: center;
+      gap: .5rem;
+      font-size: .75rem;
+      font-weight: 700;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: var(--amber);
+      margin-bottom: 1rem;
+    }
+    .learn-section-label::before {
+      content: '';
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: var(--amber);
+      border-radius: 2px;
+    }
+
+    /* Tool cards */
+    .tool-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1.25rem;
+      margin-top: 1.5rem;
+    }
+    .tool-card {
+      background: white;
+      border: 1.5px solid #e8e4dc;
+      border-radius: 10px;
+      padding: 1.5rem;
+      transition: border-color .2s, transform .2s, box-shadow .2s;
+    }
+    .tool-card:hover {
+      border-color: var(--blue);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(28,61,110,.1);
+    }
+    .tool-card__icon {
+      font-size: 1.75rem;
+      margin-bottom: .75rem;
+    }
+    .tool-card h3 {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--blue);
+      margin: 0 0 .5rem;
+    }
+    .tool-card p {
+      font-size: .875rem;
+      color: var(--gray);
+      margin: 0 0 1rem;
+      line-height: 1.5;
+    }
+    .tool-card--coming {
+      background: var(--light);
+      border-style: dashed;
+      opacity: .75;
+    }
+    .tool-card--coming h3 { color: var(--gray); }
+    .badge-soon {
+      display: inline-block;
+      font-size: .65rem;
+      font-weight: 700;
+      letter-spacing: .05em;
+      text-transform: uppercase;
+      background: #f0ede7;
+      color: var(--gray);
+      padding: .2em .6em;
+      border-radius: 99px;
+      margin-bottom: .75rem;
+    }
+
+    /* Chart grid */
+    .chart-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+      margin-top: 1.5rem;
+    }
+    @media (max-width: 700px) {
+      .chart-grid { grid-template-columns: 1fr; }
+    }
+    .chart-card {
+      background: white;
+      border: 1.5px solid #e8e4dc;
+      border-radius: 10px;
+      padding: 1.5rem;
+    }
+    .chart-card h3 {
+      font-size: .95rem;
+      font-weight: 700;
+      color: var(--blue);
+      margin: 0 0 .25rem;
+    }
+    .chart-card .chart-meta {
+      font-size: .75rem;
+      color: var(--gray);
+      margin: 0 0 1rem;
+    }
+    .chart-card .chart-insight {
+      margin-top: 1rem;
+      padding: .75rem 1rem;
+      background: var(--light);
+      border-left: 3px solid var(--amber);
+      border-radius: 0 6px 6px 0;
+      font-size: .8rem;
+      color: var(--blue);
+      line-height: 1.5;
+    }
+    .chart-card canvas {
+      max-width: 100%;
+    }
+
+    /* Reports grid */
+    .reports-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
+    .report-card {
+      background: white;
+      border: 1.5px solid #e8e4dc;
+      border-radius: 10px;
+      padding: 1.25rem 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: .5rem;
+      text-decoration: none;
+      transition: border-color .2s, transform .2s;
+    }
+    .report-card:hover {
+      border-color: var(--blue);
+      transform: translateY(-2px);
+      text-decoration: none;
+    }
+    .report-card__org {
+      font-size: .7rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .07em;
+      color: var(--amber);
+    }
+    .report-card__title {
+      font-size: .9rem;
+      font-weight: 600;
+      color: var(--blue);
+      line-height: 1.4;
+    }
+    .report-card__desc {
+      font-size: .8rem;
+      color: var(--gray);
+      line-height: 1.45;
+    }
+    .report-card__link {
+      font-size: .8rem;
+      font-weight: 600;
+      color: var(--amber);
+      margin-top: .25rem;
+    }
+
+    /* Guide cards (absorbed from blog.html) */
+    .guides-intro {
+      font-size: 1rem;
+      color: var(--gray);
+      margin-top: .5rem;
+      margin-bottom: 0;
+    }
+
+    /* Future tools placeholder */
+    .future-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
+    .future-card {
+      background: var(--light);
+      border: 1.5px dashed #d5cfc4;
+      border-radius: 10px;
+      padding: 1.25rem 1.5rem;
+      text-align: center;
+    }
+    .future-card__icon { font-size: 1.5rem; margin-bottom: .5rem; }
+    .future-card h4 { font-size: .9rem; font-weight: 700; color: var(--blue); margin: 0 0 .35rem; }
+    .future-card p { font-size: .78rem; color: var(--gray); margin: 0; line-height: 1.45; }
+
+    /* national framing banner */
+    .national-banner {
+      background: linear-gradient(135deg, var(--blue) 0%, #0f2440 100%);
+      color: white;
+      padding: 1.25rem 1.5rem;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+    .national-banner__icon { font-size: 1.5rem; flex-shrink: 0; }
+    .national-banner p { margin: 0; font-size: .9rem; line-height: 1.5; opacity: .9; }
+    .national-banner strong { color: var(--amber); }
+  </style>
+</head>
+<body>
+
+<!-- Navigation -->
+<nav class="nav" aria-label="Main navigation">
+  <div class="nav__inner">
+    <a href="/" class="nav__logo" aria-label="Common Ladder home">
+      <svg width="28" height="28" viewBox="0 0 28 28" fill="none" aria-hidden="true">
+        <rect x="4" y="2" width="3" height="24" rx="1.5" fill="white" opacity=".9"/>
+        <rect x="21" y="2" width="3" height="24" rx="1.5" fill="white" opacity=".9"/>
+        <rect x="4" y="7" width="20" height="3" rx="1.5" fill="#E8911A"/>
+        <rect x="4" y="14" width="20" height="3" rx="1.5" fill="#E8911A"/>
+        <rect x="4" y="21" width="20" height="3" rx="1.5" fill="#E8911A"/>
+      </svg>
+      common<span>ladder</span>
+    </a>
+    <button class="nav__toggle" aria-label="Toggle menu" onclick="this.nextElementSibling.classList.toggle('open')">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav__links">
+      <li><a href="/resources.html">Find Resources</a></li>
+      <li><a href="/learn.html" aria-current="page">Learn</a></li>
+      <li><a href="/about.html">About</a></li>
+      <li><a href="/resources.html" class="nav__cta">Find Help Now</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- Hero -->
+<section class="hero" style="padding: clamp(3rem,8vw,5rem) 0;">
+  <div class="container">
+    <h1>Learn about <em>homelessness.</em></h1>
+    <p>Tools, data, guides, and research — built for people seeking help, case managers, policy makers, and anyone who wants to understand what's happening and what works.</p>
+  </div>
+</section>
+
+<!-- ── Interactive Tools ─────────────────────────────────────────── -->
+<section class="section">
+  <div class="container">
+    <div class="national-banner">
+      <div class="national-banner__icon">🗺️</div>
+      <p><strong>Building AZ first, expanding nationally.</strong> Our interactive navigator tools start with Arizona's two largest metros. We're building city-by-city — with a national directory coming soon.</p>
+    </div>
+    <span class="learn-section-label">Interactive tools</span>
+    <h2 style="margin:0 0 .5rem">Navigate resources in your city</h2>
+    <p style="color:var(--gray); margin:0">Step-by-step guides to finding the right shelter, food, health, and housing programs — tailored to your situation.</p>
+    <div class="tool-cards">
+      <div class="tool-card">
+        <div class="tool-card__icon">🗺️</div>
+        <h3>Maricopa County Navigator</h3>
+        <p>Covers Phoenix, Mesa, Scottsdale, Tempe, Glendale, and all of Maricopa County. Guided pathways for veterans, families, youth, and adults.</p>
+        <a href="/static-tools/maricopa-navigator.html" class="btn btn--blue btn--sm">Open navigator →</a>
+      </div>
+      <div class="tool-card">
+        <div class="tool-card__icon">🗺️</div>
+        <h3>Tucson / Pima County Navigator</h3>
+        <p>Covers Tucson, Marana, Sahuarita, and all of Pima County. Guided pathways to shelters, healthcare, food, and housing programs.</p>
+        <a href="/static-tools/tucson-navigator.html" class="btn btn--blue btn--sm">Open navigator →</a>
+      </div>
+      <div class="tool-card">
+        <div class="tool-card__icon">🔍</div>
+        <h3>CoC Finder</h3>
+        <p>Find your local Continuum of Care — the federally designated homeless services network for any city or county in the US.</p>
+        <a href="/static-tools/coc-finder.html" class="btn btn--blue btn--sm">Find your CoC →</a>
+      </div>
+      <div class="tool-card tool-card--coming">
+        <span class="badge-soon">Coming soon</span>
+        <div class="tool-card__icon">🗺️</div>
+        <h3>More cities</h3>
+        <p>Tucson was city #2. We're building navigators for Flagstaff, Yuma, and cities outside Arizona next — guided by where need is greatest.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── Data & Charts ─────────────────────────────────────────────── -->
+<section class="section section--alt">
+  <div class="container">
+    <span class="learn-section-label">Data &amp; charts</span>
+    <h2 style="margin:0 0 .5rem">Homelessness by the numbers</h2>
+    <p style="color:var(--gray); margin:0 0 .5rem">National data from HUD's Annual Homeless Assessment Report (AHAR) and Point-in-Time counts. All charts are interactive — hover for details.</p>
+    <div class="chart-grid">
+
+      <!-- Chart 1: PIT Count Trend -->
+      <div class="chart-card">
+        <h3>National Homeless Population, 2015–2024</h3>
+        <p class="chart-meta">HUD Point-in-Time Count — one-night snapshot, January each year. 2021 count was significantly disrupted by COVID-19.</p>
+        <canvas id="chart-pit" height="220"></canvas>
+        <div class="chart-insight">Homelessness rose 18% from 2023 to 2024, reaching 771,480 — the highest count on record since HUD began tracking in 2007.</div>
+      </div>
+
+      <!-- Chart 2: Sheltered vs. Unsheltered -->
+      <div class="chart-card">
+        <h3>Sheltered vs. Unsheltered, 2015–2024</h3>
+        <p class="chart-meta">People in emergency shelters, transitional housing, and Safe Havens are "sheltered." Sleeping outside, in cars, or abandoned buildings is "unsheltered."</p>
+        <canvas id="chart-shelter" height="220"></canvas>
+        <div class="chart-insight">Sheltered capacity expanded sharply in 2024 — the unsheltered share fell from 39% in 2023 to 36% in 2024, even as the overall total hit a new record high.</div>
+      </div>
+
+      <!-- Chart 3: By Population Type -->
+      <div class="chart-card">
+        <h3>Who Experiences Homelessness (2023)</h3>
+        <p class="chart-meta">HUD 2023 PIT Count — national totals by subpopulation. Numbers are not mutually exclusive (a veteran family counts in multiple categories).</p>
+        <canvas id="chart-pop" height="220"></canvas>
+        <div class="chart-insight">Chronically homeless individuals — those with long-term or repeated homelessness and a disabling condition — represent 20% of the total but consume a disproportionate share of resources.</div>
+      </div>
+
+      <!-- Chart 4: Racial Disparity -->
+      <div class="chart-card">
+        <h3>Race: US Population vs. Homeless Population</h3>
+        <p class="chart-meta">Compares each group's share of the general US population to their share of the homeless population. Source: HUD 2023 AHAR, US Census.</p>
+        <canvas id="chart-race" height="220"></canvas>
+        <div class="chart-insight"><strong>The most striking disparity:</strong> Black Americans are 13% of the US population but 37% of people experiencing homelessness — a 3× overrepresentation rooted in decades of discriminatory housing policy.</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ── Reports & Research ────────────────────────────────────────── -->
+<section class="section">
+  <div class="container">
+    <span class="learn-section-label">Reports &amp; research</span>
+    <h2 style="margin:0 0 .5rem">Primary sources and key reports</h2>
+    <p style="color:var(--gray); margin:0">The most important data sources on homelessness — linked directly so you can go to the source.</p>
+    <div class="reports-grid">
+      <a class="report-card" href="https://www.huduser.gov/portal/datasets/ahar.html" target="_blank" rel="noopener">
+        <span class="report-card__org">HUD</span>
+        <span class="report-card__title">Annual Homeless Assessment Report (AHAR)</span>
+        <span class="report-card__desc">The definitive federal report on homelessness in America — published annually with Point-in-Time count data and detailed subpopulation breakdowns.</span>
+        <span class="report-card__link">Read the report →</span>
+      </a>
+      <a class="report-card" href="https://www.usich.gov/sites/default/files/document/All_In.pdf" target="_blank" rel="noopener">
+        <span class="report-card__org">USICH</span>
+        <span class="report-card__title">All In: The Federal Strategic Plan to Prevent and End Homelessness</span>
+        <span class="report-card__desc">The Biden-era federal strategy for ending homelessness — sets goals, outlines evidence-based interventions, and benchmarks progress.</span>
+        <span class="report-card__link">Read the plan →</span>
+      </a>
+      <a class="report-card" href="https://endhomelessness.org/homelessness-in-america/homelessness-statistics/state-of-homelessness/" target="_blank" rel="noopener">
+        <span class="report-card__org">NAEH</span>
+        <span class="report-card__title">State of Homelessness Report</span>
+        <span class="report-card__desc">National Alliance to End Homelessness tracks trends across all 50 states — includes interactive state comparisons and annual trend data.</span>
+        <span class="report-card__link">Explore the data →</span>
+      </a>
+      <a class="report-card" href="https://www.hudexchange.info/programs/coc/coc-program-eligibility-requirements/coc-program-component-types/pit-and-hic/" target="_blank" rel="noopener">
+        <span class="report-card__org">HUD Exchange</span>
+        <span class="report-card__title">Point-in-Time Count Data</span>
+        <span class="report-card__desc">Raw CoC-level PIT count data for every Continuum of Care in the US — downloadable by year going back to 2007.</span>
+        <span class="report-card__link">Download data →</span>
+      </a>
+      <a class="report-card" href="https://nlihc.org/gap" target="_blank" rel="noopener">
+        <span class="report-card__org">NLIHC</span>
+        <span class="report-card__title">The Gap: A Shortage of Affordable Homes</span>
+        <span class="report-card__desc">National Low Income Housing Coalition's annual analysis of the affordable housing shortage — the structural driver behind rising homelessness.</span>
+        <span class="report-card__link">Read the report →</span>
+      </a>
+      <a class="report-card" href="https://www.hudexchange.info/programs/coc/coc-map/" target="_blank" rel="noopener">
+        <span class="report-card__org">HUD Exchange</span>
+        <span class="report-card__title">CoC Map &amp; Directory</span>
+        <span class="report-card__desc">Interactive map of all ~400 Continuums of Care in the US — click any CoC to see funded programs, contact information, and performance data.</span>
+        <span class="report-card__link">Explore the map →</span>
+      </a>
+      <a class="report-card" href="https://www.dhcs.ca.gov/Documents/CARE-Act-Annual-Report-2025.pdf" target="_blank" rel="noopener">
+        <span class="report-card__org">California DHCS</span>
+        <span class="report-card__title">CARE Court: Annual Report 2025</span>
+        <span class="report-card__desc">California's compelled treatment program through its first year — 557 petitions filed, 100 participants with plans or agreements, $713K estimated cost per participant. Essential reading for comparing compelled vs. voluntary approaches.</span>
+        <span class="report-card__link">Read the report →</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ── Guides ────────────────────────────────────────────────────── -->
+<section class="section section--alt">
+  <div class="container">
+    <span class="learn-section-label">Plain-language guides</span>
+    <h2 style="margin:0 0 .5rem">Guides for people, case managers, and communities</h2>
+    <p class="guides-intro">Real information, plain language. No jargon. No gatekeeping.</p>
+    <div class="blog-grid">
+      <article class="post-card post-card--linked">
+        <a href="/blog/emergency-shelter-phoenix-tonight.html" class="post-card__link">
+          <div class="post-card__img"><svg viewBox="0 0 400 200" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+  <rect width="400" height="200" fill="#0c1e38"/>
+  <circle cx="38" cy="22" r="1.5" fill="white" opacity=".7"/>
+  <circle cx="95" cy="14" r="1" fill="white" opacity=".5"/>
+  <circle cx="160" cy="28" r="1.5" fill="white" opacity=".8"/>
+  <circle cx="230" cy="16" r="1" fill="white" opacity=".6"/>
+  <circle cx="305" cy="33" r="1.5" fill="white" opacity=".5"/>
+  <circle cx="365" cy="19" r="1" fill="white" opacity=".7"/>
+  <circle cx="58" cy="48" r="1" fill="white" opacity=".45"/>
+  <circle cx="340" cy="52" r="1.5" fill="white" opacity=".4"/>
+  <circle cx="140" cy="50" r="1" fill="white" opacity=".5"/>
+  <circle cx="345" cy="42" r="22" fill="#F2C94C"/>
+  <circle cx="334" cy="34" r="19" fill="#0c1e38"/>
+  <rect x="0" y="118" width="68" height="82" fill="#1a3460"/>
+  <rect x="76" y="82" width="86" height="118" fill="#1a3460"/>
+  <rect x="170" y="108" width="55" height="92" fill="#1a3460"/>
+  <rect x="233" y="75" width="82" height="125" fill="#1a3460"/>
+  <rect x="323" y="98" width="77" height="102" fill="#1a3460"/>
+  <rect x="8" y="128" width="13" height="17" rx="1" fill="#E8911A" opacity=".95"/>
+  <rect x="38" y="128" width="13" height="17" rx="1" fill="#E8911A" opacity=".35"/>
+  <rect x="8" y="154" width="13" height="17" rx="1" fill="#E8911A" opacity=".55"/>
+  <rect x="38" y="154" width="13" height="17" rx="1" fill="#E8911A" opacity=".9"/>
+  <rect x="88" y="95" width="14" height="18" rx="1" fill="#E8911A" opacity=".85"/>
+  <rect x="114" y="95" width="14" height="18" rx="1" fill="#E8911A" opacity=".3"/>
+  <rect x="140" y="95" width="14" height="18" rx="1" fill="#E8911A" opacity=".65"/>
+  <rect x="88" y="122" width="14" height="18" rx="1" fill="#E8911A" opacity=".45"/>
+  <rect x="114" y="122" width="14" height="18" rx="1" fill="#E8911A" opacity=".9"/>
+  <rect x="140" y="122" width="14" height="18" rx="1" fill="#E8911A" opacity=".7"/>
+  <rect x="178" y="120" width="13" height="17" rx="1" fill="#E8911A" opacity=".8"/>
+  <rect x="200" y="120" width="13" height="17" rx="1" fill="#E8911A" opacity=".4"/>
+  <rect x="243" y="88" width="14" height="18" rx="1" fill="#E8911A" opacity=".9"/>
+  <rect x="268" y="88" width="14" height="18" rx="1" fill="#E8911A" opacity=".4"/>
+  <rect x="293" y="88" width="14" height="18" rx="1" fill="#E8911A" opacity=".7"/>
+  <rect x="243" y="116" width="14" height="18" rx="1" fill="#E8911A" opacity=".5"/>
+  <rect x="268" y="116" width="14" height="18" rx="1" fill="#E8911A" opacity=".85"/>
+  <rect x="332" y="110" width="13" height="17" rx="1" fill="#E8911A" opacity=".75"/>
+  <rect x="355" y="110" width="13" height="17" rx="1" fill="#E8911A" opacity=".4"/>
+  <rect x="332" y="136" width="13" height="17" rx="1" fill="#E8911A" opacity=".9"/>
+  <rect x="0" y="192" width="400" height="8" fill="#091526"/>
+</svg></div>
+          <div class="post-card__body">
+            <span class="post-card__cat">Emergency Resources</span>
+            <h3>How to Find Emergency Shelter in Phoenix Tonight</h3>
+            <p>Real addresses, phone numbers, and step-by-step guidance for finding a shelter bed in Phoenix tonight — including options for families, veterans, and women.</p>
+          </div>
+          <div class="post-card__foot"><span class="post-card__date">May 19, 2026</span></div>
+        </a>
+      </article>
+      <article class="post-card post-card--linked">
+        <a href="/blog/free-health-clinics-phoenix.html" class="post-card__link">
+          <div class="post-card__img"><svg viewBox="0 0 400 200" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+  <rect width="400" height="200" fill="#3d8c73"/>
+  <circle cx="60" cy="60" r="80" fill="white" opacity=".06"/>
+  <circle cx="340" cy="140" r="90" fill="white" opacity=".06"/>
+  <rect x="162" y="48" width="76" height="104" rx="10" fill="white"/>
+  <rect x="138" y="72" width="124" height="56" rx="10" fill="white"/>
+  <polyline points="60,130 110,130 128,100 145,155 162,115 178,130 340,130" stroke="white" stroke-width="3" fill="none" opacity=".35" stroke-linecap="round" stroke-linejoin="round"/>
+</svg></div>
+          <div class="post-card__body">
+            <span class="post-card__cat">Health Resources</span>
+            <h3>Free Health Clinics in Phoenix for People Experiencing Homelessness</h3>
+            <p>Free and low-cost medical care, mental health services, dental care, and substance use support in Phoenix — real locations, hours, and phone numbers.</p>
+          </div>
+          <div class="post-card__foot"><span class="post-card__date">May 20, 2026</span></div>
+        </a>
+      </article>
+      <article class="post-card post-card--linked">
+        <a href="/blog/free-meals-phoenix.html" class="post-card__link">
+          <div class="post-card__img"><svg viewBox="0 0 400 200" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+  <rect width="400" height="200" fill="#d17910"/>
+  <circle cx="200" cy="300" r="240" fill="#b8690e" opacity=".4"/>
+  <path d="M170 80 Q165 65 170 50 Q175 35 170 20" stroke="white" stroke-width="3.5" fill="none" stroke-linecap="round" opacity=".7"/>
+  <path d="M200 75 Q195 58 200 42 Q205 26 200 10" stroke="white" stroke-width="3.5" fill="none" stroke-linecap="round" opacity=".7"/>
+  <path d="M230 80 Q225 65 230 50 Q235 35 230 20" stroke="white" stroke-width="3.5" fill="none" stroke-linecap="round" opacity=".7"/>
+  <path d="M110 120 Q110 175 200 175 Q290 175 290 120 Z" fill="white"/>
+  <ellipse cx="200" cy="120" rx="90" ry="18" fill="white"/>
+  <ellipse cx="200" cy="120" rx="80" ry="14" fill="#d17910"/>
+  <rect x="178" y="175" width="44" height="10" rx="5" fill="white"/>
+  <rect x="158" y="183" width="84" height="8" rx="4" fill="white"/>
+  <rect x="310" y="80" width="6" height="80" rx="3" fill="white" opacity=".75"/>
+  <rect x="302" y="80" width="4" height="28" rx="2" fill="white" opacity=".75"/>
+  <rect x="314" y="80" width="4" height="28" rx="2" fill="white" opacity=".75"/>
+  <rect x="307" y="108" width="4" height="20" rx="2" fill="white" opacity=".75"/>
+  <rect x="80" y="100" width="6" height="65" rx="3" fill="white" opacity=".75"/>
+  <ellipse cx="83" cy="92" rx="12" ry="16" fill="white" opacity=".75"/>
+</svg></div>
+          <div class="post-card__body">
+            <span class="post-card__cat">Food Resources</span>
+            <h3>Free Meals and Food Banks in Phoenix: Where to Eat Today</h3>
+            <p>Food banks, community meal programs, and SNAP assistance in Phoenix — organized by location and type so you can find what's open today.</p>
+          </div>
+          <div class="post-card__foot"><span class="post-card__date">May 20, 2026</span></div>
+        </a>
+      </article>
+      <article class="post-card post-card--linked">
+        <a href="/blog/emergency-shelter-phoenix.html" class="post-card__link">
+          <div class="post-card__img"><svg viewBox="0 0 400 200" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+  <rect width="400" height="200" fill="#1C3D6E"/>
+  <circle cx="200" cy="200" r="160" fill="white" opacity=".04"/>
+  <circle cx="200" cy="200" r="100" fill="white" opacity=".04"/>
+  <rect x="135" y="110" width="130" height="90" rx="4" fill="white"/>
+  <polygon points="120,115 200,50 280,115" fill="#F2C94C"/>
+  <rect x="178" y="148" width="44" height="52" rx="4" fill="#E8911A"/>
+  <circle cx="215" cy="175" r="3.5" fill="white"/>
+  <rect x="144" y="126" width="36" height="32" rx="3" fill="#4A9E82"/>
+  <line x1="162" y1="126" x2="162" y2="158" stroke="white" stroke-width="2"/>
+  <line x1="144" y1="142" x2="180" y2="142" stroke="white" stroke-width="2"/>
+  <rect x="220" y="126" width="36" height="32" rx="3" fill="#4A9E82"/>
+  <line x1="238" y1="126" x2="238" y2="158" stroke="white" stroke-width="2"/>
+  <line x1="220" y1="142" x2="256" y2="142" stroke="white" stroke-width="2"/>
+  <rect x="235" y="60" width="18" height="40" rx="2" fill="white" opacity=".8"/>
+  <rect x="0" y="195" width="400" height="5" fill="#142e55"/>
+  <rect x="186" y="195" width="28" height="5" fill="white" opacity=".3"/>
+</svg></div>
+          <div class="post-card__body">
+            <span class="post-card__cat">Emergency Resources</span>
+            <h3>Emergency Shelter in Phoenix: A Complete Guide for 2025</h3>
+            <p>Everything you need to know about finding emergency shelter in Phoenix — intake processes, what to bring, what to expect, and how to get a bed tonight.</p>
+          </div>
+        </a>
+      </article>
+      <article class="post-card post-card--linked">
+        <a href="/blog/case-manager-guide.html" class="post-card__link">
+          <div class="post-card__img"><svg viewBox="0 0 400 200" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+  <rect width="400" height="200" fill="#0f2440"/>
+  <line x1="0" y1="50" x2="400" y2="50" stroke="white" stroke-width=".5" opacity=".07"/>
+  <line x1="0" y1="100" x2="400" y2="100" stroke="white" stroke-width=".5" opacity=".07"/>
+  <line x1="0" y1="150" x2="400" y2="150" stroke="white" stroke-width=".5" opacity=".07"/>
+  <line x1="100" y1="0" x2="100" y2="200" stroke="white" stroke-width=".5" opacity=".07"/>
+  <line x1="200" y1="0" x2="200" y2="200" stroke="white" stroke-width=".5" opacity=".07"/>
+  <line x1="300" y1="0" x2="300" y2="200" stroke="white" stroke-width=".5" opacity=".07"/>
+  <rect x="118" y="25" width="164" height="160" rx="8" fill="white"/>
+  <rect x="170" y="18" width="60" height="22" rx="6" fill="#1C3D6E"/>
+  <rect x="182" y="22" width="36" height="14" rx="3" fill="#0f2440"/>
+  <rect x="138" y="60" width="60" height="8" rx="3" fill="#e0dcd4"/>
+  <rect x="138" y="76" width="105" height="8" rx="3" fill="#e0dcd4"/>
+  <rect x="138" y="106" width="80" height="8" rx="3" fill="#e0dcd4"/>
+  <rect x="138" y="122" width="105" height="8" rx="3" fill="#e0dcd4"/>
+  <rect x="138" y="152" width="65" height="8" rx="3" fill="#e0dcd4"/>
+  <polyline points="208,58 215,66 228,48" stroke="#E8911A" stroke-width="3.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <polyline points="208,74 215,82 228,64" stroke="#E8911A" stroke-width="3.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <polyline points="208,104 215,112 228,94" stroke="#E8911A" stroke-width="3.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="208" y="119" width="18" height="14" rx="2" fill="none" stroke="#c0bcb5" stroke-width="2"/>
+  <rect x="208" y="149" width="18" height="14" rx="2" fill="none" stroke="#c0bcb5" stroke-width="2"/>
+</svg></div>
+          <div class="post-card__body">
+            <span class="post-card__cat">For Case Managers</span>
+            <h3>The Case Manager's Field Guide to Maricopa County Resources</h3>
+            <p>A practical reference for social workers and case managers navigating the Maricopa County service ecosystem — updated for 2025.</p>
+          </div>
+        </a>
+      </article>
+      <article class="post-card post-card--linked">
+        <a href="/blog/5-ways-to-help-phoenix.html" class="post-card__link">
+          <div class="post-card__img"><svg viewBox="0 0 400 200" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+  <rect width="400" height="200" fill="#4A9E82"/>
+  <circle cx="200" cy="-30" r="160" fill="white" opacity=".06"/>
+  <circle cx="108" cy="78" r="26" fill="white"/>
+  <path d="M55 168 Q55 130 108 130 Q161 130 161 168" fill="white"/>
+  <circle cx="200" cy="72" r="30" fill="white" opacity=".95"/>
+  <path d="M140 168 Q140 126 200 126 Q260 126 260 168" fill="white" opacity=".95"/>
+  <circle cx="292" cy="78" r="26" fill="white"/>
+  <path d="M239 168 Q239 130 292 130 Q345 130 345 168" fill="white"/>
+  <path d="M108 60 Q154 30 200 52 Q246 30 292 60" stroke="white" stroke-width="3" fill="none" opacity=".4" stroke-linecap="round"/>
+  <circle cx="200" cy="38" r="4" fill="#F2C94C" opacity=".8"/>
+  <circle cx="185" cy="28" r="2.5" fill="#F2C94C" opacity=".6"/>
+  <circle cx="215" cy="28" r="2.5" fill="#F2C94C" opacity=".6"/>
+  <rect x="40" y="168" width="320" height="6" rx="3" fill="white" opacity=".2"/>
+</svg></div>
+          <div class="post-card__body">
+            <span class="post-card__cat">Community</span>
+            <h3>5 Ways to Help with Homelessness in Phoenix Right Now</h3>
+            <p>Practical, high-impact actions for community members who want to help — from volunteering to advocacy to understanding the issue.</p>
+          </div>
+        </a>
+      </article>
+    </div>
+    <div style="text-align:center; margin-top:3rem; padding:2rem; background:white; border-radius:8px; border:1.5px solid #e8e4dc;">
+      <h3 style="margin-bottom:.5rem">New guides published regularly</h3>
+      <p style="color:var(--gray)">We publish new guides on Phoenix-area resources, housing navigation, and community action. Check back often.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ── Future Tools ──────────────────────────────────────────────── -->
+<section class="section">
+  <div class="container">
+    <span class="learn-section-label">Coming soon</span>
+    <h2 style="margin:0 0 .5rem">More tools on the way</h2>
+    <p style="color:var(--gray); margin:0">Common Ladder is the landing place for tools from multiple civic homelessness initiatives — here's what's in the pipeline.</p>
+    <div class="future-grid">
+      <div class="future-card">
+        <div class="future-card__icon">📊</div>
+        <h4>Ending Homelessness Knowledge Base</h4>
+        <p>Now active — 20+ evidence findings catalogued across prevention targeting, rapid rehousing, system performance, and structural root causes. Publishing to Common Ladder in stages.</p>
+      </div>
+      <div class="future-card">
+        <div class="future-card__icon">⛪</div>
+        <h4>Non-Faith Community Resources</h4>
+        <p>Tools helping people find secular community services and support — from the NFCEH project.</p>
+      </div>
+      <div class="future-card">
+        <div class="future-card__icon">🗺️</div>
+        <h4>National City Navigators</h4>
+        <p>Step-by-step resource navigators for every major US city — expanding from Arizona outward based on need and data availability.</p>
+      </div>
+      <div class="future-card">
+        <div class="future-card__icon">📈</div>
+        <h4>Local Data Dashboards</h4>
+        <p>City- and county-level interactive dashboards showing shelter capacity, unsheltered trends, and program outcomes over time.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="section section--alt">
+  <div class="container">
+    <div class="callout">
+      <h2>Every rung, together.</h2>
+      <p>Homelessness is solvable. Common Ladder connects every resource, every organization, and every person working toward that — in your city and nationally.</p>
+      <a href="/resources.html" class="btn btn--primary">Find resources near me</a>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer__grid">
+      <div class="footer__brand">
+        <h3>Common Ladder</h3>
+        <p>The civic resource platform connecting people experiencing homelessness with every service in your city.</p>
+      </div>
+      <div>
+        <h4>Resources</h4>
+        <ul>
+          <li><a href="/resources.html">Find Resources</a></li>
+          <li><a href="/static-tools/maricopa-navigator.html">Maricopa Navigator</a></li>
+          <li><a href="/static-tools/tucson-navigator.html">Tucson Navigator</a></li>
+          <li><a href="/learn.html">Learn &amp; Guides</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Get Involved</h4>
+        <ul>
+          <li><a href="/nonprofits.html">For Nonprofits</a></li>
+          <li><a href="/donors.html">For Donors &amp; Volunteers</a></li>
+          <li><a href="/data-reports.html">Data &amp; Reports</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>About</h4>
+        <ul>
+          <li><a href="/about.html">Our Mission</a></li>
+          <li><a href="/contact.html">Contact</a></li>
+          <li><a href="/privacy.html">Privacy Policy</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <span>&copy; 2026 Common Ladder. Free to use, always.</span>
+      <span>Built in Phoenix, AZ</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+// ── Chart 1: National PIT Count Trend 2015–2023 ──────────────────
+(function() {
+  const ctx = document.getElementById('chart-pit').getContext('2d');
+  new Chart(ctx, {
+    type: 'line',
+    data: {
+      labels: ['2015','2016','2017','2018','2019','2020','2021*','2022','2023','2024'],
+      datasets: [{
+        label: 'Total homeless (PIT count)',
+        data: [564708, 549928, 553742, 552830, 567715, 580466, 326126, 582462, 653104, 771480],
+        borderColor: '#1C3D6E',
+        backgroundColor: 'rgba(28,61,110,.08)',
+        borderWidth: 2.5,
+        pointBackgroundColor: '#1C3D6E',
+        pointRadius: 4,
+        fill: true,
+        tension: .3
+      }]
+    },
+    options: {
+      responsive: true,
+      plugins: {
+        legend: { display: false },
+        tooltip: {
+          callbacks: {
+            label: ctx => ' ' + ctx.parsed.y.toLocaleString() + ' people'
+          }
+        }
+      },
+      scales: {
+        y: {
+          beginAtZero: false,
+          min: 250000,
+          ticks: {
+            callback: v => (v/1000).toFixed(0) + 'K',
+            font: { size: 11 }
+          },
+          grid: { color: '#f0ede7' }
+        },
+        x: {
+          ticks: { font: { size: 11 } },
+          grid: { display: false }
+        }
+      }
+    }
+  });
+})();
+
+// ── Chart 2: Sheltered vs. Unsheltered ───────────────────────────
+(function() {
+  const ctx = document.getElementById('chart-shelter').getContext('2d');
+  new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels: ['2015','2016','2017','2018','2019','2020','2022','2023','2024'],
+      datasets: [
+        {
+          label: 'Sheltered',
+          data: [357253, 352700, 358768, 358127, 360940, 360961, 357153, 396494, 493747],
+          backgroundColor: '#1C3D6E',
+          borderRadius: 3
+        },
+        {
+          label: 'Unsheltered',
+          data: [207455, 197228, 194974, 194703, 206775, 219505, 225530, 256610, 277733],
+          backgroundColor: '#E8911A',
+          borderRadius: 3
+        }
+      ]
+    },
+    options: {
+      responsive: true,
+      plugins: {
+        legend: {
+          position: 'bottom',
+          labels: { font: { size: 11 }, boxWidth: 12, padding: 10 }
+        },
+        tooltip: {
+          callbacks: {
+            label: ctx => ' ' + ctx.dataset.label + ': ' + ctx.parsed.y.toLocaleString()
+          }
+        }
+      },
+      scales: {
+        x: {
+          stacked: true,
+          ticks: { font: { size: 11 } },
+          grid: { display: false }
+        },
+        y: {
+          stacked: true,
+          ticks: {
+            callback: v => (v/1000).toFixed(0) + 'K',
+            font: { size: 11 }
+          },
+          grid: { color: '#f0ede7' }
+        }
+      }
+    }
+  });
+})();
+
+// ── Chart 3: Population subgroups (2023) ─────────────────────────
+(function() {
+  const ctx = document.getElementById('chart-pop').getContext('2d');
+  new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels: ['Chronically\nhomeless', 'Veterans', 'Unaccompanied\nyouth', 'People in\nfamilies', 'Adults\n(other)'],
+      datasets: [{
+        label: 'People (2023 PIT count)',
+        data: [127768, 35574, 35098, 186039, 268625],
+        backgroundColor: ['#1C3D6E','#4A9E82','#E8911A','#1C3D6E','#4A9E82'],
+        borderRadius: 4
+      }]
+    },
+    options: {
+      indexAxis: 'y',
+      responsive: true,
+      plugins: {
+        legend: { display: false },
+        tooltip: {
+          callbacks: {
+            label: ctx => ' ' + ctx.parsed.x.toLocaleString() + ' people'
+          }
+        }
+      },
+      scales: {
+        x: {
+          ticks: {
+            callback: v => (v/1000).toFixed(0) + 'K',
+            font: { size: 11 }
+          },
+          grid: { color: '#f0ede7' }
+        },
+        y: {
+          ticks: { font: { size: 11 } },
+          grid: { display: false }
+        }
+      }
+    }
+  });
+})();
+
+// ── Chart 4: Racial disparity ────────────────────────────────────
+(function() {
+  const ctx = document.getElementById('chart-race').getContext('2d');
+  new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels: ['Black / African\nAmerican', 'White', 'Hispanic\nor Latino', 'Native American\n/ Alaska Native', 'Asian'],
+      datasets: [
+        {
+          label: 'Share of US population',
+          data: [13, 59, 19, 1, 6],
+          backgroundColor: 'rgba(28,61,110,.25)',
+          borderColor: '#1C3D6E',
+          borderWidth: 1.5,
+          borderRadius: 3
+        },
+        {
+          label: 'Share of homeless population',
+          data: [37, 48, 22, 4, 1],
+          backgroundColor: '#E8911A',
+          borderRadius: 3
+        }
+      ]
+    },
+    options: {
+      responsive: true,
+      plugins: {
+        legend: {
+          position: 'bottom',
+          labels: { font: { size: 11 }, boxWidth: 12, padding: 10 }
+        },
+        tooltip: {
+          callbacks: {
+            label: ctx => ' ' + ctx.dataset.label + ': ' + ctx.parsed.y + '%'
+          }
+        }
+      },
+      scales: {
+        x: {
+          ticks: { font: { size: 10 } },
+          grid: { display: false }
+        },
+        y: {
+          ticks: {
+            callback: v => v + '%',
+            font: { size: 11 }
+          },
+          grid: { color: '#f0ede7' },
+          max: 70
+        }
+      }
+    }
+  });
+})();
+</script>
+
+</body>
+</html>
