@@ -139,6 +139,42 @@
     <priority>0.9</priority>
   </url>
   <url>
+    <loc>https://www.commonladder.org/static-tools/denver-navigator.html</loc>
+    <lastmod>2026-05-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://www.commonladder.org/static-tools/san-diego-navigator.html</loc>
+    <lastmod>2026-05-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://www.commonladder.org/static-tools/san-jose-navigator.html</loc>
+    <lastmod>2026-05-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://www.commonladder.org/static-tools/oakland-navigator.html</loc>
+    <lastmod>2026-05-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://www.commonladder.org/static-tools/san-francisco-navigator.html</loc>
+    <lastmod>2026-05-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://www.commonladder.org/static-tools/las-vegas-navigator.html</loc>
+    <lastmod>2026-05-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
     <loc>https://www.commonladder.org/static-tools/coc-finder.html</loc>
     <lastmod>2026-05-22</lastmod>
     <changefreq>weekly</changefreq>
