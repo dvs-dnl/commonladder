@@ -178,7 +178,7 @@
   <a href="tel:988">988 Suicide &amp; Crisis Lifeline</a>
 </div>
 
-<nav class="nav" aria-label="Main navigation">
+<nav class="nav" aria-label="Primary">
   <div class="nav__inner">
     <a href="/" class="nav__logo" aria-label="Common Ladder home">
       <svg width="28" height="28" viewBox="0 0 28 28" fill="none" aria-hidden="true">
@@ -190,15 +190,17 @@
       </svg>
       common<span>ladder</span>
     </a>
-    <button class="nav__toggle" aria-label="Toggle menu" onclick="this.nextElementSibling.classList.toggle('open')">
+    <button class="nav__toggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="primary-nav" onclick="this.setAttribute('aria-expanded', document.getElementById('primary-nav').classList.toggle('open') ? 'true' : 'false')">
       <span></span><span></span><span></span>
     </button>
-    <ul class="nav__links">
-      <li><a href="/help/" aria-current="page">Find Help</a></li>
+    <ul class="nav__links" id="primary-nav">
+      <li><a href="/help/">Find help</a></li>
       <li><a href="/resources.html">Resources</a></li>
-      <li><a href="/blog.html">Blog</a></li>
+      <li><a href="/providers.html">For providers</a></li>
+      <li><a href="/learn.html">Learn</a></li>
       <li><a href="/about.html">About</a></li>
-      <li><a href="/help/" class="nav__cta">Find Help Now</a></li>
+      <li><a href="/help/" class="nav__cta">Find help now</a></li>
+      <li><a href="https://www.weather.gov/" rel="noreferrer" class="nav__exit" onclick="event.preventDefault();window.location.replace('https://www.weather.gov/')">Leave page</a></li>
     </ul>
   </div>
 </nav>
@@ -278,43 +280,61 @@
 </main>
 
 
+
+<section style="padding:2.5rem 0;background:#F9FAFB" aria-label="Related guides">
+  <div class="container" style="max-width:760px">
+    <h2 style="font-family:'Manrope',sans-serif;color:var(--blue);margin:0 0 1rem;font-size:1.4rem">Read more</h2>
+    <ul style="list-style:none;padding:0;margin:0">
+  <li style="margin:.75rem 0"><a href="/blog/emergency-shelter-phoenix-tonight.html" style="color:var(--blue);font-weight:600">How to find emergency shelter in Phoenix tonight</a></li>
+  <li style="margin:.75rem 0"><a href="/blog/emergency-shelter-phoenix.html" style="color:var(--blue);font-weight:600">Emergency shelter in Phoenix: a complete guide</a></li>
+    </ul>
+  </div>
+</section>
+
 <footer class="footer">
   <div class="container">
     <div class="footer__grid">
       <div class="footer__brand">
         <h3>Common Ladder</h3>
-        <p>The civic resource platform connecting people experiencing homelessness with every service in your city.</p>
+        <p>The civic resource platform connecting people experiencing homelessness with every service in your community.</p>
+        <p style="margin-top:1rem; font-size:.8rem; opacity:.7">Built in Phoenix, AZ · Free to use, always</p>
       </div>
       <div>
-        <h4>Find Help</h4>
+        <h4>Find help</h4>
         <ul>
           <li><a href="/help/">All categories</a></li>
-          <li><a href="/help/emergency-shelter/">Emergency Shelter</a></li>
-          <li><a href="/help/food-assistance/">Food Assistance</a></li>
-          <li><a href="/help/healthcare/">Healthcare</a></li>
+          <li><a href="/static-tools/">Local navigators</a></li>
+          <li><a href="/static-tools/maricopa-navigator.html">Maricopa, AZ</a></li>
+          <li><a href="/static-tools/tucson-navigator.html">Tucson, AZ</a></li>
+          <li><a href="/coc-finder.html">Find your CoC</a></li>
         </ul>
       </div>
       <div>
-        <h4>Resources</h4>
+        <h4>For providers</h4>
         <ul>
-          <li><a href="/resources.html">All Resources</a></li>
-          <li><a href="/static-tools/maricopa-navigator.html">Maricopa Navigator</a></li>
-          <li><a href="/static-tools/tucson-navigator.html">Tucson Navigator</a></li>
-          <li><a href="/blog.html">Blog &amp; Guides</a></li>
+          <li><a href="/providers.html">Tools &amp; referrals</a></li>
+          <li><a href="/providers.html#case-manager-guide">Case manager guide</a></li>
+          <li><a href="/data-reports.html">Data &amp; reports</a></li>
+          <li><a href="/learn.html">Learn (incl. Evidence)</a></li>
         </ul>
       </div>
       <div>
         <h4>About</h4>
         <ul>
-          <li><a href="/about.html">Our Mission</a></li>
+          <li><a href="/about.html">Our mission</a></li>
+          <li><a href="/about.html#methodology">Methodology</a></li>
+          <li><a href="/about.html#team">Team</a></li>
           <li><a href="/contact.html">Contact</a></li>
-          <li><a href="/privacy.html">Privacy Policy</a></li>
+          <li><a href="/privacy.html">Privacy</a></li>
         </ul>
       </div>
     </div>
+    <div class="footer__transparency">
+      <strong>Transparency:</strong> Common Ladder is an independent civic project. We do not sell user data, run ads, or accept payment from listed resources. Methodology, source code, and update logs are public on <a href="https://github.com/dvs-dnl/commonladder" rel="noopener">GitHub</a>.
+    </div>
     <div class="footer__bottom">
       <span>&copy; 2026 Common Ladder. Free to use, always.</span>
-      <span>Built in Phoenix, AZ</span>
+      <span><time datetime="2026-05-23">Last updated May 23, 2026</time></span>
     </div>
   </div>
 </footer>

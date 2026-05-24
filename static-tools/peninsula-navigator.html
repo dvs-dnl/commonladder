@@ -414,6 +414,33 @@
   <a href="sms:741741?body=HOME">Text HOME to 741741</a><span class="crisis-bar__sep">·</span>
   <a href="tel:988">988 Suicide &amp; Crisis</a>
 </div>
+<nav class="nav" aria-label="Primary">
+  <div class="nav__inner">
+    <a href="/" class="nav__logo" aria-label="Common Ladder home">
+      <svg width="28" height="28" viewBox="0 0 28 28" fill="none" aria-hidden="true">
+        <rect x="4" y="2" width="3" height="24" rx="1.5" fill="white" opacity=".9"/>
+        <rect x="21" y="2" width="3" height="24" rx="1.5" fill="white" opacity=".9"/>
+        <rect x="4" y="7" width="20" height="3" rx="1.5" fill="#E8911A"/>
+        <rect x="4" y="14" width="20" height="3" rx="1.5" fill="#E8911A"/>
+        <rect x="4" y="21" width="20" height="3" rx="1.5" fill="#E8911A"/>
+      </svg>
+      common<span>ladder</span>
+    </a>
+    <button class="nav__toggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="primary-nav" onclick="this.setAttribute('aria-expanded', document.getElementById('primary-nav').classList.toggle('open') ? 'true' : 'false')">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav__links" id="primary-nav">
+      <li><a href="/help/">Find help</a></li>
+      <li><a href="/resources.html">Resources</a></li>
+      <li><a href="/providers.html">For providers</a></li>
+      <li><a href="/learn.html">Learn</a></li>
+      <li><a href="/about.html">About</a></li>
+      <li><a href="/help/" class="nav__cta">Find help now</a></li>
+      <li><a href="https://www.weather.gov/" rel="noreferrer" class="nav__exit" onclick="event.preventDefault();window.location.replace('https://www.weather.gov/')">Leave page</a></li>
+    </ul>
+  </div>
+</nav>
+
 
 
 
@@ -433,14 +460,54 @@
 <div id="app"></div>
 
 <!-- Footer — update CoC ID and location text -->
-<footer>
-  <span class="share-note">
-    📍 Greater Virginia Peninsula — VA-505
-    &nbsp;|&nbsp; Bookmark or share this page to help someone else
-  </span><br>
-  <a href="mailto:corrections.commonladder@gmail.com?subject=CoC%20Navigator%20update%20suggestion">Is this information out of date? Let us know.</a>
-  <span class="footer-divider">|</span>
-  <a href="https://www.commonladder.org">commonladder.org</a>
+<a href="/help/" class="quick-help" aria-label="Find help now"><span aria-hidden="true">🚪</span> Find help now</a>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer__grid">
+      <div class="footer__brand">
+        <h3>Common Ladder</h3>
+        <p>The civic resource platform connecting people experiencing homelessness with every service in your community.</p>
+        <p style="margin-top:1rem; font-size:.8rem; opacity:.7">Built in Phoenix, AZ · Free to use, always</p>
+      </div>
+      <div>
+        <h4>Find help</h4>
+        <ul>
+          <li><a href="/help/">All categories</a></li>
+          <li><a href="/static-tools/">Local navigators</a></li>
+          <li><a href="/static-tools/maricopa-navigator.html">Maricopa, AZ</a></li>
+          <li><a href="/static-tools/tucson-navigator.html">Tucson, AZ</a></li>
+          <li><a href="/coc-finder.html">Find your CoC</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>For providers</h4>
+        <ul>
+          <li><a href="/providers.html">Tools &amp; referrals</a></li>
+          <li><a href="/providers.html#case-manager-guide">Case manager guide</a></li>
+          <li><a href="/data-reports.html">Data &amp; reports</a></li>
+          <li><a href="/learn.html">Learn (incl. Evidence)</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>About</h4>
+        <ul>
+          <li><a href="/about.html">Our mission</a></li>
+          <li><a href="/about.html#methodology">Methodology</a></li>
+          <li><a href="/about.html#team">Team</a></li>
+          <li><a href="/contact.html">Contact</a></li>
+          <li><a href="/privacy.html">Privacy</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer__transparency">
+      <strong>Transparency:</strong> Common Ladder is an independent civic project. We do not sell user data, run ads, or accept payment from listed resources. Methodology, source code, and update logs are public on <a href="https://github.com/dvs-dnl/commonladder" rel="noopener">GitHub</a>.
+    </div>
+    <div class="footer__bottom">
+      <span>&copy; 2026 Common Ladder. Free to use, always.</span>
+      <span><time datetime="2026-05-23">Last updated May 23, 2026</time></span>
+    </div>
+  </div>
 </footer>
 
 <script>
