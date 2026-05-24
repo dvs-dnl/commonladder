@@ -396,3 +396,67 @@ h1, h2, h3, h4 {
   .finder-notify { flex-direction: column; }
   .finder-notify .btn { width: 100%; }
 }
+
+/* ─── Canonical global shell — skip-link, crisis-bar, nav refinements ──── */
+
+.skip-link {
+  position: absolute;
+  top: -100px;
+  left: 1rem;
+  background: var(--amber);
+  color: var(--dark);
+  font-weight: 700;
+  padding: .6rem 1.2rem;
+  border-radius: 0 0 var(--radius) var(--radius);
+  z-index: 9999;
+  text-decoration: none;
+  transition: top .15s;
+}
+.skip-link:focus {
+  top: 0;
+  outline: 3px solid var(--blue);
+  outline-offset: 2px;
+}
+
+.crisis-bar {
+  background: var(--cream);
+  border-bottom: 1px solid #E5E7EB;
+  color: var(--dark);
+  font-size: .85rem;
+  text-align: center;
+  padding: .55rem var(--gap);
+  line-height: 1.5;
+}
+.crisis-bar a {
+  color: var(--blue);
+  font-weight: 600;
+  text-decoration: none;
+  margin: 0 .15rem;
+}
+.crisis-bar a:hover { text-decoration: underline; }
+.crisis-bar__sep {
+  color: #9CA3AF;
+  margin: 0 .35rem;
+}
+.crisis-bar strong { margin-right: .5rem; }
+@media (max-width: 560px) {
+  .crisis-bar { font-size: .78rem; padding: .5rem .75rem; }
+  .crisis-bar__sep { margin: 0 .2rem; }
+}
+
+/* Nav refinements — prevent ugly wrapping; keep CTA on one line */
+.nav__links { flex-wrap: wrap; align-items: center; }
+.nav__links a { white-space: nowrap; }
+.nav__cta { white-space: nowrap; }
+.nav__exit {
+  color: rgba(255,255,255,.65) !important;
+  font-size: .85rem !important;
+  border: 1px solid rgba(255,255,255,.3);
+  padding: .35rem .8rem;
+  border-radius: var(--radius);
+  white-space: nowrap;
+}
+.nav__exit:hover {
+  color: #fff !important;
+  border-color: rgba(255,255,255,.6);
+}
