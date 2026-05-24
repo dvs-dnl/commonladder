@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>What Makes a High-Performing CoC? A Data Look at the Top Programs — Common Ladder</title>
+  <meta name="description" content="Some Continuums of Care consistently move more people from homelessness to permanent housing than others — with similar resources. The data reveals what separates high performers.">
+  <link rel="canonical" href="https://www.commonladder.org/blog/high-performing-coc.html">
+  <link rel="stylesheet" href="/style.css">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="What Makes a High-Performing CoC? A Data Look at the Top Programs">
+  <meta property="og:description" content="Some Continuums of Care consistently move more people from homelessness to permanent housing than others — with similar resources. The data reveals what separates high performers.">
+  <meta property="og:url" content="https://www.commonladder.org/blog/high-performing-coc.html">
+  <meta property="og:site_name" content="Common Ladder">
+  <meta property="article:published_time" content="2026-05-23">
+  <meta property="article:section" content="Data &amp; Research">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "What Makes a High-Performing CoC? A Data Look at the Top Programs",
+    "description": "Some Continuums of Care consistently move more people from homelessness to permanent housing than others — with similar resources. The data reveals what separates high performers.",
+    "author": { "@type": "Organization", "name": "Common Ladder" },
+    "publisher": { "@type": "Organization", "name": "Common Ladder", "url": "https://www.commonladder.org" },
+    "datePublished": "2026-05-23",
+    "dateModified": "2026-05-23",
+    "mainEntityOfPage": "https://www.commonladder.org/blog/high-performing-coc.html"
+  }
+  </script>
+
+  <style>
+    .breadcrumb {
+      font-size: .8rem;
+      color: var(--gray);
+      margin-bottom: 1.5rem;
+    }
+    .breadcrumb a {
+      color: var(--gray);
+      text-decoration: none;
+    }
+    .breadcrumb a:hover {
+      color: var(--amber);
+      text-decoration: underline;
+    }
+    .breadcrumb span[aria-hidden] {
+      margin: 0 .4em;
+    }
+    .metric-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1rem;
+      margin: 1.75rem 0;
+    }
+    .metric-card {
+      background: white;
+      border: 1.5px solid #e8e4dc;
+      border-radius: 10px;
+      padding: 1.25rem;
+    }
+    .metric-card__label {
+      font-size: .7rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .07em;
+      color: var(--amber);
+      margin-bottom: .5rem;
+    }
+    .metric-card__name {
+      font-size: .95rem;
+      font-weight: 700;
+      color: var(--blue);
+      margin-bottom: .4rem;
+    }
+    .metric-card__desc {
+      font-size: .82rem;
+      color: var(--gray);
+      line-height: 1.5;
+      margin: 0;
+    }
+    .metric-card--high {
+      border-color: #4A9E82;
+      border-left-width: 4px;
+    }
+    .metric-card--high .metric-card__label {
+      color: #4A9E82;
+    }
+    .case-study {
+      background: var(--light);
+      border-radius: 10px;
+      padding: 1.5rem;
+      margin: 1.25rem 0;
+    }
+    .case-study__city {
+      font-size: .7rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      color: var(--amber);
+      margin-bottom: .35rem;
+    }
+    .case-study h3 {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--blue);
+      margin: 0 0 .6rem;
+    }
+    .case-study p {
+      font-size: .875rem;
+      color: var(--gray);
+      line-height: 1.55;
+      margin: 0;
+    }
+    .failure-list {
+      list-style: none;
+      padding: 0;
+      margin: 1.25rem 0;
+    }
+    .failure-list li {
+      display: flex;
+      gap: .875rem;
+      margin-bottom: 1rem;
+      align-items: flex-start;
+      font-size: .9rem;
+      color: var(--gray);
+      line-height: 1.5;
+    }
+    .failure-list li::before {
+      content: '✕';
+      flex-shrink: 0;
+      width: 1.5rem;
+      height: 1.5rem;
+      background: #fbe9d0;
+      color: var(--amber);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: .8rem;
+      margin-top: .1rem;
+    }
+    .callout-box {
+      background: var(--light);
+      border-left: 4px solid var(--amber);
+      border-radius: 0 8px 8px 0;
+      padding: 1.25rem 1.5rem;
+      margin: 1.75rem 0;
+    }
+    .callout-box strong {
+      display: block;
+      color: var(--blue);
+      margin-bottom: .5rem;
+    }
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: .4rem;
+      font-size: .875rem;
+      font-weight: 600;
+      color: var(--amber);
+      text-decoration: none;
+      margin-top: 2.5rem;
+    }
+    .back-link:hover { text-decoration: underline; }
+  </style>
+</head>
+<body>
+
+<nav class="nav" aria-label="Main navigation">
+  <div class="nav__inner">
+    <a href="/" class="nav__logo" aria-label="Common Ladder home">
+      <svg width="28" height="28" viewBox="0 0 28 28" fill="none" aria-hidden="true">
+        <rect x="4" y="2" width="3" height="24" rx="1.5" fill="white" opacity=".9"/>
+        <rect x="21" y="2" width="3" height="24" rx="1.5" fill="white" opacity=".9"/>
+        <rect x="4" y="7" width="20" height="3" rx="1.5" fill="#E8911A"/>
+        <rect x="4" y="14" width="20" height="3" rx="1.5" fill="#E8911A"/>
+        <rect x="4" y="21" width="20" height="3" rx="1.5" fill="#E8911A"/>
+      </svg>
+      common<span>ladder</span>
+    </a>
+    <button class="nav__toggle" aria-label="Toggle menu" onclick="this.nextElementSibling.classList.toggle('open')">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav__links">
+      <li><a href="/resources.html">Find Resources</a></li>
+      <li><a href="/learn.html">Learn</a></li>
+      <li><a href="/about.html">About</a></li>
+      <li><a href="/resources.html" class="nav__cta">Find Help Now</a></li>
+    </ul>
+  </div>
+</nav>
+
+<main class="article">
+
+  <nav aria-label="Breadcrumb" class="breadcrumb">
+    <a href="/">Home</a>
+    <span aria-hidden="true">›</span>
+    <a href="/learn.html">Learn</a>
+    <span aria-hidden="true">›</span>
+    <span aria-current="page">What Makes a High-Performing CoC?</span>
+  </nav>
+
+  <span class="eyebrow">Data &amp; Research</span>
+  <h1>What Makes a High-Performing CoC? A Data Look at the Top Programs</h1>
+  <p class="meta">By Common Ladder · May 23, 2026 · 9 min read</p>
+
+  <p>There are approximately 400 Continuums of Care in the United States, each representing a regional network of homeless service providers coordinated under a HUD funding structure. They operate in communities ranging from rural Montana to downtown Los Angeles. They have widely different budgets, housing markets, and political environments.</p>
+
+  <p>And they perform very differently.</p>
+
+  <p>Some CoCs consistently move a high percentage of people from homelessness to permanent housing — with short lengths of stay, low return-to-homelessness rates, and strong data quality. Others, with similar or larger resource bases, underperform on every measure. The question of what separates them is not just academically interesting. For the CoC staff, advocates, and local government officials working to improve their systems, it is the most important operational question they face.</p>
+
+  <p>The data points toward a consistent set of factors. This piece examines what HUD measures, what the high performers have in common, what the failure modes look like, and what any CoC can do — regardless of size or budget — to move toward better outcomes.</p>
+
+  <hr style="margin: 2rem 0; border: none; border-top: 1px solid #e0ddd8;">
+
+  <h2>How HUD Measures CoC Performance</h2>
+
+  <p>HUD evaluates CoC performance through its annual CoC Program Competition — the process by which CoCs apply for renewal and new funding. The scoring system is not simple, but the core metrics are well-established. HUD's System Performance Measures (SPMs), required of all CoCs since 2014, provide the clearest apples-to-apples comparison across systems. They include:</p>
+
+  <div class="metric-grid">
+    <div class="metric-card">
+      <div class="metric-card__label">SPM 1</div>
+      <div class="metric-card__name">Length of Time Homeless</div>
+      <p class="metric-card__desc">The median number of days a person spends in the homelessness system before exiting to permanent housing. Shorter is better. Top CoCs average under 100 days; many systems exceed 200.</p>
+    </div>
+    <div class="metric-card">
+      <div class="metric-card__label">SPM 2</div>
+      <div class="metric-card__name">Returns to Homelessness</div>
+      <p class="metric-card__desc">The percentage of people who exit to permanent housing but return to the homeless system within 6 and 24 months. High-performing CoCs keep this below 10% at 6 months and 20% at 24 months.</p>
+    </div>
+    <div class="metric-card">
+      <div class="metric-card__label">SPM 4</div>
+      <div class="metric-card__name">Employment &amp; Income Growth</div>
+      <p class="metric-card__desc">The percentage of clients who increase income from employment or non-employment sources. Strong performers see 30–40%+ of clients gaining income during program participation.</p>
+    </div>
+    <div class="metric-card">
+      <div class="metric-card__label">SPM 7</div>
+      <div class="metric-card__name">Successful Placement Rate</div>
+      <p class="metric-card__desc">The percentage of people who exit the system to permanent housing destinations. This is the headline metric. High performers achieve 70%+ PH placement from transitional and rapid rehousing programs.</p>
+    </div>
+  </div>
+
+  <p>HUD also scores CoCs on HMIS data quality — the completeness and accuracy of records in the Homeless Management Information System. A CoC that cannot accurately track who it serves, what programs they entered, and where they went when they left cannot be evaluated fairly, and HUD penalizes poor data quality in the competition scoring. Data quality is not a bureaucratic technicality; it is the foundation on which every other metric is built.</p>
+
+  <hr style="margin: 2rem 0; border: none; border-top: 1px solid #e0ddd8;">
+
+  <h2>What High-Performing CoCs Have in Common</h2>
+
+  <p>Researchers at the Urban Institute, Abt Associates, and HUD's Office of Policy Development and Research have analyzed high-performing CoCs for years. The characteristics that consistently separate high performers from average ones cluster into five areas:</p>
+
+  <h3>1. Coordinated Entry Fidelity</h3>
+  <p>High-performing CoCs have mature, well-implemented Coordinated Entry (CE) systems — the "front door" process that assesses people's needs and prioritizes them for the right program. The key word is fidelity: the system actually works as designed. High performers use standardized, validated assessment tools (most commonly the VI-SPDAT or a locally adapted equivalent), they maintain real-time data in HMIS, and they use that data to make prioritization decisions. Low-fidelity CE systems exist on paper but route people based on provider preference, historical relationships, or ad hoc decisions — producing inequitable outcomes and poor aggregate performance.</p>
+
+  <h3>2. Low-Barrier Shelter with Active Connection to Housing</h3>
+  <p>High performers run or contract with shelters that are genuinely low-barrier: they admit people without requiring sobriety, they don't turn away couples, and they provide stable enough conditions that people can engage in housing navigation. More importantly, their shelters are actively connected to CE — case managers work within or alongside shelter programs, housing navigation begins at shelter entry rather than months later. In low-performing systems, shelter and housing programs operate in silos, with referrals taking weeks and no proactive connection to permanent housing resources.</p>
+
+  <h3>3. Robust Permanent Supportive Housing Stock</h3>
+  <p>No CoC can perform well on permanent housing placements if it doesn't have enough permanent housing to place people into. The single most limiting factor in most CoC systems is PSH inventory — the number of subsidized permanent housing units available for people with the highest needs. High-performing CoCs have invested heavily over time in PSH stock, often through partnerships with local government, tax credit housing developers, and state housing finance agencies. They also maintain active lists of available units and strong landlord relationships that produce rapid placements.</p>
+
+  <h3>4. Strong HMIS Data Quality and Real-Time Use</h3>
+  <p>This cannot be overstated. High performers don't just enter data into HMIS — they use it operationally. Supervisors review weekly dashboards showing by-name lists of people in the system, average days to housing placement by program, and return-to-homelessness rates by program type. When a program's performance drops, leadership sees it quickly and intervenes. In low-performing systems, HMIS is treated as a compliance obligation rather than a management tool, and data entry lags weeks or months behind reality.</p>
+
+  <h3>5. Local Political Will and Braided Funding</h3>
+  <p>The CoC program itself covers a significant portion of costs, but the highest-performing communities layer additional funding on top: state homeless services dollars, local general fund contributions, Medicaid-funded services for housing program participants, philanthropic investment, and in some cases dedicated sales tax revenue (Los Angeles's Measure H being the most prominent example). Local political support also matters for zoning and siting — high performers have mayors and county executives who actively champion housing development and resist NIMBY opposition to new projects.</p>
+
+  <hr style="margin: 2rem 0; border: none; border-top: 1px solid #e0ddd8;">
+
+  <h2>Three CoCs That Set the Standard</h2>
+
+  <div class="case-study">
+    <div class="case-study__city">Houston, TX — TX-700</div>
+    <h3>The Way Home: A National Model</h3>
+    <p>Houston's Continuum of Care, known as The Way Home, is routinely cited as the highest-performing large-city CoC in the country. Houston reduced its overall homeless population by over 60% between 2011 and 2022, including a 91% reduction in veteran homelessness. The keys to Houston's performance: an exceptionally strong Coordinated Entry system with real-time by-name tracking; an aggressive "housing placement first, services second" philosophy; strong cross-sector collaboration between city, county, VA, and nonprofits; and dedicated leadership from The Coalition for the Homeless of Houston/Harris County. Houston is also notable for the discipline of its data use — every provider in the system is held accountable to performance benchmarks, and underperforming programs are retooled or defunded.</p>
+  </div>
+
+  <div class="case-study">
+    <div class="case-study__city">Utah — UT-500 and UT-503</div>
+    <h3>Housing First at Scale</h3>
+    <p>Utah's adoption of Housing First beginning in 2005 produced dramatic results: the state reduced its chronically homeless population by approximately 91% over a decade, from roughly 1,900 individuals to under 200 by 2015. Utah's approach centered on a simple premise — give people housing without preconditions, then provide services — supported by cost analysis showing it was dramatically cheaper than emergency shelter cycling. Utah's CoCs also benefited from relatively strong state-level coordination and investment from the state housing finance agency. The lessons from Utah's gains (and the partial erosion of those gains after 2015 due to funding and policy shifts) are instructive: Housing First works, but the gains are not self-sustaining without continued investment.</p>
+  </div>
+
+  <div class="case-study">
+    <div class="case-study__city">Virginia — Statewide</div>
+    <h3>Functional Zero for Veteran Homelessness</h3>
+    <p>Virginia became the first state in the nation to achieve "functional zero" for veteran homelessness — a standard meaning the state has sufficient housing resources and a functioning system to ensure that any veteran who becomes homeless is quickly identified and housed within an average of 90 days. Virginia achieved this in 2015 and has maintained it since. The state's performance reflects strong HUD-VASH (VA-funded housing vouchers) utilization, a well-coordinated statewide CE system, and close collaboration between VA medical centers, local CoCs, and housing authorities. Virginia's veteran homelessness work is now being expanded as a model for family homelessness.</p>
+  </div>
+
+  <hr style="margin: 2rem 0; border: none; border-top: 1px solid #e0ddd8;">
+
+  <h2>Common Failure Modes</h2>
+
+  <p>Understanding what high performers do right is only part of the picture. The patterns that lead to poor performance are equally consistent:</p>
+
+  <ul class="failure-list">
+    <li><strong>Siloed providers.</strong> When agencies refuse to share data, guard client relationships, or compete rather than collaborate, coordinated entry breaks down. People fall through the gaps between organizations, double-counting inflates apparent capacity, and system-level performance is invisible. Strong CoC leadership — and in some cases HUD funding consequences — is required to overcome provider siloing.</li>
+    <li><strong>Low-barrier in name only.</strong> Shelters that advertise themselves as low-barrier but maintain strict sobriety requirements, turn away couples, or enforce behavioral compliance policies that result in frequent exits effectively exclude the highest-need individuals. This produces a creaming effect — easy-to-serve people are housed, while people with complex needs remain unsheltered.</li>
+    <li><strong>Inadequate PSH stock.</strong> Without enough permanent housing to place people into, even a perfect CE system cannot produce exits to permanent housing. CoCs that have not invested in PSH development — through LIHTC, local housing trust funds, or HUD funding — hit a ceiling on placement rates regardless of operational improvements.</li>
+    <li><strong>HMIS used only for compliance.</strong> When data entry happens weeks after the fact, when completeness rates are below 80%, and when program staff never see or use the data — the system is flying blind. Leadership cannot identify which programs are underperforming, cannot measure average length of stay, and cannot manage toward outcomes.</li>
+    <li><strong>Leadership turnover and political instability.</strong> Systems that change CoC directors frequently, that lose mayoral or county executive support, or that are subject to repeated political intervention in program design tend to lose performance over time. Houston's sustained results reflect in part the stability of its coalition leadership over more than a decade.</li>
+  </ul>
+
+  <hr style="margin: 2rem 0; border: none; border-top: 1px solid #e0ddd8;">
+
+  <h2>What Any CoC Can Do Right Now</h2>
+
+  <p>Not every CoC can replicate Houston's scale or Utah's political environment. But every CoC can move on a set of concrete, near-term actions that the evidence associates with improved performance:</p>
+
+  <div class="metric-grid">
+    <div class="metric-card metric-card--high">
+      <div class="metric-card__label">Data</div>
+      <div class="metric-card__name">Implement a by-name list</div>
+      <p class="metric-card__desc">A real-time list of every known person experiencing homelessness in the system, updated at least weekly. By-name lists are the operational foundation of effective CE and enable rapid response to people in need.</p>
+    </div>
+    <div class="metric-card metric-card--high">
+      <div class="metric-card__label">CE Fidelity</div>
+      <div class="metric-card__name">Audit your CE system</div>
+      <p class="metric-card__desc">Is your assessment tool validated? Are placements actually made by prioritization score? Is the CE access point genuinely accessible? Many CoCs find significant gaps between their CE policy and actual practice.</p>
+    </div>
+    <div class="metric-card metric-card--high">
+      <div class="metric-card__label">Accountability</div>
+      <div class="metric-card__name">Publish program-level outcomes</div>
+      <p class="metric-card__desc">Make each program's permanent housing placement rate, average length of stay, and return-to-homelessness rate visible to CoC leadership and to the community. Transparency drives improvement faster than any other single intervention.</p>
+    </div>
+    <div class="metric-card metric-card--high">
+      <div class="metric-card__label">Supply</div>
+      <div class="metric-card__name">Quantify the PSH gap</div>
+      <p class="metric-card__desc">Calculate how many PSH units your CoC would need to achieve functional zero for chronic homelessness in your community. Make that number public and use it to build the case for local housing investment.</p>
+    </div>
+  </div>
+
+  <div class="callout-box">
+    <strong>The HUD SNAPS Performance Benchmarks</strong>
+    HUD's Shelter and Services Performance team publishes annual performance benchmarks for each SPM, allowing CoCs to compare their outcomes against national medians and high-performer thresholds. Access the benchmarks at <a href="https://www.hudexchange.info/programs/coc/coc-performance-benchmarks/" target="_blank" rel="noopener">hudexchange.info</a>. If you don't know where your CoC stands against these benchmarks, that's a useful starting point.
+  </div>
+
+  <hr style="margin: 2rem 0; border: none; border-top: 1px solid #e0ddd8;">
+
+  <h2>Performance Is Possible — But It Takes Commitment</h2>
+
+  <p>The variation in CoC performance across the country is not primarily explained by housing market conditions, poverty rates, or the "difficulty" of the homeless population. Researchers have controlled for these variables, and the performance gaps remain. What explains them is largely organizational: the quality of coordination, the discipline of data use, the maturity of the CE system, and the political and financial investment that communities are willing to make.</p>
+
+  <p>Houston is not an easy city — it has enormous poverty, extreme heat, and a fast-growing population. But it has a coalition that has maintained focus and accountability over more than a decade. That is replicable, in communities of any size, with the right commitment.</p>
+
+  <p>The data is not ambiguous about what works. What remains is the harder work of will and implementation.</p>
+
+  <div style="background:var(--light); border-radius:8px; padding:1.5rem; margin-top:2rem;">
+    <strong>Find your CoC</strong>
+    <p style="margin:.5rem 0 1rem">Use the Common Ladder CoC Finder to locate your local Continuum of Care and access contact information, funded programs, and HUD performance data.</p>
+    <a href="/static-tools/coc-finder.html" class="btn btn--blue btn--sm">Find your CoC →</a>
+  </div>
+
+  <p style="margin-top:2rem; color:var(--gray); font-size:.875rem;"><em>Sources: HUD System Performance Measures; Coalition for the Homeless of Houston/Harris County annual reports; Utah Homelessness Council data; Virginia Department of Housing and Community Development; Urban Institute CoC performance analysis; National Alliance to End Homelessness State of Homelessness reports.</em></p>
+
+  <a href="/learn.html" class="back-link">← Back to Learn</a>
+
+</main>
+
+<footer class="footer" style="margin-top:4rem">
+  <div class="container">
+    <div class="footer__grid">
+      <div class="footer__brand">
+        <h3>Common Ladder</h3>
+        <p>The civic resource platform connecting people experiencing homelessness with every service in your city.</p>
+      </div>
+      <div>
+        <h4>Resources</h4>
+        <ul>
+          <li><a href="/resources.html">Find Resources</a></li>
+          <li><a href="/static-tools/maricopa-navigator.html">Maricopa Navigator</a></li>
+          <li><a href="/static-tools/tucson-navigator.html">Tucson Navigator</a></li>
+          <li><a href="/learn.html">Learn &amp; Guides</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Get Involved</h4>
+        <ul>
+          <li><a href="/nonprofits.html">For Nonprofits</a></li>
+          <li><a href="/donors.html">For Donors &amp; Volunteers</a></li>
+          <li><a href="/data-reports.html">Data &amp; Reports</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>About</h4>
+        <ul>
+          <li><a href="/about.html">Our Mission</a></li>
+          <li><a href="/contact.html">Contact</a></li>
+          <li><a href="/privacy.html">Privacy Policy</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <span>&copy; 2026 Common Ladder. Free to use, always.</span>
+      <span>Built in Phoenix, AZ</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
