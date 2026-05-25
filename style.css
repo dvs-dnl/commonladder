@@ -822,6 +822,38 @@ h1, h2, h3, h4 {
 .sources li { margin-bottom: .5rem; }
 
 
+/* ─── Global focus styles ────────────────────────────────────────────── */
+/* Amber ring is visible on both light (page) and dark (nav) backgrounds.
+   :focus-visible means the ring only shows for keyboard/AT navigation —
+   mouse clicks won't trigger it, keeping the design clean for pointer users. */
+a:focus-visible,
+button:focus-visible,
+[role="button"]:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: 3px solid var(--amber);
+  outline-offset: 3px;
+  border-radius: 3px;
+}
+
+/* Skip link already has its own focus style; reinforce it */
+.skip-link:focus-visible {
+  outline: 3px solid var(--blue);
+  outline-offset: 2px;
+}
+
+/* Utility class for visually-hidden labels (accessible to screen readers) */
+.sr-only {
+  position: absolute;
+  width: 1px; height: 1px;
+  padding: 0; margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
 /* ─── Hover behavior — no underlines on cards/buttons ──────────────── */
 .card, .card:hover,
 .card a, .card a:hover,

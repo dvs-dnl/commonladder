@@ -18,20 +18,41 @@
   <meta property="og:url" content="https://www.commonladder.org">
   <link rel="canonical" href="https://www.commonladder.org/">
   <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="/print.css" media="print">
+  <link rel="stylesheet" href="/quotes-components.css">
+  <script defer src="/quotes-components.js"></script>
   <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "WebSite",
-    "name": "Common Ladder",
-    "url": "https://www.commonladder.org",
-    "description": "Civic resource platform connecting people experiencing homelessness with shelters, food, health care, and housing programs.",
-    "potentialAction": {
-      "@type": "SearchAction",
-      "target": "https://www.commonladder.org/resources?q={search_term_string}",
-      "query-input": "required name=search_term_string"
+  [
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "Common Ladder",
+      "url": "https://www.commonladder.org",
+      "description": "Civic resource platform connecting people experiencing homelessness with shelters, food, health care, and housing programs.",
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://www.commonladder.org/resources?q={search_term_string}",
+        "query-input": "required name=search_term_string"
+      }
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "Common Ladder",
+      "url": "https://www.commonladder.org",
+      "description": "Civic resource platform connecting people experiencing homelessness with shelters, food, health care, and housing programs.",
+      "foundingDate": "2026",
+      "areaServed": "United States",
+      "knowsAbout": ["homelessness", "housing resources", "social services"],
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "contactType": "general",
+        "url": "https://www.commonladder.org/contact.html"
+      }
     }
-  }
+  ]
   </script>
+  <noscript><style>.nav__links{display:flex!important;flex-wrap:wrap!important;}.nav__toggle{display:none!important;}</style></noscript>
 </head>
 <body>
 
@@ -70,6 +91,20 @@
     </ul>
   </div>
 </nav>
+
+<!-- Lived-experience epigraph (cycles per page load) -->
+<div class="cl-quote-ribbon" role="region" aria-label="Lived experience voice" data-page="resource" data-category="encouragement" aria-busy="true">
+  <div class="cl-quote-ribbon__inner">
+    <span class="cl-quote-ribbon__mark" aria-hidden="true">&ldquo;</span>
+    <span class="cl-quote-ribbon__text">Don't give up. This is not how my life is supposed to be.</span>
+    <span class="cl-quote-ribbon__attr">
+      &mdash; Andre B. &middot;
+      <a class="cl-quote-ribbon__source" href="https://streetsensemedia.org/article/always-beating-the-odds-a-qa-with-andre-brinson/" target="_blank" rel="noopener">Street Sense Media</a>
+    </span>
+  </div>
+</div>
+
+<main id="main">
 
 <!-- Hero -->
 <section class="hero">
@@ -270,6 +305,8 @@
 </section>
 
 <!-- Footer -->
+</main>
+
 <footer class="footer">
   <div class="container">
     <div class="footer__grid">

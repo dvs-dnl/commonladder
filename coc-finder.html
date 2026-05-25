@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="refresh" content="0; url=/">
   <title>Redirecting — Common Ladder</title>
+  <noscript><style>.nav__links{display:flex!important;flex-wrap:wrap!important;}.nav__toggle{display:none!important;}</style></noscript>
 </head>
 <body>
 
@@ -41,6 +42,8 @@
     </ul>
   </div>
 </nav>
+
+<main id="main">
 
 <div class="container">
   <div class="tool-header">
@@ -322,6 +325,8 @@ function resize() { try { window.parent.postMessage({ type:'resize', height: doc
 window.addEventListener('load', () => { render(); resize(); });
 new ResizeObserver(resize).observe(document.body);
 </script>
+</main>
+
 <footer class="footer">
   <div class="container">
     <div class="footer__grid">

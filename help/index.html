@@ -12,11 +12,10 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Find Help — Resource Directory — Common Ladder</title>
-  <meta name="description" content="Browse every type of help available — emergency shelter, food, health care, housing programs, legal aid, and more. Free, plain language, no account required.">
+  <meta name="description" content="Browse all 12 resource categories — shelter, food, health, legal help, and more. Every listing is free to access. No account required.">
   <link rel="canonical" href="https://www.commonladder.org/help/">
   <link rel="stylesheet" href="../style.css">
   <style>
-
   .skip-link {
     position: absolute;
     top: -100%;
@@ -30,20 +29,6 @@
     transition: top .1s;
   }
   .skip-link:focus { top: 0; }
-  .crisis-bar {
-    background: var(--blue);
-    border-bottom: 2px solid var(--amber);
-    color: rgba(255,255,255,.9);
-    font-size: .82rem;
-    text-align: center;
-    padding: .5rem var(--gap);
-  }
-  .crisis-bar a {
-    color: var(--amber);
-    font-weight: 600;
-    text-decoration: none;
-  }
-  .crisis-bar a:hover { text-decoration: underline; }
   .breadcrumb {
     background: var(--light);
     padding: .65rem 0;
@@ -83,86 +68,9 @@
   .page-hero p {
     font-size: clamp(.95rem, 2.5vw, 1.15rem);
     opacity: .88;
-    max-width: 580px;
-    margin: 0 auto 2rem;
-  }
-  .help-search {
-    display: flex;
-    gap: .5rem;
-    flex-wrap: wrap;
-    justify-content: center;
-    max-width: 480px;
+    max-width: 600px;
     margin: 0 auto;
   }
-  .help-search input {
-    flex: 1;
-    min-width: 150px;
-    padding: .7rem 1rem;
-    border: 2px solid rgba(255,255,255,.35);
-    border-radius: var(--radius);
-    background: rgba(255,255,255,.14);
-    color: #fff;
-    font: 1rem 'Inter', sans-serif;
-    outline: none;
-  }
-  .help-search input::placeholder { color: rgba(255,255,255,.5); }
-  .help-search input:focus { border-color: var(--amber); }
-  .expect-list {
-    list-style: none;
-    margin-top: 1.5rem;
-  }
-  .expect-list li {
-    display: flex;
-    gap: .85rem;
-    align-items: flex-start;
-    padding: .85rem 0;
-    border-bottom: 1px solid #e5e7eb;
-  }
-  .expect-list li:last-child { border: none; }
-  .expect-list li::before {
-    content: "✓";
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 1.5rem;
-    height: 1.5rem;
-    min-width: 1.5rem;
-    background: var(--sage);
-    color: #fff;
-    border-radius: 50%;
-    font-size: .75rem;
-    font-weight: 700;
-    margin-top: .1rem;
-  }
-  .related-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 1rem;
-    margin-top: 1.75rem;
-  }
-  .related-card {
-    display: flex;
-    align-items: center;
-    gap: .75rem;
-    background: #fff;
-    border: 1px solid #dde3ec;
-    border-radius: var(--radius);
-    padding: .9rem 1.1rem;
-    color: var(--blue);
-    font-weight: 600;
-    font-size: .95rem;
-    transition: border-color .15s, box-shadow .15s;
-    text-decoration: none;
-    min-height: 44px;
-  }
-  .related-card:hover {
-    border-color: var(--blue);
-    box-shadow: var(--shadow);
-    text-decoration: none;
-    color: var(--blue);
-  }
-  .related-card .icon { font-size: 1.4rem; }
-
   .help-hub__grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
@@ -193,6 +101,7 @@
     min-width: 2.5rem;
     text-align: center;
     margin-top: .1rem;
+    line-height: 1;
   }
   .help-hub__body h3 {
     font-size: 1.05rem;
@@ -203,6 +112,15 @@
     font-size: .88rem;
     color: var(--gray);
     margin: 0;
+  }
+  .verify-note {
+    margin-top: 2.5rem;
+    padding: 1rem 1.25rem;
+    background: #f0f6f3;
+    border-left: 4px solid var(--sage);
+    border-radius: var(--radius);
+    font-size: .9rem;
+    color: var(--dark);
   }
   </style>
   <script type="application/ld+json">
@@ -215,15 +133,17 @@
     ]
   }
   </script>
+  <noscript><style>.nav__links{display:flex!important;flex-wrap:wrap!important;}.nav__toggle{display:none!important;}</style></noscript>
 </head>
 <body>
 
-<a class="skip-link" href="#main-content">Skip to main content</a>
+<a href="#main" class="skip-link">Skip to main content</a>
 
-<div class="crisis-bar" role="complementary" aria-label="Crisis resources">
-  Need help right now? <a href="tel:211">Call 211</a> &middot;
-  Text <a href="sms:741741?body=HOME">"HOME" to 741741</a> &middot;
-  <a href="tel:988">988 Suicide &amp; Crisis Lifeline</a>
+<div class="crisis-bar" role="region" aria-label="Crisis help">
+  <strong>Need help right now?</strong>
+  <a href="tel:211">Call 211</a><span class="crisis-bar__sep">·</span>
+  <a href="sms:741741?body=HOME">Text HOME to 741741</a><span class="crisis-bar__sep">·</span>
+  <a href="tel:988">988 Suicide &amp; Crisis</a>
 </div>
 
 <nav class="nav" aria-label="Primary">
@@ -259,136 +179,128 @@
   </ol>
 </nav>
 
-<main id="main-content">
+<main id="main">
 
   <section class="page-hero">
     <div class="container">
       <span class="eyebrow">Resource directory</span>
-      <h1>Find the help you need</h1>
-      <p>Pick a category below — or enter your ZIP code to find every resource in your area, organized and searchable.</p>
-      <form class="help-search" action="/static-tools/" method="get" role="search" aria-label="Find resources by ZIP code">
-        <label for="zip-hub" class="sr-only">Enter your ZIP code</label>
-        <input
-          type="text"
-          id="zip-hub"
-          name="zip"
-          placeholder="Enter your ZIP code"
-          maxlength="5"
-          inputmode="numeric"
-          pattern="[0-9]*"
-          autocomplete="postal-code"
-          aria-label="ZIP code"
-        >
-        <button type="submit" class="btn btn--primary">Find my navigator &rarr;</button>
-      </form>
+      <h1>Find help near you.</h1>
+      <p>Browse all 12 resource categories — shelter, food, health, legal help, and more. Every listing is free to access.</p>
     </div>
   </section>
 
   <section class="section">
     <div class="container">
-
-  <!-- My Ladder CTA -->
-  <div style="background:linear-gradient(135deg,#1C3D6E 0%,#2a5298 100%);border-radius:12px;padding:1.5rem 1.75rem;margin-bottom:2rem;display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;">
-    <div>
-      <div style="color:#E8911A;font-size:.78rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;margin-bottom:.3rem">Personal planning tool</div>
-      <h3 style="color:#fff;font-size:1.1rem;margin:0 0 .3rem">My Ladder — Track your resources</h3>
-      <p style="color:rgba(255,255,255,.8);font-size:.85rem;margin:0">Build a plan, mark things done, schedule appointments, and track your budget. Stays on your device.</p>
-    </div>
-    <a href="/static-tools/my-ladder.html" style="display:inline-block;background:#E8911A;color:#fff;font-weight:700;font-size:.88rem;padding:.6rem 1.1rem;border-radius:8px;text-decoration:none;white-space:nowrap;flex-shrink:0">Open My Ladder →</a>
-  </div>
-
-
-      <div class="section-head" style="margin-bottom: 0;">
+      <div class="section-head">
         <span class="eyebrow">12 categories</span>
         <h2>What kind of help are you looking for?</h2>
-        <p>Choose a category to learn what to expect, what questions to ask, and how to connect with programs near you.</p>
+        <p>Choose a category to find programs, organizations, and services near you.</p>
       </div>
+
       <div class="help-hub__grid">
-      <a href="/help/emergency-shelter/" class="help-hub__card" aria-label="Emergency Shelter">
-        <div class="help-hub__icon" aria-hidden="true"><svg class="icon" viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="4" fill="currentColor"/></svg></div>
-        <div class="help-hub__body">
-          <h3>Emergency Shelter</h3>
-          <p>Emergency shelters give you a safe place to sleep when you have nowhere else to go. Most shelte&#8230;</p>
-        </div>
-      </a>
-      <a href="/help/transitional-housing/" class="help-hub__card" aria-label="Transitional Housing">
-        <div class="help-hub__icon" aria-hidden="true"><svg class="icon" viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="4" fill="currentColor"/></svg></div>
-        <div class="help-hub__body">
-          <h3>Transitional Housing</h3>
-          <p>Transitional housing gives you a stable room or apartment for 6 months to 2 years while you wor&#8230;</p>
-        </div>
-      </a>
-      <a href="/help/rapid-rehousing/" class="help-hub__card" aria-label="Rapid Rehousing">
-        <div class="help-hub__icon" aria-hidden="true"><svg class="icon" viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="4" fill="currentColor"/></svg></div>
-        <div class="help-hub__body">
-          <h3>Rapid Rehousing</h3>
-          <p>Rapid rehousing moves you from homelessness into a real apartment — fast, usually within a few &#8230;</p>
-        </div>
-      </a>
-      <a href="/help/permanent-supportive-housing/" class="help-hub__card" aria-label="Permanent Supportive Housing">
-        <div class="help-hub__icon" aria-hidden="true"><svg class="icon" viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="4" fill="currentColor"/></svg></div>
-        <div class="help-hub__body">
-          <h3>Permanent Supportive Housing</h3>
-          <p>Permanent supportive housing is an apartment you can stay in as long as you want, with no time &#8230;</p>
-        </div>
-      </a>
-      <a href="/help/food-assistance/" class="help-hub__card" aria-label="Food Assistance">
-        <div class="help-hub__icon" aria-hidden="true"><svg class="icon" viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="4" fill="currentColor"/></svg></div>
-        <div class="help-hub__body">
-          <h3>Food Assistance</h3>
-          <p>Food programs include soup kitchens, free meal sites, food banks, and SNAP (food stamps) enroll&#8230;</p>
-        </div>
-      </a>
-      <a href="/help/healthcare/" class="help-hub__card" aria-label="Healthcare & Mental Health">
-        <div class="help-hub__icon" aria-hidden="true"><svg class="icon" viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="4" fill="currentColor"/></svg></div>
-        <div class="help-hub__body">
-          <h3>Healthcare & Mental Health</h3>
-          <p>Free and low-cost health care is available through community health centers, Federally Qualifie&#8230;</p>
-        </div>
-      </a>
-      <a href="/help/substance-use/" class="help-hub__card" aria-label="Substance Use Treatment">
-        <div class="help-hub__icon" aria-hidden="true"><svg class="icon" viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="4" fill="currentColor"/></svg></div>
-        <div class="help-hub__body">
-          <h3>Substance Use Treatment</h3>
-          <p>Substance use programs help people reduce or stop using alcohol, opioids, methamphetamine, or o&#8230;</p>
-        </div>
-      </a>
-      <a href="/help/employment/" class="help-hub__card" aria-label="Employment & Job Training">
-        <div class="help-hub__icon" aria-hidden="true"><svg class="icon" viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="4" fill="currentColor"/></svg></div>
-        <div class="help-hub__body">
-          <h3>Employment & Job Training</h3>
-          <p>Workforce programs help people experiencing homelessness find jobs, build skills, and earn stea&#8230;</p>
-        </div>
-      </a>
-      <a href="/help/legal-aid/" class="help-hub__card" aria-label="Free Legal Help">
-        <div class="help-hub__icon" aria-hidden="true"><svg class="icon" viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="4" fill="currentColor"/></svg></div>
-        <div class="help-hub__body">
-          <h3>Free Legal Help</h3>
-          <p>Free legal services can help with eviction defense, clearing old criminal records, fighting fin&#8230;</p>
-        </div>
-      </a>
-      <a href="/help/id-documents/" class="help-hub__card" aria-label="ID & Document Recovery">
-        <div class="help-hub__icon" aria-hidden="true"><svg class="icon" viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="4" fill="currentColor"/></svg></div>
-        <div class="help-hub__body">
-          <h3>ID & Document Recovery</h3>
-          <p>Getting a government-issued ID, birth certificate, or Social Security card is often the first s&#8230;</p>
-        </div>
-      </a>
-      <a href="/help/veteran-services/" class="help-hub__card" aria-label="Veteran Services">
-        <div class="help-hub__icon" aria-hidden="true"><svg class="icon" viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="4" fill="currentColor"/></svg></div>
-        <div class="help-hub__body">
-          <h3>Veteran Services</h3>
-          <p>Veterans experiencing homelessness have access to a separate, well-funded system of programs. T&#8230;</p>
-        </div>
-      </a>
-      <a href="/help/family-services/" class="help-hub__card" aria-label="Family Services & Domestic Violence Help">
-        <div class="help-hub__icon" aria-hidden="true"><svg class="icon" viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="4" fill="currentColor"/></svg></div>
-        <div class="help-hub__body">
-          <h3>Family Services & Domestic Violence Help</h3>
-          <p>Families with children and people fleeing domestic violence have access to programs designed sp&#8230;</p>
-        </div>
-      </a>
+
+        <a href="/help/housing-shelter/" class="help-hub__card" aria-label="Housing and Shelter">
+          <div class="help-hub__icon" aria-hidden="true">🏠</div>
+          <div class="help-hub__body">
+            <h3>Housing &amp; Shelter</h3>
+            <p>Emergency shelter, transitional housing, rapid rehousing, and permanent supportive housing.</p>
+          </div>
+        </a>
+
+        <a href="/help/food/" class="help-hub__card" aria-label="Food">
+          <div class="help-hub__icon" aria-hidden="true">🍽️</div>
+          <div class="help-hub__body">
+            <h3>Food</h3>
+            <p>Free meals, food banks, pantries, and SNAP enrollment help near you.</p>
+          </div>
+        </a>
+
+        <a href="/help/health/" class="help-hub__card" aria-label="Health">
+          <div class="help-hub__icon" aria-hidden="true">🏥</div>
+          <div class="help-hub__body">
+            <h3>Health</h3>
+            <p>Free and low-cost medical care, dental, vision, prescriptions, and AHCCCS enrollment.</p>
+          </div>
+        </a>
+
+        <a href="/help/mental-health-recovery/" class="help-hub__card" aria-label="Mental Health and Recovery">
+          <div class="help-hub__icon" aria-hidden="true">🧠</div>
+          <div class="help-hub__body">
+            <h3>Mental Health &amp; Recovery</h3>
+            <p>Counseling, crisis services, and substance use treatment programs.</p>
+          </div>
+        </a>
+
+        <a href="/help/money-benefits/" class="help-hub__card" aria-label="Money and Benefits">
+          <div class="help-hub__icon" aria-hidden="true">💰</div>
+          <div class="help-hub__body">
+            <h3>Money &amp; Benefits</h3>
+            <p>SSI, SNAP, TANF, utility assistance, and help applying for government benefits.</p>
+          </div>
+        </a>
+
+        <a href="/help/work-training/" class="help-hub__card" aria-label="Work and Training">
+          <div class="help-hub__icon" aria-hidden="true">💼</div>
+          <div class="help-hub__body">
+            <h3>Work &amp; Training</h3>
+            <p>Job placement, resume help, vocational training, and workforce development programs.</p>
+          </div>
+        </a>
+
+        <a href="/help/legal-help/" class="help-hub__card" aria-label="Legal Help">
+          <div class="help-hub__icon" aria-hidden="true">⚖️</div>
+          <div class="help-hub__body">
+            <h3>Legal Help</h3>
+            <p>Free legal aid for eviction, record clearing, benefits appeals, and civil matters.</p>
+          </div>
+        </a>
+
+        <a href="/help/id-documents/" class="help-hub__card" aria-label="ID and Documents">
+          <div class="help-hub__icon" aria-hidden="true">🪪</div>
+          <div class="help-hub__body">
+            <h3>ID &amp; Documents</h3>
+            <p>Help getting a government ID, birth certificate, Social Security card, and other vital records.</p>
+          </div>
+        </a>
+
+        <a href="/help/family-children/" class="help-hub__card" aria-label="Family and Children">
+          <div class="help-hub__icon" aria-hidden="true">👨‍👩‍👧</div>
+          <div class="help-hub__body">
+            <h3>Family &amp; Children</h3>
+            <p>Family shelter, childcare, school enrollment, and services for parents and kids.</p>
+          </div>
+        </a>
+
+        <a href="/help/safety/" class="help-hub__card" aria-label="Safety">
+          <div class="help-hub__icon" aria-hidden="true">🛡️</div>
+          <div class="help-hub__body">
+            <h3>Safety</h3>
+            <p>Domestic violence shelters, crisis lines, and safety planning resources.</p>
+          </div>
+        </a>
+
+        <a href="/help/getting-around/" class="help-hub__card" aria-label="Getting Around">
+          <div class="help-hub__icon" aria-hidden="true">🚌</div>
+          <div class="help-hub__body">
+            <h3>Getting Around</h3>
+            <p>Free or reduced-fare bus passes, ride programs, and transportation assistance.</p>
+          </div>
+        </a>
+
+        <a href="/help/hygiene-essentials/" class="help-hub__card" aria-label="Hygiene and Essentials">
+          <div class="help-hub__icon" aria-hidden="true">🧼</div>
+          <div class="help-hub__body">
+            <h3>Hygiene &amp; Essentials</h3>
+            <p>Showers, laundry, clothing, hygiene supplies, and basic essential items.</p>
+          </div>
+        </a>
+
       </div>
+
+      <div class="verify-note">
+        Resources are verified by our team. The last verification date is shown on each listing.
+      </div>
+
     </div>
   </section>
 
@@ -396,10 +308,10 @@
     <div class="container" style="max-width: 720px; text-align: center;">
       <span class="eyebrow">Not sure where to start?</span>
       <h2>Start with a bed and a meal</h2>
-      <p>If you don't know what kind of help you need first, emergency shelter and food assistance are usually the best starting points. From there, a case manager can help you figure out next steps.</p>
+      <p>If you don't know what kind of help you need first, housing and food are usually the best starting points. From there, a case manager can help you figure out next steps.</p>
       <div style="display:flex; gap: 1rem; justify-content: center; flex-wrap: wrap; margin-top: 1.5rem;">
-        <a href="/help/emergency-shelter/" class="btn btn--blue">Find emergency shelter</a>
-        <a href="/help/food-assistance/" class="btn btn--outline" style="color: var(--blue); border-color: var(--blue);">Find food assistance</a>
+        <a href="/help/housing-shelter/" class="btn btn--blue">Find housing &amp; shelter</a>
+        <a href="/help/food/" class="btn btn--outline" style="color: var(--blue); border-color: var(--blue);">Find food</a>
       </div>
     </div>
   </section>
@@ -416,7 +328,6 @@
 
 </main>
 
-
 <footer class="footer">
   <div class="container">
     <div class="footer__grid">
@@ -428,11 +339,11 @@
       <div>
         <h4>Find help</h4>
         <ul>
-          <li><a href="/find.html?cat=shelter">Shelter</a></li>
-          <li><a href="/find.html?cat=food">Food</a></li>
-          <li><a href="/find.html?cat=legal">Legal</a></li>
+          <li><a href="/help/housing-shelter/">Housing &amp; Shelter</a></li>
+          <li><a href="/help/food/">Food</a></li>
+          <li><a href="/help/health/">Health</a></li>
           <li><a href="/help/">All categories</a></li>
-          <li><a href="/static-tools/">Local navigators</a></li>
+          <li><a href="/static-tools/my-ladder.html">My Ladder planner</a></li>
         </ul>
       </div>
       <div>
@@ -460,19 +371,18 @@
     </div>
     <div class="footer__bottom">
       <span>&copy; 2026 Common Ladder. Free to use, always.</span>
-      <span><time datetime="2026-05-23">Last updated May 23, 2026</time></span>
+      <span><time datetime="2026-05-24">Last updated May 24, 2026</time></span>
     </div>
   </div>
 </footer>
 
 <script data-id="cl-card-click">
 (function(){
-  document.querySelectorAll('.card, .post-card:not(.post-card--linked)').forEach(function(el){
-    var a = el.querySelector('a[href]');
-    if(!a) return;
+  document.querySelectorAll('.help-hub__card').forEach(function(el){
     el.addEventListener('click', function(e){
       if(e.target.tagName==='A'||e.target.closest('a')) return;
-      window.location.href = a.href;
+      var a = el.getAttribute('href');
+      if(a) window.location.href = a;
     });
   });
 })();

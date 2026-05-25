@@ -15,6 +15,8 @@
   <meta name="description" content="Find shelters, food, health care, and housing programs near you. Free tools for Phoenix and Maricopa County — updated regularly.">
   <link rel="canonical" href="https://www.commonladder.org/resources.html">
   <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="/quotes-components.css">
+  <script defer src="/quotes-components.js"></script>
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -25,6 +27,7 @@
     "isPartOf": { "@type": "WebSite", "name": "Common Ladder", "url": "https://www.commonladder.org" }
   }
   </script>
+  <noscript><style>.nav__links{display:flex!important;flex-wrap:wrap!important;}.nav__toggle{display:none!important;}</style></noscript>
 </head>
 <body>
 
@@ -62,6 +65,8 @@
     </ul>
   </div>
 </nav>
+
+<main id="main">
 
 <section class="hero" style="padding: clamp(3rem,8vw,5rem) 0;">
   <div class="container">
@@ -174,6 +179,16 @@
         </div>
       </li>
     </ul>
+
+    <!-- Lived-experience voice — cycles per page load, encouragement category -->
+    <aside class="cl-voice-aside" data-rotate data-page="resource" data-category="encouragement" aria-live="polite" aria-busy="true" style="margin: 2.5rem auto 0;">
+      <div class="cl-voice-aside__eyebrow">From someone who's been there</div>
+      <blockquote class="cl-voice-aside__text">To anyone who is homeless right now: one person cannot do it all by themself. If you can muster the humility and the strength to reach out, you should.</blockquote>
+      <div class="cl-voice-aside__meta">
+        <span class="cl-voice-aside__name">&mdash; Amadou</span>
+        <a class="cl-voice-aside__source" href="https://www.bowery.org/updates/2023/07/amadous-hope-story/" target="_blank" rel="noopener">The Bowery Mission</a>
+      </div>
+    </aside>
   </div>
 </section>
 
@@ -573,6 +588,8 @@
     </div>
   </div>
 </section>
+
+</main>
 
 <footer class="footer">
   <div class="container">
