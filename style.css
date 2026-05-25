@@ -164,17 +164,87 @@ h1, h2, h3, h4 {
 .card {
   background: #fff;
   border-radius: var(--radius);
-  padding: 1.75rem;
+  padding: 0;
   box-shadow: var(--shadow);
   border-top: 4px solid var(--blue);
   transition: transform .2s, box-shadow .2s;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
 }
 .card:hover { transform: translateY(-3px); box-shadow: 0 6px 24px rgba(28,61,110,.14); }
-.card__icon { font-size: 2rem; margin-bottom: .75rem; }
-.card h3 { color: var(--blue); margin-bottom: .5rem; font-size: 1.1rem; }
-.card p  { color: var(--gray); font-size: .95rem; margin-bottom: 1rem; }
+.card > h3,
+.card > p,
+.card > a,
+.card > .btn { margin-left: 1.75rem; margin-right: 1.75rem; }
+.card > h3:first-child,
+.card > .card__icon + h3 { margin-top: 1.5rem; }
+.card > .card__photo + h3 { margin-top: 1.25rem; }
+.card > *:last-child { margin-bottom: 1.75rem; }
+.card h3 { color: var(--blue); font-size: 1.1rem; }
+.card p  { color: var(--gray); font-size: .95rem; }
 .card--amber { border-top-color: var(--amber); }
 .card--sage  { border-top-color: var(--sage);  }
+
+/* Legacy emoji icon — kept for backward compat on any unmigrated card */
+.card__icon { font-size: 2rem; margin: 1.5rem 1.75rem .75rem; }
+
+/* Photo treatment — Common Ladder visual identity.
+   Each .card__photo is a 4:3 figure that loads a real photo.
+   If the photo is missing, a brand-colored gradient + subtle ladder pattern
+   stands in (looks intentional, never broken). */
+.card__photo {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  background: linear-gradient(135deg, var(--blue) 0%, #163060 60%, var(--blue) 100%);
+  background-size: cover;
+  background-position: center;
+  overflow: hidden;
+  isolation: isolate;
+}
+.card__photo::before {
+  /* subtle ladder pattern, shows only when no bg-image set (fallback look) */
+  content: "";
+  position: absolute; inset: 0;
+  background-image:
+    linear-gradient(transparent 0 22%, rgba(255,255,255,.10) 22% 24%, transparent 24% 100%),
+    linear-gradient(transparent 0 47%, rgba(255,255,255,.10) 47% 49%, transparent 49% 100%),
+    linear-gradient(transparent 0 72%, rgba(255,255,255,.10) 72% 74%, transparent 74% 100%),
+    linear-gradient(90deg, transparent 0 18%, rgba(255,255,255,.18) 18% 20%, transparent 20% 100%),
+    linear-gradient(90deg, transparent 0 80%, rgba(255,255,255,.18) 80% 82%, transparent 82% 100%);
+  z-index: 1;
+  opacity: .9;
+  transition: opacity .3s;
+}
+.card__photo.has-image::before { opacity: 0; }
+.card__photo img {
+  position: relative; z-index: 2;
+  width: 100%; height: 100%;
+  object-fit: cover;
+  display: block;
+  opacity: 0; /* fade in on load */
+  transition: opacity .4s;
+}
+.card__photo img.loaded { opacity: 1; }
+.card--amber .card__photo {
+  background: linear-gradient(135deg, var(--amber) 0%, #c87614 60%, var(--amber) 100%);
+}
+.card--sage .card__photo {
+  background: linear-gradient(135deg, var(--sage) 0%, #3a7d68 60%, var(--sage) 100%);
+}
+
+/* Inline functional icons (address, phone, hours, web).
+   Replaces emoji 📍 📞 🕐 🌐 — consistent across platforms, accessible. */
+.icon {
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  vertical-align: -.15em;
+  fill: currentColor;
+  flex-shrink: 0;
+  margin-right: .35em;
+  opacity: .75;
+}
 
 /* ─── Section headings ──────────────────────────────────────────────── */
 .section-head { text-align: center; margin-bottom: 2.5rem; }

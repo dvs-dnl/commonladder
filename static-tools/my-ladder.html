@@ -1,0 +1,948 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XLKR4ZSZ5J"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-XLKR4ZSZ5J');
+</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My Ladder — Common Ladder</title>
+<meta name="description" content="My Ladder — your personal resource planner from Common Ladder. Add resources to your plan, track progress, schedule visits, and manage your budget. Free, private, no account needed.">
+<link rel="canonical" href="https://my.commonladder.org/">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --blue:#1C3D6E;--amber:#E8911A;--sage:#4A9E82;--white:#F8F7F4;
+  --gray:#6B7280;--light:#EEF0F4;--border:#D1D5DB;
+  --danger:#DC2626;--green:#16A34A;--text:#1F2937;
+  --radius:10px;--shadow:0 2px 12px rgba(0,0,0,.09);
+}
+body{font-family:'Inter',system-ui,sans-serif;background:var(--white);color:var(--text);min-height:100vh;font-size:15px;line-height:1.5}
+
+/* ── Top bar ── */
+.topbar{background:var(--blue);color:#fff;padding:.75rem 1rem;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100;box-shadow:0 2px 8px rgba(0,0,0,.2)}
+.topbar__brand{display:flex;align-items:center;gap:.6rem;text-decoration:none;color:#fff;font-size:.85rem;opacity:.85}
+.topbar__brand:hover{opacity:1}
+.topbar__title{font-size:1.15rem;font-weight:700;letter-spacing:-.01em}
+.topbar__title span{color:var(--amber)}
+
+/* ── Privacy bar ── */
+.privacy-bar{background:#EFF6FF;border-bottom:1px solid #BFDBFE;padding:.5rem 1rem;font-size:.78rem;color:#1E40AF;text-align:center}
+
+/* ── Tabs ── */
+.tab-nav{display:flex;background:#fff;border-bottom:2px solid var(--border);position:sticky;top:53px;z-index:90}
+.tab-btn{flex:1;padding:.9rem .5rem;border:none;background:transparent;cursor:pointer;font-size:.92rem;font-weight:600;color:var(--gray);border-bottom:3px solid transparent;margin-bottom:-2px;transition:color .15s,border-color .15s;display:flex;align-items:center;justify-content:center;gap:.4rem}
+.tab-btn.active{color:var(--blue);border-bottom-color:var(--amber)}
+.tab-btn:hover:not(.active){color:var(--blue)}
+
+/* ── Layout ── */
+.container{max-width:700px;margin:0 auto;padding:1.25rem 1rem 4rem}
+.tab-panel{display:none}.tab-panel.active{display:block}
+
+/* ── Progress ── */
+.progress-card{background:var(--blue);color:#fff;border-radius:var(--radius);padding:1rem 1.25rem;margin-bottom:1.25rem}
+.progress-card__label{font-size:.82rem;opacity:.8;margin-bottom:.4rem}
+.progress-card__stats{font-size:1.1rem;font-weight:700;margin-bottom:.6rem}
+.progress-bar{height:8px;background:rgba(255,255,255,.25);border-radius:4px;overflow:hidden}
+.progress-bar__fill{height:100%;background:var(--amber);border-radius:4px;transition:width .4s ease}
+
+/* ── Buttons ── */
+.btn{display:inline-flex;align-items:center;gap:.3rem;padding:.45rem .9rem;border-radius:6px;font-size:.83rem;font-weight:600;cursor:pointer;border:none;transition:opacity .15s,transform .1s;font-family:inherit}
+.btn:hover{opacity:.88;transform:translateY(-1px)}.btn:active{transform:translateY(0)}
+.btn--amber{background:var(--amber);color:#fff}
+.btn--blue{background:var(--blue);color:#fff}
+.btn--sage{background:var(--sage);color:#fff}
+.btn--outline{background:transparent;border:1.5px solid var(--border);color:var(--text)}
+.btn--danger{background:var(--danger);color:#fff}
+.btn--ghost{background:transparent;border:none;color:var(--gray);padding:.25rem .4rem;font-size:.8rem}
+.btn--ghost:hover{color:var(--blue);transform:none;opacity:1}
+.btn--sm{padding:.3rem .65rem;font-size:.78rem}
+.btn--xs{padding:.2rem .45rem;font-size:.73rem}
+
+/* ── Section head ── */
+.section-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:.75rem;margin-top:1.5rem}
+.section-head h2{font-size:1rem;font-weight:700;color:var(--blue)}
+
+/* ── Category tiles ── */
+.cat-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:.5rem;margin-bottom:1rem}
+.cat-tile{background:#fff;border:1.5px solid var(--border);border-radius:8px;padding:.6rem .3rem;cursor:pointer;text-align:center;transition:border-color .15s,box-shadow .15s;font-size:.7rem;color:var(--text);font-weight:600;display:flex;flex-direction:column;align-items:center;gap:.25rem}
+.cat-tile:hover{border-color:var(--amber);box-shadow:0 0 0 2px rgba(232,145,26,.15)}
+.cat-tile__icon{font-size:1.4rem;line-height:1}
+
+/* ── Resource search panel ── */
+.resource-search{background:#fff;border:1.5px solid var(--amber);border-radius:var(--radius);padding:1rem;margin-bottom:1.25rem;display:none}
+.resource-search.open{display:block}
+.resource-search__bar{display:flex;gap:.5rem;margin-bottom:.75rem}
+.resource-search__input{flex:1;padding:.5rem .75rem;border:1.5px solid var(--border);border-radius:6px;font-size:.9rem;font-family:inherit}
+.resource-search__input:focus{outline:none;border-color:var(--blue)}
+.cat-filters{display:flex;gap:.35rem;flex-wrap:wrap;margin-bottom:.75rem}
+.cat-filter{padding:.25rem .6rem;border-radius:20px;font-size:.75rem;font-weight:600;border:1.5px solid var(--border);background:#fff;cursor:pointer;color:var(--gray);transition:all .15s}
+.cat-filter.active,.cat-filter:hover{background:var(--blue);color:#fff;border-color:var(--blue)}
+.resource-results{max-height:320px;overflow-y:auto;display:flex;flex-direction:column;gap:.5rem}
+.resource-result{background:var(--white);border:1.5px solid var(--border);border-radius:8px;padding:.7rem .9rem;display:flex;align-items:flex-start;gap:.75rem;cursor:pointer;transition:border-color .15s,box-shadow .15s}
+.resource-result:hover{border-color:var(--amber);box-shadow:0 0 0 2px rgba(232,145,26,.12)}
+.resource-result__icon{font-size:1.3rem;flex-shrink:0;margin-top:.1rem}
+.resource-result__info{flex:1;min-width:0}
+.resource-result__name{font-weight:700;font-size:.88rem}
+.resource-result__meta{font-size:.75rem;color:var(--gray);margin-top:.1rem}
+.resource-result__add{flex-shrink:0;margin-top:.1rem}
+.no-results{text-align:center;padding:1.5rem;color:var(--gray);font-size:.85rem}
+
+/* ── Custom add form ── */
+.add-form{background:#fff;border:1.5px solid var(--border);border-radius:var(--radius);padding:1rem;margin-bottom:1.25rem;display:none}
+.add-form.open{display:block}
+.form-row{display:flex;gap:.5rem;flex-wrap:wrap;margin-bottom:.6rem}
+.form-group{flex:1;min-width:140px}
+.form-group label{display:block;font-size:.78rem;font-weight:600;color:var(--gray);margin-bottom:.25rem}
+.form-group input,.form-group select,.form-group textarea{width:100%;padding:.5rem .65rem;border:1.5px solid var(--border);border-radius:6px;font-size:.88rem;color:var(--text);background:var(--white);font-family:inherit}
+.form-group input:focus,.form-group select:focus,.form-group textarea:focus{outline:none;border-color:var(--blue)}
+.form-group textarea{resize:vertical;min-height:60px}
+.form-actions{display:flex;gap:.5rem;justify-content:flex-end;margin-top:.5rem}
+
+/* ── Plan items ── */
+.plan-list{display:flex;flex-direction:column;gap:.65rem}
+.plan-item{background:#fff;border:1.5px solid var(--border);border-radius:var(--radius);overflow:hidden;transition:box-shadow .15s}
+.plan-item:hover{box-shadow:var(--shadow)}
+.plan-item--done{opacity:.7}
+.plan-item__head{display:flex;align-items:flex-start;gap:.65rem;padding:.85rem 1rem;cursor:pointer;user-select:none}
+.plan-item__icon{font-size:1.5rem;flex-shrink:0;margin-top:.05rem}
+.plan-item__info{flex:1;min-width:0}
+.plan-item__name{font-weight:700;font-size:.95rem}
+.plan-item__meta{font-size:.76rem;color:var(--gray);margin-top:.1rem;display:flex;flex-wrap:wrap;gap:.3rem .75rem}
+.plan-item__badges{display:flex;gap:.3rem;flex-wrap:wrap;margin-top:.25rem;align-items:center}
+.status-pill{display:inline-block;padding:.18rem .5rem;border-radius:20px;font-size:.7rem;font-weight:700}
+.status--todo{background:var(--light);color:var(--gray)}
+.status--scheduled{background:#FEF3C7;color:#92400E}
+.status--done{background:#D1FAE5;color:#065F46}
+.followup-badge{display:inline-flex;align-items:center;gap:.2rem;background:#EDE9FE;color:#5B21B6;font-size:.7rem;font-weight:700;padding:.18rem .5rem;border-radius:20px}
+
+.plan-item__body{border-top:1px solid var(--light);display:none;flex-direction:column;gap:0}
+.plan-item__body.open{display:flex}
+
+/* ── Item body sections ── */
+.item-section{padding:.75rem 1rem;border-bottom:1px solid var(--light)}
+.item-section:last-child{border-bottom:none}
+.item-section__label{font-size:.72rem;font-weight:700;color:var(--gray);text-transform:uppercase;letter-spacing:.05em;margin-bottom:.45rem;display:flex;align-items:center;justify-content:space-between}
+
+/* Contact row */
+.contact-row{display:flex;gap:.75rem;flex-wrap:wrap;align-items:center;font-size:.85rem}
+.contact-row a{color:var(--blue);text-decoration:none;font-weight:600}
+.contact-row a:hover{text-decoration:underline}
+
+/* Schedule row */
+.sched-row{display:flex;gap:.5rem;align-items:center;flex-wrap:wrap}
+.sched-row input[type=date],.sched-row input[type=time]{padding:.35rem .6rem;border:1.5px solid var(--border);border-radius:6px;font-size:.83rem;font-family:inherit;background:var(--white);color:var(--text)}
+.sched-row input:focus{outline:none;border-color:var(--blue)}
+
+/* Notes */
+.notes-area{width:100%;border:1.5px solid var(--border);border-radius:6px;padding:.5rem .7rem;font-size:.85rem;font-family:inherit;color:var(--text);resize:vertical;min-height:72px;background:var(--white);line-height:1.5}
+.notes-area:focus{outline:none;border-color:var(--blue)}
+.notes-area::placeholder{color:#9CA3AF}
+
+/* Follow-up tasks */
+.followup-list{display:flex;flex-direction:column;gap:.4rem;margin-bottom:.6rem}
+.followup-item{display:flex;align-items:flex-start;gap:.5rem;padding:.4rem .5rem;border-radius:6px;background:var(--light);transition:background .15s}
+.followup-item.done-fu{opacity:.6}
+.followup-item__check{width:16px;height:16px;border:2px solid var(--border);border-radius:4px;cursor:pointer;flex-shrink:0;margin-top:2px;appearance:none;-webkit-appearance:none;background:#fff;transition:background .15s,border-color .15s}
+.followup-item__check:checked{background:var(--sage);border-color:var(--sage);background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 12 12' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M2 6l3 3 5-5' stroke='white' stroke-width='2' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");background-size:80%}
+.followup-item__text{flex:1;font-size:.83rem;line-height:1.4}
+.followup-item__text.done-text{text-decoration:line-through;color:var(--gray)}
+.followup-item__due{font-size:.72rem;color:var(--gray);white-space:nowrap;margin-top:2px}
+.followup-item__del{background:none;border:none;cursor:pointer;color:var(--gray);font-size:.85rem;padding:.1rem .2rem;line-height:1;flex-shrink:0}
+.followup-item__del:hover{color:var(--danger)}
+
+.add-followup-toggle{display:flex;align-items:center;gap:.4rem;background:none;border:none;cursor:pointer;font-size:.8rem;font-weight:600;color:var(--blue);padding:.2rem 0;font-family:inherit}
+.add-followup-toggle:hover{color:var(--amber)}
+.add-followup-form{background:var(--light);border-radius:8px;padding:.65rem;margin-top:.5rem;display:none}
+.add-followup-form.open{display:block}
+.fu-row{display:flex;gap:.4rem;flex-wrap:wrap;align-items:flex-end}
+.fu-row input{flex:2;min-width:150px;padding:.4rem .6rem;border:1.5px solid var(--border);border-radius:6px;font-size:.83rem;font-family:inherit;background:#fff}
+.fu-row input[type=date]{flex:1;min-width:120px}
+.fu-row input:focus{outline:none;border-color:var(--blue)}
+
+/* Activity log */
+.activity-list{display:flex;flex-direction:column;gap:.3rem}
+.activity-entry{display:flex;gap:.6rem;align-items:flex-start;font-size:.8rem}
+.activity-entry__dot{width:8px;height:8px;border-radius:50%;background:var(--sage);flex-shrink:0;margin-top:4px}
+.activity-entry__dot.call{background:var(--amber)}
+.activity-entry__dot.visit{background:var(--blue)}
+.activity-entry__dot.note{background:var(--gray)}
+.activity-entry__text{flex:1;color:var(--text)}
+.activity-entry__time{color:var(--gray);font-size:.72rem;white-space:nowrap}
+
+.log-actions{display:flex;gap:.4rem;flex-wrap:wrap;margin-bottom:.5rem}
+
+/* Item footer actions */
+.item-actions{display:flex;gap:.4rem;flex-wrap:wrap;padding:.75rem 1rem;border-top:1px solid var(--light);background:#FAFAF9}
+
+/* Done/empty */
+.done-toggle{background:none;border:none;cursor:pointer;color:var(--gray);font-size:.83rem;font-weight:600;display:flex;align-items:center;gap:.3rem;margin:1rem 0 .5rem;padding:0}
+.done-toggle:hover{color:var(--blue)}
+.empty-state{text-align:center;padding:2.5rem 1rem;color:var(--gray);font-size:.88rem}
+.empty-state__icon{font-size:2.5rem;margin-bottom:.5rem}
+
+/* ── Budget ── */
+.summary-card{background:var(--blue);color:#fff;border-radius:var(--radius);padding:1.1rem 1.25rem;margin-bottom:1.25rem;display:grid;grid-template-columns:repeat(3,1fr);gap:.75rem;text-align:center}
+.summary-card__label{font-size:.72rem;opacity:.75;margin-bottom:.2rem}
+.summary-card__amount{font-size:1.35rem;font-weight:800}
+.summary-card__amount.positive{color:#6EE7B7}
+.summary-card__amount.negative{color:#FCA5A5}
+.budget-section{background:#fff;border:1.5px solid var(--border);border-radius:var(--radius);margin-bottom:1.1rem;overflow:hidden}
+.budget-section__head{display:flex;align-items:center;justify-content:space-between;padding:.8rem 1rem;background:var(--light);border-bottom:1px solid var(--border)}
+.budget-section__title{font-weight:700;font-size:.92rem;color:var(--blue)}
+.budget-section__total{font-size:.83rem;color:var(--gray);font-weight:600}
+.budget-items{padding:.5rem .75rem}
+.budget-item{display:flex;align-items:center;justify-content:space-between;padding:.5rem 0;border-bottom:1px solid var(--light);font-size:.88rem}
+.budget-item:last-child{border-bottom:none}
+.budget-item__name{flex:1}
+.budget-item__freq{color:var(--gray);font-size:.76rem;margin:0 .5rem}
+.budget-item__amount{font-weight:700;min-width:60px;text-align:right}
+.budget-item__del{background:none;border:none;cursor:pointer;color:var(--gray);font-size:1rem;padding:.1rem .3rem;margin-left:.3rem}
+.budget-item__del:hover{color:var(--danger)}
+.budget-add-form{padding:.75rem;border-top:1px solid var(--light);background:#FAFAF9;display:none}
+.budget-add-form.open{display:block}
+.calc-card{background:#fff;border:1.5px solid var(--border);border-radius:var(--radius);padding:1.1rem;margin-bottom:1.25rem}
+.calc-card h2{font-size:.95rem;font-weight:700;color:var(--blue);margin-bottom:.25rem}
+.calc-card p{font-size:.8rem;color:var(--gray);margin-bottom:.85rem}
+.calc-row{display:flex;gap:.75rem;align-items:flex-end;flex-wrap:wrap;margin-bottom:.75rem}
+.calc-row .form-group{margin-bottom:0}
+.affordability-result{padding:.85rem 1rem;border-radius:8px;font-size:.88rem;margin-top:.5rem;display:none}
+.affordability-result.green{background:#D1FAE5;color:#065F46}
+.affordability-result.amber{background:#FEF3C7;color:#92400E}
+.affordability-result.red{background:#FEE2E2;color:#991B1B}
+.affordability-result__label{font-weight:700;font-size:1rem;margin-bottom:.2rem}
+.affordability-result__detail{font-size:.8rem;opacity:.85}
+.meter{height:10px;background:var(--light);border-radius:5px;overflow:hidden;margin:.5rem 0 .25rem}
+.meter__fill{height:100%;border-radius:5px;transition:width .4s}
+.meter__fill.green{background:var(--sage)}.meter__fill.amber{background:var(--amber)}.meter__fill.red{background:var(--danger)}
+
+/* ── Import welcome banner ── */
+.import-banner{background:linear-gradient(135deg,#1C3D6E 0%,#2a5298 100%);color:#fff;border-radius:var(--radius);padding:1.1rem 1.25rem;margin-bottom:1.25rem;position:relative}
+.import-banner__title{font-size:1rem;font-weight:700;margin-bottom:.3rem}
+.import-banner__body{font-size:.85rem;opacity:.9;line-height:1.5}
+.import-banner__close{position:absolute;top:.75rem;right:.75rem;background:none;border:none;color:#fff;cursor:pointer;font-size:1.2rem;opacity:.7;line-height:1}
+.import-banner__close:hover{opacity:1}
+
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <a href="https://www.commonladder.org/" class="topbar__brand">
+    <svg width="20" height="20" viewBox="0 0 28 28" fill="none" aria-hidden="true">
+      <rect x="4" y="2" width="3" height="24" rx="1.5" fill="white" opacity=".9"/>
+      <rect x="21" y="2" width="3" height="24" rx="1.5" fill="white" opacity=".9"/>
+      <rect x="4" y="7" width="20" height="3" rx="1.5" fill="#E8911A"/>
+      <rect x="4" y="14" width="20" height="3" rx="1.5" fill="#E8911A"/>
+      <rect x="4" y="21" width="20" height="3" rx="1.5" fill="#E8911A"/>
+    </svg>
+    Common Ladder
+  </a>
+  <div class="topbar__title">My <span>Ladder</span></div>
+</header>
+
+<div class="privacy-bar"><svg class="icon" viewBox="0 0 16 16" aria-hidden="true" style="margin-right:.35em;vertical-align:-.15em"><path d="M8 1a3 3 0 0 0-3 3v3H4a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V8a1 1 0 0 0-1-1h-1V4a3 3 0 0 0-3-3zM6 4a2 2 0 0 1 4 0v3H6V4z" fill="currentColor"/></svg> Everything stays on <strong>your device</strong> — nothing is sent to any server.</div>
+
+<nav class="tab-nav" role="tablist">
+  <button class="tab-btn active" role="tab" id="tab-plan" onclick="switchTab('plan')">📋 My Plan</button>
+  <button class="tab-btn" role="tab" id="tab-budget" onclick="switchTab('budget')">💰 My Budget</button>
+</nav>
+
+<!-- ══ PLAN TAB ══════════════════════════════ -->
+<div class="tab-panel active" id="panel-plan">
+<div class="container">
+
+  <div class="progress-card">
+    <div class="progress-card__label">Your progress</div>
+    <div class="progress-card__stats" id="progress-stats">0 of 0 steps completed</div>
+    <div class="progress-bar"><div class="progress-bar__fill" id="progress-fill" style="width:0%"></div></div>
+  </div>
+
+  <div class="section-head" style="margin-top:0">
+    <h2>Find a resource</h2>
+    <button class="btn btn--outline btn--sm" onclick="toggleCustomForm()">+ Add custom</button>
+  </div>
+
+  <div class="cat-grid">
+    <div class="cat-tile" onclick="openSearch('shelter')"><div class="cat-tile__icon"><svg class="icon" viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="4" fill="currentColor"/></svg></div>Shelter</div>
+    <div class="cat-tile" onclick="openSearch('food')"><div class="cat-tile__icon"><svg class="icon" viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="4" fill="currentColor"/></svg></div>Food</div>
+    <div class="cat-tile" onclick="openSearch('health')"><div class="cat-tile__icon"><svg class="icon" viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="4" fill="currentColor"/></svg></div>Health</div>
+    <div class="cat-tile" onclick="openSearch('id')"><div class="cat-tile__icon"><svg class="icon" viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="4" fill="currentColor"/></svg></div>ID / Docs</div>
+    <div class="cat-tile" onclick="openSearch('employment')"><div class="cat-tile__icon"><svg class="icon" viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="4" fill="currentColor"/></svg></div>Jobs</div>
+    <div class="cat-tile" onclick="openSearch('housing')"><div class="cat-tile__icon"><svg class="icon" viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="4" fill="currentColor"/></svg></div>Housing</div>
+    <div class="cat-tile" onclick="openSearch('benefits')"><div class="cat-tile__icon"><svg class="icon" viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="4" fill="currentColor"/></svg></div>Benefits</div>
+    <div class="cat-tile" onclick="openSearch('legal')"><div class="cat-tile__icon"><svg class="icon" viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="4" fill="currentColor"/></svg></div>Legal</div>
+  </div>
+
+  <!-- Resource search panel -->
+  <div class="resource-search" id="resource-search">
+    <div class="resource-search__bar">
+      <input class="resource-search__input" id="search-input" type="search" placeholder="Search resources…" oninput="filterResources()" autocomplete="off">
+      <button class="btn btn--outline btn--sm" onclick="closeSearch()">Close</button>
+    </div>
+    <div class="cat-filters" id="cat-filters">
+      <span class="cat-filter active" data-cat="all" onclick="setCatFilter(this,'all')">All</span>
+      <span class="cat-filter" data-cat="shelter" onclick="setCatFilter(this,'shelter')">🏠 Shelter</span>
+      <span class="cat-filter" data-cat="food" onclick="setCatFilter(this,'food')">🍽️ Food</span>
+      <span class="cat-filter" data-cat="health" onclick="setCatFilter(this,'health')">🏥 Health</span>
+      <span class="cat-filter" data-cat="id" onclick="setCatFilter(this,'id')">🪪 ID / Docs</span>
+      <span class="cat-filter" data-cat="employment" onclick="setCatFilter(this,'employment')">💼 Jobs</span>
+      <span class="cat-filter" data-cat="housing" onclick="setCatFilter(this,'housing')">🔑 Housing</span>
+      <span class="cat-filter" data-cat="benefits" onclick="setCatFilter(this,'benefits')">📄 Benefits</span>
+      <span class="cat-filter" data-cat="legal" onclick="setCatFilter(this,'legal')">⚖️ Legal</span>
+    </div>
+    <div class="resource-results" id="resource-results"></div>
+  </div>
+
+  <!-- Custom add form -->
+  <div class="add-form" id="add-form">
+    <div style="font-size:.82rem;font-weight:700;color:var(--blue);margin-bottom:.65rem">Add a custom resource</div>
+    <div class="form-row">
+      <div class="form-group">
+        <label for="f-cat">Category</label>
+        <select id="f-cat">
+          <option value="shelter">🏠 Shelter</option>
+          <option value="food">🍽️ Food</option>
+          <option value="health">🏥 Health</option>
+          <option value="id">🪪 ID / Docs</option>
+          <option value="employment">💼 Jobs</option>
+          <option value="housing">🔑 Housing</option>
+          <option value="benefits">📄 Benefits</option>
+          <option value="legal">⚖️ Legal</option>
+          <option value="other">📌 Other</option>
+        </select>
+      </div>
+      <div class="form-group" style="flex:2">
+        <label for="f-name">Resource name *</label>
+        <input type="text" id="f-name" placeholder="e.g. Central Arizona Shelter">
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group">
+        <label for="f-phone">Phone</label>
+        <input type="tel" id="f-phone" placeholder="(602) 555-0100">
+      </div>
+      <div class="form-group" style="flex:2">
+        <label for="f-address">Address</label>
+        <input type="text" id="f-address" placeholder="123 Main St, Phoenix AZ">
+      </div>
+    </div>
+    <div class="form-actions">
+      <button class="btn btn--outline btn--sm" onclick="closeCustomForm()">Cancel</button>
+      <button class="btn btn--amber btn--sm" onclick="addCustomItem()">Add to my plan</button>
+    </div>
+  </div>
+
+  <!-- Plan list -->
+  <div class="section-head">
+    <h2>My plan</h2>
+    <span id="plan-count" style="font-size:.8rem;color:var(--gray)"></span>
+  </div>
+  <div class="plan-list" id="plan-active-list"></div>
+  <div id="plan-empty" class="empty-state" style="display:none">
+    <div class="empty-state__icon">📋</div>
+    <p>Your plan is empty.<br>Find a resource above to get started.</p>
+  </div>
+
+  <button class="done-toggle" id="done-toggle" onclick="toggleDone()" style="display:none">
+    ▶ Completed (<span id="done-count">0</span>)
+  </button>
+  <div class="plan-list" id="plan-done-list" style="display:none"></div>
+
+</div>
+</div>
+
+<!-- ══ BUDGET TAB ═════════════════════════════ -->
+<div class="tab-panel" id="panel-budget">
+<div class="container">
+  <div class="summary-card">
+    <div class="summary-card__item">
+      <div class="summary-card__label">Monthly income</div>
+      <div class="summary-card__amount" id="sum-income">$0</div>
+    </div>
+    <div class="summary-card__item">
+      <div class="summary-card__label">Monthly expenses</div>
+      <div class="summary-card__amount" id="sum-expenses">$0</div>
+    </div>
+    <div class="summary-card__item">
+      <div class="summary-card__label">Remaining</div>
+      <div class="summary-card__amount" id="sum-remaining">$0</div>
+    </div>
+  </div>
+
+  <div class="budget-section">
+    <div class="budget-section__head">
+      <div><div class="budget-section__title">💵 Income</div><div class="budget-section__total" id="income-total-label">$0 / month</div></div>
+      <button class="btn btn--sage btn--sm" onclick="toggleBudgetForm('income-form')">+ Add</button>
+    </div>
+    <div class="budget-items" id="income-items"><div class="empty-state" style="padding:1rem;font-size:.82rem">No income added yet.</div></div>
+    <div class="budget-add-form" id="income-form">
+      <div class="form-row">
+        <div class="form-group" style="flex:2"><label>Source</label><input type="text" id="inc-name" placeholder="e.g. SSI, job"></div>
+        <div class="form-group"><label>Amount ($)</label><input type="number" id="inc-amount" placeholder="0" min="0"></div>
+        <div class="form-group"><label>Frequency</label><select id="inc-freq"><option value="monthly">Monthly</option><option value="biweekly">Bi-weekly</option><option value="weekly">Weekly</option><option value="once">One-time</option></select></div>
+      </div>
+      <div class="form-actions"><button class="btn btn--outline btn--sm" onclick="toggleBudgetForm('income-form')">Cancel</button><button class="btn btn--sage btn--sm" onclick="addBudgetItem('income')">Add</button></div>
+    </div>
+  </div>
+
+  <div class="budget-section">
+    <div class="budget-section__head">
+      <div><div class="budget-section__title">📤 Expenses</div><div class="budget-section__total" id="expense-total-label">$0 / month</div></div>
+      <button class="btn btn--amber btn--sm" onclick="toggleBudgetForm('expense-form')">+ Add</button>
+    </div>
+    <div class="budget-items" id="expense-items"><div class="empty-state" style="padding:1rem;font-size:.82rem">No expenses added yet.</div></div>
+    <div class="budget-add-form" id="expense-form">
+      <div class="form-row">
+        <div class="form-group" style="flex:2"><label>Expense</label><input type="text" id="exp-name" placeholder="e.g. Phone, bus pass"></div>
+        <div class="form-group"><label>Amount ($)</label><input type="number" id="exp-amount" placeholder="0" min="0"></div>
+        <div class="form-group"><label>Frequency</label><select id="exp-freq"><option value="monthly">Monthly</option><option value="biweekly">Bi-weekly</option><option value="weekly">Weekly</option><option value="once">One-time</option></select></div>
+      </div>
+      <div class="form-actions"><button class="btn btn--outline btn--sm" onclick="toggleBudgetForm('expense-form')">Cancel</button><button class="btn btn--amber btn--sm" onclick="addBudgetItem('expense')">Add</button></div>
+    </div>
+  </div>
+
+  <div class="calc-card">
+    <h2>🏠 Housing Affordability Calculator</h2>
+    <p>Housing should cost no more than 30% of your monthly income.</p>
+    <div class="calc-row">
+      <div class="form-group" style="flex:1"><label for="calc-income">Monthly income ($)</label><input type="number" id="calc-income" placeholder="0" min="0" oninput="runCalc()"></div>
+      <div class="form-group" style="flex:1"><label for="calc-rent">Monthly rent to check ($)</label><input type="number" id="calc-rent" placeholder="0" min="0" oninput="runCalc()"></div>
+    </div>
+    <div id="calc-result" class="affordability-result">
+      <div class="affordability-result__label" id="calc-label"></div>
+      <div class="meter"><div class="meter__fill" id="calc-meter"></div></div>
+      <div class="affordability-result__detail" id="calc-detail"></div>
+    </div>
+  </div>
+</div>
+</div>
+
+<script>
+/* ══════════════════════════════════════════
+   RESOURCE DATABASE (Maricopa County / Phoenix)
+══════════════════════════════════════════ */
+const RESOURCES = [
+  // SHELTER
+  {cat:'shelter',name:'CASS — Central Arizona Shelter Services',address:'230 S 12th Ave, Phoenix AZ 85007',phone:'(602) 256-6945',note:'Largest emergency shelter in AZ. Men, women, and families. Coordinated Entry access point.'},
+  {cat:'shelter',name:'UMOM New Day Centers',address:'2705 N 16th St, Phoenix AZ 85006',phone:'(602) 249-7756',note:'Largest family shelter in Arizona. Also serves women.'},
+  {cat:'shelter',name:'Andre House',address:'1002 S 7th Ave, Phoenix AZ 85007',phone:'(602) 252-5491',note:'Emergency shelter and services. Drop-in services daily.'},
+  {cat:'shelter',name:'Phoenix Rescue Mission',address:'1801 S 35th Ave, Phoenix AZ 85009',phone:'(602) 233-3000',note:'Emergency shelter, meals, and recovery programs. Men.'},
+  {cat:'shelter',name:'Salvation Army — Phoenix',address:'2707 E Van Buren St, Phoenix AZ 85008',phone:'(602) 267-4100',note:'Emergency shelter and services. Men, women, and families.'},
+  {cat:'shelter',name:'Human Services Campus',address:'1520 W Van Buren St, Phoenix AZ 85007',phone:'(602) 256-6945',note:'Day services hub — showers, storage, mail, case management.'},
+  {cat:'shelter',name:'HomeBase Youth Services',address:'931 E Devonshire Ave, Phoenix AZ 85014',phone:'(602) 263-5531',note:'Youth 18–24. Drop-in M–F 7am–4pm. Shelter, meals, showers.'},
+  {cat:'shelter',name:'St. Joseph the Worker',address:'1734 W Polk St, Phoenix AZ 85007',phone:'(602) 256-2900',note:'Employment and support services. Part of Human Services Campus.'},
+  {cat:'shelter',name:'Chicanos Por La Causa — Crisis Housing',address:'1112 E Buckeye Rd, Phoenix AZ 85034',phone:'(602) 257-0700',note:'Emergency and transitional housing, bilingual services.'},
+  // FOOD
+  {cat:'food',name:"St. Mary's Food Bank",address:'2831 N 31st Ave, Phoenix AZ 85009',phone:'(602) 242-3663',note:'Largest food bank in AZ. Pantry distribution. Photo ID helpful.'},
+  {cat:'food',name:'Andre House — Free Meals',address:'1002 S 7th Ave, Phoenix AZ 85007',phone:'(602) 252-5491',note:'Free hot meals daily. No requirements — walk in.'},
+  {cat:'food',name:"St. Vincent de Paul — Dining Room",address:'420 W Watkins St, Phoenix AZ 85003',phone:'(602) 261-6886',note:'Free hot meals. Open daily. No ID required.'},
+  {cat:'food',name:'United Food Bank',address:'245 S Nina Dr, Mesa AZ 85210',phone:'(480) 926-4897',note:'Food pantry for East Valley. Check schedule for distribution days.'},
+  {cat:'food',name:'Paz de Cristo Community Center',address:'777 W University Dr, Mesa AZ 85201',phone:'(480) 464-5594',note:'Free meals and food pantry. East Valley / Mesa area.'},
+  {cat:'food',name:'SNAP / Food Stamps (DES)',address:'1789 W Jefferson St, Phoenix AZ 85007',phone:'(602) 542-5763',note:'Apply for SNAP benefits (food assistance). Also at DES.gov.'},
+  {cat:'food',name:'Midwest Food Bank — Phoenix',address:'2626 W Durango St, Phoenix AZ 85009',phone:'(480) 467-5424',note:'Free food pantry. Call ahead for distribution days and hours.'},
+  // HEALTH
+  {cat:'health',name:'Circle the City',address:'1245 E Buckeye Rd, Phoenix AZ 85034',phone:'(602) 243-7057',note:'Free primary care for people experiencing homelessness. Walk-in and appointments.'},
+  {cat:'health',name:'Valleywise Health — Behavioral Health',address:'2601 E Roosevelt St, Phoenix AZ 85008',phone:'(602) 344-1400',note:'Mental health and substance use services. Sliding scale fees.'},
+  {cat:'health',name:'Maricopa County Public Health',address:'4041 N Central Ave, Phoenix AZ 85012',phone:'(602) 506-6900',note:'Immunizations, HIV testing, TB services. Free or low-cost.'},
+  {cat:'health',name:'Community Bridges — Behavioral Health',address:'4645 S 36th St, Phoenix AZ 85040',phone:'(480) 969-4024',note:'Substance use treatment. Walk-in detox and residential.'},
+  {cat:'health',name:'Valle del Sol',address:'1209 E Thomas Rd, Phoenix AZ 85014',phone:'(602) 258-6797',note:'Mental health and counseling. Bilingual. Sliding scale.'},
+  {cat:'health',name:'Ryan White HIV Clinic — Valleywise',address:'2601 E Roosevelt St, Phoenix AZ 85008',phone:'(602) 344-1400',note:'Free HIV care and medication assistance.'},
+  {cat:'health',name:'Native Health',address:'4520 N Central Ave #600, Phoenix AZ 85012',phone:'(602) 279-5262',note:'Federally qualified health center. All are welcome. Sliding scale.'},
+  // ID / DOCS
+  {cat:'id',name:'ADHS Vital Records — Birth Certificate',address:'150 N 18th Ave, Phoenix AZ 85007',phone:'(602) 364-1300',note:'Arizona birth certificates. ID required. Fee may apply — ask about waivers.'},
+  {cat:'id',name:'Arizona MVD — State ID / Driver License',address:'1110 W Washington St, Phoenix AZ 85007',phone:'(602) 255-0072',note:'State ID and driver license. Free state ID available — ask about the process.'},
+  {cat:'id',name:'Friendly House',address:'802 S 1st Ave, Phoenix AZ 85003',phone:'(602) 257-1870',note:'Document recovery assistance. Bilingual. Help with ID, birth certificates, Social Security.'},
+  {cat:'id',name:'Social Security Administration — Phoenix',address:'3443 N Central Ave, Phoenix AZ 85012',phone:'1-800-772-1213',note:'Social Security card replacement. Can request online at SSA.gov.'},
+  {cat:'id',name:'CASS Document Recovery',address:'230 S 12th Ave, Phoenix AZ 85007',phone:'(602) 256-6945',note:'ID recovery assistance through CASS case management.'},
+  // EMPLOYMENT
+  {cat:'employment',name:'St. Joseph the Worker',address:'1734 W Polk St, Phoenix AZ 85007',phone:'(602) 256-2900',note:'Job placement for people experiencing homelessness. Resume help and employer connections.'},
+  {cat:'employment',name:'Goodwill of Central AZ — Career Center',address:'2626 W Beryl Ave, Phoenix AZ 85021',phone:'(602) 535-4000',note:'Free job training, placement, and resume workshops.'},
+  {cat:'employment',name:'AZ@Work — Maricopa County One-Stop',address:'22 E Madison St, Phoenix AZ 85004',phone:'(602) 506-3880',note:'Free job search, career counseling, and training. WorkKeys testing.'},
+  {cat:'employment',name:'CASS Employment Services',address:'230 S 12th Ave, Phoenix AZ 85007',phone:'(602) 256-6945',note:'Employment case management through CASS.'},
+  {cat:'employment',name:'ResCare Workforce Services',address:'5217 N 35th Ave, Phoenix AZ 85017',phone:'(602) 484-6200',note:'Job training and placement. Workforce development programs.'},
+  // HOUSING
+  {cat:'housing',name:'CASS — Rapid Rehousing',address:'230 S 12th Ave, Phoenix AZ 85007',phone:'(602) 256-6945',note:'Rapid rehousing assistance. Access through Coordinated Entry.'},
+  {cat:'housing',name:'Coordinated Entry (AZ-501)',address:'230 S 12th Ave, Phoenix AZ 85007',phone:'(602) 256-6945',note:'Official entry point for housing assistance in Maricopa. Vulnerability assessment required.'},
+  {cat:'housing',name:'Maricopa County — Section 8 / HCV',address:'24 W Camelback Rd, Phoenix AZ 85013',phone:'(602) 744-4500',note:'Housing voucher program. Waitlist may be closed — call to check status.'},
+  {cat:'housing',name:'Newtown Community Development',address:'1122 E Jefferson St, Phoenix AZ 85034',phone:'(602) 258-1659',note:'Affordable housing placement and tenant counseling.'},
+  {cat:'housing',name:'Community Housing Partnership',address:'4050 E Cotton Center Blvd, Phoenix AZ 85040',phone:'(602) 256-6945',note:'Permanent supportive housing. Access through Coordinated Entry.'},
+  // BENEFITS
+  {cat:'benefits',name:'DES — SNAP, Cash, AHCCCS Applications',address:'1789 W Jefferson St, Phoenix AZ 85007',phone:'(602) 542-5763',note:'Apply for food stamps, cash assistance, and Medicaid. Also apply at des.az.gov.'},
+  {cat:'benefits',name:'AHCCCS — Arizona Medicaid',address:'701 E Jefferson St, Phoenix AZ 85034',phone:'(602) 417-4000',note:'Free health insurance for low-income Arizonans. Apply at healthearizonaplus.gov.'},
+  {cat:'benefits',name:'Social Security — SSI / SSDI',address:'3443 N Central Ave, Phoenix AZ 85012',phone:'1-800-772-1213',note:'Disability and income benefits. Call or apply at SSA.gov.'},
+  {cat:'benefits',name:'VA Benefits — Phoenix Regional Office',address:'3333 N Central Ave, Phoenix AZ 85012',phone:'1-800-827-1000',note:'Veterans benefits — compensation, pension, GI Bill. Bring DD-214.'},
+  {cat:'benefits',name:'211 Arizona — Benefits Referral',address:'Statewide (call or text)',phone:'211',note:'Free 24/7 hotline connecting you to all available local benefits.'},
+  // LEGAL
+  {cat:'legal',name:'Community Legal Services',address:'305 S 2nd Ave, Phoenix AZ 85003',phone:'(602) 258-3434',note:'Free civil legal help for low-income Arizonans. Housing, benefits, family law.'},
+  {cat:'legal',name:'Volunteer Lawyers Program',address:'234 N Central Ave #222, Phoenix AZ 85004',phone:'(602) 258-3434',note:'Pro bono legal services. Referrals through Community Legal Services.'},
+  {cat:'legal',name:"Arizona's Children Association",address:'101 N Stone Ave, Tucson AZ 85701',phone:'(520) 622-7611',note:'Child welfare legal services and family support.'},
+  {cat:'legal',name:'Southern Arizona Legal Aid — Phoenix',address:'2033 N 7th St, Phoenix AZ 85006',phone:'(602) 258-3434',note:'Civil legal aid for low-income residents. Housing and family matters.'},
+  {cat:'legal',name:'ACLU of Arizona',address:'3707 N 7th St #235, Phoenix AZ 85014',phone:'(602) 650-1854',note:'Civil rights legal support and advocacy.'},
+];
+
+const CAT_ICONS={shelter:'🏠',food:'🍽️',health:'🏥',id:'🪪',employment:'💼',housing:'🔑',benefits:'📄',legal:'⚖️',other:'📌'};
+const FREQ_LABELS={monthly:'/ mo',biweekly:'/ 2 wks',weekly:'/ wk',once:'one-time'};
+const FREQ_TO_MONTHLY={monthly:1,biweekly:2.1667,weekly:4.3333,once:0};
+
+function load(k,d){try{return JSON.parse(localStorage.getItem(k))||d}catch(e){return d}}
+function save(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}}
+
+let planItems  = load('cl_plan_v2',[]);
+let incomeItems  = load('cl_income_v1',[]);
+let expenseItems = load('cl_expense_v1',[]);
+
+/* ══ TABS ══ */
+function switchTab(t){
+  document.querySelectorAll('.tab-panel').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
+  document.getElementById('panel-'+t).classList.add('active');
+  document.getElementById('tab-'+t).classList.add('active');
+}
+
+/* ══ RESOURCE SEARCH ══ */
+let activeCatFilter='all';
+
+function openSearch(cat){
+  document.getElementById('resource-search').classList.add('open');
+  document.getElementById('search-input').value='';
+  setCatFilterByName(cat);
+  filterResources();
+  document.getElementById('search-input').focus();
+  document.getElementById('resource-search').scrollIntoView({behavior:'smooth',block:'start'});
+}
+function closeSearch(){
+  document.getElementById('resource-search').classList.remove('open');
+}
+function setCatFilter(el,cat){
+  document.querySelectorAll('.cat-filter').forEach(f=>f.classList.remove('active'));
+  el.classList.add('active');
+  activeCatFilter=cat;
+  filterResources();
+}
+function setCatFilterByName(cat){
+  const el=document.querySelector(`.cat-filter[data-cat="${cat}"]`);
+  if(el){document.querySelectorAll('.cat-filter').forEach(f=>f.classList.remove('active'));el.classList.add('active');activeCatFilter=cat;}
+}
+function filterResources(){
+  const q=document.getElementById('search-input').value.toLowerCase().trim();
+  const results=RESOURCES.filter(r=>{
+    const matchCat=activeCatFilter==='all'||r.cat===activeCatFilter;
+    const matchQ=!q||(r.name+r.address+r.note).toLowerCase().includes(q);
+    return matchCat&&matchQ;
+  });
+  const el=document.getElementById('resource-results');
+  if(!results.length){el.innerHTML='<div class="no-results">No matching resources. Try different keywords or use "Add custom".</div>';return;}
+  el.innerHTML=results.map((r,i)=>`
+    <div class="resource-result" onclick="addFromSearch(${RESOURCES.indexOf(r)})">
+      <div class="resource-result__icon">${CAT_ICONS[r.cat]||'📌'}</div>
+      <div class="resource-result__info">
+        <div class="resource-result__name">${esc(r.name)}</div>
+        <div class="resource-result__meta">${esc(r.address)}${r.phone?' · '+esc(r.phone):''}</div>
+        ${r.note?`<div class="resource-result__meta" style="margin-top:.15rem;font-style:italic">${esc(r.note)}</div>`:''}
+      </div>
+      <div class="resource-result__add"><button class="btn btn--amber btn--xs" onclick="event.stopPropagation();addFromSearch(${RESOURCES.indexOf(r)})">+ Add</button></div>
+    </div>
+  `).join('');
+}
+function addFromSearch(idx){
+  const r=RESOURCES[idx];
+  const item=makePlanItem(r.cat,r.name,r.phone,r.address,'');
+  item.notes=r.note||'';
+  logActivity(item,'added','Added to plan');
+  planItems.unshift(item);
+  save('cl_plan_v2',planItems);
+  closeSearch();
+  renderPlan();
+  // scroll to the new item after render
+  setTimeout(()=>{const el=document.getElementById('item-'+item.id);if(el){el.scrollIntoView({behavior:'smooth',block:'center'});}},80);
+}
+
+/* ══ CUSTOM FORM ══ */
+function toggleCustomForm(){
+  const f=document.getElementById('add-form');
+  f.classList.toggle('open');
+  if(f.classList.contains('open')) document.getElementById('f-name').focus();
+}
+function closeCustomForm(){document.getElementById('add-form').classList.remove('open');}
+function addCustomItem(){
+  const name=document.getElementById('f-name').value.trim();
+  if(!name){document.getElementById('f-name').focus();return;}
+  const item=makePlanItem(
+    document.getElementById('f-cat').value,name,
+    document.getElementById('f-phone').value.trim(),
+    document.getElementById('f-address').value.trim(),''
+  );
+  logActivity(item,'added','Added to plan');
+  planItems.unshift(item);
+  save('cl_plan_v2',planItems);
+  ['f-name','f-phone','f-address'].forEach(id=>document.getElementById(id).value='');
+  closeCustomForm();
+  renderPlan();
+}
+
+/* ══ PLAN ITEM FACTORY ══ */
+function makePlanItem(cat,name,phone,address,notes){
+  return{id:Date.now().toString()+Math.random().toString(36).slice(2,6),
+    cat,name,phone,address,notes:'',
+    status:'todo',scheduledDate:'',scheduledTime:'',
+    addedAt:new Date().toISOString(),completedAt:null,
+    followups:[],activity:[]};
+}
+function logActivity(item,type,text){
+  item.activity.unshift({id:Date.now().toString(),type,text,ts:new Date().toISOString()});
+}
+
+/* ══ RENDER PLAN ══ */
+let doneOpen=false;
+function renderPlan(){
+  const active=planItems.filter(i=>i.status!=='done');
+  const done=planItems.filter(i=>i.status==='done');
+  const total=planItems.length, doneCount=done.length;
+  const pct=total?Math.round(doneCount/total*100):0;
+  document.getElementById('progress-stats').textContent=`${doneCount} of ${total} step${total===1?'':'s'} completed`;
+  document.getElementById('progress-fill').style.width=pct+'%';
+  document.getElementById('plan-count').textContent=active.length?`${active.length} active`:'';
+  const sorted=[...active].sort((a,b)=>({scheduled:0,todo:1}[a.status]||2)-({scheduled:0,todo:1}[b.status]||2));
+  const al=document.getElementById('plan-active-list');
+  al.innerHTML='';sorted.forEach(i=>al.appendChild(buildItemEl(i)));
+  document.getElementById('plan-empty').style.display=active.length?'none':'block';
+  const dt=document.getElementById('done-toggle'),dl=document.getElementById('plan-done-list');
+  document.getElementById('done-count').textContent=doneCount;
+  if(doneCount){
+    dt.style.display='flex';
+    dt.innerHTML=`${doneOpen?'▼':'▶'} Completed (<span id="done-count">${doneCount}</span>)`;
+    dl.style.display=doneOpen?'flex':'none';
+    dl.innerHTML='';done.forEach(i=>dl.appendChild(buildItemEl(i)));
+  }else{dt.style.display='none';dl.style.display='none';}
+}
+function toggleDone(){doneOpen=!doneOpen;renderPlan();}
+
+function buildItemEl(item){
+  const el=document.createElement('div');
+  el.className='plan-item'+(item.status==='done'?' plan-item--done':'');
+  el.id='item-'+item.id;
+  const statusLabel={todo:'To do',scheduled:'Scheduled',done:'Done'}[item.status]||item.status;
+  const fuPending=item.followups.filter(f=>!f.done).length;
+  const metaParts=[];
+  if(item.address) metaParts.push('📍 '+item.address);
+  if(item.phone)   metaParts.push('📞 '+item.phone);
+  if(item.scheduledDate) metaParts.push('📅 '+fmtDate(item.scheduledDate)+(item.scheduledTime?' at '+fmtTime(item.scheduledTime):''));
+
+  el.innerHTML=`
+    <div class="plan-item__head" onclick="toggleItem('${item.id}')">
+      <div class="plan-item__icon">${CAT_ICONS[item.cat]||'📌'}</div>
+      <div class="plan-item__info">
+        <div class="plan-item__name">${esc(item.name)}</div>
+        ${metaParts.length?`<div class="plan-item__meta">${metaParts.map(esc).join(' ')}</div>`:''}
+        <div class="plan-item__badges">
+          <span class="status-pill status--${item.status}">${statusLabel}</span>
+          ${fuPending?`<span class="followup-badge">📋 ${fuPending} follow-up${fuPending>1?'s':''}</span>`:''}
+        </div>
+      </div>
+    </div>
+    <div class="plan-item__body" id="body-${item.id}">
+
+      ${(item.address||item.phone)?`
+      <div class="item-section">
+        <div class="item-section__label">Contact</div>
+        <div class="contact-row">
+          ${item.address?`<span>📍 <a href="https://maps.google.com/?q=${encodeURIComponent(item.address)}" target="_blank" rel="noopener">${esc(item.address)}</a></span>`:''}
+          ${item.phone?`<span>📞 <a href="tel:${item.phone.replace(/\D/g,'')}">${esc(item.phone)}</a></span>`:''}
+        </div>
+      </div>`:''}
+
+      ${item.status!=='done'?`
+      <div class="item-section">
+        <div class="item-section__label">Schedule</div>
+        <div class="sched-row">
+          <input type="date" id="sched-date-${item.id}" value="${item.scheduledDate||''}" onchange="updateSched('${item.id}')">
+          <input type="time" id="sched-time-${item.id}" value="${item.scheduledTime||''}" onchange="updateSched('${item.id}')">
+          ${item.scheduledDate?`<button class="btn btn--ghost btn--sm" onclick="clearSched('${item.id}')">✕ Clear</button>`:''}
+        </div>
+      </div>`:''}
+
+      <div class="item-section">
+        <div class="item-section__label">Notes</div>
+        <textarea class="notes-area" id="notes-${item.id}" placeholder="What to bring, hours, intake requirements, what you've tried…" onblur="saveNotes('${item.id}')">${esc(item.notes||'')}</textarea>
+      </div>
+
+      <div class="item-section">
+        <div class="item-section__label">Follow-up tasks</div>
+        <div class="followup-list" id="fu-list-${item.id}">
+          ${renderFollowups(item)}
+        </div>
+        <button class="add-followup-toggle" onclick="toggleFuForm('${item.id}')">+ Add follow-up task</button>
+        <div class="add-followup-form" id="fu-form-${item.id}">
+          <div class="fu-row">
+            <input type="text" id="fu-text-${item.id}" placeholder="e.g. Call again, Go in person, Bring ID…">
+            <input type="date" id="fu-date-${item.id}" title="Due date (optional)">
+            <button class="btn btn--blue btn--sm" onclick="addFollowup('${item.id}')">Add</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="item-section">
+        <div class="item-section__label">
+          Activity log
+          <div style="display:flex;gap:.3rem;">
+            <button class="btn btn--outline btn--xs" onclick="logCall('${item.id}')">📞 Logged call</button>
+            <button class="btn btn--outline btn--xs" onclick="logVisit('${item.id}')">🚶 Visited</button>
+            <button class="btn btn--outline btn--xs" onclick="logVoicemail('${item.id}')">📬 Left voicemail</button>
+          </div>
+        </div>
+        <div class="activity-list" id="activity-${item.id}">
+          ${renderActivity(item)}
+        </div>
+      </div>
+
+      <div class="item-actions">
+        ${item.status!=='done'?`<button class="btn btn--sage btn--sm" onclick="markDone('${item.id}')">✓ Mark done</button>`:`<button class="btn btn--outline btn--sm" onclick="markTodo('${item.id}')">↩ Move back</button>`}
+        <button class="btn btn--danger btn--sm" onclick="deleteItem('${item.id}')">Delete</button>
+      </div>
+
+    </div>`;
+  return el;
+}
+
+function renderFollowups(item){
+  if(!item.followups||!item.followups.length) return '<div style="font-size:.8rem;color:var(--gray);padding:.2rem 0">No follow-up tasks yet.</div>';
+  return item.followups.map(f=>`
+    <div class="followup-item${f.done?' done-fu':''}" id="fu-${f.id}">
+      <input type="checkbox" class="followup-item__check" ${f.done?'checked':''} onchange="toggleFollowup('${item.id}','${f.id}',this.checked)">
+      <div class="followup-item__text${f.done?' done-text':''}">${esc(f.text)}</div>
+      ${f.dueDate?`<div class="followup-item__due">Due ${fmtDate(f.dueDate)}</div>`:''}
+      <button class="followup-item__del" onclick="deleteFollowup('${item.id}','${f.id}')" title="Remove">×</button>
+    </div>`).join('');
+}
+
+function renderActivity(item){
+  if(!item.activity||!item.activity.length) return '<div style="font-size:.8rem;color:var(--gray)">No activity yet.</div>';
+  return item.activity.map(a=>`
+    <div class="activity-entry">
+      <div class="activity-entry__dot ${a.type}"></div>
+      <div class="activity-entry__text">${esc(a.text)}</div>
+      <div class="activity-entry__time">${fmtTs(a.ts)}</div>
+    </div>`).join('');
+}
+
+function toggleItem(id){document.getElementById('body-'+id).classList.toggle('open');}
+
+/* ══ PLAN ACTIONS ══ */
+function markDone(id){
+  const item=planItems.find(i=>i.id===id);
+  if(item){item.status='done';item.completedAt=new Date().toISOString();logActivity(item,'done','Marked done');}
+  save('cl_plan_v2',planItems);renderPlan();
+}
+function markTodo(id){
+  const item=planItems.find(i=>i.id===id);
+  if(item){item.status='todo';item.scheduledDate='';item.scheduledTime='';logActivity(item,'note','Moved back to To do');}
+  save('cl_plan_v2',planItems);renderPlan();
+}
+function deleteItem(id){
+  if(!confirm('Remove this resource from your plan?'))return;
+  planItems=planItems.filter(i=>i.id!==id);
+  save('cl_plan_v2',planItems);renderPlan();
+}
+function updateSched(id){
+  const item=planItems.find(i=>i.id===id);if(!item)return;
+  const d=document.getElementById('sched-date-'+id)?.value||'';
+  const t=document.getElementById('sched-time-'+id)?.value||'';
+  item.scheduledDate=d;item.scheduledTime=t;
+  item.status=d?'scheduled':'todo';
+  if(d) logActivity(item,'scheduled','Scheduled for '+fmtDate(d)+(t?' at '+fmtTime(t):''));
+  save('cl_plan_v2',planItems);renderPlan();
+  setTimeout(()=>{const b=document.getElementById('body-'+id);if(b)b.classList.add('open');},10);
+}
+function clearSched(id){
+  const item=planItems.find(i=>i.id===id);if(!item)return;
+  item.scheduledDate='';item.scheduledTime='';item.status='todo';
+  logActivity(item,'note','Cleared schedule');
+  save('cl_plan_v2',planItems);renderPlan();
+  setTimeout(()=>{const b=document.getElementById('body-'+id);if(b)b.classList.add('open');},10);
+}
+function saveNotes(id){
+  const item=planItems.find(i=>i.id===id);if(!item)return;
+  const val=document.getElementById('notes-'+id)?.value||'';
+  if(item.notes!==val){item.notes=val;save('cl_plan_v2',planItems);}
+}
+
+/* ══ FOLLOW-UP TASKS ══ */
+function toggleFuForm(id){
+  const f=document.getElementById('fu-form-'+id);
+  f.classList.toggle('open');
+  if(f.classList.contains('open')) document.getElementById('fu-text-'+id)?.focus();
+}
+function addFollowup(id){
+  const item=planItems.find(i=>i.id===id);if(!item)return;
+  const text=document.getElementById('fu-text-'+id)?.value.trim();
+  const dueDate=document.getElementById('fu-date-'+id)?.value||'';
+  if(!text)return;
+  item.followups.push({id:Date.now().toString(),text,dueDate,done:false,createdAt:new Date().toISOString()});
+  logActivity(item,'note','Added follow-up: '+text);
+  save('cl_plan_v2',planItems);
+  // refresh just the followup list and activity
+  document.getElementById('fu-list-'+id).innerHTML=renderFollowups(item);
+  document.getElementById('activity-'+id).innerHTML=renderActivity(item);
+  document.getElementById('fu-text-'+id).value='';
+  document.getElementById('fu-date-'+id).value='';
+  document.getElementById('fu-form-'+id).classList.remove('open');
+  renderPlan(); // update badge
+}
+function toggleFollowup(itemId,fuId,done){
+  const item=planItems.find(i=>i.id===itemId);if(!item)return;
+  const fu=item.followups.find(f=>f.id===fuId);if(!fu)return;
+  fu.done=done;
+  logActivity(item,done?'done':'note',(done?'Completed':'Reopened')+' follow-up: '+fu.text);
+  save('cl_plan_v2',planItems);
+  document.getElementById('fu-list-'+itemId).innerHTML=renderFollowups(item);
+  document.getElementById('activity-'+itemId).innerHTML=renderActivity(item);
+  renderPlan();
+}
+function deleteFollowup(itemId,fuId){
+  const item=planItems.find(i=>i.id===itemId);if(!item)return;
+  item.followups=item.followups.filter(f=>f.id!==fuId);
+  save('cl_plan_v2',planItems);
+  document.getElementById('fu-list-'+itemId).innerHTML=renderFollowups(item);
+  renderPlan();
+}
+
+/* ══ ACTIVITY LOGGING ══ */
+function logCall(id){
+  const item=planItems.find(i=>i.id===id);if(!item)return;
+  logActivity(item,'call','Called '+item.name);
+  save('cl_plan_v2',planItems);
+  document.getElementById('activity-'+id).innerHTML=renderActivity(item);
+}
+function logVisit(id){
+  const item=planItems.find(i=>i.id===id);if(!item)return;
+  logActivity(item,'visit','Visited '+item.name);
+  save('cl_plan_v2',planItems);
+  document.getElementById('activity-'+id).innerHTML=renderActivity(item);
+}
+function logVoicemail(id){
+  const item=planItems.find(i=>i.id===id);if(!item)return;
+  logActivity(item,'call','Left voicemail at '+item.name);
+  save('cl_plan_v2',planItems);
+  document.getElementById('activity-'+id).innerHTML=renderActivity(item);
+}
+
+/* ══ BUDGET ══ */
+function toggleBudgetForm(id){document.getElementById(id).classList.toggle('open')}
+function toMonthly(a,f){return parseFloat(a||0)*(FREQ_TO_MONTHLY[f]||1)}
+function addBudgetItem(type){
+  const isI=type==='income';
+  const nEl=document.getElementById(isI?'inc-name':'exp-name');
+  const aEl=document.getElementById(isI?'inc-amount':'exp-amount');
+  const fEl=document.getElementById(isI?'inc-freq':'exp-freq');
+  const name=nEl.value.trim(),amount=parseFloat(aEl.value);
+  if(!name||isNaN(amount)||amount<0){nEl.focus();return;}
+  const item={id:Date.now().toString(),name,amount,freq:fEl.value};
+  if(isI){incomeItems.push(item);save('cl_income_v1',incomeItems);}
+  else{expenseItems.push(item);save('cl_expense_v1',expenseItems);}
+  nEl.value='';aEl.value='';
+  document.getElementById(isI?'income-form':'expense-form').classList.remove('open');
+  renderBudget();
+}
+function deleteBudgetItem(type,id){
+  if(type==='income'){incomeItems=incomeItems.filter(i=>i.id!==id);save('cl_income_v1',incomeItems);}
+  else{expenseItems=expenseItems.filter(i=>i.id!==id);save('cl_expense_v1',expenseItems);}
+  renderBudget();
+}
+function renderBudget(){
+  const ti=incomeItems.reduce((s,i)=>s+toMonthly(i.amount,i.freq),0);
+  const te=expenseItems.reduce((s,i)=>s+toMonthly(i.amount,i.freq),0);
+  const rem=ti-te;
+  document.getElementById('sum-income').textContent=fmt(ti);
+  document.getElementById('sum-expenses').textContent=fmt(te);
+  const remEl=document.getElementById('sum-remaining');
+  remEl.textContent=(rem<0?'-':'')+fmt(Math.abs(rem));
+  remEl.className='summary-card__amount '+(rem>=0?'positive':'negative');
+  document.getElementById('income-total-label').textContent=fmt(ti)+' / month';
+  document.getElementById('expense-total-label').textContent=fmt(te)+' / month';
+  renderBudgetItems('income-items',incomeItems,'income');
+  renderBudgetItems('expense-items',expenseItems,'expense');
+  if(!document.getElementById('calc-income').value&&ti>0){document.getElementById('calc-income').value=Math.round(ti);runCalc();}
+}
+function renderBudgetItems(cid,items,type){
+  const el=document.getElementById(cid);
+  if(!items.length){el.innerHTML=`<div class="empty-state" style="padding:1rem;font-size:.82rem">No ${type==='income'?'income':'expenses'} added yet.</div>`;return;}
+  el.innerHTML=items.map(i=>`
+    <div class="budget-item">
+      <div class="budget-item__name">${esc(i.name)}</div>
+      <div class="budget-item__freq">${FREQ_LABELS[i.freq]||''}</div>
+      <div class="budget-item__amount">$${parseFloat(i.amount).toLocaleString('en-US',{maximumFractionDigits:0})}</div>
+      <button class="budget-item__del" onclick="deleteBudgetItem('${type}','${i.id}')" title="Remove">×</button>
+    </div>`).join('');
+}
+function runCalc(){
+  const income=parseFloat(document.getElementById('calc-income').value)||0;
+  const rent=parseFloat(document.getElementById('calc-rent').value)||0;
+  const el=document.getElementById('calc-result');
+  if(!income||!rent){el.style.display='none';return;}
+  const pct=rent/income,max=income*.30;
+  const cls=pct<=.30?'green':pct<=.50?'amber':'red';
+  const label=pct<=.30?'✅ Affordable':pct<=.50?'⚠️ Stretched':'🚫 Too expensive';
+  const detail=pct<=.30?`This rent is ${Math.round(pct*100)}% of your income — within the 30% guideline. You'd have ${fmt(income-rent)}/month left after rent.`
+    :pct<=.50?`This rent is ${Math.round(pct*100)}% of your income — above the 30% guideline but may be manageable. To stay within guideline, look for housing under ${fmt(max)}/month.`
+    :`This rent is ${Math.round(pct*100)}% of your income — significantly above the 30% guideline. Look for housing under ${fmt(max)}/month.`;
+  el.className='affordability-result '+cls;el.style.display='block';
+  document.getElementById('calc-label').textContent=label;
+  document.getElementById('calc-detail').textContent=detail;
+  const mf=document.getElementById('calc-meter');
+  mf.className='meter__fill '+cls;
+  mf.style.width=Math.min(pct*100,100)+'%';
+}
+
+/* ══ HELPERS ══ */
+function esc(s){return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;')}
+function fmt(n){return'$'+Math.round(n).toLocaleString('en-US')}
+function fmtDate(d){if(!d)return'';const[y,m,day]=d.split('-');const mo=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];return`${mo[parseInt(m,10)-1]} ${parseInt(day,10)}`}
+function fmtTime(t){if(!t)return'';const[h,m]=t.split(':');const hr=parseInt(h,10);return`${hr>12?hr-12:hr||12}:${m} ${hr>=12?'PM':'AM'}`}
+function fmtTs(ts){if(!ts)return'';const d=new Date(ts);const mo=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];return`${mo[d.getMonth()]} ${d.getDate()}, ${d.getHours()>12?d.getHours()-12:d.getHours()||12}:${String(d.getMinutes()).padStart(2,'0')} ${d.getHours()>=12?'PM':'AM'}`}
+
+/* ══ URL IMPORT ══ */
+(function(){
+  const params=new URLSearchParams(location.search);
+  const raw=params.get('add');
+  if(!raw)return;
+  try{
+    const data=JSON.parse(decodeURIComponent(escape(atob(raw))));
+    const item=makePlanItem(data.cat||'shelter',data.name||'Resource',data.phone||'',data.address||',',' ');
+    item.notes=data.notes||'';
+    if(Array.isArray(data.followups)){
+      item.followups=data.followups.map(f=>({
+        id:Date.now().toString()+Math.random().toString(36).slice(2,6),
+        text:f.text||f,dueDate:f.dueDate||'',
+        done:false,createdAt:new Date().toISOString()
+      }));
+    }
+    logActivity(item,'added','Added from '+(data.source||'navigator'));
+    planItems.unshift(item);
+    save('cl_plan_v2',planItems);
+    history.replaceState({},'',location.pathname);
+    // Show welcome banner
+    const banner=document.createElement('div');
+    banner.className='import-banner';
+    banner.innerHTML=`
+      <button class="import-banner__close" onclick="this.parentElement.remove()">×</button>
+      <div class="import-banner__title">✅ Added to your plan!</div>
+      <div class="import-banner__body">
+        <strong>${esc(item.name)}</strong> is now in My Plan. My Ladder helps you track every resource, log calls and visits, schedule appointments, and manage your budget — all on your device. Nothing leaves this app.<br>
+        <span style="opacity:.75;font-size:.78rem">Tap the item below to see your follow-up tasks and add notes.</span>
+      </div>`;
+    const container=document.querySelector('#panel-plan .container');
+    if(container) container.insertBefore(banner,container.firstChild);
+  }catch(e){console.warn('Import parse error',e);}
+})();
+
+renderPlan();
+renderBudget();
+</script>
+</body>
+</html>
