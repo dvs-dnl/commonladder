@@ -1,0 +1,753 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XLKR4ZSZ5J"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-XLKR4ZSZ5J');
+</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Find Resources — Common Ladder</title>
+<meta name="description" content="Find shelter, food, health care, housing, and more. Answer a few quick questions and we'll connect you to the right local resource.">
+<link rel="canonical" href="https://www.commonladder.org/find.html">
+<link rel="stylesheet" href="style.css">
+<style>
+/* ── Finder-specific overrides ── */
+.find-wrap { max-width: 560px; margin: 0 auto; padding: 1.5rem 1rem 4rem; }
+
+/* Steps */
+.find-step { display: none; }
+.find-step.active { display: block; }
+
+/* Step header */
+.step-back { background: none; border: none; cursor: pointer; color: var(--gray); font-size: .85rem; font-weight: 600; padding: 0; font-family: inherit; display: flex; align-items: center; gap: .3rem; margin-bottom: 1rem; }
+.step-back:hover { color: var(--blue); }
+.step-eyebrow { font-size: .72rem; font-weight: 700; text-transform: uppercase; letter-spacing: .07em; color: var(--amber); margin-bottom: .35rem; }
+.step-title { font-size: 1.5rem; font-weight: 800; color: var(--blue); line-height: 1.15; margin-bottom: .4rem; }
+.step-sub { font-size: .88rem; color: var(--gray); line-height: 1.5; margin-bottom: 1.5rem; }
+
+/* Category cards */
+.cat-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: .65rem; }
+.cat-card { background: #fff; border: 2px solid var(--border); border-radius: 12px; padding: 1rem; cursor: pointer; transition: border-color .15s, box-shadow .15s; }
+.cat-card:hover { border-color: var(--amber); box-shadow: 0 0 0 3px rgba(232,145,26,.1); }
+.cat-card__icon { font-size: 1.6rem; margin-bottom: .4rem; }
+.cat-card__name { font-size: .95rem; font-weight: 700; color: var(--blue); }
+.cat-card__desc { font-size: .78rem; color: var(--gray); margin-top: .2rem; line-height: 1.3; }
+
+/* Intake card */
+.intake-card { background: #fff; border: 1.5px solid var(--border); border-radius: 12px; padding: 1.1rem 1.25rem; margin-bottom: 1rem; }
+.intake-card__title { font-size: .85rem; font-weight: 700; color: var(--blue); margin-bottom: 1rem; }
+
+/* Yes/No rows */
+.yn-row { display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: .75rem 0; border-bottom: 1px solid var(--light); }
+.yn-row:last-child { border-bottom: none; }
+.yn-q { font-size: .88rem; color: var(--text); line-height: 1.4; flex: 1; }
+.yn-btns { display: flex; gap: .4rem; flex-shrink: 0; }
+.yn-btn {
+  min-width: 48px;
+  padding: .45rem .75rem;
+  border-radius: 6px;
+  font-size: .82rem;
+  font-weight: 700;
+  cursor: pointer;
+  font-family: inherit;
+  border: 2px solid var(--border);
+  background: #fff;
+  color: var(--text);
+  transition: all .15s;
+}
+.yn-btn:hover { border-color: var(--blue); color: var(--blue); }
+.yn-btn.yes.active { background: var(--sage); border-color: var(--sage); color: #fff; }
+.yn-btn.no.active { background: var(--light); border-color: #9CA3AF; color: var(--text); }
+
+/* Zip input */
+.zip-block { display: flex; gap: .6rem; align-items: stretch; margin-top: .25rem; }
+.zip-input {
+  flex: 1;
+  padding: .75rem 1rem;
+  border: 2px solid var(--border);
+  border-radius: 8px;
+  font-size: 1rem;
+  font-family: inherit;
+  color: var(--text);
+  background: #fff;
+}
+.zip-input:focus { outline: none; border-color: var(--blue); }
+.zip-note { font-size: .78rem; color: var(--gray); margin-top: .5rem; text-align: center; }
+.zip-error { font-size: .8rem; color: #DC2626; margin-top: .4rem; display: none; }
+
+/* Result card */
+.result-hero {
+  background: var(--blue);
+  color: #fff;
+  border-radius: 14px;
+  padding: 1.25rem 1.5rem;
+  margin-bottom: 1rem;
+}
+.result-badge {
+  display: inline-block;
+  background: var(--amber);
+  color: #fff;
+  font-size: .72rem;
+  font-weight: 700;
+  padding: .25rem .7rem;
+  border-radius: 20px;
+  margin-bottom: .75rem;
+  letter-spacing: .03em;
+}
+.result-headline { font-size: 1.1rem; font-weight: 800; margin-bottom: .75rem; line-height: 1.3; }
+.result-first-step {
+  background: rgba(255,255,255,.12);
+  border-radius: 8px;
+  padding: .9rem 1rem;
+  font-size: .85rem;
+  line-height: 1.6;
+  margin-bottom: 1rem;
+}
+.result-actions { display: flex; flex-direction: column; gap: .5rem; }
+.call-btn {
+  display: flex; align-items: center; justify-content: center; gap: .5rem;
+  background: var(--sage); color: #fff;
+  padding: .8rem 1rem; border-radius: 8px;
+  font-weight: 700; font-size: .95rem;
+  text-decoration: none; border: none; cursor: pointer; font-family: inherit;
+  transition: opacity .15s;
+}
+.call-btn:hover { opacity: .88; }
+.plan-btn {
+  display: flex; align-items: center; justify-content: center; gap: .5rem;
+  background: var(--amber); color: #fff;
+  padding: .8rem 1rem; border-radius: 8px;
+  font-weight: 700; font-size: .95rem;
+  border: none; cursor: pointer; font-family: inherit;
+  transition: opacity .15s;
+}
+.plan-btn:hover { opacity: .88; }
+
+/* Result detail card */
+.result-detail { background: #fff; border: 1.5px solid var(--border); border-radius: 12px; padding: 1.1rem 1.25rem; margin-bottom: 1rem; }
+.detail-label { font-size: .72rem; font-weight: 700; text-transform: uppercase; letter-spacing: .06em; color: var(--gray); margin-bottom: .5rem; }
+.detail-text { font-size: .85rem; color: var(--text); line-height: 1.6; }
+.bring-list { list-style: none; padding: 0; }
+.bring-list li { font-size: .85rem; color: var(--text); padding: .3rem 0; padding-left: 1.1rem; position: relative; line-height: 1.4; }
+.bring-list li::before { content: '•'; position: absolute; left: 0; color: var(--amber); font-weight: 700; }
+.navigator-link {
+  display: flex; align-items: center; justify-content: space-between;
+  background: var(--light);
+  border: 1.5px solid var(--border);
+  border-radius: 10px;
+  padding: .85rem 1rem;
+  text-decoration: none;
+  color: var(--blue);
+  font-weight: 700;
+  font-size: .88rem;
+  margin-top: .5rem;
+  transition: border-color .15s;
+}
+.navigator-link:hover { border-color: var(--blue); }
+
+/* Non-shelter result */
+.resource-cards { display: flex; flex-direction: column; gap: .65rem; }
+.resource-card { background: #fff; border: 1.5px solid var(--border); border-radius: 10px; padding: .9rem 1rem; }
+.resource-card__name { font-weight: 700; font-size: .92rem; color: var(--blue); margin-bottom: .2rem; }
+.resource-card__meta { font-size: .8rem; color: var(--gray); }
+.resource-card__note { font-size: .8rem; color: var(--text); margin-top: .3rem; line-height: 1.4; }
+.resource-card a { color: var(--blue); font-weight: 600; text-decoration: none; }
+.resource-card a:hover { text-decoration: underline; }
+
+/* 211 fallback */
+.fallback-211 {
+  background: linear-gradient(135deg, #1C3D6E 0%, #2a5298 100%);
+  color: #fff;
+  border-radius: 12px;
+  padding: 1.1rem 1.25rem;
+  margin-top: 1rem;
+}
+.fallback-211 h3 { font-size: 1rem; font-weight: 800; margin-bottom: .3rem; }
+.fallback-211 p { font-size: .83rem; opacity: .85; line-height: 1.5; margin-bottom: .75rem; }
+.fallback-211 .call-211 {
+  display: inline-flex; align-items: center; gap: .4rem;
+  background: var(--amber); color: #fff;
+  padding: .6rem 1.1rem; border-radius: 7px;
+  font-weight: 700; font-size: .88rem;
+  text-decoration: none;
+}
+</style>
+</head>
+<body>
+
+<a href="#main" class="skip-link">Skip to main content</a>
+<div class="crisis-bar" role="region" aria-label="Crisis help">
+  <strong>Need help right now?</strong>
+  <a href="tel:211">Call 211</a><span class="crisis-bar__sep">·</span>
+  <a href="sms:741741?body=HOME">Text HOME to 741741</a><span class="crisis-bar__sep">·</span>
+  <a href="tel:988">988 Suicide &amp; Crisis</a>
+</div>
+<nav class="nav" aria-label="Primary">
+  <div class="nav__inner">
+    <a href="/" class="nav__logo" aria-label="Common Ladder home">
+      <svg width="28" height="28" viewBox="0 0 28 28" fill="none" aria-hidden="true">
+        <rect x="4" y="2" width="3" height="24" rx="1.5" fill="white" opacity=".9"/>
+        <rect x="21" y="2" width="3" height="24" rx="1.5" fill="white" opacity=".9"/>
+        <rect x="4" y="7" width="20" height="3" rx="1.5" fill="#E8911A"/>
+        <rect x="4" y="14" width="20" height="3" rx="1.5" fill="#E8911A"/>
+        <rect x="4" y="21" width="20" height="3" rx="1.5" fill="#E8911A"/>
+      </svg>
+      common<span>ladder</span>
+    </a>
+    <button class="nav__toggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="primary-nav" onclick="this.setAttribute('aria-expanded', document.getElementById('primary-nav').classList.toggle('open') ? 'true' : 'false')">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav__links" id="primary-nav">
+      <li><a href="/resources.html">Resources</a></li>
+      <li><a href="/providers.html">For providers</a></li>
+      <li><a href="/learn/">Learn</a></li>
+      <li><a href="/about.html">About</a></li>
+      <li><a href="/find.html" class="nav__cta">Find resources</a></li>
+      <li><a href="https://www.weather.gov/" rel="noreferrer" class="nav__exit" onclick="event.preventDefault();window.location.replace('https://www.weather.gov/')">Leave page</a></li>
+    </ul>
+  </div>
+</nav>
+
+<main id="main">
+<div class="find-wrap">
+
+  <!-- ══ STEP 1: Category ══ -->
+  <div class="find-step active" id="step-cat">
+    <div class="step-eyebrow">Find resources</div>
+    <h1 class="step-title">What do you need?</h1>
+    <p class="step-sub">Pick what's most urgent right now. We'll connect you to the right local program.</p>
+    <div class="cat-grid">
+      <div class="cat-card" onclick="selectCat('shelter')">
+        <div class="cat-card__icon">🏠</div>
+        <div class="cat-card__name">Shelter</div>
+        <div class="cat-card__desc">Tonight's bed, emergency intake, transitional housing</div>
+      </div>
+      <div class="cat-card" onclick="selectCat('food')">
+        <div class="cat-card__icon">🍽️</div>
+        <div class="cat-card__name">Food</div>
+        <div class="cat-card__desc">Meals today, food banks, SNAP assistance</div>
+      </div>
+      <div class="cat-card" onclick="selectCat('health')">
+        <div class="cat-card__icon">🏥</div>
+        <div class="cat-card__name">Health Care</div>
+        <div class="cat-card__desc">Free clinics, mental health, dental, substance use</div>
+      </div>
+      <div class="cat-card" onclick="selectCat('id')">
+        <div class="cat-card__icon">🪪</div>
+        <div class="cat-card__name">ID &amp; Documents</div>
+        <div class="cat-card__desc">Birth certificate, state ID, Social Security card</div>
+      </div>
+      <div class="cat-card" onclick="selectCat('employment')">
+        <div class="cat-card__icon">💼</div>
+        <div class="cat-card__name">Employment</div>
+        <div class="cat-card__desc">Job training, placement, résumé help</div>
+      </div>
+      <div class="cat-card" onclick="selectCat('housing')">
+        <div class="cat-card__icon">🔑</div>
+        <div class="cat-card__name">Housing Programs</div>
+        <div class="cat-card__desc">Rapid rehousing, vouchers, coordinated entry</div>
+      </div>
+      <div class="cat-card" onclick="selectCat('benefits')">
+        <div class="cat-card__icon">📄</div>
+        <div class="cat-card__name">Benefits</div>
+        <div class="cat-card__desc">SNAP, Medicaid, SSI, veterans benefits</div>
+      </div>
+      <div class="cat-card" onclick="selectCat('legal')">
+        <div class="cat-card__icon">⚖️</div>
+        <div class="cat-card__name">Legal Help</div>
+        <div class="cat-card__desc">Free civil legal aid, tenant rights, records</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ STEP 2A: Shelter intake ══ -->
+  <div class="find-step" id="step-shelter">
+    <button class="step-back" onclick="showStep('step-cat')">← Back</button>
+    <div class="step-eyebrow">🏠 Shelter</div>
+    <h2 class="step-title">A few quick questions</h2>
+    <p class="step-sub">These help us match you to the right program — there are dedicated resources for specific situations and you want to make sure you get to the right one.</p>
+
+    <div class="intake-card">
+      <div class="intake-card__title">About your situation</div>
+      <div class="yn-row">
+        <div class="yn-q">Have you served in the U.S. military?</div>
+        <div class="yn-btns">
+          <button class="yn-btn yes" data-key="veteran" data-val="yes" onclick="setAnswer(this)">Yes</button>
+          <button class="yn-btn no"  data-key="veteran" data-val="no"  onclick="setAnswer(this)">No</button>
+        </div>
+      </div>
+      <div class="yn-row">
+        <div class="yn-q">Are you between 18 and 24 years old?</div>
+        <div class="yn-btns">
+          <button class="yn-btn yes" data-key="youth" data-val="yes" onclick="setAnswer(this)">Yes</button>
+          <button class="yn-btn no"  data-key="youth" data-val="no"  onclick="setAnswer(this)">No</button>
+        </div>
+      </div>
+      <div class="yn-row">
+        <div class="yn-q">Do you have children with you?</div>
+        <div class="yn-btns">
+          <button class="yn-btn yes" data-key="family" data-val="yes" onclick="setAnswer(this)">Yes</button>
+          <button class="yn-btn no"  data-key="family" data-val="no"  onclick="setAnswer(this)">No</button>
+        </div>
+      </div>
+      <div class="yn-row">
+        <div class="yn-q">Have you been homeless for a year or more, or 4+ times in the last 3 years?</div>
+        <div class="yn-btns">
+          <button class="yn-btn yes" data-key="chronic" data-val="yes" onclick="setAnswer(this)">Yes</button>
+          <button class="yn-btn no"  data-key="chronic" data-val="no"  onclick="setAnswer(this)">No</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="intake-card">
+      <div class="intake-card__title">Your zip code</div>
+      <div class="zip-block">
+        <input class="zip-input" type="text" id="shelter-zip" placeholder="e.g. 85003" maxlength="5" inputmode="numeric" pattern="[0-9]*">
+        <button class="btn btn--amber" onclick="submitShelter()">Find shelter →</button>
+      </div>
+      <div class="zip-error" id="shelter-zip-error">Please enter a 5-digit zip code.</div>
+      <p class="zip-note">Your answers stay on your device. We use your zip to find the nearest program.</p>
+    </div>
+  </div>
+
+  <!-- ══ STEP 2B: Non-shelter zip ══ -->
+  <div class="find-step" id="step-other">
+    <button class="step-back" onclick="showStep('step-cat')">← Back</button>
+    <div class="step-eyebrow" id="other-eyebrow">Resources</div>
+    <h2 class="step-title" id="other-title">Enter your zip code</h2>
+    <p class="step-sub">We'll find the closest programs in your area.</p>
+    <div class="intake-card">
+      <div class="zip-block">
+        <input class="zip-input" type="text" id="other-zip" placeholder="e.g. 85003" maxlength="5" inputmode="numeric" pattern="[0-9]*">
+        <button class="btn btn--amber" onclick="submitOther()">Find resources →</button>
+      </div>
+      <div class="zip-error" id="other-zip-error">Please enter a 5-digit zip code.</div>
+      <p class="zip-note">We'll show you local resources based on your location.</p>
+    </div>
+  </div>
+
+  <!-- ══ STEP 3: Shelter result ══ -->
+  <div class="find-step" id="step-shelter-result">
+    <button class="step-back" onclick="showStep('step-shelter')">← Back</button>
+    <div id="shelter-result-content"></div>
+  </div>
+
+  <!-- ══ STEP 3B: Other result ══ -->
+  <div class="find-step" id="step-other-result">
+    <button class="step-back" onclick="showStep('step-other')">← Back</button>
+    <div id="other-result-content"></div>
+  </div>
+
+</div>
+</main>
+
+<script>
+/* ══ DATA ══ */
+
+// Zip prefix → metro key
+var ZIP_MAP = {
+  // Arizona
+  '850':'maricopa','851':'maricopa','852':'maricopa','853':'maricopa','854':'maricopa',
+  '856':'tucson','857':'tucson',
+  // New Mexico
+  '870':'albuquerque','871':'albuquerque','872':'albuquerque',
+  // California - LA
+  '900':'los-angeles','901':'los-angeles','902':'los-angeles','903':'los-angeles',
+  '904':'los-angeles','905':'los-angeles','906':'los-angeles','907':'los-angeles',
+  '908':'los-angeles',
+  // Long Beach
+  '908':'long-beach',
+  // San Diego
+  '919':'san-diego','920':'san-diego','921':'san-diego','922':'san-diego',
+  // San Francisco
+  '940':'san-francisco','941':'san-francisco','942':'san-francisco',
+  // San Jose
+  '950':'san-jose','951':'san-jose','952':'san-jose','953':'san-jose','954':'san-jose',
+  // Sacramento
+  '956':'sacramento','957':'sacramento','958':'sacramento',
+  // Seattle/King County
+  '980':'seattle','981':'seattle','982':'seattle','983':'seattle',
+  // Portland
+  '970':'portland','971':'portland','972':'portland',
+  // Denver
+  '800':'denver','801':'denver','802':'denver','803':'denver','804':'denver',
+  // Las Vegas
+  '889':'las-vegas','890':'las-vegas','891':'las-vegas',
+  // Phoenix again (some 855)
+  '855':'maricopa',
+  // Dallas
+  '750':'dallas','751':'dallas','752':'dallas','753':'dallas','754':'dallas',
+  // Houston
+  '770':'houston','771':'houston','772':'houston','773':'houston','774':'houston',
+  // Austin
+  '786':'austin','787':'austin','788':'austin',
+  // NYC
+  '100':'new-york','101':'new-york','102':'new-york','103':'new-york',
+  '104':'new-york','110':'new-york','111':'new-york','112':'new-york',
+  '113':'new-york','114':'new-york','116':'new-york',
+  // Chicago
+  '606':'chicago','607':'chicago','608':'chicago',
+  // Atlanta
+  '303':'atlanta','304':'atlanta',
+  // Miami
+  '331':'miami','332':'miami','333':'miami',
+  // Boston
+  '021':'boston','022':'boston','023':'boston','024':'boston',
+  // Phoenix extra
+  '853':'maricopa'
+};
+
+var NAVIGATOR_URLS = {
+  'maricopa':      '/static-tools/maricopa-navigator.html',
+  'tucson':        '/static-tools/tucson-navigator.html',
+  'albuquerque':   '/static-tools/albuquerque-navigator.html',
+  'los-angeles':   '/static-tools/los-angeles-navigator.html',
+  'long-beach':    '/static-tools/long-beach-navigator.html',
+  'san-diego':     '/static-tools/san-diego-navigator.html',
+  'san-francisco': '/static-tools/san-francisco-navigator.html',
+  'san-jose':      '/static-tools/san-jose-navigator.html',
+  'sacramento':    '/static-tools/sacramento-navigator.html',
+  'seattle':       '/static-tools/seattle-navigator.html',
+  'portland':      '/static-tools/portland-navigator.html',
+  'denver':        '/static-tools/denver-navigator.html',
+  'las-vegas':     '/static-tools/las-vegas-navigator.html',
+  'dallas':        '/static-tools/dallas-navigator.html',
+  'houston':       '/static-tools/houston-navigator.html',
+  'austin':        '/static-tools/austin-navigator.html'
+};
+
+var METRO_NAMES = {
+  'maricopa':'Phoenix / Maricopa County','tucson':'Tucson / Pima County',
+  'albuquerque':'Albuquerque','los-angeles':'Los Angeles',
+  'long-beach':'Long Beach','san-diego':'San Diego',
+  'san-francisco':'San Francisco','san-jose':'San Jose / Santa Clara',
+  'sacramento':'Sacramento','seattle':'Seattle / King County',
+  'portland':'Portland / Multnomah County','denver':'Denver Metro',
+  'las-vegas':'Las Vegas / Clark County','dallas':'Dallas','houston':'Houston',
+  'austin':'Austin'
+};
+
+// Shelter pathways
+var PATHWAYS = {
+  veteran: {
+    badge: '🎖 Veterans Pathway',
+    headline: "There's a dedicated system built for you.",
+    firstStep: 'Call the <strong>National Call Center for Homeless Veterans</strong> at <strong>1-877-4AID-VET (1-877-424-3838)</strong> — available 24/7. You do NOT need your DD-214 to call. They can start helping you right now.',
+    callHref: 'tel:18774243838',
+    callLabel: 'Call 1-877-4AID-VET',
+    expect: 'You may qualify for rapid rehousing assistance, HUD-VASH housing vouchers, or dedicated Veterans case management.',
+    bring: ['DD-214 discharge papers (not required to call)', 'Photo ID (if available)', 'Any VA documentation you have'],
+    planName: 'Veterans Pathway — Call National Call Center for Homeless Veterans',
+    planPhone: '1-877-424-3838',
+    planNotes: 'What to expect: You may qualify for rapid rehousing assistance, HUD-VASH housing vouchers, or dedicated Veterans case management.',
+    pathwayKey: 'result_veterans'
+  },
+  youth: {
+    badge: '🌱 Youth Pathway',
+    headline: 'You have access to youth-specific services.',
+    firstStep: 'Call <strong>211</strong> and ask for youth shelter. Youth-specific programs provide emergency shelter, drop-in services, meals, and case management for people 18–24. Many are walk-in accessible.',
+    callHref: 'tel:211',
+    callLabel: 'Call or text 211',
+    expect: 'Expect emergency shelter options, transitional living programs, rapid rehousing, and job training support designed for young people.',
+    bring: ['Photo ID (helpful; call ahead to confirm what\'s required)', 'Nothing — many drop-in centers are walk-in accessible'],
+    planName: 'Youth Pathway — Call 211 for youth shelter',
+    planPhone: '211',
+    planNotes: 'What to expect: Youth-specific shelter programs, transitional living, rapid rehousing, and job training. Many are walk-in.',
+    pathwayKey: 'result_youth'
+  },
+  family: {
+    badge: '🏠 Families Pathway',
+    headline: 'Families with children are prioritized.',
+    firstStep: 'Call <strong>211</strong> and ask for family shelter. Families with children receive priority access in most shelter systems and have dedicated programs.',
+    callHref: 'tel:211',
+    callLabel: 'Call or text 211',
+    expect: 'Families with children get priority access. You can expect emergency shelter, rapid rehousing, case management, and help enrolling kids in school.',
+    bring: ['ID for all family members (helpful)', 'Birth certificates or school records for children (if available)', 'Any documentation of current situation'],
+    planName: 'Families Pathway — Call 211 for family shelter',
+    planPhone: '211',
+    planNotes: 'What to expect: Priority access for families, emergency shelter, rapid rehousing, school enrollment help for kids.',
+    pathwayKey: 'result_families'
+  },
+  chronic: {
+    badge: '🔑 Permanent Housing Pathway',
+    headline: 'You may qualify for Permanent Supportive Housing.',
+    firstStep: 'Contact your local <strong>Coordinated Entry</strong> access point — call <strong>211</strong> to find it. Ask specifically for a <strong>VI-SPDAT assessment</strong>. This is the official tool that determines your priority for Permanent Supportive Housing.',
+    callHref: 'tel:211',
+    callLabel: 'Call or text 211',
+    expect: 'After your VI-SPDAT assessment you\'ll be placed on a prioritized list for Permanent Supportive Housing. Ask about bridge housing and interim support while you wait.',
+    bring: ['Any ID you have', 'Documentation of homeless history if available', 'Any medical or disability records (can help with prioritization)'],
+    planName: 'Permanent Housing Pathway — Coordinated Entry VI-SPDAT Assessment',
+    planPhone: '211',
+    planNotes: 'What to expect: VI-SPDAT assessment → prioritized list for Permanent Supportive Housing. Ask about bridge housing while you wait.',
+    pathwayKey: 'result_chronic'
+  },
+  adult: {
+    badge: '🏠 Emergency Shelter',
+    headline: "Let's find you a shelter bed tonight.",
+    firstStep: 'Call <strong>211</strong> right now — they have real-time shelter availability and can connect you to an emergency bed in your area. You can also walk in to your nearest emergency shelter.',
+    callHref: 'tel:211',
+    callLabel: 'Call or text 211',
+    expect: 'Emergency shelter intake usually requires a brief intake process. ID is helpful but not always required. Tell them you need emergency shelter tonight.',
+    bring: ['Photo ID (helpful but not always required)', 'Any medications you take', 'Emergency contacts if you have them'],
+    planName: 'Emergency Shelter — Call 211 for availability',
+    planPhone: '211',
+    planNotes: 'What to expect: Emergency shelter intake, ID helpful but not always required. Tell them you need a bed tonight.',
+    pathwayKey: 'result_adult'
+  }
+};
+
+// Non-shelter category resources (generic + local navigator link)
+var CAT_INFO = {
+  food: {
+    icon: '🍽️', label: 'Food Resources',
+    summary: 'Food banks, free meal programs, and SNAP (food stamps) are available in most communities.',
+    resources: [
+      { name: '211 — Food referrals', phone: '211', href: 'tel:211', note: 'Call or text 211. Tell them you need food assistance — they have real-time availability for meal programs and food banks near you.' },
+      { name: 'SNAP / Food Stamps', phone: 'Apply at benefits.gov', href: 'https://www.benefits.gov/benefit/361', note: 'Federal food assistance program. Eligibility is based on income. You can apply online or at your local DES / social services office.' },
+      { name: 'Feeding America — Food Bank Finder', phone: 'findyourfoodbank.org', href: 'https://www.feedingamerica.org/find-your-local-foodbank', note: 'Find the Feeding America food bank nearest you — most have pantry distributions open to anyone in need.' }
+    ]
+  },
+  health: {
+    icon: '🏥', label: 'Health Care',
+    summary: 'Free and low-cost health care, mental health services, and substance use treatment are available through community health centers.',
+    resources: [
+      { name: '211 — Health referrals', phone: '211', href: 'tel:211', note: 'Call or text 211 to find free clinics, mental health services, and substance use programs in your area.' },
+      { name: 'HRSA Health Center Finder', phone: 'findahealthcenter.hrsa.gov', href: 'https://findahealthcenter.hrsa.gov', note: 'Find a federally qualified health center (FQHC) near you — they provide care on a sliding-scale fee based on your income.' },
+      { name: 'SAMHSA — Behavioral Health', phone: '1-800-662-4357', href: 'tel:18006624357', note: 'Free 24/7 helpline for mental health and substance use treatment referrals.' }
+    ]
+  },
+  id: {
+    icon: '🪪', label: 'ID & Documents',
+    summary: 'Recovering lost ID documents is a critical first step. Many organizations offer free help with this process.',
+    resources: [
+      { name: '211 — Document recovery referrals', phone: '211', href: 'tel:211', note: 'Call 211 and ask for ID recovery assistance. Many areas have nonprofit programs that help for free.' },
+      { name: 'SSA — Social Security Card', phone: '1-800-772-1213', href: 'tel:18007721213', note: 'Replace your Social Security card for free. You can also apply at SSA.gov without going to an office.' },
+      { name: 'State Vital Records — Birth Certificate', phone: 'vitalchek.com', href: 'https://www.vitalchek.com', note: 'Order a birth certificate from your state. Fee varies; ask local nonprofits about fee waivers.' }
+    ]
+  },
+  employment: {
+    icon: '💼', label: 'Employment',
+    summary: 'Free job training, placement services, and career support are available through workforce development programs.',
+    resources: [
+      { name: 'American Job Centers', phone: 'careeronestop.org', href: 'https://www.careeronestop.org/LocalHelp/AmericanJobCenters/find-american-job-centers.aspx', note: 'Find your nearest American Job Center for free job search help, training, and résumé assistance.' },
+      { name: '211 — Employment referrals', phone: '211', href: 'tel:211', note: 'Call 211 to find local job training programs and employment support.' },
+      { name: 'Goodwill — Career Services', phone: 'goodwill.org', href: 'https://www.goodwill.org/jobs-training/find-a-job/', note: 'Free job training and placement through Goodwill locations nationwide.' }
+    ]
+  },
+  housing: {
+    icon: '🔑', label: 'Housing Programs',
+    summary: 'Rapid rehousing, housing vouchers, and coordinated entry programs connect people to permanent housing.',
+    resources: [
+      { name: '211 — Housing referrals', phone: '211', href: 'tel:211', note: 'Call 211 to find your local Coordinated Entry access point and housing programs.' },
+      { name: 'HUD Resource Locator', phone: 'resources.hud.gov', href: 'https://resources.hud.gov', note: 'Find HUD-approved housing counselors and local housing programs.' },
+      { name: 'National Low Income Housing Coalition', phone: 'nlihc.org', href: 'https://nlihc.org/find-emergency-assistance', note: 'Emergency rental assistance programs by state and locality.' }
+    ]
+  },
+  benefits: {
+    icon: '📄', label: 'Benefits',
+    summary: 'Government benefits including food, health coverage, disability, and cash assistance may be available to you.',
+    resources: [
+      { name: 'Benefits.gov — Benefit Finder', phone: 'benefits.gov', href: 'https://www.benefits.gov', note: 'Find federal benefits you may qualify for — SNAP, Medicaid, SSI, housing assistance, and more.' },
+      { name: '211 — Benefits enrollment help', phone: '211', href: 'tel:211', note: 'Call 211 to find local help enrolling in benefits programs.' },
+      { name: 'Social Security — SSI/SSDI', phone: '1-800-772-1213', href: 'tel:18007721213', note: 'Disability and income benefits. Apply at SSA.gov or call for help.' }
+    ]
+  },
+  legal: {
+    icon: '⚖️', label: 'Legal Help',
+    summary: 'Free civil legal aid is available for low-income individuals facing housing, benefits, and family law issues.',
+    resources: [
+      { name: 'LawHelp.org — Legal Aid Finder', phone: 'lawhelp.org', href: 'https://www.lawhelp.org', note: 'Find free legal aid organizations in your state for civil legal matters.' },
+      { name: '211 — Legal referrals', phone: '211', href: 'tel:211', note: 'Call 211 to find local free legal services.' },
+      { name: 'LSC — Legal Services Corporation', phone: 'lsc.gov', href: 'https://www.lsc.gov/what-legal-aid/find-legal-aid', note: 'Find LSC-funded legal aid organizations — free civil legal help nationwide.' }
+    ]
+  }
+};
+
+/* ══ STATE ══ */
+var state = { cat: null, answers: { veteran: null, youth: null, family: null, chronic: null }, zip: '' };
+
+/* ══ NAVIGATION ══ */
+function showStep(id) {
+  document.querySelectorAll('.find-step').forEach(function(s){ s.classList.remove('active'); });
+  document.getElementById(id).classList.add('active');
+  window.scrollTo(0, 0);
+}
+
+function selectCat(cat) {
+  state.cat = cat;
+  if (cat === 'shelter') {
+    showStep('step-shelter');
+  } else {
+    var info = CAT_INFO[cat];
+    document.getElementById('other-eyebrow').textContent = (info ? info.icon + ' ' + info.label : 'Resources');
+    document.getElementById('other-title').textContent = 'Enter your zip code';
+    showStep('step-other');
+  }
+}
+
+function setAnswer(btn) {
+  var key = btn.getAttribute('data-key');
+  var val = btn.getAttribute('data-val');
+  state.answers[key] = val;
+  var row = btn.closest('.yn-btns');
+  row.querySelectorAll('.yn-btn').forEach(function(b){ b.classList.remove('active'); });
+  btn.classList.add('active');
+}
+
+/* ══ ROUTING ══ */
+function getPathwayKey() {
+  var a = state.answers;
+  if (a.veteran === 'yes')  return 'veteran';
+  if (a.youth   === 'yes')  return 'youth';
+  if (a.family  === 'yes')  return 'family';
+  if (a.chronic === 'yes')  return 'chronic';
+  return 'adult';
+}
+
+function getMetro(zip) {
+  if (!zip || zip.length < 3) return null;
+  return ZIP_MAP[zip.substring(0, 3)] || null;
+}
+
+function submitShelter() {
+  var zip = document.getElementById('shelter-zip').value.trim();
+  var errEl = document.getElementById('shelter-zip-error');
+  if (!/^\d{5}$/.test(zip)) {
+    errEl.style.display = 'block';
+    document.getElementById('shelter-zip').focus();
+    return;
+  }
+  errEl.style.display = 'none';
+  state.zip = zip;
+  var pathwayKey = getPathwayKey();
+  var metro = getMetro(zip);
+  renderShelterResult(pathwayKey, metro);
+  showStep('step-shelter-result');
+}
+
+function submitOther() {
+  var zip = document.getElementById('other-zip').value.trim();
+  var errEl = document.getElementById('other-zip-error');
+  if (!/^\d{5}$/.test(zip)) {
+    errEl.style.display = 'block';
+    document.getElementById('other-zip').focus();
+    return;
+  }
+  errEl.style.display = 'none';
+  state.zip = zip;
+  var metro = getMetro(zip);
+  renderOtherResult(state.cat, metro);
+  showStep('step-other-result');
+}
+
+/* ══ RENDER SHELTER RESULT ══ */
+function renderShelterResult(pathwayKey, metro) {
+  var p = PATHWAYS[pathwayKey];
+  var navUrl = metro ? NAVIGATOR_URLS[metro] : null;
+  var metroName = metro ? METRO_NAMES[metro] : null;
+
+  // Build My Ladder URL
+  var planData = {
+    cat: 'shelter',
+    name: p.planName,
+    phone: p.planPhone,
+    address: '',
+    notes: p.planNotes,
+    followups: p.bring.map(function(b){ return { text: b }; }),
+    source: 'Resource Finder'
+  };
+  if (navUrl) planData.source = (metroName || 'Navigator') + ' — Resource Finder';
+  var encoded = '';
+  try { encoded = btoa(unescape(encodeURIComponent(JSON.stringify(planData)))); } catch(e){}
+
+  var html = '';
+  html += '<div class="result-hero">';
+  html += '<div class="result-badge">' + p.badge + '</div>';
+  html += '<h2 class="result-headline">' + p.headline + '</h2>';
+  html += '<div class="result-first-step"><strong>Your first step:</strong> ' + p.firstStep + '</div>';
+  html += '<div class="result-actions">';
+  html += '<a class="call-btn" href="' + p.callHref + '">📞 ' + p.callLabel + '</a>';
+  if (encoded) {
+    html += '<button class="plan-btn" onclick="addToLadder(\'' + encoded + '\')">📋 Add to My Ladder</button>';
+  }
+  html += '</div></div>';
+
+  html += '<div class="result-detail">';
+  html += '<div class="detail-label">What to expect</div>';
+  html += '<div class="detail-text">' + p.expect + '</div>';
+  html += '</div>';
+
+  html += '<div class="result-detail">';
+  html += '<div class="detail-label">Bring if possible</div>';
+  html += '<ul class="bring-list">';
+  p.bring.forEach(function(b){ html += '<li>' + b + '</li>'; });
+  html += '</ul>';
+  html += '</div>';
+
+  if (navUrl) {
+    var navPathway = { veteran:'result_veterans', youth:'result_youth', family:'result_families', chronic:'result_chronic', adult:'result_adult' }[pathwayKey];
+    html += '<a class="navigator-link" href="' + navUrl + '?step=' + navPathway + '" target="_blank" rel="noopener">';
+    html += '<span>📍 See full ' + metroName + ' guide</span>';
+    html += '<span>→</span>';
+    html += '</a>';
+  }
+
+  html += '<div class="fallback-211">';
+  html += '<h3>Need to talk to someone right now?</h3>';
+  html += '<p>211 connects you to live local help — 24 hours a day, 7 days a week, in any language.</p>';
+  html += '<a class="call-211" href="tel:211">📞 Call or text 211</a>';
+  html += '</div>';
+
+  document.getElementById('shelter-result-content').innerHTML = html;
+}
+
+/* ══ RENDER OTHER RESULT ══ */
+function renderOtherResult(cat, metro) {
+  var info = CAT_INFO[cat];
+  if (!info) return;
+  var navUrl = metro ? NAVIGATOR_URLS[metro] : null;
+  var metroName = metro ? METRO_NAMES[metro] : null;
+
+  var html = '';
+  html += '<div class="step-eyebrow">' + info.icon + ' ' + info.label + '</div>';
+  html += '<h2 class="step-title" style="font-size:1.25rem;margin-bottom:.5rem">Resources near you</h2>';
+  if (metroName) html += '<p class="step-sub">Showing resources for <strong>' + metroName + '</strong></p>';
+  else html += '<p class="step-sub">National and local resources for ' + info.label.toLowerCase() + '.</p>';
+  html += '<p style="font-size:.85rem;color:var(--gray);margin-bottom:1rem">' + info.summary + '</p>';
+
+  html += '<div class="resource-cards">';
+  info.resources.forEach(function(r) {
+    html += '<div class="resource-card">';
+    html += '<div class="resource-card__name">' + r.name + '</div>';
+    html += '<div class="resource-card__meta"><a href="' + r.href + '">' + r.phone + '</a></div>';
+    html += '<div class="resource-card__note">' + r.note + '</div>';
+    html += '</div>';
+  });
+  html += '</div>';
+
+  if (navUrl) {
+    html += '<a class="navigator-link" href="' + navUrl + '" target="_blank" rel="noopener" style="margin-top:.75rem">';
+    html += '<span>📍 Open ' + metroName + ' resource navigator</span>';
+    html += '<span>→</span>';
+    html += '</a>';
+  }
+
+  html += '<div class="fallback-211"><h3>Not sure where to start?</h3>';
+  html += '<p>211 connects you to local help for any resource — 24/7, any language.</p>';
+  html += '<a class="call-211" href="tel:211">📞 Call or text 211</a></div>';
+
+  document.getElementById('other-result-content').innerHTML = html;
+}
+
+/* ══ MY LADDER ══ */
+function addToLadder(encoded) {
+  window.open('https://my.commonladder.org/?add=' + encoded, '_blank', 'noopener');
+}
+</script>
+</body>
+</html>

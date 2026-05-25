@@ -1203,6 +1203,18 @@
     }
   }
 
+
+  /* ── URL param: ?step=result_veterans etc. → jump straight to result ── */
+  (function() {
+    var params = new URLSearchParams(window.location.search);
+    var step = params.get('step');
+    if (step && step.startsWith('result') && PATHWAYS[step]) {
+      state.step = step;
+      render();
+      window.scrollTo(0, 0);
+    }
+  })();
+
 </script>
 </body>
 </html>

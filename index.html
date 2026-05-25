@@ -65,7 +65,7 @@
       <li><a href="/providers.html">For providers</a></li>
       <li><a href="/learn/">Learn</a></li>
       <li><a href="/about.html">About</a></li>
-      <li><a href="/help/" class="nav__cta">Find help now</a></li>
+      <li><a href="/find.html" class="nav__cta">Find resources</a></li>
       <li><a href="https://www.weather.gov/" rel="noreferrer" class="nav__exit" onclick="event.preventDefault();window.location.replace('https://www.weather.gov/')">Leave page</a></li>
     </ul>
   </div>
@@ -76,39 +76,18 @@
   <div class="container">
     <h1>Every resource. <em>Every next step.</em></h1>
     <p>Find shelters, food, health care, and housing programs near you — updated daily, in plain language, no account required.</p>
-    <!-- CoC Finder Widget -->
-    <div class="finder-widget" role="search" aria-label="Find your resource navigator">
-      <div class="finder-tabs" role="tablist">
-        <button class="finder-tab active" id="tab-zip-btn" role="tab" aria-selected="true" onclick="switchFinderTab('zip')">Enter zip code</button>
-        <button class="finder-tab" id="tab-state-btn" role="tab" aria-selected="false" onclick="switchFinderTab('state')">Browse by state</button>
-      </div>
-
-      <div id="finder-zip" class="finder-panel active" role="tabpanel">
-        <div class="finder-input-row">
-          <input type="text" id="zipInput" class="finder-input" placeholder="Your zip code" maxlength="5" inputmode="numeric" pattern="[0-9]*" autocomplete="postal-code" onkeydown="if(event.key==='Enter')findByZip()">
-          <button class="btn btn--primary" onclick="findByZip()">Find my navigator →</button>
-        </div>
-        <div id="zip-secondary" class="finder-secondary" style="display:none">
-          <p>Multiple areas found in your state — select yours:</p>
-          <select class="finder-select" id="zipCocSelect" style="width:100%" onchange="showResult(this.value)">
-            <option value="">Select your area...</option>
-          </select>
-        </div>
-        <div id="zip-error" class="finder-error" style="display:none"></div>
-      </div>
-
-      <div id="finder-state" class="finder-panel" role="tabpanel">
-        <div class="finder-select-col">
-          <select id="stateSelect" class="finder-select" onchange="loadStateCocs(this.value)">
-            <option value="">Select your state...</option>
-          </select>
-          <select id="stateCocSelect" class="finder-select" style="display:none" onchange="showResult(this.value)">
-            <option value="">Select your area...</option>
-          </select>
-        </div>
-      </div>
-
-      <div id="finder-result" class="finder-result" style="display:none"></div>
+    <!-- Resource finder paths -->
+    <div class="hero-paths">
+      <a href="/find.html" class="hero-path hero-path--primary">
+        <div class="hero-path__icon">🔍</div>
+        <div class="hero-path__label">Find Resources</div>
+        <div class="hero-path__sub">Shelter, food, health, housing &amp; more near you</div>
+      </a>
+      <a href="/learn/" class="hero-path">
+        <div class="hero-path__icon">📖</div>
+        <div class="hero-path__label">Learn About Homelessness</div>
+        <div class="hero-path__sub">Data, guides, and how to help</div>
+      </a>
     </div>
   </div>
 </section>
@@ -126,7 +105,7 @@
         <figure class="card__photo"><img src="images/cards/audience-seekers.jpg" alt="A young woman steps onto the porch of a small house in morning light, holding a coffee cup." loading="lazy" onload="this.classList.add('loaded');this.parentElement.classList.add('has-image')" onerror="this.remove()"></figure>
         <h3>People seeking help</h3>
         <p>Find shelters, food, health care, housing programs, and more — near you, right now. Fast, no barriers, in plain language.</p>
-        <a href="/help/" class="btn btn--blue btn--sm">Find help now</a>
+        <a href="/find.html" class="btn btn--blue btn--sm">Find resources</a>
       </div>
       <div class="card card--amber">
         <figure class="card__photo"><img src="images/cards/audience-case-managers.jpg" alt="A case manager and a client sit together at a desk, looking at a laptop and a printed form." loading="lazy" onload="this.classList.add('loaded');this.parentElement.classList.add('has-image')" onerror="this.remove()"></figure>
@@ -285,7 +264,7 @@
     <div class="callout">
       <h2>Every rung, together.</h2>
       <p>Homelessness is solvable. Common Ladder connects every resource, every organization, and every person working toward that — in your city.</p>
-      <a href="/help/" class="btn btn--primary">Find resources near me</a>
+      <a href="/find.html" class="btn btn--primary">Find resources near me</a>
     </div>
   </div>
 </section>
