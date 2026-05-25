@@ -171,6 +171,8 @@ h1, h2, h3, h4 {
   overflow: hidden;
   display: flex;
   flex-direction: column;
+  cursor: pointer;
+  position: relative;
 }
 .card:hover { transform: translateY(-3px); box-shadow: 0 6px 24px rgba(28,61,110,.14); }
 .card > h3,
@@ -283,6 +285,8 @@ h1, h2, h3, h4 {
   overflow: hidden;
   box-shadow: var(--shadow);
   display: flex; flex-direction: column;
+  cursor: pointer;
+  position: relative;
 }
 .post-card__body { padding: 1.5rem; flex: 1; display: flex; flex-direction: column; }
 .post-card__cat  {

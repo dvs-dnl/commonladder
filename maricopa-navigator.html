@@ -19,5 +19,17 @@
 <body>
 <h1>This page has moved</h1>
 <p>The content you were looking for is now at <a href="/static-tools/maricopa-navigator.html">/static-tools/maricopa-navigator.html</a>. You'll be redirected automatically.</p>
+<script data-id="cl-card-click">
+(function(){
+  document.querySelectorAll('.card, .post-card:not(.post-card--linked)').forEach(function(el){
+    var a = el.querySelector('a[href]');
+    if(!a) return;
+    el.addEventListener('click', function(e){
+      if(e.target.tagName==='A'||e.target.closest('a')) return;
+      window.location.href = a.href;
+    });
+  });
+})();
+</script>
 </body>
 </html>

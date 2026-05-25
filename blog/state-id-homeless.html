@@ -336,5 +336,17 @@
   </div>
 </footer>
 
+<script data-id="cl-card-click">
+(function(){
+  document.querySelectorAll('.card, .post-card:not(.post-card--linked)').forEach(function(el){
+    var a = el.querySelector('a[href]');
+    if(!a) return;
+    el.addEventListener('click', function(e){
+      if(e.target.tagName==='A'||e.target.closest('a')) return;
+      window.location.href = a.href;
+    });
+  });
+})();
+</script>
 </body>
 </html>
