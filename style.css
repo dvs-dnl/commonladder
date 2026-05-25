@@ -72,7 +72,10 @@ h1, h2, h3, h4 {
   display: flex;
   align-items: center;
   gap: .5rem;
+  letter-spacing: -.01em;
+  text-decoration: none;
 }
+.nav__logo:hover { text-decoration: none; }
 .nav__logo span { color: var(--amber); }
 .nav__links { display: flex; gap: 1.5rem; list-style: none; }
 .nav__links a {
@@ -817,3 +820,18 @@ h1, h2, h3, h4 {
 .sources h2 { font-size: 1rem !important; color: var(--dark) !important; margin: 0 0 .75rem !important; }
 .sources ol { margin-left: 1.5rem; }
 .sources li { margin-bottom: .5rem; }
+
+
+/* ─── Hover behavior — no underlines on cards/buttons ──────────────── */
+.card, .card:hover,
+.card a, .card a:hover,
+.card h3, .card h3 a, .card h3 a:hover,
+.card p a, .card p a:hover,
+.cat-tile, .cat-tile:hover,
+.cat-tile a, .cat-tile a:hover,
+.help-hub__card, .help-hub__card:hover,
+.pathway-card, .pathway-card:hover,
+.pathway-card a, .pathway-card a:hover {
+  text-decoration: none;
+}
+.btn:hover, .nav__cta:hover { text-decoration: none; }

@@ -147,6 +147,36 @@
   }
   .btn-primary:hover { background: var(--green-dark); }
 
+  /* Save-to-My-Ladder secondary CTA on the result step */
+  .btn-save-ladder {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    width: 100%;
+    background: var(--cl-amber);
+    color: #fff;
+    border: none;
+    padding: 14px 22px;
+    border-radius: 10px;
+    font-size: 0.98rem;
+    font-weight: 700;
+    text-decoration: none;
+    text-align: center;
+    margin-top: 10px;
+    cursor: pointer;
+    transition: opacity 0.15s;
+    font-family: inherit;
+  }
+  .btn-save-ladder:hover { opacity: 0.9; }
+  .btn-save-ladder__sub {
+    display: block;
+    text-align: center;
+    font-size: 0.78rem;
+    color: var(--muted);
+    margin-top: 6px;
+  }
+
   .btn-restart {
     background: none;
     border: 1.5px solid var(--border);
@@ -394,6 +424,7 @@
   }
   .cl-home:hover { background: #163260; }
   .cl-home__rung { color: var(--cl-amber); }
+  @media (min-width: 721px) { .cl-home { display: none; } }
 
   /* ── Print styles ── */
   @media print {
@@ -440,7 +471,7 @@
       <span></span><span></span><span></span>
     </button>
     <ul class="nav__links" id="primary-nav">
-      <li><a href="/resources.html">Resources</a></li>
+      <li><a href="/find.html">Resources</a></li>
       <li><a href="/providers.html">For providers</a></li>
       <li><a href="/learn/">Learn</a></li>
       <li><a href="/about.html">About</a></li>
@@ -483,10 +514,11 @@
       <div>
         <h4>Find help</h4>
         <ul>
+          <li><a href="/find.html?cat=shelter">Shelter</a></li>
+          <li><a href="/find.html?cat=food">Food</a></li>
+          <li><a href="/find.html?cat=legal">Legal</a></li>
           <li><a href="/help/">All categories</a></li>
           <li><a href="/static-tools/">Local navigators</a></li>
-          <li><a href="/static-tools/maricopa-navigator.html">Maricopa, AZ</a></li>
-          <li><a href="/static-tools/tucson-navigator.html">Tucson, AZ</a></li>
         </ul>
       </div>
       <div>
@@ -887,6 +919,30 @@
       '</span>';
   }
 
+  // Build a base64 payload that adds this pathway to My Ladder when opened.
+  function buildLadderUrl(p) {
+    try {
+      var stripTags = function(s){ return String(s||'').replace(/<[^>]+>/g,'').replace(/\s+/g,' ').trim(); };
+      var phoneFromTel = (p.callNumber||'').replace(/^tel:/,'').replace(/[^\d+\-()\s]/g,'');
+      var data = {
+        cat: 'shelter',
+        name: p.label + ' — ' + stripTags(p.callLabel),
+        phone: phoneFromTel,
+        address: '',
+        notes: 'First step: ' + stripTags(p.firstAction) + ' · What to expect: ' + stripTags(p.what_to_expect),
+        followups: (p.bring||[]).map(function(b){ return { text: stripTags(b) }; })
+                   .concat((p.resources||[]).slice(0,3).map(function(r){
+                     return { text: 'Contact: ' + stripTags(r.name) + (r.phone ? ' — ' + r.phone : '') };
+                   })),
+        source: (document.title||'').split(' — ')[0]
+      };
+      var encoded = btoa(unescape(encodeURIComponent(JSON.stringify(data))));
+      return 'https://my.commonladder.org/?add=' + encoded;
+    } catch(e) {
+      return 'https://my.commonladder.org/';
+    }
+  }
+
   function renderResult(rid) {
     var p = PATHWAYS[rid];
     var html = '';
@@ -898,6 +954,11 @@
     // First action block
     html += '<div class="first-action">' + p.firstAction + '</div>';
     html += '<a href="' + p.callNumber + '" class="btn-primary">' + p.callLabel + '</a>';
+
+    // Save-to-My-Ladder CTA — lets users carry their pathway, first step, and bring list into their personal plan.
+    var ladderUrl = buildLadderUrl(p);
+    html += '<a href="' + ladderUrl + '" target="_blank" rel="noopener" class="btn-save-ladder">📋 Save this plan to My Ladder</a>';
+    html += '<div class="btn-save-ladder__sub">Track calls, schedule visits, add notes — your data stays on your device.</div>';
 
     // What to expect
     html += '<div class="section-head">What to expect</div>';

@@ -228,6 +228,70 @@ body{font-family:'Inter',system-ui,sans-serif;background:var(--white);color:var(
 .import-banner__close{position:absolute;top:.75rem;right:.75rem;background:none;border:none;color:#fff;cursor:pointer;font-size:1.2rem;opacity:.7;line-height:1}
 .import-banner__close:hover{opacity:1}
 
+/* ── Today summary card ── */
+.today-card{background:#fff;border:1.5px solid var(--amber);border-radius:var(--radius);padding:.85rem 1rem;margin-bottom:1.25rem;display:none}
+.today-card.open{display:block}
+.today-card__head{display:flex;align-items:center;gap:.5rem;font-size:.75rem;font-weight:700;color:var(--amber);text-transform:uppercase;letter-spacing:.06em;margin-bottom:.55rem}
+.today-card__list{display:flex;flex-direction:column;gap:.45rem}
+.today-entry{display:flex;align-items:center;gap:.6rem;padding:.45rem .55rem;border-radius:6px;background:var(--white);cursor:pointer;transition:background .15s}
+.today-entry:hover{background:var(--light)}
+.today-entry__icon{font-size:1.1rem;flex-shrink:0}
+.today-entry__text{flex:1;font-size:.85rem;line-height:1.35;color:var(--text);min-width:0}
+.today-entry__text strong{color:var(--blue);font-weight:700}
+.today-entry__tag{flex-shrink:0;font-size:.7rem;font-weight:700;padding:.15rem .5rem;border-radius:20px}
+.today-entry__tag.overdue{background:#FEE2E2;color:#991B1B}
+.today-entry__tag.due{background:#FEF3C7;color:#92400E}
+.today-entry__tag.scheduled{background:#DBEAFE;color:#1E40AF}
+
+/* ── Topbar Tools button ── */
+.topbar__tools{background:rgba(255,255,255,.12);border:none;color:#fff;cursor:pointer;font-size:.78rem;font-weight:600;padding:.4rem .7rem;border-radius:6px;font-family:inherit;display:inline-flex;align-items:center;gap:.3rem;transition:background .15s;margin-left:.6rem}
+.topbar__tools:hover{background:rgba(255,255,255,.22)}
+.topbar__right{display:flex;align-items:center;gap:.4rem}
+
+/* ── Tools overlay ── */
+.overlay{position:fixed;inset:0;background:rgba(0,0,0,.55);z-index:200;display:none;align-items:flex-end;justify-content:center;padding:0}
+.overlay.open{display:flex}
+@media (min-width:600px){.overlay{align-items:center;padding:1rem}}
+.sheet{background:#fff;width:100%;max-width:480px;border-radius:14px 14px 0 0;padding:1.25rem 1.25rem 1.5rem;box-shadow:0 -8px 32px rgba(0,0,0,.18);max-height:90vh;overflow-y:auto}
+@media (min-width:600px){.sheet{border-radius:14px}}
+.sheet__head{display:flex;align-items:center;justify-content:space-between;margin-bottom:1rem}
+.sheet__title{font-size:1.1rem;font-weight:800;color:var(--blue)}
+.sheet__close{background:none;border:none;color:var(--gray);cursor:pointer;font-size:1.4rem;padding:.2rem .4rem;line-height:1}
+.sheet__close:hover{color:var(--text)}
+.tool-row{display:flex;align-items:flex-start;gap:.75rem;border-bottom:1px solid var(--light);cursor:pointer;transition:background .15s;margin:0 -.4rem;padding:.85rem .4rem}
+.tool-row:hover{background:var(--white)}
+.tool-row:last-of-type{border-bottom:none}
+.tool-row__icon{font-size:1.4rem;flex-shrink:0;width:32px;text-align:center}
+.tool-row__info{flex:1;min-width:0}
+.tool-row__name{font-weight:700;font-size:.92rem;color:var(--text)}
+.tool-row__desc{font-size:.78rem;color:var(--gray);line-height:1.35;margin-top:.15rem}
+.tool-row--danger .tool-row__name{color:var(--danger)}
+
+/* ── Print styles — clean shareable summary ── */
+@media print{
+  body{background:#fff;font-size:12pt;color:#000}
+  .topbar,.privacy-bar,.tab-nav,.cat-grid,.section-head .btn,.resource-search,.add-form,
+  .item-actions,.budget-section__head .btn,.budget-add-form,.calc-card,.import-banner,
+  .overlay,.add-followup-toggle,.followup-item__del,.budget-item__del,.tab-btn,
+  .done-toggle,.empty-state__icon,.plan-item__head .plan-item__badges .status-pill,
+  .topbar__tools,.today-card{display:none !important}
+  .tab-panel{display:block !important;page-break-after:always}
+  .tab-panel:last-of-type{page-break-after:auto}
+  .container{max-width:none;padding:.5in}
+  .progress-card,.summary-card{background:#1C3D6E !important;color:#fff !important;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .plan-item{break-inside:avoid;border:1px solid #999 !important;box-shadow:none !important;margin-bottom:.4rem}
+  .plan-item__body{display:flex !important}
+  .plan-item--done{opacity:.5}
+  .section-head h2{font-size:14pt;color:#1C3D6E}
+  .item-section{padding:.4rem .75rem !important}
+  .notes-area{border:none !important;padding:0 !important;min-height:0 !important;background:none !important}
+  .sched-row input{border:none !important;padding:0 !important;background:none !important}
+  .print-header{display:block !important;margin-bottom:1rem;padding-bottom:.5rem;border-bottom:2px solid #1C3D6E}
+  .print-header h1{font-size:18pt;color:#1C3D6E;margin:0}
+  .print-header p{font-size:9pt;color:#666;margin:.25rem 0 0}
+}
+.print-header{display:none}
+
 </style>
 </head>
 <body>
@@ -243,8 +307,16 @@ body{font-family:'Inter',system-ui,sans-serif;background:var(--white);color:var(
     </svg>
     Common Ladder
   </a>
-  <div class="topbar__title">My <span>Ladder</span></div>
+  <div class="topbar__right">
+    <div class="topbar__title">My <span>Ladder</span></div>
+    <button class="topbar__tools" onclick="openTools()" aria-label="Tools menu">⋯ More</button>
+  </div>
 </header>
+
+<div class="print-header">
+  <h1>My Ladder — Personal Resource Plan</h1>
+  <p>Printed <span id="print-date"></span> · commonladder.org</p>
+</div>
 
 <div class="privacy-bar"><svg class="icon" viewBox="0 0 16 16" aria-hidden="true" style="margin-right:.35em;vertical-align:-.15em"><path d="M8 1a3 3 0 0 0-3 3v3H4a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V8a1 1 0 0 0-1-1h-1V4a3 3 0 0 0-3-3zM6 4a2 2 0 0 1 4 0v3H6V4z" fill="currentColor"/></svg> Everything stays on <strong>your device</strong> — nothing is sent to any server.</div>
 
@@ -261,6 +333,15 @@ body{font-family:'Inter',system-ui,sans-serif;background:var(--white);color:var(
     <div class="progress-card__label">Your progress</div>
     <div class="progress-card__stats" id="progress-stats">0 of 0 steps completed</div>
     <div class="progress-bar"><div class="progress-bar__fill" id="progress-fill" style="width:0%"></div></div>
+  </div>
+
+  <!-- Today summary — only shows when there's something due/overdue/scheduled today -->
+  <div class="today-card" id="today-card">
+    <div class="today-card__head">
+      <span>⏰</span>
+      <span id="today-label">Today &amp; overdue</span>
+    </div>
+    <div class="today-card__list" id="today-list"></div>
   </div>
 
   <div class="section-head" style="margin-top:0">
@@ -380,8 +461,8 @@ body{font-family:'Inter',system-ui,sans-serif;background:var(--white);color:var(
       <div><div class="budget-section__title">💵 Income</div><div class="budget-section__total" id="income-total-label">$0 / month</div></div>
       <button class="btn btn--sage btn--sm" onclick="toggleBudgetForm('income-form')">+ Add</button>
     </div>
-    <div class="budget-items" id="income-items"><div class="empty-state" style="padding:1rem;font-size:.82rem">No income added yet.</div></div>
-    <div class="budget-add-form" id="income-form">
+    <div class="budget-items" id="income-items"></div>
+    <div class="budget-add-form open" id="income-form">
       <div class="form-row">
         <div class="form-group" style="flex:2"><label>Source</label><input type="text" id="inc-name" placeholder="e.g. SSI, job"></div>
         <div class="form-group"><label>Amount ($)</label><input type="number" id="inc-amount" placeholder="0" min="0"></div>
@@ -396,8 +477,8 @@ body{font-family:'Inter',system-ui,sans-serif;background:var(--white);color:var(
       <div><div class="budget-section__title">📤 Expenses</div><div class="budget-section__total" id="expense-total-label">$0 / month</div></div>
       <button class="btn btn--amber btn--sm" onclick="toggleBudgetForm('expense-form')">+ Add</button>
     </div>
-    <div class="budget-items" id="expense-items"><div class="empty-state" style="padding:1rem;font-size:.82rem">No expenses added yet.</div></div>
-    <div class="budget-add-form" id="expense-form">
+    <div class="budget-items" id="expense-items"></div>
+    <div class="budget-add-form open" id="expense-form">
       <div class="form-row">
         <div class="form-group" style="flex:2"><label>Expense</label><input type="text" id="exp-name" placeholder="e.g. Phone, bus pass"></div>
         <div class="form-group"><label>Amount ($)</label><input type="number" id="exp-amount" placeholder="0" min="0"></div>
@@ -421,6 +502,53 @@ body{font-family:'Inter',system-ui,sans-serif;background:var(--white);color:var(
     </div>
   </div>
 </div>
+</div>
+
+<!-- ══ TOOLS SHEET ════════════════════════════ -->
+<div class="overlay" id="tools-overlay" onclick="if(event.target===this)closeTools()">
+  <div class="sheet" role="dialog" aria-modal="true" aria-labelledby="tools-title">
+    <div class="sheet__head">
+      <div class="sheet__title" id="tools-title">⚙ Tools &amp; Backup</div>
+      <button class="sheet__close" onclick="closeTools()" aria-label="Close">×</button>
+    </div>
+
+    <div class="tool-row" onclick="printPlan()">
+      <div class="tool-row__icon">🖨</div>
+      <div class="tool-row__info">
+        <div class="tool-row__name">Print my plan</div>
+        <div class="tool-row__desc">Open the print dialog — save as PDF to share with a case manager, or print to bring with you.</div>
+      </div>
+    </div>
+
+    <div class="tool-row" onclick="exportData()">
+      <div class="tool-row__icon">📤</div>
+      <div class="tool-row__info">
+        <div class="tool-row__name">Back up my data</div>
+        <div class="tool-row__desc">Download a backup file you can save to your email or another device. Your plan stays private — nothing is uploaded.</div>
+      </div>
+    </div>
+
+    <div class="tool-row" onclick="document.getElementById('import-file').click()">
+      <div class="tool-row__icon">📥</div>
+      <div class="tool-row__info">
+        <div class="tool-row__name">Restore from backup</div>
+        <div class="tool-row__desc">Load a backup file from this device or another. Replaces your current plan and budget.</div>
+      </div>
+      <input type="file" id="import-file" accept=".json,application/json" style="display:none" onchange="importData(this.files[0])">
+    </div>
+
+    <div class="tool-row tool-row--danger" onclick="clearAllData()">
+      <div class="tool-row__icon">🗑</div>
+      <div class="tool-row__info">
+        <div class="tool-row__name">Clear all data</div>
+        <div class="tool-row__desc">Erases your plan, budget, and activity log on this device. You can't undo this.</div>
+      </div>
+    </div>
+
+    <div style="margin-top:1rem;padding-top:1rem;border-top:1px solid var(--light);font-size:.75rem;color:var(--gray);line-height:1.5">
+      💾 All My Ladder data lives on your device. It never leaves your browser unless you choose to back it up.
+    </div>
+  </div>
 </div>
 
 <script>
@@ -906,6 +1034,143 @@ function fmtDate(d){if(!d)return'';const[y,m,day]=d.split('-');const mo=['Jan','
 function fmtTime(t){if(!t)return'';const[h,m]=t.split(':');const hr=parseInt(h,10);return`${hr>12?hr-12:hr||12}:${m} ${hr>=12?'PM':'AM'}`}
 function fmtTs(ts){if(!ts)return'';const d=new Date(ts);const mo=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];return`${mo[d.getMonth()]} ${d.getDate()}, ${d.getHours()>12?d.getHours()-12:d.getHours()||12}:${String(d.getMinutes()).padStart(2,'0')} ${d.getHours()>=12?'PM':'AM'}`}
 
+/* ══ TODAY SUMMARY ══ */
+function todayStr(){
+  const d=new Date();
+  return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');
+}
+function renderToday(){
+  const today=todayStr();
+  const entries=[];
+
+  // Scheduled visits for today
+  planItems.filter(i=>i.status==='scheduled' && i.scheduledDate===today).forEach(i=>{
+    entries.push({
+      kind:'scheduled', itemId:i.id,
+      icon:CAT_ICONS[i.cat]||'📌',
+      text:`<strong>${esc(i.name)}</strong>${i.scheduledTime?' at '+fmtTime(i.scheduledTime):''}`,
+      tag:'Today', cls:'scheduled', sort:1
+    });
+  });
+
+  // Follow-up tasks due today or overdue (any active item)
+  planItems.filter(i=>i.status!=='done').forEach(i=>{
+    (i.followups||[]).filter(f=>!f.done && f.dueDate).forEach(f=>{
+      if(f.dueDate < today){
+        entries.push({
+          kind:'overdue', itemId:i.id,
+          icon:'⚠️',
+          text:`<strong>${esc(f.text)}</strong> — ${esc(i.name)}`,
+          tag:'Overdue', cls:'overdue', sort:0
+        });
+      } else if(f.dueDate === today){
+        entries.push({
+          kind:'due', itemId:i.id,
+          icon:'📋',
+          text:`<strong>${esc(f.text)}</strong> — ${esc(i.name)}`,
+          tag:'Due today', cls:'due', sort:2
+        });
+      }
+    });
+  });
+
+  const card=document.getElementById('today-card');
+  const list=document.getElementById('today-list');
+  if(!entries.length){card.classList.remove('open');return;}
+  entries.sort((a,b)=>a.sort-b.sort);
+  const overdueCount=entries.filter(e=>e.kind==='overdue').length;
+  const todayCount=entries.length-overdueCount;
+  let label='';
+  if(overdueCount && todayCount) label=`${overdueCount} overdue · ${todayCount} for today`;
+  else if(overdueCount) label=`${overdueCount} overdue task${overdueCount>1?'s':''}`;
+  else label=`${todayCount} for today`;
+  document.getElementById('today-label').textContent=label;
+
+  list.innerHTML=entries.map(e=>`
+    <div class="today-entry" onclick="jumpToItem('${e.itemId}')">
+      <div class="today-entry__icon">${e.icon}</div>
+      <div class="today-entry__text">${e.text}</div>
+      <span class="today-entry__tag ${e.cls}">${e.tag}</span>
+    </div>`).join('');
+  card.classList.add('open');
+}
+function jumpToItem(id){
+  switchTab('plan');
+  const el=document.getElementById('item-'+id);
+  if(el){
+    document.getElementById('body-'+id)?.classList.add('open');
+    el.scrollIntoView({behavior:'smooth',block:'center'});
+  }
+}
+
+/* ══ TOOLS / BACKUP / RESTORE / PRINT ══ */
+function openTools(){document.getElementById('tools-overlay').classList.add('open')}
+function closeTools(){document.getElementById('tools-overlay').classList.remove('open')}
+
+function printPlan(){
+  closeTools();
+  // Make sure all item bodies are open so they print fully
+  document.querySelectorAll('.plan-item__body').forEach(b=>b.classList.add('open'));
+  // Set print date
+  const d=new Date();
+  const mo=['January','February','March','April','May','June','July','August','September','October','November','December'];
+  document.getElementById('print-date').textContent=`${mo[d.getMonth()]} ${d.getDate()}, ${d.getFullYear()}`;
+  setTimeout(()=>window.print(),100);
+}
+
+function exportData(){
+  const data={
+    version:1,
+    exportedAt:new Date().toISOString(),
+    plan:planItems,
+    income:incomeItems,
+    expenses:expenseItems
+  };
+  const blob=new Blob([JSON.stringify(data,null,2)],{type:'application/json'});
+  const url=URL.createObjectURL(blob);
+  const a=document.createElement('a');
+  const stamp=new Date().toISOString().slice(0,10);
+  a.href=url; a.download=`my-ladder-backup-${stamp}.json`;
+  document.body.appendChild(a); a.click();
+  setTimeout(()=>{document.body.removeChild(a);URL.revokeObjectURL(url);},100);
+}
+
+function importData(file){
+  if(!file)return;
+  const reader=new FileReader();
+  reader.onload=function(e){
+    try{
+      const data=JSON.parse(e.target.result);
+      if(!data || typeof data!=='object') throw new Error('Invalid file');
+      const planCount=Array.isArray(data.plan)?data.plan.length:0;
+      const incCount=Array.isArray(data.income)?data.income.length:0;
+      const expCount=Array.isArray(data.expenses)?data.expenses.length:0;
+      if(!confirm(`Restore backup?\n\n• ${planCount} plan item${planCount===1?'':'s'}\n• ${incCount} income source${incCount===1?'':'s'}\n• ${expCount} expense${expCount===1?'':'s'}\n\nThis replaces your current data.`))return;
+      if(Array.isArray(data.plan))    {planItems=data.plan;    save('cl_plan_v2',planItems);}
+      if(Array.isArray(data.income))  {incomeItems=data.income; save('cl_income_v1',incomeItems);}
+      if(Array.isArray(data.expenses)){expenseItems=data.expenses;save('cl_expense_v1',expenseItems);}
+      closeTools();
+      renderPlan();renderBudget();renderToday();
+      alert('✅ Backup restored.');
+    }catch(err){
+      alert('Could not read this backup file. Make sure it was created by My Ladder.');
+      console.warn('Import error:',err);
+    }
+  };
+  reader.readAsText(file);
+  // reset input so the same file can be picked again later
+  document.getElementById('import-file').value='';
+}
+
+function clearAllData(){
+  if(!confirm('Erase ALL plan items, budget data, and activity log on this device?\n\nThis cannot be undone. Consider backing up first.'))return;
+  if(!confirm('Are you sure? This will permanently delete everything.'))return;
+  planItems=[];incomeItems=[];expenseItems=[];
+  save('cl_plan_v2',planItems);save('cl_income_v1',incomeItems);save('cl_expense_v1',expenseItems);
+  closeTools();
+  renderPlan();renderBudget();renderToday();
+}
+
 /* ══ URL IMPORT ══ */
 (function(){
   const params=new URLSearchParams(location.search);
@@ -943,6 +1208,19 @@ function fmtTs(ts){if(!ts)return'';const d=new Date(ts);const mo=['Jan','Feb','M
 
 renderPlan();
 renderBudget();
+renderToday();
+
+// Refresh Today summary whenever plan changes (wrap renderPlan)
+const _origRenderPlan=renderPlan;
+renderPlan=function(){_origRenderPlan.apply(this,arguments);renderToday();};
+
+// Close tools overlay with Escape
+document.addEventListener('keydown',function(e){
+  if(e.key==='Escape'){
+    const o=document.getElementById('tools-overlay');
+    if(o && o.classList.contains('open')) closeTools();
+  }
+});
 </script>
 </body>
 </html>

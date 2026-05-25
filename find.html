@@ -203,7 +203,7 @@
       <span></span><span></span><span></span>
     </button>
     <ul class="nav__links" id="primary-nav">
-      <li><a href="/resources.html">Resources</a></li>
+      <li><a href="/find.html">Resources</a></li>
       <li><a href="/providers.html">For providers</a></li>
       <li><a href="/learn/">Learn</a></li>
       <li><a href="/about.html">About</a></li>
@@ -349,88 +349,145 @@
 <script>
 /* ══ DATA ══ */
 
-// Zip prefix → metro key
-var ZIP_MAP = {
+/* All 85 navigator metros. Display name + zip prefixes for routing.
+   NAVIGATOR_URLS and METRO_NAMES are derived below. */
+var METROS = [
+  // Alabama
+  {key:'birmingham',     name:'Birmingham',                         zips:['350','351','352']},
+  // Alaska
+  {key:'anchorage',      name:'Anchorage',                          zips:['995','996','997','998','999']},
   // Arizona
-  '850':'maricopa','851':'maricopa','852':'maricopa','853':'maricopa','854':'maricopa',
-  '856':'tucson','857':'tucson',
+  {key:'maricopa',       name:'Phoenix / Maricopa County',          zips:['850','851','852','853','854','855']},
+  {key:'tucson',         name:'Tucson / Pima County',               zips:['856','857']},
+  // California
+  {key:'los-angeles',    name:'Los Angeles',                        zips:['900','901','902','903','904','905','906','910','911','912','913','914','915','916','917','918']},
+  {key:'long-beach',     name:'Long Beach',                         zips:['907','908']},
+  {key:'san-diego',      name:'San Diego',                          zips:['919','920','921','922']},
+  {key:'san-bernardino', name:'San Bernardino',                     zips:['923','924']},
+  {key:'riverside',      name:'Riverside',                          zips:['925']},
+  {key:'orange-county',  name:'Orange County',                      zips:['926','927','928']},
+  {key:'bakersfield',    name:'Bakersfield / Kern County',          zips:['932','933']},
+  {key:'fresno',         name:'Fresno',                             zips:['936','937','938']},
+  {key:'stockton',       name:'Stockton / San Joaquin',             zips:['953']},
+  {key:'redding',        name:'Redding / Shasta County',            zips:['960','961']},
+  {key:'oakland',        name:'Oakland / Alameda County',           zips:['946','947']},
+  {key:'contra-costa',   name:'Contra Costa County',                zips:['945','948']},
+  {key:'peninsula',      name:'San Mateo Peninsula',                zips:['943','944']},
+  {key:'san-francisco',  name:'San Francisco',                      zips:['940','941']},
+  {key:'san-jose',       name:'San Jose / Santa Clara',             zips:['950','951','952']},
+  {key:'sacramento',     name:'Sacramento',                         zips:['956','957','958','959']},
+  // Colorado
+  {key:'denver',         name:'Denver Metro',                       zips:['800','801','802','803','804']},
+  {key:'colorado-springs',name:'Colorado Springs',                  zips:['808','809']},
+  // Connecticut
+  {key:'hartford',       name:'Hartford',                           zips:['060','061','062','063','064','065','066','067','068','069']},
+  // DC
+  {key:'washington-dc',  name:'Washington, DC',                     zips:['200','202','203','204','205','206','207','208','209']},
+  // Delaware
+  {key:'wilmington',     name:'Wilmington',                         zips:['197','198','199']},
+  // Florida
+  {key:'jacksonville',   name:'Jacksonville',                       zips:['320','322']},
+  {key:'orlando',        name:'Orlando / Orange County',            zips:['327','328','329']},
+  {key:'tampa',          name:'Tampa',                              zips:['335','336']},
+  {key:'pinellas',       name:'Pinellas / St. Petersburg',          zips:['337','347']},
+  {key:'miami-dade',     name:'Miami-Dade County',                  zips:['330','331','332']},
+  {key:'broward',        name:'Broward County / Fort Lauderdale',   zips:['333']},
+  // Georgia
+  {key:'atlanta',        name:'Atlanta',                            zips:['300','301','302','303','304','305','311']},
+  // Hawaii
+  {key:'honolulu',       name:'Honolulu',                           zips:['967','968']},
+  // Illinois
+  {key:'chicago',        name:'Chicago',                            zips:['606','607','608']},
+  // Indiana
+  {key:'indianapolis',   name:'Indianapolis',                       zips:['461','462','463','464','465','466']},
+  // Kansas / Missouri
+  {key:'kansas-city',    name:'Kansas City',                        zips:['640','641','660','661','662']},
+  // Kentucky
+  {key:'louisville',     name:'Louisville',                         zips:['401','402']},
+  // Louisiana
+  {key:'new-orleans',    name:'New Orleans',                        zips:['700','701']},
+  // Maryland
+  {key:'baltimore',      name:'Baltimore',                          zips:['210','211','212','217']},
+  // Massachusetts
+  {key:'boston',         name:'Boston',                             zips:['021','022','024']},
+  {key:'quincy-brockton',name:'Quincy / Brockton',                  zips:['023']},
+  {key:'springfield-ma', name:'Springfield, MA',                    zips:['010','011','013']},
+  {key:'worcester',      name:'Worcester',                          zips:['015','016']},
+  // Michigan
+  {key:'detroit',        name:'Detroit',                            zips:['480','481','482','483','484']},
+  {key:'grand-rapids',   name:'Grand Rapids',                       zips:['493','494','495']},
+  // Minnesota
+  {key:'minneapolis',    name:'Minneapolis / St. Paul',             zips:['550','551','553','554','555']},
+  // Missouri (St. Louis)
+  {key:'st-louis-city',  name:'St. Louis City',                     zips:['631']},
+  {key:'st-louis-county',name:'St. Louis County',                   zips:['630','632','633']},
+  // Nebraska
+  {key:'omaha',          name:'Omaha',                              zips:['680','681']},
+  // Nevada
+  {key:'las-vegas',      name:'Las Vegas / Clark County',           zips:['889','890','891']},
+  {key:'reno',           name:'Reno',                               zips:['894','895']},
+  // New Jersey
+  {key:'newark',         name:'Newark / Essex County',              zips:['070','071','072','073','074','075','076','077','079']},
+  {key:'atlantic-city',  name:'Atlantic City',                      zips:['080','081','082','083','084']},
+  {key:'trenton',        name:'Trenton',                            zips:['085','086']},
   // New Mexico
-  '870':'albuquerque','871':'albuquerque','872':'albuquerque',
-  // California - LA
-  '900':'los-angeles','901':'los-angeles','902':'los-angeles','903':'los-angeles',
-  '904':'los-angeles','905':'los-angeles','906':'los-angeles','907':'los-angeles',
-  '908':'los-angeles',
-  // Long Beach
-  '908':'long-beach',
-  // San Diego
-  '919':'san-diego','920':'san-diego','921':'san-diego','922':'san-diego',
-  // San Francisco
-  '940':'san-francisco','941':'san-francisco','942':'san-francisco',
-  // San Jose
-  '950':'san-jose','951':'san-jose','952':'san-jose','953':'san-jose','954':'san-jose',
-  // Sacramento
-  '956':'sacramento','957':'sacramento','958':'sacramento',
-  // Seattle/King County
-  '980':'seattle','981':'seattle','982':'seattle','983':'seattle',
-  // Portland
-  '970':'portland','971':'portland','972':'portland',
-  // Denver
-  '800':'denver','801':'denver','802':'denver','803':'denver','804':'denver',
-  // Las Vegas
-  '889':'las-vegas','890':'las-vegas','891':'las-vegas',
-  // Phoenix again (some 855)
-  '855':'maricopa',
-  // Dallas
-  '750':'dallas','751':'dallas','752':'dallas','753':'dallas','754':'dallas',
-  // Houston
-  '770':'houston','771':'houston','772':'houston','773':'houston','774':'houston',
-  // Austin
-  '786':'austin','787':'austin','788':'austin',
-  // NYC
-  '100':'new-york','101':'new-york','102':'new-york','103':'new-york',
-  '104':'new-york','110':'new-york','111':'new-york','112':'new-york',
-  '113':'new-york','114':'new-york','116':'new-york',
-  // Chicago
-  '606':'chicago','607':'chicago','608':'chicago',
-  // Atlanta
-  '303':'atlanta','304':'atlanta',
-  // Miami
-  '331':'miami','332':'miami','333':'miami',
-  // Boston
-  '021':'boston','022':'boston','023':'boston','024':'boston',
-  // Phoenix extra
-  '853':'maricopa'
-};
+  {key:'albuquerque',    name:'Albuquerque',                        zips:['870','871','872']},
+  // New York
+  {key:'nyc',            name:'New York City',                      zips:['100','101','102','103','104','110','111','112','113','114','116']},
+  {key:'long-island',    name:'Long Island',                        zips:['115','117','118','119']},
+  {key:'buffalo',        name:'Buffalo',                            zips:['140','141','142']},
+  {key:'rochester',      name:'Rochester, NY',                      zips:['144','145','146']},
+  // North Carolina
+  {key:'charlotte',      name:'Charlotte',                          zips:['280','281','282']},
+  // Ohio
+  {key:'columbus',       name:'Columbus',                           zips:['430','431','432','433']},
+  {key:'cleveland',      name:'Cleveland',                          zips:['440','441','442','443','444']},
+  {key:'cincinnati',     name:'Cincinnati',                         zips:['450','451','452']},
+  // Oklahoma
+  {key:'oklahoma-city',  name:'Oklahoma City',                      zips:['730','731']},
+  {key:'tulsa',          name:'Tulsa',                              zips:['740','741']},
+  // Oregon
+  {key:'portland',       name:'Portland / Multnomah County',        zips:['970','971','972']},
+  // Pennsylvania
+  {key:'pittsburgh',     name:'Pittsburgh',                         zips:['150','151','152','153']},
+  {key:'philadelphia',   name:'Philadelphia',                       zips:['190','191','193','194','195','196']},
+  // South Carolina
+  {key:'columbia',       name:'Columbia, SC',                       zips:['290','291','292']},
+  {key:'charleston',     name:'Charleston, SC',                     zips:['294','295']},
+  // Tennessee
+  {key:'nashville',      name:'Nashville',                          zips:['370','371','372']},
+  {key:'memphis',        name:'Memphis',                            zips:['380','381','382']},
+  // Texas
+  {key:'dallas',         name:'Dallas',                             zips:['750','751','752','753','754']},
+  {key:'fort-worth',     name:'Fort Worth',                         zips:['761','762','769']},
+  {key:'houston',        name:'Houston',                            zips:['770','771','772','773','774','775']},
+  {key:'san-antonio',    name:'San Antonio',                        zips:['780','781','782']},
+  {key:'austin',         name:'Austin',                             zips:['786','787','788']},
+  // Utah
+  {key:'salt-lake-city', name:'Salt Lake City',                     zips:['840','841']},
+  // Virginia
+  {key:'norfolk',        name:'Norfolk',                            zips:['233','234','235']},
+  {key:'virginia-beach', name:'Virginia Beach',                     zips:['234','237','238']},
+  // Washington
+  {key:'seattle',        name:'Seattle / King County',              zips:['980','981','982','983']},
+  {key:'tacoma',         name:'Tacoma / Pierce County',             zips:['984','985']},
+  {key:'spokane',        name:'Spokane',                            zips:['990','991','992']},
+  // Wisconsin
+  {key:'milwaukee',      name:'Milwaukee',                          zips:['530','531','532']}
+];
 
-var NAVIGATOR_URLS = {
-  'maricopa':      '/static-tools/maricopa-navigator.html',
-  'tucson':        '/static-tools/tucson-navigator.html',
-  'albuquerque':   '/static-tools/albuquerque-navigator.html',
-  'los-angeles':   '/static-tools/los-angeles-navigator.html',
-  'long-beach':    '/static-tools/long-beach-navigator.html',
-  'san-diego':     '/static-tools/san-diego-navigator.html',
-  'san-francisco': '/static-tools/san-francisco-navigator.html',
-  'san-jose':      '/static-tools/san-jose-navigator.html',
-  'sacramento':    '/static-tools/sacramento-navigator.html',
-  'seattle':       '/static-tools/seattle-navigator.html',
-  'portland':      '/static-tools/portland-navigator.html',
-  'denver':        '/static-tools/denver-navigator.html',
-  'las-vegas':     '/static-tools/las-vegas-navigator.html',
-  'dallas':        '/static-tools/dallas-navigator.html',
-  'houston':       '/static-tools/houston-navigator.html',
-  'austin':        '/static-tools/austin-navigator.html'
-};
-
-var METRO_NAMES = {
-  'maricopa':'Phoenix / Maricopa County','tucson':'Tucson / Pima County',
-  'albuquerque':'Albuquerque','los-angeles':'Los Angeles',
-  'long-beach':'Long Beach','san-diego':'San Diego',
-  'san-francisco':'San Francisco','san-jose':'San Jose / Santa Clara',
-  'sacramento':'Sacramento','seattle':'Seattle / King County',
-  'portland':'Portland / Multnomah County','denver':'Denver Metro',
-  'las-vegas':'Las Vegas / Clark County','dallas':'Dallas','houston':'Houston',
-  'austin':'Austin'
-};
+// Build derived lookup tables.
+var ZIP_MAP = {};
+var NAVIGATOR_URLS = {};
+var METRO_NAMES = {};
+METROS.forEach(function(m){
+  METRO_NAMES[m.key] = m.name;
+  NAVIGATOR_URLS[m.key] = '/static-tools/' + m.key + '-navigator.html';
+  m.zips.forEach(function(z){
+    // First metro to claim a prefix wins (METROS array order = priority).
+    if (!ZIP_MAP[z]) ZIP_MAP[z] = m.key;
+  });
+});
 
 // Shelter pathways
 var PATHWAYS = {
@@ -695,6 +752,11 @@ function renderShelterResult(pathwayKey, metro) {
     html += '<span>📍 See full ' + metroName + ' guide</span>';
     html += '<span>→</span>';
     html += '</a>';
+  } else {
+    html += '<a class="navigator-link" href="/static-tools/">';
+    html += '<span>📍 Browse all city guides</span>';
+    html += '<span>→</span>';
+    html += '</a>';
   }
 
   html += '<div class="fallback-211">';
@@ -713,6 +775,20 @@ function renderOtherResult(cat, metro) {
   var navUrl = metro ? NAVIGATOR_URLS[metro] : null;
   var metroName = metro ? METRO_NAMES[metro] : null;
 
+  // Build a "save this to My Ladder" payload using the top (211) resource as the anchor.
+  var anchor = info.resources[0];
+  var planData = {
+    cat: cat,
+    name: info.label + ' — ' + anchor.name,
+    phone: (anchor.phone && /^[\d\-\s().+]+$/.test(anchor.phone)) ? anchor.phone : '',
+    address: '',
+    notes: info.summary + (metroName ? ' Resources shown for ' + metroName + '.' : ''),
+    followups: info.resources.slice(1).map(function(r){ return { text: r.name + (r.phone ? ' — ' + r.phone : '') }; }),
+    source: 'Resource Finder' + (metroName ? ' — ' + metroName : '')
+  };
+  var encoded = '';
+  try { encoded = btoa(unescape(encodeURIComponent(JSON.stringify(planData)))); } catch(e){}
+
   var html = '';
   html += '<div class="step-eyebrow">' + info.icon + ' ' + info.label + '</div>';
   html += '<h2 class="step-title" style="font-size:1.25rem;margin-bottom:.5rem">Resources near you</h2>';
@@ -730,9 +806,20 @@ function renderOtherResult(cat, metro) {
   });
   html += '</div>';
 
+  // Save-to-My-Ladder CTA (now available on every category, not just shelter)
+  if (encoded) {
+    html += '<button class="plan-btn" onclick="addToLadder(\'' + encoded + '\')" style="margin-top:1rem;width:100%">📋 Save these to My Ladder</button>';
+  }
+
   if (navUrl) {
     html += '<a class="navigator-link" href="' + navUrl + '" target="_blank" rel="noopener" style="margin-top:.75rem">';
     html += '<span>📍 Open ' + metroName + ' resource navigator</span>';
+    html += '<span>→</span>';
+    html += '</a>';
+  } else {
+    // No navigator for this zip — point users to the full list
+    html += '<a class="navigator-link" href="/static-tools/" style="margin-top:.75rem">';
+    html += '<span>📍 Browse all city guides</span>';
     html += '<span>→</span>';
     html += '</a>';
   }
@@ -748,6 +835,23 @@ function renderOtherResult(cat, metro) {
 function addToLadder(encoded) {
   window.open('https://my.commonladder.org/?add=' + encoded, '_blank', 'noopener');
 }
+
+/* ══ DEEP-LINK: ?cat=shelter|food|legal|health|... ══
+   Lets footer links like /find.html?cat=shelter jump straight to the
+   zip-entry step with that category pre-selected. */
+(function(){
+  var params = new URLSearchParams(window.location.search);
+  var cat = params.get('cat');
+  var valid = ['shelter','food','health','id','employment','housing','benefits','legal'];
+  if (cat && valid.indexOf(cat) !== -1) {
+    // selectCat is defined above; run after DOM is parsed
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', function(){ selectCat(cat); });
+    } else {
+      selectCat(cat);
+    }
+  }
+})();
 </script>
 <script data-id="cl-card-click">
 (function(){
