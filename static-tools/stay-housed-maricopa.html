@@ -1,0 +1,1722 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XLKR4ZSZ5J"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-XLKR4ZSZ5J');
+</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Stay-Housed Navigator — Maricopa County · Common Ladder</title>
+<meta name="description" content="Free, plain-language guide to rent help, utility assistance, and eviction prevention programs in Maricopa County. We match your situation to the right local programs and show you exactly how to apply.">
+<meta name="theme-color" content="#1C3D6E">
+<meta property="og:title" content="Stay-Housed Navigator — Maricopa County">
+<meta property="og:description" content="Find local programs that can keep you housed in Maricopa County. Plain-language, no account, no application submitted on your behalf — we tell you who helps, how to apply, and what to bring.">
+<link rel="canonical" href="https://www.commonladder.org/static-tools/stay-housed-maricopa.html">
+<link rel="stylesheet" href="/style.css">
+<style>
+  /* ── Tool-specific styles, layered on top of /style.css ── */
+  :root {
+    --tool-blue: #1C3D6E;
+    --tool-blue-50: #eef2f8;
+    --tool-blue-100: #d8e0ee;
+    --tool-amber: #E8911A;
+    --tool-amber-dark: #b36a00;
+    --tool-sage: #4A9E82;
+    --tool-sage-50: #e6f5f0;
+    --tool-gray: #6B7280;
+    --tool-gray-100: #f1f1ee;
+    --tool-gray-200: #e3e3df;
+    --tool-gray-300: #cfcfc8;
+    --tool-shadow: 0 2px 12px rgba(28,61,110,.10);
+    --tool-shadow-lg: 0 12px 32px rgba(28,61,110,.18);
+  }
+
+  .sh-wrap { max-width: 760px; margin: 0 auto; padding: 32px 20px 96px; }
+
+  /* Hero */
+  .sh-hero { margin-bottom: 28px; }
+  .sh-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--tool-blue);
+    color: #fff;
+    font-size: 0.74rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 5px 12px;
+    border-radius: 999px;
+    margin-bottom: 14px;
+  }
+  .sh-hero h1 {
+    font-family: 'Manrope', sans-serif;
+    font-weight: 700;
+    font-size: clamp(1.8rem, 4vw, 2.4rem);
+    color: var(--tool-blue);
+    line-height: 1.15;
+    margin-bottom: 12px;
+  }
+  .sh-hero p.lede {
+    font-size: 1.05rem;
+    color: var(--tool-blue);
+    max-width: 640px;
+  }
+
+  /* Progress bar */
+  .sh-progress {
+    margin: 28px 0 24px;
+  }
+  .sh-progress__label {
+    font-size: 0.78rem;
+    color: var(--tool-gray);
+    margin-bottom: 6px;
+    font-weight: 500;
+    display: flex;
+    justify-content: space-between;
+  }
+  .sh-progress__track {
+    background: var(--tool-gray-200);
+    border-radius: 100px;
+    height: 6px;
+    overflow: hidden;
+  }
+  .sh-progress__fill {
+    background: var(--tool-amber);
+    height: 100%;
+    border-radius: 100px;
+    transition: width 0.35s ease;
+    width: 16%;
+  }
+
+  /* Step */
+  .sh-step { display: none; }
+  .sh-step--on { display: block; animation: shFade .25s ease; }
+  @keyframes shFade { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+
+  .sh-h {
+    font-family: 'Manrope', sans-serif;
+    font-weight: 700;
+    color: var(--tool-blue);
+    font-size: 1.5rem;
+    line-height: 1.25;
+    margin-bottom: 8px;
+  }
+  .sh-sub { font-size: 0.98rem; color: var(--tool-gray); margin-bottom: 22px; max-width: 600px; }
+
+  /* Choice cards */
+  .sh-choice {
+    display: block;
+    width: 100%;
+    border: 2px solid var(--tool-gray-200);
+    border-radius: 12px;
+    padding: 16px 18px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    background: #fff;
+    text-align: left;
+    font-family: inherit;
+    transition: all .15s ease;
+    box-shadow: var(--tool-shadow);
+  }
+  .sh-choice:hover { border-color: var(--tool-blue); background: var(--tool-blue-50); }
+  .sh-choice:focus-visible { outline: 3px solid var(--tool-amber); outline-offset: 2px; }
+  .sh-choice--selected { border-color: var(--tool-amber); background: #fef6ea; }
+  .sh-choice__hd {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+  }
+  .sh-choice__icon {
+    width: 38px; height: 38px;
+    border-radius: 10px;
+    background: var(--tool-blue-50);
+    color: var(--tool-blue);
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+    font-size: 1.15rem;
+    font-weight: 700;
+  }
+  .sh-choice--selected .sh-choice__icon { background: #fde2bd; color: var(--tool-amber-dark); }
+  .sh-choice__body { flex: 1; }
+  .sh-choice__title {
+    font-family: 'Manrope', sans-serif;
+    font-weight: 700;
+    color: var(--tool-blue);
+    font-size: 1.02rem;
+    display: block;
+    margin-bottom: 3px;
+  }
+  .sh-choice__sub {
+    font-size: 0.88rem;
+    color: var(--tool-gray);
+    line-height: 1.4;
+  }
+
+  /* Form inputs */
+  .sh-field { margin-bottom: 18px; }
+  .sh-field label {
+    font-size: 0.86rem;
+    color: var(--tool-blue);
+    font-weight: 600;
+    display: block;
+    margin-bottom: 6px;
+  }
+  .sh-field select,
+  .sh-field input[type="email"],
+  .sh-field input[type="text"] {
+    width: 100%;
+    padding: 12px 14px;
+    border: 1.5px solid var(--tool-gray-300);
+    border-radius: 8px;
+    font-family: inherit;
+    font-size: 0.98rem;
+    color: var(--tool-blue);
+    background: #fff;
+  }
+  .sh-field select:focus,
+  .sh-field input:focus {
+    outline: 3px solid var(--tool-amber);
+    outline-offset: 1px;
+    border-color: var(--tool-blue);
+  }
+
+  /* Action row */
+  .sh-actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 28px;
+    flex-wrap: wrap;
+  }
+  .sh-btn {
+    flex: 1;
+    min-width: 130px;
+    padding: 14px 20px;
+    border-radius: 999px;
+    border: 2px solid var(--tool-blue);
+    background: #fff;
+    color: var(--tool-blue);
+    font-family: inherit;
+    font-weight: 700;
+    font-size: 0.98rem;
+    cursor: pointer;
+    transition: all .15s ease;
+    text-align: center;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .sh-btn:hover { background: var(--tool-blue-50); }
+  .sh-btn:focus-visible { outline: 3px solid var(--tool-amber); outline-offset: 2px; }
+  .sh-btn--primary {
+    background: var(--tool-amber);
+    border-color: var(--tool-amber);
+    color: #fff;
+  }
+  .sh-btn--primary:hover { background: var(--tool-amber-dark); border-color: var(--tool-amber-dark); }
+  .sh-btn--ghost { border-color: var(--tool-gray-300); color: var(--tool-gray); background: transparent; }
+  .sh-btn--ghost:hover { background: var(--tool-gray-100); }
+
+  /* Diagnosis callout */
+  .sh-diag {
+    background: var(--tool-blue-50);
+    border-left: 5px solid var(--tool-amber);
+    border-radius: 10px;
+    padding: 18px 20px;
+    margin-bottom: 18px;
+  }
+  .sh-diag__lab {
+    font-size: 0.74rem; letter-spacing: 0.1em;
+    color: var(--tool-amber-dark); font-weight: 700;
+    text-transform: uppercase;
+    margin-bottom: 5px;
+  }
+  .sh-diag__hd {
+    font-family: 'Manrope', sans-serif;
+    font-weight: 700;
+    color: var(--tool-blue);
+    font-size: 1.18rem;
+    line-height: 1.3;
+    margin-bottom: 6px;
+  }
+  .sh-diag__body { font-size: 0.95rem; color: var(--tool-blue); }
+  .sh-diag__body strong { color: var(--tool-amber-dark); font-weight: 700; }
+
+  /* Intervention chips */
+  .sh-chip-row { margin-bottom: 8px; }
+  .sh-chip-row__lab {
+    font-size: 0.78rem; color: var(--tool-gray);
+    text-transform: uppercase; letter-spacing: 0.06em; font-weight: 600;
+    margin-bottom: 6px;
+  }
+  .sh-chip {
+    display: inline-block;
+    background: var(--tool-sage-50);
+    border: 1.5px solid var(--tool-sage);
+    color: var(--tool-blue);
+    font-size: 0.84rem;
+    font-weight: 600;
+    padding: 4px 12px;
+    border-radius: 999px;
+    margin: 0 5px 5px 0;
+  }
+  .sh-chip--skip {
+    background: var(--tool-gray-100);
+    border-color: var(--tool-gray-200);
+    color: var(--tool-gray);
+    text-decoration: line-through;
+  }
+
+  /* Program cards */
+  .sh-prog {
+    background: #fff;
+    border: 1.5px solid var(--tool-gray-200);
+    border-top: 4px solid var(--tool-blue);
+    border-radius: 10px;
+    padding: 20px 22px;
+    margin-bottom: 16px;
+    box-shadow: var(--tool-shadow);
+  }
+  .sh-prog--best { border-top-color: var(--tool-amber); }
+  .sh-prog__top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 12px;
+    margin-bottom: 6px;
+    flex-wrap: wrap;
+  }
+  .sh-prog__name {
+    font-family: 'Manrope', sans-serif;
+    font-weight: 700;
+    color: var(--tool-blue);
+    font-size: 1.18rem;
+    line-height: 1.25;
+    flex: 1;
+    min-width: 200px;
+  }
+  .sh-fit {
+    display: inline-block;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    background: var(--tool-amber);
+    color: #fff;
+    padding: 4px 9px;
+    border-radius: 4px;
+    flex-shrink: 0;
+  }
+  .sh-fit--ok { background: var(--tool-sage); }
+  .sh-prog__meta {
+    font-size: 0.88rem;
+    color: var(--tool-gray);
+    margin-bottom: 8px;
+  }
+  .sh-prog__what {
+    font-size: 0.95rem;
+    color: var(--tool-blue);
+    margin-bottom: 12px;
+  }
+  .sh-prog__contact {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+    font-size: 0.9rem;
+    color: var(--tool-blue);
+    margin-bottom: 12px;
+    padding: 10px 12px;
+    background: var(--tool-blue-50);
+    border-radius: 6px;
+  }
+  .sh-prog__contact a { color: var(--tool-blue); font-weight: 600; text-decoration: underline; text-underline-offset: 2px; }
+  .sh-prog__contact a:hover { color: var(--tool-amber-dark); }
+  .sh-prog__contact-row { display: flex; align-items: center; gap: 6px; }
+  .sh-prog__contact-lab {
+    font-size: 0.76rem;
+    color: var(--tool-gray);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-weight: 600;
+  }
+
+  /* Disclosure (how to apply) */
+  details.sh-disc {
+    margin: 8px 0;
+    border-top: 1px solid var(--tool-gray-200);
+    padding-top: 12px;
+  }
+  details.sh-disc + details.sh-disc { border-top: 1px solid var(--tool-gray-200); margin-top: 0; }
+  details.sh-disc summary {
+    cursor: pointer;
+    font-family: 'Manrope', sans-serif;
+    font-weight: 700;
+    color: var(--tool-blue);
+    font-size: 0.98rem;
+    padding: 8px 0;
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+  }
+  details.sh-disc summary::-webkit-details-marker { display: none; }
+  details.sh-disc summary::after {
+    content: '+';
+    color: var(--tool-amber-dark);
+    font-size: 1.4rem;
+    font-weight: 400;
+    transition: transform 0.2s ease;
+    width: 24px;
+    text-align: center;
+    flex-shrink: 0;
+  }
+  details.sh-disc[open] summary::after { content: '\2013'; }
+  details.sh-disc summary:hover { color: var(--tool-amber-dark); }
+  details.sh-disc summary:focus-visible { outline: 2px solid var(--tool-amber); outline-offset: 2px; }
+  details.sh-disc[open] summary { border-bottom: 1px solid var(--tool-gray-200); margin-bottom: 12px; }
+
+  .sh-disc__body { padding: 4px 0 12px; font-size: 0.94rem; color: var(--tool-blue); line-height: 1.55; }
+  .sh-disc__body h4 {
+    font-family: 'Manrope', sans-serif;
+    font-weight: 700;
+    color: var(--tool-blue);
+    font-size: 0.92rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    margin: 14px 0 6px;
+  }
+  .sh-disc__body h4:first-child { margin-top: 0; }
+  .sh-disc__body ol,
+  .sh-disc__body ul { padding-left: 22px; margin-bottom: 10px; }
+  .sh-disc__body li { margin-bottom: 4px; }
+  .sh-disc__body strong { color: var(--tool-amber-dark); font-weight: 700; }
+
+  /* Sample answer block (worked example) */
+  .sh-sample {
+    background: var(--tool-blue);
+    color: #fff;
+    border-radius: 10px;
+    padding: 14px 16px;
+    margin: 10px 0 14px;
+    font-size: 0.9rem;
+    line-height: 1.5;
+  }
+  .sh-sample__lab {
+    font-size: 0.7rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--tool-amber);
+    font-weight: 700;
+    margin-bottom: 6px;
+    display: block;
+  }
+  .sh-sample__q { font-weight: 600; margin-bottom: 4px; opacity: 0.92; }
+  .sh-sample__a {
+    background: rgba(255,255,255,0.08);
+    border-left: 3px solid var(--tool-amber);
+    padding: 8px 12px;
+    border-radius: 4px;
+    margin-bottom: 10px;
+    font-style: italic;
+  }
+  .sh-sample__a:last-child { margin-bottom: 0; }
+
+  /* Doc checklist */
+  .sh-checklist {
+    background: var(--tool-sage-50);
+    border-radius: 8px;
+    padding: 12px 16px;
+    margin: 8px 0 12px;
+  }
+  .sh-checklist h4 {
+    color: var(--tool-blue) !important;
+    margin-top: 0 !important;
+    margin-bottom: 8px !important;
+  }
+  .sh-checklist ul { list-style: none; padding-left: 0; margin: 0; }
+  .sh-checklist li {
+    padding: 4px 0 4px 26px;
+    position: relative;
+    font-size: 0.9rem;
+  }
+  .sh-checklist li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 8px;
+    width: 14px;
+    height: 14px;
+    border: 1.5px solid var(--tool-sage);
+    border-radius: 3px;
+    background: #fff;
+  }
+
+  /* Notice/tip box */
+  .sh-tip {
+    background: #fffaf0;
+    border-left: 4px solid var(--tool-amber);
+    padding: 12px 14px;
+    border-radius: 4px;
+    font-size: 0.9rem;
+    color: var(--tool-blue);
+    margin: 10px 0;
+  }
+  .sh-tip strong { color: var(--tool-amber-dark); }
+
+  /* Safe-exit alert (DV path) */
+  .sh-safe-alert {
+    background: var(--tool-blue);
+    color: #fff;
+    border-radius: 12px;
+    padding: 24px 26px;
+    margin-bottom: 22px;
+    box-shadow: var(--tool-shadow-lg);
+  }
+  .sh-safe-alert h3 {
+    color: #fff;
+    font-family: 'Manrope', sans-serif;
+    font-weight: 700;
+    font-size: 1.2rem;
+    margin-bottom: 8px;
+  }
+  .sh-safe-alert p { font-size: 0.96rem; opacity: 0.94; margin-bottom: 8px; }
+  .sh-safe-alert .sh-leave {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 10px 18px;
+    background: var(--tool-amber);
+    color: #fff;
+    font-weight: 700;
+    border-radius: 999px;
+    text-decoration: none;
+    font-size: 0.9rem;
+  }
+
+  /* Take-with-you summary */
+  .sh-summary {
+    background: #fff;
+    border: 2px solid var(--tool-blue);
+    border-radius: 12px;
+    padding: 26px 28px;
+    margin-bottom: 18px;
+    box-shadow: var(--tool-shadow);
+  }
+  .sh-summary h3 {
+    font-family: 'Manrope', sans-serif;
+    font-weight: 700;
+    color: var(--tool-blue);
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+  }
+  .sh-summary h4 {
+    font-family: 'Manrope', sans-serif;
+    font-weight: 700;
+    color: var(--tool-blue);
+    font-size: 0.92rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    margin: 18px 0 8px;
+  }
+  .sh-summary p { font-size: 0.95rem; color: var(--tool-blue); margin-bottom: 8px; }
+  .sh-summary ol { padding-left: 22px; }
+  .sh-summary ol li { padding: 4px 0; font-size: 0.95rem; color: var(--tool-blue); }
+
+  /* Feedback step */
+  .sh-fb-card {
+    border: 2px solid var(--tool-gray-200);
+    border-radius: 12px;
+    padding: 18px 20px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    background: #fff;
+    transition: all .15s ease;
+  }
+  .sh-fb-card:hover { border-color: var(--tool-blue); }
+  .sh-fb-card--open { border-color: var(--tool-amber); background: #fef6ea; }
+  .sh-fb-card__title {
+    font-family: 'Manrope', sans-serif;
+    font-weight: 700;
+    color: var(--tool-blue);
+    font-size: 1.02rem;
+    margin-bottom: 4px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .sh-fb-card__sub { font-size: 0.86rem; color: var(--tool-gray); }
+  .sh-fb-panel {
+    display: none;
+    margin-top: 12px;
+    padding-top: 12px;
+    border-top: 1px solid var(--tool-gray-200);
+  }
+  .sh-fb-card--open .sh-fb-panel { display: block; }
+  .sh-stars { display: flex; gap: 6px; margin: 10px 0 12px; }
+  .sh-star {
+    background: none; border: none; cursor: pointer;
+    color: var(--tool-gray-300); padding: 0 2px;
+  }
+  .sh-star::before { content: '\2606'; font-size: 1.8rem; line-height: 1; }
+  .sh-star--on { color: var(--tool-amber); }
+  .sh-star--on::before { content: '\2605'; }
+  .sh-fb-card textarea {
+    width: 100%; padding: 10px 12px;
+    border: 1.5px solid var(--tool-gray-300);
+    border-radius: 8px;
+    font-family: inherit; font-size: 0.92rem;
+    color: var(--tool-blue);
+    resize: vertical;
+    min-height: 70px;
+  }
+
+  /* Privacy note */
+  .sh-privacy {
+    font-size: 0.85rem;
+    color: var(--tool-gray);
+    background: var(--tool-gray-100);
+    padding: 12px 16px;
+    border-radius: 8px;
+    margin: 14px 0 8px;
+    line-height: 1.5;
+  }
+  .sh-privacy strong { color: var(--tool-blue); font-weight: 600; }
+
+  /* Done mark */
+  .sh-done {
+    width: 64px; height: 64px;
+    border-radius: 50%;
+    background: var(--tool-sage);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 4px auto 16px;
+    font-size: 2rem;
+  }
+
+  /* Print rules */
+  @media print {
+    .crisis-bar, .nav, .footer, .sh-progress, .sh-actions, .sh-step:not(#sh-step-summary), .sh-eyebrow, .nav__exit { display: none !important; }
+    .sh-wrap { padding: 0; max-width: none; }
+    body { background: #fff; }
+    .sh-summary { border: 1px solid #000; box-shadow: none; }
+    .sh-prog { break-inside: avoid; }
+  }
+</style>
+</head>
+<body>
+
+<a href="#main" class="skip-link">Skip to main content</a>
+
+<div class="crisis-bar" role="region" aria-label="Crisis help">
+  <strong>Need help right now?</strong>
+  <a href="tel:211">Call 211</a><span class="crisis-bar__sep">·</span>
+  <a href="sms:741741?body=HOME">Text HOME to 741741</a><span class="crisis-bar__sep">·</span>
+  <a href="tel:988">988 Suicide &amp; Crisis</a>
+</div>
+
+<nav class="nav" aria-label="Primary">
+  <div class="nav__inner">
+    <a href="/" class="nav__logo" aria-label="Common Ladder home">
+      <svg width="28" height="28" viewBox="0 0 28 28" fill="none" aria-hidden="true">
+        <rect x="4" y="2" width="3" height="24" rx="1.5" fill="white" opacity=".9"/>
+        <rect x="21" y="2" width="3" height="24" rx="1.5" fill="white" opacity=".9"/>
+        <rect x="4" y="7" width="20" height="3" rx="1.5" fill="#E8911A"/>
+        <rect x="4" y="14" width="20" height="3" rx="1.5" fill="#E8911A"/>
+        <rect x="4" y="21" width="20" height="3" rx="1.5" fill="#E8911A"/>
+      </svg>
+      common<span>ladder</span>
+    </a>
+    <button class="nav__toggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="primary-nav" onclick="this.setAttribute('aria-expanded', document.getElementById('primary-nav').classList.toggle('open') ? 'true' : 'false')">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav__links" id="primary-nav">
+      <li><a href="/find.html">Resources</a></li>
+      <li><a href="/providers.html">For providers</a></li>
+      <li><a href="/learn/">Learn</a></li>
+      <li><a href="/about.html">About</a></li>
+      <li><a href="/find.html" class="nav__cta">Find resources</a></li>
+      <li><a href="https://www.weather.gov/" rel="noreferrer" class="nav__exit" onclick="event.preventDefault();window.location.replace('https://www.weather.gov/')">Leave page</a></li>
+    </ul>
+  </div>
+</nav>
+
+<main id="main">
+<div class="sh-wrap">
+
+  <header class="sh-hero">
+    <span class="sh-eyebrow">Maricopa County &middot; Phase 1 pilot</span>
+    <h1>Stay-Housed Navigator</h1>
+    <p class="lede">A free, plain-language guide to rent help, utility assistance, and eviction prevention programs in Maricopa County. We match your situation to the right local programs and tell you exactly how to apply &mdash; we don't submit anything on your behalf.</p>
+  </header>
+
+  <!-- Progress bar -->
+  <div class="sh-progress" role="status" aria-live="polite">
+    <div class="sh-progress__label">
+      <span id="sh-progress-text">Step 1 of 6</span>
+      <span><a href="#" onclick="shGo('entry'); return false;" style="color: var(--tool-gray); font-size: 0.78rem; text-decoration: underline;">Start over</a></span>
+    </div>
+    <div class="sh-progress__track"><div class="sh-progress__fill" id="sh-progress-fill"></div></div>
+  </div>
+
+  <!-- STEP 1 — Entry -->
+  <section class="sh-step sh-step--on" id="sh-step-entry" aria-labelledby="sh-entry-h">
+    <h2 class="sh-h" id="sh-entry-h">Tell us what's happening with your housing.</h2>
+    <p class="sh-sub">We'll match you to local Maricopa County programs that might help you stay where you are. We don't collect personal information, and we don't submit anything for you &mdash; we just point you to the right place.</p>
+
+    <button class="sh-choice" type="button" onclick="shGo('situation')">
+      <div class="sh-choice__hd">
+        <div class="sh-choice__icon">!</div>
+        <div class="sh-choice__body">
+          <span class="sh-choice__title">I might lose my housing soon</span>
+          <span class="sh-choice__sub">Eviction notice, behind on rent, can't pay utilities, lease ending</span>
+        </div>
+      </div>
+    </button>
+
+    <button class="sh-choice" type="button" onclick="shGo('situation')">
+      <div class="sh-choice__hd">
+        <div class="sh-choice__icon">&#9788;</div>
+        <div class="sh-choice__body">
+          <span class="sh-choice__title">I don't have a place tonight</span>
+          <span class="sh-choice__sub">Couch-surfing about to end, sleeping in a car, motel running out</span>
+        </div>
+      </div>
+    </button>
+
+    <button class="sh-choice" type="button" onclick="shGo('situation')">
+      <div class="sh-choice__hd">
+        <div class="sh-choice__icon">&#10084;</div>
+        <div class="sh-choice__body">
+          <span class="sh-choice__title">I'm helping someone else</span>
+          <span class="sh-choice__sub">A family member, neighbor, or client &mdash; we'll keep the language plain either way</span>
+        </div>
+      </div>
+    </button>
+
+    <p style="font-size: 0.85rem; color: var(--tool-gray); margin-top: 16px; text-align: center;">
+      In immediate danger? Call <a href="tel:911" style="color: var(--tool-blue); font-weight: 600;">911</a>.
+      Need shelter tonight? Call <a href="tel:211" style="color: var(--tool-blue); font-weight: 600;">211</a> or visit the
+      <a href="/static-tools/maricopa-navigator.html" style="color: var(--tool-blue); font-weight: 600;">full Maricopa navigator</a>.
+    </p>
+  </section>
+
+  <!-- STEP 2 — Situation triage -->
+  <section class="sh-step" id="sh-step-situation" aria-labelledby="sh-situation-h">
+    <h2 class="sh-h" id="sh-situation-h">What's pushing you out?</h2>
+    <p class="sh-sub">Pick everything that applies &mdash; you can choose more than one. We use this to pick programs that actually fit your situation.</p>
+
+    <button class="sh-choice" type="button" data-sit="eviction" onclick="shToggleSit(this)">
+      <div class="sh-choice__hd">
+        <div class="sh-choice__icon">&#128196;</div>
+        <div class="sh-choice__body">
+          <span class="sh-choice__title">Eviction notice or court date</span>
+          <span class="sh-choice__sub">5-day notice for non-payment, court summons, formal complaint filed</span>
+        </div>
+      </div>
+    </button>
+
+    <button class="sh-choice" type="button" data-sit="arrears" onclick="shToggleSit(this)">
+      <div class="sh-choice__hd">
+        <div class="sh-choice__icon">&#128181;</div>
+        <div class="sh-choice__body">
+          <span class="sh-choice__title">Behind on rent (no notice yet)</span>
+          <span class="sh-choice__sub">One month or more, but no formal eviction filed</span>
+        </div>
+      </div>
+    </button>
+
+    <button class="sh-choice" type="button" data-sit="utility" onclick="shToggleSit(this)">
+      <div class="sh-choice__hd">
+        <div class="sh-choice__icon">&#9889;</div>
+        <div class="sh-choice__body">
+          <span class="sh-choice__title">Utility shut-off or disconnect notice</span>
+          <span class="sh-choice__sub">APS, SRP, Southwest Gas, water &mdash; especially in summer heat</span>
+        </div>
+      </div>
+    </button>
+
+    <button class="sh-choice" type="button" data-sit="income" onclick="shToggleSit(this)">
+      <div class="sh-choice__hd">
+        <div class="sh-choice__icon">&#128176;</div>
+        <div class="sh-choice__body">
+          <span class="sh-choice__title">Recent job loss or income drop</span>
+          <span class="sh-choice__sub">Hours cut, laid off, lost SSI/SSDI, partner income gone</span>
+        </div>
+      </div>
+    </button>
+
+    <button class="sh-choice" type="button" data-sit="doubled" onclick="shToggleSit(this)">
+      <div class="sh-choice__hd">
+        <div class="sh-choice__icon">&#127968;</div>
+        <div class="sh-choice__body">
+          <span class="sh-choice__title">Doubled up &mdash; staying with someone</span>
+          <span class="sh-choice__sub">The arrangement is ending soon (eviction, conflict, lease violation)</span>
+        </div>
+      </div>
+    </button>
+
+    <button class="sh-choice" type="button" data-sit="dv" onclick="shToggleSit(this)">
+      <div class="sh-choice__hd">
+        <div class="sh-choice__icon">&#128737;</div>
+        <div class="sh-choice__body">
+          <span class="sh-choice__title">Leaving an unsafe situation</span>
+          <span class="sh-choice__sub">Domestic violence, trafficking, or other safety concern</span>
+        </div>
+      </div>
+    </button>
+
+    <div class="sh-actions">
+      <button class="sh-btn" type="button" onclick="shGo('entry')">Back</button>
+      <button class="sh-btn sh-btn--primary" type="button" onclick="shAfterSituation()">Continue</button>
+    </div>
+  </section>
+
+  <!-- STEP 3 — Details (skipped for DV path) -->
+  <section class="sh-step" id="sh-step-details" aria-labelledby="sh-details-h">
+    <h2 class="sh-h" id="sh-details-h">A few quick details.</h2>
+    <p class="sh-sub">These help us pick the right programs and skip ones that won't work for your household. Nothing is saved &mdash; this stays on your device.</p>
+
+    <div class="sh-field">
+      <label for="sh-city">Which part of Maricopa County?</label>
+      <select id="sh-city">
+        <option value="phoenix">Phoenix</option>
+        <option value="east-valley">East Valley (Mesa, Tempe, Chandler, Gilbert)</option>
+        <option value="west-valley">West Valley (Glendale, Avondale, Goodyear, Surprise)</option>
+        <option value="scottsdale">Scottsdale / Paradise Valley</option>
+        <option value="other">Other Maricopa County / not sure</option>
+      </select>
+    </div>
+
+    <div class="sh-field">
+      <label for="sh-time">When could you lose your housing?</label>
+      <select id="sh-time">
+        <option value="lt5">Within 5 days</option>
+        <option value="5-14">5&ndash;14 days</option>
+        <option value="15-30">15&ndash;30 days</option>
+        <option value="gt30">More than 30 days</option>
+        <option value="unknown">Not sure</option>
+      </select>
+    </div>
+
+    <div class="sh-field">
+      <label for="sh-household">How many people in the household?</label>
+      <select id="sh-household">
+        <option value="single">Just me</option>
+        <option value="couple">2 adults</option>
+        <option value="single-parent">1 adult, kids</option>
+        <option value="family">2 adults, kids</option>
+        <option value="senior">Senior household (62+)</option>
+        <option value="other">Other</option>
+      </select>
+    </div>
+
+    <div class="sh-field">
+      <label for="sh-vet">Is anyone in the household a veteran?</label>
+      <select id="sh-vet">
+        <option value="no">No</option>
+        <option value="yes">Yes</option>
+        <option value="unsure">I'm not sure</option>
+      </select>
+    </div>
+
+    <div class="sh-actions">
+      <button class="sh-btn" type="button" onclick="shGo('situation')">Back</button>
+      <button class="sh-btn sh-btn--primary" type="button" onclick="shGo('match')">Continue</button>
+    </div>
+  </section>
+
+  <!-- STEP 4 — Match -->
+  <section class="sh-step" id="sh-step-match" aria-labelledby="sh-match-h">
+    <h2 class="sh-h" id="sh-match-h">Here's what looks like a fit.</h2>
+    <p class="sh-sub" id="sh-match-sub">Programs ranked by how well they match what you told us. Tap each one to see exactly how to apply, what they'll ask, and what to bring.</p>
+
+    <div id="sh-diagnosis-area"></div>
+
+    <div id="sh-programs-area"></div>
+
+    <div class="sh-tip" style="margin-top: 22px;">
+      <strong>About these programs:</strong> Most pay your landlord or utility company directly, not you. They're nonprofits and county agencies &mdash; they can run out of funds, so applying to two or three at once is a normal strategy, not a problem.
+    </div>
+
+    <div class="sh-actions">
+      <button class="sh-btn" type="button" onclick="shGo('details')">Back</button>
+      <button class="sh-btn sh-btn--primary" type="button" onclick="shBuildSummary(); shGo('summary');">Take this with me</button>
+    </div>
+  </section>
+
+  <!-- STEP 4-DV — Safe alternate path -->
+  <section class="sh-step" id="sh-step-dv" aria-labelledby="sh-dv-h">
+    <div class="sh-safe-alert">
+      <h3 id="sh-dv-h">Safety first.</h3>
+      <p>If you're in an unsafe situation, these programs are confidential &mdash; they don't share your address with anyone outside their organization. You can call them and ask without committing to anything.</p>
+      <p style="margin-top: 12px;"><strong style="color: var(--tool-amber);">If you're in danger right now,</strong> call 911 or the National DV Hotline: <a href="tel:18007997233" style="color: #fff; text-decoration: underline; font-weight: 700;">1-800-799-7233</a>.</p>
+      <a href="https://www.weather.gov/" rel="noreferrer" class="sh-leave" onclick="event.preventDefault();window.location.replace('https://www.weather.gov/')">Quick exit &rarr;</a>
+    </div>
+
+    <div id="sh-dv-programs"></div>
+
+    <div class="sh-actions">
+      <button class="sh-btn" type="button" onclick="shGo('situation')">Back</button>
+    </div>
+  </section>
+
+  <!-- STEP 5 — Take with you / printable summary -->
+  <section class="sh-step" id="sh-step-summary" aria-labelledby="sh-sum-h">
+    <h2 class="sh-h" id="sh-sum-h">Here's your action sheet.</h2>
+    <p class="sh-sub">Print this page, save it, or take a screenshot. It has the programs that match your situation, what they'll ask, and what to bring.</p>
+
+    <div class="sh-summary" id="sh-summary-content"></div>
+
+    <div class="sh-tip">
+      <strong>Apply to two or three.</strong> These programs can run out of money. Applying to more than one is normal and improves your odds &mdash; just tell each one you've applied elsewhere so they can coordinate.
+    </div>
+
+    <div class="sh-actions">
+      <button class="sh-btn" type="button" onclick="shGo('match')">Back to programs</button>
+      <button class="sh-btn" type="button" onclick="window.print()">Print this page</button>
+      <button class="sh-btn sh-btn--primary" type="button" onclick="shGo('followup')">I'm done &mdash; continue</button>
+    </div>
+  </section>
+
+  <!-- STEP 6 — Optional follow-up -->
+  <section class="sh-step" id="sh-step-followup" aria-labelledby="sh-fu-h">
+    <div class="sh-done" aria-hidden="true">&#10003;</div>
+    <h2 class="sh-h" style="text-align: center;" id="sh-fu-h">You're set.</h2>
+    <p class="sh-sub" style="text-align: center; margin-bottom: 24px;">Before you go &mdash; completely optional &mdash; would you tell us how this tool worked for you? It's how we make the routing better for the next person.</p>
+
+    <div class="sh-fb-card" id="sh-fb-now" onclick="shToggleFb('now')" role="button" tabindex="0">
+      <div class="sh-fb-card__title">
+        <span>Rate this tool right now</span>
+        <span style="color: var(--tool-gray); font-size: 1.4rem;">+</span>
+      </div>
+      <div class="sh-fb-card__sub">3-tap rating &middot; no account, nothing saved long-term</div>
+      <div class="sh-fb-panel">
+        <p style="font-size: 0.92rem; color: var(--tool-blue); margin: 6px 0 4px; font-weight: 600;">Did the router show you a path that felt usable?</p>
+        <div class="sh-stars" id="sh-stars" role="radiogroup" aria-label="Rating">
+          <button type="button" class="sh-star" data-val="1" aria-label="1 star" onclick="event.stopPropagation(); shStar(1)"></button>
+          <button type="button" class="sh-star" data-val="2" aria-label="2 stars" onclick="event.stopPropagation(); shStar(2)"></button>
+          <button type="button" class="sh-star" data-val="3" aria-label="3 stars" onclick="event.stopPropagation(); shStar(3)"></button>
+          <button type="button" class="sh-star" data-val="4" aria-label="4 stars" onclick="event.stopPropagation(); shStar(4)"></button>
+          <button type="button" class="sh-star" data-val="5" aria-label="5 stars" onclick="event.stopPropagation(); shStar(5)"></button>
+        </div>
+        <textarea placeholder="Anything you'd want us to fix? (optional)" onclick="event.stopPropagation()"></textarea>
+      </div>
+    </div>
+
+    <div class="sh-fb-card" id="sh-fb-later" onclick="shToggleFb('later')" role="button" tabindex="0">
+      <div class="sh-fb-card__title">
+        <span>Email me to follow up later</span>
+        <span style="color: var(--tool-gray); font-size: 1.4rem;">+</span>
+      </div>
+      <div class="sh-fb-card__sub">One short note in 2&ndash;4 weeks asking how your situation ended up</div>
+      <div class="sh-fb-panel">
+        <label for="sh-fu-email" style="font-size: 0.84rem; color: var(--tool-gray); display: block; margin: 6px 0 4px;">Email address</label>
+        <input type="email" id="sh-fu-email" placeholder="you@example.com" onclick="event.stopPropagation()" style="width: 100%; padding: 10px 12px; border: 1.5px solid var(--tool-gray-300); border-radius: 8px; font-family: inherit; font-size: 0.92rem; color: var(--tool-blue);">
+        <label for="sh-fu-when" style="font-size: 0.84rem; color: var(--tool-gray); display: block; margin: 10px 0 4px;">When should we check in?</label>
+        <select id="sh-fu-when" onclick="event.stopPropagation()" style="width: 100%; padding: 10px 12px; border: 1.5px solid var(--tool-gray-300); border-radius: 8px; font-family: inherit; font-size: 0.92rem; color: var(--tool-blue);">
+          <option>In 2 weeks</option>
+          <option>In 1 month</option>
+          <option>In 3 months</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="sh-privacy">
+      <strong>What we do with this:</strong> Ratings are aggregated into anonymous program scores. Email is used only to send the one follow-up message you asked for, with a one-click delete-my-address link in it. No marketing list, no resale, no third-party tracking. Common Ladder is an independent civic project &mdash; <a href="/privacy.html" style="color: var(--tool-blue);">read our privacy policy</a>.
+    </div>
+
+    <div class="sh-actions">
+      <button class="sh-btn" type="button" onclick="shGo('summary')">Back</button>
+      <button class="sh-btn sh-btn--ghost" type="button" onclick="shSkip()">Skip &amp; finish</button>
+      <button class="sh-btn sh-btn--primary" type="button" onclick="shSubmitFb()">Submit &amp; finish</button>
+    </div>
+
+    <div id="sh-thanks" style="display: none; text-align: center; margin-top: 20px; padding: 20px; background: var(--tool-sage-50); border-radius: 10px;">
+      <p style="font-family: 'Manrope', sans-serif; font-weight: 700; color: var(--tool-blue); font-size: 1.05rem; margin-bottom: 6px;">Thank you.</p>
+      <p style="font-size: 0.92rem; color: var(--tool-blue);">Wishing you the best. Come back any time &mdash; <a href="/find.html" style="color: var(--tool-blue); font-weight: 600;">commonladder.org/find</a>.</p>
+    </div>
+  </section>
+
+</div>
+</main>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer__grid">
+      <div class="footer__brand">
+        <h3>Common Ladder</h3>
+        <p>The civic resource platform connecting people experiencing homelessness with every service in your community.</p>
+        <p style="margin-top:1rem; font-size:.8rem; opacity:.7">Built in Phoenix, AZ &middot; Free to use, always</p>
+      </div>
+      <div>
+        <h4>Find help</h4>
+        <ul>
+          <li><a href="/find.html?cat=shelter">Shelter</a></li>
+          <li><a href="/find.html?cat=food">Food</a></li>
+          <li><a href="/find.html?cat=legal">Legal</a></li>
+          <li><a href="/help/">All categories</a></li>
+          <li><a href="/static-tools/maricopa-navigator.html">Maricopa navigator</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>For providers</h4>
+        <ul>
+          <li><a href="/providers.html">Tools &amp; referrals</a></li>
+          <li><a href="/providers.html#case-manager-guide">Case manager guide</a></li>
+          <li><a href="/data-reports.html">Data &amp; reports</a></li>
+          <li><a href="/learn/">Four learning pathways</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>About</h4>
+        <ul>
+          <li><a href="/about.html">Our mission</a></li>
+          <li><a href="/about.html#methodology">Methodology</a></li>
+          <li><a href="/about.html#team">Team</a></li>
+          <li><a href="/contact.html">Contact</a></li>
+          <li><a href="/privacy.html">Privacy</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer__transparency">
+      <strong>Transparency:</strong> Common Ladder is an independent civic project. We do not sell user data, run ads, or accept payment from listed resources. This tool does not submit applications on your behalf &mdash; you apply directly with each program.
+    </div>
+    <div class="footer__bottom">
+      <span>&copy; 2026 Common Ladder. Free to use, always.</span>
+      <span><time datetime="2026-05-25">Last updated May 25, 2026</time></span>
+    </div>
+  </div>
+</footer>
+
+<script>
+// ─────────────────────────────────────────────────────────────────
+// Stay-Housed Navigator — Maricopa County (Phase 1)
+// Pure client-side: no PII storage, no application submission.
+// ─────────────────────────────────────────────────────────────────
+
+// Program directory. Stable info only — phones, websites, addresses.
+// No specific cash caps or processing windows (those go stale).
+var SH_PROGRAMS = [
+  {
+    id: 'wildfire',
+    name: 'Wildfire (Arizona Community Action Association)',
+    type: 'Statewide network of community action agencies',
+    helps: ['back-rent', 'utility', 'deposit'],
+    cities: ['phoenix', 'east-valley', 'west-valley', 'scottsdale', 'other'],
+    summary: 'Wildfire is Arizona\'s statewide network of community action agencies. They administer most of the federal emergency rent, utility, and weatherization money (LIHEAP, CSBG, ESG) that flows to Maricopa County residents.',
+    contact: {
+      phone: '602-604-0640',
+      web: 'wildfireaz.org',
+      hours: 'Mon–Fri, business hours'
+    },
+    apply: {
+      channel: 'Call the main line or visit wildfireaz.org to be routed to the community action agency closest to your address.',
+      steps: [
+        'Call 602-604-0640 or visit <strong>wildfireaz.org</strong>',
+        'Tell them your zip code &mdash; they route you to the right local agency (e.g. Maricopa County HSD, City of Phoenix HSD, City of Mesa CAN)',
+        'The local agency calls or emails you to schedule an intake (often phone or virtual)',
+        'You send in your documents, they verify, and if approved they pay your landlord or utility company directly'
+      ]
+    },
+    asks: [
+      {q: 'What is your monthly household income?', sample: 'I make $1,820 a month working part-time at Walgreens. My partner gets $890 in SSI. So $2,710 total for our family of four.'},
+      {q: 'What caused this housing crisis?', sample: 'My hours got cut from 32 to 18 a week in February. I fell behind on April rent and got a 5-day notice on May 18.'},
+      {q: 'How much do you need and what is it for?', sample: 'Two months of back rent at $1,400 a month = $2,800, plus a $180 late fee my landlord said they\'ll waive if we pay by Friday.'}
+    ],
+    docs: [
+      'Photo ID for each adult in the household',
+      'Social Security cards (or numbers) for everyone in the household',
+      'Proof of income for the last 30 days (pay stubs, benefits award letter, bank statement)',
+      'Current lease, signed by you and your landlord',
+      'The eviction notice or pay-or-quit letter',
+      'A W-9 from your landlord (or just their name, address, phone &mdash; the agency will request it)',
+      'Proof of Arizona residency (utility bill, lease, ID with current address)'
+    ]
+  },
+  {
+    id: 'svdp',
+    name: 'St. Vincent de Paul — Phoenix',
+    type: 'Faith-based emergency assistance',
+    helps: ['back-rent', 'utility'],
+    cities: ['phoenix', 'east-valley', 'west-valley'],
+    summary: 'St. Vincent de Paul runs an emergency assistance program out of their Phoenix campus. Funded by donations rather than federal grants, so eligibility rules are more flexible &mdash; they help people who fall through the cracks of the bigger programs.',
+    contact: {
+      phone: '602-261-6868',
+      web: 'stvincentdepaul.net',
+      address: '420 W Watkins Rd, Phoenix, AZ 85003',
+      hours: 'Walk-in: Mon–Fri 7am–11am for emergency assistance'
+    },
+    apply: {
+      channel: 'In person at the Watkins Rd campus &mdash; arrive early (line forms before 7am).',
+      steps: [
+        'Get to 420 W Watkins Rd in Phoenix before 7am Mon–Fri (closer to 6am if you can; the line gets long)',
+        'Take a number at the door and wait to be called &mdash; bring something to read',
+        'A volunteer interviewer hears your story and reviews your documents',
+        'If they can help, they\'ll often pay your landlord or utility on the spot or within a few days'
+      ]
+    },
+    asks: [
+      {q: 'Tell me what happened. Why are you here today?', sample: 'My car broke down in March and the repair was $1,200. I had to skip half of April\'s rent to get it fixed so I could keep working. Now I have a 5-day notice.'},
+      {q: 'What have you already tried?', sample: 'I called Wildfire and I\'m on their waitlist. I called 211 and they referred me here. I asked my family but they can\'t help right now.'},
+      {q: 'What\'s your plan to stay current after this?', sample: 'My car\'s fixed, my hours are back to normal in June, and I\'ve set up an autopay so rent comes out the day I get paid. I just need help with this one month.'}
+    ],
+    docs: [
+      'Photo ID',
+      'Your lease',
+      'The eviction notice or utility disconnect notice',
+      'Proof of income (recent pay stubs or benefits letter)',
+      'Your landlord\'s contact info &mdash; payment goes directly to them'
+    ]
+  },
+  {
+    id: 'maricopa-hsd',
+    name: 'Maricopa County Human Services Department',
+    type: 'County government — homeless prevention',
+    helps: ['back-rent', 'utility', 'deposit'],
+    cities: ['phoenix', 'east-valley', 'west-valley', 'scottsdale', 'other'],
+    summary: 'Maricopa County HSD runs the county\'s homeless prevention program using federal ESG and CSBG dollars. They serve unincorporated areas and smaller cities that don\'t have their own program (most of the county outside Phoenix and Mesa).',
+    contact: {
+      phone: '602-506-5911',
+      web: 'maricopa.gov/1820',
+      hours: 'Mon–Fri 8am–5pm'
+    },
+    apply: {
+      channel: 'Phone screening, then in-person or virtual intake.',
+      steps: [
+        'Call 602-506-5911 during business hours and ask for the Homeless Prevention program',
+        'A screener takes your basic info and tells you which of the county\'s community action partners will handle your case',
+        'You get an intake appointment within a few days &mdash; bring documents',
+        'If approved, payment goes to your landlord or utility company; you don\'t see the check'
+      ]
+    },
+    asks: [
+      {q: 'Are you a resident of unincorporated Maricopa County or a smaller city?', sample: 'I live in Buckeye, in an unincorporated area off Watson Rd. My zip code is 85326.'},
+      {q: 'What\'s your housing situation right now?', sample: 'I rent a 2-bedroom from a private landlord, $1,250 a month. I\'m two months behind. He filed for eviction on May 12 and court is set for June 9.'},
+      {q: 'Are you at risk of literally becoming homeless if you can\'t resolve this?', sample: 'Yes. We don\'t have anywhere else to go &mdash; my mom\'s place is two states away and my partner\'s family can\'t take us.'}
+    ],
+    docs: [
+      'Photo ID for each adult',
+      'Social Security cards for the household',
+      'Birth certificates for children in the household',
+      'Income documentation (60 days of pay stubs, tax return, or benefits letter)',
+      'Lease and eviction notice',
+      'Proof of unincorporated address (utility bill is fine)'
+    ]
+  },
+  {
+    id: 'a-new-leaf',
+    name: 'A New Leaf',
+    type: 'East/West Valley nonprofit',
+    helps: ['back-rent', 'utility', 'deposit', 'dv'],
+    cities: ['east-valley', 'west-valley'],
+    summary: 'A New Leaf serves the East and West Valley with emergency rent and utility assistance. They also run domestic-violence shelters and case management, which makes them a single front door if your housing crisis overlaps with safety.',
+    contact: {
+      phone: '480-969-4024',
+      web: 'turnanewleaf.org',
+      hours: 'Mon–Fri 8am–5pm'
+    },
+    apply: {
+      channel: 'Call to be screened and routed to the right office (Mesa, Glendale, Avondale, Apache Junction).',
+      steps: [
+        'Call 480-969-4024 and tell them which city you\'re in',
+        'They route you to the nearest office and schedule an intake appointment',
+        'Bring documents to your intake &mdash; a case manager reviews and decides',
+        'If approved, A New Leaf pays your landlord or utility directly within 7–14 days'
+      ]
+    },
+    asks: [
+      {q: 'Which city in the East Valley or West Valley?', sample: 'Mesa, near Southern and Stapley. Zip 85202.'},
+      {q: 'What\'s your monthly income and rent?', sample: 'I make $2,400 a month as a CNA. Rent is $1,475. I\'ve always made it work but my hours got cut in April.'},
+      {q: 'What\'s your relationship with your landlord like? Will they wait for our payment?', sample: 'My landlord is private &mdash; not a corporation. She said she\'d hold off filing if I can prove I have help coming by May 30.'}
+    ],
+    docs: [
+      'Photo ID',
+      'Proof of income (last 30 days)',
+      'Lease',
+      'Eviction notice or pay-or-quit letter',
+      'Landlord contact info (they\'ll request a W-9 separately)',
+      'School enrollment papers if you have kids (helps prove household)'
+    ]
+  },
+  {
+    id: 'salvation-army',
+    name: 'Salvation Army — Phoenix Metro',
+    type: 'Faith-based emergency assistance',
+    helps: ['back-rent', 'utility'],
+    cities: ['phoenix', 'east-valley', 'west-valley', 'scottsdale', 'other'],
+    summary: 'The Salvation Army operates several Phoenix-area service extensions that offer emergency rent and utility help when local funds are available. Coverage and amounts shift constantly depending on what donations and grants are in hand.',
+    contact: {
+      phone: '602-267-4100',
+      web: 'phoenix.salvationarmy.org',
+      hours: 'Mon–Fri (varies by location)'
+    },
+    apply: {
+      channel: 'Call the Phoenix Metro main line to find out which service extension can take new applicants this week.',
+      steps: [
+        'Call 602-267-4100 and ask which Salvation Army location is taking new emergency assistance applications',
+        'They\'ll route you to a specific Service Extension (Phoenix, Mesa, Glendale, Tempe, etc.)',
+        'Schedule an in-person intake at that location',
+        'Bring documents &mdash; decisions are usually within a few days, payment goes to your landlord or utility'
+      ]
+    },
+    asks: [
+      {q: 'Have you been to Salvation Army for help in the last 12 months?', sample: 'No, this is my first time asking for emergency help.'},
+      {q: 'What changed in your situation?', sample: 'I had a hospital stay in March &mdash; appendix &mdash; and missed two weeks of work. I\'m back now but the missed paychecks put me one month behind.'}
+    ],
+    docs: [
+      'Photo ID',
+      'Lease',
+      'Eviction notice or disconnect notice',
+      'Proof of income for the last 30 days',
+      'Landlord or utility company name and account number'
+    ]
+  },
+  {
+    id: 'tempe-action',
+    name: 'Tempe Community Action Agency',
+    type: 'Community action agency (Tempe-area only)',
+    helps: ['back-rent', 'utility'],
+    cities: ['east-valley'],
+    summary: 'TCAA serves Tempe and nearby South Scottsdale residents specifically. Smaller program than Wildfire or Maricopa HSD, but often faster turnaround if you fit the geography.',
+    contact: {
+      phone: '480-422-8922',
+      web: 'tempeaction.org',
+      address: '2146 E Apache Blvd, Tempe, AZ 85281',
+      hours: 'Mon–Fri 8am–5pm'
+    },
+    apply: {
+      channel: 'Call to verify funds are available, then in-person intake.',
+      steps: [
+        'Call 480-422-8922 first &mdash; ask if they have rent or utility funds available this week (they cycle through quickly)',
+        'If yes, schedule an in-person intake at 2146 E Apache Blvd',
+        'Bring documents &mdash; the screening is usually same day',
+        'Approved payments go to your landlord or utility within about a week'
+      ]
+    },
+    asks: [
+      {q: 'Do you live in Tempe? Where exactly?', sample: 'Yes &mdash; near Rural and University. Zip 85281.'},
+      {q: 'Is this rent or utility?', sample: 'Both, actually. One month of rent ($1,150) and an SRP shut-off notice for $387.'}
+    ],
+    docs: [
+      'Photo ID',
+      'Proof of Tempe residency',
+      'Proof of income',
+      'Lease and eviction notice (for rent help)',
+      'Current bill or disconnect notice (for utility help)'
+    ]
+  },
+  {
+    id: '211',
+    name: '211 Arizona (Solari)',
+    type: 'Statewide referral hub',
+    helps: ['triage', 'utility', 'back-rent'],
+    cities: ['phoenix', 'east-valley', 'west-valley', 'scottsdale', 'other'],
+    summary: '211 is the single front door to social services in Arizona. They don\'t fund anything themselves &mdash; they keep an updated database of who has money this week and route you to the right place. Call 211 (or 877-211-8661) from any Arizona phone.',
+    contact: {
+      phone: '211',
+      altPhone: '877-211-8661',
+      web: '211arizona.org',
+      hours: '24/7, free, multiple languages'
+    },
+    apply: {
+      channel: 'Phone call.',
+      steps: [
+        'Call <strong>211</strong> from any Arizona phone (or 877-211-8661)',
+        'A specialist asks you a few questions about your situation and zip code',
+        'They give you 2–4 specific programs to call, with contact info',
+        'You call those programs directly to apply'
+      ]
+    },
+    asks: [
+      {q: 'What kind of help do you need?', sample: 'I\'m about to be evicted &mdash; I need rent help and maybe utility help too.'},
+      {q: 'What\'s your zip code?', sample: '85015'},
+      {q: 'How urgent is this?', sample: 'I have a 5-day notice that started Monday.'}
+    ],
+    docs: [
+      'No documents needed to call 211 &mdash; just be ready to describe your situation'
+    ]
+  }
+];
+
+// DV-specific resources, shown only on the DV path
+var SH_DV_PROGRAMS = [
+  {
+    id: 'sojourner',
+    name: 'Sojourner Center',
+    type: 'DV shelter and supportive services — Phoenix',
+    summary: 'One of the largest DV shelters in the country, with confidential location, child care, legal advocacy, and rapid rehousing services.',
+    contact: {
+      phone: '602-244-0089',
+      web: 'sojournercenter.org',
+      hours: '24/7 crisis line'
+    },
+    notes: 'Call any time. They\'ll help you make a safety plan, get into shelter, or connect to longer-term housing support. They do not require police involvement.'
+  },
+  {
+    id: 'new-life',
+    name: 'New Life Center',
+    type: 'DV shelter — West Valley (Goodyear)',
+    summary: 'Confidential shelter and outreach services for adults and children fleeing domestic violence. Serves the West Valley.',
+    contact: {
+      phone: '623-932-4404',
+      web: 'newlifectr.org',
+      hours: '24/7 crisis line'
+    },
+    notes: 'Confidential intake. They can help with shelter, transportation, court advocacy, and longer-term housing.'
+  },
+  {
+    id: 'chrysalis',
+    name: 'Chrysalis',
+    type: 'DV shelter and rapid rehousing — Phoenix/Scottsdale',
+    summary: 'Shelter, counseling, legal advocacy, and rapid rehousing for survivors of intimate partner violence.',
+    contact: {
+      phone: '602-955-9059',
+      web: 'noabuse.org',
+      hours: '24/7 hotline'
+    },
+    notes: 'Both shelter and non-residential services available. Can help while you stay where you are or while you plan to leave.'
+  },
+  {
+    id: 'a-new-leaf-dv',
+    name: 'A New Leaf — Faith House / Autumn House',
+    type: 'DV shelters in the East and West Valley',
+    summary: 'A New Leaf operates two DV shelters and an outreach program in the East and West Valley.',
+    contact: {
+      phone: '480-890-3039',
+      web: 'turnanewleaf.org',
+      hours: '24/7 crisis line'
+    },
+    notes: 'Faith House (East Valley) and Autumn House (West Valley). Both are confidential.'
+  },
+  {
+    id: 'dv-hotline',
+    name: 'National Domestic Violence Hotline',
+    type: 'National 24/7 hotline',
+    summary: 'Call or text any time. Free, confidential, available in many languages. They can help you make a safety plan and route you to local resources.',
+    contact: {
+      phone: '1-800-799-7233',
+      sms: 'Text START to 88788',
+      web: 'thehotline.org',
+      hours: '24/7'
+    },
+    notes: 'Good first call if you\'re not sure where to start or if you need an out-of-Arizona option.'
+  }
+];
+
+// Intervention bundle rules — simple deterministic mapping.
+function shGetInterventions(sit) {
+  var b = { primary: [], secondary: [], skip: [] };
+  if (sit.includes('eviction') || sit.includes('arrears')) {
+    b.primary.push('Back rent');
+    b.secondary.push('Landlord mediation');
+  }
+  if (sit.includes('utility')) {
+    b.primary.push('Utility hold');
+  }
+  if (sit.includes('doubled')) {
+    b.primary.push('Security deposit', 'Move-in costs');
+    b.secondary.push('Host stipend');
+  }
+  if (sit.includes('income') && !sit.includes('eviction') && !sit.includes('arrears')) {
+    b.primary.push('Benefits review (SNAP, LIHEAP, EITC)');
+    b.secondary.push('Utility hold');
+  }
+  if (!sit.includes('eviction') && !sit.includes('arrears') && !sit.includes('utility') && !sit.includes('doubled')) {
+    b.primary.push('General housing stability planning');
+  }
+  // What we're NOT recommending
+  if (sit.includes('eviction') || sit.includes('arrears') || sit.includes('utility')) {
+    b.skip.push('Shelter intake');
+    b.skip.push('Coordinated entry assessment');
+  }
+  return b;
+}
+
+// Diagnosis copy.
+function shGetDiagnosisCopy(sit, time) {
+  if (sit.includes('eviction')) {
+    return {
+      lab: 'Diagnosis',
+      hd: 'A one-time payment of back rent is likely to keep you housed.',
+      body: 'Eviction prevention programs in Maricopa County focus on this exact situation. Diversion works for households like yours <strong>most of the time</strong> when arrears are recent and the landlord is willing to accept payment.'
+    };
+  }
+  if (sit.includes('arrears')) {
+    return {
+      lab: 'Diagnosis',
+      hd: 'Now is the right time to ask for help &mdash; before a notice is filed.',
+      body: 'Programs are faster and easier to navigate before an eviction is on the court calendar. Most of the programs below can pay your landlord directly, which keeps a notice off your record.'
+    };
+  }
+  if (sit.includes('utility')) {
+    return {
+      lab: 'Diagnosis',
+      hd: 'Utility disconnect protection is available, especially in heat season.',
+      body: 'In Maricopa County summer, utility companies and county programs are required to coordinate to keep power on when there\'s a heat warning. Acting before the disconnect date is much easier than restoring service after.'
+    };
+  }
+  if (sit.includes('doubled')) {
+    return {
+      lab: 'Diagnosis',
+      hd: 'A move-in package (deposit + first month) is the right shape of help.',
+      body: 'Doubled-up situations almost always end the same way: with someone needing a security deposit and a first-month payment to move into a place of their own. The earlier you ask, the more options you have.'
+    };
+  }
+  return {
+    lab: 'Diagnosis',
+    hd: 'Let\'s line up the right programs for your situation.',
+    body: 'Based on what you told us, here are the Maricopa County programs that fit. Apply to two or three at the same time &mdash; programs run out of funds, so it\'s normal to do this.'
+  };
+}
+
+// ── State + navigation ───────────────────────────────────────────
+var SH_STATE = {
+  step: 'entry',
+  sit: [],
+  city: 'phoenix',
+  time: 'lt5',
+  household: 'single',
+  vet: 'no'
+};
+
+var SH_STEP_ORDER = ['entry', 'situation', 'details', 'match', 'summary', 'followup'];
+
+function shGo(step) {
+  // DV path: jump straight to dv panel
+  if (step === 'match' && SH_STATE.sit.includes('dv')) {
+    step = 'dv';
+  }
+  SH_STATE.step = step;
+  document.querySelectorAll('.sh-step').forEach(function(el) { el.classList.remove('sh-step--on'); });
+  var target = document.getElementById('sh-step-' + step);
+  if (target) target.classList.add('sh-step--on');
+
+  // Progress
+  var idx = SH_STEP_ORDER.indexOf(step);
+  if (step === 'dv') idx = 3; // visual: same position as match
+  var pct = ((idx + 1) / SH_STEP_ORDER.length) * 100;
+  document.getElementById('sh-progress-fill').style.width = pct + '%';
+  document.getElementById('sh-progress-text').textContent =
+    (step === 'dv') ? 'Safety path' :
+    'Step ' + (idx + 1) + ' of ' + SH_STEP_ORDER.length;
+
+  // Scroll up so the user always sees the new step from the top
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+
+  // Build dynamic content where needed
+  if (step === 'match') {
+    shBuildMatch();
+  }
+  if (step === 'dv') {
+    shBuildDv();
+  }
+}
+
+function shToggleSit(btn) {
+  var v = btn.getAttribute('data-sit');
+  var i = SH_STATE.sit.indexOf(v);
+  if (i >= 0) { SH_STATE.sit.splice(i, 1); btn.classList.remove('sh-choice--selected'); }
+  else { SH_STATE.sit.push(v); btn.classList.add('sh-choice--selected'); }
+}
+
+function shAfterSituation() {
+  if (SH_STATE.sit.length === 0) {
+    alert('Pick at least one thing that applies. If none of these fit, choose the closest match or call 211 for general help.');
+    return;
+  }
+  if (SH_STATE.sit.includes('dv')) {
+    shGo('dv');
+  } else {
+    shGo('details');
+  }
+}
+
+// ── Match builder ────────────────────────────────────────────────
+function shBuildMatch() {
+  // Read form state
+  SH_STATE.city = document.getElementById('sh-city').value;
+  SH_STATE.time = document.getElementById('sh-time').value;
+  SH_STATE.household = document.getElementById('sh-household').value;
+  SH_STATE.vet = document.getElementById('sh-vet').value;
+
+  // Build diagnosis
+  var diag = shGetDiagnosisCopy(SH_STATE.sit, SH_STATE.time);
+  var bundle = shGetInterventions(SH_STATE.sit);
+
+  var diagHtml = '<div class="sh-diag">' +
+    '<div class="sh-diag__lab">' + diag.lab + '</div>' +
+    '<div class="sh-diag__hd">' + diag.hd + '</div>' +
+    '<div class="sh-diag__body">' + diag.body + '</div>' +
+    '</div>';
+
+  if (bundle.primary.length) {
+    diagHtml += '<div class="sh-chip-row"><div class="sh-chip-row__lab">What to ask for</div>';
+    bundle.primary.forEach(function(c) { diagHtml += '<span class="sh-chip">' + c + '</span>'; });
+    bundle.secondary.forEach(function(c) { diagHtml += '<span class="sh-chip">' + c + '</span>'; });
+    diagHtml += '</div>';
+  }
+  if (bundle.skip.length) {
+    diagHtml += '<div class="sh-chip-row" style="margin-top: 10px;"><div class="sh-chip-row__lab">Likely not needed yet</div>';
+    bundle.skip.forEach(function(c) { diagHtml += '<span class="sh-chip sh-chip--skip">' + c + '</span>'; });
+    diagHtml += '</div>';
+  }
+
+  document.getElementById('sh-diagnosis-area').innerHTML = diagHtml;
+
+  // Build program cards
+  var matched = shMatchPrograms();
+  var html = '';
+  matched.forEach(function(p, idx) {
+    var isBest = idx === 0;
+    html += shRenderProgram(p, isBest);
+  });
+  document.getElementById('sh-programs-area').innerHTML = html;
+}
+
+function shMatchPrograms() {
+  // Filter by city + helps that intersect situation
+  var sitTagMap = {
+    'eviction': ['back-rent'],
+    'arrears': ['back-rent'],
+    'utility': ['utility'],
+    'doubled': ['deposit'],
+    'income': ['back-rent', 'utility'],
+    'dv': ['dv']
+  };
+  var needTags = new Set();
+  SH_STATE.sit.forEach(function(s) {
+    (sitTagMap[s] || []).forEach(function(t) { needTags.add(t); });
+  });
+
+  var matched = SH_PROGRAMS.filter(function(p) {
+    if (!p.cities.includes(SH_STATE.city) && !p.cities.includes('other')) {
+      // Allow programs that serve "other"/county-wide always
+      if (!(p.cities.includes(SH_STATE.city))) {
+        if (!p.cities.includes('other')) return false;
+      }
+    }
+    if (needTags.size === 0) return true;
+    return p.helps.some(function(h) { return needTags.has(h); });
+  });
+
+  // Rank: programs whose helps overlap more with needTags rank higher.
+  // Wildfire & Maricopa-HSD score boost as they're the structural entry points.
+  matched.sort(function(a, b) {
+    var aScore = 0, bScore = 0;
+    a.helps.forEach(function(h) { if (needTags.has(h)) aScore++; });
+    b.helps.forEach(function(h) { if (needTags.has(h)) bScore++; });
+    if (a.id === 'wildfire') aScore += 0.5;
+    if (a.id === 'maricopa-hsd') aScore += 0.3;
+    if (b.id === 'wildfire') bScore += 0.5;
+    if (b.id === 'maricopa-hsd') bScore += 0.3;
+    return bScore - aScore;
+  });
+
+  // Always include 211 at the end as a backstop
+  if (!matched.find(function(p) { return p.id === '211'; })) {
+    var p211 = SH_PROGRAMS.find(function(p) { return p.id === '211'; });
+    if (p211) matched.push(p211);
+  }
+
+  // Cap at 5 programs (plus 211)
+  return matched.slice(0, 5);
+}
+
+function shRenderProgram(p, isBest) {
+  var html = '<article class="sh-prog' + (isBest ? ' sh-prog--best' : '') + '">';
+  html += '<div class="sh-prog__top">';
+  html += '<h3 class="sh-prog__name">' + p.name + '</h3>';
+  html += '<span class="sh-fit ' + (isBest ? '' : 'sh-fit--ok') + '">' + (isBest ? 'Best fit' : 'Strong fit') + '</span>';
+  html += '</div>';
+  html += '<div class="sh-prog__meta">' + p.type + '</div>';
+  html += '<p class="sh-prog__what">' + p.summary + '</p>';
+
+  html += '<div class="sh-prog__contact">';
+  html += '<div class="sh-prog__contact-row"><span class="sh-prog__contact-lab">Phone</span> <a href="tel:' + p.contact.phone.replace(/[^0-9]/g, '') + '">' + p.contact.phone + '</a></div>';
+  if (p.contact.altPhone) {
+    html += '<div class="sh-prog__contact-row"><span class="sh-prog__contact-lab">Alt</span> <a href="tel:' + p.contact.altPhone.replace(/[^0-9]/g, '') + '">' + p.contact.altPhone + '</a></div>';
+  }
+  if (p.contact.web) {
+    html += '<div class="sh-prog__contact-row"><span class="sh-prog__contact-lab">Web</span> <a href="https://' + p.contact.web + '" target="_blank" rel="noopener">' + p.contact.web + '</a></div>';
+  }
+  if (p.contact.address) {
+    html += '<div class="sh-prog__contact-row" style="width: 100%;"><span class="sh-prog__contact-lab">Address</span> ' + p.contact.address + '</div>';
+  }
+  if (p.contact.hours) {
+    html += '<div class="sh-prog__contact-row" style="width: 100%;"><span class="sh-prog__contact-lab">Hours</span> ' + p.contact.hours + '</div>';
+  }
+  html += '</div>';
+
+  // Disclosure: How to apply
+  html += '<details class="sh-disc"><summary>How to apply (step by step)</summary>';
+  html += '<div class="sh-disc__body">';
+  html += '<p><strong>How:</strong> ' + p.apply.channel + '</p>';
+  html += '<ol>';
+  p.apply.steps.forEach(function(s) { html += '<li>' + s + '</li>'; });
+  html += '</ol>';
+  html += '</div></details>';
+
+  // Disclosure: What they'll ask
+  if (p.asks && p.asks.length) {
+    html += '<details class="sh-disc"><summary>What they\'ll probably ask (and sample answers)</summary>';
+    html += '<div class="sh-disc__body">';
+    html += '<p style="margin-bottom: 12px;">These are common questions in a Maricopa intake. The sample answers below are from a fictional household &mdash; use them as a template for shaping your own.</p>';
+    p.asks.forEach(function(qa) {
+      html += '<div class="sh-sample">';
+      html += '<span class="sh-sample__lab">Sample answer</span>';
+      html += '<p class="sh-sample__q">' + qa.q + '</p>';
+      html += '<div class="sh-sample__a">"' + qa.sample + '"</div>';
+      html += '</div>';
+    });
+    html += '</div></details>';
+  }
+
+  // Disclosure: What to bring
+  if (p.docs && p.docs.length) {
+    html += '<details class="sh-disc"><summary>What to bring (document checklist)</summary>';
+    html += '<div class="sh-disc__body">';
+    html += '<div class="sh-checklist"><h4>Bring with you</h4><ul>';
+    p.docs.forEach(function(d) { html += '<li>' + d + '</li>'; });
+    html += '</ul></div>';
+    html += '<div class="sh-tip"><strong>Don\'t have one of these?</strong> Apply anyway. Intake workers can often get by with what you have, especially if you call ahead and explain.</div>';
+    html += '</div></details>';
+  }
+
+  html += '</article>';
+  return html;
+}
+
+// ── DV builder ───────────────────────────────────────────────────
+function shBuildDv() {
+  var html = '';
+  SH_DV_PROGRAMS.forEach(function(p) {
+    html += '<article class="sh-prog">';
+    html += '<div class="sh-prog__top"><h3 class="sh-prog__name">' + p.name + '</h3></div>';
+    html += '<div class="sh-prog__meta">' + p.type + '</div>';
+    html += '<p class="sh-prog__what">' + p.summary + '</p>';
+    html += '<div class="sh-prog__contact">';
+    html += '<div class="sh-prog__contact-row"><span class="sh-prog__contact-lab">Phone</span> <a href="tel:' + p.contact.phone.replace(/[^0-9]/g, '') + '">' + p.contact.phone + '</a></div>';
+    if (p.contact.sms) html += '<div class="sh-prog__contact-row"><span class="sh-prog__contact-lab">Text</span> ' + p.contact.sms + '</div>';
+    if (p.contact.web) html += '<div class="sh-prog__contact-row"><span class="sh-prog__contact-lab">Web</span> <a href="https://' + p.contact.web + '" target="_blank" rel="noopener">' + p.contact.web + '</a></div>';
+    html += '<div class="sh-prog__contact-row" style="width: 100%;"><span class="sh-prog__contact-lab">Hours</span> ' + p.contact.hours + '</div>';
+    html += '</div>';
+    html += '<p style="font-size: 0.92rem; color: var(--tool-blue); margin-top: 6px;">' + p.notes + '</p>';
+    html += '</article>';
+  });
+  document.getElementById('sh-dv-programs').innerHTML = html;
+}
+
+// ── Summary builder (printable action sheet) ─────────────────────
+function shBuildSummary() {
+  var matched = shMatchPrograms();
+  var diag = shGetDiagnosisCopy(SH_STATE.sit, SH_STATE.time);
+  var bundle = shGetInterventions(SH_STATE.sit);
+  var now = new Date();
+  var dateStr = now.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+
+  var html = '<h3>Your Maricopa County housing-help action sheet</h3>';
+  html += '<p style="color: var(--tool-gray); font-size: 0.88rem; margin-bottom: 14px;">Generated ' + dateStr + ' &middot; commonladder.org/static-tools/stay-housed-maricopa.html</p>';
+
+  html += '<h4>Your situation</h4>';
+  var sitLabels = {
+    'eviction': 'Eviction notice or court date',
+    'arrears': 'Behind on rent',
+    'utility': 'Utility shut-off',
+    'income': 'Recent income loss',
+    'doubled': 'Doubled-up, ending',
+    'dv': 'Leaving unsafe situation'
+  };
+  html += '<p>' + SH_STATE.sit.map(function(s) { return sitLabels[s] || s; }).join('; ') + '</p>';
+
+  html += '<h4>What you\'re looking for</h4>';
+  html += '<p>' + (bundle.primary.concat(bundle.secondary).join(', ') || 'Housing stability') + '</p>';
+
+  html += '<h4>Programs to call this week</h4>';
+  html += '<ol>';
+  matched.forEach(function(p) {
+    html += '<li style="margin-bottom: 10px;">';
+    html += '<strong>' + p.name + '</strong> &mdash; <a href="tel:' + p.contact.phone.replace(/[^0-9]/g, '') + '">' + p.contact.phone + '</a>';
+    if (p.contact.web) html += ' &middot; ' + p.contact.web;
+    html += '<br><span style="font-size: 0.88rem; color: var(--tool-gray);">' + p.apply.channel + '</span>';
+    html += '</li>';
+  });
+  html += '</ol>';
+
+  html += '<h4>Documents to gather first</h4>';
+  html += '<ul style="padding-left: 22px;">';
+  var commonDocs = [
+    'Photo ID for each adult',
+    'Proof of income for the last 30 days (pay stubs, benefits letter)',
+    'Your current lease',
+    'The eviction notice or disconnect notice (whichever applies)',
+    'Your landlord\'s name, phone, and address (programs pay them directly)',
+    'Social Security cards for everyone in the household'
+  ];
+  commonDocs.forEach(function(d) { html += '<li style="margin-bottom: 4px; font-size: 0.92rem;">' + d + '</li>'; });
+  html += '</ul>';
+
+  html += '<h4>Notes</h4>';
+  html += '<p style="font-size: 0.9rem;">Programs run out of money. Apply to two or three at the same time. Tell each program you\'re also applying elsewhere so they can coordinate.</p>';
+  html += '<p style="font-size: 0.9rem;">If you have a court date, get to court even if you\'re not ready. Filing an answer protects your rights.</p>';
+  html += '<p style="font-size: 0.9rem;">Need legal help? Community Legal Services: <a href="tel:6022589515">602-258-3434</a> &middot; clsaz.org</p>';
+
+  document.getElementById('sh-summary-content').innerHTML = html;
+}
+
+// ── Feedback handlers ────────────────────────────────────────────
+function shToggleFb(which) {
+  var el = document.getElementById('sh-fb-' + which);
+  if (el) el.classList.toggle('sh-fb-card--open');
+}
+
+function shStar(val) {
+  document.querySelectorAll('.sh-star').forEach(function(s, idx) {
+    s.classList.toggle('sh-star--on', (idx + 1) <= val);
+  });
+}
+
+function shSubmitFb() {
+  // No actual submission in Phase 1 — just acknowledge.
+  document.getElementById('sh-thanks').style.display = 'block';
+  // Hide all action buttons + feedback cards after submit
+  document.querySelectorAll('#sh-step-followup .sh-fb-card, #sh-step-followup .sh-actions, #sh-step-followup .sh-privacy').forEach(function(el) {
+    el.style.display = 'none';
+  });
+}
+
+function shSkip() {
+  shSubmitFb();
+}
+
+// ── URL param support for deep links (provider mode) ─────────────
+(function() {
+  var params = new URLSearchParams(window.location.search);
+  if (params.get('start') === 'situation') {
+    shGo('situation');
+  }
+})();
+</script>
+
+<script data-id="cl-card-click">
+(function(){
+  document.querySelectorAll('.card, .post-card:not(.post-card--linked)').forEach(function(el){
+    var a = el.querySelector('a[href]');
+    if(!a) return;
+    el.addEventListener('click', function(e){
+      if(e.target.tagName==='A'||e.target.closest('a')) return;
+      window.location.href = a.href;
+    });
+  });
+})();
+</script>
+
+</body>
+</html>
