@@ -1,0 +1,761 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XLKR4ZSZ5J"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-XLKR4ZSZ5J');
+</script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Monthly Budget Tracker — Common Ladder</title>
+  <meta name="description" content="Track your monthly income and expenses. Free, private, and designed for people working toward stable housing.">
+  <link rel="canonical" href="https://www.commonladder.org/budget.html">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="/print.css" media="print">
+  <noscript><style>.nav__links{display:flex!important;flex-wrap:wrap!important;}.nav__toggle{display:none!important;}</style></noscript>
+  <style>
+    /* Budget tool styles */
+    .budget-wrap {
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 0 1rem 3rem;
+    }
+
+    .budget-notice {
+      background: #f0f4ff;
+      border-left: 4px solid #1C3D6E;
+      border-radius: 0 6px 6px 0;
+      padding: .75rem 1rem;
+      font-size: .85rem;
+      color: #1C3D6E;
+      margin-bottom: 2rem;
+    }
+
+    .budget-section {
+      margin-bottom: 2rem;
+    }
+
+    .budget-section h2 {
+      font-size: 1rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .06em;
+      color: #4B5563;
+      margin: 0 0 .75rem;
+      padding-bottom: .4rem;
+      border-bottom: 2px solid #E8911A;
+    }
+
+    .budget-table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    .budget-table thead th {
+      font-size: .75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: .05em;
+      color: #6B7280;
+      padding: .3rem .5rem;
+      text-align: left;
+      border-bottom: 1px solid #E5E7EB;
+    }
+
+    .budget-table thead th:last-child { text-align: right; }
+
+    .budget-table td {
+      padding: .35rem .5rem;
+      vertical-align: middle;
+    }
+
+    .budget-table tr:not(.budget-table__add):hover td {
+      background: #F8F7F4;
+    }
+
+    .budget-row--unsaved td {
+      background: #FFFBF0;
+    }
+
+    .budget-row--unsaved:hover td {
+      background: #FFF3D0 !important;
+    }
+
+    .unsaved-badge {
+      display: inline-block;
+      font-size: .65rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: .04em;
+      background: #E8911A;
+      color: white;
+      border-radius: 3px;
+      padding: 1px 5px;
+      margin-left: .4rem;
+      vertical-align: middle;
+      cursor: default;
+    }
+
+    .budget-input {
+      font-size: .95rem;
+      border: 1px solid transparent;
+      border-radius: 4px;
+      padding: .25rem .4rem;
+      width: 100%;
+      background: transparent;
+      font-family: inherit;
+      color: #1A1A1A;
+      transition: border-color .15s, background .15s;
+    }
+
+    .budget-input:focus {
+      outline: none;
+      border-color: #1C3D6E;
+      background: white;
+    }
+
+    .budget-input--amount {
+      text-align: right;
+      width: 100px;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .budget-input--unsaved {
+      font-style: italic;
+      color: #6B7280;
+    }
+
+    .budget-input--unsaved:focus {
+      font-style: normal;
+      color: #1A1A1A;
+    }
+
+    .budget-input--unsaved:not(:placeholder-shown) {
+      font-style: normal;
+      color: #1A1A1A;
+    }
+
+    .btn-row-delete {
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: #9CA3AF;
+      font-size: 1.1rem;
+      line-height: 1;
+      padding: .2rem .4rem;
+      border-radius: 3px;
+      min-width: 28px;
+      min-height: 28px;
+    }
+    .btn-row-delete:hover { color: #EF4444; background: #FEF2F2; }
+
+    .budget-add-btn {
+      background: none;
+      border: 1px dashed #D1D5DB;
+      color: #6B7280;
+      font-size: .85rem;
+      border-radius: 5px;
+      padding: .4rem .75rem;
+      cursor: pointer;
+      margin-top: .5rem;
+      transition: all .15s;
+      font-family: inherit;
+    }
+    .budget-add-btn:hover {
+      border-color: #1C3D6E;
+      color: #1C3D6E;
+      background: #F0F4FF;
+    }
+
+    /* Totals bar */
+    .budget-totals {
+      background: #1C3D6E;
+      color: white;
+      border-radius: 10px;
+      padding: 1.25rem 1.5rem;
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 1rem;
+      margin: 1.5rem 0;
+    }
+
+    .budget-totals__item {
+      text-align: center;
+    }
+
+    .budget-totals__label {
+      font-size: .7rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: .07em;
+      opacity: .7;
+      margin-bottom: .3rem;
+    }
+
+    .budget-totals__value {
+      font-size: 1.5rem;
+      font-weight: 700;
+      font-variant-numeric: tabular-nums;
+      letter-spacing: -.01em;
+    }
+
+    .budget-totals__item--balance .budget-totals__value {
+      color: #b36a00;
+    }
+
+    .budget-totals__item--balance.negative .budget-totals__value {
+      color: #FCA5A5;
+    }
+
+    /* Gap-to-housing callout */
+    .gap-callout {
+      border: 1px solid #E5E7EB;
+      border-radius: 8px;
+      padding: 1rem 1.25rem;
+      margin-bottom: 1.5rem;
+      background: white;
+    }
+
+    .gap-callout h3 {
+      font-size: .9rem;
+      font-weight: 700;
+      margin: 0 0 .5rem;
+      color: #1C3D6E;
+    }
+
+    .gap-callout p {
+      font-size: .85rem;
+      margin: 0 0 .75rem;
+      color: #4B5563;
+    }
+
+    .gap-callout__select {
+      font-size: .85rem;
+      border: 1px solid #D1D5DB;
+      border-radius: 4px;
+      padding: .3rem .5rem;
+      margin-right: .5rem;
+      font-family: inherit;
+    }
+
+    .gap-callout__result {
+      font-size: .85rem;
+      margin-top: .6rem;
+      padding: .6rem .75rem;
+      border-radius: 5px;
+      display: none;
+    }
+
+    .gap-callout__result.show { display: block; }
+    .gap-callout__result.positive { background: #ECFDF5; color: #065F46; }
+    .gap-callout__result.negative { background: #FEF3C7; color: #92400E; }
+
+    /* Action buttons */
+    .budget-actions {
+      display: flex;
+      gap: .75rem;
+      flex-wrap: wrap;
+      margin-top: 1.5rem;
+    }
+
+    .btn-save {
+      background: #1C3D6E;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      padding: .6rem 1.25rem;
+      font-size: .9rem;
+      font-weight: 600;
+      cursor: pointer;
+      font-family: inherit;
+      min-height: 44px;
+      transition: background .15s;
+    }
+    .btn-save:hover { background: #163260; }
+
+    .btn-print {
+      background: white;
+      color: #1C3D6E;
+      border: 1px solid #1C3D6E;
+      border-radius: 6px;
+      padding: .6rem 1.25rem;
+      font-size: .9rem;
+      font-weight: 600;
+      cursor: pointer;
+      font-family: inherit;
+      min-height: 44px;
+      transition: all .15s;
+    }
+    .btn-print:hover { background: #F0F4FF; }
+
+    .btn-clear {
+      background: none;
+      color: #6B7280;
+      border: none;
+      font-size: .85rem;
+      cursor: pointer;
+      padding: .6rem .5rem;
+      font-family: inherit;
+      min-height: 44px;
+      text-decoration: underline;
+      text-underline-offset: 2px;
+    }
+    .btn-clear:hover { color: #EF4444; }
+
+    .save-confirm {
+      font-size: .8rem;
+      color: #059669;
+      display: none;
+      align-items: center;
+      gap: .3rem;
+      padding: .6rem 0;
+    }
+    .save-confirm.show { display: flex; }
+
+    /* Print overrides */
+    @media print {
+      .budget-actions, .btn-row-delete, .budget-add-btn,
+      .gap-callout select, button { display: none !important; }
+      .budget-row--unsaved td { background: #FFF9EE !important; }
+      .unsaved-badge { display: inline-block !important; }
+      .budget-input { border: none; padding: 0; }
+    }
+  </style>
+</head>
+<body>
+
+<a href="#main" class="skip-link">Skip to main content</a>
+
+<div class="crisis-bar" role="region" aria-label="Crisis help">
+  <strong>Need help right now?</strong>
+  <a href="tel:211">Call 211</a><span class="crisis-bar__sep">·</span>
+  <a href="sms:741741?body=HOME">Text HOME to 741741</a><span class="crisis-bar__sep">·</span>
+  <a href="tel:988">988 Suicide &amp; Crisis</a>
+</div>
+
+<nav class="nav" aria-label="Primary">
+  <div class="nav__inner">
+    <a href="/" class="nav__logo" aria-label="Common Ladder home">
+      <svg width="28" height="28" viewBox="0 0 28 28" fill="none" aria-hidden="true">
+        <rect x="4" y="2" width="3" height="24" rx="1.5" fill="white" opacity=".9"/>
+        <rect x="21" y="2" width="3" height="24" rx="1.5" fill="white" opacity=".9"/>
+        <rect x="4" y="7" width="20" height="3" rx="1.5" fill="#E8911A"/>
+        <rect x="4" y="14" width="20" height="3" rx="1.5" fill="#E8911A"/>
+        <rect x="4" y="21" width="20" height="3" rx="1.5" fill="#E8911A"/>
+      </svg>
+      common<span>ladder</span>
+    </a>
+    <button class="nav__toggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="primary-nav" onclick="this.setAttribute('aria-expanded', document.getElementById('primary-nav').classList.toggle('open') ? 'true' : 'false')">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav__links" id="primary-nav">
+      <li><a href="/find.html">Resources</a></li>
+      <li><a href="/providers.html">For providers</a></li>
+      <li><a href="/learn/">Learn</a></li>
+      <li><a href="/about.html">About</a></li>
+      <li><a href="/find.html" class="nav__cta">Find resources</a></li>
+      <li><a href="https://www.weather.gov/" rel="noreferrer" class="nav__exit" onclick="event.preventDefault();window.location.replace('https://www.weather.gov/')">Leave page</a></li>
+    </ul>
+  </div>
+</nav>
+
+<main id="main">
+
+<section class="hero">
+  <div class="container">
+    <span class="eyebrow">Financial tools</span>
+    <h1>Monthly budget tracker</h1>
+    <p>See exactly where you stand — what's coming in, what's going out, and how close you are to affording stable housing. Your data stays on your device and is never shared.</p>
+  </div>
+</section>
+
+<div class="container">
+<div class="budget-wrap">
+
+  <div class="budget-notice" role="note">
+    <strong>Private by design.</strong> Nothing you enter here is sent anywhere. Your budget is saved only on this device. Print it to bring to a case manager meeting.
+  </div>
+
+  <!-- TOTALS BAR -->
+  <div class="budget-totals" aria-live="polite" aria-label="Budget summary">
+    <div class="budget-totals__item">
+      <div class="budget-totals__label">Monthly income</div>
+      <div class="budget-totals__value" id="total-income">$0</div>
+    </div>
+    <div class="budget-totals__item">
+      <div class="budget-totals__label">Monthly expenses</div>
+      <div class="budget-totals__value" id="total-expenses">$0</div>
+    </div>
+    <div class="budget-totals__item budget-totals__item--balance" id="balance-item">
+      <div class="budget-totals__label">Balance</div>
+      <div class="budget-totals__value" id="total-balance">$0</div>
+    </div>
+  </div>
+
+  <!-- GAP TO HOUSING -->
+  <div class="gap-callout" id="gap-callout">
+    <h3>How close are you to affording rent?</h3>
+    <p>Pick the closest city and see how your income compares to typical monthly rent for a studio or 1-bedroom.</p>
+    <select class="gap-callout__select" id="city-select" onchange="updateGap()">
+      <option value="">— choose a city —</option>
+      <option value="phoenix:900">Phoenix, AZ (~$900/mo studio)</option>
+      <option value="tucson:750">Tucson, AZ (~$750/mo studio)</option>
+      <option value="los-angeles:1600">Los Angeles, CA (~$1,600/mo studio)</option>
+      <option value="san-francisco:2000">San Francisco, CA (~$2,000/mo studio)</option>
+      <option value="seattle:1400">Seattle, WA (~$1,400/mo studio)</option>
+      <option value="denver:1200">Denver, CO (~$1,200/mo studio)</option>
+      <option value="chicago:1100">Chicago, IL (~$1,100/mo studio)</option>
+      <option value="houston:900">Houston, TX (~$900/mo studio)</option>
+      <option value="nyc:2200">New York City, NY (~$2,200/mo studio)</option>
+      <option value="miami:1500">Miami, FL (~$1,500/mo studio)</option>
+      <option value="atlanta:1100">Atlanta, GA (~$1,100/mo studio)</option>
+    </select>
+    <div class="gap-callout__result" id="gap-result"></div>
+  </div>
+
+  <!-- INCOME TABLE -->
+  <div class="budget-section">
+    <h2>Income</h2>
+    <table class="budget-table" id="income-table" aria-label="Monthly income">
+      <thead>
+        <tr>
+          <th>Source</th>
+          <th>Notes</th>
+          <th style="text-align:right">Monthly amount</th>
+          <th aria-label="Remove row"></th>
+        </tr>
+      </thead>
+      <tbody id="income-body">
+        <!-- Pre-saved rows injected by JS -->
+      </tbody>
+    </table>
+    <button class="budget-add-btn" onclick="addRow('income', '', '', '')">+ Add income source</button>
+  </div>
+
+  <!-- EXPENSES TABLE -->
+  <div class="budget-section">
+    <h2>Expenses</h2>
+    <table class="budget-table" id="expense-table" aria-label="Monthly expenses">
+      <thead>
+        <tr>
+          <th>Category</th>
+          <th>Notes</th>
+          <th style="text-align:right">Monthly amount</th>
+          <th aria-label="Remove row"></th>
+        </tr>
+      </thead>
+      <tbody id="expense-body">
+        <!-- Pre-saved rows injected by JS -->
+      </tbody>
+    </table>
+    <button class="budget-add-btn" onclick="addRow('expense', '', '', '')">+ Add expense</button>
+  </div>
+
+  <!-- ACTIONS -->
+  <div class="budget-actions">
+    <button class="btn-save" onclick="saveBudget()">Save budget</button>
+    <button class="btn-print" onclick="window.print()">Print for case manager</button>
+    <div class="save-confirm" id="save-confirm" aria-live="polite">✓ Saved to this device</div>
+    <button class="btn-clear" onclick="clearBudget()">Clear all</button>
+  </div>
+
+</div><!-- /.budget-wrap -->
+</div><!-- /.container -->
+
+</main>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer__grid">
+      <div class="footer__brand">
+        <h3>Common Ladder</h3>
+        <p>The civic resource platform connecting people experiencing homelessness with every service in your community.</p>
+        <p style="margin-top:1rem; font-size:.8rem; opacity:.7">Built in Phoenix, AZ · Free to use, always</p>
+      </div>
+      <div>
+        <h4>Find help</h4>
+        <ul>
+          <li><a href="/find.html?cat=shelter">Shelter</a></li>
+          <li><a href="/find.html?cat=food">Food</a></li>
+          <li><a href="/find.html?cat=legal">Legal</a></li>
+          <li><a href="/help/">All categories</a></li>
+          <li><a href="/static-tools/">Local navigators</a></li>
+          <li><a href="/coc-finder.html">Find your CoC</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Learn</h4>
+        <ul>
+          <li><a href="/learn/causes/">What causes homelessness</a></li>
+          <li><a href="/learn/who/">Who experiences it</a></li>
+          <li><a href="/learn/solutions/">What actually works</a></li>
+          <li><a href="/learn/society/">How we end it</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>About</h4>
+        <ul>
+          <li><a href="/about.html">Our mission</a></li>
+          <li><a href="/about/methodology.html">Methodology</a></li>
+          <li><a href="/contact.html">Contact</a></li>
+          <li><a href="/privacy.html">Privacy</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer__transparency">
+      <strong>Transparency:</strong> Common Ladder is an independent civic project. We do not sell user data, run ads, or accept payment from listed resources.
+    </div>
+    <div class="footer__bottom">
+      <span>&copy; 2026 Common Ladder. Free to use, always.</span>
+      <span><time datetime="2026-05-24">Last updated May 24, 2026</time></span>
+    </div>
+  </div>
+</footer>
+
+<script>
+// ── Data model ──────────────────────────────────────────────
+
+// Default rows shown when no saved budget exists
+const DEFAULT_INCOME = [
+  { label: 'SSI (Supplemental Security Income)', note: 'Federal maximum: $943/mo', amount: '', saved: false },
+  { label: 'SNAP (Food Stamps)', note: 'Average benefit: ~$200/mo', amount: '', saved: false },
+  { label: 'Employment income', note: 'Wages, gig work, day labor', amount: '', saved: false },
+];
+
+const DEFAULT_EXPENSES = [
+  { label: 'Food & groceries', note: 'Beyond what SNAP covers', amount: '', saved: false },
+  { label: 'Phone', note: 'Lifeline/ACP program may reduce this', amount: '', saved: false },
+  { label: 'Transportation', note: 'Bus pass, rideshare', amount: '', saved: false },
+  { label: 'Laundry', note: '', amount: '', saved: false },
+  { label: 'Hygiene & personal care', note: 'Soap, toothpaste, razors, etc.', amount: '', saved: false },
+  { label: 'Medical / prescriptions', note: 'Copays, OTC medications', amount: '', saved: false },
+  { label: 'Storage unit', note: 'For belongings while in shelter', amount: '', saved: false },
+];
+
+let incomeRows = [];
+let expenseRows = [];
+
+// ── Init ──────────────────────────────────────────────────
+
+function init() {
+  const saved = loadBudget();
+  if (saved) {
+    incomeRows = saved.income;
+    expenseRows = saved.expenses;
+  } else {
+    incomeRows = DEFAULT_INCOME.map(r => Object.assign({}, r));
+    expenseRows = DEFAULT_EXPENSES.map(r => Object.assign({}, r));
+  }
+  renderAll();
+}
+
+// ── Render ────────────────────────────────────────────────
+
+function renderAll() {
+  renderTable('income-body', incomeRows, 'income');
+  renderTable('expense-body', expenseRows, 'expense');
+  updateTotals();
+}
+
+function renderTable(bodyId, rows, type) {
+  const tbody = document.getElementById(bodyId);
+  tbody.innerHTML = '';
+  rows.forEach((row, i) => {
+    const tr = document.createElement('tr');
+    if (!row.saved) tr.className = 'budget-row--unsaved';
+
+    const unsavedBadge = !row.saved
+      ? '<span class="unsaved-badge" title="Tap a field and enter your amount to log this row">not yet logged</span>'
+      : '';
+
+    tr.innerHTML = `
+      <td>
+        <input class="budget-input${!row.saved ? ' budget-input--unsaved' : ''}"
+               type="text"
+               aria-label="Label for row ${i+1}"
+               value="${escHtml(row.label)}"
+               placeholder="Add a label"
+               oninput="updateRow('${type}', ${i}, 'label', this.value); markSaved('${type}', ${i}, this)"
+               onfocus="this.classList.remove('budget-input--unsaved')"
+        >
+        ${unsavedBadge}
+      </td>
+      <td>
+        <input class="budget-input"
+               type="text"
+               aria-label="Notes for row ${i+1}"
+               value="${escHtml(row.note)}"
+               placeholder="Notes (optional)"
+               oninput="updateRow('${type}', ${i}, 'note', this.value)"
+        >
+      </td>
+      <td style="white-space:nowrap">
+        <input class="budget-input budget-input--amount${!row.saved ? ' budget-input--unsaved' : ''}"
+               type="number"
+               inputmode="decimal"
+               min="0"
+               step="1"
+               aria-label="Amount for row ${i+1}"
+               value="${row.amount}"
+               placeholder="0"
+               oninput="updateRow('${type}', ${i}, 'amount', this.value); markSaved('${type}', ${i}, this); updateTotals()"
+               onfocus="this.classList.remove('budget-input--unsaved')"
+        >
+      </td>
+      <td>
+        <button class="btn-row-delete" aria-label="Remove row ${i+1}" onclick="removeRow('${type}', ${i})">×</button>
+      </td>
+    `;
+    tbody.appendChild(tr);
+  });
+}
+
+// ── Row operations ─────────────────────────────────────────
+
+function addRow(type, label, note, amount) {
+  const rows = type === 'income' ? incomeRows : expenseRows;
+  rows.push({ label, note, amount, saved: true });
+  renderAll();
+  // Focus the new label input
+  const tbody = document.getElementById(type === 'income' ? 'income-body' : 'expense-body');
+  const newRow = tbody.lastElementChild;
+  if (newRow) newRow.querySelector('input').focus();
+}
+
+function removeRow(type, idx) {
+  const rows = type === 'income' ? incomeRows : expenseRows;
+  rows.splice(idx, 1);
+  renderAll();
+}
+
+function updateRow(type, idx, field, value) {
+  const rows = type === 'income' ? incomeRows : expenseRows;
+  if (rows[idx]) rows[idx][field] = value;
+}
+
+function markSaved(type, idx, inputEl) {
+  const rows = type === 'income' ? incomeRows : expenseRows;
+  if (rows[idx] && !rows[idx].saved) {
+    rows[idx].saved = true;
+    // Remove unsaved styling from this row without full re-render
+    const tr = inputEl.closest('tr');
+    if (tr) {
+      tr.classList.remove('budget-row--unsaved');
+      const badge = tr.querySelector('.unsaved-badge');
+      if (badge) badge.remove();
+      tr.querySelectorAll('.budget-input--unsaved').forEach(el => {
+        el.classList.remove('budget-input--unsaved');
+      });
+    }
+  }
+}
+
+// ── Totals ─────────────────────────────────────────────────
+
+function updateTotals() {
+  const income = sumRows(incomeRows);
+  const expenses = sumRows(expenseRows);
+  const balance = income - expenses;
+
+  document.getElementById('total-income').textContent = formatMoney(income);
+  document.getElementById('total-expenses').textContent = formatMoney(expenses);
+  document.getElementById('total-balance').textContent = formatMoney(balance);
+
+  const balanceItem = document.getElementById('balance-item');
+  balanceItem.classList.toggle('negative', balance < 0);
+
+  updateGap();
+}
+
+function sumRows(rows) {
+  return rows.reduce((sum, r) => sum + (parseFloat(r.amount) || 0), 0);
+}
+
+// ── Gap to housing ─────────────────────────────────────────
+
+function updateGap() {
+  const sel = document.getElementById('city-select');
+  const resultEl = document.getElementById('gap-result');
+  if (!sel.value) { resultEl.classList.remove('show'); return; }
+
+  const rent = parseInt(sel.value.split(':')[1]);
+  const income = sumRows(incomeRows);
+  const expenses = sumRows(expenseRows);
+  const balance = income - expenses;
+  const gap = rent - balance;
+
+  resultEl.classList.add('show');
+  if (gap <= 0) {
+    resultEl.className = 'gap-callout__result show positive';
+    resultEl.innerHTML = `<strong>Your balance covers rent.</strong> You have $${Math.abs(gap).toFixed(0)} left over after typical rent. That's a good foundation — ask your case manager about rapid rehousing or housing voucher programs.`;
+  } else {
+    resultEl.className = 'gap-callout__result show negative';
+    resultEl.innerHTML = `<strong>Gap to cover rent: $${gap.toFixed(0)}/mo.</strong> You'd need $${gap.toFixed(0)} more each month to afford typical rent in this city. Ask your case manager about rent subsidy programs, income-based housing, or rapid rehousing options.`;
+  }
+}
+
+// ── Save / load ────────────────────────────────────────────
+
+function saveBudget() {
+  // Mark all rows as saved
+  incomeRows.forEach(r => r.saved = true);
+  expenseRows.forEach(r => r.saved = true);
+
+  try {
+    localStorage.setItem('cl_budget', JSON.stringify({
+      income: incomeRows,
+      expenses: expenseRows,
+      savedAt: new Date().toISOString()
+    }));
+    renderAll();
+    const confirm = document.getElementById('save-confirm');
+    confirm.classList.add('show');
+    setTimeout(() => confirm.classList.remove('show'), 2500);
+  } catch(e) {
+    // localStorage not available (private browsing, etc.) — show print prompt instead
+    alert('Your browser is blocking local storage. Use "Print for case manager" to keep a copy.');
+  }
+}
+
+function loadBudget() {
+  try {
+    const raw = localStorage.getItem('cl_budget');
+    if (!raw) return null;
+    const data = JSON.parse(raw);
+    // If saved data has no unsaved rows, merge in any new default rows not already present
+    return data;
+  } catch(e) {
+    return null;
+  }
+}
+
+function clearBudget() {
+  if (!confirm('Clear all budget data? This cannot be undone.')) return;
+  try { localStorage.removeItem('cl_budget'); } catch(e) {}
+  incomeRows = DEFAULT_INCOME.map(r => Object.assign({}, r));
+  expenseRows = DEFAULT_EXPENSES.map(r => Object.assign({}, r));
+  renderAll();
+}
+
+// ── Utility ────────────────────────────────────────────────
+
+function formatMoney(n) {
+  const sign = n < 0 ? '-' : '';
+  return sign + '$' + Math.abs(n).toLocaleString('en-US', { minimumFractionDigits: 0, maximumFractionDigits: 0 });
+}
+
+function escHtml(str) {
+  return (str || '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+
+// ── Boot ───────────────────────────────────────────────────
+
+document.addEventListener('DOMContentLoaded', init);
+</script>
+
+</body>
+</html>
