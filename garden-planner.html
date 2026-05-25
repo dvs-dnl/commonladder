@@ -1,0 +1,904 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Garden Planner</title>
+<style>
+:root {
+  --g-dark: #1b4332; --g: #2d6a4f; --g-mid: #40916c; --g-light: #52b788;
+  --g-pale: #b7e4c7; --g-bg: #d8f3dc; --g-xbg: #f0faf3;
+  --amber: #e9c46a; --amber-d: #d4a843; --amber-bg: #fdf4d3;
+  --soil: #7c4f28; --soil-l: #c4a882;
+  --sky: #90e0ef; --sky-d: #0077b6;
+  --lavender: #c8b6e2; --lav-d: #6d4c9e; --lav-bg: #f0ebfa;
+  --red: #ef233c; --red-bg: #fde8eb;
+  --cream: #fefae0; --cream-d: #f5f0cc;
+  --text: #1c1c1c; --muted: #5f6b6e; --border: #d4e0d7;
+  --white: #fff; --radius: 14px; --r-sm: 8px;
+  --shadow: 0 2px 12px rgba(0,0,0,0.07);
+  --step-h: 60px;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: var(--g-xbg); color: var(--text); min-height: 100vh; }
+h1,h2,h3 { font-weight: 600; }
+
+/* APP SHELL */
+.app { max-width: 780px; margin: 0 auto; padding: 0 0 80px; }
+.header { background: var(--g-dark); color: var(--white); padding: 18px 24px 14px; position: sticky; top: 0; z-index: 100; }
+.header-row { display: flex; align-items: center; justify-content: space-between; }
+.logo { font-size: 20px; font-weight: 700; letter-spacing: -0.3px; display: flex; align-items: center; gap: 8px; }
+.logo-leaf { font-size: 22px; }
+.zone-badge { background: var(--g-mid); color: var(--white); font-size: 12px; padding: 4px 10px; border-radius: 20px; font-weight: 600; display: none; }
+
+/* STEP NAV */
+.steps { display: flex; background: var(--g); padding: 0 24px; gap: 0; }
+.step-btn { flex: 1; display: flex; flex-direction: column; align-items: center; padding: 10px 4px 8px; cursor: pointer; border-bottom: 3px solid transparent; transition: all .2s; opacity: .55; }
+.step-btn.active { opacity: 1; border-bottom-color: var(--amber); }
+.step-btn.done { opacity: .8; }
+.step-num { width: 22px; height: 22px; border-radius: 50%; background: rgba(255,255,255,.2); color: var(--white); font-size: 11px; font-weight: 700; display: flex; align-items: center; justify-content: center; margin-bottom: 3px; }
+.step-btn.active .step-num { background: var(--amber); color: var(--g-dark); }
+.step-btn.done .step-num { background: var(--g-light); color: var(--white); }
+.step-label { font-size: 10px; color: var(--white); font-weight: 500; text-align: center; }
+
+/* SECTIONS */
+.section { padding: 20px 20px 0; display: none; }
+.section.active { display: block; }
+.section-title { font-size: 22px; font-weight: 700; color: var(--g-dark); margin-bottom: 4px; }
+.section-sub { font-size: 14px; color: var(--muted); margin-bottom: 20px; line-height: 1.5; }
+
+/* CARDS */
+.card { background: var(--white); border-radius: var(--radius); border: 1px solid var(--border); padding: 18px; margin-bottom: 14px; box-shadow: var(--shadow); }
+.card-title { font-size: 15px; font-weight: 600; color: var(--g-dark); margin-bottom: 6px; }
+
+/* LOCATION */
+.state-select { width: 100%; padding: 12px 14px; border: 1.5px solid var(--border); border-radius: var(--r-sm); font-size: 15px; background: var(--white); color: var(--text); cursor: pointer; appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%235f6b6e' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 14px center; padding-right: 36px; }
+.state-select:focus { outline: none; border-color: var(--g-light); box-shadow: 0 0 0 3px rgba(82,183,136,.2); }
+.zone-result { background: var(--g-bg); border: 1.5px solid var(--g-pale); border-radius: var(--radius); padding: 18px; margin-top: 14px; display: none; }
+.zone-name { font-size: 28px; font-weight: 800; color: var(--g-dark); }
+.zone-detail { font-size: 13px; color: var(--g); margin-top: 4px; line-height: 1.6; }
+.zone-dates { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 12px; }
+.zone-date-item { background: var(--white); border-radius: var(--r-sm); padding: 10px 12px; }
+.zdl { font-size: 11px; color: var(--muted); font-weight: 500; text-transform: uppercase; letter-spacing: .05em; }
+.zdv { font-size: 16px; font-weight: 700; color: var(--g-dark); margin-top: 2px; }
+.zdv.frost { color: var(--sky-d); }
+.zdv.warm { color: var(--amber-d); }
+
+/* GARDEN TYPE */
+.type-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 16px; }
+.type-card { border: 1.5px solid var(--border); border-radius: var(--radius); padding: 16px 14px; cursor: pointer; transition: all .2s; background: var(--white); text-align: left; }
+.type-card:hover { border-color: var(--g-light); background: var(--g-xbg); }
+.type-card.selected { border-color: var(--g-mid); background: var(--g-bg); box-shadow: 0 0 0 3px rgba(82,183,136,.2); }
+.type-icon { font-size: 28px; margin-bottom: 8px; }
+.type-name { font-size: 14px; font-weight: 600; color: var(--g-dark); }
+.type-desc { font-size: 12px; color: var(--muted); margin-top: 3px; line-height: 1.4; }
+.size-row { display: flex; align-items: center; gap: 10px; margin-top: 4px; }
+.size-input { flex: 1; padding: 11px 14px; border: 1.5px solid var(--border); border-radius: var(--r-sm); font-size: 15px; }
+.size-input:focus { outline: none; border-color: var(--g-light); }
+.size-unit { font-size: 14px; color: var(--muted); font-weight: 500; white-space: nowrap; }
+
+/* PLANTS */
+.plant-categories { display: flex; gap: 8px; margin-bottom: 14px; flex-wrap: wrap; }
+.cat-btn { padding: 6px 14px; border-radius: 20px; border: 1.5px solid var(--border); background: var(--white); font-size: 13px; cursor: pointer; font-weight: 500; color: var(--muted); transition: all .15s; }
+.cat-btn.active { background: var(--g-dark); color: var(--white); border-color: var(--g-dark); }
+.plant-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+.plant-card { border: 1.5px solid var(--border); border-radius: var(--r-sm); padding: 12px 10px; cursor: pointer; transition: all .15s; background: var(--white); text-align: center; position: relative; }
+.plant-card:hover { border-color: var(--g-light); background: var(--g-xbg); }
+.plant-card.selected { border-color: var(--g-mid); background: var(--g-bg); }
+.plant-card.selected::after { content: '✓'; position: absolute; top: 5px; right: 7px; font-size: 11px; color: var(--g-mid); font-weight: 700; }
+.plant-emoji { font-size: 26px; display: block; margin-bottom: 4px; }
+.plant-name { font-size: 12px; font-weight: 600; color: var(--g-dark); }
+.plant-hint { font-size: 10px; color: var(--muted); margin-top: 2px; }
+.selected-count { background: var(--amber-bg); border: 1px solid var(--amber); border-radius: var(--r-sm); padding: 10px 14px; margin-bottom: 14px; font-size: 13px; font-weight: 600; color: var(--amber-d); display: none; }
+
+/* PLAN */
+.plan-summary { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 18px; }
+.sum-card { background: var(--white); border: 1px solid var(--border); border-radius: var(--r-sm); padding: 12px; text-align: center; }
+.sum-val { font-size: 22px; font-weight: 800; color: var(--g-dark); }
+.sum-label { font-size: 11px; color: var(--muted); margin-top: 2px; }
+
+/* CALENDAR */
+.cal-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; margin-bottom: 20px; background: var(--white); border-radius: var(--radius); border: 1px solid var(--border); box-shadow: var(--shadow); }
+.cal-table { min-width: 660px; width: 100%; border-collapse: collapse; }
+.cal-header-row th { font-size: 11px; font-weight: 600; color: var(--muted); text-align: center; padding: 8px 4px; background: var(--g-xbg); border-bottom: 1px solid var(--border); text-transform: uppercase; letter-spacing: .04em; }
+.cal-header-row th:first-child { text-align: left; padding-left: 14px; min-width: 130px; }
+.cal-row td { border-bottom: 1px solid rgba(0,0,0,.05); padding: 5px 4px; vertical-align: middle; }
+.cal-row td:first-child { padding-left: 14px; font-size: 12px; font-weight: 600; color: var(--g-dark); white-space: nowrap; }
+.cal-row:last-child td { border-bottom: none; }
+.cal-cell { height: 18px; border-radius: 3px; }
+.bar-indoor { background: var(--lavender); border-radius: 3px; }
+.bar-harden { background: var(--amber); border-radius: 3px; }
+.bar-grow { background: var(--g-light); border-radius: 3px; }
+.bar-harvest { background: var(--g-mid); border-radius: 3px; }
+.bar-direct { background: var(--sky); border-radius: 3px; }
+.cal-legend { display: flex; flex-wrap: wrap; gap: 10px; padding: 12px 14px; border-top: 1px solid var(--border); background: var(--g-xbg); border-radius: 0 0 var(--radius) var(--radius); }
+.leg-item { display: flex; align-items: center; gap: 5px; font-size: 11px; color: var(--muted); }
+.leg-dot { width: 12px; height: 12px; border-radius: 3px; flex-shrink: 0; }
+
+/* PLANT DETAIL CARDS */
+.plant-plan-card { background: var(--white); border: 1px solid var(--border); border-radius: var(--radius); padding: 16px 18px; margin-bottom: 12px; box-shadow: var(--shadow); }
+.ppc-header { display: flex; align-items: flex-start; gap: 12px; margin-bottom: 12px; }
+.ppc-emoji { font-size: 32px; line-height: 1; }
+.ppc-title { font-size: 16px; font-weight: 700; color: var(--g-dark); }
+.ppc-count { font-size: 13px; color: var(--muted); margin-top: 2px; }
+.ppc-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.ppc-item { background: var(--g-xbg); border-radius: var(--r-sm); padding: 9px 11px; }
+.ppc-label { font-size: 10px; text-transform: uppercase; letter-spacing: .05em; color: var(--muted); font-weight: 600; margin-bottom: 3px; }
+.ppc-value { font-size: 13px; font-weight: 600; color: var(--g-dark); }
+.ppc-tip { margin-top: 10px; font-size: 12px; color: var(--muted); line-height: 1.5; background: var(--cream); border-radius: var(--r-sm); padding: 8px 10px; border-left: 3px solid var(--amber); }
+
+/* PROBLEMS ACCORDION */
+.prob-toggle { margin-top: 10px; background: none; border: 1px solid var(--border); border-radius: var(--r-sm); padding: 7px 11px; font-size: 12px; font-weight: 600; color: var(--g-dark); cursor: pointer; width: 100%; text-align: left; display: flex; align-items: center; gap: 6px; transition: background .15s; }
+.prob-toggle:hover { background: var(--g-xbg); }
+.prob-toggle .prob-chevron { margin-left: auto; transition: transform .2s; font-style: normal; }
+.prob-toggle.open .prob-chevron { transform: rotate(180deg); }
+.prob-list { display: none; margin-top: 8px; }
+.prob-list.open { display: block; }
+.prob-item { padding: 8px 0; border-bottom: 1px solid var(--border); }
+.prob-item:last-child { border-bottom: none; }
+.prob-issue { font-size: 12px; font-weight: 600; color: var(--red); margin-bottom: 3px; }
+.prob-fix { font-size: 12px; color: var(--muted); line-height: 1.5; }
+
+/* SOIL RECIPE CARD */
+.soil-card { background: var(--white); border: 1px solid var(--border); border-radius: var(--radius); padding: 16px 18px; margin-bottom: 18px; box-shadow: var(--shadow); }
+.soil-card-title { font-size: 15px; font-weight: 700; color: var(--soil); margin-bottom: 2px; display: flex; align-items: center; gap: 7px; }
+.soil-card-subtitle { font-size: 12px; color: var(--muted); margin-bottom: 12px; }
+.soil-row { display: flex; align-items: flex-start; gap: 10px; padding: 8px 0; border-bottom: 1px solid var(--border); }
+.soil-row:last-of-type { border-bottom: none; }
+.soil-part { font-size: 16px; font-weight: 800; color: var(--g-dark); min-width: 44px; }
+.soil-item { font-size: 13px; font-weight: 600; color: var(--text); }
+.soil-why { font-size: 11px; color: var(--muted); margin-top: 2px; }
+.soil-note { margin-top: 10px; font-size: 12px; color: var(--muted); line-height: 1.5; background: var(--cream-d); border-radius: var(--r-sm); padding: 8px 10px; border-left: 3px solid var(--soil-l); }
+.soil-ph { display: inline-block; margin-top: 8px; font-size: 11px; font-weight: 600; background: var(--g-bg); color: var(--g-dark); border-radius: 20px; padding: 3px 10px; }
+
+/* WATER SUMMARY */
+.water-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 18px; }
+.water-card { background: var(--white); border: 1px solid var(--border); border-radius: var(--r-sm); padding: 11px 13px; }
+.water-label { font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: .05em; color: var(--muted); margin-bottom: 4px; }
+.water-val { font-size: 13px; font-weight: 700; color: var(--sky-d); }
+.water-note { font-size: 11px; color: var(--muted); margin-top: 2px; line-height: 1.4; }
+
+/* NAV BUTTONS */
+.nav-bar { position: fixed; bottom: 0; left: 0; right: 0; background: var(--white); border-top: 1px solid var(--border); padding: 12px 20px; display: flex; gap: 10px; max-width: 780px; margin: 0 auto; z-index: 200; }
+.btn { padding: 13px 20px; border-radius: var(--r-sm); font-size: 15px; font-weight: 600; cursor: pointer; border: none; transition: all .15s; }
+.btn-primary { background: var(--g-dark); color: var(--white); flex: 1; }
+.btn-primary:hover { background: var(--g); }
+.btn-primary:disabled { background: var(--border); color: var(--muted); cursor: not-allowed; }
+.btn-secondary { background: var(--g-xbg); color: var(--g-dark); border: 1.5px solid var(--border); }
+.btn-secondary:hover { background: var(--g-bg); }
+
+/* UTIL */
+.mt8 { margin-top: 8px; }
+.mt14 { margin-top: 14px; }
+.hidden { display: none !important; }
+.tag { display: inline-block; font-size: 10px; font-weight: 600; padding: 3px 8px; border-radius: 20px; background: var(--amber-bg); color: var(--amber-d); }
+.tag.cool { background: var(--lav-bg); color: var(--lav-d); }
+.tag.direct { background: #e8f4fd; color: var(--sky-d); }
+
+@media (max-width: 480px) {
+  .plant-grid { grid-template-columns: repeat(2, 1fr); }
+  .type-grid { grid-template-columns: 1fr 1fr; }
+  .ppc-grid { grid-template-columns: 1fr; }
+  .plan-summary { grid-template-columns: 1fr 1fr 1fr; }
+}
+</style>
+</head>
+<body>
+<div class="app">
+
+<div class="header">
+  <div class="header-row">
+    <div class="logo"><span class="logo-leaf">🌱</span> Garden Planner</div>
+    <div class="zone-badge" id="zoneBadge">Zone —</div>
+  </div>
+</div>
+
+<div class="steps">
+  <div class="step-btn active" data-step="1" onclick="goStep(1)">
+    <div class="step-num">1</div>
+    <div class="step-label">Location</div>
+  </div>
+  <div class="step-btn" data-step="2" onclick="goStep(2)">
+    <div class="step-num">2</div>
+    <div class="step-label">Garden</div>
+  </div>
+  <div class="step-btn" data-step="3" onclick="goStep(3)">
+    <div class="step-num">3</div>
+    <div class="step-label">Plants</div>
+  </div>
+  <div class="step-btn" data-step="4" onclick="goStep(4)">
+    <div class="step-num">4</div>
+    <div class="step-label">My Plan</div>
+  </div>
+</div>
+
+<!-- STEP 1: LOCATION -->
+<div class="section active" id="step1">
+  <div style="padding-top:4px;">
+    <p class="section-title" style="padding-top:16px;padding-left:0;">Where are you growing?</p>
+    <p class="section-sub">Your state maps to a USDA hardiness zone, which determines frost dates and planting windows.</p>
+
+    <div class="card">
+      <div class="card-title">Select your state</div>
+      <select class="state-select mt8" id="stateSelect" onchange="onStateChange()">
+        <option value="">— Choose a state —</option>
+        <option value="AL">Alabama (Zone 8)</option>
+        <option value="AK">Alaska (Zone 3)</option>
+        <option value="AZ">Arizona (Zone 9)</option>
+        <option value="AR">Arkansas (Zone 7)</option>
+        <option value="CA">California (Zone 9)</option>
+        <option value="CO">Colorado (Zone 5)</option>
+        <option value="CT">Connecticut (Zone 6)</option>
+        <option value="DE">Delaware (Zone 7)</option>
+        <option value="FL">Florida (Zone 10)</option>
+        <option value="GA">Georgia (Zone 8)</option>
+        <option value="HI">Hawaii (Zone 11)</option>
+        <option value="ID">Idaho (Zone 6)</option>
+        <option value="IL">Illinois (Zone 5)</option>
+        <option value="IN">Indiana (Zone 5)</option>
+        <option value="IA">Iowa (Zone 5)</option>
+        <option value="KS">Kansas (Zone 6)</option>
+        <option value="KY">Kentucky (Zone 6)</option>
+        <option value="LA">Louisiana (Zone 9)</option>
+        <option value="ME">Maine (Zone 5)</option>
+        <option value="MD">Maryland (Zone 7)</option>
+        <option value="MA">Massachusetts (Zone 6)</option>
+        <option value="MI">Michigan (Zone 5)</option>
+        <option value="MN">Minnesota (Zone 4)</option>
+        <option value="MS">Mississippi (Zone 8)</option>
+        <option value="MO">Missouri (Zone 6)</option>
+        <option value="MT">Montana (Zone 4)</option>
+        <option value="NE">Nebraska (Zone 5)</option>
+        <option value="NV">Nevada (Zone 7)</option>
+        <option value="NH">New Hampshire (Zone 5)</option>
+        <option value="NJ">New Jersey (Zone 6)</option>
+        <option value="NM">New Mexico (Zone 7)</option>
+        <option value="NY">New York (Zone 6)</option>
+        <option value="NC">North Carolina (Zone 7)</option>
+        <option value="ND">North Dakota (Zone 4)</option>
+        <option value="OH">Ohio (Zone 5)</option>
+        <option value="OK">Oklahoma (Zone 7)</option>
+        <option value="OR">Oregon (Zone 8)</option>
+        <option value="PA">Pennsylvania (Zone 6)</option>
+        <option value="RI">Rhode Island (Zone 6)</option>
+        <option value="SC">South Carolina (Zone 8)</option>
+        <option value="SD">South Dakota (Zone 4)</option>
+        <option value="TN">Tennessee (Zone 7)</option>
+        <option value="TX">Texas (Zone 8)</option>
+        <option value="UT">Utah (Zone 6)</option>
+        <option value="VT">Vermont (Zone 5)</option>
+        <option value="VA">Virginia (Zone 7)</option>
+        <option value="WA">Washington (Zone 8)</option>
+        <option value="WV">West Virginia (Zone 6)</option>
+        <option value="WI">Wisconsin (Zone 4)</option>
+        <option value="WY">Wyoming (Zone 4)</option>
+      </select>
+
+      <div class="zone-result" id="zoneResult">
+        <div class="zone-name" id="zoneName"></div>
+        <div class="zone-detail" id="zoneDetail"></div>
+        <div class="zone-dates" id="zoneDates"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- STEP 2: GARDEN -->
+<div class="section" id="step2">
+  <p class="section-title" style="padding-top:16px;">Your garden setup</p>
+  <p class="section-sub">Choose how you're growing — this determines spacing, plant counts, and soil needs.</p>
+
+  <div class="card">
+    <div class="card-title">Garden type</div>
+    <div class="type-grid mt8" id="typeGrid">
+      <button class="type-card" data-type="sqft" onclick="selectType('sqft')">
+        <div class="type-icon">📐</div>
+        <div class="type-name">Square foot</div>
+        <div class="type-desc">Intensive grid beds, max yield per sq ft</div>
+      </button>
+      <button class="type-card" data-type="raised" onclick="selectType('raised')">
+        <div class="type-icon">🪵</div>
+        <div class="type-name">Raised bed</div>
+        <div class="type-desc">Wooden or metal frame, great soil control</div>
+      </button>
+      <button class="type-card" data-type="container" onclick="selectType('container')">
+        <div class="type-icon">🪴</div>
+        <div class="type-name">Containers / pots</div>
+        <div class="type-desc">Flexible, great for patios and small spaces</div>
+      </button>
+      <button class="type-card" data-type="inground" onclick="selectType('inground')">
+        <div class="type-icon">🌍</div>
+        <div class="type-name">In-ground</div>
+        <div class="type-desc">Traditional row or intensive in native soil</div>
+      </button>
+    </div>
+  </div>
+
+  <div class="card" id="sizeCard" style="display:none;">
+    <div class="card-title" id="sizeCardTitle">Garden size</div>
+    <p style="font-size:13px;color:var(--muted);margin:4px 0 12px;" id="sizeCardSub"></p>
+    <div class="size-row">
+      <input class="size-input" type="number" id="gardenSize" min="1" placeholder="e.g. 32" oninput="onSizeChange()">
+      <div class="size-unit" id="sizeUnit">sq ft</div>
+    </div>
+    <div id="sizeHint" style="font-size:12px;color:var(--muted);margin-top:8px;"></div>
+  </div>
+</div>
+
+<!-- STEP 3: PLANTS -->
+<div class="section" id="step3">
+  <p class="section-title" style="padding-top:16px;">What will you grow?</p>
+  <p class="section-sub">Select everything you're interested in — your plan will calculate dates and quantities.</p>
+
+  <div class="selected-count" id="selectedCount"></div>
+
+  <div class="plant-categories">
+    <button class="cat-btn active" onclick="filterCat('all', this)">All</button>
+    <button class="cat-btn" onclick="filterCat('vegetable', this)">🥦 Vegetables</button>
+    <button class="cat-btn" onclick="filterCat('fruit', this)">🍅 Fruiting</button>
+    <button class="cat-btn" onclick="filterCat('herb', this)">🌿 Herbs</button>
+    <button class="cat-btn" onclick="filterCat('flower', this)">🌸 Flowers</button>
+  </div>
+
+  <div class="plant-grid" id="plantGrid"></div>
+</div>
+
+<!-- STEP 4: PLAN -->
+<div class="section" id="step4">
+  <p class="section-title" style="padding-top:16px;">Your garden plan</p>
+  <p class="section-sub" id="planSub"></p>
+
+  <div class="plan-summary" id="planSummary"></div>
+
+  <div id="soilSection"></div>
+
+  <div style="font-size:14px;font-weight:600;color:var(--g-dark);margin-bottom:10px;">Planting calendar</div>
+  <div class="cal-wrap">
+    <table class="cal-table" id="calTable"></table>
+    <div class="cal-legend">
+      <div class="leg-item"><div class="leg-dot" style="background:var(--lavender);"></div>Start indoors</div>
+      <div class="leg-item"><div class="leg-dot" style="background:var(--amber);"></div>Harden off</div>
+      <div class="leg-item"><div class="leg-dot" style="background:var(--sky);"></div>Direct sow</div>
+      <div class="leg-item"><div class="leg-dot" style="background:var(--g-light);"></div>Transplant / grow</div>
+      <div class="leg-item"><div class="leg-dot" style="background:var(--g-mid);"></div>Harvest</div>
+    </div>
+  </div>
+
+  <div style="font-size:14px;font-weight:600;color:var(--g-dark);margin-bottom:10px;">Per-plant guide</div>
+  <div id="plantPlanCards"></div>
+</div>
+
+</div><!-- end app -->
+
+<!-- NAV BAR -->
+<div class="nav-bar">
+  <button class="btn btn-secondary hidden" id="backBtn" onclick="prevStep()">← Back</button>
+  <button class="btn btn-primary" id="nextBtn" onclick="nextStep()" disabled>
+    Continue →
+  </button>
+</div>
+
+<script>
+/* ===== DATA ===== */
+const ZONE_DATA = {
+  3: { name:'Zone 3', lastFrost:[5,15], firstFrost:[9,15], season:120, desc:'Short, cold season (northern Minnesota, Montana, Alaska). Grow fast-maturing varieties.' },
+  4: { name:'Zone 4', lastFrost:[5,1],  firstFrost:[10,1], season:150, desc:'Cold winters, moderate summers (upper Midwest, Wyoming). Many warm-season crops are possible.' },
+  5: { name:'Zone 5', lastFrost:[4,15], firstFrost:[10,15], season:183, desc:'Moderate climate (New England, Great Lakes, Denver). Strong 4-season gardening.' },
+  6: { name:'Zone 6', lastFrost:[4,1],  firstFrost:[10,31], season:213, desc:'Long growing season (mid-Atlantic, Pacific NW). Most vegetables thrive.' },
+  7: { name:'Zone 7', lastFrost:[3,15], firstFrost:[11,15], season:244, desc:'Warm winters (Virginia, Oklahoma, New Mexico, Pacific coast). Year-round growing possible.' },
+  8: { name:'Zone 8', lastFrost:[3,1],  firstFrost:[12,1],  season:274, desc:'Mild winters (Georgia, South Carolina, coastal Oregon/WA). Two full growing seasons.' },
+  9: { name:'Zone 9', lastFrost:[2,15], firstFrost:[12,15], season:305, desc:'Near frost-free (Southern California, Arizona, Louisiana). Grow cool-season crops in winter.' },
+  10:{ name:'Zone 10',lastFrost:[1,31], firstFrost:[1,15+365], season:365, desc:'Essentially frost-free (South Florida, Hawaii coastal). Year-round tropical growing.' },
+  11:{ name:'Zone 11',lastFrost:null,   firstFrost:null, season:365, desc:'Tropical — no frost (Hawaii, Puerto Rico). Unlimited growing season.' }
+};
+
+const STATE_ZONES = {
+  AL:8, AK:3, AZ:9, AR:7, CA:9, CO:5, CT:6, DE:7, FL:10, GA:8, HI:11,
+  ID:6, IL:5, IN:5, IA:5, KS:6, KY:6, LA:9, ME:5, MD:7, MA:6, MI:5,
+  MN:4, MS:8, MO:6, MT:4, NE:5, NV:7, NH:5, NJ:6, NM:7, NY:6, NC:7,
+  ND:4, OH:5, OK:7, OR:8, PA:6, RI:6, SC:8, SD:4, TN:7, TX:8, UT:6,
+  VT:5, VA:7, WA:8, WV:6, WI:4, WY:4
+};
+
+// weeks: negative = before last frost, positive = after last frost
+// spaceSqFt: plants per sq ft (square foot method)
+const PLANTS = {
+  tomato:    { name:'Tomato',     emoji:'🍅', cat:'fruit',     warm:true,  directSow:false, indoor:-8, transplant:1, harden:1, dth:75, harvestWks:8, spaceSqFt:1,    containerGal:5,  water:'Regular, deep (1–2"/wk)', soil:'Rich, slightly acidic (pH 6.0–6.8)', tip:'Stake or cage early. Remove suckers for larger fruit. Water at base.',
+    problems:[ {issue:'Blossom end rot',fix:'Inconsistent watering depletes calcium. Water evenly; mulch 2–3" around base; add lime if pH is low.'}, {issue:'Tomato hornworm',fix:'Large green caterpillar; look at dusk. Handpick or spray Bacillus thuringiensis (Bt) for heavy infestations.'}, {issue:'Cracking fruit',fix:'Irregular watering after a dry spell. Maintain even soil moisture; harvest before fully over-ripe.'} ]},
+  cherry_tom:{ name:'Cherry Tom.',emoji:'🍒', cat:'fruit',     warm:true,  directSow:false, indoor:-8, transplant:1, harden:1, dth:60, harvestWks:10,spaceSqFt:1,    containerGal:5,  water:'Consistent moisture', soil:'Rich, well-draining', tip:'Very productive. Great for containers. Pinch off side shoots.',
+    problems:[ {issue:'Fruit split after rain',fix:'Mulch heavily and water consistently to even out moisture swings.'}, {issue:'Aphid clusters',fix:'Knock off with water jet. Introduce ladybugs or spray neem oil. Marigolds nearby deter them.'}, {issue:'Yellowing lower leaves',fix:'Normal aging — remove them. If spreading upward, check for early blight or nutrient deficiency.'} ]},
+  pepper:    { name:'Pepper',     emoji:'🫑', cat:'fruit',     warm:true,  directSow:false, indoor:-10,transplant:2, harden:1, dth:80, harvestWks:8, spaceSqFt:1,    containerGal:5,  water:'Moderate, consistent', soil:'Warm, well-draining (pH 6.0–6.8)', tip:'Needs warm soil. Use black plastic mulch to heat soil. Start earlier than tomatoes.',
+    problems:[ {issue:'Blossom drop',fix:'Temperature stress (too hot or too cold at night). Protect from extremes; don\'t transplant too early.'}, {issue:'Sunscald on fruit',fix:'White papery patches from direct sun. Ensure adequate leaf cover; use shade cloth in hot climates.'}, {issue:'Bacterial spot',fix:'Dark water-soaked spots on leaves. Avoid overhead watering; remove affected leaves; copper fungicide spray.'} ]},
+  eggplant:  { name:'Eggplant',   emoji:'🍆', cat:'fruit',     warm:true,  directSow:false, indoor:-10,transplant:2, harden:1, dth:75, harvestWks:8, spaceSqFt:1,    containerGal:5,  water:'Consistent, 1"/wk', soil:'Rich, warm (pH 5.5–6.5)', tip:'Loves heat even more than peppers. Row cover early in season.',
+    problems:[ {issue:'Flea beetles',fix:'Tiny holes in leaves from small jumping beetles. Use row cover at transplant; diatomaceous earth around base.'}, {issue:'Poor fruit set',fix:'Temps above 95°F drop pollen viability. Shade midday in hot climates; mist flowers to aid pollination.'}, {issue:'Verticillium wilt',fix:'Sudden wilting in warm weather. No cure; remove plant; rotate beds. Avoid planting nightshades in same spot for 3 years.'} ]},
+  cucumber:  { name:'Cucumber',   emoji:'🥒', cat:'fruit',     warm:true,  directSow:true,  indoor:-3, transplant:2, harden:0, dth:55, harvestWks:8, spaceSqFt:0.5,  containerGal:5,  water:'Frequent, 1–2"/wk', soil:'Fertile, well-draining', tip:'Harvest often to keep plant producing. Trellis to save space.',
+    problems:[ {issue:'Powdery mildew',fix:'White powdery coating on leaves. Improve airflow; spray diluted baking soda solution (1 tbsp/gallon). Most common late season.'}, {issue:'Bitter cucumbers',fix:'Caused by heat stress or uneven watering. Keep soil consistently moist; harvest before over-mature.'}, {issue:'Cucumber beetles',fix:'Yellow/black striped or spotted beetles spread bacterial wilt. Use row cover until flowering; trap with yellow sticky cards.'} ]},
+  zucchini:  { name:'Zucchini',   emoji:'🥬', cat:'fruit',     warm:true,  directSow:true,  indoor:-3, transplant:1, harden:0, dth:50, harvestWks:10,spaceSqFt:0.25, containerGal:10, water:'Deep, 1–2"/wk', soil:'Rich, fertile', tip:'One plant per 4 sq ft. Harvest at 6–8". Very productive!',
+    problems:[ {issue:'Powdery mildew',fix:'Almost inevitable late season. Prune affected leaves; improve airflow; spray neem or baking soda solution.'}, {issue:'Blossom drop / no fruit',fix:'First flowers are usually male (no swelling behind petal). Wait for female flowers; hand-pollinate if no bees visible.'}, {issue:'Squash vine borer',fix:'Moth larva tunnels into stem base; plant wilts suddenly. Wrap stem base with foil; inject Bt into tunnels.'} ]},
+  squash:    { name:'Squash',     emoji:'🎃', cat:'fruit',     warm:true,  directSow:true,  indoor:-3, transplant:1, harden:0, dth:85, harvestWks:6, spaceSqFt:0.25, containerGal:10, water:'Deep watering weekly', soil:'Rich, well-draining', tip:'Cure before storage. Powdery mildew is common — ensure airflow.',
+    problems:[ {issue:'Squash vine borer',fix:'Sudden wilting; frass at stem base. Cut out larvae; mound soil over stem to re-root. Cover row early to prevent.'}, {issue:'Powdery mildew',fix:'Accept it late season. Cut heavily affected vines; improve airflow with pruning.'}, {issue:'Fruit rot on ground',fix:'Elevate fruit on a tile or board to improve airflow and prevent soil contact.'} ]},
+  melon:     { name:'Melon',      emoji:'🍈', cat:'fruit',     warm:true,  directSow:false, indoor:-4, transplant:2, harden:1, dth:85, harvestWks:4, spaceSqFt:0.17, containerGal:10, water:'Deep; reduce at ripening', soil:'Sandy, warm, fertile', tip:'Trellis small varieties. Slip test: ripe melon slides off with gentle tug.',
+    problems:[ {issue:'Flat/watery flavor',fix:'Overwatering at ripening dilutes sugars. Cut back water 1–2 weeks before harvest.'}, {issue:'Fusarium wilt',fix:'Plant wilts despite moist soil. Soil-borne fungus; no fix — remove plant. Rotate beds every 3 years.'}, {issue:'Aphids on undersides',fix:'Spray water to dislodge; neem oil weekly. Aluminum foil mulch confuses aphids.'} ]},
+  lettuce:   { name:'Lettuce',    emoji:'🥬', cat:'vegetable', warm:false, directSow:true,  indoor:-4, transplant:-2,harden:0, dth:45, harvestWks:6, spaceSqFt:4,    containerGal:1,  water:'Light, frequent', soil:'Rich, moist (pH 6.0–7.0)', tip:'Cut-and-come-again harvesting. Bolt in heat — plant in spring and fall.',
+    problems:[ {issue:'Bolting (going to seed)',fix:'Heat triggered. Harvest immediately when you see the center stalk rising. Choose "slow-bolt" varieties.'}, {issue:'Tip burn (brown leaf edges)',fix:'Calcium deficiency from inconsistent watering. Water evenly; improve airflow; choose heat-tolerant varieties.'}, {issue:'Slugs',fix:'Ragged holes in leaves at night. Set beer traps; use copper tape around containers; apply diatomaceous earth.'} ]},
+  spinach:   { name:'Spinach',    emoji:'🌿', cat:'vegetable', warm:false, directSow:true,  indoor:-6, transplant:-4,harden:0, dth:40, harvestWks:6, spaceSqFt:9,    containerGal:1,  water:'Consistent moisture', soil:'Fertile, neutral pH (6.5–7.0)', tip:'Fastest cool-season crop. Sow every 2 weeks for continuous harvest.',
+    problems:[ {issue:'Bolting in heat',fix:'Spinach bolts rapidly above 75°F. Switch to heat-tolerant "Malabar spinach" in summer or plant only spring/fall.'}, {issue:'Downy mildew',fix:'Yellow patches above, gray fuzz below leaves. Avoid overhead watering; improve airflow; plant resistant varieties.'}, {issue:'Leaf miner tunnels',fix:'White squiggly trails inside leaves from fly larvae. Remove affected leaves; use row cover to prevent.'} ]},
+  kale:      { name:'Kale',       emoji:'🥦', cat:'vegetable', warm:false, directSow:true,  indoor:-6, transplant:-3,harden:0, dth:55, harvestWks:12,spaceSqFt:1,    containerGal:3,  water:'Moderate, 1"/wk', soil:'Rich, well-draining (pH 6.0–7.0)', tip:'Harvest outer leaves first. Taste improves after frost!',
+    problems:[ {issue:'Cabbage worms',fix:'Green caterpillars from white cabbage moths. Handpick; spray Bt. Row cover is the best prevention.'}, {issue:'Aphid clusters under leaves',fix:'Yellow distorted growth. Blast with water; spray neem oil. Encourage ladybugs.'}, {issue:'Black rot (yellow V-shaped lesions)',fix:'Bacterial disease spread by water splash. Remove affected leaves; avoid overhead watering; rotate beds.'} ]},
+  broccoli:  { name:'Broccoli',   emoji:'🥦', cat:'vegetable', warm:false, directSow:false, indoor:-8, transplant:-2,harden:1, dth:70, harvestWks:4, spaceSqFt:1,    containerGal:5,  water:'Consistent, 1–1.5"/wk', soil:'Rich, fertile (pH 6.0–7.0)', tip:'Cut main head before flowers open. Side shoots keep producing.',
+    problems:[ {issue:'Heads turning yellow/flowering',fix:'Harvest immediately — once flowers open, flavor drops. Pick heads while still tight and dark green.'}, {issue:'Cabbage loopers',fix:'Pale green caterpillars. Bt spray is very effective. Check undersides of leaves weekly.'}, {issue:'Hollow stems',fix:'Boron deficiency. Apply diluted borax solution to soil (use sparingly). Hollow stems are safe to eat.'} ]},
+  cauliflower:{ name:'Cauliflower',emoji:'🥦',cat:'vegetable', warm:false, directSow:false, indoor:-8, transplant:-2,harden:1, dth:80, harvestWks:3, spaceSqFt:1,    containerGal:5,  water:'Consistent, 1.5"/wk', soil:'Rich, well-draining (pH 6.0–7.0)', tip:'Blanch by tying leaves over head when head is 2–3" wide.',
+    problems:[ {issue:'Ricey or fuzzy head texture',fix:'Temperature fluctuation during head formation. Keep soil moist; protect from frost and heat with row cover.'}, {issue:'Brown or pink discoloration',fix:'Sun exposure after blanching or cold temps. Blanch earlier; harvest promptly once full size.'}, {issue:'Club root (swollen, distorted roots)',fix:'Soil-borne disease. Raise pH with lime (above 7.2 suppresses it). Rotate crops; improve drainage.'} ]},
+  peas:      { name:'Peas',       emoji:'🫛', cat:'vegetable', warm:false, directSow:true,  indoor:null,transplant:-5,harden:0, dth:60, harvestWks:4, spaceSqFt:8,    containerGal:3,  water:'Moderate at roots', soil:'Well-draining, cool (pH 6.0–7.5)', tip:'Direct sow 4–6 weeks before last frost. Trellis. Pull out in summer heat.',
+    problems:[ {issue:'Powdery mildew late season',fix:'Normal as temps rise. Harvest remaining pods quickly; remove plants before it spreads to other crops.'}, {issue:'Pea weevil (small holes in seeds)',fix:'Adults lay eggs in flowers. Use row cover during flowering; rotate planting location annually.'}, {issue:'Poor germination in cold wet soil',fix:'Pre-sprout seeds on damp paper towel at room temp before sowing. Inoculate with rhizobium bacteria for better nitrogen fixation.'} ]},
+  beans:     { name:'Green Beans',emoji:'🫘', cat:'vegetable', warm:true,  directSow:true,  indoor:null,transplant:1, harden:0, dth:55, harvestWks:6, spaceSqFt:9,    containerGal:3,  water:'Moderate, 1"/wk', soil:'Well-draining (pH 6.0–7.0)', tip:'Direct sow only — don\'t transplant. Bush beans easier in small spaces.',
+    problems:[ {issue:'Mexican bean beetle',fix:'Round yellow eggs on leaf undersides; larvae skeletonize leaves. Handpick; row cover at planting; neem oil.'}, {issue:'Rust (orange pustules on leaves)',fix:'Fungal; spread by humidity. Improve airflow; avoid wet foliage; remove affected leaves promptly.'}, {issue:'Poor pod set in heat',fix:'Beans drop flowers above 90°F. Plant early to harvest before peak heat, or plant a fall crop.'} ]},
+  carrots:   { name:'Carrots',    emoji:'🥕', cat:'vegetable', warm:false, directSow:true,  indoor:null,transplant:-4,harden:0, dth:70, harvestWks:8, spaceSqFt:16,   containerGal:2,  water:'Deep, 1"/wk', soil:'Loose, sandy, deep — no rocks! (pH 6.0–6.8)', tip:'Thin to 2" apart. Use 12"+ deep containers. Sweeten in cool weather.',
+    problems:[ {issue:'Forked or hairy roots',fix:'Rocks, clumps, or too much nitrogen in soil. Amend with sand; remove rocks; don\'t over-fertilize.'}, {issue:'Green shoulders on roots',fix:'Exposed to sun. Mound soil over tops or mulch heavily as they grow.'}, {issue:'Carrot fly tunnels',fix:'Larvae tunnel in roots. Use fine mesh row cover at sowing; plant with strong-scented herbs (rosemary, sage) nearby.'} ]},
+  radish:    { name:'Radish',     emoji:'🌰', cat:'vegetable', warm:false, directSow:true,  indoor:null,transplant:-5,harden:0, dth:28, harvestWks:4, spaceSqFt:16,   containerGal:1,  water:'Consistent moisture', soil:'Loose, well-draining', tip:'Fastest vegetable: harvest in 3–4 weeks. Great gap-filler and row marker.',
+    problems:[ {issue:'Pithy or hollow texture',fix:'Left in ground too long. Harvest promptly at expected maturity (25–30 days). Heatwave speeds this up.'}, {issue:'Hot/bitter taste',fix:'Heat stress. Plant only in cool seasons; ensure consistent moisture.'}, {issue:'Flea beetle holes',fix:'Small jumping beetles create tiny holes. Row cover prevents; usually not serious for fast-growing radishes.'} ]},
+  onion:     { name:'Onion',      emoji:'🧅', cat:'vegetable', warm:false, directSow:false, indoor:-12,transplant:-2,harden:1, dth:100,harvestWks:4, spaceSqFt:9,    containerGal:2,  water:'Moderate', soil:'Loose, fertile, well-draining (pH 6.0–7.0)', tip:'Grow from sets (bulblets) for easiest results. Mulch well.',
+    problems:[ {issue:'Neck rot after harvest',fix:'Harvest when tops fall over; cure in warm dry spot for 2–3 weeks before storing. Don\'t store in humid areas.'}, {issue:'Thrips (silvery streaks on leaves)',fix:'Tiny insects; damage looks like silvery streaks. Spray with insecticidal soap; reflective mulch helps.'}, {issue:'Small bulbs',fix:'Often a daylength mismatch. Use "short-day" varieties in South, "long-day" in North. Don\'t let weeds compete.'} ]},
+  basil:     { name:'Basil',      emoji:'🌿', cat:'herb',      warm:true,  directSow:false, indoor:-4, transplant:2, harden:1, dth:30, harvestWks:14,spaceSqFt:4,    containerGal:1,  water:'Regular, don\'t let dry out', soil:'Rich, well-draining (pH 6.0–7.0)', tip:'Pinch flowers to keep producing. Loves warmth. Grow near tomatoes.',
+    problems:[ {issue:'Black spots / Fusarium wilt',fix:'Sudden wilting and dark streaks in stem. No fix; remove plant. Buy Fusarium-resistant varieties next time.'}, {issue:'Downy mildew (gray fuzz under leaves)',fix:'New, aggressive strain. Remove affected plants promptly; switch to resistant varieties (e.g., Eleonora).'}, {issue:'Cold damage (black leaves)',fix:'Basil dies at 50°F. Never leave outdoors after temps drop. Bring inside at first cool night.'} ]},
+  parsley:   { name:'Parsley',    emoji:'🌱', cat:'herb',      warm:false, directSow:false, indoor:-10,transplant:0, harden:1, dth:70, harvestWks:16,spaceSqFt:1,    containerGal:1,  water:'Consistent moisture', soil:'Rich, moist (pH 6.0–7.0)', tip:'Slow to germinate — soak seeds 24 hrs. Biennial. Harvest outer stems.',
+    problems:[ {issue:'Slow or no germination',fix:'Parsley has a germination inhibitor. Soak seeds in warm water overnight; keep soil at 70°F. Can take 3–4 weeks.'}, {issue:'Black swallowtail caterpillars',fix:'Beautiful striped caterpillars. Leave them — they become pollinators! Plant extra parsley to share.'}, {issue:'Root rot',fix:'Overwatering or poor drainage. Let soil surface dry slightly between waterings; ensure drainage holes in containers.'} ]},
+  cilantro:  { name:'Cilantro',   emoji:'🌿', cat:'herb',      warm:false, directSow:true,  indoor:null,transplant:-2,harden:0, dth:21, harvestWks:6, spaceSqFt:9,    containerGal:1,  water:'Moderate', soil:'Well-draining', tip:'Bolts in heat. Succession sow every 3 weeks spring and fall.',
+    problems:[ {issue:'Bolting to seed',fix:'Inevitable in heat above 75°F. Let it go to coriander seed (useful for cooking). Plant again in fall.'}, {issue:'Leaf curl / yellowing',fix:'Overwatering or lack of drainage. Allow soil to dry between waterings.'}, {issue:'Sparse, feathery bolt leaves',fix:'Plant has switched to seed production. Harvest coriander seeds when dry; start fresh seedlings.'} ]},
+  dill:      { name:'Dill',       emoji:'🌻', cat:'herb',      warm:false, directSow:true,  indoor:null,transplant:-2,harden:0, dth:40, harvestWks:8, spaceSqFt:4,    containerGal:1,  water:'Moderate', soil:'Light, well-draining', tip:'Self-seeds readily. Harvest before flowering for best flavor.',
+    problems:[ {issue:'Aphids on flower heads',fix:'Common late season. Knock off with water; tolerate light infestation as flowers attract beneficial insects.'}, {issue:'Swallowtail caterpillars',fix:'Same as parsley — plant extra; they become pollinators.'}, {issue:'Falling over / lodging',fix:'Stake tall plants or let them lean against a trellis. Direct sow in a sheltered spot.'} ]},
+  mint:      { name:'Mint',       emoji:'🍃', cat:'herb',      warm:false, directSow:false, indoor:-8, transplant:0, harden:1, dth:60, harvestWks:20,spaceSqFt:1,    containerGal:1,  water:'Regular, keep moist', soil:'Rich, moist', tip:'PLANT IN A CONTAINER — extremely invasive in ground. Spreads aggressively.',
+    problems:[ {issue:'Spreading everywhere',fix:'If planted in-ground without a barrier: dig up runners aggressively. Easier to start over in a container.'}, {issue:'Rust (orange spots)',fix:'Fungal disease. Remove affected stems; divide plant; avoid overhead watering. Destroy severely affected plants.'}, {issue:'Aphids or spider mites',fix:'Mint oils usually deter pests, but stressed plants get attacked. Blast with water; neem oil if persistent.'} ]},
+  chives:    { name:'Chives',     emoji:'🌿', cat:'herb',      warm:false, directSow:false, indoor:-8, transplant:0, harden:1, dth:60, harvestWks:20,spaceSqFt:4,    containerGal:1,  water:'Moderate', soil:'Any well-draining', tip:'Hardy perennial. Snip with scissors. Edible purple flowers.',
+    problems:[ {issue:'Yellowing / poor regrowth',fix:'Needs dividing every 2–3 years. Dig up clump, split into sections, replant in fresh compost.'}, {issue:'Thrips',fix:'Silvery speckling on leaves. Insecticidal soap; remove severely affected stalks.'}, {issue:'Self-seeding everywhere',fix:'Deadhead flowers before seeds drop if you want to control spread. Or let them naturalize — low maintenance.'} ]},
+  marigold:  { name:'Marigold',   emoji:'🌼', cat:'flower',    warm:true,  directSow:false, indoor:-6, transplant:1, harden:1, dth:50, harvestWks:16,spaceSqFt:4,    containerGal:1,  water:'Moderate, drought tolerant', soil:'Average, well-draining', tip:'Natural pest deterrent. Plant near tomatoes, peppers. Deadhead for more blooms.',
+    problems:[ {issue:'Powdery mildew late season',fix:'Improve airflow; remove affected leaves. Most marigolds will still bloom through it.'}, {issue:'Slugs on seedlings',fix:'Beer traps or diatomaceous earth around base. They target young seedlings, so protect at transplant.'}, {issue:'Spidermites in heat',fix:'Bronze stippling on leaves. Mist foliage to raise humidity; spray neem oil.'} ]},
+  nasturtium:{ name:'Nasturtium', emoji:'🌸', cat:'flower',    warm:true,  directSow:true,  indoor:null,transplant:1, harden:0, dth:40, harvestWks:16,spaceSqFt:2,    containerGal:1,  water:'Moderate, drought tolerant', soil:'Poor to average (don\'t over-fertilize!)', tip:'Edible flowers and leaves. Repels aphids. Thrives in poor soil.',
+    problems:[ {issue:'All leaves, no flowers',fix:'Too much nitrogen — too rich a soil. Move to poorer soil; stop fertilizing.'}, {issue:'Aphid magnet',fix:'Nasturtiums attract aphids away from vegetables — this is intentional! Remove aphid-covered plants to discard pests.'}, {issue:'Black aphids under leaves',fix:'A feature not a bug — use as a "trap crop." Pull and dispose of aphid-covered plants away from garden.'} ]},
+  sunflower: { name:'Sunflower',  emoji:'🌻', cat:'flower',    warm:true,  directSow:true,  indoor:-3, transplant:1, harden:0, dth:70, harvestWks:4, spaceSqFt:1,    containerGal:3,  water:'Deep weekly', soil:'Well-draining, average', tip:'Direct sow after frost is easiest. Attracts pollinators and birds.',
+    problems:[ {issue:'Head not forming seeds',fix:'Cross-pollination needed for most varieties. Plant multiple sunflowers; ensure bees can access.'}, {issue:'Downy mildew on seedlings',fix:'Water at base only; thin seedlings for airflow; plant in full sun location.'}, {issue:'Birds eating seeds before harvest',fix:'Cover head with mesh bag or paper bag once petals drop. Harvest when back of head turns yellow-brown.'} ]},
+};
+
+/* ===== SOIL RECIPES ===== */
+const SOIL_RECIPES = {
+  sqft: {
+    name: "Mel's Mix",
+    subtitle: 'Square Foot Gardening method',
+    emoji: '📐',
+    ingredients: [
+      { part:'⅓', item:'Blended compost (5+ sources)', why:'Nutrients, microbiology, and water retention' },
+      { part:'⅓', item:'Peat moss or coconut coir', why:'Moisture retention and aeration' },
+      { part:'⅓', item:'Coarse vermiculite', why:'Drainage, lightness, and root space' },
+    ],
+    note:"Never use garden soil — it compacts and blocks roots. Top-dress with 1 inch of compost each season. Refresh the whole mix every 3–5 years.",
+    ph:'6.0–7.0'
+  },
+  raised: {
+    name:'Classic Raised Bed Mix',
+    subtitle:'Best for framed wooden or metal beds',
+    emoji:'🪵',
+    ingredients: [
+      { part:'60%', item:'Quality topsoil or loam', why:'Structure and mineral base' },
+      { part:'30%', item:'Aged compost', why:'Nutrients, water retention, and biology' },
+      { part:'10%', item:'Perlite or coarse sand', why:'Drainage and prevention of compaction' },
+    ],
+    note:"Top-dress with 1–2 inches of compost each spring before planting. Add balanced slow-release fertilizer at transplant time. Beds warm up faster than in-ground — use this to your advantage in spring.",
+    ph:'6.0–6.8'
+  },
+  container: {
+    name:'Container Potting Mix',
+    subtitle:'For pots, planters, and grow bags',
+    emoji:'🪴',
+    ingredients: [
+      { part:'70%', item:'Quality potting mix (not garden soil)', why:'Sterile, lightweight, well-draining' },
+      { part:'20%', item:'Compost or worm castings', why:'Slow-release nutrition and biology' },
+      { part:'10%', item:'Perlite', why:'Prevents compaction; improves drainage' },
+    ],
+    note:"Containers dry out fast and flush nutrients with every watering. Add slow-release granular fertilizer at planting and liquid feed every 2–3 weeks. Refresh or replace mix each season.",
+    ph:'6.0–7.0'
+  },
+  inground: {
+    name:'In-Ground Soil Amendment',
+    subtitle:'For native soil beds and traditional rows',
+    emoji:'🌍',
+    ingredients: [
+      { part:'4"', item:'Compost worked in deeply', why:'Improve structure, drainage, and nutrients' },
+      { part:'Test', item:'Lime (if pH < 6.0) or sulfur (if pH > 7.5)', why:'pH correction for nutrient availability' },
+      { part:'Optional', item:'Aged manure or blood/bone meal', why:'Nitrogen and phosphorus for heavy feeders' },
+    ],
+    note:"Get a soil test first — it's the best $15 you'll spend. Your county extension office often offers them free or cheap. Rotate crop families yearly to prevent disease buildup.",
+    ph:'6.0–7.0'
+  }
+};
+
+/* ===== STATE ===== */
+const S = {
+  step: 1,
+  zone: null, lastFrost: null, firstFrost: null,
+  gardenType: null, gardenSize: null,
+  selectedPlants: new Set(),
+};
+
+/* ===== STEP 1: LOCATION ===== */
+function onStateChange() {
+  const st = document.getElementById('stateSelect').value;
+  if (!st) return;
+  const zone = STATE_ZONES[st];
+  S.zone = zone;
+  const zd = ZONE_DATA[zone];
+  S.lastFrost = zd.lastFrost ? new Date(2025, zd.lastFrost[0]-1, zd.lastFrost[1]) : null;
+  S.firstFrost = zd.firstFrost ? new Date(2025, zd.firstFrost[0]-1, zd.firstFrost[1]) : null;
+
+  document.getElementById('zoneName').textContent = zd.name;
+  document.getElementById('zoneDetail').textContent = zd.desc;
+  document.getElementById('zoneBadge').textContent = zd.name;
+  document.getElementById('zoneBadge').style.display = 'block';
+
+  const dates = document.getElementById('zoneDates');
+  let lf = zd.lastFrost ? monthName(zd.lastFrost[0]) + ' ' + zd.lastFrost[1] : 'None';
+  let ff = zd.firstFrost ? monthName(zd.firstFrost[0]) + ' ' + zd.firstFrost[1] : 'None';
+  dates.innerHTML = `
+    <div class="zone-date-item">
+      <div class="zdl">Last spring frost</div>
+      <div class="zdv frost">❄️ ${lf}</div>
+    </div>
+    <div class="zone-date-item">
+      <div class="zdl">First fall frost</div>
+      <div class="zdv frost">🍂 ${ff}</div>
+    </div>
+    <div class="zone-date-item">
+      <div class="zdl">Growing season</div>
+      <div class="zdv warm">🌞 ~${zd.season} days</div>
+    </div>
+    <div class="zone-date-item">
+      <div class="zdl">Hardiness zone</div>
+      <div class="zdv" style="color:var(--g-dark)">Zone ${zone}</div>
+    </div>`;
+  document.getElementById('zoneResult').style.display = 'block';
+  checkStep1();
+}
+
+/* ===== STEP 2: GARDEN ===== */
+function selectType(type) {
+  S.gardenType = type;
+  document.querySelectorAll('.type-card').forEach(c => c.classList.toggle('selected', c.dataset.type === type));
+  const card = document.getElementById('sizeCard');
+  card.style.display = 'block';
+  const titles = { sqft:'How many square feet?', raised:'Raised bed dimensions', container:'How many containers?', inground:'Garden area (sq ft)' };
+  const subs = {
+    sqft:'A 4×8 ft bed = 32 sq ft. Most beginners start with 32–64 sq ft.',
+    raised:'A 4×8 ft raised bed = 32 sq ft. Standard beds are 4 ft wide for easy reach.',
+    container:'Count your pots or planters. You can grow one large plant per 5-gallon pot.',
+    inground:'Estimate the total growing area. Traditional rows space plants 12–18" apart.'
+  };
+  const units = { sqft:'sq ft', raised:'sq ft', container:'pots', inground:'sq ft' };
+  const hints = {
+    sqft:'Tip: square foot gardening gets 4–16 plants per sq ft depending on the crop.',
+    raised:'Tip: raised beds warm up faster in spring and drain better than in-ground.',
+    container:'Tip: most vegetables need at least 5-gallon pots. Herbs can go in 1-gallon.',
+    inground:'Tip: in-ground beds benefit from compost amendment and weed management.'
+  };
+  document.getElementById('sizeCardTitle').textContent = titles[type];
+  document.getElementById('sizeCardSub').textContent = subs[type];
+  document.getElementById('sizeUnit').textContent = units[type];
+  document.getElementById('sizeHint').textContent = hints[type];
+  checkStep2();
+}
+
+function onSizeChange() {
+  S.gardenSize = parseFloat(document.getElementById('gardenSize').value) || null;
+  checkStep2();
+}
+
+/* ===== STEP 3: PLANTS ===== */
+function initPlantGrid() {
+  const grid = document.getElementById('plantGrid');
+  grid.innerHTML = '';
+  Object.entries(PLANTS).forEach(([key, p]) => {
+    const div = document.createElement('div');
+    div.className = 'plant-card' + (S.selectedPlants.has(key) ? ' selected' : '');
+    div.dataset.key = key;
+    div.dataset.cat = p.cat;
+    const tags = [];
+    if (!p.warm) tags.push('<span class="tag cool">Cool season</span>');
+    if (p.directSow && !p.indoor) tags.push('<span class="tag direct">Direct sow</span>');
+    div.innerHTML = `<span class="plant-emoji">${p.emoji}</span><div class="plant-name">${p.name}</div><div class="plant-hint" style="margin-top:4px;">${tags.join(' ')}</div>`;
+    div.onclick = () => togglePlant(key, div);
+    grid.appendChild(div);
+  });
+  updateSelectedCount();
+}
+
+function togglePlant(key, el) {
+  if (S.selectedPlants.has(key)) { S.selectedPlants.delete(key); el.classList.remove('selected'); }
+  else { S.selectedPlants.add(key); el.classList.add('selected'); }
+  updateSelectedCount();
+  checkStep3();
+}
+
+function filterCat(cat, btn) {
+  document.querySelectorAll('.cat-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  document.querySelectorAll('.plant-card').forEach(c => {
+    c.style.display = (cat === 'all' || c.dataset.cat === cat) ? '' : 'none';
+  });
+}
+
+function updateSelectedCount() {
+  const n = S.selectedPlants.size;
+  const el = document.getElementById('selectedCount');
+  if (n > 0) { el.style.display = 'block'; el.textContent = `${n} plant${n > 1 ? 's' : ''} selected`; }
+  else el.style.display = 'none';
+}
+
+/* ===== STEP 4: PLAN ===== */
+function buildPlan() {
+  const zd = ZONE_DATA[S.zone];
+  const lf = S.lastFrost;
+  const ff = S.firstFrost;
+  const plants = [...S.selectedPlants].map(k => ({ key: k, ...PLANTS[k] }));
+
+  // Summary
+  let totalPlants = 0;
+  const isContainer = S.gardenType === 'container';
+  plants.forEach(p => {
+    if (isContainer) totalPlants += S.gardenSize;
+    else totalPlants += Math.round(p.spaceSqFt * S.gardenSize) || 1;
+  });
+
+  document.getElementById('planSub').textContent =
+    `${zd.name} · ${S.gardenType} garden · ${S.gardenSize} ${S.gardenType === 'container' ? 'pots' : 'sq ft'} · ${plants.length} crops`;
+
+  document.getElementById('planSummary').innerHTML = `
+    <div class="sum-card"><div class="sum-val">${plants.length}</div><div class="sum-label">Crops</div></div>
+    <div class="sum-card"><div class="sum-val">${totalPlants}</div><div class="sum-label">Est. plants</div></div>
+    <div class="sum-card"><div class="sum-val">${zd.season}</div><div class="sum-label">Season days</div></div>`;
+
+  // Soil recipe + watering summary
+  buildSoilSection(plants, zd);
+
+  // Calendar
+  buildCalendar(plants, lf, ff, zd);
+
+  // Plant cards
+  buildPlantCards(plants, lf, ff);
+}
+
+function buildSoilSection(plants, zd) {
+  const el = document.getElementById('soilSection');
+  const recipe = SOIL_RECIPES[S.gardenType];
+  if (!recipe) { el.innerHTML = ''; return; }
+
+  // Watering summary — aggregate needs
+  const warmPlants = plants.filter(p => p.warm);
+  const coolPlants = plants.filter(p => !p.warm);
+  const heavyWater = plants.filter(p => p.water.includes('2"') || p.water.includes('frequent') || p.water.includes('Frequent'));
+  const lightWater = plants.filter(p => p.water.includes('Light') || p.water.includes('drought'));
+
+  const containerNote = S.gardenType === 'container'
+    ? 'Containers dry out 2–3× faster than beds. Check soil daily in summer — stick your finger 1" deep. Water when it feels dry.'
+    : S.gardenType === 'sqft'
+    ? 'Square foot beds retain moisture well but need consistent watering. Drip irrigation or soaker hose is ideal.'
+    : 'Water deeply and infrequently to encourage deep root growth. Mulch 2–3" to retain moisture and reduce frequency.';
+
+  const hotWeatherNote = zd.season > 250
+    ? 'In your warm zone, peak-summer plants may need daily watering. Early morning is best — reduces disease risk.'
+    : 'During heat waves, check soil daily. Most plants wilt mid-afternoon even with adequate water — check again at dusk.';
+
+  el.innerHTML = `
+    <div style="font-size:14px;font-weight:600;color:var(--g-dark);margin-bottom:10px;">Soil setup</div>
+    <div class="soil-card">
+      <div class="soil-card-title">${recipe.emoji} ${recipe.name}</div>
+      <div class="soil-card-subtitle">${recipe.subtitle}</div>
+      ${recipe.ingredients.map(i => `
+        <div class="soil-row">
+          <div class="soil-part">${i.part}</div>
+          <div>
+            <div class="soil-item">${i.item}</div>
+            <div class="soil-why">${i.why}</div>
+          </div>
+        </div>`).join('')}
+      <div class="soil-note">📝 ${recipe.note}</div>
+      <div class="soil-ph">🧪 Target pH: ${recipe.ph}</div>
+    </div>
+
+    <div style="font-size:14px;font-weight:600;color:var(--g-dark);margin-bottom:10px;">Watering rhythm</div>
+    <div class="water-grid">
+      <div class="water-card">
+        <div class="water-label">Garden type</div>
+        <div class="water-val" style="font-size:12px;color:var(--g-dark);">${containerNote}</div>
+      </div>
+      <div class="water-card">
+        <div class="water-label">Hot weather</div>
+        <div class="water-val" style="font-size:12px;color:var(--g-dark);">${hotWeatherNote}</div>
+      </div>
+      ${heavyWater.length > 0 ? `<div class="water-card">
+        <div class="water-label">💧 Thirstiest crops</div>
+        <div class="water-note">${heavyWater.map(p => p.name).join(', ')} — water 1–2"/wk, never let dry out</div>
+      </div>` : ''}
+      ${lightWater.length > 0 ? `<div class="water-card">
+        <div class="water-label">🌵 Drought tolerant</div>
+        <div class="water-note">${lightWater.map(p => p.name).join(', ')} — water less; overwatering is the main risk</div>
+      </div>` : ''}
+      <div class="water-card">
+        <div class="water-label">Finger test</div>
+        <div class="water-note">Stick finger 1–2" into soil. Dry at that depth = time to water. Wet = wait. Simple and always right.</div>
+      </div>
+      <div class="water-card">
+        <div class="water-label">Best time to water</div>
+        <div class="water-note">Early morning. Reduces evaporation and fungal disease. Evening watering leaves foliage wet overnight.</div>
+      </div>
+    </div>`;
+}
+
+function addWeeks(date, weeks) {
+  if (!date) return null;
+  const d = new Date(date);
+  d.setDate(d.getDate() + Math.round(weeks * 7));
+  return d;
+}
+
+function buildCalendar(plants, lf, ff, zd) {
+  const MONTHS = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+  let html = '<thead><tr class="cal-header-row"><th>Plant</th>';
+  MONTHS.forEach(m => html += `<th>${m}</th>`);
+  html += '</tr></thead><tbody>';
+
+  plants.forEach(p => {
+    html += `<tr class="cal-row"><td>${p.emoji} ${p.name}</td>`;
+    for (let m = 0; m < 12; m++) {
+      const mStart = new Date(2025, m, 1);
+      const mEnd = new Date(2025, m+1, 0);
+      let bg = '';
+      if (lf) {
+        const indoorStart = p.indoor ? addWeeks(lf, p.indoor) : null;
+        const hardenStart = p.harden > 0 && lf ? addWeeks(lf, p.transplant - p.harden) : null;
+        const plantOut = addWeeks(lf, p.transplant);
+        const harvestStart = addWeeks(plantOut, p.dth / 7);
+        const harvestEnd = addWeeks(harvestStart, p.harvestWks);
+
+        if (p.directSow && !p.indoor) {
+          if (overlaps(mStart, mEnd, plantOut, harvestStart)) bg = 'var(--sky)';
+        } else if (indoorStart && overlaps(mStart, mEnd, indoorStart, hardenStart || plantOut)) {
+          bg = 'var(--lavender)';
+        }
+        if (hardenStart && overlaps(mStart, mEnd, hardenStart, plantOut)) bg = 'var(--amber)';
+        if (plantOut && harvestStart && overlaps(mStart, mEnd, plantOut, harvestStart)) bg = 'var(--g-light)';
+        if (harvestStart && harvestEnd && overlaps(mStart, mEnd, harvestStart, harvestEnd)) bg = 'var(--g-mid)';
+      }
+      html += `<td><div class="cal-cell" style="background:${bg || 'transparent'};"></div></td>`;
+    }
+    html += '</tr>';
+  });
+  html += '</tbody>';
+  document.getElementById('calTable').innerHTML = html;
+}
+
+function overlaps(mS, mE, pS, pE) {
+  if (!pS || !pE) return false;
+  return mS <= pE && mE >= pS;
+}
+
+function buildPlantCards(plants, lf, ff) {
+  const container = document.getElementById('plantPlanCards');
+  container.innerHTML = '';
+  const isContainer = S.gardenType === 'container';
+
+  plants.forEach(p => {
+    const plantOut = lf ? addWeeks(lf, p.transplant) : null;
+    const indoorStart = (lf && p.indoor) ? addWeeks(lf, p.indoor) : null;
+    const harvestStart = plantOut ? addWeeks(plantOut, p.dth / 7) : null;
+
+    let plantCount;
+    if (isContainer) {
+      plantCount = `1 per ${p.containerGal}-gal pot`;
+    } else {
+      const n = Math.max(1, Math.round(p.spaceSqFt * S.gardenSize));
+      plantCount = `~${n} plant${n > 1 ? 's' : ''} (${p.spaceSqFt >= 1 ? Math.round(p.spaceSqFt)+' sq ft ea' : Math.round(1/p.spaceSqFt)+'/sq ft'})`;
+    }
+
+    const seasonTag = p.warm
+      ? '<span class="tag">Warm season</span>'
+      : '<span class="tag cool">Cool season</span>';
+
+    let indoorHtml = indoorStart
+      ? `<div class="ppc-item"><div class="ppc-label">Start indoors</div><div class="ppc-value">🪴 ${fmtDate(indoorStart)}</div></div>`
+      : (p.directSow ? `<div class="ppc-item"><div class="ppc-label">Start</div><div class="ppc-value">🌱 Direct sow</div></div>` : '');
+
+    const div = document.createElement('div');
+    div.className = 'plant-plan-card';
+    div.innerHTML = `
+      <div class="ppc-header">
+        <div class="ppc-emoji">${p.emoji}</div>
+        <div>
+          <div class="ppc-title">${p.name} ${seasonTag}</div>
+          <div class="ppc-count">${plantCount}</div>
+        </div>
+      </div>
+      <div class="ppc-grid">
+        ${indoorHtml}
+        ${plantOut ? `<div class="ppc-item"><div class="ppc-label">${p.directSow && !p.indoor ? 'Direct sow' : 'Transplant out'}</div><div class="ppc-value">🌿 ${fmtDate(plantOut)}</div></div>` : ''}
+        ${harvestStart ? `<div class="ppc-item"><div class="ppc-label">First harvest</div><div class="ppc-value">🍽 ${fmtDate(harvestStart)}</div></div>` : ''}
+        <div class="ppc-item"><div class="ppc-label">Water</div><div class="ppc-value" style="font-size:12px;">${p.water}</div></div>
+        <div class="ppc-item"><div class="ppc-label">Soil</div><div class="ppc-value" style="font-size:12px;">${p.soil}</div></div>
+        ${!isContainer ? '' : `<div class="ppc-item"><div class="ppc-label">Pot size</div><div class="ppc-value">${p.containerGal}-gallon min</div></div>`}
+      </div>
+      <div class="ppc-tip">💡 ${p.tip}</div>
+      ${p.problems ? `
+      <button class="prob-toggle" onclick="toggleProbs(this)">
+        🐛 Common problems <em class="prob-chevron">▾</em>
+      </button>
+      <div class="prob-list">
+        ${p.problems.map(pr => `
+          <div class="prob-item">
+            <div class="prob-issue">⚠️ ${pr.issue}</div>
+            <div class="prob-fix">${pr.fix}</div>
+          </div>`).join('')}
+      </div>` : ''}`;
+    container.appendChild(div);
+  });
+}
+
+/* ===== NAV ===== */
+function goStep(n) {
+  if (n > S.step && !canAdvance()) return;
+  S.step = n;
+  render();
+}
+function nextStep() { if (S.step < 4) { S.step++; render(); } }
+function prevStep() { if (S.step > 1) { S.step--; render(); } }
+
+function render() {
+  [1,2,3,4].forEach(n => {
+    document.getElementById('step'+n).classList.toggle('active', n === S.step);
+    const btn = document.querySelector(`.step-btn[data-step="${n}"]`);
+    btn.classList.toggle('active', n === S.step);
+    btn.classList.toggle('done', n < S.step);
+    if (n < S.step) btn.querySelector('.step-num').textContent = '✓';
+    else btn.querySelector('.step-num').textContent = n;
+  });
+  document.getElementById('backBtn').classList.toggle('hidden', S.step === 1);
+  document.getElementById('nextBtn').textContent = S.step === 4 ? '🖨 Print plan' : 'Continue →';
+  document.getElementById('nextBtn').onclick = S.step === 4 ? () => window.print() : nextStep;
+  if (S.step === 3) initPlantGrid();
+  if (S.step === 4) buildPlan();
+  checkCurrent();
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function canAdvance() {
+  if (S.step === 1) return !!S.zone;
+  if (S.step === 2) return !!(S.gardenType && S.gardenSize);
+  if (S.step === 3) return S.selectedPlants.size > 0;
+  return true;
+}
+function checkStep1() { document.getElementById('nextBtn').disabled = !S.zone; }
+function checkStep2() { document.getElementById('nextBtn').disabled = !(S.gardenType && S.gardenSize && S.gardenSize > 0); }
+function checkStep3() { document.getElementById('nextBtn').disabled = S.selectedPlants.size === 0; }
+function checkCurrent() {
+  if (S.step === 1) checkStep1();
+  else if (S.step === 2) checkStep2();
+  else if (S.step === 3) checkStep3();
+  else document.getElementById('nextBtn').disabled = false;
+}
+
+/* ===== UTILS ===== */
+function toggleProbs(btn) {
+  btn.classList.toggle('open');
+  const list = btn.nextElementSibling;
+  list.classList.toggle('open');
+}
+
+function monthName(n) {
+  return ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'][n-1];
+}
+function fmtDate(d) {
+  if (!d) return '—';
+  return d.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+}
+
+// Init
+checkStep1();
+</script>
+</body>
+</html>
