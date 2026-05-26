@@ -1,0 +1,147 @@
+/* Common Ladder — First-person quote components
+   Three designs:
+     .cl-quote          — inline pull quote (large, amber accent)
+     .cl-voice-aside    — compact aside (small, sage accent)
+     .cl-quote-ribbon   — slim epigraph band (one line, under nav)
+   See research/quote-block-snippet.html for usage. */
+
+/* ─── 1. Inline pull quote ────────────────────────────────────────── */
+.cl-quote {
+  position: relative;
+  margin: 2rem auto;
+  max-width: 36rem;
+  padding: 1.75rem 1.75rem 1.5rem;
+  background: #F8F7F4;
+  border: 1px solid #E5E0D6;
+  border-left: 4px solid #E8911A;
+  border-radius: 0 8px 8px 0;
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  color: #1A1A2E;
+}
+.cl-quote__eyebrow {
+  font-family: 'Manrope', system-ui, sans-serif;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #E8911A;
+  margin-bottom: 0.75rem;
+}
+.cl-quote__text {
+  font-size: 1.125rem;
+  line-height: 1.55;
+  margin: 0 0 1rem;
+}
+.cl-quote__text::before {
+  content: "\201C";
+  font-family: 'Manrope', Georgia, serif;
+  font-size: 2.5rem;
+  line-height: 0;
+  vertical-align: -0.4em;
+  color: #E8911A;
+  margin-right: 0.15em;
+}
+.cl-quote__attribution {
+  display: flex; flex-wrap: wrap; gap: 0.5rem 0.75rem; align-items: baseline;
+  font-size: 0.875rem; color: #6B7280;
+}
+.cl-quote__name {
+  font-weight: 600; color: #1C3D6E; font-family: 'Manrope', system-ui, sans-serif;
+}
+.cl-quote__source a {
+  color: #6B7280; text-decoration: underline;
+  text-decoration-color: rgba(107,114,128,0.35); text-underline-offset: 2px;
+}
+.cl-quote__source a:hover { color: #1C3D6E; text-decoration-color: currentColor; }
+@media (max-width: 480px) {
+  .cl-quote { padding: 1.25rem 1.25rem 1rem; margin: 1.5rem auto; }
+  .cl-quote__text { font-size: 1rem; }
+}
+
+/* ─── 2. Compact "voices" aside ────────────────────────────────────── */
+.cl-voice-aside {
+  background: #fff;
+  border: 1px solid #E5E7EB;
+  border-left: 4px solid #4A9E82;
+  border-radius: 0 8px 8px 0;
+  padding: 1.1rem 1.25rem;
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  color: #1A1A2E;
+  max-width: 30rem;
+  box-shadow: 0 1px 4px rgba(28,61,110,0.04);
+}
+.cl-voice-aside__eyebrow {
+  font-family: 'Manrope', system-ui, sans-serif;
+  font-size: 0.68rem; font-weight: 700;
+  letter-spacing: 0.07em; text-transform: uppercase;
+  color: #4A9E82;
+  margin-bottom: 0.45rem;
+}
+.cl-voice-aside__text {
+  font-size: 0.98rem; line-height: 1.5;
+  margin: 0 0 0.6rem;
+  color: #1A1A2E;
+}
+.cl-voice-aside__meta {
+  font-size: 0.8rem; color: #6B7280;
+  display: flex; flex-wrap: wrap; gap: 0.35rem 0.5rem;
+}
+.cl-voice-aside__name {
+  font-family: 'Manrope', system-ui, sans-serif;
+  font-weight: 600; color: #1C3D6E;
+}
+.cl-voice-aside__source {
+  color: #6B7280; text-decoration: underline;
+  text-decoration-color: rgba(107,114,128,0.35); text-underline-offset: 2px;
+}
+.cl-voice-aside__source:hover { color: #1C3D6E; text-decoration-color: currentColor; }
+@media (max-width: 480px) {
+  .cl-voice-aside { padding: 0.95rem 1rem; }
+  .cl-voice-aside__text { font-size: 0.95rem; }
+}
+
+/* ─── 3. Slim epigraph ribbon ──────────────────────────────────────── */
+.cl-quote-ribbon {
+  width: 100%;
+  background: linear-gradient(90deg, #F8F7F4 0%, #FBFAF6 50%, #F8F7F4 100%);
+  border-top: 1px solid #ECE6D8;
+  border-bottom: 1px solid #ECE6D8;
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  color: #1A1A2E;
+}
+.cl-quote-ribbon__inner {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 10px clamp(1rem, 4vw, 2rem);
+  display: flex; flex-wrap: wrap; align-items: baseline;
+  gap: 0.5rem 0.85rem;
+  font-size: 0.92rem; line-height: 1.45;
+}
+.cl-quote-ribbon__mark {
+  font-family: 'Manrope', Georgia, serif;
+  font-size: 1.4rem; line-height: 0.5;
+  color: #E8911A;
+  flex-shrink: 0;
+}
+.cl-quote-ribbon__text {
+  font-style: italic;
+  color: #1A1A2E;
+  flex: 1 1 auto;
+  min-width: 0;
+}
+.cl-quote-ribbon__attr {
+  font-family: 'Manrope', system-ui, sans-serif;
+  font-size: 0.8rem;
+  color: #6B7280;
+  flex-shrink: 0;
+  white-space: nowrap;
+}
+.cl-quote-ribbon__source {
+  color: #6B7280; text-decoration: underline;
+  text-decoration-color: rgba(107,114,128,0.35); text-underline-offset: 2px;
+}
+.cl-quote-ribbon__source:hover { color: #1C3D6E; text-decoration-color: currentColor; }
+@media (max-width: 640px) {
+  .cl-quote-ribbon__inner { font-size: 0.88rem; padding: 9px 1rem; }
+  .cl-quote-ribbon__attr { white-space: normal; font-size: 0.76rem; }
+}

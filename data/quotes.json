@@ -1,0 +1,363 @@
+{
+  "schema_version": "1.0",
+  "generated": "2026-05-24",
+  "policy": {
+    "attribution_format": "First name + last initial when source provides last name. First name alone when source provided only first name. 'Anonymous (publication)' when source itself was anonymous.",
+    "pages": {
+      "resource": "Hopeful, encouraging, practical. For /resources.html, /help/*, navigators, CoC finder.",
+      "learn": "Honest, reflective, system-insight. For /learn/* and /about.html."
+    },
+    "categories": ["encouragement", "practical", "dignity", "reflection", "system-insight"]
+  },
+  "quotes": [
+    {
+      "id": "Q01",
+      "text": "Don't give up. You see, when people give up, they give up mentally… But you have to think, 'This is not how my life is supposed to be. I ain't supposed to be living on no streets.'",
+      "attribution": "Andre B.",
+      "page": ["resource"],
+      "category": "encouragement",
+      "source": "Street Sense Media",
+      "source_date": "2023-03-29",
+      "url": "https://streetsensemedia.org/article/always-beating-the-odds-a-qa-with-andre-brinson/"
+    },
+    {
+      "id": "Q02",
+      "text": "To anyone who is homeless right now, I would say that one person cannot do it all by themself. If you can muster the humility and the strength to reach out, you should, so that you are not always all alone.",
+      "attribution": "Amadou",
+      "page": ["resource"],
+      "category": "encouragement",
+      "source": "The Bowery Mission",
+      "source_date": "2023-07-18",
+      "url": "https://www.bowery.org/updates/2023/07/amadous-hope-story/"
+    },
+    {
+      "id": "Q03",
+      "text": "I got to talk to people. I learned that I wasn't alone. We helped each other pull through, together.",
+      "attribution": "Francisco",
+      "page": ["resource"],
+      "category": "encouragement",
+      "source": "Father Joe's Villages",
+      "source_date": "2017-05-30",
+      "url": "https://my.neighbor.org/franciscos-story/"
+    },
+    {
+      "id": "Q04",
+      "text": "I found people who believed in me when I stopped believing in myself. When I thought I couldn't go on, there were people behind me who said, 'Yes you can; you are worth it.'",
+      "attribution": "Francisco",
+      "page": ["resource"],
+      "category": "encouragement",
+      "source": "Father Joe's Villages",
+      "source_date": "2017-05-30",
+      "url": "https://my.neighbor.org/franciscos-story/"
+    },
+    {
+      "id": "Q05",
+      "text": "Hope Gardens was this beautiful, green, healing oasis that sheltered me and my family after this horrible storm of my life. For the first time, I felt like me and my family were safe.",
+      "attribution": "Holly",
+      "page": ["resource"],
+      "category": "encouragement",
+      "source": "Union Rescue Mission",
+      "source_date": "2020-11",
+      "url": "https://urm.org/newsletters/mission-november-2020/"
+    },
+    {
+      "id": "Q06",
+      "text": "If I had three wishes, one would be to have a happy life. Two, to have an apartment of my own. And three, to give back to the homeless once I have stability again.",
+      "attribution": "Tracy",
+      "page": ["resource"],
+      "category": "encouragement",
+      "source": "Invisible People",
+      "url": "https://invisiblepeople.tv/videos/tracy-homelessness-ottawa-domestic-violence-survivor/"
+    },
+    {
+      "id": "Q07",
+      "text": "Path with Art has not just given me back my creativity and hope for the future, but myself.",
+      "attribution": "Lynn A.",
+      "page": ["resource"],
+      "category": "encouragement",
+      "source": "Path with Art",
+      "url": "https://www.pathwithart.org/participant-artist-stories"
+    },
+    {
+      "id": "Q08",
+      "text": "When I first came in, I remember this person asked me, 'What are your pronouns?' At Covenant House, there are actually staff that just do everything in their power to make sure you feel safe and comfortable.",
+      "attribution": "Mykel",
+      "page": ["resource"],
+      "category": "dignity",
+      "source": "Covenant House",
+      "source_date": "2026-04",
+      "url": "https://www.covenanthouse.org/news/mykels-story-rejection-safety"
+    },
+    {
+      "id": "Q09",
+      "text": "I learned that no matter who anybody else was in the room — no matter their background or what they've done in the past — we all deserve the opportunity to turn our lives around.",
+      "attribution": "Amadou",
+      "page": ["resource"],
+      "category": "dignity",
+      "source": "The Bowery Mission",
+      "source_date": "2023-07-18",
+      "url": "https://www.bowery.org/updates/2023/07/amadous-hope-story/"
+    },
+    {
+      "id": "Q10",
+      "text": "Everyone has a story. I always say that if you living, you have a story. It could be good and bad, whatever. But at the same time you have a choice to tell your story.",
+      "attribution": "Andre B.",
+      "page": ["resource"],
+      "category": "dignity",
+      "source": "Street Sense Media",
+      "source_date": "2023-03-29",
+      "url": "https://streetsensemedia.org/article/always-beating-the-odds-a-qa-with-andre-brinson/"
+    },
+    {
+      "id": "Q11",
+      "text": "I am proof that you can tell your story to people in power and make change in your community. I am confident in myself and I know that I am a leader. I have found my voice and I can use my power.",
+      "attribution": "Anonymous (Miriam's Kitchen Speak Up! fellow)",
+      "page": ["resource"],
+      "category": "encouragement",
+      "source": "USICH",
+      "url": "https://www.usich.gov/news-events/news/value-lived-experience-work-end-homelessness"
+    },
+    {
+      "id": "Q12",
+      "text": "I now have a goal. Art was the catalyst to get me back into recovery — I sold my first painting and I was so excited, but then I drank the money right up. I was so disappointed in myself, I turned around and went right back to my support group.",
+      "attribution": "Bill K.",
+      "page": ["resource"],
+      "category": "encouragement",
+      "source": "Path with Art",
+      "url": "https://www.pathwithart.org/student-story-bill"
+    },
+    {
+      "id": "Q13",
+      "text": "I didn't know I could think like this, and it started with having a place to stay, and people consistently giving a damn about me.",
+      "attribution": "Tammy",
+      "page": ["resource"],
+      "category": "encouragement",
+      "source": "DESC",
+      "source_date": "2026-04",
+      "url": "https://www.desc.org/tammys-story-finding-safety-at-desc/",
+      "editorial_note": "Original wording was 'giving a sh*t' — softened for resource-page use. Use original on learn pages if desired."
+    },
+    {
+      "id": "Q14",
+      "text": "I learned how to panhandle on the subway and play music for money. It was very lonely and humbling. I didn't want to do it, but I had no other resort.",
+      "attribution": "Amadou",
+      "page": ["resource"],
+      "category": "practical",
+      "source": "The Bowery Mission",
+      "source_date": "2023-07-18",
+      "url": "https://www.bowery.org/updates/2023/07/amadous-hope-story/"
+    },
+    {
+      "id": "Q15",
+      "text": "Living on the street for three years, not knowing where I could find a safe place to sleep, eat or even shower was challenging.",
+      "attribution": "Sheila W.",
+      "page": ["resource"],
+      "category": "reflection",
+      "source": "Street Sense Media",
+      "url": "https://streetsensemedia.org/article/the-making-of-street-reporter-a-collaborative-documentary-project/"
+    },
+    {
+      "id": "Q16",
+      "text": "When I woke up, I couldn't feel my legs. I'm surprised I woke up, really, I probably almost froze to death.",
+      "attribution": "Andre B.",
+      "page": ["learn"],
+      "category": "reflection",
+      "source": "Street Sense Media",
+      "source_date": "2023-03-29",
+      "url": "https://streetsensemedia.org/article/always-beating-the-odds-a-qa-with-andre-brinson/"
+    },
+    {
+      "id": "Q17",
+      "text": "The first time you're homeless, the intense feelings of fear and uncertainty are impossible to forget. The fear and disillusionment are almost paralyzing. You just go through the motions, but at the same time you're beating yourself up for being in this situation.",
+      "attribution": "Anonymous (Invisible People contributor)",
+      "page": ["learn"],
+      "category": "reflection",
+      "source": "Invisible People",
+      "source_date": "2019-02-16",
+      "url": "https://invisiblepeople.tv/my-first-night-homeless/"
+    },
+    {
+      "id": "Q18",
+      "text": "All of a sudden and without warning, I found myself homeless in Koreatown near downtown Los Angeles. I was sober, but I had no money, no place to go and no one I could call for help.",
+      "attribution": "Anonymous (Invisible People contributor)",
+      "page": ["learn"],
+      "category": "reflection",
+      "source": "Invisible People",
+      "source_date": "2019-02-16",
+      "url": "https://invisiblepeople.tv/my-first-night-homeless/"
+    },
+    {
+      "id": "Q19",
+      "text": "Not knowing where you were going to spend the next night. You are not always welcome; you might be welcome one night and then the next day you are not.",
+      "attribution": "Francisco",
+      "page": ["learn"],
+      "category": "reflection",
+      "source": "Father Joe's Villages",
+      "source_date": "2017-05-30",
+      "url": "https://my.neighbor.org/franciscos-story/"
+    },
+    {
+      "id": "Q20",
+      "text": "Some people treat you like a piece of scum. They don't treat you like a human being.",
+      "attribution": "Tracy",
+      "page": ["learn"],
+      "category": "dignity",
+      "source": "Invisible People",
+      "url": "https://invisiblepeople.tv/videos/tracy-homelessness-ottawa-domestic-violence-survivor/"
+    },
+    {
+      "id": "Q21",
+      "text": "I pretty much grew up in the back seat of my car.",
+      "attribution": "Tammy",
+      "page": ["learn"],
+      "category": "reflection",
+      "source": "DESC",
+      "source_date": "2026-04",
+      "url": "https://www.desc.org/tammys-story-finding-safety-at-desc/"
+    },
+    {
+      "id": "Q22",
+      "text": "I had a hard time when I got to Gateway because I didn't know how to live indoors. I had to sit with my shoes on still.",
+      "attribution": "Tammy",
+      "page": ["learn"],
+      "category": "system-insight",
+      "source": "DESC",
+      "source_date": "2026-04",
+      "url": "https://www.desc.org/tammys-story-finding-safety-at-desc/"
+    },
+    {
+      "id": "Q23",
+      "text": "There are people working out there, but I'm working in here.",
+      "attribution": "Tammy",
+      "page": ["learn"],
+      "category": "dignity",
+      "source": "DESC",
+      "source_date": "2026-04",
+      "url": "https://www.desc.org/tammys-story-finding-safety-at-desc/",
+      "context": "Said while pointing to her heart."
+    },
+    {
+      "id": "Q24",
+      "text": "I felt like a convict, holding my little bag. I felt like I escaped.",
+      "attribution": "Jerry (pseudonym)",
+      "page": ["learn"],
+      "category": "reflection",
+      "source": "The Marshall Project",
+      "source_date": "2018-06-19",
+      "url": "https://www.themarshallproject.org/2018/06/19/the-long-way-home"
+    },
+    {
+      "id": "Q25",
+      "text": "It's very overwhelming. You have to understand the situation I was in where for the last 19 years nothing changed… Suddenly, there's sights, sounds, options, everything all at once. Bam. There's no transition.",
+      "attribution": "Jerry (pseudonym)",
+      "page": ["learn"],
+      "category": "system-insight",
+      "source": "The Marshall Project",
+      "source_date": "2018-06-19",
+      "url": "https://www.themarshallproject.org/2018/06/19/the-long-way-home"
+    },
+    {
+      "id": "Q26",
+      "text": "I fall in love with everybody, and no one falls in love with me.",
+      "attribution": "Jerry (pseudonym)",
+      "page": ["learn"],
+      "category": "reflection",
+      "source": "The Marshall Project",
+      "source_date": "2018-06-19",
+      "url": "https://www.themarshallproject.org/2018/06/19/the-long-way-home"
+    },
+    {
+      "id": "Q27",
+      "text": "A homeless life has no storyline.",
+      "attribution": "Lars E.",
+      "page": ["learn"],
+      "category": "reflection",
+      "source": "Travels with Lizbeth (1993)",
+      "url": "https://archive.org/details/travelswithlizbe00eigh"
+    },
+    {
+      "id": "Q28",
+      "text": "Sadly I had neglected to become addicted to drugs or alcohol and had not committed a serious crime.",
+      "attribution": "Lars E.",
+      "page": ["learn"],
+      "category": "system-insight",
+      "source": "Travels with Lizbeth (1993)",
+      "url": "https://archive.org/details/travelswithlizbe00eigh"
+    },
+    {
+      "id": "Q29",
+      "text": "My daughter learned to walk in a homeless shelter.",
+      "attribution": "Stephanie L.",
+      "page": ["learn"],
+      "category": "reflection",
+      "source": "Maid (2019)",
+      "url": "https://www.goodreads.com/book/show/39218350-maid",
+      "editorial_note": "Land was housing-insecure / transitionally sheltered, not chronically unsheltered. Use with that framing on learn pages."
+    },
+    {
+      "id": "Q30",
+      "text": "I couldn't sustain employment. I couldn't pay rent and pay for groceries. It all just kind of fell apart, and then I was homeless.",
+      "attribution": "Zach S.",
+      "page": ["learn"],
+      "category": "reflection",
+      "source": "NPR / StoryCorps",
+      "source_date": "2015-04-18",
+      "url": "https://www.npr.org/2015/04/18/400363059/formerly-homeless-vet-and-his-dad-remember-his-darkest-moments"
+    },
+    {
+      "id": "Q31",
+      "text": "We was a family. We was a community that wouldn't let nobody come in and take that from us.",
+      "attribution": "Deanna R.",
+      "page": ["learn"],
+      "category": "dignity",
+      "source": "NPR Up First",
+      "url": "https://www.npr.org/transcripts/nx-s1-5551120"
+    },
+    {
+      "id": "Q32",
+      "text": "As a homeless man and an artist, I know the harsh realities of housing in Seattle… I take free art classes via Path with Art to keep my sanity. I have a regular job, too, but can't afford rent.",
+      "attribution": "Aaron H.",
+      "page": ["learn"],
+      "category": "system-insight",
+      "source": "Path with Art",
+      "url": "https://www.pathwithart.org/participant-artist-stories"
+    },
+    {
+      "id": "Q33",
+      "text": "For the homeless sleeping on the street, please make it better. People are dying out here. Please don't walk past the homeless. Talk to us. Because we are human.",
+      "attribution": "Anonymous (Street Sense vendor)",
+      "page": ["learn"],
+      "category": "dignity",
+      "source": "Street Sense Media",
+      "url": "https://streetsensemedia.org/article/street-sense-vendors-write-and-illustrate-solutions-to-homelessness/"
+    },
+    {
+      "id": "Q34",
+      "text": "It wasn't that I was frustrated by the system that's supposed to help you get housing but rather by the system as a whole: it was lethargic and unorganized.",
+      "attribution": "Anonymous (Spare Change News vendor)",
+      "page": ["learn"],
+      "category": "system-insight",
+      "source": "Spare Change News",
+      "source_date": "2016-04",
+      "url": "http://sparechangenews.net/2016/04/the-frustration-of-homelessness/"
+    },
+    {
+      "id": "Q35",
+      "text": "Falling into homelessness comes down to one simple fact: how far you have to fall.",
+      "attribution": "Jamie R.",
+      "page": ["learn"],
+      "category": "system-insight",
+      "source": "Community Solutions",
+      "url": "https://community.solutions/metro-denver-takes-a-regional-approach-to-homelessness-with-built-for-zero/"
+    },
+    {
+      "id": "Q36",
+      "text": "When a person with lived experience of homelessness shares their story with a legislator, that is advocacy.",
+      "attribution": "Anonymous (lived-experience advocate)",
+      "page": ["learn"],
+      "category": "dignity",
+      "source": "National Alliance to End Homelessness",
+      "url": "https://endhomelessness.org/blog/advocacy-is-for-everyone-2/"
+    }
+  ]
+}

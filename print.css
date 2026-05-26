@@ -1,0 +1,90 @@
+/*
+ * print.css — Common Ladder print stylesheet
+ * Not linked automatically — another process handles linking.
+ */
+
+@media print {
+
+  /* ---- Page margins ---- */
+  @page {
+    margin: 1in;
+  }
+
+  /* ---- Hide navigation chrome and interactive UI ---- */
+  .crisis-bar,
+  .nav,
+  .nav__toggle,
+  .nav__exit,
+  .nav__cta,
+  .footer,
+  .skip-link,
+  .btn,
+  .btn--primary,
+  .hero-paths {
+    display: none !important;
+  }
+
+  /* ---- Hide decorative card elements ---- */
+  .card-verified,
+  .tag {
+    display: none !important;
+  }
+
+  /* ---- Reset colors: black text, white background everywhere ---- */
+  *,
+  *::before,
+  *::after {
+    color: #000 !important;
+    background: #fff !important;
+    background-color: #fff !important;
+    box-shadow: none !important;
+    text-shadow: none !important;
+  }
+
+  /* ---- Body: serif for print readability ---- */
+  body {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 12pt;
+    line-height: 1.6;
+  }
+
+  /* ---- Headings: prevent orphans (heading alone at bottom of page) ---- */
+  h1,
+  h2,
+  h3 {
+    page-break-after: avoid;
+  }
+
+  /* ---- Prevent resource cards from splitting across pages ---- */
+  .card {
+    page-break-inside: avoid;
+  }
+
+  /* ---- Expand full URLs after link text for print ---- */
+  a[href^="http"]::after {
+    content: " (" attr(href) ")";
+    font-size: 0.85em;
+    font-style: italic;
+  }
+
+  /* Suppress URL expansion for navigation and decorative links */
+  .nav a[href]::after,
+  .footer a[href]::after {
+    content: none;
+  }
+
+  /* ---- Images: allow to break across pages if needed ---- */
+  img {
+    max-width: 100% !important;
+  }
+
+  /* ---- Tables: keep header row visible on each page ---- */
+  thead {
+    display: table-header-group;
+  }
+
+  tr {
+    page-break-inside: avoid;
+  }
+
+}
