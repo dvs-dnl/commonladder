@@ -11,1216 +11,856 @@
 </script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>My Ladder — Common Ladder</title>
-<meta name="description" content="My Ladder — your personal resource planner from Common Ladder. Add resources to your plan, track progress, schedule visits, and manage your budget. Free, private, no account needed.">
-<link rel="canonical" href="https://my.commonladder.org/">
+<title>My Ladder — Personalized Roadmap · Common Ladder</title>
+<meta name="description" content="Answer 7 questions and get a personalized step-by-step plan for housing stability — with insider knowledge most people never have access to.">
+<link rel="canonical" href="https://www.commonladder.org/static-tools/my-ladder.html">
+<link rel="stylesheet" href="../style.css">
 <style>
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-:root{
-  --blue:#1C3D6E;--amber:#E8911A;--sage:#4A9E82;--white:#F8F7F4;
-  --gray:#6B7280;--light:#EEF0F4;--border:#D1D5DB;
-  --danger:#DC2626;--green:#16A34A;--text:#1F2937;
-  --radius:10px;--shadow:0 2px 12px rgba(0,0,0,.09);
-}
-body{font-family:'Inter',system-ui,sans-serif;background:var(--white);color:var(--text);min-height:100vh;font-size:15px;line-height:1.5}
-
-/* ── Top bar ── */
-.topbar{background:var(--blue);color:#fff;padding:.75rem 1rem;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100;box-shadow:0 2px 8px rgba(0,0,0,.2)}
-.topbar__brand{display:flex;align-items:center;gap:.6rem;text-decoration:none;color:#fff;font-size:.85rem;opacity:.85}
-.topbar__brand:hover{opacity:1}
-.topbar__title{font-size:1.15rem;font-weight:700;letter-spacing:-.01em}
-.topbar__title span{color:var(--amber)}
-
-/* ── Privacy bar ── */
-.privacy-bar{background:#EFF6FF;border-bottom:1px solid #BFDBFE;padding:.5rem 1rem;font-size:.78rem;color:#1E40AF;text-align:center}
-
-/* ── Tabs ── */
-.tab-nav{display:flex;background:#fff;border-bottom:2px solid var(--border);position:sticky;top:53px;z-index:90}
-.tab-btn{flex:1;padding:.9rem .5rem;border:none;background:transparent;cursor:pointer;font-size:.92rem;font-weight:600;color:var(--gray);border-bottom:3px solid transparent;margin-bottom:-2px;transition:color .15s,border-color .15s;display:flex;align-items:center;justify-content:center;gap:.4rem}
-.tab-btn.active{color:var(--blue);border-bottom-color:var(--amber)}
-.tab-btn:hover:not(.active){color:var(--blue)}
-
-/* ── Layout ── */
-.container{max-width:700px;margin:0 auto;padding:1.25rem 1rem 4rem}
-.tab-panel{display:none}.tab-panel.active{display:block}
-
-/* ── Progress ── */
-.progress-card{background:var(--blue);color:#fff;border-radius:var(--radius);padding:1rem 1.25rem;margin-bottom:1.25rem}
-.progress-card__label{font-size:.82rem;opacity:.8;margin-bottom:.4rem}
-.progress-card__stats{font-size:1.1rem;font-weight:700;margin-bottom:.6rem}
-.progress-bar{height:8px;background:rgba(255,255,255,.25);border-radius:4px;overflow:hidden}
-.progress-bar__fill{height:100%;background:var(--amber);border-radius:4px;transition:width .4s ease}
-
-/* ── Buttons ── */
-.btn{display:inline-flex;align-items:center;gap:.3rem;padding:.45rem .9rem;border-radius:6px;font-size:.83rem;font-weight:600;cursor:pointer;border:none;transition:opacity .15s,transform .1s;font-family:inherit}
-.btn:hover{opacity:.88;transform:translateY(-1px)}.btn:active{transform:translateY(0)}
-.btn--amber{background:var(--amber);color:#fff}
-.btn--blue{background:var(--blue);color:#fff}
-.btn--sage{background:var(--sage);color:#fff}
-.btn--outline{background:transparent;border:1.5px solid var(--border);color:var(--text)}
-.btn--danger{background:var(--danger);color:#fff}
-.btn--ghost{background:transparent;border:none;color:var(--gray);padding:.25rem .4rem;font-size:.8rem}
-.btn--ghost:hover{color:var(--blue);transform:none;opacity:1}
-.btn--sm{padding:.3rem .65rem;font-size:.78rem}
-.btn--xs{padding:.2rem .45rem;font-size:.73rem}
-
-/* ── Section head ── */
-.section-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:.75rem;margin-top:1.5rem}
-.section-head h2{font-size:1rem;font-weight:700;color:var(--blue)}
-
-/* ── Category tiles ── */
-.cat-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:.5rem;margin-bottom:1rem}
-.cat-tile{background:#fff;border:1.5px solid var(--border);border-radius:8px;padding:.6rem .3rem;cursor:pointer;text-align:center;transition:border-color .15s,box-shadow .15s;font-size:.7rem;color:var(--text);font-weight:600;display:flex;flex-direction:column;align-items:center;gap:.25rem}
-.cat-tile:hover{border-color:var(--amber);box-shadow:0 0 0 2px rgba(232,145,26,.15)}
-.cat-tile__icon{font-size:1.4rem;line-height:1}
-
-/* ── Resource search panel ── */
-.resource-search{background:#fff;border:1.5px solid var(--amber);border-radius:var(--radius);padding:1rem;margin-bottom:1.25rem;display:none}
-.resource-search.open{display:block}
-.resource-search__bar{display:flex;gap:.5rem;margin-bottom:.75rem}
-.resource-search__input{flex:1;padding:.5rem .75rem;border:1.5px solid var(--border);border-radius:6px;font-size:.9rem;font-family:inherit}
-.resource-search__input:focus{outline:none;border-color:var(--blue)}
-.cat-filters{display:flex;gap:.35rem;flex-wrap:wrap;margin-bottom:.75rem}
-.cat-filter{padding:.25rem .6rem;border-radius:20px;font-size:.75rem;font-weight:600;border:1.5px solid var(--border);background:#fff;cursor:pointer;color:var(--gray);transition:all .15s}
-.cat-filter.active,.cat-filter:hover{background:var(--blue);color:#fff;border-color:var(--blue)}
-.resource-results{max-height:320px;overflow-y:auto;display:flex;flex-direction:column;gap:.5rem}
-.resource-result{background:var(--white);border:1.5px solid var(--border);border-radius:8px;padding:.7rem .9rem;display:flex;align-items:flex-start;gap:.75rem;cursor:pointer;transition:border-color .15s,box-shadow .15s}
-.resource-result:hover{border-color:var(--amber);box-shadow:0 0 0 2px rgba(232,145,26,.12)}
-.resource-result__icon{font-size:1.3rem;flex-shrink:0;margin-top:.1rem}
-.resource-result__info{flex:1;min-width:0}
-.resource-result__name{font-weight:700;font-size:.88rem}
-.resource-result__meta{font-size:.75rem;color:var(--gray);margin-top:.1rem}
-.resource-result__add{flex-shrink:0;margin-top:.1rem}
-.no-results{text-align:center;padding:1.5rem;color:var(--gray);font-size:.85rem}
-
-/* ── Custom add form ── */
-.add-form{background:#fff;border:1.5px solid var(--border);border-radius:var(--radius);padding:1rem;margin-bottom:1.25rem;display:none}
-.add-form.open{display:block}
-.form-row{display:flex;gap:.5rem;flex-wrap:wrap;margin-bottom:.6rem}
-.form-group{flex:1;min-width:140px}
-.form-group label{display:block;font-size:.78rem;font-weight:600;color:var(--gray);margin-bottom:.25rem}
-.form-group input,.form-group select,.form-group textarea{width:100%;padding:.5rem .65rem;border:1.5px solid var(--border);border-radius:6px;font-size:.88rem;color:var(--text);background:var(--white);font-family:inherit}
-.form-group input:focus,.form-group select:focus,.form-group textarea:focus{outline:none;border-color:var(--blue)}
-.form-group textarea{resize:vertical;min-height:60px}
-.form-actions{display:flex;gap:.5rem;justify-content:flex-end;margin-top:.5rem}
-
-/* ── Plan items ── */
-.plan-list{display:flex;flex-direction:column;gap:.65rem}
-.plan-item{background:#fff;border:1.5px solid var(--border);border-radius:var(--radius);overflow:hidden;transition:box-shadow .15s}
-.plan-item:hover{box-shadow:var(--shadow)}
-.plan-item--done{opacity:.7}
-.plan-item__head{display:flex;align-items:flex-start;gap:.65rem;padding:.85rem 1rem;cursor:pointer;user-select:none}
-.plan-item__icon{font-size:1.5rem;flex-shrink:0;margin-top:.05rem}
-.plan-item__info{flex:1;min-width:0}
-.plan-item__name{font-weight:700;font-size:.95rem}
-.plan-item__meta{font-size:.76rem;color:var(--gray);margin-top:.1rem;display:flex;flex-wrap:wrap;gap:.3rem .75rem}
-.plan-item__badges{display:flex;gap:.3rem;flex-wrap:wrap;margin-top:.25rem;align-items:center}
-.status-pill{display:inline-block;padding:.18rem .5rem;border-radius:20px;font-size:.7rem;font-weight:700}
-.status--todo{background:var(--light);color:var(--gray)}
-.status--scheduled{background:#FEF3C7;color:#92400E}
-.status--done{background:#D1FAE5;color:#065F46}
-.followup-badge{display:inline-flex;align-items:center;gap:.2rem;background:#EDE9FE;color:#5B21B6;font-size:.7rem;font-weight:700;padding:.18rem .5rem;border-radius:20px}
-
-.plan-item__body{border-top:1px solid var(--light);display:none;flex-direction:column;gap:0}
-.plan-item__body.open{display:flex}
-
-/* ── Item body sections ── */
-.item-section{padding:.75rem 1rem;border-bottom:1px solid var(--light)}
-.item-section:last-child{border-bottom:none}
-.item-section__label{font-size:.72rem;font-weight:700;color:var(--gray);text-transform:uppercase;letter-spacing:.05em;margin-bottom:.45rem;display:flex;align-items:center;justify-content:space-between}
-
-/* Contact row */
-.contact-row{display:flex;gap:.75rem;flex-wrap:wrap;align-items:center;font-size:.85rem}
-.contact-row a{color:var(--blue);text-decoration:none;font-weight:600}
-.contact-row a:hover{text-decoration:underline}
-
-/* Schedule row */
-.sched-row{display:flex;gap:.5rem;align-items:center;flex-wrap:wrap}
-.sched-row input[type=date],.sched-row input[type=time]{padding:.35rem .6rem;border:1.5px solid var(--border);border-radius:6px;font-size:.83rem;font-family:inherit;background:var(--white);color:var(--text)}
-.sched-row input:focus{outline:none;border-color:var(--blue)}
-
-/* Notes */
-.notes-area{width:100%;border:1.5px solid var(--border);border-radius:6px;padding:.5rem .7rem;font-size:.85rem;font-family:inherit;color:var(--text);resize:vertical;min-height:72px;background:var(--white);line-height:1.5}
-.notes-area:focus{outline:none;border-color:var(--blue)}
-.notes-area::placeholder{color:#9CA3AF}
-
-/* Follow-up tasks */
-.followup-list{display:flex;flex-direction:column;gap:.4rem;margin-bottom:.6rem}
-.followup-item{display:flex;align-items:flex-start;gap:.5rem;padding:.4rem .5rem;border-radius:6px;background:var(--light);transition:background .15s}
-.followup-item.done-fu{opacity:.6}
-.followup-item__check{width:16px;height:16px;border:2px solid var(--border);border-radius:4px;cursor:pointer;flex-shrink:0;margin-top:2px;appearance:none;-webkit-appearance:none;background:#fff;transition:background .15s,border-color .15s}
-.followup-item__check:checked{background:var(--sage);border-color:var(--sage);background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 12 12' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M2 6l3 3 5-5' stroke='white' stroke-width='2' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");background-size:80%}
-.followup-item__text{flex:1;font-size:.83rem;line-height:1.4}
-.followup-item__text.done-text{text-decoration:line-through;color:var(--gray)}
-.followup-item__due{font-size:.72rem;color:var(--gray);white-space:nowrap;margin-top:2px}
-.followup-item__del{background:none;border:none;cursor:pointer;color:var(--gray);font-size:.85rem;padding:.1rem .2rem;line-height:1;flex-shrink:0}
-.followup-item__del:hover{color:var(--danger)}
-
-.add-followup-toggle{display:flex;align-items:center;gap:.4rem;background:none;border:none;cursor:pointer;font-size:.8rem;font-weight:600;color:var(--blue);padding:.2rem 0;font-family:inherit}
-.add-followup-toggle:hover{color:var(--amber)}
-.add-followup-form{background:var(--light);border-radius:8px;padding:.65rem;margin-top:.5rem;display:none}
-.add-followup-form.open{display:block}
-.fu-row{display:flex;gap:.4rem;flex-wrap:wrap;align-items:flex-end}
-.fu-row input{flex:2;min-width:150px;padding:.4rem .6rem;border:1.5px solid var(--border);border-radius:6px;font-size:.83rem;font-family:inherit;background:#fff}
-.fu-row input[type=date]{flex:1;min-width:120px}
-.fu-row input:focus{outline:none;border-color:var(--blue)}
-
-/* Activity log */
-.activity-list{display:flex;flex-direction:column;gap:.3rem}
-.activity-entry{display:flex;gap:.6rem;align-items:flex-start;font-size:.8rem}
-.activity-entry__dot{width:8px;height:8px;border-radius:50%;background:var(--sage);flex-shrink:0;margin-top:4px}
-.activity-entry__dot.call{background:var(--amber)}
-.activity-entry__dot.visit{background:var(--blue)}
-.activity-entry__dot.note{background:var(--gray)}
-.activity-entry__text{flex:1;color:var(--text)}
-.activity-entry__time{color:var(--gray);font-size:.72rem;white-space:nowrap}
-
-.log-actions{display:flex;gap:.4rem;flex-wrap:wrap;margin-bottom:.5rem}
-
-/* Item footer actions */
-.item-actions{display:flex;gap:.4rem;flex-wrap:wrap;padding:.75rem 1rem;border-top:1px solid var(--light);background:#FAFAF9}
-
-/* Done/empty */
-.done-toggle{background:none;border:none;cursor:pointer;color:var(--gray);font-size:.83rem;font-weight:600;display:flex;align-items:center;gap:.3rem;margin:1rem 0 .5rem;padding:0}
-.done-toggle:hover{color:var(--blue)}
-.empty-state{text-align:center;padding:2.5rem 1rem;color:var(--gray);font-size:.88rem}
-.empty-state__icon{font-size:2.5rem;margin-bottom:.5rem}
-
-/* ── Budget ── */
-.summary-card{background:var(--blue);color:#fff;border-radius:var(--radius);padding:1.1rem 1.25rem;margin-bottom:1.25rem;display:grid;grid-template-columns:repeat(3,1fr);gap:.75rem;text-align:center}
-.summary-card__label{font-size:.72rem;opacity:.75;margin-bottom:.2rem}
-.summary-card__amount{font-size:1.35rem;font-weight:800}
-.summary-card__amount.positive{color:#6EE7B7}
-.summary-card__amount.negative{color:#FCA5A5}
-.budget-section{background:#fff;border:1.5px solid var(--border);border-radius:var(--radius);margin-bottom:1.1rem;overflow:hidden}
-.budget-section__head{display:flex;align-items:center;justify-content:space-between;padding:.8rem 1rem;background:var(--light);border-bottom:1px solid var(--border)}
-.budget-section__title{font-weight:700;font-size:.92rem;color:var(--blue)}
-.budget-section__total{font-size:.83rem;color:var(--gray);font-weight:600}
-.budget-items{padding:.5rem .75rem}
-.budget-item{display:flex;align-items:center;justify-content:space-between;padding:.5rem 0;border-bottom:1px solid var(--light);font-size:.88rem}
-.budget-item:last-child{border-bottom:none}
-.budget-item__name{flex:1}
-.budget-item__freq{color:var(--gray);font-size:.76rem;margin:0 .5rem}
-.budget-item__amount{font-weight:700;min-width:60px;text-align:right}
-.budget-item__del{background:none;border:none;cursor:pointer;color:var(--gray);font-size:1rem;padding:.1rem .3rem;margin-left:.3rem}
-.budget-item__del:hover{color:var(--danger)}
-.budget-add-form{padding:.75rem;border-top:1px solid var(--light);background:#FAFAF9;display:none}
-.budget-add-form.open{display:block}
-.calc-card{background:#fff;border:1.5px solid var(--border);border-radius:var(--radius);padding:1.1rem;margin-bottom:1.25rem}
-.calc-card h2{font-size:.95rem;font-weight:700;color:var(--blue);margin-bottom:.25rem}
-.calc-card p{font-size:.8rem;color:var(--gray);margin-bottom:.85rem}
-.calc-row{display:flex;gap:.75rem;align-items:flex-end;flex-wrap:wrap;margin-bottom:.75rem}
-.calc-row .form-group{margin-bottom:0}
-.affordability-result{padding:.85rem 1rem;border-radius:8px;font-size:.88rem;margin-top:.5rem;display:none}
-.affordability-result.green{background:#D1FAE5;color:#065F46}
-.affordability-result.amber{background:#FEF3C7;color:#92400E}
-.affordability-result.red{background:#FEE2E2;color:#991B1B}
-.affordability-result__label{font-weight:700;font-size:1rem;margin-bottom:.2rem}
-.affordability-result__detail{font-size:.8rem;opacity:.85}
-.meter{height:10px;background:var(--light);border-radius:5px;overflow:hidden;margin:.5rem 0 .25rem}
-.meter__fill{height:100%;border-radius:5px;transition:width .4s}
-.meter__fill.green{background:var(--sage)}.meter__fill.amber{background:var(--amber)}.meter__fill.red{background:var(--danger)}
-
-/* ── Import welcome banner ── */
-.import-banner{background:linear-gradient(135deg,#1C3D6E 0%,#2a5298 100%);color:#fff;border-radius:var(--radius);padding:1.1rem 1.25rem;margin-bottom:1.25rem;position:relative}
-.import-banner__title{font-size:1rem;font-weight:700;margin-bottom:.3rem}
-.import-banner__body{font-size:.85rem;opacity:.9;line-height:1.5}
-.import-banner__close{position:absolute;top:.75rem;right:.75rem;background:none;border:none;color:#fff;cursor:pointer;font-size:1.2rem;opacity:.7;line-height:1}
-.import-banner__close:hover{opacity:1}
-
-/* ── Today summary card ── */
-.today-card{background:#fff;border:1.5px solid var(--amber);border-radius:var(--radius);padding:.85rem 1rem;margin-bottom:1.25rem;display:none}
-.today-card.open{display:block}
-.today-card__head{display:flex;align-items:center;gap:.5rem;font-size:.75rem;font-weight:700;color:var(--amber);text-transform:uppercase;letter-spacing:.06em;margin-bottom:.55rem}
-.today-card__list{display:flex;flex-direction:column;gap:.45rem}
-.today-entry{display:flex;align-items:center;gap:.6rem;padding:.45rem .55rem;border-radius:6px;background:var(--white);cursor:pointer;transition:background .15s}
-.today-entry:hover{background:var(--light)}
-.today-entry__icon{font-size:1.1rem;flex-shrink:0}
-.today-entry__text{flex:1;font-size:.85rem;line-height:1.35;color:var(--text);min-width:0}
-.today-entry__text strong{color:var(--blue);font-weight:700}
-.today-entry__tag{flex-shrink:0;font-size:.7rem;font-weight:700;padding:.15rem .5rem;border-radius:20px}
-.today-entry__tag.overdue{background:#FEE2E2;color:#991B1B}
-.today-entry__tag.due{background:#FEF3C7;color:#92400E}
-.today-entry__tag.scheduled{background:#DBEAFE;color:#1E40AF}
-
-/* ── Topbar Tools button ── */
-.topbar__tools{background:rgba(255,255,255,.12);border:none;color:#fff;cursor:pointer;font-size:.78rem;font-weight:600;padding:.4rem .7rem;border-radius:6px;font-family:inherit;display:inline-flex;align-items:center;gap:.3rem;transition:background .15s;margin-left:.6rem}
-.topbar__tools:hover{background:rgba(255,255,255,.22)}
-.topbar__right{display:flex;align-items:center;gap:.4rem}
-
-/* ── Tools overlay ── */
-.overlay{position:fixed;inset:0;background:rgba(0,0,0,.55);z-index:200;display:none;align-items:flex-end;justify-content:center;padding:0}
-.overlay.open{display:flex}
-@media (min-width:600px){.overlay{align-items:center;padding:1rem}}
-.sheet{background:#fff;width:100%;max-width:480px;border-radius:14px 14px 0 0;padding:1.25rem 1.25rem 1.5rem;box-shadow:0 -8px 32px rgba(0,0,0,.18);max-height:90vh;overflow-y:auto}
-@media (min-width:600px){.sheet{border-radius:14px}}
-.sheet__head{display:flex;align-items:center;justify-content:space-between;margin-bottom:1rem}
-.sheet__title{font-size:1.1rem;font-weight:800;color:var(--blue)}
-.sheet__close{background:none;border:none;color:var(--gray);cursor:pointer;font-size:1.4rem;padding:.2rem .4rem;line-height:1}
-.sheet__close:hover{color:var(--text)}
-.tool-row{display:flex;align-items:flex-start;gap:.75rem;border-bottom:1px solid var(--light);cursor:pointer;transition:background .15s;margin:0 -.4rem;padding:.85rem .4rem}
-.tool-row:hover{background:var(--white)}
-.tool-row:last-of-type{border-bottom:none}
-.tool-row__icon{font-size:1.4rem;flex-shrink:0;width:32px;text-align:center}
-.tool-row__info{flex:1;min-width:0}
-.tool-row__name{font-weight:700;font-size:.92rem;color:var(--text)}
-.tool-row__desc{font-size:.78rem;color:var(--gray);line-height:1.35;margin-top:.15rem}
-.tool-row--danger .tool-row__name{color:var(--danger)}
-
-/* ── Print styles — clean shareable summary ── */
+.skip-link{position:absolute;top:-100%;left:1rem;background:var(--amber);color:var(--dark);font-weight:700;padding:.6rem 1.2rem;border-radius:0 0 var(--radius) var(--radius);z-index:9999;transition:top .1s}
+.skip-link:focus{top:0}
+.breadcrumb{background:var(--light);padding:.65rem 0;border-bottom:1px solid #dde3ec;font-size:.82rem}
+.breadcrumb ol{display:flex;flex-wrap:wrap;gap:.25rem .35rem;list-style:none;max-width:var(--max);margin:0 auto;padding:0 var(--gap);align-items:center}
+.breadcrumb li+li::before{content:"›";color:var(--gray);margin-right:.35rem}
+.breadcrumb a{color:var(--blue)}
+.breadcrumb [aria-current]{color:var(--gray)}
+#crisis-banner{display:none;background:#B91C1C;color:#fff;padding:1rem 1.5rem;text-align:center;font-weight:600;font-size:1rem;position:sticky;top:0;z-index:200}
+#crisis-banner a{color:#FEF08A;text-decoration:underline}
+#crisis-banner.visible{display:block}
+#assessment-shell{max-width:680px;margin:0 auto;padding:2.5rem var(--gap) 5rem}
+.progress-wrap{margin-bottom:2.5rem}
+.progress-label{display:flex;justify-content:space-between;font-size:.82rem;color:var(--gray);margin-bottom:.5rem}
+.progress-track{background:#E5E9F0;border-radius:99px;height:6px;overflow:hidden}
+.progress-fill{background:var(--amber);height:100%;border-radius:99px;transition:width .4s ease}
+.q-card{background:#fff;border:1.5px solid #E5E9F0;border-radius:12px;box-shadow:0 1px 4px rgba(0,0,0,.08);padding:2rem}
+.q-num{font-size:.78rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--amber);margin-bottom:.5rem}
+.q-text{font-family:'Manrope','DM Sans',system-ui,sans-serif;font-size:1.35rem;font-weight:600;color:var(--blue);line-height:1.3;margin-bottom:1.75rem}
+.q-options{display:flex;flex-direction:column;gap:.75rem}
+.q-btn{display:flex;align-items:center;gap:.75rem;width:100%;padding:1rem 1.25rem;background:#fff;border:2px solid #E5E9F0;border-radius:var(--radius);cursor:pointer;font-size:1rem;font-family:inherit;color:var(--dark);text-align:left;transition:border-color .15s,background .15s;line-height:1.4}
+.q-btn:hover{border-color:var(--blue);background:#F0F5FF}
+.q-btn.selected{border-color:var(--amber);background:#FFFBF0}
+.q-btn .q-emoji{font-size:1.4rem;flex-shrink:0;width:2rem;text-align:center}
+.q-nav{display:flex;justify-content:space-between;align-items:center;margin-top:1.5rem;gap:1rem}
+.btn-back{background:none;border:2px solid #E5E9F0;color:var(--gray);padding:.65rem 1.25rem;border-radius:var(--radius);font:600 .92rem 'Inter',sans-serif;cursor:pointer;transition:border-color .15s,color .15s}
+.btn-back:hover{border-color:var(--gray);color:var(--dark)}
+.btn-next{background:var(--blue);color:#fff;border:none;padding:.75rem 1.75rem;border-radius:var(--radius);font:600 .95rem 'Inter',sans-serif;cursor:pointer;transition:background .15s;margin-left:auto}
+.btn-next:hover{background:#163060}
+.btn-next:disabled{opacity:.4;cursor:not-allowed}
+#loading-screen{display:none;text-align:center;padding:4rem 2rem;max-width:480px;margin:0 auto}
+#loading-screen.visible{display:block}
+.ladder-anim{margin:0 auto 1.5rem;width:60px;height:80px;position:relative;animation:ladder-rise .8s ease-in-out infinite alternate}
+@keyframes ladder-rise{from{transform:translateY(6px)}to{transform:translateY(-6px)}}
+.loading-title{font-family:'Manrope',system-ui,sans-serif;font-size:1.4rem;font-weight:600;color:var(--blue);margin-bottom:.5rem}
+.loading-sub{color:var(--gray);font-size:.95rem}
+#results-shell{display:none;max-width:760px;margin:0 auto;padding:2.5rem var(--gap) 5rem}
+#results-shell.visible{display:block}
+.results-header{text-align:center;margin-bottom:2.5rem}
+.results-header .eyebrow{font-size:.78rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--amber);display:block;margin-bottom:.5rem}
+.results-header h1{font-family:'Manrope',system-ui,sans-serif;font-size:clamp(1.6rem,4vw,2.25rem);color:var(--blue);margin-bottom:.75rem}
+.results-header p{color:var(--gray);max-width:520px;margin:0 auto}
+.print-btn{display:inline-flex;align-items:center;gap:.4rem;background:#fff;border:2px solid #E5E9F0;color:var(--blue);padding:.55rem 1.1rem;border-radius:var(--radius);font-size:.85rem;font-weight:600;cursor:pointer;transition:border-color .15s;text-decoration:none;margin-top:.75rem}
+.print-btn:hover{border-color:var(--blue);text-decoration:none}
+.ladder-rail{display:flex;flex-direction:column;gap:1rem;position:relative;padding-left:3.5rem}
+.ladder-rail::before{content:'';position:absolute;left:1.35rem;top:2rem;bottom:2rem;width:3px;background:#E5E9F0;border-radius:2px}
+.rung{position:relative;background:#fff;border:1.5px solid #E5E9F0;border-radius:12px;box-shadow:0 1px 4px rgba(0,0,0,.07);overflow:hidden;transition:border-color .2s}
+.rung.rung--current{border-color:var(--amber);box-shadow:0 0 0 3px rgba(232,145,26,.15),0 2px 8px rgba(0,0,0,.1)}
+.rung.rung--done{opacity:.75}
+.rung::before{content:'';position:absolute;left:-2.85rem;top:1.35rem;width:1.1rem;height:1.1rem;border-radius:50%;background:#E5E9F0;border:3px solid #fff;box-shadow:0 0 0 2px #E5E9F0;z-index:2}
+.rung.rung--done::before{background:var(--sage);box-shadow:0 0 0 2px var(--sage)}
+.rung.rung--current::before{background:var(--amber);box-shadow:0 0 0 3px rgba(232,145,26,.3)}
+.rung.rung--future::before{background:#C4CFDF}
+.rung-header{display:flex;align-items:center;gap:.85rem;padding:1.1rem 1.25rem;cursor:pointer;user-select:none}
+.rung-num{font-size:.7rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--gray);width:1.5rem;flex-shrink:0;text-align:center}
+.rung.rung--current .rung-num{color:var(--amber)}
+.rung.rung--done .rung-num{color:var(--sage)}
+.rung-title-wrap{flex:1}
+.rung-title{font-family:'Manrope',system-ui,sans-serif;font-weight:600;font-size:1.05rem;color:var(--blue);margin:0}
+.rung-subtitle{font-size:.83rem;color:var(--gray);margin-top:.15rem}
+.rung-badge{font-size:.72rem;font-weight:700;padding:.2rem .6rem;border-radius:99px;margin-left:auto;white-space:nowrap;flex-shrink:0}
+.rung-badge--current{background:rgba(232,145,26,.15);color:#B45309}
+.rung-badge--done{background:rgba(74,158,130,.15);color:#0F6650}
+.rung-badge--next{background:rgba(28,61,110,.1);color:var(--blue)}
+.rung-chevron{color:var(--gray);font-size:1.1rem;transition:transform .2s;flex-shrink:0;margin-left:.5rem}
+.rung.open .rung-chevron{transform:rotate(180deg)}
+.rung-body{display:none;padding:0 1.25rem 1.5rem;border-top:1px solid #F0F3F7}
+.rung.open .rung-body{display:block}
+.rung-body h4{font-family:'Manrope',system-ui,sans-serif;font-size:.95rem;color:var(--blue);margin:1rem 0 .4rem}
+.rung-body p{font-size:.95rem;color:var(--dark);margin:.5rem 0}
+.rung-body a{color:var(--blue);font-weight:500}
+.action-list{list-style:none;padding:0;display:flex;flex-direction:column;gap:.5rem;margin:.75rem 0}
+.action-list li{display:flex;align-items:flex-start;gap:.6rem;font-size:.95rem;line-height:1.5}
+.action-list li::before{content:'→';color:var(--amber);font-weight:700;flex-shrink:0;margin-top:.05rem}
+.rp-box{background:#FFFBEB;border-left:4px solid var(--amber);border-radius:0 var(--radius) var(--radius) 0;padding:1rem 1.1rem;margin:1.25rem 0}
+.rp-label{font-size:.7rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#B45309;display:flex;align-items:center;gap:.35rem;margin-bottom:.5rem}
+.rp-label svg{width:14px;height:14px;flex-shrink:0}
+.rp-box p{font-size:.9rem;color:#451A03;margin:.4rem 0 0;line-height:1.6}
+.rp-box strong{color:#92400E}
+.screener{background:var(--light);border-radius:var(--radius);padding:1.1rem 1.25rem;margin:1rem 0}
+.screener h4{font-size:.9rem;color:var(--blue);margin-bottom:.75rem}
+.screener-row{display:flex;gap:.6rem;flex-wrap:wrap;align-items:center;margin-bottom:.6rem;font-size:.88rem}
+.screener-row label{font-weight:500;color:var(--dark);min-width:160px}
+.screener-row select{flex:1;min-width:140px;padding:.4rem .7rem;border:1.5px solid #D1D5DB;border-radius:6px;font:inherit;font-size:.88rem;background:#fff}
+.screener-result{margin-top:.75rem;display:flex;flex-direction:column;gap:.4rem}
+.benefit-row{display:flex;align-items:center;gap:.6rem;font-size:.88rem;flex-wrap:wrap}
+.benefit-row .benefit-name{font-weight:600;color:var(--dark);min-width:140px}
+.badge-likely{background:rgba(74,158,130,.15);color:#0F6650;padding:.15rem .55rem;border-radius:99px;font-size:.75rem;font-weight:700}
+.badge-possible{background:rgba(232,145,26,.15);color:#B45309;padding:.15rem .55rem;border-radius:99px;font-size:.75rem;font-weight:700}
+.badge-unlikely{background:#F3F4F6;color:var(--gray);padding:.15rem .55rem;border-radius:99px;font-size:.75rem;font-weight:700}
+.benefit-link{color:var(--blue);font-size:.82rem}
+.screener-note{font-size:.78rem;color:var(--gray);margin-top:.6rem}
+.steps-box{background:#F8FAFF;border:1px solid #E0E8F5;border-radius:var(--radius);padding:1rem 1.1rem;margin:.75rem 0}
+.steps-box ol{padding-left:1.25rem;display:flex;flex-direction:column;gap:.4rem;font-size:.9rem;color:var(--dark)}
+.steps-box li{line-height:1.5}
+.restart-wrap{text-align:center;margin-top:2.5rem;padding-top:1.5rem;border-top:1px solid #E5E9F0}
+.restart-btn{background:none;border:2px solid #E5E9F0;color:var(--gray);padding:.55rem 1.25rem;border-radius:var(--radius);font-size:.85rem;cursor:pointer}
+.restart-btn:hover{border-color:var(--gray);color:var(--dark)}
 @media print{
-  body{background:#fff;font-size:12pt;color:#000}
-  .topbar,.privacy-bar,.tab-nav,.cat-grid,.section-head .btn,.resource-search,.add-form,
-  .item-actions,.budget-section__head .btn,.budget-add-form,.calc-card,.import-banner,
-  .overlay,.add-followup-toggle,.followup-item__del,.budget-item__del,.tab-btn,
-  .done-toggle,.empty-state__icon,.plan-item__head .plan-item__badges .status-pill,
-  .topbar__tools,.today-card{display:none !important}
-  .tab-panel{display:block !important;page-break-after:always}
-  .tab-panel:last-of-type{page-break-after:auto}
-  .container{max-width:none;padding:.5in}
-  .progress-card,.summary-card{background:#1C3D6E !important;color:#fff !important;-webkit-print-color-adjust:exact;print-color-adjust:exact}
-  .plan-item{break-inside:avoid;border:1px solid #999 !important;box-shadow:none !important;margin-bottom:.4rem}
-  .plan-item__body{display:flex !important}
-  .plan-item--done{opacity:.5}
-  .section-head h2{font-size:14pt;color:#1C3D6E}
-  .item-section{padding:.4rem .75rem !important}
-  .notes-area{border:none !important;padding:0 !important;min-height:0 !important;background:none !important}
-  .sched-row input{border:none !important;padding:0 !important;background:none !important}
-  .print-header{display:block !important;margin-bottom:1rem;padding-bottom:.5rem;border-bottom:2px solid #1C3D6E}
-  .print-header h1{font-size:18pt;color:#1C3D6E;margin:0}
-  .print-header p{font-size:9pt;color:#666;margin:.25rem 0 0}
+  .crisis-bar,.nav,.breadcrumb,#assessment-shell,#loading-screen,.print-btn,.restart-wrap,.footer,.rung-chevron,#crisis-banner{display:none!important}
+  #results-shell{display:block!important;padding:0}
+  .rung{break-inside:avoid}
+  .rung-body{display:block!important}
+  .rung.rung--done{opacity:.5}
+  .ladder-rail::before{display:none}
+  .ladder-rail{padding-left:0}
+  .rung::before{display:none}
 }
-.print-header{display:none}
-
 </style>
+<noscript><style>.nav__links{display:flex!important;flex-wrap:wrap!important;}.nav__toggle{display:none!important;}</style></noscript>
 </head>
 <body>
+<a href="#main" class="skip-link">Skip to main content</a>
 
-<header class="topbar">
-  <a href="https://www.commonladder.org/" class="topbar__brand">
-    <svg width="20" height="20" viewBox="0 0 28 28" fill="none" aria-hidden="true">
-      <rect x="4" y="2" width="3" height="24" rx="1.5" fill="white" opacity=".9"/>
-      <rect x="21" y="2" width="3" height="24" rx="1.5" fill="white" opacity=".9"/>
-      <rect x="4" y="7" width="20" height="3" rx="1.5" fill="#E8911A"/>
-      <rect x="4" y="14" width="20" height="3" rx="1.5" fill="#E8911A"/>
-      <rect x="4" y="21" width="20" height="3" rx="1.5" fill="#E8911A"/>
-    </svg>
-    Common Ladder
-  </a>
-  <div class="topbar__right">
-    <div class="topbar__title">My <span>Ladder</span></div>
-    <button class="topbar__tools" onclick="openTools()" aria-label="Tools menu">⋯ More</button>
-  </div>
-</header>
-
-<div class="print-header">
-  <h1>My Ladder — Personal Resource Plan</h1>
-  <p>Printed <span id="print-date"></span> · commonladder.org</p>
+<div class="crisis-bar" role="region" aria-label="Crisis help">
+  <strong>Need help right now?</strong>
+  <a href="tel:211">Call 211</a><span class="crisis-bar__sep">·</span>
+  <a href="sms:741741?body=HOME">Text HOME to 741741</a><span class="crisis-bar__sep">·</span>
+  <a href="tel:988">988 Suicide &amp; Crisis</a>
 </div>
 
-<div class="privacy-bar"><svg class="icon" viewBox="0 0 16 16" aria-hidden="true" style="margin-right:.35em;vertical-align:-.15em"><path d="M8 1a3 3 0 0 0-3 3v3H4a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V8a1 1 0 0 0-1-1h-1V4a3 3 0 0 0-3-3zM6 4a2 2 0 0 1 4 0v3H6V4z" fill="currentColor"/></svg> Everything stays on <strong>your device</strong> — nothing is sent to any server.</div>
-
-<nav class="tab-nav" role="tablist">
-  <button class="tab-btn active" role="tab" id="tab-plan" onclick="switchTab('plan')">📋 My Plan</button>
-  <button class="tab-btn" role="tab" id="tab-budget" onclick="switchTab('budget')">💰 My Budget</button>
+<nav class="nav" aria-label="Primary">
+  <div class="nav__inner">
+    <a href="/" class="nav__logo" aria-label="Common Ladder home">
+      <svg width="28" height="28" viewBox="0 0 28 28" fill="none" aria-hidden="true">
+        <rect x="4" y="2" width="3" height="24" rx="1.5" fill="white" opacity=".9"/>
+        <rect x="21" y="2" width="3" height="24" rx="1.5" fill="white" opacity=".9"/>
+        <rect x="4" y="7" width="20" height="3" rx="1.5" fill="#E8911A"/>
+        <rect x="4" y="14" width="20" height="3" rx="1.5" fill="#E8911A"/>
+        <rect x="4" y="21" width="20" height="3" rx="1.5" fill="#E8911A"/>
+      </svg>
+      common<span>ladder</span>
+    </a>
+    <button class="nav__toggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="primary-nav" onclick="this.setAttribute('aria-expanded', document.getElementById('primary-nav').classList.toggle('open') ? 'true' : 'false')">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav__links" id="primary-nav">
+      <li><a href="/find.html">Resources</a></li>
+      <li><a href="/providers.html">For providers</a></li>
+      <li><a href="/learn/">Learn</a></li>
+      <li><a href="/about.html">About</a></li>
+      <li><a href="/find.html" class="nav__cta">Find resources</a></li>
+      <li><a href="https://www.weather.gov/" rel="noreferrer" class="nav__exit" onclick="event.preventDefault();window.location.replace('https://www.weather.gov/')">Leave page</a></li>
+    </ul>
+  </div>
 </nav>
 
-<!-- ══ PLAN TAB ══════════════════════════════ -->
-<div class="tab-panel active" id="panel-plan">
-<div class="container">
+<nav class="breadcrumb" aria-label="Breadcrumb">
+  <ol>
+    <li><a href="/">Home</a></li>
+    <li><span aria-current="page">My Ladder</span></li>
+  </ol>
+</nav>
 
-  <div class="progress-card">
-    <div class="progress-card__label">Your progress</div>
-    <div class="progress-card__stats" id="progress-stats">0 of 0 steps completed</div>
-    <div class="progress-bar"><div class="progress-bar__fill" id="progress-fill" style="width:0%"></div></div>
-  </div>
-
-  <!-- Today summary — only shows when there's something due/overdue/scheduled today -->
-  <div class="today-card" id="today-card">
-    <div class="today-card__head">
-      <span>⏰</span>
-      <span id="today-label">Today &amp; overdue</span>
-    </div>
-    <div class="today-card__list" id="today-list"></div>
-  </div>
-
-  <div class="section-head" style="margin-top:0">
-    <h2>Find a resource</h2>
-    <button class="btn btn--outline btn--sm" onclick="toggleCustomForm()">+ Add custom</button>
-  </div>
-
-  <div class="cat-grid">
-    <div class="cat-tile" onclick="openSearch('shelter')"><div class="cat-tile__icon"><svg class="icon" viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="4" fill="currentColor"/></svg></div>Shelter</div>
-    <div class="cat-tile" onclick="openSearch('food')"><div class="cat-tile__icon"><svg class="icon" viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="4" fill="currentColor"/></svg></div>Food</div>
-    <div class="cat-tile" onclick="openSearch('health')"><div class="cat-tile__icon"><svg class="icon" viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="4" fill="currentColor"/></svg></div>Health</div>
-    <div class="cat-tile" onclick="openSearch('id')"><div class="cat-tile__icon"><svg class="icon" viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="4" fill="currentColor"/></svg></div>ID / Docs</div>
-    <div class="cat-tile" onclick="openSearch('employment')"><div class="cat-tile__icon"><svg class="icon" viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="4" fill="currentColor"/></svg></div>Jobs</div>
-    <div class="cat-tile" onclick="openSearch('housing')"><div class="cat-tile__icon"><svg class="icon" viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="4" fill="currentColor"/></svg></div>Housing</div>
-    <div class="cat-tile" onclick="openSearch('benefits')"><div class="cat-tile__icon"><svg class="icon" viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="4" fill="currentColor"/></svg></div>Benefits</div>
-    <div class="cat-tile" onclick="openSearch('legal')"><div class="cat-tile__icon"><svg class="icon" viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="4" fill="currentColor"/></svg></div>Legal</div>
-  </div>
-
-  <!-- Resource search panel -->
-  <div class="resource-search" id="resource-search">
-    <div class="resource-search__bar">
-      <input class="resource-search__input" id="search-input" type="search" placeholder="Search resources…" oninput="filterResources()" autocomplete="off">
-      <button class="btn btn--outline btn--sm" onclick="closeSearch()">Close</button>
-    </div>
-    <div class="cat-filters" id="cat-filters">
-      <span class="cat-filter active" data-cat="all" onclick="setCatFilter(this,'all')">All</span>
-      <span class="cat-filter" data-cat="shelter" onclick="setCatFilter(this,'shelter')">🏠 Shelter</span>
-      <span class="cat-filter" data-cat="food" onclick="setCatFilter(this,'food')">🍽️ Food</span>
-      <span class="cat-filter" data-cat="health" onclick="setCatFilter(this,'health')">🏥 Health</span>
-      <span class="cat-filter" data-cat="id" onclick="setCatFilter(this,'id')">🪪 ID / Docs</span>
-      <span class="cat-filter" data-cat="employment" onclick="setCatFilter(this,'employment')">💼 Jobs</span>
-      <span class="cat-filter" data-cat="housing" onclick="setCatFilter(this,'housing')">🔑 Housing</span>
-      <span class="cat-filter" data-cat="benefits" onclick="setCatFilter(this,'benefits')">📄 Benefits</span>
-      <span class="cat-filter" data-cat="legal" onclick="setCatFilter(this,'legal')">⚖️ Legal</span>
-    </div>
-    <div class="resource-results" id="resource-results"></div>
-  </div>
-
-  <!-- Custom add form -->
-  <div class="add-form" id="add-form">
-    <div style="font-size:.82rem;font-weight:700;color:var(--blue);margin-bottom:.65rem">Add a custom resource</div>
-    <div class="form-row">
-      <div class="form-group">
-        <label for="f-cat">Category</label>
-        <select id="f-cat">
-          <option value="shelter">🏠 Shelter</option>
-          <option value="food">🍽️ Food</option>
-          <option value="health">🏥 Health</option>
-          <option value="id">🪪 ID / Docs</option>
-          <option value="employment">💼 Jobs</option>
-          <option value="housing">🔑 Housing</option>
-          <option value="benefits">📄 Benefits</option>
-          <option value="legal">⚖️ Legal</option>
-          <option value="other">📌 Other</option>
-        </select>
-      </div>
-      <div class="form-group" style="flex:2">
-        <label for="f-name">Resource name *</label>
-        <input type="text" id="f-name" placeholder="e.g. Central Arizona Shelter">
-      </div>
-    </div>
-    <div class="form-row">
-      <div class="form-group">
-        <label for="f-phone">Phone</label>
-        <input type="tel" id="f-phone" placeholder="(602) 555-0100">
-      </div>
-      <div class="form-group" style="flex:2">
-        <label for="f-address">Address</label>
-        <input type="text" id="f-address" placeholder="123 Main St, Phoenix AZ">
-      </div>
-    </div>
-    <div class="form-actions">
-      <button class="btn btn--outline btn--sm" onclick="closeCustomForm()">Cancel</button>
-      <button class="btn btn--amber btn--sm" onclick="addCustomItem()">Add to my plan</button>
-    </div>
-  </div>
-
-  <!-- Plan list -->
-  <div class="section-head">
-    <h2>My plan</h2>
-    <span id="plan-count" style="font-size:.8rem;color:var(--gray)"></span>
-  </div>
-  <div class="plan-list" id="plan-active-list"></div>
-  <div id="plan-empty" class="empty-state" style="display:none">
-    <div class="empty-state__icon">📋</div>
-    <p>Your plan is empty.<br>Find a resource above to get started.</p>
-  </div>
-
-  <button class="done-toggle" id="done-toggle" onclick="toggleDone()" style="display:none">
-    ▶ Completed (<span id="done-count">0</span>)
-  </button>
-  <div class="plan-list" id="plan-done-list" style="display:none"></div>
-
-</div>
+<div id="crisis-banner" role="alert" aria-live="assertive">
+  ⚠️ You said you need shelter tonight — <a href="tel:211">Call 211 now</a> or <a href="/static-tools/shelter-finder-az.html">browse Arizona shelters →</a>
 </div>
 
-<!-- ══ BUDGET TAB ═════════════════════════════ -->
-<div class="tab-panel" id="panel-budget">
-<div class="container">
-  <div class="summary-card">
-    <div class="summary-card__item">
-      <div class="summary-card__label">Monthly income</div>
-      <div class="summary-card__amount" id="sum-income">$0</div>
+<main id="main">
+
+<!-- ASSESSMENT -->
+<div id="assessment-shell">
+  <div id="intro-block" style="text-align:center;margin-bottom:2rem">
+    <span style="font-size:.78rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--amber);display:block;margin-bottom:.4rem">Free · Private · No account needed</span>
+    <h1 style="font-family:'Manrope',system-ui,sans-serif;font-size:clamp(1.6rem,4vw,2.2rem);color:var(--blue);margin-bottom:.6rem">Build your personal ladder</h1>
+    <p style="color:var(--gray);max-width:500px;margin:0 auto;font-size:.98rem">Answer 7 quick questions and get a personalized step-by-step plan — including the insider knowledge that connected people get from lawyers and financial advisors, but that most people never see.</p>
+  </div>
+  <div class="progress-wrap" id="progress-wrap">
+    <div class="progress-label">
+      <span id="progress-text">Question 1 of 7</span>
+      <span id="progress-pct">14%</span>
     </div>
-    <div class="summary-card__item">
-      <div class="summary-card__label">Monthly expenses</div>
-      <div class="summary-card__amount" id="sum-expenses">$0</div>
-    </div>
-    <div class="summary-card__item">
-      <div class="summary-card__label">Remaining</div>
-      <div class="summary-card__amount" id="sum-remaining">$0</div>
+    <div class="progress-track">
+      <div class="progress-fill" id="progress-fill" style="width:14%"></div>
     </div>
   </div>
-
-  <div class="budget-section">
-    <div class="budget-section__head">
-      <div><div class="budget-section__title">💵 Income</div><div class="budget-section__total" id="income-total-label">$0 / month</div></div>
-      <button class="btn btn--sage btn--sm" onclick="toggleBudgetForm('income-form')">+ Add</button>
-    </div>
-    <div class="budget-items" id="income-items"></div>
-    <div class="budget-add-form open" id="income-form">
-      <div class="form-row">
-        <div class="form-group" style="flex:2"><label>Source</label><input type="text" id="inc-name" placeholder="e.g. SSI, job"></div>
-        <div class="form-group"><label>Amount ($)</label><input type="number" id="inc-amount" placeholder="0" min="0"></div>
-        <div class="form-group"><label>Frequency</label><select id="inc-freq"><option value="monthly">Monthly</option><option value="biweekly">Bi-weekly</option><option value="weekly">Weekly</option><option value="once">One-time</option></select></div>
-      </div>
-      <div class="form-actions"><button class="btn btn--outline btn--sm" onclick="toggleBudgetForm('income-form')">Cancel</button><button class="btn btn--sage btn--sm" onclick="addBudgetItem('income')">Add</button></div>
-    </div>
-  </div>
-
-  <div class="budget-section">
-    <div class="budget-section__head">
-      <div><div class="budget-section__title">📤 Expenses</div><div class="budget-section__total" id="expense-total-label">$0 / month</div></div>
-      <button class="btn btn--amber btn--sm" onclick="toggleBudgetForm('expense-form')">+ Add</button>
-    </div>
-    <div class="budget-items" id="expense-items"></div>
-    <div class="budget-add-form open" id="expense-form">
-      <div class="form-row">
-        <div class="form-group" style="flex:2"><label>Expense</label><input type="text" id="exp-name" placeholder="e.g. Phone, bus pass"></div>
-        <div class="form-group"><label>Amount ($)</label><input type="number" id="exp-amount" placeholder="0" min="0"></div>
-        <div class="form-group"><label>Frequency</label><select id="exp-freq"><option value="monthly">Monthly</option><option value="biweekly">Bi-weekly</option><option value="weekly">Weekly</option><option value="once">One-time</option></select></div>
-      </div>
-      <div class="form-actions"><button class="btn btn--outline btn--sm" onclick="toggleBudgetForm('expense-form')">Cancel</button><button class="btn btn--amber btn--sm" onclick="addBudgetItem('expense')">Add</button></div>
-    </div>
-  </div>
-
-  <div class="calc-card">
-    <h2>🏠 Housing Affordability Calculator</h2>
-    <p>Housing should cost no more than 30% of your monthly income.</p>
-    <div class="calc-row">
-      <div class="form-group" style="flex:1"><label for="calc-income">Monthly income ($)</label><input type="number" id="calc-income" placeholder="0" min="0" oninput="runCalc()"></div>
-      <div class="form-group" style="flex:1"><label for="calc-rent">Monthly rent to check ($)</label><input type="number" id="calc-rent" placeholder="0" min="0" oninput="runCalc()"></div>
-    </div>
-    <div id="calc-result" class="affordability-result">
-      <div class="affordability-result__label" id="calc-label"></div>
-      <div class="meter"><div class="meter__fill" id="calc-meter"></div></div>
-      <div class="affordability-result__detail" id="calc-detail"></div>
+  <div class="q-card" id="q-card">
+    <div class="q-num" id="q-num">Question 1</div>
+    <div class="q-text" id="q-text">Loading…</div>
+    <div class="q-options" id="q-options"></div>
+    <div class="q-nav">
+      <button class="btn-back" id="btn-back" onclick="goBack()" style="display:none">← Back</button>
+      <button class="btn-next" id="btn-next" onclick="goNext()" disabled>Continue →</button>
     </div>
   </div>
 </div>
+
+<!-- LOADING -->
+<div id="loading-screen" aria-live="polite">
+  <div class="ladder-anim" aria-hidden="true">
+    <svg viewBox="0 0 60 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect x="6" y="4" width="8" height="72" rx="4" fill="#1C3D6E" opacity=".2"/>
+      <rect x="46" y="4" width="8" height="72" rx="4" fill="#1C3D6E" opacity=".2"/>
+      <rect x="6" y="14" width="48" height="8" rx="4" fill="#E8911A"/>
+      <rect x="6" y="34" width="48" height="8" rx="4" fill="#E8911A"/>
+      <rect x="6" y="54" width="48" height="8" rx="4" fill="#E8911A"/>
+    </svg>
+  </div>
+  <div class="loading-title">Building your ladder…</div>
+  <div class="loading-sub">Personalizing your plan based on your answers.</div>
 </div>
 
-<!-- ══ TOOLS SHEET ════════════════════════════ -->
-<div class="overlay" id="tools-overlay" onclick="if(event.target===this)closeTools()">
-  <div class="sheet" role="dialog" aria-modal="true" aria-labelledby="tools-title">
-    <div class="sheet__head">
-      <div class="sheet__title" id="tools-title">⚙ Tools &amp; Backup</div>
-      <button class="sheet__close" onclick="closeTools()" aria-label="Close">×</button>
-    </div>
+<!-- RESULTS -->
+<div id="results-shell">
+  <div class="results-header">
+    <span class="eyebrow">Your personalized roadmap</span>
+    <h1>Your Ladder</h1>
+    <p>Each rung is a stage on your path to stability. Your current position is highlighted. Tap any rung to expand it.</p>
+    <button class="print-btn" onclick="window.print()">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+      Save as PDF / Print
+    </button>
+  </div>
 
-    <div class="tool-row" onclick="printPlan()">
-      <div class="tool-row__icon">🖨</div>
-      <div class="tool-row__info">
-        <div class="tool-row__name">Print my plan</div>
-        <div class="tool-row__desc">Open the print dialog — save as PDF to share with a case manager, or print to bring with you.</div>
+  <div class="ladder-rail" id="ladder-rail">
+
+    <!-- RUNG 0 -->
+    <div class="rung" id="rung-0">
+      <div class="rung-header" onclick="toggleRung(0)" role="button" tabindex="0" onkeypress="if(event.key==='Enter')toggleRung(0)">
+        <span class="rung-num">0</span>
+        <div class="rung-title-wrap">
+          <div class="rung-title">Safety &amp; Crisis</div>
+          <div class="rung-subtitle">Immediate shelter and safety</div>
+        </div>
+        <span class="rung-badge" id="badge-0"></span>
+        <span class="rung-chevron">▾</span>
+      </div>
+      <div class="rung-body" id="body-0">
+        <h4>Your most important action right now:</h4>
+        <ul class="action-list">
+          <li><strong>Call 211</strong> — available 24/7, free, confidential. They know which shelters have beds open tonight.</li>
+          <li><a href="/static-tools/shelter-finder-az.html">Browse the Arizona shelter directory →</a></li>
+          <li>If you're fleeing domestic violence: <a href="tel:18007997233">National DV Hotline 1-800-799-7233</a> (call or text)</li>
+          <li id="r0-kids-tip" style="display:none">You have children — mention this when you call 211. Family shelters have separate intake and often prioritize families.</li>
+          <li id="r0-pregnant-tip" style="display:none">You're pregnant — let 211 know. Arizona has specific housing programs for expectant mothers.</li>
+        </ul>
+        <div class="rp-box">
+          <div class="rp-label">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+            What connected people know
+          </div>
+          <p>Emergency shelters in Arizona fill up by late afternoon — <strong>call before 2 PM if possible.</strong> If one shelter is full, ask them to make a "warm referral" to the next. Case managers know which beds are available and can call ahead, so you skip the queue at each door. You don't have to start over every time — always ask: <em>"Can you call ahead for me?"</em></p>
+        </div>
       </div>
     </div>
 
-    <div class="tool-row" onclick="exportData()">
-      <div class="tool-row__icon">📤</div>
-      <div class="tool-row__info">
-        <div class="tool-row__name">Back up my data</div>
-        <div class="tool-row__desc">Download a backup file you can save to your email or another device. Your plan stays private — nothing is uploaded.</div>
+    <!-- RUNG 1 -->
+    <div class="rung" id="rung-1">
+      <div class="rung-header" onclick="toggleRung(1)" role="button" tabindex="0" onkeypress="if(event.key==='Enter')toggleRung(1)">
+        <span class="rung-num">1</span>
+        <div class="rung-title-wrap">
+          <div class="rung-title">Basic Needs &amp; Identity</div>
+          <div class="rung-subtitle">ID documents, food, mailing address, phone</div>
+        </div>
+        <span class="rung-badge" id="badge-1"></span>
+        <span class="rung-chevron">▾</span>
+      </div>
+      <div class="rung-body" id="body-1">
+        <div id="r1-id-block">
+          <h4>Get your identity documents</h4>
+          <p>Without ID you can't open a bank account, apply for housing, or access most services. Here's how to get it even when you have nothing:</p>
+          <div class="steps-box">
+            <ol>
+              <li><strong>Birth certificate</strong> — $20 from AZ Dept of Health. If you can't pay, ask your shelter or case manager for a fee voucher.</li>
+              <li><strong>Social Security card</strong> — free at SSA office. Bring your birth certificate.</li>
+              <li><strong>AZ State ID</strong> — $12 at MVD ($5 reduced with DES benefits letter). The MVD can accept a combination of documents — bring everything you have.</li>
+              <li>Call 211 and ask for "ID recovery assistance" — they know which local organizations cover these fees.</li>
+            </ol>
+          </div>
+          <div class="rp-box">
+            <div class="rp-label">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+              What connected people know — the ID catch-22
+            </div>
+            <p>The "you need ID to get ID" catch-22 has a workaround. Arizona MVD accepts a <strong>combination of documents</strong> that add up to proof of identity — a shelter intake letter, a bank statement in your name, a court document, or a letter from a social service agency can all count. Ask the clerk what combination works — they have discretion. Born in another country? Ask specifically about a "consular ID" or "matricula consular," which several AZ agencies accept.</p>
+          </div>
+        </div>
+        <h4>Food access</h4>
+        <ul class="action-list">
+          <li>Apply for SNAP at <a href="https://des.az.gov" target="_blank" rel="noopener">des.az.gov</a> — if homeless, you may qualify for <strong>expedited SNAP within 7 days</strong></li>
+          <li>Food banks require no ID or address: St. Mary's Food Bank (Phoenix), United Food Bank (East Valley), Community Food Bank of Southern AZ (Tucson)</li>
+        </ul>
+        <div class="rp-box">
+          <div class="rp-label">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+            What connected people know — expedited SNAP
+          </div>
+          <p>If your monthly income is under $150 and you have less than $100 in cash/savings, you're <strong>legally entitled to SNAP within 7 days</strong> — not 30. You must ask for it explicitly. Say: <em>"I believe I qualify for expedited SNAP processing."</em> Most eligible people wait 30 days because they didn't know to ask.</p>
+        </div>
+        <h4>Mailing address</h4>
+        <ul class="action-list">
+          <li><strong>USPS General Delivery</strong> is free — mail sent to "Your Name, General Delivery, [City], AZ [ZIP]" can be picked up at any post office with ID</li>
+          <li>Many shelters, churches, and agencies accept mail for free — ask when you call 211</li>
+          <li>Some public libraries accept mail for people experiencing homelessness — ask your local branch</li>
+        </ul>
+        <h4>Phone access</h4>
+        <ul class="action-list">
+          <li>The federal <strong>Lifeline program</strong> provides free/low-cost phone service if you receive SNAP, Medicaid, or other benefits — apply at lifelineapplication.com</li>
+          <li>SafeLink Wireless and Q Link Wireless offer free smartphones through Lifeline</li>
+        </ul>
       </div>
     </div>
 
-    <div class="tool-row" onclick="document.getElementById('import-file').click()">
-      <div class="tool-row__icon">📥</div>
-      <div class="tool-row__info">
-        <div class="tool-row__name">Restore from backup</div>
-        <div class="tool-row__desc">Load a backup file from this device or another. Replaces your current plan and budget.</div>
+    <!-- RUNG 2 -->
+    <div class="rung" id="rung-2">
+      <div class="rung-header" onclick="toggleRung(2)" role="button" tabindex="0" onkeypress="if(event.key==='Enter')toggleRung(2)">
+        <span class="rung-num">2</span>
+        <div class="rung-title-wrap">
+          <div class="rung-title">Housing Stability</div>
+          <div class="rung-subtitle">Finding and keeping your own place</div>
+        </div>
+        <span class="rung-badge" id="badge-2"></span>
+        <span class="rung-chevron">▾</span>
       </div>
-      <input type="file" id="import-file" accept=".json,application/json" style="display:none" onchange="importData(this.files[0])">
+      <div class="rung-body" id="body-2">
+        <div id="r2-shelter-path" style="display:none">
+          <h4>Moving from shelter to permanent housing</h4>
+          <ul class="action-list">
+            <li>Ask your case manager: <em>"Am I eligible for rapid rehousing?"</em> — a short-term rental subsidy that moves you into your own apartment faster</li>
+            <li>Get on the Coordinated Entry waitlist through your CoC — your case manager can help</li>
+            <li>If you have a disability, ask about <strong>Permanent Supportive Housing</strong> — long-term housing with services included</li>
+          </ul>
+        </div>
+        <div id="r2-atrisk-path" style="display:none">
+          <h4>Keeping your current housing</h4>
+          <ul class="action-list">
+            <li>Call 211 and ask about <strong>homelessness prevention / diversion programs</strong> — emergency rental assistance before eviction</li>
+            <li>Arizona Legal Aid (602) 258-3434 if you've received an eviction notice — you have rights</li>
+            <li><a href="/static-tools/stay-housed-maricopa.html">Try the Stay-Housed Navigator →</a></li>
+          </ul>
+        </div>
+        <h4>Finding an apartment with a difficult history</h4>
+        <div class="rp-box">
+          <div class="rp-label">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+            What connected people know — apartment applications
+          </div>
+          <p><strong>Eviction history:</strong> Landlords can see evictions that went to a court judgment — NOT ones dismissed or settled before judgment. If dismissed, you don't have to disclose it. If there was a judgment, an honest letter explaining what changed goes further than saying nothing.</p>
+          <p><strong>Criminal history:</strong> Arizona law prohibits blanket "no criminal history" policies. Landlords must consider the offense type, how long ago, and rehabilitation. If denied, request the reason in writing — this opens an appeal path.</p>
+          <p><strong>Credit:</strong> Landlords care more about rental history than credit score. Offer a larger deposit, a co-signer, or a benefits letter as an income substitute.</p>
+          <p><strong>Security deposits:</strong> Arizona law caps deposits at 1.5x monthly rent. You can negotiate this down — or ask to apply part of first month's rent toward the deposit.</p>
+          <p><strong>Source of income discrimination:</strong> In Phoenix and Tucson, landlords cannot legally refuse to rent to you because your income comes from Section 8, SSDI, or other benefits. File a complaint with the <strong>AZ Attorney General: (602) 542-5263</strong> or HUD: 1-800-669-9777.</p>
+        </div>
+        <h4>Fair housing in Arizona</h4>
+        <ul class="action-list">
+          <li>Protected statewide: race, color, national origin, religion, sex, familial status, disability</li>
+          <li>Phoenix adds: source of income, sexual orientation, gender identity</li>
+          <li>Tucson adds: source of income</li>
+          <li>File a complaint: AZ AG Civil Rights Division (602) 542-5263 or HUD 1-800-669-9777</li>
+        </ul>
+      </div>
     </div>
 
-    <div class="tool-row tool-row--danger" onclick="clearAllData()">
-      <div class="tool-row__icon">🗑</div>
-      <div class="tool-row__info">
-        <div class="tool-row__name">Clear all data</div>
-        <div class="tool-row__desc">Erases your plan, budget, and activity log on this device. You can't undo this.</div>
+    <!-- RUNG 3 -->
+    <div class="rung" id="rung-3">
+      <div class="rung-header" onclick="toggleRung(3)" role="button" tabindex="0" onkeypress="if(event.key==='Enter')toggleRung(3)">
+        <span class="rung-num">3</span>
+        <div class="rung-title-wrap">
+          <div class="rung-title">Income &amp; Benefits</div>
+          <div class="rung-subtitle">Benefits you may be entitled to right now</div>
+        </div>
+        <span class="rung-badge" id="badge-3"></span>
+        <span class="rung-chevron">▾</span>
+      </div>
+      <div class="rung-body" id="body-3">
+        <h4>Benefits quick check</h4>
+        <p>Answer 3 questions to see what you likely qualify for:</p>
+        <div class="screener">
+          <div class="screener-row">
+            <label for="sc-size">Household size</label>
+            <select id="sc-size" onchange="runScreener()">
+              <option value="">Select…</option>
+              <option value="1">Just me (1)</option>
+              <option value="2">2 people</option>
+              <option value="3">3 people</option>
+              <option value="4">4 people</option>
+              <option value="5">5 or more</option>
+            </select>
+          </div>
+          <div class="screener-row">
+            <label for="sc-income">Monthly gross income</label>
+            <select id="sc-income" onchange="runScreener()">
+              <option value="">Select…</option>
+              <option value="0">$0 (no income)</option>
+              <option value="300">Under $500</option>
+              <option value="750">$500–$1,000</option>
+              <option value="1500">$1,000–$2,000</option>
+              <option value="2500">Over $2,000</option>
+            </select>
+          </div>
+          <div class="screener-row">
+            <label for="sc-kids">Children under 18?</label>
+            <select id="sc-kids" onchange="runScreener()">
+              <option value="">Select…</option>
+              <option value="yes">Yes</option>
+              <option value="no">No</option>
+            </select>
+          </div>
+          <div class="screener-result" id="screener-result" style="display:none"></div>
+        </div>
+        <div class="rp-box">
+          <div class="rp-label">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+            What connected people know — the big benefits secrets
+          </div>
+          <p><strong>The benefits cliff is real — plan around it.</strong> When income rises past certain thresholds, you can lose SNAP, Medicaid, or childcare subsidies worth more than the income gain. Before accepting a raise or more hours, calculate your net change. Ask your case manager about "cliff planning" before any income changes.</p>
+          <p><strong>You can appeal any denial.</strong> SNAP, AHCCCS, and TANF denials carry a 90-day appeal window. Many are errors. Arizona Legal Aid helps for free: <a href="tel:6022583434">(602) 258-3434</a>.</p>
+          <p><strong>SNAP accommodates homelessness.</strong> No fixed address? You can still apply — use a case manager's or shelter address. There's no permanent-home requirement.</p>
+          <p><strong>Medicaid and work (2026):</strong> Arizona has no Medicaid work requirements. Ask about "AHCCCS transition planning" before your income changes so there's no coverage gap.</p>
+        </div>
+        <div id="r3-uninsured" style="display:none">
+          <h4>Get health insurance</h4>
+          <ul class="action-list">
+            <li>Apply for AHCCCS (Arizona Medicaid) at <a href="https://healthearizonaplus.gov" target="_blank" rel="noopener">healthearizonaplus.gov</a> — free healthcare for qualifying Arizonans</li>
+            <li>Community Health Centers provide sliding-scale care regardless of insurance</li>
+            <li>For dental: dental schools provide low-cost care — call 211 and ask about dental assistance</li>
+          </ul>
+        </div>
+        <div id="r3-insured" style="display:none">
+          <p style="color:var(--sage);font-weight:600;margin-top:1rem">✓ You have health insurance — make sure you're using your full benefits, including mental health, dental, and vision if covered.</p>
+        </div>
       </div>
     </div>
 
-    <div style="margin-top:1rem;padding-top:1rem;border-top:1px solid var(--light);font-size:.75rem;color:var(--gray);line-height:1.5">
-      💾 All My Ladder data lives on your device. It never leaves your browser unless you choose to back it up.
+    <!-- RUNG 4 -->
+    <div class="rung" id="rung-4">
+      <div class="rung-header" onclick="toggleRung(4)" role="button" tabindex="0" onkeypress="if(event.key==='Enter')toggleRung(4)">
+        <span class="rung-num">4</span>
+        <div class="rung-title-wrap">
+          <div class="rung-title">Financial Foundation</div>
+          <div class="rung-subtitle">Banking, credit, and avoiding predatory products</div>
+        </div>
+        <span class="rung-badge" id="badge-4"></span>
+        <span class="rung-chevron">▾</span>
+      </div>
+      <div class="rung-body" id="body-4">
+        <h4>Open a bank account</h4>
+        <ul class="action-list">
+          <li><strong>Second-chance checking accounts</strong> (no ChexSystems check): Desert Financial Credit Union, OneAZ Credit Union — ask specifically for "second-chance" or "fresh start" accounts</li>
+          <li>ChexSystems records clear after 5 years — and you can dispute errors for free</li>
+          <li>An account lets you receive direct deposits faster and more safely than check cashing</li>
+        </ul>
+        <h4>Understand your credit</h4>
+        <ul class="action-list">
+          <li>Free credit report from all 3 bureaus at <a href="https://annualcreditreport.com" target="_blank" rel="noopener">AnnualCreditReport.com</a> — no credit card needed</li>
+          <li>Dispute errors directly with each bureau — errors are common and legally must be corrected</li>
+          <li>To build credit from nothing: a <strong>credit builder loan</strong> from a credit union ($300–$1,000 over 12 months) is the fastest legitimate path</li>
+        </ul>
+        <div class="rp-box">
+          <div class="rp-label">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+            What connected people know — banking and credit
+          </div>
+          <p><strong>Payment history is 35% of your credit score</strong> — the single biggest factor. Old collections under $500 have less impact than most people think, especially after 2 years. You don't need to pay old collections to start rebuilding — focus on current bills.</p>
+          <p><strong>Predatory products to avoid:</strong> payday loans (often 400%+ APR — AZ caps at 36%, so higher may be illegal), rent-to-own electronics (3–4x retail), prepaid debit cards with high monthly fees. If offered a payday loan above 36% APR in Arizona, report it to the AZ Dept of Financial Institutions: (602) 771-2800.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- RUNG 5 -->
+    <div class="rung" id="rung-5">
+      <div class="rung-header" onclick="toggleRung(5)" role="button" tabindex="0" onkeypress="if(event.key==='Enter')toggleRung(5)">
+        <span class="rung-num">5</span>
+        <div class="rung-title-wrap">
+          <div class="rung-title">Stability &amp; Mobility</div>
+          <div class="rung-subtitle">Employment, transportation, and building wealth</div>
+        </div>
+        <span class="rung-badge" id="badge-5"></span>
+        <span class="rung-chevron">▾</span>
+      </div>
+      <div class="rung-body" id="body-5">
+        <div id="r5-employment-block">
+          <h4 id="r5-employment-heading">Employment</h4>
+          <ul class="action-list" id="r5-employment-list">
+            <li>Arizona@Work workforce centers provide free job search help, resume assistance, and skills training — find yours at <a href="https://arizonaatwork.com" target="_blank" rel="noopener">arizonaatwork.com</a></li>
+            <li>Goodwill of Central &amp; Northern Arizona offers free job training regardless of background</li>
+            <li>If you have a felony record, ask specifically about "fair chance" or "ban the box" employers — Arizona has a growing list</li>
+          </ul>
+        </div>
+        <h4>Transportation</h4>
+        <ul class="action-list">
+          <li id="r5-car-tip" style="display:none">You have a car — make sure you have the required AZ insurance minimum and a valid license. A lapsed license or uninsured vehicle can create serious new barriers.</li>
+          <li id="r5-transit-tip">Valley Metro (Phoenix area): AHCCCS recipients may qualify for reduced-fare transit passes — ask your AHCCCS caseworker before paying full fare</li>
+          <li>Medical transportation: AHCCCS covers non-emergency rides to covered appointments — call the number on your card at least 3 business days ahead</li>
+          <li>Nonprofit car programs: A New Leaf and Vehicles for Change offer low-cost/donated vehicles — ask 211 about "vehicle assistance programs"</li>
+        </ul>
+        <div class="rp-box">
+          <div class="rp-label">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+            What connected people know — the Earned Income Tax Credit
+          </div>
+          <p>The <strong>EITC</strong> is worth up to $7,430 for a family with 3+ children (2024). It's fully refundable — you get it as cash even if you owe no taxes. About 1 in 5 eligible workers doesn't claim it because they don't realize they must file a return. <strong>Free filing help</strong> is available at VITA sites across Arizona every tax season — find yours at <a href="https://irs.gov/vita" target="_blank" rel="noopener">irs.gov/vita</a>. This is one of the largest direct wealth transfers available to working people. Don't leave it on the table.</p>
+        </div>
+        <h4>Building savings</h4>
+        <ul class="action-list">
+          <li><strong>Individual Development Accounts (IDAs)</strong> are matched savings programs — nonprofits match every dollar you save toward a home, car, or education (often 2:1 or 3:1). Ask 211 about IDA programs near you.</li>
+          <li>Even $5/week in a dedicated savings account builds a buffer for the next emergency</li>
+        </ul>
+      </div>
+    </div>
+
+  </div><!-- /ladder-rail -->
+
+  <div class="restart-wrap">
+    <p style="color:var(--gray);font-size:.88rem;margin-bottom:.75rem">Need to update your answers?</p>
+    <button class="restart-btn" onclick="restartAssessment()">← Retake the assessment</button>
+  </div>
+</div><!-- /results-shell -->
+
+</main>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer__grid">
+      <div class="footer__brand">
+        <h3>Common Ladder</h3>
+        <p>The civic resource platform connecting people experiencing homelessness with every service in your community.</p>
+        <p style="margin-top:1rem;font-size:.8rem;opacity:.7">Built in Phoenix, AZ · Free to use, always</p>
+      </div>
+      <div>
+        <h4>Find help</h4>
+        <ul>
+          <li><a href="/help/housing-shelter/">Housing &amp; Shelter</a></li>
+          <li><a href="/help/food/">Food</a></li>
+          <li><a href="/help/health/">Health</a></li>
+          <li><a href="/help/">All categories</a></li>
+          <li><a href="/static-tools/my-ladder.html">My Ladder planner</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>For providers</h4>
+        <ul>
+          <li><a href="/providers.html">Tools &amp; referrals</a></li>
+          <li><a href="/providers.html#case-manager-guide">Case manager guide</a></li>
+          <li><a href="/data-reports.html">Data &amp; reports</a></li>
+          <li><a href="/learn/">Four learning pathways</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>About</h4>
+        <ul>
+          <li><a href="/about.html">Our mission</a></li>
+          <li><a href="/about.html#methodology">Methodology</a></li>
+          <li><a href="/about.html#team">Team</a></li>
+          <li><a href="/contact.html">Contact</a></li>
+          <li><a href="/privacy.html">Privacy</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer__transparency">
+      <strong>Transparency:</strong> Common Ladder is an independent civic project. We do not sell user data, run ads, or accept payment from listed resources.
+    </div>
+    <div class="footer__bottom">
+      <span>&copy; 2026 Common Ladder. Free to use, always.</span>
+      <span><time datetime="2026-05-25">Last updated May 25, 2026</time></span>
     </div>
   </div>
-</div>
+</footer>
 
 <script>
-/* ══════════════════════════════════════════
-   RESOURCE DATABASE (Maricopa County / Phoenix)
-══════════════════════════════════════════ */
-const RESOURCES = [
-  // SHELTER
-  {cat:'shelter',name:'CASS — Central Arizona Shelter Services',address:'230 S 12th Ave, Phoenix AZ 85007',phone:'(602) 256-6945',note:'Largest emergency shelter in AZ. Men, women, and families. Coordinated Entry access point.'},
-  {cat:'shelter',name:'UMOM New Day Centers',address:'2705 N 16th St, Phoenix AZ 85006',phone:'(602) 249-7756',note:'Largest family shelter in Arizona. Also serves women.'},
-  {cat:'shelter',name:'Andre House',address:'1002 S 7th Ave, Phoenix AZ 85007',phone:'(602) 252-5491',note:'Emergency shelter and services. Drop-in services daily.'},
-  {cat:'shelter',name:'Phoenix Rescue Mission',address:'1801 S 35th Ave, Phoenix AZ 85009',phone:'(602) 233-3000',note:'Emergency shelter, meals, and recovery programs. Men.'},
-  {cat:'shelter',name:'Salvation Army — Phoenix',address:'2707 E Van Buren St, Phoenix AZ 85008',phone:'(602) 267-4100',note:'Emergency shelter and services. Men, women, and families.'},
-  {cat:'shelter',name:'Human Services Campus',address:'1520 W Van Buren St, Phoenix AZ 85007',phone:'(602) 256-6945',note:'Day services hub — showers, storage, mail, case management.'},
-  {cat:'shelter',name:'HomeBase Youth Services',address:'931 E Devonshire Ave, Phoenix AZ 85014',phone:'(602) 263-5531',note:'Youth 18–24. Drop-in M–F 7am–4pm. Shelter, meals, showers.'},
-  {cat:'shelter',name:'St. Joseph the Worker',address:'1734 W Polk St, Phoenix AZ 85007',phone:'(602) 256-2900',note:'Employment and support services. Part of Human Services Campus.'},
-  {cat:'shelter',name:'Chicanos Por La Causa — Crisis Housing',address:'1112 E Buckeye Rd, Phoenix AZ 85034',phone:'(602) 257-0700',note:'Emergency and transitional housing, bilingual services.'},
-  // FOOD
-  {cat:'food',name:"St. Mary's Food Bank",address:'2831 N 31st Ave, Phoenix AZ 85009',phone:'(602) 242-3663',note:'Largest food bank in AZ. Pantry distribution. Photo ID helpful.'},
-  {cat:'food',name:'Andre House — Free Meals',address:'1002 S 7th Ave, Phoenix AZ 85007',phone:'(602) 252-5491',note:'Free hot meals daily. No requirements — walk in.'},
-  {cat:'food',name:"St. Vincent de Paul — Dining Room",address:'420 W Watkins St, Phoenix AZ 85003',phone:'(602) 261-6886',note:'Free hot meals. Open daily. No ID required.'},
-  {cat:'food',name:'United Food Bank',address:'245 S Nina Dr, Mesa AZ 85210',phone:'(480) 926-4897',note:'Food pantry for East Valley. Check schedule for distribution days.'},
-  {cat:'food',name:'Paz de Cristo Community Center',address:'777 W University Dr, Mesa AZ 85201',phone:'(480) 464-5594',note:'Free meals and food pantry. East Valley / Mesa area.'},
-  {cat:'food',name:'SNAP / Food Stamps (DES)',address:'1789 W Jefferson St, Phoenix AZ 85007',phone:'(602) 542-5763',note:'Apply for SNAP benefits (food assistance). Also at DES.gov.'},
-  {cat:'food',name:'Midwest Food Bank — Phoenix',address:'2626 W Durango St, Phoenix AZ 85009',phone:'(480) 467-5424',note:'Free food pantry. Call ahead for distribution days and hours.'},
-  // HEALTH
-  {cat:'health',name:'Circle the City',address:'1245 E Buckeye Rd, Phoenix AZ 85034',phone:'(602) 243-7057',note:'Free primary care for people experiencing homelessness. Walk-in and appointments.'},
-  {cat:'health',name:'Valleywise Health — Behavioral Health',address:'2601 E Roosevelt St, Phoenix AZ 85008',phone:'(602) 344-1400',note:'Mental health and substance use services. Sliding scale fees.'},
-  {cat:'health',name:'Maricopa County Public Health',address:'4041 N Central Ave, Phoenix AZ 85012',phone:'(602) 506-6900',note:'Immunizations, HIV testing, TB services. Free or low-cost.'},
-  {cat:'health',name:'Community Bridges — Behavioral Health',address:'4645 S 36th St, Phoenix AZ 85040',phone:'(480) 969-4024',note:'Substance use treatment. Walk-in detox and residential.'},
-  {cat:'health',name:'Valle del Sol',address:'1209 E Thomas Rd, Phoenix AZ 85014',phone:'(602) 258-6797',note:'Mental health and counseling. Bilingual. Sliding scale.'},
-  {cat:'health',name:'Ryan White HIV Clinic — Valleywise',address:'2601 E Roosevelt St, Phoenix AZ 85008',phone:'(602) 344-1400',note:'Free HIV care and medication assistance.'},
-  {cat:'health',name:'Native Health',address:'4520 N Central Ave #600, Phoenix AZ 85012',phone:'(602) 279-5262',note:'Federally qualified health center. All are welcome. Sliding scale.'},
-  // ID / DOCS
-  {cat:'id',name:'ADHS Vital Records — Birth Certificate',address:'150 N 18th Ave, Phoenix AZ 85007',phone:'(602) 364-1300',note:'Arizona birth certificates. ID required. Fee may apply — ask about waivers.'},
-  {cat:'id',name:'Arizona MVD — State ID / Driver License',address:'1110 W Washington St, Phoenix AZ 85007',phone:'(602) 255-0072',note:'State ID and driver license. Free state ID available — ask about the process.'},
-  {cat:'id',name:'Friendly House',address:'802 S 1st Ave, Phoenix AZ 85003',phone:'(602) 257-1870',note:'Document recovery assistance. Bilingual. Help with ID, birth certificates, Social Security.'},
-  {cat:'id',name:'Social Security Administration — Phoenix',address:'3443 N Central Ave, Phoenix AZ 85012',phone:'1-800-772-1213',note:'Social Security card replacement. Can request online at SSA.gov.'},
-  {cat:'id',name:'CASS Document Recovery',address:'230 S 12th Ave, Phoenix AZ 85007',phone:'(602) 256-6945',note:'ID recovery assistance through CASS case management.'},
-  // EMPLOYMENT
-  {cat:'employment',name:'St. Joseph the Worker',address:'1734 W Polk St, Phoenix AZ 85007',phone:'(602) 256-2900',note:'Job placement for people experiencing homelessness. Resume help and employer connections.'},
-  {cat:'employment',name:'Goodwill of Central AZ — Career Center',address:'2626 W Beryl Ave, Phoenix AZ 85021',phone:'(602) 535-4000',note:'Free job training, placement, and resume workshops.'},
-  {cat:'employment',name:'AZ@Work — Maricopa County One-Stop',address:'22 E Madison St, Phoenix AZ 85004',phone:'(602) 506-3880',note:'Free job search, career counseling, and training. WorkKeys testing.'},
-  {cat:'employment',name:'CASS Employment Services',address:'230 S 12th Ave, Phoenix AZ 85007',phone:'(602) 256-6945',note:'Employment case management through CASS.'},
-  {cat:'employment',name:'ResCare Workforce Services',address:'5217 N 35th Ave, Phoenix AZ 85017',phone:'(602) 484-6200',note:'Job training and placement. Workforce development programs.'},
-  // HOUSING
-  {cat:'housing',name:'CASS — Rapid Rehousing',address:'230 S 12th Ave, Phoenix AZ 85007',phone:'(602) 256-6945',note:'Rapid rehousing assistance. Access through Coordinated Entry.'},
-  {cat:'housing',name:'Coordinated Entry (AZ-501)',address:'230 S 12th Ave, Phoenix AZ 85007',phone:'(602) 256-6945',note:'Official entry point for housing assistance in Maricopa. Vulnerability assessment required.'},
-  {cat:'housing',name:'Maricopa County — Section 8 / HCV',address:'24 W Camelback Rd, Phoenix AZ 85013',phone:'(602) 744-4500',note:'Housing voucher program. Waitlist may be closed — call to check status.'},
-  {cat:'housing',name:'Newtown Community Development',address:'1122 E Jefferson St, Phoenix AZ 85034',phone:'(602) 258-1659',note:'Affordable housing placement and tenant counseling.'},
-  {cat:'housing',name:'Community Housing Partnership',address:'4050 E Cotton Center Blvd, Phoenix AZ 85040',phone:'(602) 256-6945',note:'Permanent supportive housing. Access through Coordinated Entry.'},
-  // BENEFITS
-  {cat:'benefits',name:'DES — SNAP, Cash, AHCCCS Applications',address:'1789 W Jefferson St, Phoenix AZ 85007',phone:'(602) 542-5763',note:'Apply for food stamps, cash assistance, and Medicaid. Also apply at des.az.gov.'},
-  {cat:'benefits',name:'AHCCCS — Arizona Medicaid',address:'701 E Jefferson St, Phoenix AZ 85034',phone:'(602) 417-4000',note:'Free health insurance for low-income Arizonans. Apply at healthearizonaplus.gov.'},
-  {cat:'benefits',name:'Social Security — SSI / SSDI',address:'3443 N Central Ave, Phoenix AZ 85012',phone:'1-800-772-1213',note:'Disability and income benefits. Call or apply at SSA.gov.'},
-  {cat:'benefits',name:'VA Benefits — Phoenix Regional Office',address:'3333 N Central Ave, Phoenix AZ 85012',phone:'1-800-827-1000',note:'Veterans benefits — compensation, pension, GI Bill. Bring DD-214.'},
-  {cat:'benefits',name:'211 Arizona — Benefits Referral',address:'Statewide (call or text)',phone:'211',note:'Free 24/7 hotline connecting you to all available local benefits.'},
-  // LEGAL
-  {cat:'legal',name:'Community Legal Services',address:'305 S 2nd Ave, Phoenix AZ 85003',phone:'(602) 258-3434',note:'Free civil legal help for low-income Arizonans. Housing, benefits, family law.'},
-  {cat:'legal',name:'Volunteer Lawyers Program',address:'234 N Central Ave #222, Phoenix AZ 85004',phone:'(602) 258-3434',note:'Pro bono legal services. Referrals through Community Legal Services.'},
-  {cat:'legal',name:"Arizona's Children Association",address:'101 N Stone Ave, Tucson AZ 85701',phone:'(520) 622-7611',note:'Child welfare legal services and family support.'},
-  {cat:'legal',name:'Southern Arizona Legal Aid — Phoenix',address:'2033 N 7th St, Phoenix AZ 85006',phone:'(602) 258-3434',note:'Civil legal aid for low-income residents. Housing and family matters.'},
-  {cat:'legal',name:'ACLU of Arizona',address:'3707 N 7th St #235, Phoenix AZ 85014',phone:'(602) 650-1854',note:'Civil rights legal support and advocacy.'},
+const QUESTIONS = [
+  {
+    id: 'housing',
+    text: "What's your housing situation right now?",
+    options: [
+      { emoji: '🚨', label: 'I need shelter tonight', value: 'crisis' },
+      { emoji: '🏠', label: "I'm in emergency shelter or a mission", value: 'shelter' },
+      { emoji: '🛋️', label: "I'm couch-surfing, in a motel, or in transitional housing", value: 'transitional' },
+      { emoji: '⚠️', label: "I have housing but I'm at risk of losing it", value: 'atrisk' },
+      { emoji: '✅', label: 'I have stable housing', value: 'housed' }
+    ]
+  },
+  {
+    id: 'family',
+    text: "Who are you planning for?",
+    options: [
+      { emoji: '👤', label: 'Just myself', value: 'solo' },
+      { emoji: '👨‍👧', label: 'Me and my kids', value: 'kids' },
+      { emoji: '👫', label: 'Me and a partner or spouse', value: 'partner' },
+      { emoji: '👨‍👩‍👧', label: 'Me, kids, and a partner', value: 'family' },
+      { emoji: '🤰', label: "I'm pregnant", value: 'pregnant' }
+    ]
+  },
+  {
+    id: 'income',
+    text: "What's your income situation?",
+    options: [
+      { emoji: '❌', label: 'I have no income right now', value: 'none' },
+      { emoji: '💳', label: 'I receive benefits (SNAP, SSI, disability, etc.)', value: 'benefits' },
+      { emoji: '⏱️', label: 'I work part-time or have inconsistent income', value: 'parttime' },
+      { emoji: '💼', label: 'I work full-time', value: 'fulltime' }
+    ]
+  },
+  {
+    id: 'docs',
+    text: "Do you have a government-issued ID?",
+    options: [
+      { emoji: '✅', label: "Yes, I have a valid ID and know my Social Security number", value: 'full' },
+      { emoji: '⚠️', label: "I have some documents but not everything", value: 'partial' },
+      { emoji: '❌', label: "I have no ID or documents right now", value: 'none' }
+    ]
+  },
+  {
+    id: 'insurance',
+    text: "Do you have health insurance?",
+    options: [
+      { emoji: '✅', label: 'Yes', value: 'insured' },
+      { emoji: '❌', label: 'No', value: 'uninsured' },
+      { emoji: '❓', label: "I'm not sure", value: 'unsure' }
+    ]
+  },
+  {
+    id: 'transport',
+    text: "How do you get around?",
+    options: [
+      { emoji: '🚗', label: 'I have a car', value: 'car' },
+      { emoji: '🚌', label: 'I use public transit or get rides', value: 'transit' },
+      { emoji: '🚫', label: 'Transportation is a major barrier for me', value: 'none' }
+    ]
+  },
+  {
+    id: 'employment',
+    text: "What's your employment goal?",
+    options: [
+      { emoji: '⏸️', label: "I'm not focused on that right now", value: 'notready' },
+      { emoji: '💡', label: "I'm interested in working eventually", value: 'interested' },
+      { emoji: '🔍', label: "I'm actively looking for a job", value: 'seeking' },
+      { emoji: '📈', label: "I'm already working and want to do better", value: 'working' }
+    ]
+  }
 ];
 
-const CAT_ICONS={shelter:'🏠',food:'🍽️',health:'🏥',id:'🪪',employment:'💼',housing:'🔑',benefits:'📄',legal:'⚖️',other:'📌'};
-const FREQ_LABELS={monthly:'/ mo',biweekly:'/ 2 wks',weekly:'/ wk',once:'one-time'};
-const FREQ_TO_MONTHLY={monthly:1,biweekly:2.1667,weekly:4.3333,once:0};
+let currentStep = 0;
+let answers = {};
 
-function load(k,d){try{return JSON.parse(localStorage.getItem(k))||d}catch(e){return d}}
-function save(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}}
-
-let planItems  = load('cl_plan_v2',[]);
-let incomeItems  = load('cl_income_v1',[]);
-let expenseItems = load('cl_expense_v1',[]);
-
-/* ══ TABS ══ */
-function switchTab(t){
-  document.querySelectorAll('.tab-panel').forEach(p=>p.classList.remove('active'));
-  document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
-  document.getElementById('panel-'+t).classList.add('active');
-  document.getElementById('tab-'+t).classList.add('active');
-}
-
-/* ══ RESOURCE SEARCH ══ */
-let activeCatFilter='all';
-
-function openSearch(cat){
-  document.getElementById('resource-search').classList.add('open');
-  document.getElementById('search-input').value='';
-  setCatFilterByName(cat);
-  filterResources();
-  document.getElementById('search-input').focus();
-  document.getElementById('resource-search').scrollIntoView({behavior:'smooth',block:'start'});
-}
-function closeSearch(){
-  document.getElementById('resource-search').classList.remove('open');
-}
-function setCatFilter(el,cat){
-  document.querySelectorAll('.cat-filter').forEach(f=>f.classList.remove('active'));
-  el.classList.add('active');
-  activeCatFilter=cat;
-  filterResources();
-}
-function setCatFilterByName(cat){
-  const el=document.querySelector(`.cat-filter[data-cat="${cat}"]`);
-  if(el){document.querySelectorAll('.cat-filter').forEach(f=>f.classList.remove('active'));el.classList.add('active');activeCatFilter=cat;}
-}
-function filterResources(){
-  const q=document.getElementById('search-input').value.toLowerCase().trim();
-  const results=RESOURCES.filter(r=>{
-    const matchCat=activeCatFilter==='all'||r.cat===activeCatFilter;
-    const matchQ=!q||(r.name+r.address+r.note).toLowerCase().includes(q);
-    return matchCat&&matchQ;
+function renderQuestion(idx) {
+  const q = QUESTIONS[idx];
+  document.getElementById('q-num').textContent = 'Question ' + (idx + 1);
+  document.getElementById('q-text').textContent = q.text;
+  const container = document.getElementById('q-options');
+  container.innerHTML = '';
+  q.options.forEach(function(opt) {
+    const btn = document.createElement('button');
+    btn.className = 'q-btn' + (answers[q.id] === opt.value ? ' selected' : '');
+    btn.innerHTML = '<span class="q-emoji">' + opt.emoji + '</span><span>' + opt.label + '</span>';
+    btn.setAttribute('aria-pressed', answers[q.id] === opt.value ? 'true' : 'false');
+    btn.addEventListener('click', function() { selectAnswer(q.id, opt.value, btn); });
+    container.appendChild(btn);
   });
-  const el=document.getElementById('resource-results');
-  if(!results.length){el.innerHTML='<div class="no-results">No matching resources. Try different keywords or use "Add custom".</div>';return;}
-  el.innerHTML=results.map((r,i)=>`
-    <div class="resource-result" onclick="addFromSearch(${RESOURCES.indexOf(r)})">
-      <div class="resource-result__icon">${CAT_ICONS[r.cat]||'📌'}</div>
-      <div class="resource-result__info">
-        <div class="resource-result__name">${esc(r.name)}</div>
-        <div class="resource-result__meta">${esc(r.address)}${r.phone?' · '+esc(r.phone):''}</div>
-        ${r.note?`<div class="resource-result__meta" style="margin-top:.15rem;font-style:italic">${esc(r.note)}</div>`:''}
-      </div>
-      <div class="resource-result__add"><button class="btn btn--amber btn--xs" onclick="event.stopPropagation();addFromSearch(${RESOURCES.indexOf(r)})">+ Add</button></div>
-    </div>
-  `).join('');
-}
-function addFromSearch(idx){
-  const r=RESOURCES[idx];
-  const item=makePlanItem(r.cat,r.name,r.phone,r.address,'');
-  item.notes=r.note||'';
-  logActivity(item,'added','Added to plan');
-  planItems.unshift(item);
-  save('cl_plan_v2',planItems);
-  closeSearch();
-  renderPlan();
-  // scroll to the new item after render
-  setTimeout(()=>{const el=document.getElementById('item-'+item.id);if(el){el.scrollIntoView({behavior:'smooth',block:'center'});}},80);
+  const pct = Math.round(((idx + 1) / QUESTIONS.length) * 100);
+  document.getElementById('progress-text').textContent = 'Question ' + (idx + 1) + ' of ' + QUESTIONS.length;
+  document.getElementById('progress-pct').textContent = pct + '%';
+  document.getElementById('progress-fill').style.width = pct + '%';
+  document.getElementById('btn-back').style.display = idx === 0 ? 'none' : 'inline-block';
+  document.getElementById('btn-next').disabled = !answers[q.id];
+  document.getElementById('btn-next').textContent = idx === QUESTIONS.length - 1 ? 'Build my ladder →' : 'Continue →';
+  document.getElementById('intro-block').style.display = idx === 0 ? 'block' : 'none';
 }
 
-/* ══ CUSTOM FORM ══ */
-function toggleCustomForm(){
-  const f=document.getElementById('add-form');
-  f.classList.toggle('open');
-  if(f.classList.contains('open')) document.getElementById('f-name').focus();
-}
-function closeCustomForm(){document.getElementById('add-form').classList.remove('open');}
-function addCustomItem(){
-  const name=document.getElementById('f-name').value.trim();
-  if(!name){document.getElementById('f-name').focus();return;}
-  const item=makePlanItem(
-    document.getElementById('f-cat').value,name,
-    document.getElementById('f-phone').value.trim(),
-    document.getElementById('f-address').value.trim(),''
-  );
-  logActivity(item,'added','Added to plan');
-  planItems.unshift(item);
-  save('cl_plan_v2',planItems);
-  ['f-name','f-phone','f-address'].forEach(id=>document.getElementById(id).value='');
-  closeCustomForm();
-  renderPlan();
-}
-
-/* ══ PLAN ITEM FACTORY ══ */
-function makePlanItem(cat,name,phone,address,notes){
-  return{id:Date.now().toString()+Math.random().toString(36).slice(2,6),
-    cat,name,phone,address,notes:'',
-    status:'todo',scheduledDate:'',scheduledTime:'',
-    addedAt:new Date().toISOString(),completedAt:null,
-    followups:[],activity:[]};
-}
-function logActivity(item,type,text){
-  item.activity.unshift({id:Date.now().toString(),type,text,ts:new Date().toISOString()});
-}
-
-/* ══ RENDER PLAN ══ */
-let doneOpen=false;
-function renderPlan(){
-  const active=planItems.filter(i=>i.status!=='done');
-  const done=planItems.filter(i=>i.status==='done');
-  const total=planItems.length, doneCount=done.length;
-  const pct=total?Math.round(doneCount/total*100):0;
-  document.getElementById('progress-stats').textContent=`${doneCount} of ${total} step${total===1?'':'s'} completed`;
-  document.getElementById('progress-fill').style.width=pct+'%';
-  document.getElementById('plan-count').textContent=active.length?`${active.length} active`:'';
-  const sorted=[...active].sort((a,b)=>({scheduled:0,todo:1}[a.status]||2)-({scheduled:0,todo:1}[b.status]||2));
-  const al=document.getElementById('plan-active-list');
-  al.innerHTML='';sorted.forEach(i=>al.appendChild(buildItemEl(i)));
-  document.getElementById('plan-empty').style.display=active.length?'none':'block';
-  const dt=document.getElementById('done-toggle'),dl=document.getElementById('plan-done-list');
-  document.getElementById('done-count').textContent=doneCount;
-  if(doneCount){
-    dt.style.display='flex';
-    dt.innerHTML=`${doneOpen?'▼':'▶'} Completed (<span id="done-count">${doneCount}</span>)`;
-    dl.style.display=doneOpen?'flex':'none';
-    dl.innerHTML='';done.forEach(i=>dl.appendChild(buildItemEl(i)));
-  }else{dt.style.display='none';dl.style.display='none';}
-}
-function toggleDone(){doneOpen=!doneOpen;renderPlan();}
-
-function buildItemEl(item){
-  const el=document.createElement('div');
-  el.className='plan-item'+(item.status==='done'?' plan-item--done':'');
-  el.id='item-'+item.id;
-  const statusLabel={todo:'To do',scheduled:'Scheduled',done:'Done'}[item.status]||item.status;
-  const fuPending=item.followups.filter(f=>!f.done).length;
-  const metaParts=[];
-  if(item.address) metaParts.push('📍 '+item.address);
-  if(item.phone)   metaParts.push('📞 '+item.phone);
-  if(item.scheduledDate) metaParts.push('📅 '+fmtDate(item.scheduledDate)+(item.scheduledTime?' at '+fmtTime(item.scheduledTime):''));
-
-  el.innerHTML=`
-    <div class="plan-item__head" onclick="toggleItem('${item.id}')">
-      <div class="plan-item__icon">${CAT_ICONS[item.cat]||'📌'}</div>
-      <div class="plan-item__info">
-        <div class="plan-item__name">${esc(item.name)}</div>
-        ${metaParts.length?`<div class="plan-item__meta">${metaParts.map(esc).join(' ')}</div>`:''}
-        <div class="plan-item__badges">
-          <span class="status-pill status--${item.status}">${statusLabel}</span>
-          ${fuPending?`<span class="followup-badge">📋 ${fuPending} follow-up${fuPending>1?'s':''}</span>`:''}
-        </div>
-      </div>
-    </div>
-    <div class="plan-item__body" id="body-${item.id}">
-
-      ${(item.address||item.phone)?`
-      <div class="item-section">
-        <div class="item-section__label">Contact</div>
-        <div class="contact-row">
-          ${item.address?`<span>📍 <a href="https://maps.google.com/?q=${encodeURIComponent(item.address)}" target="_blank" rel="noopener">${esc(item.address)}</a></span>`:''}
-          ${item.phone?`<span>📞 <a href="tel:${item.phone.replace(/\D/g,'')}">${esc(item.phone)}</a></span>`:''}
-        </div>
-      </div>`:''}
-
-      ${item.status!=='done'?`
-      <div class="item-section">
-        <div class="item-section__label">Schedule</div>
-        <div class="sched-row">
-          <input type="date" id="sched-date-${item.id}" value="${item.scheduledDate||''}" onchange="updateSched('${item.id}')">
-          <input type="time" id="sched-time-${item.id}" value="${item.scheduledTime||''}" onchange="updateSched('${item.id}')">
-          ${item.scheduledDate?`<button class="btn btn--ghost btn--sm" onclick="clearSched('${item.id}')">✕ Clear</button>`:''}
-        </div>
-      </div>`:''}
-
-      <div class="item-section">
-        <div class="item-section__label">Notes</div>
-        <textarea class="notes-area" id="notes-${item.id}" placeholder="What to bring, hours, intake requirements, what you've tried…" onblur="saveNotes('${item.id}')">${esc(item.notes||'')}</textarea>
-      </div>
-
-      <div class="item-section">
-        <div class="item-section__label">Follow-up tasks</div>
-        <div class="followup-list" id="fu-list-${item.id}">
-          ${renderFollowups(item)}
-        </div>
-        <button class="add-followup-toggle" onclick="toggleFuForm('${item.id}')">+ Add follow-up task</button>
-        <div class="add-followup-form" id="fu-form-${item.id}">
-          <div class="fu-row">
-            <input type="text" id="fu-text-${item.id}" placeholder="e.g. Call again, Go in person, Bring ID…">
-            <input type="date" id="fu-date-${item.id}" title="Due date (optional)">
-            <button class="btn btn--blue btn--sm" onclick="addFollowup('${item.id}')">Add</button>
-          </div>
-        </div>
-      </div>
-
-      <div class="item-section">
-        <div class="item-section__label">
-          Activity log
-          <div style="display:flex;gap:.3rem;">
-            <button class="btn btn--outline btn--xs" onclick="logCall('${item.id}')">📞 Logged call</button>
-            <button class="btn btn--outline btn--xs" onclick="logVisit('${item.id}')">🚶 Visited</button>
-            <button class="btn btn--outline btn--xs" onclick="logVoicemail('${item.id}')">📬 Left voicemail</button>
-          </div>
-        </div>
-        <div class="activity-list" id="activity-${item.id}">
-          ${renderActivity(item)}
-        </div>
-      </div>
-
-      <div class="item-actions">
-        ${item.status!=='done'?`<button class="btn btn--sage btn--sm" onclick="markDone('${item.id}')">✓ Mark done</button>`:`<button class="btn btn--outline btn--sm" onclick="markTodo('${item.id}')">↩ Move back</button>`}
-        <button class="btn btn--danger btn--sm" onclick="deleteItem('${item.id}')">Delete</button>
-      </div>
-
-    </div>`;
-  return el;
-}
-
-function renderFollowups(item){
-  if(!item.followups||!item.followups.length) return '<div style="font-size:.8rem;color:var(--gray);padding:.2rem 0">No follow-up tasks yet.</div>';
-  return item.followups.map(f=>`
-    <div class="followup-item${f.done?' done-fu':''}" id="fu-${f.id}">
-      <input type="checkbox" class="followup-item__check" ${f.done?'checked':''} onchange="toggleFollowup('${item.id}','${f.id}',this.checked)">
-      <div class="followup-item__text${f.done?' done-text':''}">${esc(f.text)}</div>
-      ${f.dueDate?`<div class="followup-item__due">Due ${fmtDate(f.dueDate)}</div>`:''}
-      <button class="followup-item__del" onclick="deleteFollowup('${item.id}','${f.id}')" title="Remove">×</button>
-    </div>`).join('');
-}
-
-function renderActivity(item){
-  if(!item.activity||!item.activity.length) return '<div style="font-size:.8rem;color:var(--gray)">No activity yet.</div>';
-  return item.activity.map(a=>`
-    <div class="activity-entry">
-      <div class="activity-entry__dot ${a.type}"></div>
-      <div class="activity-entry__text">${esc(a.text)}</div>
-      <div class="activity-entry__time">${fmtTs(a.ts)}</div>
-    </div>`).join('');
-}
-
-function toggleItem(id){document.getElementById('body-'+id).classList.toggle('open');}
-
-/* ══ PLAN ACTIONS ══ */
-function markDone(id){
-  const item=planItems.find(i=>i.id===id);
-  if(item){item.status='done';item.completedAt=new Date().toISOString();logActivity(item,'done','Marked done');}
-  save('cl_plan_v2',planItems);renderPlan();
-}
-function markTodo(id){
-  const item=planItems.find(i=>i.id===id);
-  if(item){item.status='todo';item.scheduledDate='';item.scheduledTime='';logActivity(item,'note','Moved back to To do');}
-  save('cl_plan_v2',planItems);renderPlan();
-}
-function deleteItem(id){
-  if(!confirm('Remove this resource from your plan?'))return;
-  planItems=planItems.filter(i=>i.id!==id);
-  save('cl_plan_v2',planItems);renderPlan();
-}
-function updateSched(id){
-  const item=planItems.find(i=>i.id===id);if(!item)return;
-  const d=document.getElementById('sched-date-'+id)?.value||'';
-  const t=document.getElementById('sched-time-'+id)?.value||'';
-  item.scheduledDate=d;item.scheduledTime=t;
-  item.status=d?'scheduled':'todo';
-  if(d) logActivity(item,'scheduled','Scheduled for '+fmtDate(d)+(t?' at '+fmtTime(t):''));
-  save('cl_plan_v2',planItems);renderPlan();
-  setTimeout(()=>{const b=document.getElementById('body-'+id);if(b)b.classList.add('open');},10);
-}
-function clearSched(id){
-  const item=planItems.find(i=>i.id===id);if(!item)return;
-  item.scheduledDate='';item.scheduledTime='';item.status='todo';
-  logActivity(item,'note','Cleared schedule');
-  save('cl_plan_v2',planItems);renderPlan();
-  setTimeout(()=>{const b=document.getElementById('body-'+id);if(b)b.classList.add('open');},10);
-}
-function saveNotes(id){
-  const item=planItems.find(i=>i.id===id);if(!item)return;
-  const val=document.getElementById('notes-'+id)?.value||'';
-  if(item.notes!==val){item.notes=val;save('cl_plan_v2',planItems);}
-}
-
-/* ══ FOLLOW-UP TASKS ══ */
-function toggleFuForm(id){
-  const f=document.getElementById('fu-form-'+id);
-  f.classList.toggle('open');
-  if(f.classList.contains('open')) document.getElementById('fu-text-'+id)?.focus();
-}
-function addFollowup(id){
-  const item=planItems.find(i=>i.id===id);if(!item)return;
-  const text=document.getElementById('fu-text-'+id)?.value.trim();
-  const dueDate=document.getElementById('fu-date-'+id)?.value||'';
-  if(!text)return;
-  item.followups.push({id:Date.now().toString(),text,dueDate,done:false,createdAt:new Date().toISOString()});
-  logActivity(item,'note','Added follow-up: '+text);
-  save('cl_plan_v2',planItems);
-  // refresh just the followup list and activity
-  document.getElementById('fu-list-'+id).innerHTML=renderFollowups(item);
-  document.getElementById('activity-'+id).innerHTML=renderActivity(item);
-  document.getElementById('fu-text-'+id).value='';
-  document.getElementById('fu-date-'+id).value='';
-  document.getElementById('fu-form-'+id).classList.remove('open');
-  renderPlan(); // update badge
-}
-function toggleFollowup(itemId,fuId,done){
-  const item=planItems.find(i=>i.id===itemId);if(!item)return;
-  const fu=item.followups.find(f=>f.id===fuId);if(!fu)return;
-  fu.done=done;
-  logActivity(item,done?'done':'note',(done?'Completed':'Reopened')+' follow-up: '+fu.text);
-  save('cl_plan_v2',planItems);
-  document.getElementById('fu-list-'+itemId).innerHTML=renderFollowups(item);
-  document.getElementById('activity-'+itemId).innerHTML=renderActivity(item);
-  renderPlan();
-}
-function deleteFollowup(itemId,fuId){
-  const item=planItems.find(i=>i.id===itemId);if(!item)return;
-  item.followups=item.followups.filter(f=>f.id!==fuId);
-  save('cl_plan_v2',planItems);
-  document.getElementById('fu-list-'+itemId).innerHTML=renderFollowups(item);
-  renderPlan();
-}
-
-/* ══ ACTIVITY LOGGING ══ */
-function logCall(id){
-  const item=planItems.find(i=>i.id===id);if(!item)return;
-  logActivity(item,'call','Called '+item.name);
-  save('cl_plan_v2',planItems);
-  document.getElementById('activity-'+id).innerHTML=renderActivity(item);
-}
-function logVisit(id){
-  const item=planItems.find(i=>i.id===id);if(!item)return;
-  logActivity(item,'visit','Visited '+item.name);
-  save('cl_plan_v2',planItems);
-  document.getElementById('activity-'+id).innerHTML=renderActivity(item);
-}
-function logVoicemail(id){
-  const item=planItems.find(i=>i.id===id);if(!item)return;
-  logActivity(item,'call','Left voicemail at '+item.name);
-  save('cl_plan_v2',planItems);
-  document.getElementById('activity-'+id).innerHTML=renderActivity(item);
-}
-
-/* ══ BUDGET ══ */
-function toggleBudgetForm(id){document.getElementById(id).classList.toggle('open')}
-function toMonthly(a,f){return parseFloat(a||0)*(FREQ_TO_MONTHLY[f]||1)}
-function addBudgetItem(type){
-  const isI=type==='income';
-  const nEl=document.getElementById(isI?'inc-name':'exp-name');
-  const aEl=document.getElementById(isI?'inc-amount':'exp-amount');
-  const fEl=document.getElementById(isI?'inc-freq':'exp-freq');
-  const name=nEl.value.trim(),amount=parseFloat(aEl.value);
-  if(!name||isNaN(amount)||amount<0){nEl.focus();return;}
-  const item={id:Date.now().toString(),name,amount,freq:fEl.value};
-  if(isI){incomeItems.push(item);save('cl_income_v1',incomeItems);}
-  else{expenseItems.push(item);save('cl_expense_v1',expenseItems);}
-  nEl.value='';aEl.value='';
-  document.getElementById(isI?'income-form':'expense-form').classList.remove('open');
-  renderBudget();
-}
-function deleteBudgetItem(type,id){
-  if(type==='income'){incomeItems=incomeItems.filter(i=>i.id!==id);save('cl_income_v1',incomeItems);}
-  else{expenseItems=expenseItems.filter(i=>i.id!==id);save('cl_expense_v1',expenseItems);}
-  renderBudget();
-}
-function renderBudget(){
-  const ti=incomeItems.reduce((s,i)=>s+toMonthly(i.amount,i.freq),0);
-  const te=expenseItems.reduce((s,i)=>s+toMonthly(i.amount,i.freq),0);
-  const rem=ti-te;
-  document.getElementById('sum-income').textContent=fmt(ti);
-  document.getElementById('sum-expenses').textContent=fmt(te);
-  const remEl=document.getElementById('sum-remaining');
-  remEl.textContent=(rem<0?'-':'')+fmt(Math.abs(rem));
-  remEl.className='summary-card__amount '+(rem>=0?'positive':'negative');
-  document.getElementById('income-total-label').textContent=fmt(ti)+' / month';
-  document.getElementById('expense-total-label').textContent=fmt(te)+' / month';
-  renderBudgetItems('income-items',incomeItems,'income');
-  renderBudgetItems('expense-items',expenseItems,'expense');
-  if(!document.getElementById('calc-income').value&&ti>0){document.getElementById('calc-income').value=Math.round(ti);runCalc();}
-}
-function renderBudgetItems(cid,items,type){
-  const el=document.getElementById(cid);
-  if(!items.length){el.innerHTML=`<div class="empty-state" style="padding:1rem;font-size:.82rem">No ${type==='income'?'income':'expenses'} added yet.</div>`;return;}
-  el.innerHTML=items.map(i=>`
-    <div class="budget-item">
-      <div class="budget-item__name">${esc(i.name)}</div>
-      <div class="budget-item__freq">${FREQ_LABELS[i.freq]||''}</div>
-      <div class="budget-item__amount">$${parseFloat(i.amount).toLocaleString('en-US',{maximumFractionDigits:0})}</div>
-      <button class="budget-item__del" onclick="deleteBudgetItem('${type}','${i.id}')" title="Remove">×</button>
-    </div>`).join('');
-}
-function runCalc(){
-  const income=parseFloat(document.getElementById('calc-income').value)||0;
-  const rent=parseFloat(document.getElementById('calc-rent').value)||0;
-  const el=document.getElementById('calc-result');
-  if(!income||!rent){el.style.display='none';return;}
-  const pct=rent/income,max=income*.30;
-  const cls=pct<=.30?'green':pct<=.50?'amber':'red';
-  const label=pct<=.30?'✅ Affordable':pct<=.50?'⚠️ Stretched':'🚫 Too expensive';
-  const detail=pct<=.30?`This rent is ${Math.round(pct*100)}% of your income — within the 30% guideline. You'd have ${fmt(income-rent)}/month left after rent.`
-    :pct<=.50?`This rent is ${Math.round(pct*100)}% of your income — above the 30% guideline but may be manageable. To stay within guideline, look for housing under ${fmt(max)}/month.`
-    :`This rent is ${Math.round(pct*100)}% of your income — significantly above the 30% guideline. Look for housing under ${fmt(max)}/month.`;
-  el.className='affordability-result '+cls;el.style.display='block';
-  document.getElementById('calc-label').textContent=label;
-  document.getElementById('calc-detail').textContent=detail;
-  const mf=document.getElementById('calc-meter');
-  mf.className='meter__fill '+cls;
-  mf.style.width=Math.min(pct*100,100)+'%';
-}
-
-/* ══ HELPERS ══ */
-function esc(s){return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;')}
-function fmt(n){return'$'+Math.round(n).toLocaleString('en-US')}
-function fmtDate(d){if(!d)return'';const[y,m,day]=d.split('-');const mo=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];return`${mo[parseInt(m,10)-1]} ${parseInt(day,10)}`}
-function fmtTime(t){if(!t)return'';const[h,m]=t.split(':');const hr=parseInt(h,10);return`${hr>12?hr-12:hr||12}:${m} ${hr>=12?'PM':'AM'}`}
-function fmtTs(ts){if(!ts)return'';const d=new Date(ts);const mo=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];return`${mo[d.getMonth()]} ${d.getDate()}, ${d.getHours()>12?d.getHours()-12:d.getHours()||12}:${String(d.getMinutes()).padStart(2,'0')} ${d.getHours()>=12?'PM':'AM'}`}
-
-/* ══ TODAY SUMMARY ══ */
-function todayStr(){
-  const d=new Date();
-  return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');
-}
-function renderToday(){
-  const today=todayStr();
-  const entries=[];
-
-  // Scheduled visits for today
-  planItems.filter(i=>i.status==='scheduled' && i.scheduledDate===today).forEach(i=>{
-    entries.push({
-      kind:'scheduled', itemId:i.id,
-      icon:CAT_ICONS[i.cat]||'📌',
-      text:`<strong>${esc(i.name)}</strong>${i.scheduledTime?' at '+fmtTime(i.scheduledTime):''}`,
-      tag:'Today', cls:'scheduled', sort:1
-    });
+function selectAnswer(qId, value, clickedBtn) {
+  answers[qId] = value;
+  document.querySelectorAll('#q-options .q-btn').forEach(function(b) {
+    b.classList.remove('selected');
+    b.setAttribute('aria-pressed', 'false');
   });
+  clickedBtn.classList.add('selected');
+  clickedBtn.setAttribute('aria-pressed', 'true');
+  document.getElementById('btn-next').disabled = false;
+}
 
-  // Follow-up tasks due today or overdue (any active item)
-  planItems.filter(i=>i.status!=='done').forEach(i=>{
-    (i.followups||[]).filter(f=>!f.done && f.dueDate).forEach(f=>{
-      if(f.dueDate < today){
-        entries.push({
-          kind:'overdue', itemId:i.id,
-          icon:'⚠️',
-          text:`<strong>${esc(f.text)}</strong> — ${esc(i.name)}`,
-          tag:'Overdue', cls:'overdue', sort:0
-        });
-      } else if(f.dueDate === today){
-        entries.push({
-          kind:'due', itemId:i.id,
-          icon:'📋',
-          text:`<strong>${esc(f.text)}</strong> — ${esc(i.name)}`,
-          tag:'Due today', cls:'due', sort:2
-        });
+function goNext() {
+  if (!answers[QUESTIONS[currentStep].id]) return;
+  if (currentStep < QUESTIONS.length - 1) {
+    currentStep++;
+    renderQuestion(currentStep);
+  } else {
+    showLoading();
+  }
+}
+
+function goBack() {
+  if (currentStep > 0) {
+    currentStep--;
+    renderQuestion(currentStep);
+  }
+}
+
+function showLoading() {
+  document.getElementById('assessment-shell').style.display = 'none';
+  var ls = document.getElementById('loading-screen');
+  ls.classList.add('visible');
+  ls.style.display = 'block';
+  setTimeout(buildResults, 1500);
+}
+
+function buildResults() {
+  document.getElementById('loading-screen').classList.remove('visible');
+  document.getElementById('loading-screen').style.display = 'none';
+
+  if (answers.housing === 'crisis') {
+    document.getElementById('crisis-banner').classList.add('visible');
+  }
+
+  var currentRung = 0;
+  if (answers.housing === 'crisis') {
+    currentRung = 0;
+  } else if (answers.housing === 'shelter') {
+    currentRung = 1;
+  } else if (answers.housing === 'transitional' || answers.housing === 'atrisk') {
+    currentRung = 2;
+  } else if (answers.housing === 'housed') {
+    if (answers.docs !== 'full') {
+      currentRung = 1;
+    } else if (answers.income === 'none' || answers.income === 'benefits') {
+      currentRung = 3;
+    } else if (answers.income === 'parttime') {
+      currentRung = 4;
+    } else {
+      currentRung = 5;
+    }
+  }
+
+  for (var i = 0; i <= 5; i++) {
+    var el = document.getElementById('rung-' + i);
+    var badge = document.getElementById('badge-' + i);
+    el.classList.remove('rung--current', 'rung--done', 'rung--future');
+    if (i < currentRung) {
+      el.classList.add('rung--done');
+      badge.textContent = '✓ Completed';
+      badge.className = 'rung-badge rung-badge--done';
+    } else if (i === currentRung) {
+      el.classList.add('rung--current');
+      badge.textContent = '← You are here';
+      badge.className = 'rung-badge rung-badge--current';
+    } else {
+      el.classList.add('rung--future');
+      if (i === currentRung + 1) {
+        badge.textContent = 'Up next';
+        badge.className = 'rung-badge rung-badge--next';
+      } else {
+        badge.textContent = '';
+        badge.className = 'rung-badge';
       }
-    });
-  });
-
-  const card=document.getElementById('today-card');
-  const list=document.getElementById('today-list');
-  if(!entries.length){card.classList.remove('open');return;}
-  entries.sort((a,b)=>a.sort-b.sort);
-  const overdueCount=entries.filter(e=>e.kind==='overdue').length;
-  const todayCount=entries.length-overdueCount;
-  let label='';
-  if(overdueCount && todayCount) label=`${overdueCount} overdue · ${todayCount} for today`;
-  else if(overdueCount) label=`${overdueCount} overdue task${overdueCount>1?'s':''}`;
-  else label=`${todayCount} for today`;
-  document.getElementById('today-label').textContent=label;
-
-  list.innerHTML=entries.map(e=>`
-    <div class="today-entry" onclick="jumpToItem('${e.itemId}')">
-      <div class="today-entry__icon">${e.icon}</div>
-      <div class="today-entry__text">${e.text}</div>
-      <span class="today-entry__tag ${e.cls}">${e.tag}</span>
-    </div>`).join('');
-  card.classList.add('open');
-}
-function jumpToItem(id){
-  switchTab('plan');
-  const el=document.getElementById('item-'+id);
-  if(el){
-    document.getElementById('body-'+id)?.classList.add('open');
-    el.scrollIntoView({behavior:'smooth',block:'center'});
-  }
-}
-
-/* ══ TOOLS / BACKUP / RESTORE / PRINT ══ */
-function openTools(){document.getElementById('tools-overlay').classList.add('open')}
-function closeTools(){document.getElementById('tools-overlay').classList.remove('open')}
-
-function printPlan(){
-  closeTools();
-  // Make sure all item bodies are open so they print fully
-  document.querySelectorAll('.plan-item__body').forEach(b=>b.classList.add('open'));
-  // Set print date
-  const d=new Date();
-  const mo=['January','February','March','April','May','June','July','August','September','October','November','December'];
-  document.getElementById('print-date').textContent=`${mo[d.getMonth()]} ${d.getDate()}, ${d.getFullYear()}`;
-  setTimeout(()=>window.print(),100);
-}
-
-function exportData(){
-  const data={
-    version:1,
-    exportedAt:new Date().toISOString(),
-    plan:planItems,
-    income:incomeItems,
-    expenses:expenseItems
-  };
-  const blob=new Blob([JSON.stringify(data,null,2)],{type:'application/json'});
-  const url=URL.createObjectURL(blob);
-  const a=document.createElement('a');
-  const stamp=new Date().toISOString().slice(0,10);
-  a.href=url; a.download=`my-ladder-backup-${stamp}.json`;
-  document.body.appendChild(a); a.click();
-  setTimeout(()=>{document.body.removeChild(a);URL.revokeObjectURL(url);},100);
-}
-
-function importData(file){
-  if(!file)return;
-  const reader=new FileReader();
-  reader.onload=function(e){
-    try{
-      const data=JSON.parse(e.target.result);
-      if(!data || typeof data!=='object') throw new Error('Invalid file');
-      const planCount=Array.isArray(data.plan)?data.plan.length:0;
-      const incCount=Array.isArray(data.income)?data.income.length:0;
-      const expCount=Array.isArray(data.expenses)?data.expenses.length:0;
-      if(!confirm(`Restore backup?\n\n• ${planCount} plan item${planCount===1?'':'s'}\n• ${incCount} income source${incCount===1?'':'s'}\n• ${expCount} expense${expCount===1?'':'s'}\n\nThis replaces your current data.`))return;
-      if(Array.isArray(data.plan))    {planItems=data.plan;    save('cl_plan_v2',planItems);}
-      if(Array.isArray(data.income))  {incomeItems=data.income; save('cl_income_v1',incomeItems);}
-      if(Array.isArray(data.expenses)){expenseItems=data.expenses;save('cl_expense_v1',expenseItems);}
-      closeTools();
-      renderPlan();renderBudget();renderToday();
-      alert('✅ Backup restored.');
-    }catch(err){
-      alert('Could not read this backup file. Make sure it was created by My Ladder.');
-      console.warn('Import error:',err);
     }
-  };
-  reader.readAsText(file);
-  // reset input so the same file can be picked again later
-  document.getElementById('import-file').value='';
-}
-
-function clearAllData(){
-  if(!confirm('Erase ALL plan items, budget data, and activity log on this device?\n\nThis cannot be undone. Consider backing up first.'))return;
-  if(!confirm('Are you sure? This will permanently delete everything.'))return;
-  planItems=[];incomeItems=[];expenseItems=[];
-  save('cl_plan_v2',planItems);save('cl_income_v1',incomeItems);save('cl_expense_v1',expenseItems);
-  closeTools();
-  renderPlan();renderBudget();renderToday();
-}
-
-/* ══ URL IMPORT ══ */
-(function(){
-  const params=new URLSearchParams(location.search);
-  const raw=params.get('add');
-  if(!raw)return;
-  try{
-    const data=JSON.parse(decodeURIComponent(escape(atob(raw))));
-    const item=makePlanItem(data.cat||'shelter',data.name||'Resource',data.phone||'',data.address||',',' ');
-    item.notes=data.notes||'';
-    if(Array.isArray(data.followups)){
-      item.followups=data.followups.map(f=>({
-        id:Date.now().toString()+Math.random().toString(36).slice(2,6),
-        text:f.text||f,dueDate:f.dueDate||'',
-        done:false,createdAt:new Date().toISOString()
-      }));
-    }
-    logActivity(item,'added','Added from '+(data.source||'navigator'));
-    planItems.unshift(item);
-    save('cl_plan_v2',planItems);
-    history.replaceState({},'',location.pathname);
-    // Show welcome banner
-    const banner=document.createElement('div');
-    banner.className='import-banner';
-    banner.innerHTML=`
-      <button class="import-banner__close" onclick="this.parentElement.remove()">×</button>
-      <div class="import-banner__title">✅ Added to your plan!</div>
-      <div class="import-banner__body">
-        <strong>${esc(item.name)}</strong> is now in My Plan. My Ladder helps you track every resource, log calls and visits, schedule appointments, and manage your budget — all on your device. Nothing leaves this app.<br>
-        <span style="opacity:.75;font-size:.78rem">Tap the item below to see your follow-up tasks and add notes.</span>
-      </div>`;
-    const container=document.querySelector('#panel-plan .container');
-    if(container) container.insertBefore(banner,container.firstChild);
-  }catch(e){console.warn('Import parse error',e);}
-})();
-
-renderPlan();
-renderBudget();
-renderToday();
-
-// Refresh Today summary whenever plan changes (wrap renderPlan)
-const _origRenderPlan=renderPlan;
-renderPlan=function(){_origRenderPlan.apply(this,arguments);renderToday();};
-
-// Close tools overlay with Escape
-document.addEventListener('keydown',function(e){
-  if(e.key==='Escape'){
-    const o=document.getElementById('tools-overlay');
-    if(o && o.classList.contains('open')) closeTools();
   }
-});
+
+  if (answers.family === 'kids' || answers.family === 'family') {
+    document.getElementById('r0-kids-tip').style.display = 'flex';
+  }
+  if (answers.family === 'pregnant') {
+    document.getElementById('r0-pregnant-tip').style.display = 'flex';
+  }
+  if (answers.docs === 'full') {
+    document.getElementById('r1-id-block').style.display = 'none';
+  }
+  if (answers.housing === 'shelter' || answers.housing === 'crisis') {
+    document.getElementById('r2-shelter-path').style.display = 'block';
+  }
+  if (answers.housing === 'atrisk') {
+    document.getElementById('r2-atrisk-path').style.display = 'block';
+  }
+  if (answers.insurance === 'insured') {
+    document.getElementById('r3-insured').style.display = 'block';
+  } else {
+    document.getElementById('r3-uninsured').style.display = 'block';
+  }
+  if (answers.employment === 'notready') {
+    document.getElementById('r5-employment-block').style.display = 'none';
+  } else if (answers.employment === 'working') {
+    document.getElementById('r5-employment-heading').textContent = 'Employment — moving up';
+    document.getElementById('r5-employment-list').innerHTML =
+      '<li>Arizona@Work offers skills assessments and training subsidies for people already employed — ask about "incumbent worker" programs</li>' +
+      '<li>FAFSA for community college coursework — AZ community colleges are among the most affordable in the country</li>' +
+      '<li>Track hours carefully near benefits thresholds — ask your case manager about cliff planning before accepting more hours</li>';
+  } else if (answers.employment === 'seeking') {
+    document.getElementById('r5-employment-heading').textContent = 'Employment — actively looking';
+  }
+  if (answers.transport === 'car') {
+    document.getElementById('r5-car-tip').style.display = 'flex';
+    document.getElementById('r5-transit-tip').style.display = 'none';
+  }
+
+  var toOpen = [currentRung, currentRung + 1, currentRung + 2].filter(function(n) { return n >= 0 && n <= 5; });
+  toOpen.forEach(function(n) { openRung(n); });
+
+  var rs = document.getElementById('results-shell');
+  rs.classList.add('visible');
+  rs.style.display = 'block';
+  setTimeout(function() {
+    rs.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }, 100);
+}
+
+function toggleRung(n) {
+  var el = document.getElementById('rung-' + n);
+  if (el) el.classList.toggle('open');
+}
+
+function openRung(n) {
+  var el = document.getElementById('rung-' + n);
+  if (el) el.classList.add('open');
+}
+
+function runScreener() {
+  var size = parseInt(document.getElementById('sc-size').value) || 0;
+  var income = parseInt(document.getElementById('sc-income').value);
+  var kids = document.getElementById('sc-kids').value;
+  var resultEl = document.getElementById('screener-result');
+  if (!size || isNaN(income) || !kids) { resultEl.style.display = 'none'; return; }
+
+  var snapLimits = {1:1580,2:2137,3:2694,4:3250,5:3807};
+  var snapLimit = snapLimits[Math.min(size,5)];
+  var ahcccsLimits = {1:1677,2:2268,3:2859,4:3450,5:4041};
+  var ahcccsLimit = ahcccsLimits[Math.min(size,5)];
+
+  var rows = [
+    { name: 'SNAP (food benefits)', status: income <= snapLimit * 0.7 ? 'likely' : income <= snapLimit ? 'possible' : 'unlikely', link: 'https://des.az.gov' },
+    { name: 'AHCCCS (Medicaid)', status: income <= ahcccsLimit ? 'likely' : income <= ahcccsLimit * 1.2 ? 'possible' : 'unlikely', link: 'https://healthearizonaplus.gov' },
+    { name: 'TANF (cash assistance)', status: kids !== 'yes' ? 'unlikely' : income < 800 ? 'likely' : income < 1500 ? 'possible' : 'unlikely', link: 'https://des.az.gov/services/financial/tanf' },
+    { name: 'LIHEAP (utility help)', status: income < 2000 ? 'likely' : 'possible', link: 'https://des.az.gov/services/financial/utility-assistance' }
+  ];
+
+  resultEl.innerHTML = rows.map(function(r) {
+    var bc = r.status === 'likely' ? 'badge-likely' : r.status === 'possible' ? 'badge-possible' : 'badge-unlikely';
+    var bt = r.status === 'likely' ? 'Likely eligible' : r.status === 'possible' ? 'Possibly eligible' : 'Likely not eligible';
+    return '<div class="benefit-row"><span class="benefit-name">' + r.name + '</span><span class="' + bc + '">' + bt + '</span>' + (r.status !== 'unlikely' ? '<a href="' + r.link + '" target="_blank" rel="noopener" class="benefit-link">Apply →</a>' : '') + '</div>';
+  }).join('') + '<p class="screener-note">Estimates based on typical thresholds — actual eligibility depends on your full situation.</p>';
+
+  resultEl.style.display = 'flex';
+  resultEl.style.flexDirection = 'column';
+}
+
+function restartAssessment() {
+  answers = {};
+  currentStep = 0;
+  document.getElementById('results-shell').style.display = 'none';
+  document.getElementById('results-shell').classList.remove('visible');
+  document.getElementById('crisis-banner').classList.remove('visible');
+  var ash = document.getElementById('assessment-shell');
+  ash.style.display = 'block';
+  document.getElementById('intro-block').style.display = 'block';
+  renderQuestion(0);
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+renderQuestion(0);
 </script>
 </body>
 </html>

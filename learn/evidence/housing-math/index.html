@@ -1,0 +1,855 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XLKR4ZSZ5J"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-XLKR4ZSZ5J');
+</script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>What It Actually Costs to House Someone — and Not To — Common Ladder</title>
+  <meta name="description" content="The honest comparison isn't housing versus nothing — it's housing versus the cost of leaving someone unhoused. The math, the capital stack, the asks.">
+  <link rel="canonical" href="https://www.commonladder.org/learn/evidence/housing-math/">
+  <link rel="stylesheet" href="/style.css">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="What It Actually Costs to House Someone — and Not To">
+  <meta property="og:description" content="The honest comparison isn't housing versus nothing — it's housing versus the cost of leaving someone unhoused. The math, the capital stack, the asks.">
+  <meta property="og:url" content="https://www.commonladder.org/learn/evidence/housing-math/">
+  <meta property="og:site_name" content="Common Ladder">
+  <meta property="article:published_time" content="2026-05-26">
+  <meta property="article:section" content="Evidence &amp; policy">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "What It Actually Costs to House Someone — and Not To",
+    "description": "The honest comparison isn't housing versus nothing — it's housing versus the cost of leaving someone unhoused. The math, the capital stack, the asks.",
+    "author": { "@type": "Organization", "name": "Common Ladder" },
+    "publisher": { "@type": "Organization", "name": "Common Ladder", "url": "https://www.commonladder.org" },
+    "datePublished": "2026-05-26",
+    "dateModified": "2026-05-26",
+    "mainEntityOfPage": "https://www.commonladder.org/learn/evidence/housing-math/"
+  }
+  </script>
+
+  <style>
+    .breadcrumb {
+      font-size: .8rem;
+      color: var(--gray);
+      margin-bottom: 1.5rem;
+    }
+    .breadcrumb a {
+      color: var(--gray);
+      text-decoration: none;
+    }
+    .breadcrumb a:hover {
+      color: var(--amber);
+      text-decoration: underline;
+    }
+    .breadcrumb span[aria-hidden] {
+      margin: 0 .4em;
+    }
+    .article h2 {
+      margin-top: 2.5rem;
+    }
+    .article h3 {
+      margin-top: 1.75rem;
+      font-size: 1.15rem;
+      color: var(--blue);
+    }
+    .callout-box {
+      background: var(--light);
+      border-left: 4px solid var(--amber);
+      border-radius: 0 8px 8px 0;
+      padding: 1.5rem 1.75rem;
+      margin: 2rem 0;
+    }
+    .callout-box > strong:first-child {
+      display: block;
+      color: var(--blue);
+      margin-bottom: .75rem;
+      font-size: 1.05rem;
+    }
+    .callout-box p {
+      margin: 0 0 .9rem;
+      font-size: .95rem;
+      line-height: 1.6;
+    }
+    .callout-box p:last-child {
+      margin-bottom: 0;
+    }
+    .callout-box p strong {
+      color: var(--blue);
+    }
+    .data-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 1.5rem 0;
+      font-size: .88rem;
+      background: white;
+      border: 1px solid #e8e4dc;
+      border-radius: 8px;
+      overflow: hidden;
+    }
+    .data-table th,
+    .data-table td {
+      padding: .7rem .85rem;
+      text-align: left;
+      border-bottom: 1px solid #efece6;
+      vertical-align: top;
+    }
+    .data-table thead th {
+      background: var(--light);
+      color: var(--blue);
+      font-weight: 700;
+      font-size: .82rem;
+      text-transform: uppercase;
+      letter-spacing: .03em;
+    }
+    .data-table tbody tr:last-child td {
+      border-bottom: none;
+    }
+    .data-table tbody tr.total-row td {
+      background: #fbf8f2;
+      font-weight: 700;
+      color: var(--blue);
+    }
+    .data-table caption {
+      caption-side: top;
+      text-align: left;
+      font-size: .8rem;
+      color: var(--gray);
+      font-style: italic;
+      padding-bottom: .5rem;
+    }
+    .table-wrap {
+      overflow-x: auto;
+      margin: 1.5rem 0;
+    }
+    .table-wrap .data-table {
+      margin: 0;
+      min-width: 520px;
+    }
+    .worked-example {
+      background: var(--light);
+      border-radius: 10px;
+      padding: 1.5rem 1.75rem;
+      margin: 2rem 0;
+    }
+    .worked-example h3 {
+      margin-top: 0;
+      color: var(--blue);
+    }
+    .worked-example .data-table {
+      background: white;
+    }
+    .glossary {
+      margin: 1.75rem 0;
+    }
+    .glossary dt {
+      font-weight: 700;
+      color: var(--blue);
+      margin-top: 1.1rem;
+    }
+    .glossary dt:first-child {
+      margin-top: 0;
+    }
+    .glossary dd {
+      margin: .3rem 0 0;
+      color: var(--gray);
+      line-height: 1.55;
+      font-size: .92rem;
+    }
+    sup.fn-ref {
+      font-size: .7em;
+      vertical-align: super;
+      line-height: 0;
+      margin-left: 1px;
+    }
+    sup.fn-ref a {
+      color: var(--amber);
+      text-decoration: none;
+      font-weight: 700;
+    }
+    sup.fn-ref a:hover {
+      text-decoration: underline;
+    }
+    .evidence-index {
+      margin-top: 1.5rem;
+    }
+    .evidence-index .data-table {
+      font-size: .82rem;
+    }
+    .evidence-index .status {
+      font-weight: 700;
+      font-size: .72rem;
+      text-transform: uppercase;
+      letter-spacing: .04em;
+      white-space: nowrap;
+    }
+    .evidence-index .status.canonical { color: #1C3D6E; }
+    .evidence-index .status.provisional { color: #B07309; }
+    .evidence-index .status.mixed { color: #6C4E1E; }
+    .evidence-index .fn-id {
+      font-family: 'SFMono-Regular', Menlo, Consolas, monospace;
+      font-size: .8rem;
+      color: var(--amber);
+      font-weight: 700;
+      white-space: nowrap;
+    }
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: .4rem;
+      font-size: .875rem;
+      font-weight: 600;
+      color: var(--amber);
+      text-decoration: none;
+      margin-top: 2.5rem;
+    }
+    .back-link:hover { text-decoration: underline; }
+    .article ul, .article ol {
+      margin: 1rem 0 1.25rem;
+      padding-left: 1.4rem;
+    }
+    .article ul li, .article ol li {
+      margin-bottom: .4rem;
+      line-height: 1.6;
+    }
+    .section-divider {
+      margin: 2.5rem 0;
+      border: none;
+      border-top: 1px solid #e0ddd8;
+    }
+    .lede {
+      font-size: 1.15rem;
+      line-height: 1.55;
+      color: var(--blue);
+      margin: 1.25rem 0 1.75rem;
+    }
+  </style>
+  <noscript><style>.nav__links{display:flex!important;flex-wrap:wrap!important;}.nav__toggle{display:none!important;}</style></noscript>
+</head>
+<body>
+
+
+<a href="#main" class="skip-link">Skip to main content</a>
+
+<div class="crisis-bar" role="region" aria-label="Crisis help">
+  <strong>Need help right now?</strong>
+  <a href="tel:211">Call 211</a><span class="crisis-bar__sep">·</span>
+  <a href="sms:741741?body=HOME">Text HOME to 741741</a><span class="crisis-bar__sep">·</span>
+  <a href="tel:988">988 Suicide &amp; Crisis</a>
+</div>
+<nav class="nav" aria-label="Primary">
+  <div class="nav__inner">
+    <a href="/" class="nav__logo" aria-label="Common Ladder home">
+      <svg width="28" height="28" viewBox="0 0 28 28" fill="none" aria-hidden="true">
+        <rect x="4" y="2" width="3" height="24" rx="1.5" fill="white" opacity=".9"/>
+        <rect x="21" y="2" width="3" height="24" rx="1.5" fill="white" opacity=".9"/>
+        <rect x="4" y="7" width="20" height="3" rx="1.5" fill="#E8911A"/>
+        <rect x="4" y="14" width="20" height="3" rx="1.5" fill="#E8911A"/>
+        <rect x="4" y="21" width="20" height="3" rx="1.5" fill="#E8911A"/>
+      </svg>
+      common<span>ladder</span>
+    </a>
+    <button class="nav__toggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="primary-nav" onclick="this.setAttribute('aria-expanded', document.getElementById('primary-nav').classList.toggle('open') ? 'true' : 'false')">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav__links" id="primary-nav">
+      <li><a href="/find.html">Resources</a></li>
+      <li><a href="/providers.html">For providers</a></li>
+      <li><a href="/learn/">Learn</a></li>
+      <li><a href="/about.html">About</a></li>
+      <li><a href="/find.html" class="nav__cta">Find resources</a></li>
+      <li><a href="https://www.weather.gov/" rel="noreferrer" class="nav__exit" onclick="event.preventDefault();window.location.replace('https://www.weather.gov/')">Leave page</a></li>
+    </ul>
+  </div>
+</nav>
+
+<main id="main" class="article">
+
+  <nav aria-label="Breadcrumb" class="breadcrumb">
+    <a href="/">Home</a>
+    <span aria-hidden="true">›</span>
+    <a href="/learn/">Learn</a>
+    <span aria-hidden="true">›</span>
+    <span aria-current="page">Housing Math</span>
+  </nav>
+
+  <span class="eyebrow">Evidence &amp; policy · Explainer</span>
+  <h1>What It Actually Costs to House Someone — and What It Costs Not To</h1>
+  <p class="meta">By Common Ladder · May 26, 2026 · 30 min read</p>
+
+  <p class="lede">A companion to the Common Ladder Core Framework on ending homelessness. Written for elected officials and their staff, journalists covering housing and homelessness, and the engaged public reader who wants to understand why "too expensive" is the wrong frame.</p>
+
+  <hr class="section-divider">
+
+  <h2>Thesis</h2>
+  <p>"Housing the homeless is too expensive" is the most consequential false statement in American homelessness policy. It is false because the comparison is being made against the wrong number. The right comparison is not housing versus nothing. The right comparison is housing versus the documented cost of leaving someone unhoused — across shelter, emergency rooms, jails, hospitals, and the productivity of the cities they cannot work in. When that comparison is made honestly, for the populations the evidence supports, housing is the cheaper option. This document shows the math.</p>
+
+  <hr class="section-divider">
+
+  <h2>Executive Summary</h2>
+
+  <div class="callout-box">
+    <strong>Read this if you read nothing else.</strong>
+    <p><strong>One number is on the agenda. The other is hidden.</strong> When an elected body considers funding Permanent Supportive Housing, the cost per unit is on the agenda — typically $250,000 to $700,000 in capital and $25,000 to $80,000 per year to operate. The cost of leaving the same person unhoused is not on the agenda. It is distributed across the hospital district, the county jail, the sheriff's department, the emergency room budget, the public defender's office, the shelter contract, and a dozen Medicaid line items. The public conversation compares the housing cost to zero. The honest comparison is to the unhoused cost. The unhoused cost is larger.</p>
+    <p><strong>The cost-offset evidence is canonical.</strong> A peer-reviewed 2002 analysis of nearly 5,000 supportive housing placements in New York City found that $12,146 per placement per year in public service reductions was generated by housing — covering 94 percent of the annual housing cost.<sup class="fn-ref"><a href="#fn-f4">[f4]</a></sup> A 2009 randomized controlled trial in Chicago showed 29 percent fewer hospitalizations and 24 percent fewer emergency department visits for chronically ill homeless adults placed in supportive housing.<sup class="fn-ref"><a href="#fn-f4">[f4]</a></sup> A 2022 systematic economic review across 20 studies found median economic benefits ($18,247 per person per year) exceeded median program costs ($16,479).<sup class="fn-ref"><a href="#fn-f5">[f5]</a></sup> For the chronically homeless and high-cost utilizer population, supportive housing is not a cost — it is a cost shift toward a smaller total.</p>
+    <p><strong>The savings go to different budgets than the costs.</strong> This is the structural reason cost-offset evidence has not produced proportionate housing investment over twenty years. Housing costs land on the housing budget. Savings land on the Medicaid budget, the mental health budget, the corrections budget, the hospital district budget — separate agencies, separate appropriations, separate elected officials with separate accountabilities.<sup class="fn-ref"><a href="#fn-f17">[f17]</a></sup> No automatic mechanism routes the savings back to fund the housing that produced them. Each budget manager has a rational incentive to free-ride on housing investment made by another agency. This is a design problem, not an evidence problem.</p>
+    <p><strong>The capital stack is deliberately complex — and the complexity is expensive.</strong> Building one PSH unit typically requires Low-Income Housing Tax Credits, HOME funds, project-based vouchers, state housing trust fund grants, predevelopment loans from a community lender, and a permanent mortgage. Each layer has different application cycles, different compliance regimes, different reporting requirements, and different timelines. The reason a PSH unit costs $500,000 to build is not primarily that the building is expensive. It is that the financing is expensive, the regulatory environment is expensive, and the time it takes to assemble the capital stack is expensive. A simpler funding system would produce more units per dollar.</p>
+    <p><strong>Supply is the binding constraint in tight markets.</strong> Once median rent exceeds roughly 30 percent of area median income, homelessness rates rise nonlinearly — the curve gets steeper.<sup class="fn-ref"><a href="#fn-f16">[f16]</a></sup> The 15 percent of the U.S. population that lives in above-threshold markets accounts for 47 percent of people experiencing homelessness. No amount of program excellence ends homelessness in a market where housing units affordable to the homeless population do not exist at sufficient scale. The United States is short by approximately 7.3 million rental units affordable to extremely low-income households.<sup class="fn-ref"><a href="#fn-nlihc">[nlihc]</a></sup> Closing that gap is a production problem, not a service problem.</p>
+    <p><strong>Time matters as much as money.</strong> A new PSH building takes three to seven years from site identification to first move-in. A community in a homelessness crisis today gets no relief from new construction in the near term. The implication is that any serious housing strategy needs two parallel tracks: long-horizon pipeline investment (new construction, preservation, LIHTC allocation reform) and short-horizon acquisition strategies (motel conversion, scattered-site leasing, modular deployment) operating simultaneously. Funding only one track is a strategic error.</p>
+    <p><strong>The asks.</strong> Elected officials must require cross-budget cost accounting before approving or rejecting housing investments — comparing housing cost not to zero but to the full unhoused cost across all public budgets. Journalists must stop reporting "$700K per unit" without the comparison and must learn to read a capital stack. The public must understand that "too expensive" is a political claim, not a financial one. The math has been done. It points in one direction. The remaining question is whether the political will follows the math.</p>
+  </div>
+
+  <hr class="section-divider">
+
+  <h2>Part I — The Cost of Housing Someone</h2>
+
+  <h3>1.1 What a Unit Actually Costs to Build</h3>
+  <p>The cost of building one unit of Permanent Supportive Housing varies dramatically by market. The variation is not random. It tracks land cost, labor cost, regulatory environment, and financing complexity. The ranges below are 2024 estimates and should be treated as approximate.<sup class="fn-ref"><a href="#fn-housing_dev">[housing_dev]</a></sup></p>
+
+  <div class="table-wrap">
+    <table class="data-table">
+      <caption>Per-unit capital cost ranges by market type (2024 estimates)</caption>
+      <thead>
+        <tr>
+          <th>Type of unit</th>
+          <th>Low-cost market (Midwest, South)</th>
+          <th>Mid-cost market (Pacific NW, Mountain West)</th>
+          <th>High-cost market (CA, NY, MA)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>New construction PSH</td><td>$150K–$250K</td><td>$250K–$450K</td><td>$400K–$700K+</td></tr>
+        <tr><td>Acquisition-rehab PSH</td><td>$100K–$180K</td><td>$180K–$350K</td><td>$300K–$600K+</td></tr>
+        <tr><td>Standard new LIHTC affordable</td><td>$120K–$200K</td><td>$200K–$400K</td><td>$350K–$650K+</td></tr>
+        <tr><td>Modular / prefab (emerging)</td><td>$80K–$150K</td><td>$150K–$300K</td><td>$250K–$500K</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p>The headline figure that drives the political conversation — "PSH costs $700,000 per unit in California" — is real, but it is at the top of a long tail. The same intervention in Texas, Ohio, or Tennessee costs a third of that. The cost is not the building. The cost is the market, the wage rules on publicly-funded projects, the environmental review regime, the local entitlement process, the cost of capital while predevelopment drags on, and the price of land in cities that have refused to build for forty years.</p>
+
+  <p>California's costs are highest for documented and specific reasons: state prevailing-wage law applies to LIHTC projects, the California Environmental Quality Act adds review time and cost, local entitlement processes layer additional cost, land is scarce and expensive, and tax-credit equity pricing in volatile market conditions reduces the equity actually available to a deal. None of these factors are inherent to housing the homeless. They are policy choices made by states and cities, with predictable consequences for what the housing costs to produce.<sup class="fn-ref"><a href="#fn-housing_dev">[housing_dev]</a></sup></p>
+
+  <h3>1.2 What a Unit Costs to Operate Each Year</h3>
+  <p>Capital cost is what gets debated. Operating cost is what determines whether the building actually works as housing. Per-unit annual operating costs for PSH break down approximately as follows:<sup class="fn-ref"><a href="#fn-housing_dev">[housing_dev]</a></sup></p>
+
+  <div class="table-wrap">
+    <table class="data-table">
+      <caption>Annual operating cost per PSH unit by market type</caption>
+      <thead>
+        <tr>
+          <th>Cost component</th>
+          <th>Low-cost market</th>
+          <th>Mid-cost market</th>
+          <th>High-cost market</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>Rental subsidy (gap between 30%-of-income tenant payment and market rent)</td><td>$8K–$14K</td><td>$12K–$20K</td><td>$18K–$35K</td></tr>
+        <tr><td>Building operations and maintenance</td><td>$6K–$9K</td><td>$8K–$12K</td><td>$10K–$16K</td></tr>
+        <tr><td>Property management</td><td>$1.5K–$3K</td><td>$2K–$4K</td><td>$3K–$5K</td></tr>
+        <tr><td>Supportive services (PSH only)</td><td>$8K–$15K</td><td>$10K–$18K</td><td>$12K–$22K</td></tr>
+        <tr class="total-row"><td>Total PSH operating cost per unit per year</td><td>$23K–$41K</td><td>$32K–$54K</td><td>$43K–$78K</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p>The first row — rental subsidy — is the largest single component and the one most sensitive to local rental market conditions. The supportive services row is the one that distinguishes PSH from standard affordable housing. Both are operating costs, both must be funded annually, and both are typically funded from different sources than the capital cost that built the building. The fragmentation of the funding architecture is a recurring theme, and one this document returns to.</p>
+
+  <h3>1.3 What "$700,000 per unit" Actually Buys</h3>
+  <p>The headline figure conceals the full cost of the alternative. A PSH unit is a thirty-year asset. A high-cost PSH unit at $700,000 in capital, amortized over thirty years, costs roughly $23,000 per year in capital alone. Add high-cost market operating costs of approximately $60,000 per year. The all-in annual cost per PSH unit in a high-cost market is approximately $80,000 to $85,000 per year over the building's useful life.</p>
+
+  <p>That number is the right number to compare against the alternative. It is not the right number to compare against zero, because zero is not the alternative. The alternative is the cost of the same person remaining unhoused for the same year.</p>
+
+  <hr class="section-divider">
+
+  <h2>Part II — The Cost of Not Housing Someone</h2>
+
+  <h3>2.1 The Comparison No One Puts on the Agenda</h3>
+  <p>The unhoused cost has been measured. It is reported in peer-reviewed journals, in federal administrative data, in city budget audits, and in randomized controlled trials. It is also dispersed across so many agency budgets that no single line item makes it visible. The public conversation has the building cost on the agenda and the unhoused cost in a footnote, when it is anywhere at all. The math below uses well-documented figures from the cost-offset literature.</p>
+
+  <h3>2.2 Shelter: Almost Always More Expensive Than Housing</h3>
+  <p>Emergency shelter is not the cheaper option it appears to be. Per-person, per-year shelter costs in the United States range from approximately $18,000 to $55,000 depending on the model and market. The federal Emergency Solutions Grant–funded shelter bed costs roughly $8,000 more per year than the average federal housing subsidy (a Section 8 voucher).<sup class="fn-ref"><a href="#fn-f5">[f5]</a></sup> Shelter is structurally more expensive per person than housing because shelter is designed for short stays and is staffed continuously; it has no economy of scale beyond a certain point; and many shelter beds turn over multiple times per year, so the cost is per person served, not per bed.</p>
+
+  <p>This is the single most counterintuitive figure in homelessness policy. The intuition is that shelter is cheap because it is a thin mattress on a frame. The data is that shelter is expensive because what makes it expensive is the staffing, the meals, the security, the case management, the heating and cooling, and the building itself — not the mattress. The same money that runs a shelter bed for a year can pay the deep-subsidy gap on an apartment. The apartment ends homelessness. The shelter does not.</p>
+
+  <h3>2.3 The Emergency Room, the Hospital, the Jail</h3>
+  <p>For the population that PSH most directly serves — chronically homeless adults with serious mental illness, substance use disorders, or chronic physical health conditions — the public service utilization profile is well-documented. The foundational analysis was published in <em>Housing Policy Debate</em> in 2002 by Dennis Culhane, Stephen Metraux, and Trevor Hadley.<sup class="fn-ref"><a href="#fn-f4">[f4]</a></sup> They linked eight New York City administrative databases — shelter, state mental health, city hospitals, Medicaid, the VA, state corrections, and city corrections — across nearly five thousand individuals placed in NY/NY supportive housing between 1989 and 1997. They compared their service utilization to matched unhoused controls.</p>
+
+  <p>The pre-placement baseline cost across all eight systems was approximately $40,451 per person per year (1999 dollars). After placement in supportive housing, the regression-adjusted reduction was $12,146 per placement per year — a figure that, when adjusted for unit turnover, translates to $16,281 per occupied unit per year in service savings. The annual cost of a NY/NY housing unit was $17,277. Net cost after the service offsets: $995 per unit per year. Housing covered 94 percent of its own cost through reduced public service utilization within two years.</p>
+
+  <p>The Culhane study is a quasi-experimental design, not a randomized controlled trial. It is from 1999 dollars in one city. The authors are explicit about both caveats. But the direction of effect has been confirmed repeatedly. The Sadowski randomized controlled trial in Chicago (published in JAMA in 2009) showed 29 percent fewer hospitalizations, 29 percent fewer hospital days, and 24 percent fewer emergency department visits for chronically ill homeless adults randomized to a Housing First case management intervention with stable housing.<sup class="fn-ref"><a href="#fn-f4">[f4]</a></sup> The Community Guide's 2022 systematic economic review across 20 studies found median program costs of $16,479 per person per year and median economic benefits of $18,247 per person per year — net positive across the body of evidence.<sup class="fn-ref"><a href="#fn-f5">[f5]</a></sup></p>
+
+  <p>What this means in plain English: for the chronically homeless population, housing is not a cost. It is a redirection of costs the public is already absorbing — through hospital admissions, emergency room visits, jail bookings, shelter nights, and crisis psychiatric care — into a smaller, more stable total that produces dramatically better outcomes for the people involved. The math holds. It has held for twenty years.</p>
+
+  <h3>2.4 The High-Utilizer Tail</h3>
+  <p>The averages in the cost-offset literature conceal a sharper distribution. Within the chronically homeless population, a small group of individuals generates a disproportionate share of public service costs. These are the "frequent fliers" of the emergency room and the jail booking desk — individuals whose annual public cost can exceed $50,000, $100,000, or in extreme cases $150,000 or more.<sup class="fn-ref"><a href="#fn-housing_dev">[housing_dev]</a></sup></p>
+
+  <p>For this group, the cost-offset case is most decisive. The cost of a PSH unit is a fraction of the cost the same person is generating in shelter, ED, hospital, and jail charges. The math is not close. The reason this group is not already housed has nothing to do with cost. It has to do with the fragmentation of the systems that bear the costs and the system that would house them. This document returns to that fragmentation in Part III.</p>
+
+  <h3>2.5 What's Not in the Cost-Offset Numbers</h3>
+  <p>A complete unhoused cost includes things the cost-offset literature does not capture: the productivity loss of someone who cannot work because they cannot maintain stable housing; the harm to children whose families experience repeated homeless episodes;<sup class="fn-ref"><a href="#fn-f8">[f8]</a></sup> the disability that accumulates when chronic medical conditions go untreated on the street; the cost to small businesses in neighborhoods where unsheltered homelessness is concentrated; the cost to public spaces and the use of public infrastructure. None of these costs appear in the Culhane numbers. They are real. They are not zero. They are typically not measured in dollars because measuring them in dollars is hard and politically fraught. They sit in the same place the cost-offset numbers sit — on the wrong side of the public conversation about whether housing is "too expensive."</p>
+
+  <hr class="section-divider">
+
+  <h2>Part III — The Cross-Budget Problem: Why the Math Has Not Won</h2>
+
+  <h3>3.1 The Savings Land on a Different Budget Than the Cost</h3>
+  <p>If the cost-offset evidence is canonical, why has it not produced proportionate housing investment over the twenty-plus years since Culhane published? The answer is structural, and it is in the data.</p>
+
+  <p>The $12,146 per placement per year in service reductions documented in NYC was distributed across seven specific budgets: $6,162 from state mental health, $2,825 from Medicaid inpatient, $2,819 from the city shelter system, $1,321 from city hospitals, $444 from the VA, $312 from state corrections, $245 from city corrections.<sup class="fn-ref"><a href="#fn-f17">[f17]</a></sup> These are seven different appropriations, three different levels of government, multiple legislative oversight bodies, and no automatic mechanism that routes any of these savings back to fund the housing that produced them.</p>
+
+  <p>The housing budget pays roughly $17,000 per unit per year. The mental health budget saves $6,000. The Medicaid budget saves $3,000. The shelter budget saves $3,000. The hospital budget saves $1,000. The housing director has a $17,000 cost line on her budget. The mental health director, the Medicaid director, the shelter director, and the hospital director each have a smaller cost line on their budgets. None of them have a "savings recovered from housing" line. None of them can write a check back to the housing director, because that is not how government appropriations work. Each director's individual budget incentive is to defer the housing investment and let some other budget keep paying the unhoused cost.</p>
+
+  <p>This is not a hypothesis. It is the documented structural reason that, in Culhane's own words, "cost-offset evidence does not translate into housing investment without deliberate cross-agency appropriations or Medicaid financing innovations."<sup class="fn-ref"><a href="#fn-f17">[f17]</a></sup> The math does not win on its own. Someone has to align the budgets.</p>
+
+  <h3>3.2 Medicaid as a Partial Fix</h3>
+  <p>The most promising structural fix uses Medicaid — a payer that already touches both healthcare costs and, increasingly under federal authority, housing-adjacent services. The federal Centers for Medicare and Medicaid Services has expanded guidance on what is called "health-related social needs" services, opening pathways for state Medicaid programs to fund housing navigation, transition support, and time-limited rental assistance through 1115 waivers and state plan amendments.<sup class="fn-ref"><a href="#fn-f15">[f15]</a></sup></p>
+
+  <p>California's CalAIM program is the most-developed model. It uses Medicaid to fund the services side of supportive housing — case management, behavioral health integration, housing navigation, move-in assistance — for high-utilizer Medicaid beneficiaries. The federal government covers approximately half the cost. Early CalAIM data is positive but the rigorous evaluation is expected in 2027.<sup class="fn-ref"><a href="#fn-f15">[f15]</a></sup> Washington DC's Housing Supportive Services program has used the same approach since 2022. Oregon and Washington state have pursued similar 1115 authorities.</p>
+
+  <p>The CalAIM model is significant because it partially resolves the cross-budget misalignment. Medicaid bears both costs — the hospital costs of the unhoused population and the services costs of housing them. The same payer can do the cost-benefit math internally and make the investment based on its own incentives. This is why the Medicaid 1115 waiver path has become one of the highest-leverage state-level policy choices in the homelessness field.</p>
+
+  <p>Medicaid cannot, by statute, pay for rent or ongoing housing costs. That portion of the math remains stranded across other budgets. But Medicaid can move the services portion, which is roughly a third of the operating cost for PSH and often the piece that fails to get funded when the LIHTC capital is in place.</p>
+
+  <h3>3.3 Why "Too Expensive" Keeps Winning</h3>
+  <p>The political durability of "too expensive" as the dominant frame in homelessness policy has structural roots. The housing cost is visible, attributable, scheduled for a vote, and politically risky. The unhoused cost is distributed, hard to attribute, never scheduled for a vote, and politically invisible. The asymmetry favors inaction even when the math favors action. The cost of unhoused homelessness is paid every year by every taxpayer. It is the largest line item that does not appear on any single budget.</p>
+
+  <p>This is the political-economy problem the homelessness field has not solved at scale. Cost accounting that crosses agency boundaries is technically feasible, has been demonstrated in multiple academic studies, and is routinely produced for high-utilizer cohort analyses in specific communities. It is rarely produced as a standing line item in city or state budgets. Building that infrastructure — cross-agency cost reporting that surfaces the unhoused cost alongside the housing cost — is among the highest-leverage operational investments a state or large city can make. It changes the conversation by changing what is visible.</p>
+
+  <hr class="section-divider">
+
+  <h2>Part IV — The Capital Stack: Why Building Anything Is So Hard</h2>
+
+  <h3>4.1 The Layered Funding Reality</h3>
+  <p>A single PSH unit being developed today is typically funded by six to eight different sources. The capital side: Low-Income Housing Tax Credits (LIHTC) sold to bank investors, HOME Investment Partnership funds from the federal government, state housing trust fund grants, local bond proceeds where they exist, predevelopment loans from a Community Development Financial Institution, conventional construction debt, and (often) deferred developer fee functioning as patient equity. The operating side: a Project-Based Voucher subsidy from the local Public Housing Authority, supportive services dollars from the Continuum of Care grant or Medicaid or general fund, and operating reserves built from a small surplus on rent.<sup class="fn-ref"><a href="#fn-housing_dev">[housing_dev]</a></sup></p>
+
+  <p>Each source has its own application cycle. LIHTC competitions run annually in most states. HOME funds are allocated through state and local entitlement formulas with their own schedules. State housing trust fund applications operate on state-specific cycles. Local bond resources, where they exist, have their own award processes. The Project-Based Voucher attachment requires a separate Public Housing Authority commitment that must be negotiated. Each source has its own compliance regime — income targeting, affordability period, design requirements, reporting requirements — that must be satisfied for the life of the building.</p>
+
+  <p>The result is that a developer assembling capital for a single PSH building manages a portfolio of six to eight active relationships across funder cycles, each with veto power over the deal. If any one source falls through, the deal collapses or is delayed for a year until the next cycle. A senior staffer at a non-profit affordable housing developer typically spends a substantial share of her time on this capital-stack management, not on the substance of housing development.</p>
+
+  <h3>4.2 The LIHTC Engine</h3>
+  <p>The largest single financing source for affordable housing in the United States is the Low-Income Housing Tax Credit, established by the Tax Reform Act of 1986. It generates approximately $10 billion in equity investment annually and funds approximately 100,000 units of affordable housing per year. The mechanics:<sup class="fn-ref"><a href="#fn-housing_dev">[housing_dev]</a></sup></p>
+
+  <p>The federal government allocates tax credits to states based on a per-capita formula. Each state's housing finance agency distributes those credits through a competitive process governed by a Qualified Allocation Plan (QAP) — a state-specific scoring document that ranks applications by location, affordability depth, population served, design quality, and other criteria the state has chosen to prioritize. Winning projects receive a ten-year stream of tax credits. Developers sell the credit stream to investors — primarily large banks meeting their Community Reinvestment Act obligations — in exchange for upfront equity that funds the project. The investors get the tax credit; the project gets the equity.</p>
+
+  <p>There are two types of LIHTC: the 9 percent credit, highly competitive and used primarily for new construction, generating the highest equity per dollar of project cost; and the 4 percent credit, available as-of-right when a project uses tax-exempt bond financing, less competitive but generating less equity. Most PSH new construction depends on 9 percent credits. Most large preservation and acquisition-rehab deals depend on 4 percent credits.</p>
+
+  <p>The competition for 9 percent credits is intense. In most states, demand exceeds supply by two to four times. Projects that do not win in one year must wait for the next application cycle, with carrying costs accruing the entire time. This is a major reason PSH development takes years. The application process itself — environmental review, market study, capital stack assembly, community engagement, design — costs hundreds of thousands of dollars before the developer knows whether the credit will be awarded.</p>
+
+  <h3>4.3 The QAP as a Policy Lever</h3>
+  <p>The Qualified Allocation Plan is one of the most undervalued housing policy levers in the country. It does not require new appropriations. It is a state-level scoring document, refined annually through public comment, that determines how the state's LIHTC allocation gets distributed. States can use their QAPs to steer LIHTC toward PSH and deep affordability by awarding bonus points for serving chronically homeless populations, requiring Housing First protocols, pairing units with Project-Based Vouchers, and targeting units to households at 30 percent of area median income.</p>
+
+  <p>Most state QAPs do not use these levers fully. Some state QAPs are essentially silent on the homelessness population. The QAPs that do prioritize PSH (in states like California, Oregon, Washington, and Minnesota) produce more PSH units per LIHTC dollar than QAPs that do not. The QAP public comment process is open to advocates, providers, and the public. It is one of the few homelessness policy levers that does not require legislation, does not require new revenue, and produces measurable production changes within two to three years of a QAP revision.</p>
+
+  <p>For elected officials, the QAP is a near-term housing policy lever that is almost always available, rarely contested in mainstream media, and frequently underused. Most state housing finance agency boards include gubernatorial appointees. Most QAP cycles include formal public comment periods. The path from political will to QAP change to PSH production is short. The path is just rarely taken with explicit homelessness intent.</p>
+
+  <h3>4.4 The Project-Based Voucher Bottleneck</h3>
+  <p>Deep affordability — units affordable to households at 30 percent of area median income or below, which is where most homeless populations sit — typically cannot be financed with LIHTC alone. Standard LIHTC targets households at 50 to 60 percent of area median income. Units for households below 30 percent require additional subsidy layered on top of LIHTC to bridge the gap between what those households can pay (roughly $200 to $400 per month at SSI-level income) and what the building needs to cover its costs.<sup class="fn-ref"><a href="#fn-housing_dev">[housing_dev]</a></sup></p>
+
+  <p>The most reliable mechanism for this is the Project-Based Voucher. Local Public Housing Authorities (PHAs) can choose to attach a portion of their federal Housing Choice Voucher allocation to specific units rather than issuing those vouchers to individual tenants. A Project-Based Voucher attached to a PSH unit guarantees that the unit will receive subsidy to cover the gap between tenant payment and operating cost, for as long as the contract is in place. This is what makes deep-affordability PSH financially viable.</p>
+
+  <p>The constraint is that the Project-Based Voucher allocation comes from the same federal voucher pool that the PHA also uses for tenant-based vouchers — the portable vouchers that allow holders to rent in the private market. Both kinds of vouchers are oversubscribed nationally. PHAs allocate scarce voucher resources between tenant-based and project-based uses based on local priorities. PHAs that prioritize project-basing for PSH produce more deeply affordable PSH units. PHAs that prioritize tenant-based vouchers produce fewer.</p>
+
+  <p>This is, again, a near-term policy lever. PHA boards make these decisions. The relationship between the local Continuum of Care and the local PHA determines whether voucher resources flow toward the homeless population at scale. Where that relationship is strong, PSH gets built with PBV stacked alongside LIHTC. Where the relationship is weak, the LIHTC may exist but the deep affordability layer never gets assembled, and the building serves a 50-percent-AMI population instead of the homeless population it was theoretically meant to serve.</p>
+
+  <h3>4.5 The Cost-of-Complexity Tax</h3>
+  <p>The above is the rough sketch of one PSH deal. There are six to eight active funding relationships, three or more application cycles, multiple compliance regimes operating for thirty or fifty years, and a regulatory environment that adds time and cost at every step. A non-trivial share of the per-unit cost of a PSH building is not the building. It is the cost of managing the financing.</p>
+
+  <p>There are reasonable proposals to simplify. Some states have piloted "one-stop" PSH financing that consolidates capital and services funding decisions in a single application process. California's Homekey program funded acquisition and operations simultaneously — a structural simplification that produced substantial unit creation in a short time during the pandemic. Federal proposals to broaden the LIHTC, increase per-capita allocations, or create a new federal subsidy stream specifically for deeply affordable housing surface every few legislative cycles. None of these have passed at the scale the math would justify.</p>
+
+  <p>The cost-of-complexity tax is real, it is high, and it is a policy choice. A more rational funding architecture would produce more units per dollar invested. The current architecture does not, and most public criticism of the per-unit cost of affordable housing fails to identify this as a cause.</p>
+
+  <hr class="section-divider">
+
+  <h2>Part V — Why Supply Is the Binding Constraint</h2>
+
+  <h3>5.1 The Rent-to-Income Threshold</h3>
+  <p>Homelessness rates do not increase smoothly with rent. They increase nonlinearly. Once median rent in a metro area exceeds approximately 30 percent of area median income — coincident with the federal definition of housing cost burden — the relationship between further rent increases and homelessness rates accelerates sharply.<sup class="fn-ref"><a href="#fn-f16">[f16]</a></sup></p>
+
+  <p>This is the central finding of the Glynn-Byrne-Culhane 2021 analysis published in the <em>Annals of Applied Statistics</em>. Looking at 386 U.S. Continuums of Care, the authors used Bayesian nonparametric regression to identify the threshold effect. Below the threshold, additional rent increases produce small homelessness increases. Above the threshold, the curve gets steeper — each additional percentage point of rent burden generates disproportionately more homelessness. The 15 percent of the U.S. population that lives in above-threshold markets accounts for 47 percent of people experiencing homelessness — a three-times overrepresentation.</p>
+
+  <p>The Glynn paper used pre-pandemic data. U.S. rents increased 20 to 30 percent in many markets from 2021 to 2023. The number of CoCs above the threshold has almost certainly grown. The specific 30-percent figure should be treated as directionally valid, not as a precise current benchmark. But the structural finding is clear: rent burden has a tipping point, and the United States is increasingly above it.</p>
+
+  <h3>5.2 The 7.3 Million Unit Gap</h3>
+  <p>The National Low Income Housing Coalition tracks the gap between extremely low-income renter households (those earning at or below 30 percent of area median income — the income range where most homeless populations sit) and the supply of rental units affordable and available to them. The current gap is approximately 7.3 million units. For every 100 extremely low-income renter households, there are approximately 37 affordable and available units.<sup class="fn-ref"><a href="#fn-nlihc">[nlihc]</a></sup></p>
+
+  <p>This is the underlying production deficit. It is structural, it has worsened over decades, and it is the reason program-level interventions hit ceilings in tight markets. A community can run excellent coordinated entry, excellent navigation, excellent landlord engagement, and excellent prevention, and still not end homelessness if the housing units affordable to its homeless population do not exist at sufficient scale. The Continuum of Care system is, by design, a coordination mechanism — not a housing production mechanism. It moves people through the units that exist. It does not produce units.</p>
+
+  <h3>5.3 The PSH Unit Gap, Specifically</h3>
+  <p>The United States has approximately 412,000 Permanent Supportive Housing beds nationally as of 2024, of which approximately 170,000 are funded through the Continuum of Care program.<sup class="fn-ref"><a href="#fn-f6">[f6]</a></sup> The January 2024 Point-in-Time count identified approximately 152,600 chronically homeless individuals — the population for whom PSH is the evidence-supported intervention.<sup class="fn-ref"><a href="#fn-f1">[f1]</a></sup> In a static analysis, the PSH inventory and the chronic homeless population are roughly the same size — but chronic homelessness is concentrated in specific markets where the existing PSH inventory is insufficient, and unit turnover does not keep pace with new chronic homelessness entries. The PSH gap is widening in most major metros.</p>
+
+  <p>New PSH construction is measured in the thousands of units per year nationally. The pace is far below what closing the gap would require. The structural reason is the capital stack complexity described in Part IV: each PSH unit requires the assembly of LIHTC, HOME, PBV, services funding, and other layers that scale slowly. Without policy changes that simplify or expand any of these layers, the pace of PSH production cannot meet the scale of the need.</p>
+
+  <h3>5.4 The Local-Vote Problem (NIMBY)</h3>
+  <p>Even when capital is available, even when subsidy is layered, even when the developer has every entitlement nominally in place, affordable and supportive housing development faces consistent local opposition. The opposition has a name in the field — Not In My Backyard, or NIMBY — and it is not equally distributed. Opposition is strongest in predominantly white, high-income neighborhoods. Opposition lengthens entitlement timelines (sometimes by years), drives up legal and consulting costs, and in some cases kills projects outright after substantial predevelopment investment has been made.<sup class="fn-ref"><a href="#fn-housing_dev">[housing_dev]</a></sup></p>
+
+  <p>State-level responses have been mixed. California's recent housing laws (SB 9, SB 10, ADU reform, by-right approval for certain affordable projects) attempt to reduce local veto power over housing production. Oregon's HB 2001 ended single-family-only zoning statewide. Massachusetts has used 40B and the Chapter 40R/40S overlay zoning programs to require affordable housing in high-opportunity towns. The results are uneven. NIMBYism remains one of the largest soft costs in affordable housing production, particularly in the tight-market states where the supply gap is most binding.</p>
+
+  <p>For elected officials, this is the housing policy lever with the most political risk and often the highest leverage. Ministerial approval for affordable and supportive housing projects, by-right zoning for deed-restricted developments, density bonuses tied to deep affordability, and faster CEQA-equivalent processes for housing affordable to extremely low-income households — these are policy choices that reduce per-unit costs and timelines, and they require political will to enact in jurisdictions where the affected neighborhoods will resist.</p>
+
+  <hr class="section-divider">
+
+  <h2>Part VI — Why Time Matters as Much as Money</h2>
+
+  <h3>6.1 The Construction Timeline Reality</h3>
+  <p>A PSH project built from the ground up takes three to seven years from site identification to first move-in.<sup class="fn-ref"><a href="#fn-housing_dev">[housing_dev]</a></sup> The timeline breakdown:</p>
+
+  <ul>
+    <li><strong>Site identification and control</strong>: 6 to 18 months (find the land, negotiate purchase or option)</li>
+    <li><strong>Predevelopment</strong>: 12 to 24 months (feasibility, environmental review, design, entitlements, capital stack assembly)</li>
+    <li><strong>LIHTC application and award</strong>: 6 to 12 months (competitive state allocation, one chance per year)</li>
+    <li><strong>Construction</strong>: 12 to 24 months</li>
+    <li><strong>Lease-up and stabilization</strong>: 3 to 6 months</li>
+  </ul>
+
+  <p>These are not pessimistic estimates. They are typical. Faster timelines exist (acquisition-rehab can compress to one to three years; modular and prefab approaches can compress further), but new construction at scale operates on the multi-year timeline.</p>
+
+  <p>The implication for a community facing a homelessness crisis today is uncomfortable. The PSH unit funded by a vote this year does not house anyone until 2030. The vote is the right vote — communities that fail to invest in pipeline today are committing to a worse housing inventory in 2030 — but it provides no near-term relief.</p>
+
+  <h3>6.2 The Two-Track Strategy</h3>
+  <p>Communities that have made the most progress on housing development for homeless populations operate on two parallel tracks simultaneously:<sup class="fn-ref"><a href="#fn-housing_dev">[housing_dev]</a></sup></p>
+
+  <p><strong>The pipeline track</strong> invests in new construction PSH, LIHTC allocations to deep affordability, preservation of expiring affordable housing, and developer capacity. This is a five-to-ten year investment. Returns accumulate slowly. The justification is that without it, the housing inventory in 2030 is worse than today's.</p>
+
+  <p><strong>The acquisition track</strong> moves quickly on opportunities that exist now: motel and hotel acquisition (the California Homekey model), commercial building conversion to housing, scattered-site leasing through landlord engagement programs, modular and manufactured housing deployment for interim and bridge use. Timelines are months, not years. Costs per unit are typically lower, though the units may be smaller or less integrated.</p>
+
+  <p>A community that funds only the pipeline track has a strong 2030 outlook and no relief for the homeless population on the street today. A community that funds only the acquisition track addresses today's need but does not build the durable inventory that supports a multi-year functional zero strategy. The strategic answer is both, simultaneously, with appropriate proportional investment. Neither track is sufficient alone.</p>
+
+  <h3>6.3 The Predevelopment Capital Gap</h3>
+  <p>The riskiest point in the development timeline is predevelopment. By the time a deal reaches predevelopment, the developer has committed substantial resources — design, environmental review, community engagement, entitlement work, legal — but has not yet secured the financing that would make the deal viable. If the LIHTC application is rejected, if the city denies the entitlement, if the cost estimates come in higher than the available capital can absorb, the predevelopment costs are sunk.</p>
+
+  <p>This risk is the primary reason non-profit affordable housing developers cannot scale faster than they do. Their balance sheets cannot absorb many failed predevelopments. The traditional banking system does not lend at predevelopment scale because the risk profile does not fit a conventional loan product. Community Development Financial Institutions — mission-driven lenders capitalized by bank Community Reinvestment Act investments, the federal CDFI Fund, and foundation program-related investments — are the primary source of predevelopment capital for affordable and supportive housing.<sup class="fn-ref"><a href="#fn-housing_dev">[housing_dev]</a></sup></p>
+
+  <p>For elected officials, expanding predevelopment capital pools (through state-level affordable housing finance agency lending facilities, philanthropic acquisition funds, or local bond proceeds dedicated to predevelopment) is among the most leveraged housing investments available. A dollar of predevelopment capital enables several dollars of subsequent permanent financing to flow. Most jurisdictions are under-invested in this specific layer of the capital stack.</p>
+
+  <hr class="section-divider">
+
+  <h2>Part VII — What This Means in Practice: Three Scenarios</h2>
+
+  <p>The math above plays out differently across community types. Three scenarios illustrate the range.</p>
+
+  <h3>Scenario A — The High-Cost Tight Market</h3>
+  <p>A coastal metropolitan area with a chronically homeless population of approximately 4,000 individuals. Median rent is above 50 percent of area median income. PSH new construction runs $500,000 to $700,000 per unit. LIHTC allocations are highly competitive; the state QAP awards modest bonus points for PSH. The Public Housing Authority project-bases a small share of its voucher allocation.</p>
+
+  <p>The math: a 1,000-unit PSH pipeline (one quarter of the chronic population) would require approximately $500 million to $700 million in capital and $50 million to $80 million per year in ongoing operating subsidy. Existing federal and state sources cover roughly half of this; the gap requires local levy capacity or large philanthropic investment.</p>
+
+  <p>The strategic question: where does the binding constraint actually sit? Capital is constrained, services funding is constrained, predevelopment is constrained, but the most binding constraint is typically political. The land is available somewhere; the LIHTC allocation can be sought; the PBV can be negotiated. What stops most high-cost tight-market jurisdictions from producing PSH at need-scale is local opposition to siting and zoning. The math is solvable. The politics is the binding constraint.</p>
+
+  <h3>Scenario B — The Mid-Cost Mountain West Metro</h3>
+  <p>A growing city of approximately 800,000 in the Mountain West with a chronically homeless population of approximately 1,200. Median rent is roughly 35 percent of area median income — above the threshold but not by the margin of coastal markets. PSH new construction runs $350,000 per unit. The state has a small but functional housing trust fund. LIHTC competition is high but tractable.</p>
+
+  <p>The math: a 600-unit PSH pipeline (half of chronic population, accounting for unit turnover) would require approximately $210 million in capital and $30 million to $40 million per year in operating subsidy. Federal sources cover a meaningful share; state housing trust fund and local funding can close most of the rest.</p>
+
+  <p>The strategic question: this is the community type where Medicaid 1115 waiver investment most directly unlocks scale. The capital is somewhat tractable. The services funding is the gap. A state Medicaid program that pays for the supportive services in PSH at scale — at the federal match rate of approximately 50 percent — converts a partly funded PSH plan into a fully funded one. CalAIM and similar 1115 waivers are the model. The state's political will to apply for and operationalize the waiver determines whether the funding works.</p>
+
+  <h3>Scenario C — The Low-Cost Southern City</h3>
+  <p>A mid-size Southern metropolitan area with a chronically homeless population of approximately 600. Median rent is below 30 percent of area median income — below the threshold. PSH new construction runs $200,000 per unit. The state has minimal housing trust fund capacity and has not expanded Medicaid.</p>
+
+  <p>The math: a 300-unit PSH pipeline would require approximately $60 million in capital and $10 million to $15 million per year in operating subsidy. The unit-level economics are favorable. But the financing pieces are harder to assemble — the state lacks the layered subsidies that high-cost states have built, and the non-expansion of Medicaid means the services side is harder to fund.</p>
+
+  <p>The strategic question: this is the community type where the cost case for housing is the cleanest — high return per dollar invested, lower per-unit costs — but the political and structural environment is the hardest. State Medicaid expansion would change the math. Federal voucher expansion would change the math. Local levy capacity is limited. Until and unless the state-level policy changes, communities in this scenario operate at a fraction of need.</p>
+
+  <hr class="section-divider">
+
+  <h2>Part VIII — What Elected Officials, Journalists, and the Public Must Do</h2>
+
+  <p>The asks here are different for each audience because each audience controls different levers. The math is the same; the application of the math depends on who is asking the question.</p>
+
+  <h3>Elected Officials</h3>
+
+  <p><strong>Require cross-budget cost accounting on every housing vote.</strong> Before approving or rejecting an affordable or supportive housing project, the relevant body should see the full unhoused cost for the population the project would serve — across the hospital district, the corrections agency, the shelter contract, the emergency room utilization data, the public defender's caseload. This is not standard practice in most jurisdictions. It should be. Without it, the housing cost is being compared to zero rather than to the alternative, and the wrong vote will win.</p>
+
+  <p><strong>Use the QAP, the PHA, and the local entitlement process as housing policy levers.</strong> Each of these is a near-term lever that does not require new revenue. The QAP can prioritize PSH and deep affordability. The PHA can project-base vouchers in coordination with the Continuum of Care. The local entitlement process can be made ministerial or by-right for deed-restricted affordable housing. Each of these decisions sits with elected or appointed officials. Each is contested by predictable interests. Each, used well, produces measurable units within two to three years.</p>
+
+  <p><strong>Pursue Medicaid 1115 authority for housing-related services if your state has not.</strong> This is the highest-leverage state-level homelessness policy lever that does not require new state appropriations. The federal authority exists. The cost-offset evidence for the target populations is canonical. The administrative effort to apply for and operationalize the waiver is real, and is dwarfed by the funding it unlocks.</p>
+
+  <p><strong>Invest in predevelopment capital, not just construction.</strong> The dollar of predevelopment capital that enables five dollars of subsequent permanent financing to flow is among the most leveraged housing investments your jurisdiction can make. State housing finance agency lending facilities, dedicated predevelopment grant programs, and philanthropic acquisition fund partnerships are all available paths. Most jurisdictions are under-invested in this specific layer.</p>
+
+  <p><strong>Fund both the pipeline and the acquisition track.</strong> Funding only new construction creates a strong 2030 inventory and no near-term relief. Funding only motel acquisitions and scattered-site leasing creates near-term relief and no durable inventory. Both are needed simultaneously. The proportional split should reflect local conditions, but neither track is dispensable.</p>
+
+  <h3>Journalists</h3>
+
+  <p><strong>Report the comparison, not just the cost.</strong> "$700,000 per unit" is true and incomplete. The story is what the comparison is — what the same person costs the city if not housed, across hospital, shelter, jail, and emergency room utilization. The data exists. Most jurisdictions have produced cost-offset analyses for at least one cohort. Request them. Run them alongside the unit cost. The story changes when the comparison is on the page.</p>
+
+  <p><strong>Read the capital stack.</strong> Affordable housing reporting that does not understand LIHTC, HOME, PBV, and the role of CDFIs cannot accurately attribute cost. A reporter who sees "$500,000 per unit" and does not know what share of that cost is regulatory compliance, what share is land cost, what share is financing cost, and what share is the physical building is reporting a number without reporting the structure of the number. Most major metro daily reporters covering housing are under-trained on this. Specialty outlets — <em>Shelterforce</em>, <em>Cityscape</em>, <em>Next City</em>, <em>Housing Policy Debate</em> — are the source material.</p>
+
+  <p><strong>Track the cross-budget problem.</strong> The single most important under-reported story in homelessness policy is the structural reason cost-offset evidence has not produced proportionate housing investment. The cross-agency budget misalignment is documented, well-understood by specialists, and almost never explained to general readers. Explaining it well is among the highest-impact things a journalist on this beat can do.</p>
+
+  <p><strong>Distinguish chronic from episodic homelessness in cost coverage.</strong> The cost-offset case is decisive for chronically homeless adults with high public service utilization. It is more modest for families and lower-acuity individuals, where the right interventions are vouchers and rapid rehousing, not PSH. Reporting that treats all homelessness as the same fails to communicate that different populations require different interventions and produce different cost profiles. Specificity matters.</p>
+
+  <h3>The Public</h3>
+
+  <p><strong>"Too expensive" is a political claim, not a financial one.</strong> When you hear that supportive housing is too expensive, the right question is: compared to what? The answer is almost never given because the answer is the unhoused cost, and the unhoused cost is rarely tabulated. You are entitled to that comparison. Ask for it.</p>
+
+  <p><strong>Local zoning and entitlement votes matter as much as state and federal spending decisions.</strong> The biggest soft cost in affordable housing production is local opposition — to siting, to density, to design. These are votes your city council and planning commission take, often with low public attendance. The people who oppose affordable housing show up. The people who would benefit from it usually do not. Showing up to those hearings, in the affirmative, is one of the highest-impact things a non-specialist can do on housing policy.</p>
+
+  <p><strong>The capital stack is complex because the funding system was designed to be complex, not because building housing is technically hard.</strong> Federal proposals to simplify affordable housing finance — broader LIHTC, new deeply affordable housing subsidy streams, reduced regulatory burden on publicly-funded housing — surface every few legislative cycles and rarely pass. They rarely pass because the constituencies that benefit from the current complexity (specialized developers, syndicators, tax-credit investors, consulting firms) are organized and well-resourced. The constituencies that would benefit from simpler housing finance (the people who would be housed) are not. This is a political problem that becomes a financial one. Naming it is the precondition for changing it.</p>
+
+  <p><strong>The cost of doing nothing is real, large, and paid by you.</strong> The cost of unhoused homelessness in your community — through your hospital bills, your insurance premiums, your sales tax-funded shelter system, your property tax-funded jail and emergency services — is not zero. It is the largest line item that does not appear on any single budget. When you accept "too expensive" without asking for the comparison, you are agreeing to keep paying that cost rather than redirect it toward an intervention that produces better outcomes for less money.</p>
+
+  <hr class="section-divider">
+
+  <h2>Appendix A — A Worked Example: The Math on One Person</h2>
+
+  <p>To make the abstract numbers tangible, consider a specific case profile drawn from the cost-offset literature. The numbers below are illustrative — they reflect typical figures from the high-utilizer chronic homelessness population in a mid-cost market.</p>
+
+  <div class="worked-example">
+    <h3>The Person</h3>
+    <p>Adult male, chronic homelessness for 6 years, untreated schizophrenia, polysubstance use, congestive heart failure, no stable income, multiple periods of incarceration for low-level offenses.</p>
+
+    <h3>Documented annual public service utilization (unhoused, mid-cost market)</h3>
+    <div class="table-wrap">
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Service</th>
+            <th>Annual cost</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Emergency room visits (18 visits/year, average $1,200/visit)</td><td>$21,600</td></tr>
+          <tr><td>Hospital admissions (4 admissions/year, average $14,000/admission)</td><td>$56,000</td></tr>
+          <tr><td>Jail bookings (3 bookings, 35 days average detention, $190/day)</td><td>$20,000</td></tr>
+          <tr><td>Shelter nights (180 nights, $80/night)</td><td>$14,400</td></tr>
+          <tr><td>Mental health crisis services (8 episodes, $1,500/episode)</td><td>$12,000</td></tr>
+          <tr><td>EMS transport (12 transports, $700/transport)</td><td>$8,400</td></tr>
+          <tr class="total-row"><td>Total documented annual public cost</td><td>$132,400</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>Annual cost of housing the same person in PSH (mid-cost market)</h3>
+    <div class="table-wrap">
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Cost component</th>
+            <th>Annual cost</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Capital amortization ($350,000 over 30 years)</td><td>$11,700</td></tr>
+          <tr><td>Rental subsidy gap</td><td>$14,000</td></tr>
+          <tr><td>Building operations and maintenance</td><td>$9,000</td></tr>
+          <tr><td>Property management</td><td>$2,500</td></tr>
+          <tr><td>Supportive services (intensive case management, behavioral health integration)</td><td>$14,000</td></tr>
+          <tr class="total-row"><td>Total annual PSH cost per unit</td><td>$51,200</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>The math</h3>
+    <p>Even before accounting for any reduction in the new outpatient care the person will appropriately access once housed (Culhane et al. found a 75 percent increase in Medicaid outpatient visits post-placement — interpreted as a positive outcome, since it reflects appropriate care-seeking), the gross annual public cost difference is <strong>$81,200 in favor of housing</strong>.<sup class="fn-ref"><a href="#fn-f4">[f4]</a></sup> The person is better off. The public is better off. The cost is lower, the outcomes are dramatically better, and the lives saved (the chronic homeless population has a mortality rate three to four times the general population) are not captured in the dollar figure at all.</p>
+
+    <p>This is the math. It is the math for the chronically homeless population specifically. It is not the math for all homeless populations — for lower-acuity adults and families, the right intervention is typically a voucher or rapid rehousing, with different cost dynamics. But for the population PSH was designed for, the math is not close.</p>
+  </div>
+
+  <hr class="section-divider">
+
+  <h2>Appendix B — A Glossary for the General Reader</h2>
+
+  <p>The homelessness policy field, like every specialized field, has its own vocabulary. The terms below appear throughout this document and across the published material on housing finance. Many are used loosely in mainstream coverage; precise definitions matter for accurate analysis.</p>
+
+  <dl class="glossary">
+    <dt>Area Median Income (AMI)</dt>
+    <dd>The median household income for a metropolitan or non-metropolitan area, calculated annually by HUD. Affordable housing programs target households at specified percentages of AMI — typically 30 percent (extremely low income), 50 percent (very low income), 60 percent (low income for LIHTC purposes), and 80 percent (low income for federal program purposes). The 30 percent AMI band is where most homeless and at-risk populations sit.</dd>
+
+    <dt>Continuum of Care (CoC)</dt>
+    <dd>The geographic planning body, typically a city or county or multi-county region, designated by HUD to coordinate homelessness assistance programs. Every CoC receives federal funding through an annual competitive process and is responsible for coordinated entry, by-name list operations, and system-level performance measurement.</dd>
+
+    <dt>Coordinated Entry (CE)</dt>
+    <dd>The HUD-required process by which a CoC assesses and prioritizes households for housing assistance. A functioning CE system uses a validated acuity assessment to match the highest-need households to the most intensive interventions available.</dd>
+
+    <dt>Extremely Low Income (ELI)</dt>
+    <dd>Households earning at or below 30 percent of area median income. This is the income band where the affordable housing gap is largest and where the homeless and at-risk-of-homelessness populations are concentrated.</dd>
+
+    <dt>Fair Market Rent (FMR)</dt>
+    <dd>HUD-published rent figures used to set Section 8 voucher payment standards in each metropolitan area. FMRs lag actual market rents in tight markets, which contributes to voucher lease-up failure when actual rents exceed the voucher's payment ceiling.</dd>
+
+    <dt>Functional Zero</dt>
+    <dd>A community state in which homelessness is rare, brief, and non-recurring — typically defined as the system's monthly housing placement capacity meeting or exceeding the monthly inflow of newly homeless individuals.</dd>
+
+    <dt>HOME Investment Partnership</dt>
+    <dd>A federal block grant program (approximately $1.5 billion per year) that funds affordable housing development. Often used as gap financing alongside LIHTC.</dd>
+
+    <dt>Housing Choice Voucher (HCV) / Section 8</dt>
+    <dd>The largest federal rental assistance program, providing portable subsidies to roughly 2.3 million low-income households. Recipients use the voucher to rent in the private market; the voucher pays the difference between 30 percent of household income and the local Fair Market Rent.</dd>
+
+    <dt>Low-Income Housing Tax Credit (LIHTC)</dt>
+    <dd>The federal tax-credit program established in 1986 that funds approximately 100,000 affordable housing units per year. Comes in two flavors: 9 percent (highly competitive, used for new construction) and 4 percent (less competitive, paired with bond financing for preservation and large projects).</dd>
+
+    <dt>Permanent Supportive Housing (PSH)</dt>
+    <dd>The evidence-supported intervention for chronically homeless individuals with high service needs. Combines deeply subsidized housing with intensive on-site or linked supportive services. No time limit, no sobriety requirement, no treatment compliance requirement.</dd>
+
+    <dt>Project-Based Voucher (PBV)</dt>
+    <dd>A Housing Choice Voucher that has been attached by a Public Housing Authority to a specific unit rather than issued to an individual tenant. Provides a guaranteed subsidy stream that makes deep-affordability development financially viable.</dd>
+
+    <dt>Public Housing Authority (PHA)</dt>
+    <dd>The local agency responsible for administering federal housing programs in a given jurisdiction. Operates public housing stock and administers Housing Choice Voucher programs. Controls the project-basing decision that determines voucher allocation between portable and attached uses.</dd>
+
+    <dt>Qualified Allocation Plan (QAP)</dt>
+    <dd>The state-specific scoring document that governs how a state's LIHTC allocation is distributed among competing project applications. Revised annually with public comment. Among the most leveraged state-level affordable housing policy levers.</dd>
+
+    <dt>Rapid Rehousing (RRH)</dt>
+    <dd>Time-limited rental assistance, typically 6 to 24 months, paired with housing search support, designed to move households quickly from homelessness into permanent housing. Effective for lower-acuity adults and families with income trajectory; mismatched for high-acuity populations who need permanent subsidy.</dd>
+  </dl>
+
+  <hr class="section-divider">
+
+  <h2>Evidence Index</h2>
+
+  <div class="evidence-index">
+    <div class="table-wrap">
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Ref</th>
+            <th>Claim</th>
+            <th>Source</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr id="fn-f1">
+            <td><span class="fn-id">[f1]</span></td>
+            <td>770K PIT total; 152,600 chronically homeless; family +39%, children +33%, veterans −7.6%</td>
+            <td>HUD 2024 AHAR, Part 1</td>
+            <td><span class="status canonical">Canonical</span></td>
+          </tr>
+          <tr id="fn-f4">
+            <td><span class="fn-id">[f4]</span></td>
+            <td>PSH cost-offset: $12,146/placement/year service reductions; 29% fewer hospitalizations RCT; cost savings accrue to different budgets than housing costs</td>
+            <td>Culhane, Metraux &amp; Hadley, <em>Housing Policy Debate</em>, 2002; Sadowski et al., <em>JAMA</em>, 2009; Community Guide Systematic Review, 2022</td>
+            <td><span class="status canonical">Canonical</span></td>
+          </tr>
+          <tr id="fn-f5">
+            <td><span class="fn-id">[f5]</span></td>
+            <td>Median PSH program cost $16,479/person/year; median economic benefit $18,247/person/year; shelter bed costs ~$8,067 more annually than Section 8</td>
+            <td>Community Guide Systematic Economic Review, 2022; Lancet Public Health systematic review, 2020</td>
+            <td><span class="status canonical">Canonical</span></td>
+          </tr>
+          <tr id="fn-f6">
+            <td><span class="fn-id">[f6]</span></td>
+            <td>412K total PSH beds nationally (2024); ~170K CoC-funded; PSH most effective for chronically homeless with high needs (RR 1.42 for high-need)</td>
+            <td>HUD AHAR inventory; Santa Clara County PSH RCT; Lancet Public Health systematic review, 2020</td>
+            <td><span class="status canonical">Canonical</span></td>
+          </tr>
+          <tr id="fn-f8">
+            <td><span class="fn-id">[f8]</span></td>
+            <td>Voucher-assisted families: best long-term housing stability and child outcomes vs. shelter/transitional/RRH</td>
+            <td>HUD Family Options Study</td>
+            <td><span class="status canonical">Canonical</span></td>
+          </tr>
+          <tr id="fn-f15">
+            <td><span class="fn-id">[f15]</span></td>
+            <td>Medicaid 1115 authority for housing-related services; CalAIM model; DC Housing Supportive Services program</td>
+            <td>CMS HRSN guidance; CalAIM evaluation (HSRI); MACPAC 2021; re-check 2027</td>
+            <td><span class="status provisional">Provisional</span></td>
+          </tr>
+          <tr id="fn-f16">
+            <td><span class="fn-id">[f16]</span></td>
+            <td>Homelessness rates accelerate nonlinearly above ~30% rent-to-income threshold; above-threshold markets hold 15% of population, 47% of homeless</td>
+            <td>Glynn, Byrne &amp; Culhane, <em>Annals of Applied Statistics</em>, 2021 (n=386 CoCs)</td>
+            <td><span class="status canonical">Canonical</span></td>
+          </tr>
+          <tr id="fn-f17">
+            <td><span class="fn-id">[f17]</span></td>
+            <td>PSH cost-offsets accrue to mental health, Medicaid, corrections — not housing — budgets; no automatic recycling; primary structural barrier to scaling</td>
+            <td>Culhane, Metraux &amp; Hadley, <em>Housing Policy Debate</em>, 2002 (Discussion section)</td>
+            <td><span class="status canonical">Canonical</span></td>
+          </tr>
+          <tr id="fn-nlihc">
+            <td><span class="fn-id">[nlihc]</span></td>
+            <td>~7.3M affordable rental unit shortage for extremely low-income households; ~37 affordable available units per 100 ELI renter households</td>
+            <td>National Low Income Housing Coalition annual <em>Gap Report</em>; HUD ACS data</td>
+            <td><span class="status provisional">Provisional</span></td>
+          </tr>
+          <tr id="fn-housing_dev">
+            <td><span class="fn-id">[housing_dev]</span></td>
+            <td>PSH development cost ranges by market; LIHTC mechanics; QAP as policy lever; PBV bottleneck; predevelopment capital gap; NIMBYism; capital stack complexity; two-track strategy</td>
+            <td>Common Ladder Housing Development model document, synthesizing HUD, NLIHC, NCSHA, Enterprise Community Partners, and CDFI sector sources</td>
+            <td><span class="status mixed">Provisional / Canonical mix</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <a href="/learn/evidence/" class="back-link">← Back to Evidence &amp; policy</a>
+
+</main>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer__grid">
+      <div class="footer__brand">
+        <h3>Common Ladder</h3>
+        <p>The civic resource platform connecting people experiencing homelessness with every service in your community.</p>
+        <p style="margin-top:1rem; font-size:.8rem; opacity:.7">Built in Phoenix, AZ · Free to use, always</p>
+      </div>
+      <div>
+        <h4>Find help</h4>
+        <ul>
+          <li><a href="/find.html?cat=shelter">Shelter</a></li>
+          <li><a href="/find.html?cat=food">Food</a></li>
+          <li><a href="/find.html?cat=legal">Legal</a></li>
+          <li><a href="/help/">All categories</a></li>
+          <li><a href="/static-tools/">Local navigators</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>For providers</h4>
+        <ul>
+          <li><a href="/providers.html">Tools &amp; referrals</a></li>
+          <li><a href="/providers.html#case-manager-guide">Case manager guide</a></li>
+          <li><a href="/data-reports.html">Data &amp; reports</a></li>
+          <li><a href="/learn/">Four learning pathways</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>About</h4>
+        <ul>
+          <li><a href="/about.html">Our mission</a></li>
+          <li><a href="/about.html#methodology">Methodology</a></li>
+          <li><a href="/about.html#team">Team</a></li>
+          <li><a href="/contact.html">Contact</a></li>
+          <li><a href="/privacy.html">Privacy</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer__transparency">
+      <strong>Transparency:</strong> Common Ladder is an independent civic project. We do not sell user data, run ads, or accept payment from listed resources.
+    </div>
+    <div class="footer__bottom">
+      <span>&copy; 2026 Common Ladder. Free to use, always.</span>
+      <span><time datetime="2026-05-26">Last updated May 26, 2026</time></span>
+    </div>
+  </div>
+</footer>
+
+<script data-id="cl-card-click">
+(function(){
+  document.querySelectorAll('.card, .post-card:not(.post-card--linked)').forEach(function(el){
+    var a = el.querySelector('a[href]');
+    if(!a) return;
+    el.addEventListener('click', function(e){
+      if(e.target.tagName==='A'||e.target.closest('a')) return;
+      window.location.href = a.href;
+    });
+  });
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,915 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XLKR4ZSZ5J"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-XLKR4ZSZ5J');
+</script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Community Diagnostic: Assessing Your Homelessness System — Common Ladder</title>
+  <meta name="description" content="A practical diagnostic framework for CoC and state housing leaders: locate where your system breaks, understand why, and sequence the changes that move the outcome.">
+  <link rel="canonical" href="https://www.commonladder.org/learn/evidence/community-diagnostic/">
+  <link rel="stylesheet" href="/style.css">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Community Diagnostic: Assessing Your Homelessness System">
+  <meta property="og:description" content="A practical diagnostic framework for CoC and state housing leaders: locate where your system breaks, understand why, and sequence the changes that move the outcome.">
+  <meta property="og:url" content="https://www.commonladder.org/learn/evidence/community-diagnostic/">
+  <meta property="og:site_name" content="Common Ladder">
+  <meta property="article:published_time" content="2026-05-26">
+  <meta property="article:section" content="Evidence &amp; policy">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Community Diagnostic: Assessing Your Homelessness System",
+    "description": "A practical diagnostic framework for CoC and state housing leaders: locate where your system breaks, understand why, and sequence the changes that move the outcome.",
+    "author": { "@type": "Organization", "name": "Common Ladder" },
+    "publisher": { "@type": "Organization", "name": "Common Ladder", "url": "https://www.commonladder.org" },
+    "datePublished": "2026-05-26",
+    "dateModified": "2026-05-26",
+    "mainEntityOfPage": "https://www.commonladder.org/learn/evidence/community-diagnostic/"
+  }
+  </script>
+
+  <style>
+    .breadcrumb {
+      font-size: .8rem;
+      color: var(--gray);
+      margin-bottom: 1.5rem;
+    }
+    .breadcrumb a {
+      color: var(--gray);
+      text-decoration: none;
+    }
+    .breadcrumb a:hover {
+      color: var(--amber);
+      text-decoration: underline;
+    }
+    .breadcrumb span[aria-hidden] {
+      margin: 0 .4em;
+    }
+    .article h2 {
+      margin-top: 2.5rem;
+    }
+    .article h3 {
+      margin-top: 1.75rem;
+      font-size: 1.15rem;
+      color: var(--blue);
+    }
+    .article h4 {
+      margin-top: 1.4rem;
+      font-size: 1rem;
+      color: var(--blue);
+    }
+    .callout-box {
+      background: var(--light);
+      border-left: 4px solid var(--amber);
+      border-radius: 0 8px 8px 0;
+      padding: 1.5rem 1.75rem;
+      margin: 2rem 0;
+    }
+    .callout-box > strong:first-child {
+      display: block;
+      color: var(--blue);
+      margin-bottom: .75rem;
+      font-size: 1.05rem;
+    }
+    .callout-box p {
+      margin: 0 0 .9rem;
+      font-size: .95rem;
+      line-height: 1.6;
+    }
+    .callout-box p:last-child {
+      margin-bottom: 0;
+    }
+    .callout-box p strong {
+      color: var(--blue);
+    }
+    .data-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 1.5rem 0;
+      font-size: .88rem;
+      background: white;
+      border: 1px solid #e8e4dc;
+      border-radius: 8px;
+      overflow: hidden;
+    }
+    .data-table th,
+    .data-table td {
+      padding: .7rem .85rem;
+      text-align: left;
+      border-bottom: 1px solid #efece6;
+      vertical-align: top;
+    }
+    .data-table thead th {
+      background: var(--light);
+      color: var(--blue);
+      font-weight: 700;
+      font-size: .82rem;
+      text-transform: uppercase;
+      letter-spacing: .03em;
+    }
+    .data-table tbody tr:last-child td {
+      border-bottom: none;
+    }
+    .data-table tbody tr.total-row td {
+      background: #fbf8f2;
+      font-weight: 700;
+      color: var(--blue);
+    }
+    .data-table caption {
+      caption-side: top;
+      text-align: left;
+      font-size: .8rem;
+      color: var(--gray);
+      font-style: italic;
+      padding-bottom: .5rem;
+    }
+    .table-wrap {
+      overflow-x: auto;
+      margin: 1.5rem 0;
+    }
+    .table-wrap .data-table {
+      margin: 0;
+      min-width: 520px;
+    }
+    .stage-box {
+      background: var(--light);
+      border-radius: 10px;
+      padding: 1.5rem 1.75rem;
+      margin: 2rem 0;
+    }
+    .stage-box h3 {
+      margin-top: 0;
+      color: var(--blue);
+    }
+    .stage-box .data-table {
+      background: white;
+    }
+    .checklist-domain {
+      margin: 1.75rem 0;
+    }
+    .checklist-domain h3 {
+      color: var(--blue);
+      border-bottom: 2px solid var(--amber);
+      padding-bottom: .35rem;
+      margin-bottom: .75rem;
+    }
+    sup.fn-ref {
+      font-size: .7em;
+      vertical-align: super;
+      line-height: 0;
+      margin-left: 1px;
+    }
+    sup.fn-ref a {
+      color: var(--amber);
+      text-decoration: none;
+      font-weight: 700;
+    }
+    sup.fn-ref a:hover {
+      text-decoration: underline;
+    }
+    .evidence-index {
+      margin-top: 1.5rem;
+    }
+    .evidence-index .data-table {
+      font-size: .82rem;
+    }
+    .evidence-index .status {
+      font-weight: 700;
+      font-size: .72rem;
+      text-transform: uppercase;
+      letter-spacing: .04em;
+      white-space: nowrap;
+    }
+    .evidence-index .status.canonical { color: #1C3D6E; }
+    .evidence-index .status.provisional { color: #B07309; }
+    .evidence-index .status.mixed { color: #6C4E1E; }
+    .evidence-index .fn-id {
+      font-family: 'SFMono-Regular', Menlo, Consolas, monospace;
+      font-size: .8rem;
+      color: var(--amber);
+      font-weight: 700;
+      white-space: nowrap;
+    }
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: .4rem;
+      font-size: .875rem;
+      font-weight: 600;
+      color: var(--amber);
+      text-decoration: none;
+      margin-top: 2.5rem;
+    }
+    .back-link:hover { text-decoration: underline; }
+    .article ul, .article ol {
+      margin: 1rem 0 1.25rem;
+      padding-left: 1.4rem;
+    }
+    .article ul li, .article ol li {
+      margin-bottom: .4rem;
+      line-height: 1.6;
+    }
+    .section-divider {
+      margin: 2.5rem 0;
+      border: none;
+      border-top: 1px solid #e0ddd8;
+    }
+    .lede {
+      font-size: 1.15rem;
+      line-height: 1.55;
+      color: var(--blue);
+      margin: 1.25rem 0 1.75rem;
+    }
+    .flow-equation {
+      background: #fbf8f2;
+      border-left: 4px solid var(--blue);
+      padding: 1rem 1.25rem;
+      margin: 1.25rem 0;
+      font-weight: 700;
+      color: var(--blue);
+      font-size: 1rem;
+      border-radius: 0 6px 6px 0;
+    }
+  </style>
+  <noscript><style>.nav__links{display:flex!important;flex-wrap:wrap!important;}.nav__toggle{display:none!important;}</style></noscript>
+</head>
+<body>
+
+
+<a href="#main" class="skip-link">Skip to main content</a>
+
+<div class="crisis-bar" role="region" aria-label="Crisis help">
+  <strong>Need help right now?</strong>
+  <a href="tel:211">Call 211</a><span class="crisis-bar__sep">·</span>
+  <a href="sms:741741?body=HOME">Text HOME to 741741</a><span class="crisis-bar__sep">·</span>
+  <a href="tel:988">988 Suicide &amp; Crisis</a>
+</div>
+<nav class="nav" aria-label="Primary">
+  <div class="nav__inner">
+    <a href="/" class="nav__logo" aria-label="Common Ladder home">
+      <svg width="28" height="28" viewBox="0 0 28 28" fill="none" aria-hidden="true">
+        <rect x="4" y="2" width="3" height="24" rx="1.5" fill="white" opacity=".9"/>
+        <rect x="21" y="2" width="3" height="24" rx="1.5" fill="white" opacity=".9"/>
+        <rect x="4" y="7" width="20" height="3" rx="1.5" fill="#E8911A"/>
+        <rect x="4" y="14" width="20" height="3" rx="1.5" fill="#E8911A"/>
+        <rect x="4" y="21" width="20" height="3" rx="1.5" fill="#E8911A"/>
+      </svg>
+      common<span>ladder</span>
+    </a>
+    <button class="nav__toggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="primary-nav" onclick="this.setAttribute('aria-expanded', document.getElementById('primary-nav').classList.toggle('open') ? 'true' : 'false')">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav__links" id="primary-nav">
+      <li><a href="/find.html">Resources</a></li>
+      <li><a href="/providers.html">For providers</a></li>
+      <li><a href="/learn/">Learn</a></li>
+      <li><a href="/about.html">About</a></li>
+      <li><a href="/find.html" class="nav__cta">Find resources</a></li>
+      <li><a href="https://www.weather.gov/" rel="noreferrer" class="nav__exit" onclick="event.preventDefault();window.location.replace('https://www.weather.gov/')">Leave page</a></li>
+    </ul>
+  </div>
+</nav>
+
+<main id="main" class="article">
+
+  <nav aria-label="Breadcrumb" class="breadcrumb">
+    <a href="/">Home</a>
+    <span aria-hidden="true">›</span>
+    <a href="/learn/">Learn</a>
+    <span aria-hidden="true">›</span>
+    <span aria-current="page">Community Diagnostic</span>
+  </nav>
+
+  <span class="eyebrow">Evidence &amp; policy · Diagnostic</span>
+  <h1>Community Diagnostic: Assessing Your Homelessness System</h1>
+  <p class="meta">By Common Ladder · May 26, 2026 · 25 min read</p>
+
+  <p class="lede">A companion to the Common Ladder Core Framework on ending homelessness. Written for CoC executive directors, state housing agency directors, local government homelessness leadership, and the planners and funders who support them.</p>
+
+  <hr class="section-divider">
+
+  <h2>Thesis</h2>
+  <p>Most communities experiencing a homelessness crisis are not diagnosing it correctly. They are measuring activity — shelter beds occupied, people served, units funded — rather than the system flow that determines whether homelessness is getting better or worse. This document is a practical diagnostic framework for doing the harder thing: locating where your system breaks, understanding why, and sequencing the changes that will actually move the outcome.</p>
+
+  <hr class="section-divider">
+
+  <h2>Executive Summary</h2>
+
+  <div class="callout-box">
+    <strong>Read this if you read nothing else.</strong>
+    <p><strong>The diagnostic problem.</strong> Communities facing a homelessness crisis typically have data — HUD System Performance Measures, HMIS reports, Point-in-Time counts — but lack a framework for reading that data as a system diagnosis. The result is activity-focused strategy: more beds, more programs, more services. Activity-focused strategy does not end homelessness. System-focused strategy does.</p>
+    <p><strong>The system is a flow, not a stock.</strong> At any moment, there is a number of people experiencing homelessness — the stock. That stock changes based on inflow (new entries), exits (placements to permanent housing), and prevention (averted entries). A community ends homelessness when exits and prevention combined exceed inflow, and when people who do become homeless are identified quickly and housed quickly. This is the target a diagnostic must work toward.</p>
+    <p><strong>The five measures that matter most.</strong> HUD's System Performance Measures (SPMs) are the baseline diagnostic layer. But they are lagging indicators, reported annually, that tell you where your system was — not why it is where it is. The right use of SPMs is as a starting point for asking six questions: Is first-time homelessness growing? Is length of time homeless increasing? Are returns to homelessness rising, and at which interval? Are exits to permanent housing declining? Is the by-name list complete and current? Is the system placing the right people into the right interventions?</p>
+    <p><strong>The five bottleneck locations.</strong> Every underperforming homelessness system has a primary bottleneck in one of five places: (1) too many people entering — prevention is absent or underfunded; (2) people not being identified — by-name list is incomplete, outreach is insufficient; (3) assessment is not driving placement — coordinated entry is prioritizing availability over acuity; (4) housing search and placement is slow — voucher lease-up failure, landlord access, navigator capacity; (5) people are returning — RRH mismatch, loss of subsidy, absence of post-placement services. The treatment for each is different. Diagnosing the wrong bottleneck produces wasted investment.</p>
+    <p><strong>The structural constraint layer.</strong> Practice changes can move outcomes substantially. But three structural constraints cannot be fixed through practice alone: housing supply at deep affordability, rental market tightness, and state political and fiscal context. Communities in constrained markets with hostile state contexts will underperform even well-designed systems. A diagnostic that does not identify whether a community is hitting structural ceilings — not just practice failures — will misattribute the problem and misdirect the fix.</p>
+    <p><strong>Community typology.</strong> Communities vary in their starting conditions in ways that determine the right first step. A crisis-onset community with no coordinated entry needs different investments than a well-designed system hitting a housing supply ceiling. Four community types are mapped in this document, each with a distinct diagnostic sequence and a specific sequencing error to avoid.</p>
+    <p><strong>The checklist.</strong> Twenty-five diagnostic questions, organized across five system domains, that tell a CoC director or state housing official what they are and are not doing at the level of evidence. The checklist is not a performance score — it is a conversation guide. The answers locate the work.</p>
+    <p><strong>The ask.</strong> CoC leadership and state housing agencies can each do things the other cannot. State agencies control QAP criteria, Medicaid waiver applications, general fund allocations, and the regulatory framework within which CoCs operate. CoC leadership controls program mix, coordinated entry design, by-name list operations, and provider accountability. This document specifies what each must do differently.</p>
+  </div>
+
+  <hr class="section-divider">
+
+  <h2>Part I — What You Are Diagnosing</h2>
+
+  <h3>1.1 The System Is a Flow, Not a Stock</h3>
+  <p>The instinct when homelessness is visible and growing is to count — shelter beds, people served, units funded. These counts produce activity metrics, and activity metrics are not diagnostic. A shelter that serves three hundred people a year and houses twenty of them is a different system than a shelter that serves three hundred people a year and houses two hundred and forty. The count of people served is the same. What the system is doing with them is entirely different.</p>
+
+  <p>Homelessness at a community level is a flow problem.<sup class="fn-ref"><a href="#fn-f1">[f1]</a></sup> At any moment there is a number of people experiencing homelessness — the stock. That stock changes based on:</p>
+
+  <div class="flow-equation">Stock change = Inflow (new entries) − Exits (placements to permanent housing) − Prevention (averted entries)</div>
+
+  <p>A community reaches what the field calls functional zero when exits plus prevention exceed inflow consistently, and when people who do become homeless move to housing fast enough that the stock does not accumulate. This is a flow target. It is the right target. It is the one that very few communities are measuring.</p>
+
+  <p>The strategic implication is immediate. Every community has three levers: reduce inflow through prevention and diversion, increase exits through housing supply and navigation, and accelerate throughput by clearing the operational bottlenecks between entry and placement. The right combination of levers is not the same in every community. Diagnosing which is your binding constraint is the first task of a community diagnostic.</p>
+
+  <h3>1.2 What Functional Zero Means</h3>
+  <p>Functional zero is not zero homelessness — it is a community state in which homelessness is rare, brief, and non-recurring. The Built for Zero definition frames it as a flow condition: the number of people who become homeless in any given month is at or below the system's monthly housing placement capacity.<sup class="fn-ref"><a href="#fn-f12">[f12]</a></sup> If fifteen people become homeless in a month and the system places fifteen people in housing, the count stays at zero. People who enter homelessness are identified quickly, matched quickly, and housed quickly. Returns are rare.</p>
+
+  <p>This definition matters for diagnostic purposes because it tells you exactly what you are measuring. You are not measuring whether homelessness exists. You are measuring whether your system has the capacity to resolve homelessness as fast as it is created. The United States has achieved something close to functional zero for veterans in a subset of communities.<sup class="fn-ref"><a href="#fn-f10">[f10]</a></sup> The architecture that did it — dedicated subsidy, integrated services, real-time by-name data, explicit target, named public accountability — is documented and replicable. The political constituency that sustains it is not automatically transferable to other populations. But the technical components are.</p>
+
+  <h3>1.3 The 2024 Baseline</h3>
+  <p>Before diagnosing a community, understand the national context. A recorded 770,000 people experienced homelessness on a single January night in 2024 — the highest count since federal reporting began in 2007, an 18 percent increase from the prior year.<sup class="fn-ref"><a href="#fn-f1">[f1]</a></sup> Family homelessness rose 39 percent in one year. Children under 18 rose 33 percent. Unaccompanied youth reached the highest recorded count, and the Point-in-Time methodology is known to undercount youth severely — survey-based prevalence estimates suggest the true number is many times higher than PIT captures.<sup class="fn-ref"><a href="#fn-f11">[f11]</a></sup> Veterans homelessness fell 7.6 percent — the only major subpopulation moving in the right direction.</p>
+
+  <p>The divergence matters for diagnosis. The veteran decline is not an accident of demographics or local conditions. It is the product of a specific funding architecture — HUD-VASH vouchers, VA-integrated services, real-time by-name data — that does not exist for other populations at comparable scale. Every other major population is moving in the wrong direction. The diagnostic question is whether that trajectory reflects a practice failure, a funding failure, a housing supply failure, or a structural constraint that no CoC-level intervention can resolve. The answer is usually some combination, and the combination is community-specific.</p>
+
+  <hr class="section-divider">
+
+  <h2>Part II — The Diagnostic Baseline: System Performance Measures</h2>
+
+  <h3>2.1 What the SPMs Tell You</h3>
+  <p>HUD requires CoCs to report on five System Performance Measures annually. These are the entry point for any community diagnostic — not because they tell you everything, but because they give you a time-series baseline from which trends become visible.</p>
+
+  <div class="table-wrap">
+    <table class="data-table">
+      <caption>HUD System Performance Measures and what worsening means</caption>
+      <thead>
+        <tr>
+          <th>Measure</th>
+          <th>What It Tracks</th>
+          <th>What Worsening Means</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td><strong>SPM 1</strong></td><td>Length of time homeless (median days in project)</td><td>People are spending longer in the system before housing — throughput bottleneck</td></tr>
+        <tr><td><strong>SPM 2</strong></td><td>Returns to homelessness at 6, 12, and 24 months</td><td>People are not staying housed — acuity mismatch, subsidy loss, or service gap</td></tr>
+        <tr><td><strong>SPM 3</strong></td><td>Number of homeless persons</td><td>Overall system direction — improve only when inflow &lt; exits + prevention</td></tr>
+        <tr><td><strong>SPM 4</strong></td><td>Employment and income growth for exits to permanent housing</td><td>Income support is failing — RRH sustainability at risk</td></tr>
+        <tr><td><strong>SPM 5</strong></td><td>Number of persons becoming homeless for the first time</td><td>Prevention system is absent or failing — inflow growing from new entrants</td></tr>
+        <tr><td><strong>SPM 7</strong></td><td>Successful placements from street outreach; successful housing placements from shelter/TH/RRH</td><td>Housing navigation quality — are people getting placed or cycling?</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3>2.2 How to Read SPMs Diagnostically</h3>
+  <p>SPMs as reported do not tell you why your system is performing the way it is. They are lagging, annual indicators — by the time SPM 2 worsens, the failures generating it have been accumulating for months. The right use of SPMs is to ask six diagnostic questions:</p>
+
+  <p><strong>Question 1: Is SPM 5 (first-time homelessness) trending up?</strong> If yes, the prevention layer is failing. People who have no prior history of homelessness are entering the system, which means the crisis that preceded their entry was not caught. This is a prevention and diversion problem, not a housing navigation problem. Investing in more housing navigators when SPM 5 is rising is a category error.</p>
+
+  <p><strong>Question 2: Is SPM 1 (length of time homeless) increasing?</strong> If yes, there is a throughput bottleneck somewhere between entry and placement. This could be assessment backlog, housing search failure, landlord access, navigator caseload, or housing supply shortage. SPM 1 worsening tells you the system is slow but does not tell you where.</p>
+
+  <p><strong>Question 3: Is SPM 2 (returns to homelessness) worsening — and at which interval?</strong> Returns rising sharply at 6 months suggest acute acuity mismatch or loss of subsidy at exit. Returns rising at 24 months suggest RRH cliff effects (subsidy ends, income insufficient for market rent) or post-placement service withdrawal. These have different interventions.</p>
+
+  <p><strong>Question 4: Is SPM 7 (exits to permanent housing) declining?</strong> If yes, the housing placement function is degraded — too few units, too few navigators, or landlord access failure. In tight markets, SPM 7 declines are often housing supply problems masquerading as program problems.</p>
+
+  <p><strong>Question 5: Are SPMs disaggregated by race?</strong> Racial disparities in length of time homeless, placements, and returns are widespread and documented.<sup class="fn-ref"><a href="#fn-f9">[f9]</a></sup> A system that does not disaggregate SPMs by race cannot see or address those disparities. Aggregated SPMs that look acceptable can mask significant equity failures.</p>
+
+  <p><strong>Question 6: Are SPMs improving, flat, or worsening — over three years?</strong> A single year's data is noise. A three-year trend is signal. Systems with flat or worsening SPMs over three years are not improving structurally. Leadership should be asking why before adding programs.</p>
+
+  <h3>2.3 SPM Limitations</h3>
+  <p>SPMs have structural limitations that every diagnostic must account for.</p>
+
+  <p>First, they are annual. A system producing significant harm in January may not show it in the SPM until December, by which time twelve months of accumulation have occurred. Communities that pursue functional zero use monthly or real-time flow data, not annual SPMs, as their primary operational indicator.</p>
+
+  <p>Second, they are reported — meaning they reflect the quality of the HMIS data that generates them, not the underlying system performance. A community with poor HMIS data quality will have SPMs that systematically understate performance (exits to permanent housing that were not recorded) or overstate it (clients who returned but were enrolled in a new project rather than linked to their prior record). Before interpreting SPMs, check the data quality indicators in Section 3.</p>
+
+  <p>Third, they measure the system as it is, not the system as it could be. SPMs will improve if your system improves. They will not tell you whether you are aiming at the right things.</p>
+
+  <hr class="section-divider">
+
+  <h2>Part III — The Stage-by-Stage Diagnostic: Where Is the Bottleneck?</h2>
+
+  <p>A well-functioning homelessness system moves households through five stages: prevention and diversion, identification and entry, assessment and prioritization, housing search and placement, and stability and retention. Each stage has a characteristic failure mode, a diagnostic signature, and a targeted intervention. Most underperforming systems have one or two primary bottlenecks, not failures across all five stages.</p>
+
+  <div class="stage-box">
+    <h3>Stage 1: Prevention and Inflow</h3>
+
+    <p><strong>What a functioning system looks like:</strong> An active prevention program with dedicated funding and defined eligibility criteria. Emergency rental assistance accessible before eviction is filed, not after. A diversion program operating at the coordinated entry front door. Legal representation or at minimum legal advice available for tenants facing eviction. SPM 5 (first-time homelessness) declining year-over-year.</p>
+
+    <p><strong>Failure signatures:</strong></p>
+    <ul>
+      <li>SPM 5 trending up year-over-year — the strongest single indicator of prevention failure</li>
+      <li>No dedicated prevention budget, or prevention less than 5 percent of total system spend</li>
+      <li>Emergency rental assistance with a waitlist longer than eviction timelines</li>
+      <li>No formal diversion protocol at coordinated entry — every presenting household routed directly to shelter assessment</li>
+      <li>High proportion of presenting households with no prior homeless history (a population that diversion would have intercepted)</li>
+    </ul>
+
+    <p><strong>The evidence:</strong> Targeted emergency financial assistance for households at imminent risk reduces shelter entry by 73–81 percent in randomized controlled trial evidence and by 76 percent in a large natural experiment, with a marginal value of public funds of 2.47 — meaning every public dollar invested produces $2.47 in avoided downstream costs.<sup class="fn-ref"><a href="#fn-f22">[f22]</a></sup><sup class="fn-ref"><a href="#fn-f23">[f23]</a></sup> The critical qualifier: the causal effect size depends on statistical targeting. Untargeted prevention — offering assistance to anyone who presents — produces smaller effects at higher cost. The evidence supports a specific intervention: statistically-targeted households, financial assistance, at the moment of crisis.</p>
+
+    <p><strong>Key benchmarks:</strong></p>
+    <div class="table-wrap">
+      <table class="data-table">
+        <thead>
+          <tr><th>Metric</th><th>High Performer</th><th>Warning Threshold</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Diversion rate (households diverted at CE intake)</td><td>&gt;30%</td><td>&lt;10%</td></tr>
+          <tr><td>Prevention budget as share of total system spend</td><td>≥10%</td><td>&lt;5%</td></tr>
+          <tr><td>First-time homelessness (SPM 5) trend</td><td>Declining</td><td>&gt;5% annual increase</td></tr>
+          <tr><td>ERA accessible before eviction judgment</td><td>Yes</td><td>No or waitlisted</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="stage-box">
+    <h3>Stage 2: Identification and Entry</h3>
+
+    <p><strong>What a functioning system looks like:</strong> Every person experiencing homelessness is known by name — a by-name list that covers both sheltered and unsheltered populations, updated in real time, with active outreach to encampments and known locations. Low-barrier entry into shelter and assessment — no sobriety requirements, no ID requirements, no behavior conditions. Coordinated Entry accessible from multiple access points.</p>
+
+    <p><strong>Failure signatures:</strong></p>
+    <ul>
+      <li>No by-name list, or by-name list covers fewer than 70 percent of the known homeless population</li>
+      <li>Significant gap between PIT count and HMIS enrollment — people experiencing homelessness who do not exist in any data system</li>
+      <li>Large unsheltered population with no active outreach engagement</li>
+      <li>Shelter with sobriety, ID, or behavior requirements that exclude the highest-need individuals from the system</li>
+      <li>Multiple disconnected entry points with no unified assessment or data sharing</li>
+    </ul>
+
+    <p><strong>The evidence:</strong> The by-name list is a prerequisite, not a nice-to-have.<sup class="fn-ref"><a href="#fn-f12">[f12]</a></sup> Communities that have achieved functional zero for veterans — and the handful approaching it for chronic populations — credit real-time, by-name knowledge of every person in the system as a structural condition of that achievement. The by-name list makes the problem concrete, countable, and accountable in a way that aggregate counts do not. You cannot house a count. You can house a person.</p>
+
+    <p><strong>Key benchmarks:</strong></p>
+    <div class="table-wrap">
+      <table class="data-table">
+        <thead>
+          <tr><th>Metric</th><th>High Performer</th><th>Warning Threshold</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>By-name list coverage (HMIS enrollment vs. PIT)</td><td>&gt;85%</td><td>&lt;60%</td></tr>
+          <tr><td>Unsheltered outreach contact rate</td><td>&gt;75% of known locations</td><td>&lt;40%</td></tr>
+          <tr><td>Time from first contact to CE assessment</td><td>&lt;7 days</td><td>&gt;30 days</td></tr>
+          <tr><td>Low-barrier shelter available</td><td>≥1 option per major population</td><td>None</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="stage-box">
+    <h3>Stage 3: Assessment and Prioritization</h3>
+
+    <p><strong>What a functioning system looks like:</strong> A validated, consistently-applied acuity assessment tool used with all presenting households. A real-time prioritization list that drives actual resource allocation — not a waiting list sorted by date of presentation. Highest-acuity individuals matched to PSH. Housing resources following acuity, not availability. Racial equity analysis of prioritization lists compared to entry demographics.</p>
+
+    <p><strong>Failure signatures:</strong></p>
+    <ul>
+      <li>Assessment scores not used in actual resource allocation — whoever calls first gets the next available unit</li>
+      <li>Prioritization list not maintained, not current, or maintained as a spreadsheet disconnected from HMIS</li>
+      <li>High-acuity individuals consistently placed in RRH because PSH beds are unavailable or waitlisted for years — this is the RRH mismatch pattern and it produces predictable returns</li>
+      <li>Multiple assessment tools in use across providers, preventing apples-to-apples comparison</li>
+      <li>Racial disparities in who is prioritized vs. who is housed relative to entry demographics<sup class="fn-ref"><a href="#fn-f9">[f9]</a></sup></li>
+    </ul>
+
+    <p><strong>The fundamental evidence:</strong> The matching problem — acuity to intervention — is the highest-leverage operational improvement available in most CoCs.<sup class="fn-ref"><a href="#fn-f2">[f2]</a></sup><sup class="fn-ref"><a href="#fn-f6">[f6]</a></sup> Housing First RCTs evaluated Housing First paired with Assertive Community Treatment for high-need individuals and with Intensive Case Management for moderate-need individuals. The evidence is for the matched pairing, not for Housing First alone. A high-acuity individual placed in a standard RRH program is not receiving the Housing First treatment whose evidence is cited in the literature. The mismatch is a system design failure, and the returns it produces are predictable and preventable.</p>
+
+    <p><strong>Key benchmarks:</strong></p>
+    <div class="table-wrap">
+      <table class="data-table">
+        <thead>
+          <tr><th>Metric</th><th>High Performer</th><th>Warning Threshold</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>% of CE referrals matching acuity to intervention</td><td>&gt;70%</td><td>&lt;40%</td></tr>
+          <tr><td>Prioritization list updated within 30 days</td><td>&gt;90% of records current</td><td>&lt;60%</td></tr>
+          <tr><td>Time from assessment to referral</td><td>&lt;14 days</td><td>&gt;45 days</td></tr>
+          <tr><td>Racial equity: prioritization proportional to entry</td><td>Proportional</td><td>Underrepresentation &gt;15%</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="stage-box">
+    <h3>Stage 4: Housing Search and Placement</h3>
+
+    <p><strong>What a functioning system looks like:</strong> Sufficient housing inventory — PSH beds, vouchers, and affordable units — matched to identified need. An active, staffed landlord engagement program with financial incentives for participation (damage funds, vacancy loss protection, signing bonuses).<sup class="fn-ref"><a href="#fn-f20">[f20]</a></sup> Housing navigators with manageable caseloads and move-in support available without waitlist. Time from referral to placement trending down.</p>
+
+    <p><strong>Failure signatures:</strong></p>
+    <ul>
+      <li>Vouchers available but not leasing up — households returning vouchers unused because they cannot find a willing landlord</li>
+      <li>PSH waitlist measured in months or years while chronically homeless individuals cycle through shelter</li>
+      <li>Housing navigators carrying more than forty active clients — caseload above evidence-based benchmarks</li>
+      <li>No dedicated landlord engagement, or landlord engagement as a single staff member without financial tools</li>
+      <li>Units available but occupancy low — an operations bottleneck rather than a supply problem</li>
+    </ul>
+
+    <p><strong>The landlord access problem:</strong> In tight rental markets, the limiting factor for RRH and voucher programs is typically not funding — it is landlord willingness. Landlords have three documented barriers to participation: financial risk (tenant may damage the property), income risk (units vacant during housing search), and administrative friction (compliance with voucher program requirements).<sup class="fn-ref"><a href="#fn-f20">[f20]</a></sup> High-performing systems address all three: damage funds reduce financial risk, vacancy loss protection reduces income risk, and dedicated liaison staff reduce administrative friction. Landlord engagement programs with these components show substantially higher landlord participation rates than those without them, though the randomized evidence base remains limited.<sup class="fn-ref"><a href="#fn-f20">[f20]</a></sup></p>
+
+    <p><strong>The housing supply ceiling:</strong> Every community has a point at which the binding constraint is not practice but production — not enough PSH beds, not enough vouchers, not enough affordable units at the income levels of homeless populations. SPM 7 declines in a well-designed system are often housing supply failures, not program failures. Diagnosing the supply ceiling — what is the ratio of your chronically homeless population to your PSH beds? What is the ratio of your family entries to your available family vouchers? — is a precondition for knowing whether practice change will move the outcome.</p>
+
+    <p><strong>Key benchmarks:</strong></p>
+    <div class="table-wrap">
+      <table class="data-table">
+        <thead>
+          <tr><th>Metric</th><th>High Performer</th><th>Warning Threshold</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Time from referral to housing placement (RRH)</td><td>&lt;45 days</td><td>&gt;90 days</td></tr>
+          <tr><td>Time from referral to housing placement (PSH)</td><td>&lt;60 days</td><td>&gt;120 days</td></tr>
+          <tr><td>Voucher lease-up success rate</td><td>&gt;75%</td><td>&lt;50%</td></tr>
+          <tr><td>Housing navigator caseload (active clients)</td><td>&lt;30</td><td>&gt;50</td></tr>
+          <tr><td>Move-in assistance available without waitlist</td><td>Yes</td><td>No or waitlisted</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="stage-box">
+    <h3>Stage 5: Stability and Retention</h3>
+
+    <p><strong>What a functioning system looks like:</strong> Post-placement case management continues for at minimum 12 months after RRH exit and ongoing for PSH. Returns to homelessness tracked at 6, 12, and 24 months and disaggregated by program type. Returns investigated — individual returns reviewed to determine whether program failure, systemic failure, or individual circumstance drove the exit. Income and benefit enrollment tracked; income stabilization planning begun before RRH subsidy ends.</p>
+
+    <p><strong>Failure signatures:</strong></p>
+    <ul>
+      <li>Returns to homelessness trending up at 12 or 24 months — the RRH cliff pattern</li>
+      <li>No post-placement contact protocol — contact ends at lease-up</li>
+      <li>RRH subsidy ending without documented income growth or transition plan</li>
+      <li>High return rate concentrated in specific programs or specific populations — uninvestigated and unchanged</li>
+      <li>SPM 2 worsening year-over-year</li>
+    </ul>
+
+    <p><strong>The RRH cliff:</strong> Rapid Rehousing is the right intervention for a defined population — lower-acuity adults and families with sufficient income trajectory to sustain housing after the subsidy ends.<sup class="fn-ref"><a href="#fn-f7">[f7]</a></sup> When RRH is used as the default for households that do not meet this profile — because PSH beds are unavailable, because the assessment was wrong, or because nothing else was available — the subsidy cliff produces predictable returns at 18–24 months. This is not a program design failure. It is a system design failure: the wrong tool was deployed for the population, with predictable results. Investigating high-return programs is the diagnostic. Finding that returns concentrate in households with characteristics inconsistent with the RRH target population is the finding.</p>
+
+    <p><strong>Key benchmarks:</strong></p>
+    <div class="table-wrap">
+      <table class="data-table">
+        <thead>
+          <tr><th>Metric</th><th>High Performer</th><th>Warning Threshold</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Returns to homelessness at 6 months</td><td>&lt;5%</td><td>&gt;15%</td></tr>
+          <tr><td>Returns to homelessness at 12 months</td><td>&lt;10%</td><td>&gt;20%</td></tr>
+          <tr><td>Returns to homelessness at 24 months</td><td>&lt;15%</td><td>&gt;30%</td></tr>
+          <tr><td>PSH retention at 12 months</td><td>&gt;85%</td><td>&lt;70%</td></tr>
+          <tr><td>RRH housed at end of assistance</td><td>&gt;70%</td><td>&lt;50%</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <hr class="section-divider">
+
+  <h2>Part IV — Community Typology: Starting Conditions Shape the Right First Step</h2>
+
+  <p>Communities vary dramatically in their starting conditions, and the right diagnostic sequence depends on where a community is now. Applying a Type C strategy to a Type A community produces waste; applying a Type A strategy to a Type D community produces stagnation. Knowing which type you are is the precondition for knowing what to do first.</p>
+
+  <h3>Type A — Crisis-onset community</h3>
+  <p>Homelessness has increased rapidly from a low baseline. Infrastructure is limited or fragmented: no functioning coordinated entry, no by-name list, no PSH pipeline, minimal prevention. The system responds to each crisis individually without a routing mechanism.</p>
+  <p><em>First priorities:</em> Build the by-name list. Establish low-barrier coordinated entry with a consistent assessment tool. Create or expand prevention with diversion at the CE front door. Fund crisis shelter with housing navigation, not shelter-as-destination.</p>
+  <p><em>The sequencing error to avoid:</em> Building PSH before coordinated entry is operational produces units without a functional mechanism to fill them from highest need to lowest. Infrastructure first; production second.</p>
+
+  <h3>Type B — Legacy system with entrenched culture</h3>
+  <p>Significant existing shelter capacity and long-established providers. Low Housing First adoption — sobriety requirements, behavior conditions, or "housing readiness" criteria are embedded in provider culture. CE exists on paper but does not drive resource allocation. Returns-to-homelessness are high and underinvestigated.</p>
+  <p><em>First priorities:</em> Redesign coordinated entry with Housing First principles and use CoC grant renewal to create accountability for implementation. Convert transitional housing to PSH or RRH where appropriate. Use returns-to-homelessness data — disaggregated by program — to make the case for change within the provider community.</p>
+  <p><em>The sequencing error to avoid:</em> Imposing Housing First requirements without building provider capacity to implement them. Mandate requires support.</p>
+
+  <h3>Type C — Well-designed system hitting a housing supply ceiling</h3>
+  <p>Functional CE, operational by-name list, active diversion, reasonable returns — but the stock is not decreasing because housing exits cannot keep pace with entries. Navigators are working; landlords are not participating at scale; PSH beds are insufficient for the chronic population.</p>
+  <p><em>First priorities:</em> Invest in developer capacity and pipeline. Pursue Project-Based Voucher agreements with PHA. Pursue landlord incentive programs with financial tools. Advocate for QAP criteria that steer LIHTC toward PSH and deep affordability. Where the rental market allows, build a scattered-site RRH program alongside the pipeline.</p>
+  <p><em>The sequencing error to avoid:</em> Adding case managers and navigators when the binding constraint is housing units. More navigation capacity in a supply-constrained market produces frustrated staff, unplaced clients, and no additional exits.</p>
+
+  <h3>Type D — High-performing system near functional zero for one population</h3>
+  <p>By-name list active, real-time data, strong CE, veterans or chronic population approaching functional zero. The question is what comes next.</p>
+  <p><em>First priorities:</em> Maintain the infrastructure — functional zero requires active maintenance, and communities that stop investing in data and operations backslide. Identify the next population and adapt the architecture (veterans' architecture does not directly transfer to families or youth without modification). Build the cross-agency cost accounting that makes the investment case for expanded funding. Document what worked so the field benefits.</p>
+  <p><em>The sequencing error to avoid:</em> Declaring victory. Housing functional zero is a dynamic equilibrium, not a permanent state. The moment the by-name list becomes less current, the moment the navigator capacity drops below demand, the moment the landlord relationships are not maintained — the progress begins to erode.</p>
+
+  <hr class="section-divider">
+
+  <h2>Part V — Common Failure Patterns: What the Signature Looks Like</h2>
+
+  <p>Six failure patterns are common enough to name and diagnose directly. Each has a signature in the data, a structural cause, and a targeted intervention.</p>
+
+  <h3>Pattern 1 — The Shelter Trap</h3>
+  <p><strong>Signature:</strong> high shelter utilization, low exits to permanent housing, average length of stay in shelter above 90 days. <strong>Cause:</strong> shelter is functioning as de facto housing because permanent housing options are unavailable or unreachable from within shelter. The program-level metric (units occupied) looks good; the system-level metric (exits to permanent housing) is poor. <strong>Intervention:</strong> housing-focused shelter model with dedicated housing navigation from within shelter; housing first protocols for all shelter residents; SPM 7 as a primary accountability metric for shelter programs.</p>
+
+  <h3>Pattern 2 — The RRH Mismatch</h3>
+  <p><strong>Signature:</strong> RRH exits look acceptable at 90 days; returns spike at 12–24 months; concentrated in lower-income or higher-acuity households. <strong>Cause:</strong> RRH used as default for households that need permanent subsidy or more intensive support than the program provides. <strong>Intervention:</strong> acuity-to-intervention matching at coordinated entry; investigation of which programs and which household profiles drive the high-return concentration; income stabilization planning before RRH ends.<sup class="fn-ref"><a href="#fn-f7">[f7]</a></sup></p>
+
+  <h3>Pattern 3 — The Voucher Graveyard</h3>
+  <p><strong>Signature:</strong> voucher allocations available; lease-up rate below 60 percent; households returning vouchers unused at the end of the search period. <strong>Cause:</strong> landlord participation failure in a tight housing market; Fair Market Rent below actual market rate; households cannot find units willing to accept the voucher. <strong>Intervention:</strong> dedicated landlord engagement staff with financial tools (damage funds, vacancy loss protection); FMR exception payment requests; search assistance and coaching.<sup class="fn-ref"><a href="#fn-f20">[f20]</a></sup></p>
+
+  <h3>Pattern 4 — The Unsheltered Island</h3>
+  <p><strong>Signature:</strong> large unsheltered population not enrolled in HMIS, not connected to services, not on the by-name list; PIT count significantly exceeds HMIS enrollment. <strong>Cause:</strong> low-barrier options unavailable or insufficient; outreach underfunded or not sustained; encampment clearances displacing people rather than connecting them to housing.<sup class="fn-ref"><a href="#fn-f9">[f9]</a></sup> <strong>Intervention:</strong> low-barrier drop-in and shelter options; ACT/FACT outreach teams with housing navigation capability; encampment resolution paired with housing offers; by-name list extension to unsheltered populations.</p>
+
+  <h3>Pattern 5 — The High-Cost Revolving Door</h3>
+  <p><strong>Signature:</strong> a small number of individuals generating disproportionate shelter nights, emergency department visits, and arrests; the same people cycling through repeatedly without resolution. <strong>Cause:</strong> the highest-acuity individuals are not matched to PSH — either PSH is unavailable, the waitlist is years long, or CE is not prioritizing highest need. <strong>Intervention:</strong> PSH expansion; CE prioritization of the highest-utilizers; cross-system case conferencing with housing, healthcare, and corrections at the table.<sup class="fn-ref"><a href="#fn-f4">[f4]</a></sup><sup class="fn-ref"><a href="#fn-f6">[f6]</a></sup></p>
+
+  <h3>Pattern 6 — The Prevention Blindspot</h3>
+  <p><strong>Signature:</strong> SPM 5 (first-time homelessness) growing year-over-year; prevention program absent or consuming less than 5 percent of system spend; no diversion at coordinated entry. <strong>Cause:</strong> resources concentrated on crisis response; prevention viewed as a lower priority than housing currently homeless. <strong>Intervention:</strong> dedicated prevention budget with statistical targeting; ERA accessible without crisis trigger; diversion protocol at CE intake.<sup class="fn-ref"><a href="#fn-f22">[f22]</a></sup><sup class="fn-ref"><a href="#fn-f23">[f23]</a></sup></p>
+
+  <hr class="section-divider">
+
+  <h2>Part VI — The Structural Constraint Layer</h2>
+
+  <p>Practice changes can move outcomes substantially. But three structural conditions sit above practice and constrain what even well-designed systems can achieve.</p>
+
+  <h3>Housing supply at deep affordability</h3>
+  <p>The United States is short by approximately 7.3 million rental units affordable to extremely low-income households — those with incomes below 30 percent of area median income, the population at primary homelessness risk. LIHTC, the country's largest affordable housing production tool, primarily targets 50–60 percent AMI. Deep affordability requires layered subsidy — Project-Based Vouchers stacked with LIHTC, or direct operating subsidy — that most states do not require and most developers do not seek without incentive.<sup class="fn-ref"><a href="#fn-funder_landscape">[funder_landscape]</a></sup> A community can run excellent coordinated entry, excellent navigation, and excellent landlord engagement, and still not achieve functional zero if housing units affordable to its homeless population do not exist at sufficient scale.</p>
+
+  <h3>Rental market tightness</h3>
+  <p>Peer-reviewed multivariate analyses of CoC-level performance on HUD System Performance Measures identify rental market vacancy rate and rent-to-income ratio as significant structural predictors of SPM performance — independent of practice quality.<sup class="fn-ref"><a href="#fn-f21">[f21]</a></sup> CoCs in tight rental markets (low vacancy, high rents) systematically underperform on SPMs compared to CoCs in looser markets, even controlling for funding, governance, and program design. This is not an excuse for poor performance. It is a context for accurate interpretation: a Type C community hitting a supply ceiling is not failing — it is encountering a constraint that practice alone cannot resolve.</p>
+
+  <h3>State political and fiscal context</h3>
+  <p>State-level Medicaid expansion, state homelessness funding intensity, and the existence of Housing First-supportive state policy are associated with better CoC SPM performance.<sup class="fn-ref"><a href="#fn-f21">[f21]</a></sup> States that have expanded Medicaid provide a financing infrastructure for behavioral health and care coordination services in PSH that non-expansion states lack. States with dedicated homelessness trust funds create a stable funding layer for system infrastructure that federal grants cannot provide. CoC leadership does not control state context — but state housing agencies do. The implication for state agencies is direct: state context is not neutral.</p>
+
+  <h3>The diagnostic implication</h3>
+  <p>A CoC that is underperforming on SPMs has three candidate explanations, not one. <strong>Practice failure</strong> — programs are not implementing evidence-based models with fidelity. <strong>Governance failure</strong> — board composition, decision-making authority, or accountability structures are suboptimal. <strong>External constraint</strong> — the housing market and state political context are actively working against performance. A diagnostic that only audits practice will misdiagnose most underperforming systems.</p>
+
+  <hr class="section-divider">
+
+  <h2>Part VII — The Diagnostic Checklist: 25 Questions</h2>
+
+  <p>These questions are organized by domain. A "no" or "unknown" answer does not mean failure — it means a gap that needs attention. The checklist is a conversation guide, not a score. Start with the domains where you have the most "unknown" answers.</p>
+
+  <div class="checklist-domain">
+    <h3>Data Infrastructure</h3>
+    <ol>
+      <li>Do you have a by-name list that covers more than 85 percent of your known homeless population, including unsheltered individuals?</li>
+      <li>Is your by-name list updated in real time (within 24–48 hours of status change), not monthly or quarterly?</li>
+      <li>Does your HMIS data quality meet HUD minimums — less than 15 percent stale records, less than 10 percent missing exit destinations?</li>
+      <li>Are your System Performance Measures improving over the last three years, flat, or worsening?</li>
+      <li>Do you disaggregate all key metrics (length of time homeless, exits, returns) by race and ethnicity, and review for equity at least quarterly?</li>
+    </ol>
+  </div>
+
+  <div class="checklist-domain">
+    <h3>Prevention and Inflow</h3>
+    <ol start="6">
+      <li>Do you have a dedicated prevention budget that constitutes at least 5 percent of total system spend?</li>
+      <li>Is emergency rental assistance accessible before eviction judgment — not after?</li>
+      <li>Do you have a formal diversion protocol operating at coordinated entry intake?</li>
+      <li>Is your first-time homelessness count (SPM 5) declining year-over-year?</li>
+      <li>Does your CE track the proportion of presenting households who have been diverted versus enrolled?</li>
+    </ol>
+  </div>
+
+  <div class="checklist-domain">
+    <h3>Assessment and Matching</h3>
+    <ol start="11">
+      <li>Is a validated, consistent acuity assessment tool applied to all presenting households?</li>
+      <li>Does your prioritization list drive actual resource allocation — not date of presentation, not provider relationships, not who called?</li>
+      <li>Is the highest-acuity population (chronic adults) being matched to PSH rather than RRH when PSH is available?</li>
+      <li>Are your returns to homelessness investigated — can you say which programs, which populations, and which timeframes drive your SPM 2?</li>
+      <li>Is there a racial equity audit of your prioritization list — comparing who is prioritized to who entered the system?</li>
+    </ol>
+  </div>
+
+  <div class="checklist-domain">
+    <h3>Housing Supply and Navigation</h3>
+    <ol start="16">
+      <li>What is the ratio of your chronically homeless population to your available PSH beds? (Target: beds within five-year pipeline of identified need.)</li>
+      <li>What is your voucher lease-up rate? If below 75 percent, do you have a landlord engagement program with financial tools?</li>
+      <li>Do your housing navigators carry fewer than thirty active clients?</li>
+      <li>Is move-in assistance — first month, deposits, furnishings — available without a waitlist?</li>
+      <li>Is your median time from CE referral to housing placement below 45 days for RRH and 60 days for PSH?</li>
+    </ol>
+  </div>
+
+  <div class="checklist-domain">
+    <h3>Stability and Retention</h3>
+    <ol start="21">
+      <li>Do you track returns to homelessness at 6, 12, and 24 months, disaggregated by intervention type?</li>
+      <li>Is there a post-placement contact protocol for RRH exits — at minimum through twelve months after lease-up?</li>
+      <li>Is income stabilization planning begun before RRH subsidies end?</li>
+      <li>Are your return rates at 12 months below 10 percent across programs?</li>
+      <li>Are staff-to-client ratios within evidence-based benchmarks — ACT at 1:10, ICM at 1:20, standard case management at 1:35?</li>
+    </ol>
+  </div>
+
+  <hr class="section-divider">
+
+  <h2>Part VIII — What CoC Leadership and State Agencies Must Do</h2>
+
+  <p>CoC leadership and state housing agencies do different work with different levers. Each can do things the other cannot. The asks here are specific to each.</p>
+
+  <h3>CoC Leadership</h3>
+
+  <p><strong>Operate from a by-name list, not a count.</strong> The by-name list is the operational prerequisite for functional zero. If yours is incomplete, not current, or not driving case conferencing, make it current before anything else. You cannot house an aggregate.</p>
+
+  <p><strong>Make coordinated entry actually coordinate.</strong> If your CE system is a referral queue sorted by presentation date, it is not coordinated entry — it is a waiting list with an assessment attached. The evidence for Housing First is evidence for acuity-matched Housing First. A CE system that routes high-acuity individuals to RRH because PSH is unavailable is producing the failure patterns that end up in SPM 2. The fix is a real-time prioritization list that drives referrals, provider accountability for accepting prioritized referrals, and regular case conferencing to clear bottlenecks.</p>
+
+  <p><strong>Investigate returns before adding programs.</strong> If your SPM 2 is worsening, the answer is not a new program. The answer is a systematic investigation of which programs and which populations drive returns. That investigation will tell you whether the problem is acuity mismatch, loss of subsidy, absence of post-placement services, or something program-specific. The diagnosis must precede the intervention.</p>
+
+  <p><strong>Track the flow, not the activity.</strong> Monthly tracking of inflow, exits, and the resulting net change in the stock — not annual SPMs, not bed counts — is the operational dashboard for a system pursuing functional zero. Communities that have reduced or eliminated veteran homelessness do not run their systems from annual data. They know every week whether they are winning or losing.</p>
+
+  <p><strong>Build the cross-agency cost accounting.</strong> The argument for PSH investment is substantially stronger when the funder can see that the costs they are being asked to bear are offset by reductions in other agencies' costs.<sup class="fn-ref"><a href="#fn-f4">[f4]</a></sup><sup class="fn-ref"><a href="#fn-f17">[f17]</a></sup> Most communities cannot make this argument because they have not built the data infrastructure to track it. Build the cross-agency cost report for your highest-cost cohort. It will change the funding conversation.</p>
+
+  <h3>State Housing Agencies</h3>
+
+  <p><strong>Use QAP criteria to steer LIHTC toward PSH and deep affordability.</strong> The Qualified Allocation Plan — the state document that governs how LIHTC credits are awarded — is among the most powerful housing policy levers a state controls. It does not require new appropriations. QAP criteria that score PSH units, Housing First commitments, Project-Based Voucher pairings, and deep affordability (30% AMI units) steer private development capital toward the housing that homeless populations actually need. Most states do not use QAP this way. The ones that do show better production of the specific housing types needed.<sup class="fn-ref"><a href="#fn-housing_dev">[housing_dev]</a></sup></p>
+
+  <p><strong>Pursue the Medicaid 1115 waiver for housing-related services.</strong> California's CalAIM program is the most-developed model — Medicaid funding of housing navigation, transition support, and time-limited rental assistance for high-utilizer populations. The federal authority exists. The cost-offset evidence for the populations targeted is canonical.<sup class="fn-ref"><a href="#fn-f4">[f4]</a></sup><sup class="fn-ref"><a href="#fn-f15">[f15]</a></sup> The administrative investment to apply for and operationalize an 1115 waiver is real, but the alternative is leaving federal matching funds on the table while Medicaid bears the hospital costs that PSH would reduce.</p>
+
+  <p><strong>Fund stable infrastructure, not just programs.</strong> HMIS, coordinated entry operations, by-name list maintenance, data quality, and system evaluation are not programs — they are the infrastructure that makes programs work. Federal grants typically do not fund infrastructure at the level a well-functioning system requires. State general fund investment in system infrastructure is among the highest-leverage state homelessness investments available.</p>
+
+  <p><strong>Establish a cross-agency accountability structure for the highest-utilizers.</strong> The population that drives the high-cost revolving door pattern — a small number of individuals generating disproportionate shelter, ED, and corrections utilization — touches multiple state agencies. Housing, Medicaid, corrections, and mental health each hold data and each incur costs. A state-level cross-agency structure — with data-sharing agreements, joint case conferencing, and an explicit mandate to resolve these cases rather than hand them off — can move outcomes for this population that no single agency can move alone.</p>
+
+  <p><strong>Set performance expectations for CoC funding.</strong> State homelessness funding should carry explicit SPM performance expectations — not just compliance requirements, but improvement targets. CoCs whose SPMs are flat or worsening over three years without a documented structural explanation (supply ceiling, state context) should be required to produce a bottleneck analysis and a sequenced improvement plan as a condition of continued funding.</p>
+
+  <hr class="section-divider">
+
+  <h2>Evidence Index</h2>
+
+  <div class="evidence-index">
+    <div class="table-wrap">
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Ref</th>
+            <th>Claim</th>
+            <th>Source</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr id="fn-f1">
+            <td><span class="fn-id">[f1]</span></td>
+            <td>770K PIT, 18% increase, family +39%, children +33%, veterans −7.6%</td>
+            <td>HUD 2024 AHAR, Part 1</td>
+            <td><span class="status canonical">Canonical</span></td>
+          </tr>
+          <tr id="fn-f2">
+            <td><span class="fn-id">[f2]</span></td>
+            <td>Housing First: 41 percentage-point housing stability improvement over TAU</td>
+            <td>At Home/Chez Soi RCT (Stergiopoulos et al., <em>Journal of Urban Health</em>, 2021); Santa Clara County PSH RCT</td>
+            <td><span class="status canonical">Canonical</span></td>
+          </tr>
+          <tr id="fn-f4">
+            <td><span class="fn-id">[f4]</span></td>
+            <td>PSH reduces healthcare, shelter, corrections costs; $12,146/placement/year net; savings accrue to different budgets</td>
+            <td>Culhane, Metraux &amp; Hadley, <em>Housing Policy Debate</em>, 2002; Sadowski et al., <em>JAMA</em>, 2009; Community Guide Systematic Review, 2022</td>
+            <td><span class="status canonical">Canonical</span></td>
+          </tr>
+          <tr id="fn-f6">
+            <td><span class="fn-id">[f6]</span></td>
+            <td>PSH: 86% of high-need intervention participants housed vs. 36% controls</td>
+            <td>Santa Clara County PSH RCT (Raven/Kushel et al., UCSF, n=423)</td>
+            <td><span class="status canonical">Canonical</span></td>
+          </tr>
+          <tr id="fn-f7">
+            <td><span class="fn-id">[f7]</span></td>
+            <td>RRH effective for lower-acuity adults with income trajectory</td>
+            <td>HUD Family Options Study; Interim Housing RCT literature</td>
+            <td><span class="status provisional">Provisional</span></td>
+          </tr>
+          <tr id="fn-f9">
+            <td><span class="fn-id">[f9]</span></td>
+            <td>Black Americans 2.8x overrepresented in homelessness relative to population share</td>
+            <td>HUD 2024 AHAR</td>
+            <td><span class="status canonical">Canonical</span></td>
+          </tr>
+          <tr id="fn-f10">
+            <td><span class="fn-id">[f10]</span></td>
+            <td>Veterans homelessness −55% since 2010; functional zero in 12+ communities</td>
+            <td>HUD AHAR time series; Built for Zero annual reports</td>
+            <td><span class="status provisional">Provisional</span></td>
+          </tr>
+          <tr id="fn-f11">
+            <td><span class="fn-id">[f11]</span></td>
+            <td>Youth PIT severely undercounts; McKinney-Vento identifies ~1.5M children; survey-based estimates many times higher</td>
+            <td>McKinney-Vento school data; Chapin Hall VoYC 2020</td>
+            <td><span class="status provisional">Provisional</span></td>
+          </tr>
+          <tr id="fn-f12">
+            <td><span class="fn-id">[f12]</span></td>
+            <td>By-name lists as prerequisite for functional zero achievement</td>
+            <td>Built for Zero data (vendor-sourced; independent replication pending)</td>
+            <td><span class="status provisional">Provisional</span></td>
+          </tr>
+          <tr id="fn-f15">
+            <td><span class="fn-id">[f15]</span></td>
+            <td>Medicaid HRSN authority; CalAIM pilot data positive</td>
+            <td>CMS HRSN guidance; CalAIM evaluation (HSRI); re-check 2027</td>
+            <td><span class="status provisional">Provisional</span></td>
+          </tr>
+          <tr id="fn-f17">
+            <td><span class="fn-id">[f17]</span></td>
+            <td>Capital-services split; cost savings accrue to different budgets</td>
+            <td>Culhane et al. 2002 analysis; Sadowski <em>JAMA</em> 2009</td>
+            <td><span class="status canonical">Canonical</span></td>
+          </tr>
+          <tr id="fn-f20">
+            <td><span class="fn-id">[f20]</span></td>
+            <td>Landlord engagement: three barriers; financial tools improve participation</td>
+            <td>Center on Budget 2021; NLIHC 2023; Tsai &amp; Solis 2024 national scan (n=46 programs)</td>
+            <td><span class="status provisional">Provisional</span></td>
+          </tr>
+          <tr id="fn-f21">
+            <td><span class="fn-id">[f21]</span></td>
+            <td>Governance composition, board size, funding intensity, rental market predict CoC SPM performance</td>
+            <td>Kim &amp; Sullivan 2023 <em>PAR</em> (n=380 CoCs); Jenisa &amp; Jang 2025 <em>Systems</em> (n=343 CoCs); Nisar et al. 2019 HUD PD&amp;R</td>
+            <td><span class="status provisional">Provisional</span></td>
+          </tr>
+          <tr id="fn-f22">
+            <td><span class="fn-id">[f22]</span></td>
+            <td>Prevention targeting: statistical models substantially outperform worker judgment</td>
+            <td>Shinn &amp; Greer 2013 <em>AJPH</em> (n=11,105); Von Wachter et al. 2021 LA PTT</td>
+            <td><span class="status canonical">Canonical</span></td>
+          </tr>
+          <tr id="fn-f23">
+            <td><span class="fn-id">[f23]</span></td>
+            <td>Targeted ERA: 76–81% shelter-entry reduction; MVPF 2.47</td>
+            <td>Evans et al. 2016 <em>Science</em> (n=4,448); Phillips &amp; Sullivan 2025 <em>Review of Economics and Statistics</em> RCT</td>
+            <td><span class="status canonical">Canonical</span></td>
+          </tr>
+          <tr id="fn-funder_landscape">
+            <td><span class="fn-id">[funder_landscape]</span></td>
+            <td>Federal funding architecture; LIHTC $10B annually, ~100K units</td>
+            <td>Common Ladder Funder Landscape model document; HUD budget data</td>
+            <td><span class="status mixed">Provisional / Canonical mix</span></td>
+          </tr>
+          <tr id="fn-housing_dev">
+            <td><span class="fn-id">[housing_dev]</span></td>
+            <td>QAP as housing policy lever; PSH production tied to QAP criteria</td>
+            <td>Common Ladder Housing Development model document; NLIHC state data</td>
+            <td><span class="status provisional">Provisional</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <a href="/learn/evidence/" class="back-link">← Back to Evidence &amp; policy</a>
+
+</main>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer__grid">
+      <div class="footer__brand">
+        <h3>Common Ladder</h3>
+        <p>The civic resource platform connecting people experiencing homelessness with every service in your community.</p>
+        <p style="margin-top:1rem; font-size:.8rem; opacity:.7">Built in Phoenix, AZ · Free to use, always</p>
+      </div>
+      <div>
+        <h4>Find help</h4>
+        <ul>
+          <li><a href="/find.html?cat=shelter">Shelter</a></li>
+          <li><a href="/find.html?cat=food">Food</a></li>
+          <li><a href="/find.html?cat=legal">Legal</a></li>
+          <li><a href="/help/">All categories</a></li>
+          <li><a href="/static-tools/">Local navigators</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>For providers</h4>
+        <ul>
+          <li><a href="/providers.html">Tools &amp; referrals</a></li>
+          <li><a href="/providers.html#case-manager-guide">Case manager guide</a></li>
+          <li><a href="/data-reports.html">Data &amp; reports</a></li>
+          <li><a href="/learn/">Four learning pathways</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>About</h4>
+        <ul>
+          <li><a href="/about.html">Our mission</a></li>
+          <li><a href="/about.html#methodology">Methodology</a></li>
+          <li><a href="/about.html#team">Team</a></li>
+          <li><a href="/contact.html">Contact</a></li>
+          <li><a href="/privacy.html">Privacy</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer__transparency">
+      <strong>Transparency:</strong> Common Ladder is an independent civic project. We do not sell user data, run ads, or accept payment from listed resources.
+    </div>
+    <div class="footer__bottom">
+      <span>&copy; 2026 Common Ladder. Free to use, always.</span>
+      <span><time datetime="2026-05-26">Last updated May 26, 2026</time></span>
+    </div>
+  </div>
+</footer>
+
+<script data-id="cl-card-click">
+(function(){
+  document.querySelectorAll('.card, .post-card:not(.post-card--linked)').forEach(function(el){
+    var a = el.querySelector('a[href]');
+    if(!a) return;
+    el.addEventListener('click', function(e){
+      if(e.target.tagName==='A'||e.target.closest('a')) return;
+      window.location.href = a.href;
+    });
+  });
+})();
+</script>
+</body>
+</html>

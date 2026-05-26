@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XLKR4ZSZ5J"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-XLKR4ZSZ5J');
+</script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Arizona Shelter &amp; Housing Finder — Common Ladder</title>
+  <meta name="description" content="Search 75 emergency shelter, transitional housing, rapid rehousing, and supportive services programs across Arizona. Filter by city and service type.">
+  <link rel="canonical" href="https://www.commonladder.org/static-tools/shelter-finder-az.html">
+  <link rel="stylesheet" href="/style.css">
+  <style>
+    /* ── Page-level overrides ── */
+    :root {
+      --light-bg: #F8F7F4;
+      --border: #dde3ec;
+    }
+
+    /* Skip link */
+    .skip-link{position:absolute;top:-100%;left:1rem;background:var(--amber);color:var(--dark);font-weight:700;padding:.6rem 1.2rem;border-radius:0 0 var(--radius) var(--radius);z-index:9999;transition:top .1s}
+    .skip-link:focus{top:0}
+
+    /* Breadcrumb */
+    .breadcrumb{background:var(--light);padding:.65rem 0;border-bottom:1px solid var(--border);font-size:.82rem}
+    .breadcrumb ol{display:flex;flex-wrap:wrap;gap:.25rem .35rem;list-style:none;max-width:var(--max);margin:0 auto;padding:0 var(--gap);align-items:center}
+    .breadcrumb li+li::before{content:"›";color:var(--gray);margin-right:.35rem}
+    .breadcrumb a{color:var(--blue)}
+    .breadcrumb [aria-current]{color:var(--gray)}
+
+    /* Page hero */
+    .page-hero{background:linear-gradient(135deg,var(--blue) 0%,#163060 100%);color:#fff;padding:clamp(2.5rem,7vw,4.5rem) 0;text-align:center}
+    .page-hero .eyebrow{color:var(--amber);opacity:1;font-size:.78rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;display:block;margin-bottom:.5rem}
+    .page-hero h1{color:#fff;font-size:clamp(1.75rem,4.5vw,2.75rem);margin:.35rem auto .75rem;max-width:760px}
+    .page-hero p{font-size:clamp(.95rem,2.5vw,1.1rem);opacity:.88;max-width:600px;margin:0 auto}
+
+    /* ── Filter toolbar ── */
+    .finder-bar{background:#fff;border-bottom:2px solid var(--border);padding:1.25rem 0;position:sticky;top:72px;z-index:50;box-shadow:0 2px 8px rgba(0,0,0,.06)}
+    .finder-bar__inner{max-width:var(--max);margin:0 auto;padding:0 var(--gap);display:flex;flex-wrap:wrap;gap:.75rem;align-items:center}
+    .finder-bar__search{flex:1;min-width:200px;position:relative}
+    .finder-bar__search input{width:100%;padding:.65rem 1rem .65rem 2.6rem;border:2px solid var(--border);border-radius:var(--radius);font:1rem 'Inter',system-ui,sans-serif;outline:none;transition:border-color .15s;background:#fff;color:var(--dark)}
+    .finder-bar__search input:focus{border-color:var(--blue)}
+    .finder-bar__search svg{position:absolute;left:.75rem;top:50%;transform:translateY(-50%);color:var(--gray);pointer-events:none}
+    .finder-bar select{padding:.65rem 2rem .65rem .9rem;border:2px solid var(--border);border-radius:var(--radius);font:1rem 'Inter',system-ui,sans-serif;outline:none;background:#fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%236B7280' d='M1 1l5 5 5-5'/%3E%3C/svg%3E") no-repeat right .75rem center;-webkit-appearance:none;appearance:none;cursor:pointer;transition:border-color .15s;color:var(--dark)}
+    .finder-bar select:focus{border-color:var(--blue)}
+
+    /* Type chip filters */
+    .chips{display:flex;flex-wrap:wrap;gap:.4rem;width:100%}
+    .chip{display:inline-flex;align-items:center;padding:.35rem .85rem;border-radius:99px;border:2px solid var(--border);background:#fff;color:var(--gray);font-size:.8rem;font-weight:600;cursor:pointer;transition:all .15s;line-height:1;user-select:none}
+    .chip:hover{border-color:var(--blue);color:var(--blue)}
+    .chip.active{background:var(--blue);border-color:var(--blue);color:#fff}
+    .chip.active:hover{background:#163060;border-color:#163060}
+
+    /* Results count */
+    .results-count{font-size:.88rem;color:var(--gray);padding:.5rem 0 0;width:100%}
+    .results-count strong{color:var(--dark)}
+
+    /* ── Cards grid ── */
+    .resource-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:1.25rem;padding:2rem 0}
+    @media(max-width:640px){.resource-grid{grid-template-columns:1fr}}
+
+    /* ── Resource card ── */
+    .r-card{background:#fff;border:1px solid var(--border);border-radius:var(--radius);padding:1.25rem 1.35rem;box-shadow:0 1px 4px rgba(0,0,0,.08);display:flex;flex-direction:column;gap:.5rem;transition:box-shadow .15s,transform .15s}
+    .r-card:hover{box-shadow:0 4px 16px rgba(28,61,110,.12);transform:translateY(-1px)}
+    .r-card h3{font-size:1rem;color:var(--blue);line-height:1.3;margin:0}
+    .r-card__tags{display:flex;flex-wrap:wrap;gap:.3rem}
+    .r-tag{display:inline-block;font-size:.72rem;font-weight:700;padding:.2rem .55rem;border-radius:99px;line-height:1.4;letter-spacing:.01em}
+    .r-tag--primary{background:#e8f0fd;color:var(--blue)}
+    .r-tag--dv{background:#fde8e8;color:#c0392b}
+    .r-tag--veteran{background:#e8f5f0;color:#1a6b47}
+    .r-tag--youth{background:#fff3e0;color:#a35800}
+    .r-tag--rr{background:#f0e8fd;color:#5b2da6}
+    .r-tag--ce{background:#e0f7fa;color:#006064}
+    .r-tag--day{background:#f5f5f5;color:#555}
+    .r-tag--mission{background:#fdf8e8;color:#7a6000}
+    .r-card__desc{font-size:.88rem;color:#444;line-height:1.55;flex:1}
+    .r-card__meta{font-size:.82rem;display:flex;flex-direction:column;gap:.3rem;margin-top:.25rem}
+    .r-card__meta-row{display:flex;gap:.5rem;align-items:flex-start}
+    .r-card__meta-label{color:var(--gray);font-weight:600;white-space:nowrap;min-width:4rem}
+    .r-card__meta-val{color:var(--dark)}
+    .r-card__meta a{color:var(--blue)}
+    .r-card__meta a:hover{text-decoration:underline}
+    .r-card__city{font-size:.75rem;color:var(--gray);font-weight:600;text-transform:uppercase;letter-spacing:.05em;margin-top:.25rem}
+
+    /* Empty state */
+    .empty-state{text-align:center;padding:4rem 1rem;grid-column:1/-1}
+    .empty-state h3{color:var(--gray);font-size:1.1rem;margin-bottom:.5rem}
+    .empty-state p{color:var(--gray);font-size:.9rem}
+
+    /* Back link */
+    .back-link{display:inline-flex;align-items:center;gap:.4rem;color:var(--blue);font-weight:600;font-size:.9rem;text-decoration:none}
+    .back-link:hover{text-decoration:underline}
+  </style>
+</head>
+<body>
+
+<a href="#main" class="skip-link">Skip to main content</a>
+
+<div class="crisis-bar" role="region" aria-label="Crisis help">
+  <strong>Need help right now?</strong>
+  <a href="tel:211">Call 211</a><span class="crisis-bar__sep">·</span>
+  <a href="sms:741741?body=HOME">Text HOME to 741741</a><span class="crisis-bar__sep">·</span>
+  <a href="tel:988">988 Suicide &amp; Crisis</a>
+</div>
+
+<nav class="nav" aria-label="Primary">
+  <div class="nav__inner">
+    <a href="/" class="nav__logo" aria-label="Common Ladder home">
+      <svg width="28" height="28" viewBox="0 0 28 28" fill="none" aria-hidden="true">
+        <rect x="4" y="2" width="3" height="24" rx="1.5" fill="white" opacity=".9"/>
+        <rect x="21" y="2" width="3" height="24" rx="1.5" fill="white" opacity=".9"/>
+        <rect x="4" y="7" width="20" height="3" rx="1.5" fill="#E8911A"/>
+        <rect x="4" y="14" width="20" height="3" rx="1.5" fill="#E8911A"/>
+        <rect x="4" y="21" width="20" height="3" rx="1.5" fill="#E8911A"/>
+      </svg>
+      common<span>ladder</span>
+    </a>
+    <button class="nav__toggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="primary-nav" onclick="this.setAttribute('aria-expanded', document.getElementById('primary-nav').classList.toggle('open') ? 'true' : 'false')">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav__links" id="primary-nav">
+      <li><a href="/find.html">Resources</a></li>
+      <li><a href="/providers.html">For providers</a></li>
+      <li><a href="/learn/">Learn</a></li>
+      <li><a href="/about.html">About</a></li>
+      <li><a href="/help/" class="nav__cta">Find help now</a></li>
+      <li><a href="https://www.weather.gov/" rel="noreferrer" class="nav__exit" onclick="event.preventDefault();window.location.replace('https://www.weather.gov/')">Leave page</a></li>
+    </ul>
+  </div>
+</nav>
+
+<nav class="breadcrumb" aria-label="Breadcrumb">
+  <ol>
+    <li><a href="/">Home</a></li>
+    <li><a href="/help/">Find Help</a></li>
+    <li><a href="/help/housing-shelter/">Housing &amp; Shelter</a></li>
+    <li><span aria-current="page">Arizona Shelter Finder</span></li>
+  </ol>
+</nav>
+
+<main id="main">
+
+  <section class="page-hero">
+    <div class="container">
+      <span class="eyebrow">75 verified programs · Arizona</span>
+      <h1>Arizona Shelter &amp; Housing Finder</h1>
+      <p>Search emergency shelters, transitional housing, rapid rehousing, and coordinated entry programs across Arizona — no account needed.</p>
+    </div>
+  </section>
+
+  <!-- Sticky filter bar -->
+  <div class="finder-bar" role="search" aria-label="Filter resources">
+    <div class="finder-bar__inner">
+
+      <!-- Search input -->
+      <div class="finder-bar__search">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+          <circle cx="6.5" cy="6.5" r="5" stroke="currentColor" stroke-width="1.5"/>
+          <path d="M10.5 10.5l3 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+        </svg>
+        <input type="search" id="search-input" placeholder="Search by name or keyword…" aria-label="Search resources by name or keyword" autocomplete="off">
+      </div>
+
+      <!-- Region dropdown -->
+      <select id="region-filter" aria-label="Filter by region">
+        <option value="">All cities</option>
+        <option value="phoenix-metro">Phoenix Metro</option>
+        <option value="tucson-metro">Tucson Metro</option>
+        <option value="flagstaff-northern">Flagstaff / Northern AZ</option>
+        <option value="southern-az">Southern AZ</option>
+        <option value="western-az">Western AZ</option>
+        <option value="eastern-rural">Eastern / Rural AZ</option>
+      </select>
+
+      <!-- Type chip filters -->
+      <div class="chips" role="group" aria-label="Filter by service type">
+        <button class="chip active" data-type="">All types</button>
+        <button class="chip" data-type="Emergency Shelter">Emergency Shelter</button>
+        <button class="chip" data-type="Transitional Housing">Transitional Housing</button>
+        <button class="chip" data-type="Rapid Rehousing">Rapid Rehousing</button>
+        <button class="chip" data-type="DV/Safe House">DV / Safe House</button>
+        <button class="chip" data-type="Veterans">Veterans</button>
+        <button class="chip" data-type="Youth">Youth</button>
+        <button class="chip" data-type="Coordinated Entry">Coordinated Entry</button>
+        <button class="chip" data-type="Day Resource">Day Resource</button>
+        <button class="chip" data-type="Mission">Mission</button>
+      </div>
+
+      <!-- Results count -->
+      <div class="results-count" role="status" aria-live="polite" id="results-count">
+        Showing <strong id="count-num">75</strong> of 75 resources
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Resource grid -->
+  <section class="section" style="padding-top:0;padding-bottom:3rem">
+    <div class="container">
+      <div class="resource-grid" id="resource-grid" aria-label="Resource listings">
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--alt">
+    <div class="container" style="text-align:center;max-width:600px">
+      <a href="/help/housing-shelter/" class="back-link">&#8592; Back to Housing &amp; Shelter</a>
+      <p style="color:var(--gray);font-size:.9rem;margin-top:.75rem">Can't find what you need? Call <strong>211</strong> — available 24/7 across Arizona.</p>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer__grid">
+      <div class="footer__brand">
+        <h3>Common Ladder</h3>
+        <p>The civic resource platform connecting people experiencing homelessness with every service in your community.</p>
+        <p style="margin-top:1rem;font-size:.8rem;opacity:.7">Built in Phoenix, AZ · Free to use, always</p>
+      </div>
+      <div>
+        <h4>Find help</h4>
+        <ul>
+          <li><a href="/help/housing-shelter/">Housing &amp; Shelter</a></li>
+          <li><a href="/help/food/">Food</a></li>
+          <li><a href="/help/health/">Health</a></li>
+          <li><a href="/help/">All categories</a></li>
+          <li><a href="/static-tools/my-ladder.html">My Ladder planner</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>For providers</h4>
+        <ul>
+          <li><a href="/providers.html">Tools &amp; referrals</a></li>
+          <li><a href="/providers.html#case-manager-guide">Case manager guide</a></li>
+          <li><a href="/data-reports.html">Data &amp; reports</a></li>
+          <li><a href="/learn/">Four learning pathways</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>About</h4>
+        <ul>
+          <li><a href="/about.html">Our mission</a></li>
+          <li><a href="/about.html#methodology">Methodology</a></li>
+          <li><a href="/about.html#team">Team</a></li>
+          <li><a href="/contact.html">Contact</a></li>
+          <li><a href="/privacy.html">Privacy</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer__transparency">
+      <strong>Transparency:</strong> Common Ladder is an independent civic project. We do not sell user data, run ads, or accept payment from listed resources.
+    </div>
+    <div class="footer__bottom">
+      <span>&copy; 2026 Common Ladder. Free to use, always.</span>
+      <span><time datetime="2026-05-25">Last updated May 25, 2026</time></span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function () {
+  'use strict';
+
+  /* ── Region map: city → region key ── */
+  var REGION_MAP = {
+    'Phoenix':    'phoenix-metro',
+    'Mesa':       'phoenix-metro',
+    'Tempe':      'phoenix-metro',
+    'Scottsdale': 'phoenix-metro',
+    'Chandler':   'phoenix-metro',
+    'Glendale':   'phoenix-metro',
+    'Tucson':     'tucson-metro',
+    'Flagstaff':  'flagstaff-northern',
+    'Cottonwood': 'flagstaff-northern',
+    'Sedona':     'flagstaff-northern',
+    'Prescott':   'flagstaff-northern',
+    'Payson':     'flagstaff-northern',
+    'Holbrook':   'flagstaff-northern',
+    'Nogales':    'southern-az',
+    'Sierra Vista':'southern-az',
+    'Bisbee':     'southern-az',
+    'Safford':    'southern-az',
+    'Casa Grande':'southern-az',
+    'Globe':      'southern-az',
+    'Kingman':    'western-az',
+    'Bullhead City':'western-az',
+    'Parker':     'western-az',
+    'Yuma':       'western-az',
+    'Eloy':       'eastern-rural'
+  };
+
+  /* ── Tag color classes ── */
+  var TAG_CLASS = {
+    'Emergency Shelter':       'r-tag--primary',
+    'Transitional Housing':    'r-tag--primary',
+    'Rapid Rehousing':         'r-tag--rr',
+    'DV/Safe House':           'r-tag--dv',
+    'Veterans':                'r-tag--veteran',
+    'Youth':                   'r-tag--youth',
+    'Coordinated Entry':       'r-tag--ce',
+    'Day Resource':            'r-tag--day',
+    'Mission':                 'r-tag--mission',
+    'Outreach':                'r-tag--day',
+    'Permanent Supportive Housing':'r-tag--veteran',
+    'Mental Health':           'r-tag--rr',
+    'Reentry':                 'r-tag--day',
+    'Human Trafficking':       'r-tag--dv',
+    'Low Barrier':             'r-tag--ce',
+    'Foster Youth':            'r-tag--youth',
+    'Pet Friendly':            'r-tag--day',
+    'Women':                   'r-tag--primary',
+    'Men':                     'r-tag--primary',
+    'Families':                'r-tag--primary',
+    'Senior/Disabled':         'r-tag--ce'
+  };
+
+  /* ── Resource data ── */
+  var RESOURCES = [
+    {"name":"Verde Valley Sanctuary","city":"Sedona","address":"PO Box 2024, Sedona, AZ 86339","phone":"928-634-2930","website":"https://www.vvs-az.org","types":["DV/Safe House","Emergency Shelter"],"desc":"Emergency shelter and advocacy for domestic violence survivors in the Verde Valley."},
+    {"name":"Sister Jose Women's Center","city":"Tucson","address":"1000 S Park Ave, Tucson, AZ 85719","phone":"520-623-1515","website":"https://www.sisterjosetucson.org","types":["Emergency Shelter","Women"],"desc":"Day and overnight shelter for women experiencing homelessness in Tucson."},
+    {"name":"Family Promise of Greater Phoenix","city":"Scottsdale","address":"7007 E McDonald Dr, Scottsdale, AZ 85253","phone":"480-994-6699","website":"https://www.familypromisegp.org","types":["Transitional Housing","Families"],"desc":"Transitional housing and support for families with children experiencing homelessness."},
+    {"name":"Chrysalis Transitional Housing","city":"Phoenix","address":"PO Box 20389, Phoenix, AZ 85036","phone":"602-955-9059","website":"https://www.chrysalisaz.org","types":["DV/Safe House","Transitional Housing"],"desc":"Safe housing and support services for domestic violence survivors."},
+    {"name":"Sanctuary House","city":"Flagstaff","address":"PO Box 254, Flagstaff, AZ 86002","phone":"928-774-9100","website":null,"types":["Emergency Shelter","Men"],"desc":"Emergency shelter for men in the Flagstaff area."},
+    {"name":"US Vets Ashley's Place","city":"Phoenix","address":"4141 N 7th Ave, Phoenix, AZ 85013","phone":"602-263-7768","website":"https://usvets.org","types":["Veterans","Transitional Housing","Women"],"desc":"Transitional housing for female veterans experiencing homelessness."},
+    {"name":"Pio Decimo","city":"Tucson","address":"848 S 7th Ave, Tucson, AZ 85701","phone":"520-623-6941","website":"https://www.piodecimocenter.org","types":["Transitional Housing"],"desc":"Transitional housing and supportive services for adults in Tucson."},
+    {"name":"Catholic Charities — Bullhead City","city":"Bullhead City","address":"2282 Trane Rd, Bullhead City, AZ 86442","phone":"928-763-3555","website":"https://www.catholiccharitiesaz.org","types":["Emergency Shelter","Families"],"desc":"Emergency shelter and social services for individuals and families in need."},
+    {"name":"Sullivan Jackson Employment Center","city":"Tucson","address":"705 W 23rd St, Tucson, AZ 85713","phone":"520-622-5411","website":null,"types":["Coordinated Entry","Day Resource"],"desc":"Coordinated entry access point and day resource center for Tucson."},
+    {"name":"I-HELP Tempe","city":"Tempe","address":"PO Box 1832, Tempe, AZ 85280","phone":"480-838-0084","website":"https://ihelpaz.org","types":["Emergency Shelter","Men"],"desc":"Interfaith rotating shelter for single men in the Tempe area."},
+    {"name":"UMOM Family Housing Hub","city":"Phoenix","address":"2641 N 35th Ave, Phoenix, AZ 85009","phone":"602-595-9822","website":"https://www.umom.org","types":["Coordinated Entry","Families"],"desc":"Maricopa County coordinated entry access point for families experiencing homelessness."},
+    {"name":"Keys to Change","city":"Phoenix","address":"1125 N 19th Ave, Phoenix, AZ 85009","phone":"602-256-6945","website":"https://www.keystochange.org","types":["Emergency Shelter","Transitional Housing"],"desc":"Emergency shelter and transitional housing for single adults in Phoenix."},
+    {"name":"Primavera Family Pathways","city":"Tucson","address":"702 S 6th Ave, Tucson, AZ 85701","phone":"520-623-5111","website":"https://www.primavera.org","types":["Rapid Rehousing","Families"],"desc":"Rapid rehousing and housing stability services for families in Tucson."},
+    {"name":"Time Out Inc","city":"Payson","address":"PO Box 2281, Payson, AZ 85541","phone":"928-474-5000","website":null,"types":["DV/Safe House","Emergency Shelter"],"desc":"Emergency shelter and services for domestic violence survivors in the Payson area."},
+    {"name":"Our Family Services — Youth","city":"Tucson","address":"803 N 6th Ave, Tucson, AZ 85705","phone":"520-325-2321","website":"https://www.ourfamilyservices.org","types":["Youth","Emergency Shelter"],"desc":"Youth shelter and services for young people experiencing homelessness in Tucson."},
+    {"name":"Mount Graham Safe House","city":"Safford","address":"PO Box 2132, Safford, AZ 85548","phone":"928-348-9104","website":null,"types":["DV/Safe House","Emergency Shelter"],"desc":"Safe house and advocacy for domestic violence survivors in Graham County."},
+    {"name":"Tempe Human Services — HOPE","city":"Tempe","address":"20 E 6th St, Tempe, AZ 85281","phone":"480-350-5900","website":"https://www.tempe.gov","types":["Rapid Rehousing","Coordinated Entry"],"desc":"HOPE program providing rapid rehousing and coordinated entry for Tempe residents."},
+    {"name":"ACHIEVE Housing","city":"Yuma","address":"2170 S Pacific Ave, Yuma, AZ 85364","phone":"928-782-1010","website":null,"types":["Transitional Housing","Families"],"desc":"Transitional housing program for individuals and families in Yuma County."},
+    {"name":"Stagger Straight","city":"Prescott","address":"139 Gurley St, Prescott, AZ 86301","phone":"928-445-4673","website":null,"types":["Emergency Shelter","Men"],"desc":"Emergency shelter for men recovering from substance use in Prescott."},
+    {"name":"US VETS Phoenix","city":"Phoenix","address":"4141 N 7th Ave, Phoenix, AZ 85013","phone":"602-263-7768","website":"https://usvets.org","types":["Veterans","Transitional Housing"],"desc":"Transitional housing, case management, and employment services for veterans."},
+    {"name":"A New Leaf — East Valley Men's Center","city":"Mesa","address":"868 E University Dr, Mesa, AZ 85203","phone":"480-969-4024","website":"https://www.turnanewleaf.org","types":["Emergency Shelter","Men"],"desc":"Emergency and transitional shelter for single adult men in Mesa."},
+    {"name":"Supportive Services for Veteran Families (SSVF)","city":"Phoenix","address":"350 N 40th St, Phoenix, AZ 85008","phone":"602-263-7768","website":"https://usvets.org","types":["Veterans","Rapid Rehousing"],"desc":"Rapid rehousing and eviction prevention for at-risk veteran families."},
+    {"name":"Bread of Life Mission","city":"Holbrook","address":"PO Box 481, Holbrook, AZ 86025","phone":"928-524-6219","website":null,"types":["Emergency Shelter","Mission"],"desc":"Faith-based emergency shelter and meals for individuals in need in Holbrook."},
+    {"name":"POND Housing Navigation","city":"Phoenix","address":"1301 N 7th St, Phoenix, AZ 85006","phone":"602-535-2844","website":null,"types":["Youth","Coordinated Entry"],"desc":"Youth housing navigation and coordinated entry for young adults in Phoenix."},
+    {"name":"Salvation Army — Hospitality House","city":"Tucson","address":"1002 N Main Ave, Tucson, AZ 85705","phone":"520-622-5411","website":"https://www.salvationarmyarizona.org","types":["Emergency Shelter","Mission"],"desc":"Emergency shelter and meals for individuals and families in Tucson."},
+    {"name":"CAHRA Rapid Rehousing","city":"Eloy","address":"PO Box 2053, Eloy, AZ 85131","phone":"520-466-7101","website":null,"types":["Rapid Rehousing"],"desc":"Rapid rehousing assistance for individuals and families in Pinal County."},
+    {"name":"MANA House","city":"Phoenix","address":"7701 N 35th Ave, Phoenix, AZ 85051","phone":"602-433-9331","website":null,"types":["Veterans","Transitional Housing","Women"],"desc":"Transitional housing for female veterans in the Phoenix area."},
+    {"name":"Catholic Charities — Cottonwood","city":"Cottonwood","address":"770 Cactus St, Cottonwood, AZ 86326","phone":"928-634-2121","website":"https://www.catholiccharitiesaz.org","types":["Emergency Shelter","Families"],"desc":"Emergency assistance and shelter support for families in the Verde Valley."},
+    {"name":"Catholic Charities — Flagstaff PATH","city":"Flagstaff","address":"2204 E Cedar Ave, Flagstaff, AZ 86004","phone":"928-774-9125","website":"https://www.catholiccharitiesaz.org","types":["Coordinated Entry","Outreach"],"desc":"PATH outreach and coordinated entry services for people experiencing homelessness in Flagstaff."},
+    {"name":"Good Neighbor Alliance","city":"Sierra Vista","address":"370 N Garden Ave, Sierra Vista, AZ 85635","phone":"520-458-2851","website":null,"types":["Emergency Shelter","Families"],"desc":"Emergency shelter and basic needs assistance for individuals and families in Sierra Vista."},
+    {"name":"Colorado River Regional Crisis Services","city":"Parker","address":"PO Box 1279, Parker, AZ 85344","phone":"928-669-8111","website":null,"types":["DV/Safe House","Emergency Shelter"],"desc":"Crisis shelter and services for domestic violence survivors in the Parker/La Paz County area."},
+    {"name":"House of Refuge — Sunnyslope","city":"Phoenix","address":"119 E Dunlap Ave, Phoenix, AZ 85020","phone":"602-943-9898","website":"https://www.houseofrefuge.net","types":["Transitional Housing","Families"],"desc":"Transitional housing for families with children experiencing homelessness."},
+    {"name":"La Frontera — Magnotto House","city":"Tucson","address":"502 W 29th St, Tucson, AZ 85713","phone":"520-884-9920","website":"https://www.lafronteratucson.org","types":["Transitional Housing","Mental Health"],"desc":"Transitional housing for adults with serious mental illness in Tucson."},
+    {"name":"House of Refuge","city":"Mesa","address":"260 W 1st Ave, Mesa, AZ 85210","phone":"480-834-7700","website":"https://www.houseofrefuge.net","types":["Transitional Housing","Families"],"desc":"Transitional housing and supportive services for families with children."},
+    {"name":"OPCS Reentry Housing","city":"Tucson","address":"4501 E 5th St, Tucson, AZ 85711","phone":"520-327-6596","website":"https://www.oldpueblo.org","types":["Transitional Housing","Reentry"],"desc":"Transitional housing and support for adults recently released from incarceration."},
+    {"name":"Jerry Ambrose Veterans Council","city":"Kingman","address":"3642 Stockton Hill Rd, Kingman, AZ 86409","phone":"928-757-2373","website":null,"types":["Veterans","Transitional Housing"],"desc":"Housing and supportive services for veterans in Mohave County."},
+    {"name":"Cornerstone Mission","city":"Kingman","address":"408 E Beale St, Kingman, AZ 86401","phone":"928-753-4649","website":null,"types":["Emergency Shelter","Mission"],"desc":"Faith-based emergency shelter and meals for individuals in Kingman."},
+    {"name":"OPCS Veteran Recovery Housing","city":"Tucson","address":"4501 E 5th St, Tucson, AZ 85711","phone":"520-327-6596","website":"https://www.oldpueblo.org","types":["Veterans","Transitional Housing"],"desc":"Recovery housing specifically for veterans in the Tucson area."},
+    {"name":"Payson Homeless Initiative","city":"Payson","address":"PO Box 2281, Payson, AZ 85541","phone":"928-474-9000","website":null,"types":["Emergency Shelter","Coordinated Entry"],"desc":"Coordinated emergency shelter and housing navigation in Rim Country."},
+    {"name":"Hope Wing — Phoenix Dream Center","city":"Phoenix","address":"1122 E Van Buren St, Phoenix, AZ 85006","phone":"602-346-3000","website":"https://phoenixdreamcenter.org","types":["Emergency Shelter","Human Trafficking"],"desc":"Shelter and restoration services for human trafficking survivors."},
+    {"name":"I-HELP Chandler","city":"Chandler","address":"PO Box 1064, Chandler, AZ 85244","phone":"480-354-0600","website":"https://ihelpaz.org","types":["Emergency Shelter","Men"],"desc":"Interfaith rotating shelter for single men in the Chandler area."},
+    {"name":"Foster Arizona Housing Project","city":"Mesa","address":"1537 N Alma School Rd, Mesa, AZ 85201","phone":"480-969-4024","website":"https://www.turnanewleaf.org","types":["Youth","Transitional Housing"],"desc":"Housing support for young adults aging out of the foster care system."},
+    {"name":"Flagstaff Shelter Services — Emergency","city":"Flagstaff","address":"619 W Riordan Rd, Flagstaff, AZ 86001","phone":"928-773-9001","website":"https://flagstaffshelterservices.org","types":["Emergency Shelter"],"desc":"Emergency shelter for individuals and families experiencing homelessness in Flagstaff."},
+    {"name":"Esperanza En Escalante","city":"Tucson","address":"3245 S 12th Ave, Tucson, AZ 85713","phone":"520-624-6595","website":null,"types":["Veterans","Transitional Housing"],"desc":"Transitional housing for veterans in recovery in southern Tucson."},
+    {"name":"Phoenix Rescue Mission — Hope Coach","city":"Phoenix","address":"1801 S 35th Ave, Phoenix, AZ 85009","phone":"602-233-3000","website":"https://www.phoenixrescuemission.org","types":["Outreach","Coordinated Entry"],"desc":"Mobile outreach connecting unsheltered individuals with shelter and services."},
+    {"name":"VA Supported Housing — Tucson","city":"Tucson","address":"3601 S 6th Ave, Tucson, AZ 85723","phone":"520-792-1450","website":"https://www.va.gov","types":["Veterans","Permanent Supportive Housing"],"desc":"HUD-VASH vouchers and case management for veterans experiencing homelessness."},
+    {"name":"Old Pueblo Community Services","city":"Tucson","address":"4501 E 5th St, Tucson, AZ 85711","phone":"520-327-6596","website":"https://www.oldpueblo.org","types":["Transitional Housing","Coordinated Entry"],"desc":"Transitional housing, case management, and coordinated entry services in Tucson."},
+    {"name":"Hope Cottage","city":"Flagstaff","address":"PO Box 3459, Flagstaff, AZ 86003","phone":"928-773-8900","website":null,"types":["Emergency Shelter","Women"],"desc":"Emergency shelter for women in the Flagstaff community."},
+    {"name":"Project Aware","city":"Prescott","address":"543 Hillside Ave, Prescott, AZ 86301","phone":"928-445-4673","website":null,"types":["Emergency Shelter","Men"],"desc":"Emergency shelter and substance use recovery support for men in Prescott."},
+    {"name":"Against Abuse Inc","city":"Casa Grande","address":"PO Box 7568, Casa Grande, AZ 85122","phone":"520-836-0858","website":null,"types":["DV/Safe House","Emergency Shelter"],"desc":"Shelter and advocacy for domestic violence survivors in Pinal County."},
+    {"name":"Primavera Men's Shelter","city":"Tucson","address":"151 W 40th St, Tucson, AZ 85713","phone":"520-623-5111","website":"https://www.primavera.org","types":["Emergency Shelter","Men"],"desc":"Emergency shelter for men experiencing homelessness in Tucson."},
+    {"name":"Ozanam Manor","city":"Phoenix","address":"1702 S 10th Ave, Phoenix, AZ 85007","phone":"602-261-6886","website":"https://www.svdpaz.org","types":["Transitional Housing","Senior/Disabled"],"desc":"Long-term transitional housing for senior and disabled adults in Phoenix."},
+    {"name":"Salvation Army — South Corps","city":"Tucson","address":"2201 N Westmoreland Ave, Tucson, AZ 85745","phone":"520-624-9800","website":"https://www.salvationarmyarizona.org","types":["Emergency Shelter","Mission","Families"],"desc":"Emergency shelter, meals, and social services for individuals and families."},
+    {"name":"Bisbee Coalition for the Homeless","city":"Bisbee","address":"PO Box 2552, Bisbee, AZ 85603","phone":"520-432-7274","website":null,"types":["Emergency Shelter","Coordinated Entry"],"desc":"Emergency shelter and coordinated entry services for Cochise County."},
+    {"name":"Primavera HIP Drop-In","city":"Tucson","address":"702 S 6th Ave, Tucson, AZ 85701","phone":"520-623-5111","website":"https://www.primavera.org","types":["Day Resource","Outreach"],"desc":"Drop-in day services, showers, laundry, and housing navigation for people experiencing homelessness."},
+    {"name":"OPCS Low Barrier Bridge Housing","city":"Tucson","address":"4501 E 5th St, Tucson, AZ 85711","phone":"520-327-6596","website":"https://www.oldpueblo.org","types":["Emergency Shelter","Low Barrier"],"desc":"Low barrier bridge housing for adults experiencing unsheltered homelessness in Tucson."},
+    {"name":"Prescott Area Shelter Services","city":"Prescott","address":"211 S Alarcon St, Prescott, AZ 86303","phone":"928-445-5038","website":null,"types":["Emergency Shelter","Women","Families"],"desc":"Emergency shelter for women and families in the Prescott area."},
+    {"name":"Church on the Street Mission","city":"Tucson","address":"2198 N Osborne Ave, Tucson, AZ 85712","phone":"520-623-2333","website":null,"types":["Emergency Shelter","Mission"],"desc":"Faith-based shelter and meals for individuals experiencing homelessness in Tucson."},
+    {"name":"Our Family Services — Housing","city":"Tucson","address":"803 N 6th Ave, Tucson, AZ 85705","phone":"520-325-2321","website":"https://www.ourfamilyservices.org","types":["Rapid Rehousing","Families"],"desc":"Rapid rehousing and housing stability services for families in Tucson."},
+    {"name":"Flagstaff Shelter Services — Day Resource Center","city":"Flagstaff","address":"619 W Riordan Rd, Flagstaff, AZ 86001","phone":"928-773-9001","website":"https://flagstaffshelterservices.org","types":["Day Resource","Coordinated Entry"],"desc":"Day resource center with showers, laundry, mail, and coordinated entry in Flagstaff."},
+    {"name":"Crossroads Mission","city":"Nogales","address":"PO Box 1266, Nogales, AZ 85628","phone":"520-287-9895","website":null,"types":["Emergency Shelter","Mission"],"desc":"Emergency shelter and services for individuals in Nogales and the border region."},
+    {"name":"Verde Valley Homeless Coalition","city":"Cottonwood","address":"600 E Mingus Ave, Cottonwood, AZ 86326","phone":"928-634-5083","website":null,"types":["Emergency Shelter","Pet Friendly"],"desc":"Pet-friendly emergency shelter and services in the Cottonwood/Verde Valley area."},
+    {"name":"Native American Connections — Saguaro Ki","city":"Phoenix","address":"4520 N Central Ave, Phoenix, AZ 85012","phone":"602-254-3247","website":"https://www.nativeconnections.org","types":["Youth","Transitional Housing"],"desc":"Transitional housing for Native American youth aging out of foster care."},
+    {"name":"Family Journey Transitional Housing","city":"Tucson","address":"PO Box 86459, Tucson, AZ 85754","phone":"520-792-9933","website":null,"types":["Transitional Housing","Women","Families"],"desc":"Transitional housing for single mothers and their children in Tucson."},
+    {"name":"Family Renewal Center","city":"Phoenix","address":"4215 N 20th Ave, Phoenix, AZ 85015","phone":"602-212-0700","website":null,"types":["DV/Safe House","Transitional Housing","Families"],"desc":"Transitional housing and services for domestic violence survivors and their families."},
+    {"name":"Operation Homefront","city":"Phoenix","address":"PO Box 76921, Phoenix, AZ 85062","phone":"210-659-7756","website":"https://www.operationhomefront.org","types":["Veterans","Transitional Housing"],"desc":"Transitional housing and financial assistance for military families nationwide."},
+    {"name":"Kingman Aid to Abused People","city":"Kingman","address":"PO Box 5706, Kingman, AZ 86402","phone":"928-753-4242","website":null,"types":["DV/Safe House","Emergency Shelter"],"desc":"Shelter and advocacy for domestic violence survivors in Mohave County."},
+    {"name":"UMOM — Halle Women's Center","city":"Phoenix","address":"3362 E Van Buren St, Phoenix, AZ 85008","phone":"602-595-9822","website":"https://www.umom.org","types":["Emergency Shelter","Women","Families"],"desc":"Emergency shelter for women and families in the Phoenix metropolitan area."},
+    {"name":"Gospel Rescue Mission","city":"Tucson","address":"200 S 6th Ave, Tucson, AZ 85701","phone":"520-740-1501","website":"https://www.grm.org","types":["Emergency Shelter","Mission","Men"],"desc":"Emergency shelter, meals, and recovery programs for men in Tucson."},
+    {"name":"Casa Paloma Women's Shelter","city":"Tucson","address":"PO Box 15095, Tucson, AZ 85708","phone":"520-770-1280","website":null,"types":["Emergency Shelter","Women","DV/Safe House"],"desc":"Emergency shelter for women fleeing domestic violence in Tucson."},
+    {"name":"Gila House","city":"Globe","address":"PO Box 2201, Globe, AZ 85502","phone":"928-402-0784","website":null,"types":["DV/Safe House","Human Trafficking","Emergency Shelter"],"desc":"Safe house for domestic violence and human trafficking survivors in Gila County."},
+    {"name":"Phoenix VA — CRRC","city":"Phoenix","address":"650 E Indian School Rd, Phoenix, AZ 85012","phone":"602-277-5551","website":"https://www.va.gov","types":["Veterans","Coordinated Entry"],"desc":"Community Resource and Referral Center coordinated entry for veterans in Phoenix."},
+    {"name":"Thrive AZ","city":"Phoenix","address":"1301 N 7th St, Phoenix, AZ 85006","phone":"602-535-2844","website":null,"types":["Youth","Transitional Housing","Foster Youth"],"desc":"Housing support and services for young adults transitioning out of foster care in Phoenix."},
+    {"name":"Catholic Charities — Emergency Shelter","city":"Flagstaff","address":"2204 E Cedar Ave, Flagstaff, AZ 86004","phone":"928-774-9125","website":"https://www.catholiccharitiesaz.org","types":["Emergency Shelter","Families"],"desc":"Emergency shelter and services for families in the Flagstaff area."},
+    {"name":"Crossroads Nogales Mission","city":"Nogales","address":"1266 W International St, Nogales, AZ 85621","phone":"520-287-2238","website":null,"types":["Emergency Shelter","Mission","Families"],"desc":"Emergency shelter and meals for individuals and families near the US-Mexico border."}
+  ];
+
+  /* ── State ── */
+  var activeType = '';
+  var activeRegion = '';
+  var searchQuery = '';
+
+  /* ── DOM refs ── */
+  var grid = document.getElementById('resource-grid');
+  var countNum = document.getElementById('count-num');
+  var searchInput = document.getElementById('search-input');
+  var regionSelect = document.getElementById('region-filter');
+  var chips = document.querySelectorAll('.chip');
+
+  /* ── Build a phone href ── */
+  function phoneHref(raw) {
+    return 'tel:' + raw.replace(/\D/g, '');
+  }
+
+  /* ── Format display phone ── */
+  function formatPhone(raw) {
+    var d = raw.replace(/\D/g, '');
+    if (d.length === 10) {
+      return '(' + d.slice(0,3) + ') ' + d.slice(3,6) + '-' + d.slice(6);
+    }
+    return raw;
+  }
+
+  /* ── Tag class lookup ── */
+  function tagClass(t) {
+    return TAG_CLASS[t] || 'r-tag--primary';
+  }
+
+  /* ── Render a card ── */
+  function renderCard(r) {
+    var tags = r.types.map(function(t) {
+      return '<span class="r-tag ' + tagClass(t) + '">' + escHtml(t) + '</span>';
+    }).join('');
+
+    var websiteRow = r.website
+      ? '<div class="r-card__meta-row"><span class="r-card__meta-label">Website</span><span class="r-card__meta-val"><a href="' + escHtml(r.website) + '" target="_blank" rel="noopener noreferrer">' + escHtml(hostname(r.website)) + ' ↗</a></span></div>'
+      : '';
+
+    var desc = r.desc
+      ? '<p class="r-card__desc">' + escHtml(r.desc) + '</p>'
+      : '';
+
+    return '<div class="r-card">' +
+      '<p class="r-card__city">' + escHtml(r.city) + '</p>' +
+      '<h3>' + escHtml(r.name) + '</h3>' +
+      '<div class="r-card__tags">' + tags + '</div>' +
+      desc +
+      '<div class="r-card__meta">' +
+        '<div class="r-card__meta-row"><span class="r-card__meta-label">Address</span><span class="r-card__meta-val">' + escHtml(r.address) + '</span></div>' +
+        '<div class="r-card__meta-row"><span class="r-card__meta-label">Phone</span><span class="r-card__meta-val"><a href="' + phoneHref(r.phone) + '">' + formatPhone(r.phone) + '</a></span></div>' +
+        websiteRow +
+      '</div>' +
+    '</div>';
+  }
+
+  /* ── Escape HTML ── */
+  function escHtml(str) {
+    if (!str) return '';
+    return str
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;');
+  }
+
+  /* ── Get hostname for display ── */
+  function hostname(url) {
+    try {
+      return new URL(url).hostname.replace(/^www\./, '');
+    } catch(e) {
+      return url;
+    }
+  }
+
+  /* ── Filter logic ── */
+  function matches(r) {
+    /* Region */
+    if (activeRegion) {
+      var rRegion = REGION_MAP[r.city] || 'eastern-rural';
+      if (rRegion !== activeRegion) return false;
+    }
+    /* Type */
+    if (activeType) {
+      if (r.types.indexOf(activeType) === -1) return false;
+    }
+    /* Search */
+    if (searchQuery) {
+      var q = searchQuery.toLowerCase();
+      var haystack = (r.name + ' ' + r.city + ' ' + (r.desc || '') + ' ' + r.types.join(' ')).toLowerCase();
+      if (haystack.indexOf(q) === -1) return false;
+    }
+    return true;
+  }
+
+  /* ── Render ── */
+  function render() {
+    var filtered = RESOURCES.filter(matches);
+    countNum.textContent = filtered.length;
+
+    if (filtered.length === 0) {
+      grid.innerHTML = '<div class="empty-state">' +
+        '<h3>No resources found</h3>' +
+        '<p>Try a different search term, region, or type filter.</p>' +
+      '</div>';
+    } else {
+      grid.innerHTML = filtered.map(renderCard).join('');
+    }
+  }
+
+  /* ── Event listeners ── */
+  searchInput.addEventListener('input', function() {
+    searchQuery = this.value.trim();
+    render();
+  });
+
+  regionSelect.addEventListener('change', function() {
+    activeRegion = this.value;
+    render();
+  });
+
+  chips.forEach(function(chip) {
+    chip.addEventListener('click', function() {
+      chips.forEach(function(c) { c.classList.remove('active'); });
+      this.classList.add('active');
+      activeType = this.dataset.type;
+      render();
+    });
+  });
+
+  /* ── Initial render ── */
+  render();
+
+})();
+</script>
+
+<noscript>
+  <style>.finder-bar{display:none}</style>
+  <p style="text-align:center;padding:2rem;color:#6B7280">JavaScript is required to use this tool. Please enable JavaScript or <a href="tel:211">call 211</a> for assistance.</p>
+</noscript>
+
+</body>
+</html>
