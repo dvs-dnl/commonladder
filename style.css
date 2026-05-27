@@ -76,7 +76,8 @@ h1, h2, h3, h4 {
   text-decoration: none;
 }
 .nav__logo:hover { text-decoration: none; }
-.nav__logo span { color: var(--amber); }
+.nav__logo .nav__wordmark { color: inherit; }
+.nav__logo .nav__wordmark span { color: var(--amber); }
 .nav__links { display: flex; gap: 1.5rem; list-style: none; }
 .nav__links a {
   color: rgba(255,255,255,.85);
