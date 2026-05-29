@@ -1,0 +1,961 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XLKR4ZSZ5J"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-XLKR4ZSZ5J');
+</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Benefit Screener — Find Benefits You May Qualify For · Common Ladder</title>
+<meta name="description" content="Answer 7 questions and get a personalized list of federal and Arizona benefits you likely qualify for — SNAP, Medicaid, SSI, LIHEAP, VA, WIC, and more. No account required.">
+<link rel="canonical" href="https://www.commonladder.org/static-tools/benefit-screener.html">
+<link rel="stylesheet" href="../style.css">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<noscript><style>.nav__links{display:flex!important;flex-wrap:wrap!important;}.nav__toggle{display:none!important;}</style></noscript>
+<style>
+/* ── Screener shell ───────────────────────────────────────────────── */
+.screener-wrap {
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 0 var(--gap) 4rem;
+}
+.screener-intro {
+  text-align: center;
+  padding: 2.5rem 0 2rem;
+}
+.screener-intro h1 {
+  font-size: clamp(1.6rem, 4vw, 2.2rem);
+  margin-bottom: .75rem;
+}
+.screener-intro p {
+  color: var(--gray);
+  font-size: .95rem;
+  margin-bottom: .4rem;
+}
+.screener-trust {
+  display: flex;
+  justify-content: center;
+  gap: 1.25rem;
+  flex-wrap: wrap;
+  margin-top: 1rem;
+  font-size: .8rem;
+  color: var(--gray);
+}
+.screener-trust span::before { content: "✓ "; color: var(--sage); }
+
+/* ── Progress ────────────────────────────────────────────────────── */
+.progress-wrap { margin-bottom: 2rem; }
+.progress-label {
+  display: flex;
+  justify-content: space-between;
+  font-size: .78rem;
+  color: var(--gray);
+  margin-bottom: .4rem;
+}
+.progress-bar {
+  height: 6px;
+  background: var(--light);
+  border-radius: 3px;
+  overflow: hidden;
+}
+.progress-fill {
+  height: 100%;
+  background: var(--blue);
+  border-radius: 3px;
+  transition: width .3s ease;
+}
+
+/* ── Question card ───────────────────────────────────────────────── */
+.q-card {
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: var(--shadow);
+  padding: 2rem 1.75rem;
+  display: none;
+}
+.q-card.active { display: block; }
+.q-card h2 {
+  font-size: 1.2rem;
+  color: var(--blue);
+  margin-bottom: .5rem;
+  line-height: 1.3;
+}
+.q-card .q-note {
+  font-size: .85rem;
+  color: var(--gray);
+  margin-bottom: 1.5rem;
+  line-height: 1.5;
+}
+
+/* ── Choice buttons ──────────────────────────────────────────────── */
+.choices { display: flex; flex-direction: column; gap: .6rem; }
+.choice-btn {
+  display: flex;
+  align-items: center;
+  gap: .75rem;
+  padding: .85rem 1rem;
+  border: 2px solid #e5e7eb;
+  border-radius: 8px;
+  background: #fff;
+  color: var(--dark);
+  font-family: inherit;
+  font-size: .95rem;
+  cursor: pointer;
+  text-align: left;
+  transition: border-color .15s, background .15s;
+  min-height: 52px;
+}
+.choice-btn:hover { border-color: var(--blue); background: #f0f4fb; }
+.choice-btn.selected { border-color: var(--blue); background: #e8eef8; }
+.choice-btn .choice-icon { font-size: 1.2rem; flex-shrink: 0; width: 28px; text-align: center; }
+.choice-btn.skip-btn { border-style: dashed; color: var(--gray); font-size: .88rem; }
+.choice-btn.skip-btn:hover { border-color: var(--gray); background: var(--light); color: var(--dark); }
+
+/* ── Multi-select choices ────────────────────────────────────────── */
+.choice-btn.multi.selected { border-color: var(--sage); background: #e6f5f0; }
+
+/* ── Nav buttons ─────────────────────────────────────────────────── */
+.q-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 1.5rem;
+  gap: 1rem;
+}
+.btn-back {
+  background: none;
+  border: none;
+  color: var(--gray);
+  font-family: inherit;
+  font-size: .9rem;
+  cursor: pointer;
+  padding: .5rem 0;
+}
+.btn-back:hover { color: var(--blue); }
+.btn-next {
+  background: var(--blue);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: .75rem 1.5rem;
+  font-family: inherit;
+  font-size: .95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background .15s;
+  min-height: 48px;
+}
+.btn-next:hover { background: #162f54; }
+.btn-next:disabled { background: #9ca3af; cursor: not-allowed; }
+
+/* ── Results ────────────────────────────────────────────────────── */
+#results { display: none; }
+.results-header {
+  text-align: center;
+  padding: 2rem 0 1.5rem;
+}
+.results-header h2 {
+  font-size: clamp(1.4rem, 3.5vw, 2rem);
+  color: var(--blue);
+  margin-bottom: .5rem;
+}
+.results-header p { color: var(--gray); font-size: .95rem; }
+.results-count {
+  display: inline-block;
+  background: var(--sage);
+  color: #fff;
+  border-radius: 20px;
+  padding: .2rem .75rem;
+  font-size: .85rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+.benefit-card {
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: var(--shadow);
+  border-left: 4px solid var(--blue);
+  margin-bottom: 1rem;
+  overflow: hidden;
+}
+.benefit-card.priority { border-left-color: var(--amber); }
+.benefit-card.veteran { border-left-color: #4A6FA5; }
+.benefit-card.wellness { border-left-color: var(--sage); }
+
+.benefit-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.1rem 1.25rem;
+  cursor: pointer;
+  gap: 1rem;
+}
+.benefit-header:hover { background: #f9fafb; }
+.benefit-title-wrap { display: flex; align-items: center; gap: .75rem; }
+.benefit-icon { font-size: 1.3rem; flex-shrink: 0; }
+.benefit-name { font-weight: 600; color: var(--blue); font-size: .98rem; line-height: 1.3; }
+.benefit-sub { font-size: .78rem; color: var(--gray); margin-top: .1rem; }
+.benefit-toggle {
+  font-size: .75rem;
+  color: var(--gray);
+  flex-shrink: 0;
+  transition: transform .2s;
+}
+.benefit-toggle.open { transform: rotate(180deg); }
+
+.benefit-body {
+  display: none;
+  padding: 0 1.25rem 1.25rem;
+  border-top: 1px solid #f0f0ee;
+}
+.benefit-body.open { display: block; }
+.benefit-body p { font-size: .9rem; line-height: 1.6; margin-bottom: .75rem; color: var(--dark); }
+.benefit-body p:last-child { margin-bottom: 0; }
+.benefit-body strong { color: var(--blue); }
+
+.benefit-amount {
+  background: var(--light);
+  border-radius: 6px;
+  padding: .65rem .9rem;
+  font-size: .85rem;
+  margin-bottom: .9rem;
+  color: var(--dark);
+}
+.benefit-amount strong { color: var(--blue); display: block; margin-bottom: .2rem; font-size: .8rem; text-transform: uppercase; letter-spacing: .04em; }
+
+.apply-btn {
+  display: inline-block;
+  background: var(--blue);
+  color: #fff;
+  border-radius: 6px;
+  padding: .6rem 1.1rem;
+  font-size: .88rem;
+  font-weight: 600;
+  text-decoration: none;
+  margin-top: .5rem;
+  margin-right: .5rem;
+  margin-bottom: .25rem;
+  transition: background .15s;
+}
+.apply-btn:hover { background: #162f54; text-decoration: none; }
+.apply-btn.secondary { background: #fff; color: var(--blue); border: 2px solid var(--blue); }
+.apply-btn.secondary:hover { background: #e8eef8; }
+
+.results-footer {
+  background: var(--light);
+  border-radius: 10px;
+  padding: 1.5rem;
+  margin-top: 2rem;
+  text-align: center;
+}
+.results-footer h3 { color: var(--blue); margin-bottom: .5rem; font-size: 1rem; }
+.results-footer p { font-size: .88rem; color: var(--gray); margin-bottom: 1rem; }
+
+.restart-btn {
+  background: none;
+  border: 2px solid var(--blue);
+  color: var(--blue);
+  border-radius: 8px;
+  padding: .6rem 1.25rem;
+  font-family: inherit;
+  font-size: .9rem;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background .15s;
+}
+.restart-btn:hover { background: #e8eef8; }
+
+/* ── Breadcrumb ──────────────────────────────────────────────────── */
+.breadcrumb { background: var(--light); padding: .65rem 0; border-bottom: 1px solid #dde3ec; font-size: .82rem; }
+.breadcrumb ol { display: flex; flex-wrap: wrap; gap: .25rem .35rem; list-style: none; max-width: var(--max); margin: 0 auto; padding: 0 var(--gap); align-items: center; }
+.breadcrumb li+li::before { content: "›"; color: var(--gray); margin-right: .35rem; }
+.breadcrumb a { color: var(--blue); }
+.breadcrumb [aria-current] { color: var(--gray); }
+
+@media (max-width: 480px) {
+  .q-card { padding: 1.5rem 1.1rem; }
+  .benefit-header { padding: 1rem; }
+  .benefit-body { padding: 0 1rem 1rem; }
+}
+</style>
+</head>
+<body>
+
+<a href="#main" class="skip-link">Skip to main content</a>
+
+<div class="crisis-bar" role="region" aria-label="Crisis help">
+  <strong>Need help right now?</strong>
+  <a href="tel:211">Call 211</a><span class="crisis-bar__sep">·</span>
+  <a href="sms:741741?body=HOME">Text HOME to 741741</a><span class="crisis-bar__sep">·</span>
+  <a href="tel:988">988 Suicide &amp; Crisis</a>
+</div>
+
+<nav class="nav" aria-label="Primary">
+  <div class="nav__inner">
+    <a href="/" class="nav__logo" aria-label="Common Ladder home">
+      <svg width="28" height="28" viewBox="0 0 28 28" fill="none" aria-hidden="true">
+        <rect x="4" y="2" width="3" height="24" rx="1.5" fill="white" opacity=".9"/>
+        <rect x="21" y="2" width="3" height="24" rx="1.5" fill="#E8911A"/>
+        <rect x="4" y="7" width="20" height="3" rx="1.5" fill="#E8911A"/>
+        <rect x="4" y="14" width="20" height="3" rx="1.5" fill="#E8911A"/>
+        <rect x="4" y="21" width="20" height="3" rx="1.5" fill="#E8911A"/>
+      </svg>
+      <span class="nav__wordmark">common<span>ladder</span></span>
+    </a>
+    <button class="nav__toggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="primary-nav" onclick="this.setAttribute('aria-expanded', document.getElementById('primary-nav').classList.toggle('open') ? 'true' : 'false')">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav__links" id="primary-nav">
+      <li><a href="/find.html">Resources</a></li>
+      <li><a href="/providers.html">For providers</a></li>
+      <li><a href="/learn/">Learn</a></li>
+      <li><a href="/about.html">About</a></li>
+      <li><a href="/find.html" class="nav__cta">Find resources</a></li>
+      <li><a href="https://www.weather.gov/" rel="noreferrer" class="nav__exit" onclick="event.preventDefault();window.location.replace('https://www.weather.gov/')">Leave page</a></li>
+    </ul>
+  </div>
+</nav>
+
+<nav class="breadcrumb" aria-label="Breadcrumb">
+  <ol>
+    <li><a href="/">Home</a></li>
+    <li><a href="/static-tools/">Tools</a></li>
+    <li aria-current="page">Benefit Screener</li>
+  </ol>
+</nav>
+
+<main id="main">
+<div class="screener-wrap">
+
+  <!-- Intro -->
+  <div class="screener-intro">
+    <h1>Find benefits you may qualify for</h1>
+    <p>7 questions. About 2 minutes. No account required.</p>
+    <p>Answer what you can — every question has a "not sure" option.</p>
+    <div class="screener-trust">
+      <span>Nothing is stored or shared</span>
+      <span>No signup required</span>
+      <span>Free to use</span>
+    </div>
+  </div>
+
+  <!-- Progress -->
+  <div class="progress-wrap" id="progress-wrap" style="display:none">
+    <div class="progress-label">
+      <span id="progress-text">Question 1 of 7</span>
+      <span id="progress-pct">14%</span>
+    </div>
+    <div class="progress-bar"><div class="progress-fill" id="progress-fill" style="width:14%"></div></div>
+  </div>
+
+  <!-- Q1: Immigration status -->
+  <div class="q-card active" id="q1" data-q="1">
+    <h2>Are you a US citizen or legal permanent resident (green card holder)?</h2>
+    <p class="q-note">Most federal benefits require citizenship or a qualifying immigration status. If you're not sure, answer "Not sure" — you may still qualify for some programs.</p>
+    <div class="choices">
+      <button class="choice-btn" data-val="citizen" onclick="select(this,'q1')">
+        <span class="choice-icon">🇺🇸</span> Yes, US citizen
+      </button>
+      <button class="choice-btn" data-val="resident" onclick="select(this,'q1')">
+        <span class="choice-icon">📄</span> Yes, green card / legal permanent resident
+      </button>
+      <button class="choice-btn" data-val="other_status" onclick="select(this,'q1')">
+        <span class="choice-icon">📋</span> Other legal immigration status (visa, DACA, asylum, refugee)
+      </button>
+      <button class="choice-btn skip-btn" data-val="unsure" onclick="select(this,'q1')">
+        <span class="choice-icon">·</span> Not sure / prefer not to say
+      </button>
+    </div>
+    <div class="q-nav">
+      <span></span>
+      <button class="btn-next" onclick="next('q1','q2')" id="next-q1" disabled>Next →</button>
+    </div>
+  </div>
+
+  <!-- Q2: Veteran -->
+  <div class="q-card" id="q2" data-q="2">
+    <h2>Have you served in the US military?</h2>
+    <p class="q-note">Veterans with honorable or general discharges qualify for VA healthcare, housing programs, and other benefits — even without a service-connected disability.</p>
+    <div class="choices">
+      <button class="choice-btn" data-val="yes" onclick="select(this,'q2')">
+        <span class="choice-icon">🎖️</span> Yes, I'm a veteran
+      </button>
+      <button class="choice-btn" data-val="no" onclick="select(this,'q2')">
+        <span class="choice-icon">—</span> No
+      </button>
+      <button class="choice-btn skip-btn" data-val="unsure" onclick="select(this,'q2')">
+        <span class="choice-icon">·</span> Not sure
+      </button>
+    </div>
+    <div class="q-nav">
+      <button class="btn-back" onclick="back('q2','q1')">← Back</button>
+      <button class="btn-next" onclick="next('q2','q3')" id="next-q2" disabled>Next →</button>
+    </div>
+  </div>
+
+  <!-- Q3: Household / family -->
+  <div class="q-card" id="q3" data-q="3">
+    <h2>Which of these applies to your household?</h2>
+    <p class="q-note">Select all that apply.</p>
+    <div class="choices">
+      <button class="choice-btn multi" data-val="pregnant" onclick="multiSelect(this,'q3')">
+        <span class="choice-icon">🤰</span> Pregnant or breastfeeding
+      </button>
+      <button class="choice-btn multi" data-val="kids_under5" onclick="multiSelect(this,'q3')">
+        <span class="choice-icon">👶</span> Children under 5 in the household
+      </button>
+      <button class="choice-btn multi" data-val="kids_older" onclick="multiSelect(this,'q3')">
+        <span class="choice-icon">👦</span> Children ages 5–17 in the household
+      </button>
+      <button class="choice-btn multi" data-val="none" onclick="multiSelect(this,'q3')">
+        <span class="choice-icon">👤</span> None of these — I live alone or with other adults
+      </button>
+    </div>
+    <div class="q-nav">
+      <button class="btn-back" onclick="back('q3','q2')">← Back</button>
+      <button class="btn-next" onclick="next('q3','q4')" id="next-q3" disabled>Next →</button>
+    </div>
+  </div>
+
+  <!-- Q4: Disability / age -->
+  <div class="q-card" id="q4" data-q="4">
+    <h2>Do any of these apply to you?</h2>
+    <p class="q-note">Select all that apply. "Long-term" means lasting or expected to last at least 12 months.</p>
+    <div class="choices">
+      <button class="choice-btn multi" data-val="disability" onclick="multiSelect(this,'q4')">
+        <span class="choice-icon">♿</span> I have a disability or long-term health condition
+      </button>
+      <button class="choice-btn multi" data-val="age65" onclick="multiSelect(this,'q4')">
+        <span class="choice-icon">👴</span> I'm 65 or older
+      </button>
+      <button class="choice-btn multi" data-val="blind" onclick="multiSelect(this,'q4')">
+        <span class="choice-icon">👁️</span> I have a significant vision impairment
+      </button>
+      <button class="choice-btn multi" data-val="none" onclick="multiSelect(this,'q4')">
+        <span class="choice-icon">—</span> None of these
+      </button>
+    </div>
+    <div class="q-nav">
+      <button class="btn-back" onclick="back('q4','q3')">← Back</button>
+      <button class="btn-next" onclick="next('q4','q5')" id="next-q4" disabled>Next →</button>
+    </div>
+  </div>
+
+  <!-- Q5: Income -->
+  <div class="q-card" id="q5" data-q="5">
+    <h2>About how much money does your household bring in each month?</h2>
+    <p class="q-note">Include all income: wages, SSI/SSDI, child support, disability payments, anything. If you're not sure or have no income right now, select $0.</p>
+    <div class="choices">
+      <button class="choice-btn" data-val="0" onclick="select(this,'q5')">
+        <span class="choice-icon">$</span> $0 — no income right now
+      </button>
+      <button class="choice-btn" data-val="500" onclick="select(this,'q5')">
+        <span class="choice-icon">$</span> Under $500/month
+      </button>
+      <button class="choice-btn" data-val="1000" onclick="select(this,'q5')">
+        <span class="choice-icon">$</span> $500–$1,000/month
+      </button>
+      <button class="choice-btn" data-val="1500" onclick="select(this,'q5')">
+        <span class="choice-icon">$</span> $1,000–$1,500/month
+      </button>
+      <button class="choice-btn" data-val="2000" onclick="select(this,'q5')">
+        <span class="choice-icon">$</span> $1,500–$2,000/month
+      </button>
+      <button class="choice-btn" data-val="2001" onclick="select(this,'q5')">
+        <span class="choice-icon">$</span> Over $2,000/month
+      </button>
+      <button class="choice-btn skip-btn" data-val="unsure" onclick="select(this,'q5')">
+        <span class="choice-icon">·</span> Not sure / rather not say
+      </button>
+    </div>
+    <div class="q-nav">
+      <button class="btn-back" onclick="back('q5','q4')">← Back</button>
+      <button class="btn-next" onclick="next('q5','q6')" id="next-q5" disabled>Next →</button>
+    </div>
+  </div>
+
+  <!-- Q6: Health insurance -->
+  <div class="q-card" id="q6" data-q="6">
+    <h2>Do you currently have health insurance?</h2>
+    <p class="q-note">This includes Medicaid (AHCCCS in Arizona), Medicare, employer coverage, or any other plan.</p>
+    <div class="choices">
+      <button class="choice-btn" data-val="yes" onclick="select(this,'q6')">
+        <span class="choice-icon">✅</span> Yes, I have coverage
+      </button>
+      <button class="choice-btn" data-val="no" onclick="select(this,'q6')">
+        <span class="choice-icon">❌</span> No, I'm uninsured
+      </button>
+      <button class="choice-btn skip-btn" data-val="unsure" onclick="select(this,'q6')">
+        <span class="choice-icon">·</span> Not sure
+      </button>
+    </div>
+    <div class="q-nav">
+      <button class="btn-back" onclick="back('q6','q5')">← Back</button>
+      <button class="btn-next" onclick="next('q6','q7')" id="next-q6" disabled>Next →</button>
+    </div>
+  </div>
+
+  <!-- Q7: Housing situation -->
+  <div class="q-card" id="q7" data-q="7">
+    <h2>What best describes your housing situation right now?</h2>
+    <p class="q-note">No wrong answer. This helps us surface the most urgent programs.</p>
+    <div class="choices">
+      <button class="choice-btn" data-val="homeless" onclick="select(this,'q7')">
+        <span class="choice-icon">🏕️</span> Currently without housing (shelter, street, car, couch-surfing)
+      </button>
+      <button class="choice-btn" data-val="at_risk" onclick="select(this,'q7')">
+        <span class="choice-icon">⚠️</span> At risk — behind on rent, facing eviction, or utilities being shut off
+      </button>
+      <button class="choice-btn" data-val="stable" onclick="select(this,'q7')">
+        <span class="choice-icon">🏠</span> Housed and stable right now
+      </button>
+      <button class="choice-btn skip-btn" data-val="unsure" onclick="select(this,'q7')">
+        <span class="choice-icon">·</span> Rather not say
+      </button>
+    </div>
+    <div class="q-nav">
+      <button class="btn-back" onclick="back('q7','q6')">← Back</button>
+      <button class="btn-next" onclick="showResults()" id="next-q7" disabled>See my results →</button>
+    </div>
+  </div>
+
+  <!-- Results -->
+  <div id="results">
+    <div class="results-header">
+      <h2>Benefits you likely qualify for</h2>
+      <p id="results-intro">Based on your answers, here are programs worth applying for.</p>
+      <br>
+      <span class="results-count" id="results-count">Loading…</span>
+    </div>
+    <div id="benefits-list"></div>
+    <div class="results-footer">
+      <h3>Not sure where to start?</h3>
+      <p>Call <strong>211</strong> — Arizona's free social services helpline connects you to a real person who can help you apply for multiple programs at once.</p>
+      <a href="tel:211" class="apply-btn">Call 2-1-1 free</a>
+      <a href="https://211arizona.org" target="_blank" rel="noopener" class="apply-btn secondary">211arizona.org →</a>
+      <br><br>
+      <button class="restart-btn" onclick="restart()">Start over</button>
+    </div>
+  </div>
+
+</div><!-- .screener-wrap -->
+</main>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer__grid">
+      <div class="footer__brand">
+        <h3>Common Ladder</h3>
+        <p>The civic resource platform connecting people experiencing homelessness with every service in your community.</p>
+        <p style="margin-top:1rem; font-size:.8rem; opacity:.7">Built in Phoenix, AZ · Free to use, always</p>
+      </div>
+      <div>
+        <h4>Find help</h4>
+        <ul>
+          <li><a href="/find.html?cat=shelter">Shelter</a></li>
+          <li><a href="/find.html?cat=food">Food</a></li>
+          <li><a href="/find.html?cat=legal">Legal</a></li>
+          <li><a href="/help/">All categories</a></li>
+          <li><a href="/static-tools/my-ladder.html">My Ladder planner</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>For providers</h4>
+        <ul>
+          <li><a href="/providers.html">Tools &amp; referrals</a></li>
+          <li><a href="/providers.html#case-manager-guide">Case manager guide</a></li>
+          <li><a href="/data-reports.html">Data &amp; reports</a></li>
+          <li><a href="/learn/">Four learning pathways</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>About</h4>
+        <ul>
+          <li><a href="/about.html">Our mission</a></li>
+          <li><a href="/about.html#methodology">Methodology</a></li>
+          <li><a href="/about.html#team">Team</a></li>
+          <li><a href="/contact.html">Contact</a></li>
+          <li><a href="/privacy.html">Privacy</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer__transparency">
+      <strong>Transparency:</strong> Common Ladder is an independent civic project. We do not sell user data, run ads, or accept payment from listed resources.
+    </div>
+    <div class="footer__bottom">
+      <span>&copy; 2026 Common Ladder. Free to use, always.</span>
+      <span><time datetime="2026-05-28">Last updated May 28, 2026</time></span>
+    </div>
+  </div>
+</footer>
+
+<script>
+// ── State ────────────────────────────────────────────────────────────────────
+var answers = {};
+var multiAnswers = { q3: [], q4: [] };
+var TOTAL = 7;
+
+// ── Selection helpers ────────────────────────────────────────────────────────
+function select(btn, qId) {
+  var card = document.getElementById(qId);
+  card.querySelectorAll('.choice-btn:not(.multi)').forEach(function(b) { b.classList.remove('selected'); });
+  btn.classList.add('selected');
+  answers[qId] = btn.dataset.val;
+  document.getElementById('next-' + qId).disabled = false;
+}
+
+function multiSelect(btn, qId) {
+  var val = btn.dataset.val;
+  // "none" clears others; others clear "none"
+  if (val === 'none') {
+    document.getElementById(qId).querySelectorAll('.choice-btn.multi').forEach(function(b) { b.classList.remove('selected'); });
+    multiAnswers[qId] = ['none'];
+    btn.classList.add('selected');
+  } else {
+    multiAnswers[qId] = multiAnswers[qId].filter(function(v){ return v !== 'none'; });
+    document.getElementById(qId).querySelector('[data-val="none"]').classList.remove('selected');
+    if (btn.classList.contains('selected')) {
+      btn.classList.remove('selected');
+      multiAnswers[qId] = multiAnswers[qId].filter(function(v){ return v !== val; });
+    } else {
+      btn.classList.add('selected');
+      multiAnswers[qId].push(val);
+    }
+  }
+  document.getElementById('next-' + qId).disabled = multiAnswers[qId].length === 0;
+}
+
+// ── Navigation ───────────────────────────────────────────────────────────────
+function next(fromId, toId) {
+  document.getElementById(fromId).classList.remove('active');
+  document.getElementById(toId).classList.add('active');
+  updateProgress(parseInt(toId.replace('q','')) - 1);
+  window.scrollTo({ top: document.getElementById('progress-wrap').offsetTop - 20, behavior: 'smooth' });
+}
+
+function back(fromId, toId) {
+  document.getElementById(fromId).classList.remove('active');
+  document.getElementById(toId).classList.add('active');
+  updateProgress(parseInt(toId.replace('q','')) - 1);
+}
+
+function updateProgress(step) {
+  var pct = Math.round((step / TOTAL) * 100);
+  document.getElementById('progress-wrap').style.display = 'block';
+  document.getElementById('progress-text').textContent = 'Question ' + (step + 1) + ' of ' + TOTAL;
+  document.getElementById('progress-pct').textContent = pct + '%';
+  document.getElementById('progress-fill').style.width = pct + '%';
+}
+
+function restart() {
+  answers = {};
+  multiAnswers = { q3: [], q4: [] };
+  document.querySelectorAll('.choice-btn').forEach(function(b){ b.classList.remove('selected'); });
+  document.querySelectorAll('.btn-next').forEach(function(b){ b.disabled = true; });
+  document.getElementById('results').style.display = 'none';
+  document.getElementById('q1').classList.add('active');
+  document.getElementById('progress-wrap').style.display = 'none';
+  document.getElementById('progress-fill').style.width = '14%';
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+// ── Eligibility logic ────────────────────────────────────────────────────────
+function showResults() {
+  // Hide last question
+  document.getElementById('q7').classList.remove('active');
+  document.getElementById('progress-wrap').style.display = 'none';
+
+  var status = answers.q1 || 'unsure';
+  var veteran = answers.q2 === 'yes';
+  var q3 = multiAnswers.q3;
+  var q4 = multiAnswers.q4;
+  var income = answers.q5 === 'unsure' ? 'unsure' : parseInt(answers.q5 || '0');
+  var hasInsurance = answers.q6 === 'yes';
+  var housing = answers.q7 || 'unsure';
+
+  var hasChildren = q3.indexOf('kids_under5') > -1 || q3.indexOf('kids_older') > -1;
+  var hasKidsUnder5 = q3.indexOf('kids_under5') > -1;
+  var pregnant = q3.indexOf('pregnant') > -1;
+  var disability = q4.indexOf('disability') > -1 || q4.indexOf('blind') > -1;
+  var age65 = q4.indexOf('age65') > -1;
+  var homeless = housing === 'homeless';
+  var atRisk = housing === 'at_risk';
+  var fedEligible = status === 'citizen' || status === 'resident';
+  var lowIncome = income === 'unsure' || income === 0 || income <= 1500;
+  var veryLowIncome = income === 'unsure' || income === 0 || income <= 1000;
+
+  var benefits = [];
+
+  // ── SNAP ──────────────────────────────────────────────────────────────────
+  if (fedEligible || status === 'unsure') {
+    if (lowIncome || homeless) {
+      benefits.push({
+        id: 'snap',
+        priority: homeless || veryLowIncome,
+        icon: '🍎',
+        name: 'SNAP (Food Benefits)',
+        sub: 'Up to $291/month for a single person',
+        type: 'priority',
+        what: 'SNAP provides a monthly credit on an EBT card to buy groceries at most stores. A single adult with no income qualifies for the maximum benefit — currently about $291/month.',
+        amount: 'Up to $291/month (individual) · Up to $973/month (family of 4)',
+        apply: 'Apply online at <a href="https://healthearizonaplus.gov" target="_blank">healthearizonaplus.gov</a> or call <a href="tel:18554327587">1-855-432-7587</a> (DES). You can apply without a permanent address — use a shelter or service address.',
+        phone: '1-855-432-7587',
+        link: 'https://healthearizonaplus.gov'
+      });
+    }
+  }
+
+  // ── AHCCCS (Medicaid) ─────────────────────────────────────────────────────
+  if ((fedEligible || status === 'unsure') && !hasInsurance) {
+    if (lowIncome || pregnant || homeless) {
+      benefits.push({
+        id: 'ahcccs',
+        priority: homeless || !hasInsurance,
+        icon: '🏥',
+        name: 'AHCCCS (Arizona Medicaid)',
+        sub: 'Free or low-cost health coverage',
+        type: 'priority',
+        what: 'AHCCCS is Arizona\'s free health insurance for people with low incomes. It covers doctor visits, prescriptions, mental health care, hospital stays, and more. Most adults earning under about $1,838/month qualify. Being unhoused does not disqualify you.',
+        amount: 'Free coverage · no monthly premium for most members',
+        apply: 'Apply at <a href="https://healthearizonaplus.gov" target="_blank">healthearizonaplus.gov</a> or call <a href="tel:18554327587">1-855-432-7587</a>. You can apply the same day and coverage often starts immediately.',
+        phone: '1-855-432-7587',
+        link: 'https://healthearizonaplus.gov'
+      });
+    }
+  }
+
+  // ── VA Healthcare ─────────────────────────────────────────────────────────
+  if (veteran) {
+    benefits.push({
+      id: 'va_health',
+      priority: true,
+      icon: '🎖️',
+      name: 'VA Healthcare',
+      sub: 'Free or low-cost care for veterans',
+      type: 'veteran',
+      what: 'The VA provides free or very low-cost healthcare to most veterans — including mental health, dental, and substance use treatment. You don\'t need a service-connected disability to qualify for basic care. Enrollment is based on service history and income.',
+      amount: 'Free for most qualifying veterans · copays may apply for higher incomes',
+      apply: 'Call the Phoenix VA at <a href="tel:6022775551">602-277-5551</a> or enroll online at <a href="https://www.va.gov/health-care/apply/" target="_blank">va.gov/health-care/apply</a>. Have your DD-214 if available — the VA can help you get a copy if you don\'t.',
+      phone: '602-277-5551',
+      link: 'https://www.va.gov/health-care/apply/'
+    });
+  }
+
+  // ── HUD-VASH ──────────────────────────────────────────────────────────────
+  if (veteran && homeless) {
+    benefits.push({
+      id: 'hud_vash',
+      priority: true,
+      icon: '🏠',
+      name: 'HUD-VASH Housing Voucher',
+      sub: 'Housing voucher + VA case management for homeless veterans',
+      type: 'veteran',
+      what: 'HUD-VASH pairs a Section 8 Housing Choice Voucher with VA case management. For homeless veterans it\'s one of the fastest paths from the street to a lease. You must be referred through the VA — you cannot apply directly.',
+      amount: 'Voucher covers most of your rent · you pay 30% of adjusted income',
+      apply: 'Start at the Phoenix VA HCHV team: call <a href="tel:6022775551">602-277-5551</a> and ask for the Homeless Patient Aligned Care Team (H-PACT). You can also call the National Call Center for Homeless Veterans at <a href="tel:18774243838">877-4AID-VET</a> any time.',
+      phone: '877-424-3838',
+      link: 'https://www.va.gov/homeless/hud-vash.asp'
+    });
+  }
+
+  // ── SSVF (veteran rental help) ────────────────────────────────────────────
+  if (veteran && (atRisk || homeless)) {
+    benefits.push({
+      id: 'ssvf',
+      priority: true,
+      icon: '💰',
+      name: 'SSVF (Veteran Rental Assistance)',
+      sub: 'Short-term rental help for veterans at risk of homelessness',
+      type: 'veteran',
+      what: 'Supportive Services for Veteran Families (SSVF) provides short-term rental assistance, deposit help, and utility help for very-low-income veterans who are homeless or about to lose their housing. It can move fast — sometimes within days.',
+      amount: 'One-time or short-term rental/utility assistance · amount varies by need',
+      apply: 'Contact US.VETS Phoenix at <a href="tel:6022710300">602-271-0300</a> or Catholic Charities at <a href="tel:6027494405">602-749-4405</a>. You can also call <a href="tel:18774243838">877-4AID-VET</a> to be routed to the right SSVF grantee.',
+      phone: '602-271-0300',
+      link: 'https://www.va.gov/homeless/ssvf/'
+    });
+  }
+
+  // ── SSI ───────────────────────────────────────────────────────────────────
+  if ((fedEligible || status === 'unsure') && (disability || age65) && veryLowIncome) {
+    benefits.push({
+      id: 'ssi',
+      priority: true,
+      icon: '💵',
+      name: 'SSI (Supplemental Security Income)',
+      sub: 'Up to $994/month for people with disabilities or 65+',
+      type: 'priority',
+      what: 'SSI is a monthly cash payment for people who have a disability, are blind, or are 65 or older — and have limited income and resources. In Arizona, SSI recipients also automatically qualify for AHCCCS (Medicaid). You don\'t need a work history to qualify.',
+      amount: 'Up to $994/month (individual) · also unlocks AHCCCS automatically',
+      apply: 'Call Social Security at <a href="tel:18007721213">1-800-772-1213</a> or apply at <a href="https://www.ssa.gov/benefits/ssi/" target="_blank">ssa.gov</a>. If you\'re experiencing homelessness, ask about SOAR — trained outreach workers can dramatically improve your approval odds and speed.',
+      phone: '1-800-772-1213',
+      link: 'https://www.ssa.gov/benefits/ssi/'
+    });
+  }
+
+  // ── SOAR (SSI navigation help) ────────────────────────────────────────────
+  if (disability && (homeless || atRisk)) {
+    benefits.push({
+      id: 'soar',
+      priority: false,
+      icon: '🧭',
+      name: 'SOAR (SSI/SSDI Application Help)',
+      sub: 'Free help applying for Social Security disability benefits',
+      type: '',
+      what: 'SOAR (SSI/SSDI Outreach, Access, and Recovery) is a national program that trains outreach workers to help people experiencing homelessness apply for Social Security disability benefits. SOAR-assisted applications are approved at 3x the rate of self-filed applications and are processed much faster.',
+      amount: 'Free service · helps you access SSI ($994/mo) or SSDI',
+      apply: 'Ask any shelter, day resource center, or case manager about SOAR-trained staff. At the Human Services Campus in Phoenix, ask at the Brian Garcia Welcome Center (220 S 12th Ave, Phoenix).',
+      phone: '211',
+      link: 'https://soarworks.org/'
+    });
+  }
+
+  // ── LIHEAP / Utility help ─────────────────────────────────────────────────
+  if ((fedEligible || status === 'unsure') && lowIncome) {
+    benefits.push({
+      id: 'liheap',
+      priority: atRisk,
+      icon: '⚡',
+      name: 'LIHEAP (Utility Bill Help)',
+      sub: 'Help with electricity and cooling costs',
+      type: atRisk ? 'priority' : '',
+      what: 'LIHEAP (Low Income Home Energy Assistance Program) helps pay electric and gas bills. In Phoenix summers, this is especially critical — losing AC can be life-threatening. Arizona also has the Power AZ program that extends energy help to higher incomes. If you already get SNAP or TANF, you\'re automatically eligible.',
+      amount: 'Varies — typically $100–$500 per household per year · emergency amounts higher',
+      apply: 'Call Wildfire (Community Action) at <a href="tel:6026040640">602-604-0640</a> or APS Crisis Bill Assistance at <a href="tel:6023717171">602-371-7171</a>. You can also apply through DES at <a href="https://des.az.gov/liheap" target="_blank">des.az.gov/liheap</a>.',
+      phone: '602-604-0640',
+      link: 'https://des.az.gov/liheap'
+    });
+  }
+
+  // ── TANF ──────────────────────────────────────────────────────────────────
+  if ((fedEligible) && hasChildren && veryLowIncome) {
+    benefits.push({
+      id: 'tanf',
+      priority: false,
+      icon: '👨‍👩‍👧',
+      name: 'TANF (Cash Assistance for Families)',
+      sub: 'Monthly cash for families with children',
+      type: '',
+      what: 'Arizona\'s TANF program (called Cash Assistance) provides a monthly cash payment to families with children under 18. The income limit is very low and work requirements apply for adults, but it can bridge an immediate gap. TANF recipients also get SNAP and AHCCCS automatically.',
+      amount: 'Varies by household size · typically $278–$412/month',
+      apply: 'Apply at <a href="https://healthearizonaplus.gov" target="_blank">healthearizonaplus.gov</a> or call DES at <a href="tel:18554327587">1-855-432-7587</a>. You can apply for SNAP, AHCCCS, and TANF in the same application.',
+      phone: '1-855-432-7587',
+      link: 'https://healthearizonaplus.gov'
+    });
+  }
+
+  // ── WIC ───────────────────────────────────────────────────────────────────
+  if ((fedEligible || status === 'unsure') && (pregnant || hasKidsUnder5)) {
+    benefits.push({
+      id: 'wic',
+      priority: pregnant,
+      icon: '🍼',
+      name: 'WIC (Women, Infants & Children)',
+      sub: 'Food, nutrition support, and breastfeeding help',
+      type: pregnant ? 'priority' : '',
+      what: 'WIC provides monthly food benefits (formula, produce, dairy, cereal), nutrition counseling, and breastfeeding support to pregnant women, new mothers, and children under 5. Benefits are on an EBT card accepted at most grocery stores. Income limit is 185% of the federal poverty level.',
+      amount: 'Monthly food package — typically $50–$150 in food benefits per person',
+      apply: 'Call Arizona WIC at <a href="tel:18002527288">1-800-252-7288</a> or find your nearest WIC office at <a href="https://www.azwic.gov" target="_blank">azwic.gov</a>. You can apply during pregnancy — benefits begin right away.',
+      phone: '1-800-252-7288',
+      link: 'https://www.azwic.gov'
+    });
+  }
+
+  // ── Rental assistance (non-veteran) ───────────────────────────────────────
+  if (!veteran && atRisk && (fedEligible || status === 'unsure') && lowIncome) {
+    benefits.push({
+      id: 'rental',
+      priority: true,
+      icon: '🏡',
+      name: 'Emergency Rental Assistance',
+      sub: 'Help with back rent, deposits, and utility shutoffs',
+      type: 'priority',
+      what: 'Multiple programs in Maricopa County can pay your landlord directly to cover back rent or prevent eviction: Wildfire, St. Vincent de Paul, Catholic Charities, City of Phoenix Human Services, and Salvation Army. Call 211 first — operators know which programs have funds available right now.',
+      amount: 'One-time assistance — typically 1–3 months of rent depending on the program',
+      apply: 'Call <a href="tel:211">211</a> to find which programs have current funding for your ZIP code. If you have an eviction filing, also call Community Legal Services at <a href="tel:6022583434">602-258-3434</a> for free legal help.',
+      phone: '211',
+      link: '/blog/homeless-prevention-phoenix.html'
+    });
+  }
+
+  // ── If very few results, add 211 prominently ──────────────────────────────
+  // Always add it as the last item if not already shown
+  if (benefits.length === 0) {
+    benefits.push({
+      id: '211',
+      priority: true,
+      icon: '📞',
+      name: '211 Arizona — Benefits & Services Navigation',
+      sub: 'Free helpline that matches you to programs in your area',
+      type: 'priority',
+      what: '211 is Arizona\'s free social services helpline. A live operator can tell you exactly which programs have funding in your ZIP code right now and help you start applying. Available 24/7, in English and Spanish.',
+      amount: 'Free service',
+      apply: 'Dial <a href="tel:211">211</a> from any phone or visit <a href="https://211arizona.org" target="_blank">211arizona.org</a>.',
+      phone: '211',
+      link: 'https://211arizona.org'
+    });
+  }
+
+  // Sort: priority first
+  benefits.sort(function(a,b){ return (b.priority ? 1 : 0) - (a.priority ? 1 : 0); });
+
+  // Render
+  var list = document.getElementById('benefits-list');
+  list.innerHTML = benefits.map(function(b, i) {
+    var cardClass = 'benefit-card' + (b.type ? ' ' + b.type : '');
+    return '<div class="' + cardClass + '">' +
+      '<div class="benefit-header" onclick="toggleBenefit(\'b' + i + '\')" aria-expanded="false">' +
+        '<div class="benefit-title-wrap">' +
+          '<span class="benefit-icon">' + b.icon + '</span>' +
+          '<div><div class="benefit-name">' + b.name + '</div><div class="benefit-sub">' + b.sub + '</div></div>' +
+        '</div>' +
+        '<span class="benefit-toggle" id="toggle-b' + i + '">▼</span>' +
+      '</div>' +
+      '<div class="benefit-body" id="body-b' + i + '">' +
+        '<p>' + b.what + '</p>' +
+        '<div class="benefit-amount"><strong>What you might get</strong>' + b.amount + '</div>' +
+        '<p><strong>How to apply:</strong> ' + b.apply + '</p>' +
+        (b.link && b.link.startsWith('http') ? '<a href="' + b.link + '" target="_blank" rel="noopener" class="apply-btn">Apply online →</a>' : '') +
+        (b.phone && b.phone !== '211' ? '<a href="tel:' + b.phone.replace(/[^0-9]/g,'') + '" class="apply-btn secondary">Call ' + b.phone + '</a>' : '') +
+      '</div>' +
+    '</div>';
+  }).join('');
+
+  document.getElementById('results-count').textContent = benefits.length + ' program' + (benefits.length !== 1 ? 's' : '') + ' found';
+
+  var resultEl = document.getElementById('results');
+  resultEl.style.display = 'block';
+  window.scrollTo({ top: resultEl.offsetTop - 20, behavior: 'smooth' });
+
+  // GA event
+  try { gtag('event', 'screener_complete', { benefits_count: benefits.length, housing: housing }); } catch(e){}
+}
+
+function toggleBenefit(id) {
+  var body = document.getElementById('body-' + id);
+  var toggle = document.getElementById('toggle-' + id);
+  var open = body.classList.contains('open');
+  body.classList.toggle('open', !open);
+  toggle.classList.toggle('open', !open);
+}
+</script>
+
+<script data-id="cl-card-click">
+(function(){
+  document.querySelectorAll('.card, .post-card:not(.post-card--linked)').forEach(function(el){
+    var a = el.querySelector('a[href]');
+    if(!a) return;
+    el.addEventListener('click', function(e){
+      if(e.target.tagName==='A'||e.target.closest('a')) return;
+      window.location.href = a.href;
+    });
+  });
+})();
+</script>
+</body>
+</html>
