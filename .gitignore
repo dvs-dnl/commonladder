@@ -11,3 +11,15 @@
 
 # FUSE/bindfs hidden files created when an open file is unlinked in the sandbox
 .fuse_hidden*
+
+# --- SECRETS-POLICY standard block (added 2026-05-29) ---
+# See /Projects/SECRETS-POLICY.md
+.env
+*.pem
+*.key
+*-token.txt
+*-credentials.json
+push-*.sh
+secrets.*
+*.swp
+.COMMIT_EDITMSG
