@@ -567,47 +567,44 @@ h1, h2, h3, h4 {
 .nav__links { flex-wrap: wrap; align-items: center; }
 .nav__links a { white-space: nowrap; }
 .nav__cta { white-space: nowrap; }
+
+/* My Ladder — secondary CTA, white outline pill */
+.nav__cta--ladder {
+  background: transparent !important;
+  color: #fff !important;
+  border: 1.5px solid rgba(255,255,255,.55) !important;
+  padding: .45rem 1.1rem !important;
+}
+.nav__cta--ladder:hover {
+  background: rgba(255,255,255,.12) !important;
+  border-color: rgba(255,255,255,.85) !important;
+  color: #fff !important;
+}
+
+/* Leave page — readable but calm; clearly an exit control */
 .nav__exit {
-  color: rgba(255,255,255,.65) !important;
+  color: rgba(255,255,255,.82) !important;
   font-size: .85rem !important;
-  border: 1px solid rgba(255,255,255,.3);
-  padding: .35rem .8rem;
+  border: 1.5px solid rgba(255,255,255,.45);
+  padding: .35rem .9rem;
   border-radius: var(--radius);
   white-space: nowrap;
+  letter-spacing: .01em;
 }
 .nav__exit:hover {
   color: #fff !important;
-  border-color: rgba(255,255,255,.6);
+  border-color: rgba(255,255,255,.85);
+  background: rgba(255,255,255,.08);
 }
 
 /* ─── Learn pathway components ─────────────────────────────────────── */
 
 /* Pathway landing cards */
-/* 4-up grid: 4 col desktop → 2 col tablet → 1 col mobile */
-.grid-4up {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 1.5rem;
-  margin-top: 2rem;
-}
-@media (max-width: 860px) {
-  .grid-4up { grid-template-columns: repeat(2, 1fr); }
-}
-@media (max-width: 480px) {
-  .grid-4up { grid-template-columns: 1fr; }
-}
-
 .pathway-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
   gap: 1.5rem;
   margin-top: 2rem;
-}
-@media (max-width: 860px) {
-  .pathway-grid { grid-template-columns: repeat(2, 1fr); }
-}
-@media (max-width: 480px) {
-  .pathway-grid { grid-template-columns: 1fr; }
 }
 .pathway-card {
   background: #fff;
