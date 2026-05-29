@@ -59,6 +59,8 @@
 .results-header p{color:var(--gray);max-width:520px;margin:0 auto}
 .print-btn{display:inline-flex;align-items:center;gap:.4rem;background:#fff;border:2px solid #E5E9F0;color:var(--blue);padding:.55rem 1.1rem;border-radius:var(--radius);font-size:.85rem;font-weight:600;cursor:pointer;transition:border-color .15s;text-decoration:none;margin-top:.75rem}
 .print-btn:hover{border-color:var(--blue);text-decoration:none}
+.results-actions{display:flex;gap:.5rem;justify-content:center;flex-wrap:wrap;margin-top:.75rem}
+.results-actions .print-btn{margin-top:0}
 .ladder-rail{display:flex;flex-direction:column;gap:1rem;position:relative;padding-left:3.5rem}
 .ladder-rail::before{content:'';position:absolute;left:1.35rem;top:2rem;bottom:2rem;width:3px;background:#E5E9F0;border-radius:2px}
 .rung{position:relative;background:#fff;border:1.5px solid #E5E9F0;border-radius:12px;box-shadow:0 1px 4px rgba(0,0,0,.07);overflow:hidden;transition:border-color .2s}
@@ -114,7 +116,7 @@
 .restart-btn{background:none;border:2px solid #E5E9F0;color:var(--gray);padding:.55rem 1.25rem;border-radius:var(--radius);font-size:.85rem;cursor:pointer}
 .restart-btn:hover{border-color:var(--gray);color:var(--dark)}
 @media print{
-  .crisis-bar,.nav,.breadcrumb,#assessment-shell,#loading-screen,.print-btn,.restart-wrap,.footer,.rung-chevron,#crisis-banner{display:none!important}
+  .crisis-bar,.nav,.breadcrumb,#assessment-shell,#loading-screen,.print-btn,.results-actions,.restart-wrap,.footer,.rung-chevron,#crisis-banner{display:none!important}
   #results-shell{display:block!important;padding:0}
   .rung{break-inside:avoid}
   .rung-body{display:block!important}
@@ -224,10 +226,16 @@
     <span class="eyebrow">Your personalized roadmap</span>
     <h1>Your Ladder</h1>
     <p>Each rung is a stage on your path to stability. Your current position is highlighted. Tap any rung to expand it.</p>
-    <button class="print-btn" onclick="window.print()">
-      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
-      Save as PDF / Print
-    </button>
+    <div class="results-actions">
+      <button class="print-btn" onclick="window.print()">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+        Save as PDF / Print
+      </button>
+      <button class="print-btn" onclick="emailLadder()" aria-label="Email this Ladder to yourself or someone else">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        Email this Ladder
+      </button>
+    </div>
   </div>
 
   <div class="ladder-rail" id="ladder-rail">
@@ -862,6 +870,103 @@ function restartAssessment() {
 }
 
 renderQuestion(0);
+function emailLadder() {
+  // Build a readable plain-text summary from the user's answers and the visible
+  // rung content. mailto: opens the user's native mail app — nothing is sent
+  // anywhere by this site. The user fully controls the recipient and can edit
+  // before sending.
+  var nl = '\n';
+  var sep = '----------------------------------------' + nl;
+
+  // Map raw answer values back to the human-readable label from QUESTIONS.
+  function answerLabel(qid) {
+    var v = answers[qid];
+    if (!v) return null;
+    var q = QUESTIONS.find(function(x){ return x.id === qid; });
+    if (!q) return v;
+    var opt = q.options.find(function(o){ return o.value === v; });
+    return opt ? opt.label : v;
+  }
+
+  // Header
+  var today = new Date().toLocaleDateString(undefined, { year:'numeric', month:'long', day:'numeric' });
+  var body = '';
+  body += 'YOUR COMMON LADDER PLAN' + nl;
+  body += today + nl + nl;
+
+  // Their answers (skip empties; show the question text + chosen label so the
+  // recipient understands the starting context).
+  var answeredAny = QUESTIONS.some(function(q){ return answers[q.id]; });
+  if (answeredAny) {
+    body += 'BASED ON YOUR ANSWERS' + nl + sep;
+    QUESTIONS.forEach(function(q){
+      var lab = answerLabel(q.id);
+      if (lab) {
+        body += '• ' + q.text + nl;
+        body += '  ' + lab + nl;
+      }
+    });
+    body += nl;
+  }
+
+  // The ladder — pull each visible rung's title, status, and body text from the DOM.
+  body += 'YOUR LADDER' + nl + sep;
+  var rungs = document.querySelectorAll('#ladder-rail .rung');
+  rungs.forEach(function(rung){
+    var num = (rung.querySelector('.rung-num') || {}).textContent || '';
+    var title = (rung.querySelector('.rung-title') || {}).textContent || '';
+    var sub = (rung.querySelector('.rung-subtitle') || {}).textContent || '';
+    var status = rung.classList.contains('rung--current') ? 'YOUR CURRENT FOCUS'
+               : rung.classList.contains('rung--done')    ? 'Done'
+               : rung.classList.contains('rung--future')  ? 'Coming up'
+               : '';
+    body += nl + 'Rung ' + num.trim() + ': ' + title.trim();
+    if (sub) body += ' — ' + sub.trim();
+    body += nl;
+    if (status) body += '[' + status + ']' + nl;
+    // innerText respects display:none and visibility — so hidden personalization
+    // tips (e.g. r0-kids-tip when the user has no kids) won't leak through.
+    var rbody = rung.querySelector('.rung-body');
+    if (rbody) {
+      var txt = (rbody.innerText || '').trim();
+      if (txt) {
+        // Collapse any 3+ newline runs to keep the body tight.
+        txt = txt.replace(/\n{3,}/g, '\n\n');
+        body += txt + nl;
+      }
+    }
+  });
+
+  // Footer: crisis numbers + live link.
+  body += nl + 'CRISIS SUPPORT, ANYTIME' + nl + sep;
+  body += '• 211 Arizona — call 211 (24/7, free, confidential)' + nl;
+  body += '• National Domestic Violence Hotline — 1-800-799-7233 (call or text)' + nl;
+  body += '• Suicide & Crisis Lifeline — 988 (call or text)' + nl + nl;
+
+  body += 'View the live version of your Ladder:' + nl;
+  body += 'https://www.commonladder.org/static-tools/my-ladder.html' + nl + nl;
+  body += '— Common Ladder' + nl;
+  body += 'A civic resource platform for homelessness. Free to use, always.' + nl;
+
+  // Subject — short, descriptive, no PII.
+  var subject = 'My Common Ladder plan — ' + today;
+
+  // Build the mailto: URI. Some clients cap around 2000 chars total; the body
+  // above is typically 2–4 KB, which modern clients (Mail, Outlook, Gmail web,
+  // Spark, Airmail) handle fine. If we ever hit a cap we can switch to opening
+  // a draft window with the content pre-rendered for copy-paste fallback.
+  var href = 'mailto:?subject=' + encodeURIComponent(subject) +
+             '&body=' + encodeURIComponent(body);
+
+  // Use a temporary anchor so we don't navigate away from my-ladder.html — some
+  // browsers handle direct window.location = mailto: by replacing the page.
+  var a = document.createElement('a');
+  a.href = href;
+  a.style.display = 'none';
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+}
 </script>
 </body>
 </html>

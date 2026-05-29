@@ -8,3 +8,6 @@
 
 # Editor
 .vscode/
+
+# FUSE/bindfs hidden files created when an open file is unlinked in the sandbox
+.fuse_hidden*
