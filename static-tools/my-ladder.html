@@ -27,24 +27,7 @@
 #crisis-banner a{color:#FEF08A;text-decoration:underline}
 #crisis-banner.visible{display:block}
 #assessment-shell{max-width:680px;margin:0 auto;padding:2.5rem var(--gap) 5rem}
-.progress-wrap{margin-bottom:2.5rem}
-.progress-label{display:flex;justify-content:space-between;font-size:.82rem;color:var(--gray);margin-bottom:.5rem}
-.progress-track{background:#E5E9F0;border-radius:99px;height:6px;overflow:hidden}
-.progress-fill{background:var(--amber);height:100%;border-radius:99px;transition:width .4s ease}
-.q-card{background:#fff;border:1.5px solid #E5E9F0;border-radius:12px;box-shadow:0 1px 4px rgba(0,0,0,.08);padding:2rem}
-.q-num{font-size:.78rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--amber);margin-bottom:.5rem}
-.q-text{font-family:'Manrope','DM Sans',system-ui,sans-serif;font-size:1.35rem;font-weight:600;color:var(--blue);line-height:1.3;margin-bottom:1.75rem}
-.q-options{display:flex;flex-direction:column;gap:.75rem}
-.q-btn{display:flex;align-items:center;gap:.75rem;width:100%;padding:1rem 1.25rem;background:#fff;border:2px solid #E5E9F0;border-radius:var(--radius);cursor:pointer;font-size:1rem;font-family:inherit;color:var(--dark);text-align:left;transition:border-color .15s,background .15s;line-height:1.4}
-.q-btn:hover{border-color:var(--blue);background:#F0F5FF}
-.q-btn.selected{border-color:var(--amber);background:#FFFBF0}
-.q-btn .q-emoji{font-size:1.4rem;flex-shrink:0;width:2rem;text-align:center}
-.q-nav{display:flex;justify-content:space-between;align-items:center;margin-top:1.5rem;gap:1rem}
-.btn-back{background:none;border:2px solid #E5E9F0;color:var(--gray);padding:.65rem 1.25rem;border-radius:var(--radius);font:600 .92rem 'Inter',sans-serif;cursor:pointer;transition:border-color .15s,color .15s}
-.btn-back:hover{border-color:var(--gray);color:var(--dark)}
-.btn-next{background:var(--blue);color:#fff;border:none;padding:.75rem 1.75rem;border-radius:var(--radius);font:600 .95rem 'Inter',sans-serif;cursor:pointer;transition:background .15s;margin-left:auto}
-.btn-next:hover{background:#163060}
-.btn-next:disabled{opacity:.4;cursor:not-allowed}
+/* questionnaire CSS moved to /style.css under .ml-q-* prefix */
 #loading-screen{display:none;text-align:center;padding:4rem 2rem;max-width:480px;margin:0 auto}
 #loading-screen.visible{display:block}
 .ladder-anim{margin:0 auto 1.5rem;width:60px;height:80px;position:relative;animation:ladder-rise .8s ease-in-out infinite alternate}
@@ -185,24 +168,8 @@
     <h1 style="font-family:'Manrope',system-ui,sans-serif;font-size:clamp(1.6rem,4vw,2.2rem);color:var(--blue);margin-bottom:.6rem">Build your personal ladder</h1>
     <p style="color:var(--gray);max-width:500px;margin:0 auto;font-size:.98rem">Answer 7 quick questions and get a personalized step-by-step plan — including the insider knowledge that connected people get from lawyers and financial advisors, but that most people never see.</p>
   </div>
-  <div class="progress-wrap" id="progress-wrap">
-    <div class="progress-label">
-      <span id="progress-text">Question 1 of 7</span>
-      <span id="progress-pct">14%</span>
-    </div>
-    <div class="progress-track">
-      <div class="progress-fill" id="progress-fill" style="width:14%"></div>
-    </div>
-  </div>
-  <div class="q-card" id="q-card">
-    <div class="q-num" id="q-num">Question 1</div>
-    <div class="q-text" id="q-text">Loading…</div>
-    <div class="q-options" id="q-options"></div>
-    <div class="q-nav">
-      <button class="btn-back" id="btn-back" onclick="goBack()" style="display:none">← Back</button>
-      <button class="btn-next" id="btn-next" onclick="goNext()" disabled>Continue →</button>
-    </div>
-  </div>
+  <!-- Shared questionnaire mounts here (see my-ladder-questionnaire.js) -->
+  <div id="ml-questionnaire-mount"></div>
 </div>
 
 <!-- LOADING -->
@@ -583,133 +550,16 @@
   </div>
 </footer>
 
+<script src="/static-tools/my-ladder-questionnaire.js"></script>
 <script>
-const QUESTIONS = [
-  {
-    id: 'housing',
-    text: "What's your housing situation right now?",
-    options: [
-      { emoji: '🚨', label: 'I need shelter tonight', value: 'crisis' },
-      { emoji: '🏠', label: "I'm in emergency shelter or a mission", value: 'shelter' },
-      { emoji: '🛋️', label: "I'm couch-surfing, in a motel, or in transitional housing", value: 'transitional' },
-      { emoji: '⚠️', label: "I have housing but I'm at risk of losing it", value: 'atrisk' },
-      { emoji: '✅', label: 'I have stable housing', value: 'housed' }
-    ]
-  },
-  {
-    id: 'family',
-    text: "Who are you planning for?",
-    options: [
-      { emoji: '👤', label: 'Just myself', value: 'solo' },
-      { emoji: '👨‍👧', label: 'Me and my kids', value: 'kids' },
-      { emoji: '👫', label: 'Me and a partner or spouse', value: 'partner' },
-      { emoji: '👨‍👩‍👧', label: 'Me, kids, and a partner', value: 'family' },
-      { emoji: '🤰', label: "I'm pregnant", value: 'pregnant' }
-    ]
-  },
-  {
-    id: 'income',
-    text: "What's your income situation?",
-    options: [
-      { emoji: '❌', label: 'I have no income right now', value: 'none' },
-      { emoji: '💳', label: 'I receive benefits (SNAP, SSI, disability, etc.)', value: 'benefits' },
-      { emoji: '⏱️', label: 'I work part-time or have inconsistent income', value: 'parttime' },
-      { emoji: '💼', label: 'I work full-time', value: 'fulltime' }
-    ]
-  },
-  {
-    id: 'docs',
-    text: "Do you have a government-issued ID?",
-    options: [
-      { emoji: '✅', label: "Yes, I have a valid ID and know my Social Security number", value: 'full' },
-      { emoji: '⚠️', label: "I have some documents but not everything", value: 'partial' },
-      { emoji: '❌', label: "I have no ID or documents right now", value: 'none' }
-    ]
-  },
-  {
-    id: 'insurance',
-    text: "Do you have health insurance?",
-    options: [
-      { emoji: '✅', label: 'Yes', value: 'insured' },
-      { emoji: '❌', label: 'No', value: 'uninsured' },
-      { emoji: '❓', label: "I'm not sure", value: 'unsure' }
-    ]
-  },
-  {
-    id: 'transport',
-    text: "How do you get around?",
-    options: [
-      { emoji: '🚗', label: 'I have a car', value: 'car' },
-      { emoji: '🚌', label: 'I use public transit or get rides', value: 'transit' },
-      { emoji: '🚫', label: 'Transportation is a major barrier for me', value: 'none' }
-    ]
-  },
-  {
-    id: 'employment',
-    text: "What's your employment goal?",
-    options: [
-      { emoji: '⏸️', label: "I'm not focused on that right now", value: 'notready' },
-      { emoji: '💡', label: "I'm interested in working eventually", value: 'interested' },
-      { emoji: '🔍', label: "I'm actively looking for a job", value: 'seeking' },
-      { emoji: '📈', label: "I'm already working and want to do better", value: 'working' }
-    ]
-  }
-];
+// Questionnaire schema + mount logic live in my-ladder-questionnaire.js (loaded above).
+// Anything page-specific (show/hide tips, ladder personalization) stays inline below.
+// (dead QUESTIONS array removed; schema is now in my-ladder-questionnaire.js)
 
-let currentStep = 0;
-let answers = {};
 
-function renderQuestion(idx) {
-  const q = QUESTIONS[idx];
-  document.getElementById('q-num').textContent = 'Question ' + (idx + 1);
-  document.getElementById('q-text').textContent = q.text;
-  const container = document.getElementById('q-options');
-  container.innerHTML = '';
-  q.options.forEach(function(opt) {
-    const btn = document.createElement('button');
-    btn.className = 'q-btn' + (answers[q.id] === opt.value ? ' selected' : '');
-    btn.innerHTML = '<span class="q-emoji">' + opt.emoji + '</span><span>' + opt.label + '</span>';
-    btn.setAttribute('aria-pressed', answers[q.id] === opt.value ? 'true' : 'false');
-    btn.addEventListener('click', function() { selectAnswer(q.id, opt.value, btn); });
-    container.appendChild(btn);
-  });
-  const pct = Math.round(((idx + 1) / QUESTIONS.length) * 100);
-  document.getElementById('progress-text').textContent = 'Question ' + (idx + 1) + ' of ' + QUESTIONS.length;
-  document.getElementById('progress-pct').textContent = pct + '%';
-  document.getElementById('progress-fill').style.width = pct + '%';
-  document.getElementById('btn-back').style.display = idx === 0 ? 'none' : 'inline-block';
-  document.getElementById('btn-next').disabled = !answers[q.id];
-  document.getElementById('btn-next').textContent = idx === QUESTIONS.length - 1 ? 'Build my ladder →' : 'Continue →';
-  document.getElementById('intro-block').style.display = idx === 0 ? 'block' : 'none';
-}
 
-function selectAnswer(qId, value, clickedBtn) {
-  answers[qId] = value;
-  document.querySelectorAll('#q-options .q-btn').forEach(function(b) {
-    b.classList.remove('selected');
-    b.setAttribute('aria-pressed', 'false');
-  });
-  clickedBtn.classList.add('selected');
-  clickedBtn.setAttribute('aria-pressed', 'true');
-  document.getElementById('btn-next').disabled = false;
-}
 
-function goNext() {
-  if (!answers[QUESTIONS[currentStep].id]) return;
-  if (currentStep < QUESTIONS.length - 1) {
-    currentStep++;
-    renderQuestion(currentStep);
-  } else {
-    showLoading();
-  }
-}
 
-function goBack() {
-  if (currentStep > 0) {
-    currentStep--;
-    renderQuestion(currentStep);
-  }
-}
 
 function showLoading() {
   document.getElementById('assessment-shell').style.display = 'none';
@@ -812,9 +662,23 @@ function buildResults() {
   var rs = document.getElementById('results-shell');
   rs.classList.add('visible');
   rs.style.display = 'block';
-  setTimeout(function() {
-    rs.scrollIntoView({ behavior: 'smooth', block: 'start' });
-  }, 100);
+
+  // Saved-plan UI: per-rung Mark Complete toggle + notes textarea, autosaving.
+  // decorateRungsWithState runs AFTER the personalization above (so it sees
+  // final rung-body content). refreshRungClasses sets rung--current/done/future
+  // from saved completion state, overriding the answer-derived initial state.
+  decorateRungsWithState();
+  refreshRungClasses();
+
+  // Scroll only if the plan was just completed (within 5s); on revisit, leave
+  // the user at the top of the page rather than yanking them down.
+  var justCompleted = currentPlan && currentPlan.completedAt &&
+    (Date.now() - new Date(currentPlan.completedAt).getTime()) < 5000;
+  if (justCompleted || !currentPlan || !currentPlan.completedAt) {
+    setTimeout(function() {
+      rs.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }, 100);
+  }
 }
 
 function toggleRung(n) {
@@ -856,20 +720,179 @@ function runScreener() {
   resultEl.style.flexDirection = 'column';
 }
 
-function restartAssessment() {
-  answers = {};
-  currentStep = 0;
-  document.getElementById('results-shell').style.display = 'none';
-  document.getElementById('results-shell').classList.remove('visible');
-  document.getElementById('crisis-banner').classList.remove('visible');
-  var ash = document.getElementById('assessment-shell');
-  ash.style.display = 'block';
+// ─── Bootstrap + saved-plan persistence ─────────────────────────────────
+// QUESTIONS schema + question rendering live in /static-tools/my-ladder-questionnaire.js.
+// This page is responsible for: (a) showing the saved plan if one exists,
+// (b) mounting the questionnaire if it doesn't, (c) rendering the ladder
+// with rung completion + notes backed by localStorage.
+let answers = {};
+let currentPlan = null;
+
+function startQuestionnaire(initialAnswers) {
+  document.getElementById('assessment-shell').style.display = 'block';
   document.getElementById('intro-block').style.display = 'block';
-  renderQuestion(0);
+  var rs = document.getElementById('results-shell');
+  rs.classList.remove('visible');
+  rs.style.display = 'none';
+  document.getElementById('crisis-banner').classList.remove('visible');
+
+  window.MyLadder.mountQuestionnaire(
+    document.getElementById('ml-questionnaire-mount'),
+    {
+      initialAnswers: initialAnswers || {},
+      onComplete: function (plan) {
+        currentPlan = plan;
+        answers = plan.answers;
+        showLoading();
+      }
+    }
+  );
+}
+
+function renderFromSavedPlan(plan) {
+  currentPlan = plan;
+  answers = plan.answers;
+  document.getElementById('assessment-shell').style.display = 'none';
+  document.getElementById('loading-screen').classList.remove('visible');
+  document.getElementById('loading-screen').style.display = 'none';
+  buildResults();
+}
+
+function restartAssessment() {
+  if (currentPlan && currentPlan.answers && Object.keys(currentPlan.answers).length) {
+    var keep = currentPlan.answers;
+    var ok = window.confirm('Retake the assessment? Your saved plan and notes will be replaced.');
+    if (!ok) return;
+    window.MyLadder.clearPlan();
+    currentPlan = null;
+    answers = {};
+    startQuestionnaire(keep);
+  } else {
+    startQuestionnaire();
+  }
   window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
-renderQuestion(0);
+(function bootstrap() {
+  var saved = window.MyLadder.loadSavedPlan();
+  if (saved && saved.answers && Object.keys(saved.answers).length) {
+    renderFromSavedPlan(saved);
+  } else {
+    startQuestionnaire();
+  }
+})();
+
+// ─── Per-rung saved-plan UI ─────────────────────────────────────────────
+// After buildResults() renders the rungs, decorateRungsWithState() walks
+// each rung body and appends a "Mark complete" toggle plus a notes textarea.
+// Both autosave to currentPlan.rungs[i] via MyLadder.savePlan.
+
+function decorateRungsWithState() {
+  if (!currentPlan) return;
+  if (!currentPlan.rungs) currentPlan.rungs = {};
+
+  var rungs = document.querySelectorAll('#ladder-rail .rung');
+  rungs.forEach(function (rung, idx) {
+    var rbody = rung.querySelector('.rung-body');
+    if (!rbody) return;
+    var existing = rbody.querySelector('.rung-state-wrap');
+    if (existing) existing.remove();
+
+    var rungState = currentPlan.rungs[idx] || { completed: false, notes: '' };
+    currentPlan.rungs[idx] = rungState;
+
+    var wrap = document.createElement('div');
+    wrap.className = 'rung-state-wrap';
+    wrap.innerHTML =
+      '<div class="rung-state">' +
+        '<button type="button" class="rung-state__toggle' + (rungState.completed ? ' rung-state__toggle--done' : '') + '" data-rung="' + idx + '">' +
+          (rungState.completed
+            ? '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Marked complete'
+            : '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="9"/></svg>Mark this rung complete') +
+        '</button>' +
+      '</div>' +
+      '<div class="rung-notes">' +
+        '<label class="rung-notes__label" for="rung-notes-' + idx + '">Your notes for this rung</label>' +
+        '<textarea class="rung-notes__field" id="rung-notes-' + idx + '" data-rung="' + idx + '" placeholder="e.g. Called 211 today, they referred me to Salvation Army…"></textarea>' +
+        '<span class="rung-notes__saved" data-rung="' + idx + '">Saved</span>' +
+      '</div>';
+    rbody.appendChild(wrap);
+
+    var ta = wrap.querySelector('.rung-notes__field');
+    ta.value = rungState.notes || '';
+    ta.addEventListener('input', debounce(function () { saveRungNotes(idx, ta.value); }, 400));
+
+    var btn = wrap.querySelector('.rung-state__toggle');
+    btn.addEventListener('click', function () { toggleRungComplete(idx); });
+  });
+}
+
+function saveRungNotes(idx, value) {
+  if (!currentPlan) return;
+  if (!currentPlan.rungs) currentPlan.rungs = {};
+  if (!currentPlan.rungs[idx]) currentPlan.rungs[idx] = { completed: false, notes: '' };
+  currentPlan.rungs[idx].notes = value;
+  var ok = window.MyLadder.savePlan(currentPlan);
+  if (ok) flashSaved(idx);
+}
+
+function toggleRungComplete(idx) {
+  if (!currentPlan) return;
+  if (!currentPlan.rungs) currentPlan.rungs = {};
+  if (!currentPlan.rungs[idx]) currentPlan.rungs[idx] = { completed: false, notes: '' };
+  currentPlan.rungs[idx].completed = !currentPlan.rungs[idx].completed;
+  window.MyLadder.savePlan(currentPlan);
+  refreshRungClasses();
+  decorateRungsWithState();
+}
+
+function refreshRungClasses() {
+  if (!currentPlan) return;
+  var rungs = document.querySelectorAll('#ladder-rail .rung');
+  var firstIncomplete = -1;
+  rungs.forEach(function (_, i) {
+    if (firstIncomplete === -1 && !(currentPlan.rungs[i] && currentPlan.rungs[i].completed)) {
+      firstIncomplete = i;
+    }
+  });
+  if (firstIncomplete === -1) firstIncomplete = rungs.length - 1;
+
+  rungs.forEach(function (el, i) {
+    var badge = el.querySelector('.rung-badge');
+    el.classList.remove('rung--current', 'rung--done', 'rung--future');
+    var done = currentPlan.rungs[i] && currentPlan.rungs[i].completed;
+    if (done) {
+      el.classList.add('rung--done');
+      if (badge) { badge.textContent = '✓ Completed'; badge.className = 'rung-badge rung-badge--done'; }
+    } else if (i === firstIncomplete) {
+      el.classList.add('rung--current');
+      if (badge) { badge.textContent = '← You are here'; badge.className = 'rung-badge rung-badge--current'; }
+    } else {
+      el.classList.add('rung--future');
+      if (badge) {
+        if (i === firstIncomplete + 1) { badge.textContent = 'Up next'; badge.className = 'rung-badge rung-badge--next'; }
+        else { badge.textContent = ''; badge.className = 'rung-badge'; }
+      }
+    }
+  });
+}
+
+function flashSaved(idx) {
+  var el = document.querySelector('.rung-notes__saved[data-rung="' + idx + '"]');
+  if (!el) return;
+  el.classList.add('visible');
+  clearTimeout(el._t);
+  el._t = setTimeout(function () { el.classList.remove('visible'); }, 1200);
+}
+
+function debounce(fn, ms) {
+  var t;
+  return function () {
+    var ctx = this, args = arguments;
+    clearTimeout(t);
+    t = setTimeout(function () { fn.apply(ctx, args); }, ms);
+  };
+}
 function emailLadder() {
   // Build a readable plain-text summary from the user's answers and the visible
   // rung content. mailto: opens the user's native mail app — nothing is sent

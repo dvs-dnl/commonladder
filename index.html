@@ -112,17 +112,26 @@
   <div class="container">
     <h1>Every resource. <em>Every next step.</em></h1>
     <p>Find shelters, food, health care, and housing programs near you — updated daily, in plain language, no account required.</p>
-    <!-- Resource finder paths -->
-    <div class="hero-paths">
-      <a href="/find.html" class="hero-path hero-path--primary">
-        <div class="hero-path__icon">🔍</div>
-        <div class="hero-path__label">Find Resources</div>
-        <div class="hero-path__sub">Shelter, food, health, housing &amp; more near you</div>
-      </a>
-      <a href="/learn/" class="hero-path">
-        <div class="hero-path__icon">📖</div>
-        <div class="hero-path__label">Learn About Homelessness</div>
-        <div class="hero-path__sub">Data, guides, and how to help</div>
+    <!-- Hero embed: My Ladder questionnaire on the left, Learn path on the right.
+         Replaces the old 2-up "Find Resources / Learn" cards. The left card captures
+         intake answers; on completion the shared JS saves a plan to localStorage and
+         redirects to /static-tools/my-ladder.html where the personalized rungs render
+         with notes + Mark Complete toggles. -->
+    <div class="hero-embed">
+      <div class="hero-embed__card">
+        <div class="hero-embed__head">
+          <h2 class="hero-embed__title">Personalized plan for resources you qualify for specific to your current situation.</h2>
+          <a href="/static-tools/my-ladder.html" class="hero-embed__myladder" aria-label="Open My Ladder">
+            My Ladder
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg>
+          </a>
+        </div>
+        <div id="ml-questionnaire-mount-home"></div>
+      </div>
+      <a href="/learn/" class="hero-embed__learn">
+        <span class="hero-embed__learn-icon">📖</span>
+        <span class="hero-embed__learn-label">Learn About Homelessness</span>
+        <span class="hero-embed__learn-sub">Data, guides, and how to help</span>
       </a>
     </div>
   </div>
@@ -833,6 +842,44 @@ function switchFinderTab(tab) {
       if(e.target.tagName==='A'||e.target.closest('a')) return;
       window.location.href = a.href;
     });
+  });
+})();
+</script>
+<script src="/static-tools/my-ladder-questionnaire.js"></script>
+<script>
+// Mount the shared questionnaire into the hero card. On completion, the
+// shared JS saves the plan to localStorage (commonladder.plan.v1); we then
+// redirect to /static-tools/my-ladder.html where the saved plan is rendered
+// as the personalized ladder with checkboxes + notes.
+(function () {
+  var mount = document.getElementById('ml-questionnaire-mount-home');
+  if (!mount || !window.MyLadder) return;
+
+  // If the user already has a saved plan, swap the questionnaire for a
+  // "Continue your plan" affordance — re-mounting the questionnaire here
+  // would be confusing (they'd be retaking with the answers they just saved).
+  var existing = window.MyLadder.loadSavedPlan();
+  if (existing && existing.answers && Object.keys(existing.answers).length) {
+    mount.innerHTML =
+      '<div style="padding:.75rem 0;text-align:center">' +
+        '<p style="color:var(--gray);font-size:.92rem;margin-bottom:1rem">You already have a personalized plan saved on this device.</p>' +
+        '<a href="/static-tools/my-ladder.html" class="btn btn--blue btn--sm" style="display:inline-block;margin-bottom:.5rem">Open my Ladder →</a>' +
+        '<div><button type="button" id="ml-retake-home" style="background:none;border:none;color:var(--gray);font-size:.82rem;text-decoration:underline;cursor:pointer;padding:.3rem;margin-top:.4rem">Start over with a new plan</button></div>' +
+      '</div>';
+    document.getElementById('ml-retake-home').addEventListener('click', function () {
+      if (window.confirm('Replace your saved plan with a new one?')) {
+        window.MyLadder.clearPlan();
+        mount.innerHTML = '';
+        window.MyLadder.mountQuestionnaire(mount, {
+          onComplete: function () { window.location.href = '/static-tools/my-ladder.html'; }
+        });
+      }
+    });
+    return;
+  }
+
+  window.MyLadder.mountQuestionnaire(mount, {
+    onComplete: function () { window.location.href = '/static-tools/my-ladder.html'; }
   });
 })();
 </script>
