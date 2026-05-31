@@ -757,7 +757,8 @@
             <li><a href="/providers.html">For providers</a></li>
       <li><a href="/learn/">Learn</a></li>
       <li><a href="/about.html">About</a></li>
-      <li><a href="/help/" class="nav__cta">Find help now</a></li>
+      <li><a href="/find.html" class="nav__cta">Find resources</a></li>
+      <li><a href="/static-tools/my-ladder.html" class="nav__cta nav__cta--ladder">My Ladder</a></li>
       <li><a href="https://www.weather.gov/" rel="noreferrer" class="nav__exit" onclick="event.preventDefault();window.location.replace('https://www.weather.gov/')">Leave page</a></li>
     </ul>
   </div>
@@ -1603,6 +1604,18 @@
     }
   })();
 
+</script>
+<script data-id="cl-card-click">
+(function(){
+  document.querySelectorAll('.card, .post-card:not(.post-card--linked)').forEach(function(el){
+    var a = el.querySelector('a[href]');
+    if(!a) return;
+    el.addEventListener('click', function(e){
+      if(e.target.tagName==='A'||e.target.closest('a')) return;
+      window.location.href = a.href;
+    });
+  });
+})();
 </script>
 </body>
 </html>
