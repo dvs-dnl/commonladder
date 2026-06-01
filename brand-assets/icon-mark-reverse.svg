@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 96" role="img" aria-label="Common Ladder mark (reverse)">
+  <!--
+    Common Ladder — Mark only, reverse (for dark backgrounds).
+    Bottom hex switches to white; sage and amber upper hexes stay the same.
+  -->
+  <title>Common Ladder mark (reverse / dark background)</title>
+  <rect width="120" height="96" fill="#1C3D6E"/>
+  <g transform="translate(14 12)">
+    <polygon points="0,60 18,72 36,60 36,36 18,24 0,36" fill="#FFFFFF"/>
+    <polygon points="28,48 46,60 64,48 64,24 46,12 28,24" fill="#4A9E82"/>
+    <polygon points="56,36 74,48 92,36 92,12 74,0 56,12" fill="#E8911A"/>
+  </g>
+</svg>

@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 96" role="img" aria-label="Common Ladder mark">
+  <!--
+    Common Ladder — Mark only (icon).
+    Use for: favicon, social avatar, app icon, watermark, badge, anywhere the
+    full wordmark would be too small to read or too noisy.
+    Three rising hexagons: Ladder Blue → Resource Sage → Rung Amber.
+  -->
+  <title>Common Ladder mark</title>
+  <g transform="translate(14 12)">
+    <polygon points="0,60 18,72 36,60 36,36 18,24 0,36" fill="#1C3D6E"/>
+    <polygon points="28,48 46,60 64,48 64,24 46,12 28,24" fill="#4A9E82"/>
+    <polygon points="56,36 74,48 92,36 92,12 74,0 56,12" fill="#E8911A"/>
+  </g>
+</svg>

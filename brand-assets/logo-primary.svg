@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 120" role="img" aria-label="Common Ladder">
+  <!--
+    Common Ladder — Primary logo (light backgrounds)
+    Mark: 3 rising hexagons in Ladder Blue → Resource Sage → Rung Amber
+    (the civic-grid / connected-nodes archetype chosen 2026-05-31)
+    Wordmark: lowercase "common" in Ladder Blue + "ladder" in Rung Amber,
+    no space, Manrope 700 with system-ui fallback.
+    Designed at 560×120 viewBox. Mark occupies left ~18%; wordmark fills right.
+    textLength + lengthAdjust ensures the wordmark fits even when Manrope
+    isn't available and a wider fallback font is substituted.
+  -->
+  <title>Common Ladder</title>
+
+  <!-- Mark: three rising hexagons -->
+  <g id="cl-mark" transform="translate(20 20)">
+    <!-- Bottom-left hex — Ladder Blue -->
+    <polygon points="0,60 18,72 36,60 36,36 18,24 0,36" fill="#1C3D6E"/>
+    <!-- Middle hex (offset up + right) — Resource Sage -->
+    <polygon points="28,48 46,60 64,48 64,24 46,12 28,24" fill="#4A9E82"/>
+    <!-- Top-right hex — Rung Amber -->
+    <polygon points="56,36 74,48 92,36 92,12 74,0 56,12" fill="#E8911A"/>
+  </g>
+
+  <!-- Wordmark — textLength caps width so fallback fonts can't overflow -->
+  <text x="135" y="78"
+        font-family="Manrope, 'Manrope Variable', system-ui, -apple-system, 'Segoe UI', sans-serif"
+        font-weight="700"
+        font-size="44"
+        letter-spacing="-0.8"
+        textLength="410"
+        lengthAdjust="spacingAndGlyphs">
+    <tspan fill="#1C3D6E">common</tspan><tspan fill="#E8911A">ladder</tspan>
+  </text>
+</svg>

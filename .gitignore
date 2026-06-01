@@ -23,3 +23,6 @@ push-*.sh
 secrets.*
 *.swp
 .COMMIT_EDITMSG
+
+# Brand-assets dev preview renders (not the canonical SVG sources)
+brand-assets/preview-*.png
