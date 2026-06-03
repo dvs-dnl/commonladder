@@ -421,6 +421,34 @@
   </url>
   
   <url>
+    <loc>https://www.commonladder.org/static-tools/san-joaquin-navigator.html</loc>
+    <lastmod>2026-06-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.commonladder.org/static-tools/stay-housed-san-joaquin.html</loc>
+    <lastmod>2026-06-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.commonladder.org/static-tools/resource-sequencing-san-joaquin.html</loc>
+    <lastmod>2026-06-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.commonladder.org/blog/stockton-san-joaquin-homeless-resources.html</loc>
+    <lastmod>2026-06-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <url>
     <loc>https://www.commonladder.org/static-tools/honolulu-navigator.html</loc>
     <lastmod>2026-05-22</lastmod>
     <changefreq>weekly</changefreq>

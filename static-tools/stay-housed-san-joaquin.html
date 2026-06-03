@@ -1,0 +1,1702 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XLKR4ZSZ5J"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-XLKR4ZSZ5J');
+</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Stay-Housed Navigator — San Joaquin County · Common Ladder</title>
+<meta name="description" content="Free, plain-language guide to rent help, utility assistance, and eviction prevention programs in San Joaquin County. We match your situation to the right local programs and show you exactly how to apply.">
+<meta name="theme-color" content="#1C3D6E">
+<meta property="og:title" content="Stay-Housed Navigator — San Joaquin County">
+<meta property="og:description" content="Find local programs that can keep you housed in San Joaquin County. Plain-language, no account, no application submitted on your behalf — we tell you who helps, how to apply, and what to bring.">
+<link rel="canonical" href="https://www.commonladder.org/static-tools/stay-housed-san-joaquin.html">
+<link rel="stylesheet" href="/style.css">
+<style>
+  /* ── Tool-specific styles, layered on top of /style.css ── */
+  :root {
+    --tool-blue: #1C3D6E;
+    --tool-blue-50: #eef2f8;
+    --tool-blue-100: #d8e0ee;
+    --tool-amber: #E8911A;
+    --tool-amber-dark: #b36a00;
+    --tool-sage: #4A9E82;
+    --tool-sage-50: #e6f5f0;
+    --tool-gray: #6B7280;
+    --tool-gray-100: #f1f1ee;
+    --tool-gray-200: #e3e3df;
+    --tool-gray-300: #cfcfc8;
+    --tool-shadow: 0 2px 12px rgba(28,61,110,.10);
+    --tool-shadow-lg: 0 12px 32px rgba(28,61,110,.18);
+  }
+
+  .sh-wrap { max-width: 760px; margin: 0 auto; padding: 32px 20px 96px; }
+
+  /* Hero */
+  .sh-hero { margin-bottom: 28px; }
+  .sh-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--tool-blue);
+    color: #fff;
+    font-size: 0.74rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 5px 12px;
+    border-radius: 999px;
+    margin-bottom: 14px;
+  }
+  .sh-hero h1 {
+    font-family: 'Manrope', sans-serif;
+    font-weight: 700;
+    font-size: clamp(1.8rem, 4vw, 2.4rem);
+    color: var(--tool-blue);
+    line-height: 1.15;
+    margin-bottom: 12px;
+  }
+  .sh-hero p.lede {
+    font-size: 1.05rem;
+    color: var(--tool-blue);
+    max-width: 640px;
+  }
+
+  /* Progress bar */
+  .sh-progress {
+    margin: 28px 0 24px;
+  }
+  .sh-progress__label {
+    font-size: 0.78rem;
+    color: var(--tool-gray);
+    margin-bottom: 6px;
+    font-weight: 500;
+    display: flex;
+    justify-content: space-between;
+  }
+  .sh-progress__track {
+    background: var(--tool-gray-200);
+    border-radius: 100px;
+    height: 6px;
+    overflow: hidden;
+  }
+  .sh-progress__fill {
+    background: var(--tool-amber);
+    height: 100%;
+    border-radius: 100px;
+    transition: width 0.35s ease;
+    width: 16%;
+  }
+
+  /* Step */
+  .sh-step { display: none; }
+  .sh-step--on { display: block; animation: shFade .25s ease; }
+  @keyframes shFade { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+
+  .sh-h {
+    font-family: 'Manrope', sans-serif;
+    font-weight: 700;
+    color: var(--tool-blue);
+    font-size: 1.5rem;
+    line-height: 1.25;
+    margin-bottom: 8px;
+  }
+  .sh-sub { font-size: 0.98rem; color: var(--tool-gray); margin-bottom: 22px; max-width: 600px; }
+
+  /* Choice cards */
+  .sh-choice {
+    display: block;
+    width: 100%;
+    border: 2px solid var(--tool-gray-200);
+    border-radius: 12px;
+    padding: 16px 18px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    background: #fff;
+    text-align: left;
+    font-family: inherit;
+    transition: all .15s ease;
+    box-shadow: var(--tool-shadow);
+  }
+  .sh-choice:hover { border-color: var(--tool-blue); background: var(--tool-blue-50); }
+  .sh-choice:focus-visible { outline: 3px solid var(--tool-amber); outline-offset: 2px; }
+  .sh-choice--selected { border-color: var(--tool-amber); background: #fef6ea; }
+  .sh-choice__hd {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+  }
+  .sh-choice__icon {
+    width: 38px; height: 38px;
+    border-radius: 10px;
+    background: var(--tool-blue-50);
+    color: var(--tool-blue);
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+    font-size: 1.15rem;
+    font-weight: 700;
+  }
+  .sh-choice--selected .sh-choice__icon { background: #fde2bd; color: var(--tool-amber-dark); }
+  .sh-choice__body { flex: 1; }
+  .sh-choice__title {
+    font-family: 'Manrope', sans-serif;
+    font-weight: 700;
+    color: var(--tool-blue);
+    font-size: 1.02rem;
+    display: block;
+    margin-bottom: 3px;
+  }
+  .sh-choice__sub {
+    font-size: 0.88rem;
+    color: var(--tool-gray);
+    line-height: 1.4;
+  }
+
+  /* Form inputs */
+  .sh-field { margin-bottom: 18px; }
+  .sh-field label {
+    font-size: 0.86rem;
+    color: var(--tool-blue);
+    font-weight: 600;
+    display: block;
+    margin-bottom: 6px;
+  }
+  .sh-field select,
+  .sh-field input[type="email"],
+  .sh-field input[type="text"] {
+    width: 100%;
+    padding: 12px 14px;
+    border: 1.5px solid var(--tool-gray-300);
+    border-radius: 8px;
+    font-family: inherit;
+    font-size: 0.98rem;
+    color: var(--tool-blue);
+    background: #fff;
+  }
+  .sh-field select:focus,
+  .sh-field input:focus {
+    outline: 3px solid var(--tool-amber);
+    outline-offset: 1px;
+    border-color: var(--tool-blue);
+  }
+
+  /* Action row */
+  .sh-actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 28px;
+    flex-wrap: wrap;
+  }
+  .sh-btn {
+    flex: 1;
+    min-width: 130px;
+    padding: 14px 20px;
+    border-radius: 999px;
+    border: 2px solid var(--tool-blue);
+    background: #fff;
+    color: var(--tool-blue);
+    font-family: inherit;
+    font-weight: 700;
+    font-size: 0.98rem;
+    cursor: pointer;
+    transition: all .15s ease;
+    text-align: center;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .sh-btn:hover { background: var(--tool-blue-50); }
+  .sh-btn:focus-visible { outline: 3px solid var(--tool-amber); outline-offset: 2px; }
+  .sh-btn--primary {
+    background: var(--tool-amber);
+    border-color: var(--tool-amber);
+    color: #fff;
+  }
+  .sh-btn--primary:hover { background: var(--tool-amber-dark); border-color: var(--tool-amber-dark); }
+  .sh-btn--ghost { border-color: var(--tool-gray-300); color: var(--tool-gray); background: transparent; }
+  .sh-btn--ghost:hover { background: var(--tool-gray-100); }
+
+  /* Diagnosis callout */
+  .sh-diag {
+    background: var(--tool-blue-50);
+    border-left: 5px solid var(--tool-amber);
+    border-radius: 10px;
+    padding: 18px 20px;
+    margin-bottom: 18px;
+  }
+  .sh-diag__lab {
+    font-size: 0.74rem; letter-spacing: 0.1em;
+    color: var(--tool-amber-dark); font-weight: 700;
+    text-transform: uppercase;
+    margin-bottom: 5px;
+  }
+  .sh-diag__hd {
+    font-family: 'Manrope', sans-serif;
+    font-weight: 700;
+    color: var(--tool-blue);
+    font-size: 1.18rem;
+    line-height: 1.3;
+    margin-bottom: 6px;
+  }
+  .sh-diag__body { font-size: 0.95rem; color: var(--tool-blue); }
+  .sh-diag__body strong { color: var(--tool-amber-dark); font-weight: 700; }
+
+  /* Intervention chips */
+  .sh-chip-row { margin-bottom: 8px; }
+  .sh-chip-row__lab {
+    font-size: 0.78rem; color: var(--tool-gray);
+    text-transform: uppercase; letter-spacing: 0.06em; font-weight: 600;
+    margin-bottom: 6px;
+  }
+  .sh-chip {
+    display: inline-block;
+    background: var(--tool-sage-50);
+    border: 1.5px solid var(--tool-sage);
+    color: var(--tool-blue);
+    font-size: 0.84rem;
+    font-weight: 600;
+    padding: 4px 12px;
+    border-radius: 999px;
+    margin: 0 5px 5px 0;
+  }
+  .sh-chip--skip {
+    background: var(--tool-gray-100);
+    border-color: var(--tool-gray-200);
+    color: var(--tool-gray);
+    text-decoration: line-through;
+  }
+
+  /* Program cards */
+  .sh-prog {
+    background: #fff;
+    border: 1.5px solid var(--tool-gray-200);
+    border-top: 4px solid var(--tool-blue);
+    border-radius: 10px;
+    padding: 20px 22px;
+    margin-bottom: 16px;
+    box-shadow: var(--tool-shadow);
+  }
+  .sh-prog--best { border-top-color: var(--tool-amber); }
+  .sh-prog__top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 12px;
+    margin-bottom: 6px;
+    flex-wrap: wrap;
+  }
+  .sh-prog__name {
+    font-family: 'Manrope', sans-serif;
+    font-weight: 700;
+    color: var(--tool-blue);
+    font-size: 1.18rem;
+    line-height: 1.25;
+    flex: 1;
+    min-width: 200px;
+  }
+  .sh-fit {
+    display: inline-block;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    background: var(--tool-amber);
+    color: #fff;
+    padding: 4px 9px;
+    border-radius: 4px;
+    flex-shrink: 0;
+  }
+  .sh-fit--ok { background: var(--tool-sage); }
+  .sh-prog__meta {
+    font-size: 0.88rem;
+    color: var(--tool-gray);
+    margin-bottom: 8px;
+  }
+  .sh-prog__what {
+    font-size: 0.95rem;
+    color: var(--tool-blue);
+    margin-bottom: 12px;
+  }
+  .sh-prog__contact {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+    font-size: 0.9rem;
+    color: var(--tool-blue);
+    margin-bottom: 12px;
+    padding: 10px 12px;
+    background: var(--tool-blue-50);
+    border-radius: 6px;
+  }
+  .sh-prog__contact a { color: var(--tool-blue); font-weight: 600; text-decoration: underline; text-underline-offset: 2px; }
+  .sh-prog__contact a:hover { color: var(--tool-amber-dark); }
+  .sh-prog__contact-row { display: flex; align-items: center; gap: 6px; }
+  .sh-prog__contact-lab {
+    font-size: 0.76rem;
+    color: var(--tool-gray);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-weight: 600;
+  }
+
+  /* Disclosure (how to apply) */
+  details.sh-disc {
+    margin: 8px 0;
+    border-top: 1px solid var(--tool-gray-200);
+    padding-top: 12px;
+  }
+  details.sh-disc + details.sh-disc { border-top: 1px solid var(--tool-gray-200); margin-top: 0; }
+  details.sh-disc summary {
+    cursor: pointer;
+    font-family: 'Manrope', sans-serif;
+    font-weight: 700;
+    color: var(--tool-blue);
+    font-size: 0.98rem;
+    padding: 8px 0;
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+  }
+  details.sh-disc summary::-webkit-details-marker { display: none; }
+  details.sh-disc summary::after {
+    content: '+';
+    color: var(--tool-amber-dark);
+    font-size: 1.4rem;
+    font-weight: 400;
+    transition: transform 0.2s ease;
+    width: 24px;
+    text-align: center;
+    flex-shrink: 0;
+  }
+  details.sh-disc[open] summary::after { content: '\2013'; }
+  details.sh-disc summary:hover { color: var(--tool-amber-dark); }
+  details.sh-disc summary:focus-visible { outline: 2px solid var(--tool-amber); outline-offset: 2px; }
+  details.sh-disc[open] summary { border-bottom: 1px solid var(--tool-gray-200); margin-bottom: 12px; }
+
+  .sh-disc__body { padding: 4px 0 12px; font-size: 0.94rem; color: var(--tool-blue); line-height: 1.55; }
+  .sh-disc__body h4 {
+    font-family: 'Manrope', sans-serif;
+    font-weight: 700;
+    color: var(--tool-blue);
+    font-size: 0.92rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    margin: 14px 0 6px;
+  }
+  .sh-disc__body h4:first-child { margin-top: 0; }
+  .sh-disc__body ol,
+  .sh-disc__body ul { padding-left: 22px; margin-bottom: 10px; }
+  .sh-disc__body li { margin-bottom: 4px; }
+  .sh-disc__body strong { color: var(--tool-amber-dark); font-weight: 700; }
+
+  /* Sample answer block (worked example) */
+  .sh-sample {
+    background: var(--tool-blue);
+    color: #fff;
+    border-radius: 10px;
+    padding: 14px 16px;
+    margin: 10px 0 14px;
+    font-size: 0.9rem;
+    line-height: 1.5;
+  }
+  .sh-sample__lab {
+    font-size: 0.7rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--tool-amber);
+    font-weight: 700;
+    margin-bottom: 6px;
+    display: block;
+  }
+  .sh-sample__q { font-weight: 600; margin-bottom: 4px; opacity: 0.92; }
+  .sh-sample__a {
+    background: rgba(255,255,255,0.08);
+    border-left: 3px solid var(--tool-amber);
+    padding: 8px 12px;
+    border-radius: 4px;
+    margin-bottom: 10px;
+    font-style: italic;
+  }
+  .sh-sample__a:last-child { margin-bottom: 0; }
+
+  /* Doc checklist */
+  .sh-checklist {
+    background: var(--tool-sage-50);
+    border-radius: 8px;
+    padding: 12px 16px;
+    margin: 8px 0 12px;
+  }
+  .sh-checklist h4 {
+    color: var(--tool-blue) !important;
+    margin-top: 0 !important;
+    margin-bottom: 8px !important;
+  }
+  .sh-checklist ul { list-style: none; padding-left: 0; margin: 0; }
+  .sh-checklist li {
+    padding: 4px 0 4px 26px;
+    position: relative;
+    font-size: 0.9rem;
+  }
+  .sh-checklist li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 8px;
+    width: 14px;
+    height: 14px;
+    border: 1.5px solid var(--tool-sage);
+    border-radius: 3px;
+    background: #fff;
+  }
+
+  /* Notice/tip box */
+  .sh-tip {
+    background: #fffaf0;
+    border-left: 4px solid var(--tool-amber);
+    padding: 12px 14px;
+    border-radius: 4px;
+    font-size: 0.9rem;
+    color: var(--tool-blue);
+    margin: 10px 0;
+  }
+  .sh-tip strong { color: var(--tool-amber-dark); }
+
+  /* Safe-exit alert (DV path) */
+  .sh-safe-alert {
+    background: var(--tool-blue);
+    color: #fff;
+    border-radius: 12px;
+    padding: 24px 26px;
+    margin-bottom: 22px;
+    box-shadow: var(--tool-shadow-lg);
+  }
+  .sh-safe-alert h3 {
+    color: #fff;
+    font-family: 'Manrope', sans-serif;
+    font-weight: 700;
+    font-size: 1.2rem;
+    margin-bottom: 8px;
+  }
+  .sh-safe-alert p { font-size: 0.96rem; opacity: 0.94; margin-bottom: 8px; }
+  .sh-safe-alert .sh-leave {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 10px 18px;
+    background: var(--tool-amber);
+    color: #fff;
+    font-weight: 700;
+    border-radius: 999px;
+    text-decoration: none;
+    font-size: 0.9rem;
+  }
+
+  /* Take-with-you summary */
+  .sh-summary {
+    background: #fff;
+    border: 2px solid var(--tool-blue);
+    border-radius: 12px;
+    padding: 26px 28px;
+    margin-bottom: 18px;
+    box-shadow: var(--tool-shadow);
+  }
+  .sh-summary h3 {
+    font-family: 'Manrope', sans-serif;
+    font-weight: 700;
+    color: var(--tool-blue);
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+  }
+  .sh-summary h4 {
+    font-family: 'Manrope', sans-serif;
+    font-weight: 700;
+    color: var(--tool-blue);
+    font-size: 0.92rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    margin: 18px 0 8px;
+  }
+  .sh-summary p { font-size: 0.95rem; color: var(--tool-blue); margin-bottom: 8px; }
+  .sh-summary ol { padding-left: 22px; }
+  .sh-summary ol li { padding: 4px 0; font-size: 0.95rem; color: var(--tool-blue); }
+
+  /* Feedback step */
+  .sh-fb-card {
+    border: 2px solid var(--tool-gray-200);
+    border-radius: 12px;
+    padding: 18px 20px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    background: #fff;
+    transition: all .15s ease;
+  }
+  .sh-fb-card:hover { border-color: var(--tool-blue); }
+  .sh-fb-card--open { border-color: var(--tool-amber); background: #fef6ea; }
+  .sh-fb-card__title {
+    font-family: 'Manrope', sans-serif;
+    font-weight: 700;
+    color: var(--tool-blue);
+    font-size: 1.02rem;
+    margin-bottom: 4px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .sh-fb-card__sub { font-size: 0.86rem; color: var(--tool-gray); }
+  .sh-fb-panel {
+    display: none;
+    margin-top: 12px;
+    padding-top: 12px;
+    border-top: 1px solid var(--tool-gray-200);
+  }
+  .sh-fb-card--open .sh-fb-panel { display: block; }
+  .sh-stars { display: flex; gap: 6px; margin: 10px 0 12px; }
+  .sh-star {
+    background: none; border: none; cursor: pointer;
+    color: var(--tool-gray-300); padding: 0 2px;
+  }
+  .sh-star::before { content: '\2606'; font-size: 1.8rem; line-height: 1; }
+  .sh-star--on { color: var(--tool-amber); }
+  .sh-star--on::before { content: '\2605'; }
+  .sh-fb-card textarea {
+    width: 100%; padding: 10px 12px;
+    border: 1.5px solid var(--tool-gray-300);
+    border-radius: 8px;
+    font-family: inherit; font-size: 0.92rem;
+    color: var(--tool-blue);
+    resize: vertical;
+    min-height: 70px;
+  }
+
+  /* Privacy note */
+  .sh-privacy {
+    font-size: 0.85rem;
+    color: var(--tool-gray);
+    background: var(--tool-gray-100);
+    padding: 12px 16px;
+    border-radius: 8px;
+    margin: 14px 0 8px;
+    line-height: 1.5;
+  }
+  .sh-privacy strong { color: var(--tool-blue); font-weight: 600; }
+
+  /* Done mark */
+  .sh-done {
+    width: 64px; height: 64px;
+    border-radius: 50%;
+    background: var(--tool-sage);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 4px auto 16px;
+    font-size: 2rem;
+  }
+
+  /* Print rules */
+  @media print {
+    .crisis-bar, .nav, .footer, .sh-progress, .sh-actions, .sh-step:not(#sh-step-summary), .sh-eyebrow, .nav__exit { display: none !important; }
+    .sh-wrap { padding: 0; max-width: none; }
+    body { background: #fff; }
+    .sh-summary { border: 1px solid #000; box-shadow: none; }
+    .sh-prog { break-inside: avoid; }
+  }
+</style>
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+</head>
+<body>
+
+<a href="#main" class="skip-link">Skip to main content</a>
+
+<div class="crisis-bar" role="region" aria-label="Crisis help">
+  <strong>Need help right now?</strong>
+  <a href="tel:211">Call 211</a><span class="crisis-bar__sep">·</span>
+  <a href="sms:741741?body=HOME">Text HOME to 741741</a><span class="crisis-bar__sep">·</span>
+  <a href="tel:988">988 Suicide &amp; Crisis</a>
+</div>
+
+<nav class="nav" aria-label="Primary">
+  <div class="nav__inner">
+    <a href="/" class="nav__logo" aria-label="Common Ladder home">
+      <svg width="28" height="28" viewBox="0 0 28 28" fill="none" aria-hidden="true">
+        <polygon points="7.6,19 11.06,21 11.06,25 7.6,27 4.14,25 4.14,21" fill="white" opacity=".88"/>
+        <polygon points="14.53,19 17.99,21 17.99,25 14.53,27 11.06,25 11.06,21" fill="white" opacity=".88"/>
+        <polygon points="21.46,19 24.92,21 24.92,25 21.46,27 17.99,25 17.99,21" fill="white" opacity=".88"/>
+        <polygon points="11.06,13 14.53,15 14.53,19 11.06,21 7.6,19 7.6,15" fill="#A8C4E0" opacity=".85"/>
+        <polygon points="17.99,13 21.46,15 21.46,19 17.99,21 14.53,19 14.53,15" fill="#A8C4E0" opacity=".85"/>
+        <polygon points="14.53,7 17.99,9 17.99,13 14.53,15 11.06,13 11.06,9" fill="#E8911A"/>
+      </svg>
+      <span class="nav__wordmark">common<span>ladder</span></span>
+    </a>
+    <button class="nav__toggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="primary-nav" onclick="this.setAttribute('aria-expanded', document.getElementById('primary-nav').classList.toggle('open') ? 'true' : 'false')">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav__links" id="primary-nav">
+            <li><a href="/providers.html">For providers</a></li>
+      <li><a href="/learn/">Learn</a></li>
+      <li><a href="/about.html">About</a></li>
+      <li><a href="/find.html" class="nav__cta">Find resources</a></li>
+      <li><a href="/static-tools/my-ladder.html" class="nav__cta nav__cta--ladder">My Ladder</a></li>
+      <li><a href="https://www.weather.gov/" rel="noreferrer" class="nav__exit" onclick="event.preventDefault();window.location.replace('https://www.weather.gov/')">Leave page</a></li>
+    </ul>
+  </div>
+</nav>
+
+<main id="main">
+<div class="sh-wrap">
+
+  <header class="sh-hero">
+    <span class="sh-eyebrow">San Joaquin County &middot; CoC CA-511</span>
+    <h1>Stay-Housed Navigator</h1>
+    <p class="lede">A free, plain-language guide to rent help, utility assistance, and eviction prevention programs in San Joaquin County. We match your situation to the right local programs and tell you exactly how to apply &mdash; we don't submit anything on your behalf.</p>
+  </header>
+
+  <!-- Progress bar -->
+  <div class="sh-progress" role="status" aria-live="polite">
+    <div class="sh-progress__label">
+      <span id="sh-progress-text">Step 1 of 6</span>
+      <span><a href="#" onclick="shGo('entry'); return false;" style="color: var(--tool-gray); font-size: 0.78rem; text-decoration: underline;">Start over</a></span>
+    </div>
+    <div class="sh-progress__track"><div class="sh-progress__fill" id="sh-progress-fill"></div></div>
+  </div>
+
+  <!-- STEP 1 — Entry -->
+  <section class="sh-step sh-step--on" id="sh-step-entry" aria-labelledby="sh-entry-h">
+    <h2 class="sh-h" id="sh-entry-h">Tell us what's happening with your housing.</h2>
+    <p class="sh-sub">We'll match you to local San Joaquin County programs that might help you stay where you are. We don't collect personal information, and we don't submit anything for you &mdash; we just point you to the right place.</p>
+
+    <button class="sh-choice" type="button" onclick="shGo('situation')">
+      <div class="sh-choice__hd">
+        <div class="sh-choice__icon">!</div>
+        <div class="sh-choice__body">
+          <span class="sh-choice__title">I might lose my housing soon</span>
+          <span class="sh-choice__sub">Eviction notice, behind on rent, can't pay utilities, lease ending</span>
+        </div>
+      </div>
+    </button>
+
+    <button class="sh-choice" type="button" onclick="shGo('situation')">
+      <div class="sh-choice__hd">
+        <div class="sh-choice__icon">&#9788;</div>
+        <div class="sh-choice__body">
+          <span class="sh-choice__title">I don't have a place tonight</span>
+          <span class="sh-choice__sub">Couch-surfing about to end, sleeping in a car, motel running out</span>
+        </div>
+      </div>
+    </button>
+
+    <button class="sh-choice" type="button" onclick="shGo('situation')">
+      <div class="sh-choice__hd">
+        <div class="sh-choice__icon">&#10084;</div>
+        <div class="sh-choice__body">
+          <span class="sh-choice__title">I'm helping someone else</span>
+          <span class="sh-choice__sub">A family member, neighbor, or client &mdash; we'll keep the language plain either way</span>
+        </div>
+      </div>
+    </button>
+
+    <p style="font-size: 0.85rem; color: var(--tool-gray); margin-top: 16px; text-align: center;">
+      In immediate danger? Call <a href="tel:911" style="color: var(--tool-blue); font-weight: 600;">911</a>.
+      Need shelter tonight? Call <a href="tel:211" style="color: var(--tool-blue); font-weight: 600;">211</a> or visit the
+      <a href="/static-tools/san-joaquin-navigator.html" style="color: var(--tool-blue); font-weight: 600;">full San Joaquin navigator</a>.
+    </p>
+  </section>
+
+  <!-- STEP 2 — Situation triage -->
+  <section class="sh-step" id="sh-step-situation" aria-labelledby="sh-situation-h">
+    <h2 class="sh-h" id="sh-situation-h">What's pushing you out?</h2>
+    <p class="sh-sub">Pick everything that applies &mdash; you can choose more than one. We use this to pick programs that actually fit your situation.</p>
+
+    <button class="sh-choice" type="button" data-sit="eviction" onclick="shToggleSit(this)">
+      <div class="sh-choice__hd">
+        <div class="sh-choice__icon">&#128196;</div>
+        <div class="sh-choice__body">
+          <span class="sh-choice__title">Eviction notice or court date</span>
+          <span class="sh-choice__sub">5-day notice for non-payment, court summons, formal complaint filed</span>
+        </div>
+      </div>
+    </button>
+
+    <button class="sh-choice" type="button" data-sit="arrears" onclick="shToggleSit(this)">
+      <div class="sh-choice__hd">
+        <div class="sh-choice__icon">&#128181;</div>
+        <div class="sh-choice__body">
+          <span class="sh-choice__title">Behind on rent (no notice yet)</span>
+          <span class="sh-choice__sub">One month or more, but no formal eviction filed</span>
+        </div>
+      </div>
+    </button>
+
+    <button class="sh-choice" type="button" data-sit="utility" onclick="shToggleSit(this)">
+      <div class="sh-choice__hd">
+        <div class="sh-choice__icon">&#9889;</div>
+        <div class="sh-choice__body">
+          <span class="sh-choice__title">Utility shut-off or disconnect notice</span>
+          <span class="sh-choice__sub">PG&amp;E gas/electric or water &mdash; especially in Central Valley summer heat</span>
+        </div>
+      </div>
+    </button>
+
+    <button class="sh-choice" type="button" data-sit="income" onclick="shToggleSit(this)">
+      <div class="sh-choice__hd">
+        <div class="sh-choice__icon">&#128176;</div>
+        <div class="sh-choice__body">
+          <span class="sh-choice__title">Recent job loss or income drop</span>
+          <span class="sh-choice__sub">Hours cut, laid off, lost SSI/SSDI, partner income gone</span>
+        </div>
+      </div>
+    </button>
+
+    <button class="sh-choice" type="button" data-sit="doubled" onclick="shToggleSit(this)">
+      <div class="sh-choice__hd">
+        <div class="sh-choice__icon">&#127968;</div>
+        <div class="sh-choice__body">
+          <span class="sh-choice__title">Doubled up &mdash; staying with someone</span>
+          <span class="sh-choice__sub">The arrangement is ending soon (eviction, conflict, lease violation)</span>
+        </div>
+      </div>
+    </button>
+
+    <button class="sh-choice" type="button" data-sit="dv" onclick="shToggleSit(this)">
+      <div class="sh-choice__hd">
+        <div class="sh-choice__icon">&#128737;</div>
+        <div class="sh-choice__body">
+          <span class="sh-choice__title">Leaving an unsafe situation</span>
+          <span class="sh-choice__sub">Domestic violence, trafficking, or other safety concern</span>
+        </div>
+      </div>
+    </button>
+
+    <div class="sh-actions">
+      <button class="sh-btn" type="button" onclick="shGo('entry')">Back</button>
+      <button class="sh-btn sh-btn--primary" type="button" onclick="shAfterSituation()">Continue</button>
+    </div>
+  </section>
+
+  <!-- STEP 3 — Details (skipped for DV path) -->
+  <section class="sh-step" id="sh-step-details" aria-labelledby="sh-details-h">
+    <h2 class="sh-h" id="sh-details-h">A few quick details.</h2>
+    <p class="sh-sub">These help us pick the right programs and skip ones that won't work for your household. Nothing is saved &mdash; this stays on your device.</p>
+
+    <div class="sh-field">
+      <label for="sh-city">Which part of San Joaquin County?</label>
+      <select id="sh-city">
+        <option value="stockton">Stockton</option>
+        <option value="lodi">Lodi / Galt</option>
+        <option value="manteca">Manteca / Lathrop / Ripon</option>
+        <option value="tracy">Tracy</option>
+        <option value="other">Other San Joaquin County / not sure</option>
+      </select>
+    </div>
+
+    <div class="sh-field">
+      <label for="sh-time">When could you lose your housing?</label>
+      <select id="sh-time">
+        <option value="lt5">Within 5 days</option>
+        <option value="5-14">5&ndash;14 days</option>
+        <option value="15-30">15&ndash;30 days</option>
+        <option value="gt30">More than 30 days</option>
+        <option value="unknown">Not sure</option>
+      </select>
+    </div>
+
+    <div class="sh-field">
+      <label for="sh-household">How many people in the household?</label>
+      <select id="sh-household">
+        <option value="single">Just me</option>
+        <option value="couple">2 adults</option>
+        <option value="single-parent">1 adult, kids</option>
+        <option value="family">2 adults, kids</option>
+        <option value="senior">Senior household (62+)</option>
+        <option value="other">Other</option>
+      </select>
+    </div>
+
+    <div class="sh-field">
+      <label for="sh-vet">Is anyone in the household a veteran?</label>
+      <select id="sh-vet">
+        <option value="no">No</option>
+        <option value="yes">Yes</option>
+        <option value="unsure">I'm not sure</option>
+      </select>
+    </div>
+
+    <div class="sh-actions">
+      <button class="sh-btn" type="button" onclick="shGo('situation')">Back</button>
+      <button class="sh-btn sh-btn--primary" type="button" onclick="shGo('match')">Continue</button>
+    </div>
+  </section>
+
+  <!-- STEP 4 — Match -->
+  <section class="sh-step" id="sh-step-match" aria-labelledby="sh-match-h">
+    <h2 class="sh-h" id="sh-match-h">Here's what looks like a fit.</h2>
+    <p class="sh-sub" id="sh-match-sub">Programs ranked by how well they match what you told us. Tap each one to see exactly how to apply, what they'll ask, and what to bring.</p>
+
+    <div id="sh-diagnosis-area"></div>
+
+    <div id="sh-programs-area"></div>
+
+    <div class="sh-tip" style="margin-top: 22px;">
+      <strong>About these programs:</strong> Most pay your landlord or utility company directly, not you. They're nonprofits and county agencies &mdash; they can run out of funds, so applying to two or three at once is a normal strategy, not a problem.
+    </div>
+
+    <div class="sh-actions">
+      <button class="sh-btn" type="button" onclick="shGo('details')">Back</button>
+      <button class="sh-btn sh-btn--primary" type="button" onclick="shBuildSummary(); shGo('summary');">Take this with me</button>
+    </div>
+  </section>
+
+  <!-- STEP 4-DV — Safe alternate path -->
+  <section class="sh-step" id="sh-step-dv" aria-labelledby="sh-dv-h">
+    <div class="sh-safe-alert">
+      <h3 id="sh-dv-h">Safety first.</h3>
+      <p>If you're in an unsafe situation, these programs are confidential &mdash; they don't share your address with anyone outside their organization. You can call them and ask without committing to anything.</p>
+      <p style="margin-top: 12px;"><strong style="color: var(--tool-amber);">If you're in danger right now,</strong> call 911 or the National DV Hotline: <a href="tel:18007997233" style="color: #fff; text-decoration: underline; font-weight: 700;">1-800-799-7233</a>.</p>
+      <a href="https://www.weather.gov/" rel="noreferrer" class="sh-leave" onclick="event.preventDefault();window.location.replace('https://www.weather.gov/')">Quick exit &rarr;</a>
+    </div>
+
+    <div id="sh-dv-programs"></div>
+
+    <div class="sh-actions">
+      <button class="sh-btn" type="button" onclick="shGo('situation')">Back</button>
+    </div>
+  </section>
+
+  <!-- STEP 5 — Take with you / printable summary -->
+  <section class="sh-step" id="sh-step-summary" aria-labelledby="sh-sum-h">
+    <h2 class="sh-h" id="sh-sum-h">Here's your action sheet.</h2>
+    <p class="sh-sub">Print this page, save it, or take a screenshot. It has the programs that match your situation, what they'll ask, and what to bring.</p>
+
+    <div class="sh-summary" id="sh-summary-content"></div>
+
+    <div class="sh-tip">
+      <strong>Apply to two or three.</strong> These programs can run out of money. Applying to more than one is normal and improves your odds &mdash; just tell each one you've applied elsewhere so they can coordinate.
+    </div>
+
+    <div class="sh-actions">
+      <button class="sh-btn" type="button" onclick="shGo('match')">Back to programs</button>
+      <button class="sh-btn" type="button" onclick="window.print()">Print this page</button>
+      <button class="sh-btn sh-btn--primary" type="button" onclick="shGo('followup')">I'm done &mdash; continue</button>
+    </div>
+  </section>
+
+  <!-- STEP 6 — Optional follow-up -->
+  <section class="sh-step" id="sh-step-followup" aria-labelledby="sh-fu-h">
+    <div class="sh-done" aria-hidden="true">&#10003;</div>
+    <h2 class="sh-h" style="text-align: center;" id="sh-fu-h">You're set.</h2>
+    <p class="sh-sub" style="text-align: center; margin-bottom: 24px;">Before you go &mdash; completely optional &mdash; would you tell us how this tool worked for you? It's how we make the routing better for the next person.</p>
+
+    <div class="sh-fb-card" id="sh-fb-now" onclick="shToggleFb('now')" role="button" tabindex="0">
+      <div class="sh-fb-card__title">
+        <span>Rate this tool right now</span>
+        <span style="color: var(--tool-gray); font-size: 1.4rem;">+</span>
+      </div>
+      <div class="sh-fb-card__sub">3-tap rating &middot; no account, nothing saved long-term</div>
+      <div class="sh-fb-panel">
+        <p style="font-size: 0.92rem; color: var(--tool-blue); margin: 6px 0 4px; font-weight: 600;">Did the router show you a path that felt usable?</p>
+        <div class="sh-stars" id="sh-stars" role="radiogroup" aria-label="Rating">
+          <button type="button" class="sh-star" data-val="1" aria-label="1 star" onclick="event.stopPropagation(); shStar(1)"></button>
+          <button type="button" class="sh-star" data-val="2" aria-label="2 stars" onclick="event.stopPropagation(); shStar(2)"></button>
+          <button type="button" class="sh-star" data-val="3" aria-label="3 stars" onclick="event.stopPropagation(); shStar(3)"></button>
+          <button type="button" class="sh-star" data-val="4" aria-label="4 stars" onclick="event.stopPropagation(); shStar(4)"></button>
+          <button type="button" class="sh-star" data-val="5" aria-label="5 stars" onclick="event.stopPropagation(); shStar(5)"></button>
+        </div>
+        <textarea placeholder="Anything you'd want us to fix? (optional)" onclick="event.stopPropagation()"></textarea>
+      </div>
+    </div>
+
+    <div class="sh-fb-card" id="sh-fb-later" onclick="shToggleFb('later')" role="button" tabindex="0">
+      <div class="sh-fb-card__title">
+        <span>Email me to follow up later</span>
+        <span style="color: var(--tool-gray); font-size: 1.4rem;">+</span>
+      </div>
+      <div class="sh-fb-card__sub">One short note in 2&ndash;4 weeks asking how your situation ended up</div>
+      <div class="sh-fb-panel">
+        <label for="sh-fu-email" style="font-size: 0.84rem; color: var(--tool-gray); display: block; margin: 6px 0 4px;">Email address</label>
+        <input type="email" id="sh-fu-email" placeholder="you@example.com" onclick="event.stopPropagation()" style="width: 100%; padding: 10px 12px; border: 1.5px solid var(--tool-gray-300); border-radius: 8px; font-family: inherit; font-size: 0.92rem; color: var(--tool-blue);">
+        <label for="sh-fu-when" style="font-size: 0.84rem; color: var(--tool-gray); display: block; margin: 10px 0 4px;">When should we check in?</label>
+        <select id="sh-fu-when" onclick="event.stopPropagation()" style="width: 100%; padding: 10px 12px; border: 1.5px solid var(--tool-gray-300); border-radius: 8px; font-family: inherit; font-size: 0.92rem; color: var(--tool-blue);">
+          <option>In 2 weeks</option>
+          <option>In 1 month</option>
+          <option>In 3 months</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="sh-privacy">
+      <strong>What we do with this:</strong> Ratings are aggregated into anonymous program scores. Email is used only to send the one follow-up message you asked for, with a one-click delete-my-address link in it. No marketing list, no resale, no third-party tracking. Common Ladder is an independent civic project &mdash; <a href="/privacy.html" style="color: var(--tool-blue);">read our privacy policy</a>.
+    </div>
+
+    <div class="sh-actions">
+      <button class="sh-btn" type="button" onclick="shGo('summary')">Back</button>
+      <button class="sh-btn sh-btn--ghost" type="button" onclick="shSkip()">Skip &amp; finish</button>
+      <button class="sh-btn sh-btn--primary" type="button" onclick="shSubmitFb()">Submit &amp; finish</button>
+    </div>
+
+    <div id="sh-thanks" style="display: none; text-align: center; margin-top: 20px; padding: 20px; background: var(--tool-sage-50); border-radius: 10px;">
+      <p style="font-family: 'Manrope', sans-serif; font-weight: 700; color: var(--tool-blue); font-size: 1.05rem; margin-bottom: 6px;">Thank you.</p>
+      <p style="font-size: 0.92rem; color: var(--tool-blue);">Wishing you the best. Come back any time &mdash; <a href="/find.html" style="color: var(--tool-blue); font-weight: 600;">commonladder.org/find</a>.</p>
+    </div>
+  </section>
+
+</div>
+</main>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer__grid">
+      <div class="footer__brand">
+        <h3>Common Ladder</h3>
+        <p>The civic resource platform connecting people experiencing homelessness with every service in your community.</p>
+      </div>
+      <div>
+        <h4>Find help</h4>
+        <ul>
+          <li><a href="/find.html?cat=shelter">Shelter</a></li>
+          <li><a href="/find.html?cat=food">Food</a></li>
+          <li><a href="/find.html?cat=legal">Legal</a></li>
+          <li><a href="/help/">All categories</a></li>
+          <li><a href="/static-tools/san-joaquin-navigator.html">San Joaquin navigator</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>For providers</h4>
+        <ul>
+          <li><a href="/providers.html">Tools &amp; referrals</a></li>
+          <li><a href="/providers.html#case-manager-guide">Case manager guide</a></li>
+          <li><a href="/data-reports.html">Data &amp; reports</a></li>
+          <li><a href="/learn/">Four learning pathways</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>About</h4>
+        <ul>
+          <li><a href="/about.html">Our mission</a></li>
+          <li><a href="/about.html#methodology">Methodology</a></li>
+          <li><a href="/about.html#team">Team</a></li>
+          <li><a href="/contact.html">Contact</a></li>
+          <li><a href="/privacy.html">Privacy</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer__transparency">
+      <strong>Transparency:</strong> Common Ladder is an independent civic project. We do not sell user data, run ads, or accept payment from listed resources. This tool does not submit applications on your behalf &mdash; you apply directly with each program.
+    </div>
+    <div class="footer__bottom">
+      <span>&copy; 2026 Common Ladder. Free to use, always.</span>
+      <span><time datetime="2026-06-02">Last updated June 2, 2026</time></span>
+    </div>
+  </div>
+</footer>
+
+<script>
+// ─────────────────────────────────────────────────────────────────
+// Stay-Housed Navigator — San Joaquin County (CoC CA-511)
+// Pure client-side: no PII storage, no application submission.
+// ─────────────────────────────────────────────────────────────────
+
+// Program directory. Stable info only — phones, websites, addresses.
+// No specific cash caps or processing windows (those go stale).
+var SH_PROGRAMS = [
+  {
+    id: 'cvlihc',
+    name: 'Central Valley Low Income Housing Corporation (CVLIHC)',
+    type: 'Lead housing nonprofit — San Joaquin CoC',
+    helps: ['back-rent', 'utility', 'deposit'],
+    cities: ['stockton', 'lodi', 'manteca', 'tracy', 'other'],
+    summary: 'CVLIHC runs homelessness-prevention, rapid re-housing, and rental-assistance programs across San Joaquin County. They are a lead operator inside the San Joaquin Continuum of Care, so they can both help with back rent and connect you to longer-term housing.',
+    contact: {
+      phone: '209-472-7200',
+      web: 'cvlihc.org',
+      address: '2431 W March Ln, Suite 350, Stockton, CA 95207',
+      hours: 'Mon–Fri, business hours'
+    },
+    apply: {
+      channel: 'Call the main line to be screened for prevention or rental-assistance programs; intake is by phone or appointment.',
+      steps: [
+        'Call <strong>209-472-7200</strong> and ask about homelessness prevention or rental assistance',
+        'A staff member screens your situation and tells you which program fits (prevention vs. rapid re-housing)',
+        'You complete an intake and send documents',
+        'If approved, payment goes to your landlord or utility company directly'
+      ]
+    },
+    asks: [
+      {q: 'What is your monthly household income?', sample: 'I make $1,760 a month part-time, and my partner gets $920 in SSI — about $2,680 total for our family of four.'},
+      {q: 'What caused this housing crisis?', sample: 'My hours got cut in March, I fell behind on April rent, and the landlord posted a 3-day notice on May 18.'},
+      {q: 'How much do you need and what is it for?', sample: 'Two months of back rent at $1,450 = $2,900, plus a $120 late fee.'}
+    ],
+    docs: [
+      'Photo ID for each adult in the household',
+      'Social Security numbers for everyone in the household',
+      'Proof of income for the last 30 days (pay stubs, benefits letter, bank statement)',
+      'Current lease, signed by you and your landlord',
+      'The eviction notice or pay-or-quit notice',
+      'Your landlord\'s name, address, and phone (they will request a W-9)',
+      'Proof of San Joaquin County residency'
+    ]
+  },
+  {
+    id: 'el-concilio',
+    name: 'El Concilio California',
+    type: 'Community nonprofit — rental & utility assistance (bilingual)',
+    helps: ['back-rent', 'utility', 'deposit'],
+    cities: ['stockton', 'lodi', 'manteca', 'tracy', 'other'],
+    summary: 'El Concilio is a long-standing Stockton-based nonprofit that administers emergency rental assistance and helps enroll households in PG&E discount and crisis-utility programs (CARE, FERA, REACH). Services are offered in English and Spanish.',
+    contact: {
+      phone: '209-337-7502',
+      web: 'elconcilio.org',
+      address: '308 N California St, Stockton, CA 95202',
+      hours: 'Mon–Fri 8am–5pm'
+    },
+    apply: {
+      channel: 'Call or visit the California Street office to be screened for rental assistance and utility-discount enrollment.',
+      steps: [
+        'Call <strong>209-337-7502</strong> or visit 308 N California St',
+        'Ask about emergency rental assistance and PG&E CARE/FERA/REACH enrollment',
+        'Bring your documents to an intake appointment',
+        'Approved rent/utility payments are made to your landlord or PG&E directly'
+      ]
+    },
+    asks: [
+      {q: 'Do you need rent help, utility help, or both?', sample: 'Both — one month of rent ($1,250) and a PG&E shut-off notice for about $340.'},
+      {q: 'What is your monthly income and household size?', sample: 'About $2,300 a month, household of three.'}
+    ],
+    docs: [
+      'Photo ID',
+      'Proof of income for the last 30 days',
+      'Current lease (for rent help)',
+      'The eviction notice or PG&E disconnect notice',
+      'Your most recent PG&E bill (for utility help)',
+      'Landlord contact info'
+    ]
+  },
+  {
+    id: 'liheap',
+    name: 'San Joaquin County LIHEAP / Energy Assistance',
+    type: 'County utility assistance program',
+    helps: ['utility'],
+    cities: ['stockton', 'lodi', 'manteca', 'tracy', 'other'],
+    summary: 'The Low Income Home Energy Assistance Program (LIHEAP) helps low-income households with heating and cooling bills year-round. In the Central Valley summer, getting a hold on a PG&E shut-off before the disconnect date is far easier than restoring power after.',
+    contact: {
+      phone: '209-468-1500',
+      web: 'sjchsa.org',
+      hours: 'Mon–Fri 8am–5pm'
+    },
+    apply: {
+      channel: 'Phone screening, then submit a utility-assistance application.',
+      steps: [
+        'Call <strong>209-468-1500</strong> and ask for energy / LIHEAP assistance',
+        'A screener confirms eligibility and sends you an application',
+        'Submit your PG&E bill and proof of income',
+        'If approved, a credit is applied toward your utility account'
+      ]
+    },
+    asks: [
+      {q: 'Which utility and what do you owe?', sample: 'PG&E — I have a disconnect notice for $387.'},
+      {q: 'What is your household income?', sample: 'About $1,900 a month for a family of three.'}
+    ],
+    docs: [
+      'Photo ID',
+      'Most recent PG&E bill or disconnect notice',
+      'Proof of income for the last 30 days',
+      'Social Security numbers for the household'
+    ]
+  },
+  {
+    id: 'crla',
+    name: 'California Rural Legal Assistance (CRLA) — Stockton',
+    type: 'Free civil legal aid — eviction defense',
+    helps: ['legal', 'back-rent'],
+    cities: ['stockton', 'lodi', 'manteca', 'tracy', 'other'],
+    summary: 'CRLA provides free legal help to low-income San Joaquin County residents facing eviction. If you have a court date or a notice you do not understand, talk to them before you sign anything or move out — an answer filed on time protects your rights.',
+    contact: {
+      phone: '209-946-0605',
+      web: 'crla.org',
+      address: '145 E Weber Ave, Stockton, CA 95202',
+      hours: 'Mon, Tue, Thu, Fri 9–11am & 1–4pm (closed Wed)'
+    },
+    apply: {
+      channel: 'Call the office directly — flag eviction or restraining-order matters as time-sensitive.',
+      steps: [
+        'Call <strong>209-946-0605</strong> as soon as you get a notice or court date',
+        'Tell them it is time-sensitive if an eviction or hearing is involved',
+        'They review your case for eligibility and may offer representation or a workshop',
+        'Go to your court date even if your case is still under review — filing an answer protects you'
+      ]
+    },
+    asks: [
+      {q: 'What notice or court paper did you receive, and when?', sample: 'A 3-day notice to pay or quit, posted on my door on May 20.'},
+      {q: 'Have you filed anything with the court yet?', sample: 'No — I got a summons but I do not know how to respond.'}
+    ],
+    docs: [
+      'Every notice or court paper you received (bring all of them)',
+      'Your lease',
+      'Photo ID',
+      'Any texts or letters between you and your landlord'
+    ]
+  },
+  {
+    id: 'fair-housing',
+    name: 'San Joaquin Fair Housing Association',
+    type: 'Fair housing & landlord-tenant counseling',
+    helps: ['legal', 'back-rent'],
+    cities: ['stockton', 'lodi', 'manteca', 'tracy', 'other'],
+    summary: 'San Joaquin Fair Housing helps with landlord-tenant disputes, discrimination complaints, and mediation. If your landlord might wait for an assistance payment, mediation can buy the time you need.',
+    contact: {
+      phone: '209-451-3471',
+      hours: 'Mon–Fri, business hours'
+    },
+    apply: {
+      channel: 'Call to open a counseling or mediation case.',
+      steps: [
+        'Call <strong>209-451-3471</strong> and describe your dispute',
+        'A counselor explains your rights and options',
+        'If useful, they can attempt mediation with your landlord',
+        'They can refer you to legal aid (CRLA) if your case needs representation'
+      ]
+    },
+    asks: [
+      {q: 'What is the dispute about?', sample: 'My landlord wants me out, but I think I can pay if a program covers the back rent — I need a few weeks.'}
+    ],
+    docs: [
+      'Photo ID',
+      'Your lease',
+      'Any notices from your landlord'
+    ]
+  },
+  {
+    id: 'cc-ssvf',
+    name: 'Catholic Charities Diocese of Stockton — SSVF (veterans)',
+    type: 'Supportive Services for Veteran Families',
+    helps: ['back-rent', 'utility', 'deposit', 'dv'],
+    cities: ['stockton', 'lodi', 'manteca', 'tracy', 'other'],
+    summary: 'If anyone in the household is a veteran, SSVF is usually the fastest path. Catholic Charities is the lead SSVF provider for San Joaquin County and can cover back rent, deposits, utilities, and housing navigation for veteran households.',
+    contact: {
+      phone: '209-444-5935',
+      web: 'ccstockton.org',
+      hours: 'Mon–Fri 8am–5pm'
+    },
+    apply: {
+      channel: 'Call the SSVF line; veteran status opens a faster, better-funded queue.',
+      steps: [
+        'Call <strong>209-444-5935</strong> and say a household member is a veteran',
+        'A housing navigator screens you for SSVF eligibility',
+        'Complete intake and provide documents (DD-214 helps but is not always required up front)',
+        'Approved rent, deposit, or utility help is paid directly to the landlord or utility'
+      ]
+    },
+    asks: [
+      {q: 'Which household member served, and roughly when?', sample: 'I served in the Army, 2009–2013.'},
+      {q: 'What do you need to stay housed?', sample: 'One month of back rent ($1,400) and help with a PG&E balance.'}
+    ],
+    docs: [
+      'DD-214 if you have it (they can help pull it if not)',
+      'Photo ID',
+      'Lease and any eviction or disconnect notice',
+      'Proof of income for the last 30 days'
+    ]
+  },
+  {
+    id: '211',
+    name: '211 San Joaquin (Family Resource & Referral Center)',
+    type: 'County-wide referral hub & coordinated entry front door',
+    helps: ['triage', 'utility', 'back-rent'],
+    cities: ['stockton', 'lodi', 'manteca', 'tracy', 'other'],
+    summary: '211 San Joaquin, run by the Family Resource & Referral Center, is the single front door to social services and the Coordinated Entry System in San Joaquin County. They keep an updated list of which programs have funds this week and route you to the right one. Call 211 (or 1-800-436-9997) from any county phone.',
+    contact: {
+      phone: '211',
+      altPhone: '1-800-436-9997',
+      web: '211sj.org',
+      hours: '24/7, free, multiple languages'
+    },
+    apply: {
+      channel: 'Phone call.',
+      steps: [
+        'Call <strong>211</strong> from any San Joaquin County phone (or 1-800-436-9997)',
+        'A specialist asks about your situation and ZIP code',
+        'They give you specific programs to call, with contact info',
+        'You call those programs directly to apply'
+      ]
+    },
+    asks: [
+      {q: 'What kind of help do you need?', sample: 'I am about to be evicted — I need rent help and maybe utility help too.'},
+      {q: 'What is your ZIP code?', sample: '95203'},
+      {q: 'How urgent is this?', sample: 'I have a 3-day notice that started Monday.'}
+    ],
+    docs: [
+      'No documents needed to call 211 — just be ready to describe your situation'
+    ]
+  }
+];
+
+// DV-specific resources, shown only on the DV path
+var SH_DV_PROGRAMS = [
+  {
+    id: 'prevail',
+    name: 'PREVAIL (formerly Women\'s Center–Youth & Family Services)',
+    type: 'DV / sexual assault shelter & services — San Joaquin County',
+    summary: 'San Joaquin County\'s primary provider of free, confidential shelter for survivors of domestic violence, sexual assault, and trafficking, plus homeless and runaway youth. Operates the confidential DAWN House (Stockton) and Serenity House (Tracy) emergency shelters.',
+    contact: {
+      phone: '209-941-2611',
+      hours: '24/7 crisis hotline'
+    },
+    notes: 'Call the 24-hour hotline any time. They make a safety plan with you, arrange confidential shelter, and provide hospital accompaniment and legal advocacy. Shelter locations are confidential for safety. Police involvement is not required.'
+  },
+  {
+    id: 'dv-hotline',
+    name: 'National Domestic Violence Hotline',
+    type: 'National 24/7 hotline',
+    summary: 'Call or text any time. Free, confidential, available in many languages. They can help you make a safety plan and route you to local San Joaquin shelter.',
+    contact: {
+      phone: '1-800-799-7233',
+      sms: 'Text START to 88788',
+      web: 'thehotline.org',
+      hours: '24/7'
+    },
+    notes: 'Good first call if you are not sure where to start or if calling a local number is not safe right now.'
+  },
+  {
+    id: 'trafficking',
+    name: 'National Human Trafficking Hotline',
+    type: 'National 24/7 hotline',
+    summary: 'For anyone being controlled, exploited, or forced to work or stay through threats. Confidential and available in many languages.',
+    contact: {
+      phone: '1-888-373-7888',
+      sms: 'Text HELP to 233733',
+      web: 'humantraffickinghotline.org',
+      hours: '24/7'
+    },
+    notes: 'They can connect you to local San Joaquin services and confidential shelter.'
+  },
+  {
+    id: 'dv-211',
+    name: '211 San Joaquin',
+    type: 'County referral line',
+    summary: 'If you are unsure who to call, 211 San Joaquin can route you to confidential local DV and shelter resources.',
+    contact: {
+      phone: '211',
+      altPhone: '1-800-436-9997',
+      web: '211sj.org',
+      hours: '24/7'
+    },
+    notes: 'They will not list shelter addresses, but they connect you to the right confidential intake line.'
+  }
+];
+
+// Intervention bundle rules — simple deterministic mapping.
+function shGetInterventions(sit) {
+  var b = { primary: [], secondary: [], skip: [] };
+  if (sit.includes('eviction') || sit.includes('arrears')) {
+    b.primary.push('Back rent');
+    b.secondary.push('Landlord mediation');
+  }
+  if (sit.includes('utility')) {
+    b.primary.push('Utility hold');
+  }
+  if (sit.includes('doubled')) {
+    b.primary.push('Security deposit', 'Move-in costs');
+    b.secondary.push('Host stipend');
+  }
+  if (sit.includes('income') && !sit.includes('eviction') && !sit.includes('arrears')) {
+    b.primary.push('Benefits review (SNAP, LIHEAP, EITC)');
+    b.secondary.push('Utility hold');
+  }
+  if (!sit.includes('eviction') && !sit.includes('arrears') && !sit.includes('utility') && !sit.includes('doubled')) {
+    b.primary.push('General housing stability planning');
+  }
+  // What we're NOT recommending
+  if (sit.includes('eviction') || sit.includes('arrears') || sit.includes('utility')) {
+    b.skip.push('Shelter intake');
+    b.skip.push('Coordinated entry assessment');
+  }
+  return b;
+}
+
+// Diagnosis copy.
+function shGetDiagnosisCopy(sit, time) {
+  if (sit.includes('eviction')) {
+    return {
+      lab: 'Diagnosis',
+      hd: 'A one-time payment of back rent is likely to keep you housed.',
+      body: 'Eviction prevention programs in San Joaquin County focus on this exact situation. Diversion works for households like yours <strong>most of the time</strong> when arrears are recent and the landlord is willing to accept payment.'
+    };
+  }
+  if (sit.includes('arrears')) {
+    return {
+      lab: 'Diagnosis',
+      hd: 'Now is the right time to ask for help &mdash; before a notice is filed.',
+      body: 'Programs are faster and easier to navigate before an eviction is on the court calendar. Most of the programs below can pay your landlord directly, which keeps a notice off your record.'
+    };
+  }
+  if (sit.includes('utility')) {
+    return {
+      lab: 'Diagnosis',
+      hd: 'Utility disconnect protection is available, especially in heat season.',
+      body: 'In a Central Valley summer, utility companies and county programs coordinate to keep power on during extreme-heat events, and California rules limit shut-offs during heat advisories. Acting before the disconnect date is much easier than restoring service after.'
+    };
+  }
+  if (sit.includes('doubled')) {
+    return {
+      lab: 'Diagnosis',
+      hd: 'A move-in package (deposit + first month) is the right shape of help.',
+      body: 'Doubled-up situations almost always end the same way: with someone needing a security deposit and a first-month payment to move into a place of their own. The earlier you ask, the more options you have.'
+    };
+  }
+  return {
+    lab: 'Diagnosis',
+    hd: 'Let\'s line up the right programs for your situation.',
+    body: 'Based on what you told us, here are the San Joaquin County programs that fit. Apply to two or three at the same time &mdash; programs run out of funds, so it\'s normal to do this.'
+  };
+}
+
+// ── State + navigation ───────────────────────────────────────────
+var SH_STATE = {
+  step: 'entry',
+  sit: [],
+  city: 'stockton',
+  time: 'lt5',
+  household: 'single',
+  vet: 'no'
+};
+
+var SH_STEP_ORDER = ['entry', 'situation', 'details', 'match', 'summary', 'followup'];
+
+function shGo(step) {
+  // DV path: jump straight to dv panel
+  if (step === 'match' && SH_STATE.sit.includes('dv')) {
+    step = 'dv';
+  }
+  SH_STATE.step = step;
+  document.querySelectorAll('.sh-step').forEach(function(el) { el.classList.remove('sh-step--on'); });
+  var target = document.getElementById('sh-step-' + step);
+  if (target) target.classList.add('sh-step--on');
+
+  // Progress
+  var idx = SH_STEP_ORDER.indexOf(step);
+  if (step === 'dv') idx = 3; // visual: same position as match
+  var pct = ((idx + 1) / SH_STEP_ORDER.length) * 100;
+  document.getElementById('sh-progress-fill').style.width = pct + '%';
+  document.getElementById('sh-progress-text').textContent =
+    (step === 'dv') ? 'Safety path' :
+    'Step ' + (idx + 1) + ' of ' + SH_STEP_ORDER.length;
+
+  // Scroll up so the user always sees the new step from the top
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+
+  // Build dynamic content where needed
+  if (step === 'match') {
+    shBuildMatch();
+  }
+  if (step === 'dv') {
+    shBuildDv();
+  }
+}
+
+function shToggleSit(btn) {
+  var v = btn.getAttribute('data-sit');
+  var i = SH_STATE.sit.indexOf(v);
+  if (i >= 0) { SH_STATE.sit.splice(i, 1); btn.classList.remove('sh-choice--selected'); }
+  else { SH_STATE.sit.push(v); btn.classList.add('sh-choice--selected'); }
+}
+
+function shAfterSituation() {
+  if (SH_STATE.sit.length === 0) {
+    alert('Pick at least one thing that applies. If none of these fit, choose the closest match or call 211 for general help.');
+    return;
+  }
+  if (SH_STATE.sit.includes('dv')) {
+    shGo('dv');
+  } else {
+    shGo('details');
+  }
+}
+
+// ── Match builder ────────────────────────────────────────────────
+function shBuildMatch() {
+  // Read form state
+  SH_STATE.city = document.getElementById('sh-city').value;
+  SH_STATE.time = document.getElementById('sh-time').value;
+  SH_STATE.household = document.getElementById('sh-household').value;
+  SH_STATE.vet = document.getElementById('sh-vet').value;
+
+  // Build diagnosis
+  var diag = shGetDiagnosisCopy(SH_STATE.sit, SH_STATE.time);
+  var bundle = shGetInterventions(SH_STATE.sit);
+
+  var diagHtml = '<div class="sh-diag">' +
+    '<div class="sh-diag__lab">' + diag.lab + '</div>' +
+    '<div class="sh-diag__hd">' + diag.hd + '</div>' +
+    '<div class="sh-diag__body">' + diag.body + '</div>' +
+    '</div>';
+
+  if (bundle.primary.length) {
+    diagHtml += '<div class="sh-chip-row"><div class="sh-chip-row__lab">What to ask for</div>';
+    bundle.primary.forEach(function(c) { diagHtml += '<span class="sh-chip">' + c + '</span>'; });
+    bundle.secondary.forEach(function(c) { diagHtml += '<span class="sh-chip">' + c + '</span>'; });
+    diagHtml += '</div>';
+  }
+  if (bundle.skip.length) {
+    diagHtml += '<div class="sh-chip-row" style="margin-top: 10px;"><div class="sh-chip-row__lab">Likely not needed yet</div>';
+    bundle.skip.forEach(function(c) { diagHtml += '<span class="sh-chip sh-chip--skip">' + c + '</span>'; });
+    diagHtml += '</div>';
+  }
+
+  document.getElementById('sh-diagnosis-area').innerHTML = diagHtml;
+
+  // Build program cards
+  var matched = shMatchPrograms();
+  var html = '';
+  matched.forEach(function(p, idx) {
+    var isBest = idx === 0;
+    html += shRenderProgram(p, isBest);
+  });
+  document.getElementById('sh-programs-area').innerHTML = html;
+}
+
+function shMatchPrograms() {
+  // Filter by city + helps that intersect situation
+  var sitTagMap = {
+    'eviction': ['back-rent', 'legal'],
+    'arrears': ['back-rent', 'legal'],
+    'utility': ['utility'],
+    'doubled': ['deposit'],
+    'income': ['back-rent', 'utility'],
+    'dv': ['dv']
+  };
+  var needTags = new Set();
+  SH_STATE.sit.forEach(function(s) {
+    (sitTagMap[s] || []).forEach(function(t) { needTags.add(t); });
+  });
+
+  var matched = SH_PROGRAMS.filter(function(p) {
+    if (!p.cities.includes(SH_STATE.city) && !p.cities.includes('other')) {
+      // Allow programs that serve "other"/county-wide always
+      if (!(p.cities.includes(SH_STATE.city))) {
+        if (!p.cities.includes('other')) return false;
+      }
+    }
+    if (needTags.size === 0) return true;
+    return p.helps.some(function(h) { return needTags.has(h); });
+  });
+
+  // Rank: programs whose helps overlap more with needTags rank higher.
+  // CVLIHC & El Concilio score boost as they're the structural entry points.
+  matched.sort(function(a, b) {
+    var aScore = 0, bScore = 0;
+    a.helps.forEach(function(h) { if (needTags.has(h)) aScore++; });
+    b.helps.forEach(function(h) { if (needTags.has(h)) bScore++; });
+    if (a.id === 'cvlihc') aScore += 0.5;
+    if (a.id === 'el-concilio') aScore += 0.3;
+    if (b.id === 'cvlihc') bScore += 0.5;
+    if (b.id === 'el-concilio') bScore += 0.3;
+    return bScore - aScore;
+  });
+
+  // Always include 211 at the end as a backstop
+  if (!matched.find(function(p) { return p.id === '211'; })) {
+    var p211 = SH_PROGRAMS.find(function(p) { return p.id === '211'; });
+    if (p211) matched.push(p211);
+  }
+
+  // Cap at 5 programs (plus 211)
+  return matched.slice(0, 5);
+}
+
+function shRenderProgram(p, isBest) {
+  var html = '<article class="sh-prog' + (isBest ? ' sh-prog--best' : '') + '">';
+  html += '<div class="sh-prog__top">';
+  html += '<h3 class="sh-prog__name">' + p.name + '</h3>';
+  html += '<span class="sh-fit ' + (isBest ? '' : 'sh-fit--ok') + '">' + (isBest ? 'Best fit' : 'Strong fit') + '</span>';
+  html += '</div>';
+  html += '<div class="sh-prog__meta">' + p.type + '</div>';
+  html += '<p class="sh-prog__what">' + p.summary + '</p>';
+
+  html += '<div class="sh-prog__contact">';
+  html += '<div class="sh-prog__contact-row"><span class="sh-prog__contact-lab">Phone</span> <a href="tel:' + p.contact.phone.replace(/[^0-9]/g, '') + '">' + p.contact.phone + '</a></div>';
+  if (p.contact.altPhone) {
+    html += '<div class="sh-prog__contact-row"><span class="sh-prog__contact-lab">Alt</span> <a href="tel:' + p.contact.altPhone.replace(/[^0-9]/g, '') + '">' + p.contact.altPhone + '</a></div>';
+  }
+  if (p.contact.web) {
+    html += '<div class="sh-prog__contact-row"><span class="sh-prog__contact-lab">Web</span> <a href="https://' + p.contact.web + '" target="_blank" rel="noopener">' + p.contact.web + '</a></div>';
+  }
+  if (p.contact.address) {
+    html += '<div class="sh-prog__contact-row" style="width: 100%;"><span class="sh-prog__contact-lab">Address</span> ' + p.contact.address + '</div>';
+  }
+  if (p.contact.hours) {
+    html += '<div class="sh-prog__contact-row" style="width: 100%;"><span class="sh-prog__contact-lab">Hours</span> ' + p.contact.hours + '</div>';
+  }
+  html += '</div>';
+
+  // Disclosure: How to apply
+  html += '<details class="sh-disc"><summary>How to apply (step by step)</summary>';
+  html += '<div class="sh-disc__body">';
+  html += '<p><strong>How:</strong> ' + p.apply.channel + '</p>';
+  html += '<ol>';
+  p.apply.steps.forEach(function(s) { html += '<li>' + s + '</li>'; });
+  html += '</ol>';
+  html += '</div></details>';
+
+  // Disclosure: What they'll ask
+  if (p.asks && p.asks.length) {
+    html += '<details class="sh-disc"><summary>What they\'ll probably ask (and sample answers)</summary>';
+    html += '<div class="sh-disc__body">';
+    html += '<p style="margin-bottom: 12px;">These are common questions in a San Joaquin County intake. The sample answers below are from a fictional household &mdash; use them as a template for shaping your own.</p>';
+    p.asks.forEach(function(qa) {
+      html += '<div class="sh-sample">';
+      html += '<span class="sh-sample__lab">Sample answer</span>';
+      html += '<p class="sh-sample__q">' + qa.q + '</p>';
+      html += '<div class="sh-sample__a">"' + qa.sample + '"</div>';
+      html += '</div>';
+    });
+    html += '</div></details>';
+  }
+
+  // Disclosure: What to bring
+  if (p.docs && p.docs.length) {
+    html += '<details class="sh-disc"><summary>What to bring (document checklist)</summary>';
+    html += '<div class="sh-disc__body">';
+    html += '<div class="sh-checklist"><h4>Bring with you</h4><ul>';
+    p.docs.forEach(function(d) { html += '<li>' + d + '</li>'; });
+    html += '</ul></div>';
+    html += '<div class="sh-tip"><strong>Don\'t have one of these?</strong> Apply anyway. Intake workers can often get by with what you have, especially if you call ahead and explain.</div>';
+    html += '</div></details>';
+  }
+
+  html += '</article>';
+  return html;
+}
+
+// ── DV builder ───────────────────────────────────────────────────
+function shBuildDv() {
+  var html = '';
+  SH_DV_PROGRAMS.forEach(function(p) {
+    html += '<article class="sh-prog">';
+    html += '<div class="sh-prog__top"><h3 class="sh-prog__name">' + p.name + '</h3></div>';
+    html += '<div class="sh-prog__meta">' + p.type + '</div>';
+    html += '<p class="sh-prog__what">' + p.summary + '</p>';
+    html += '<div class="sh-prog__contact">';
+    html += '<div class="sh-prog__contact-row"><span class="sh-prog__contact-lab">Phone</span> <a href="tel:' + p.contact.phone.replace(/[^0-9]/g, '') + '">' + p.contact.phone + '</a></div>';
+    if (p.contact.sms) html += '<div class="sh-prog__contact-row"><span class="sh-prog__contact-lab">Text</span> ' + p.contact.sms + '</div>';
+    if (p.contact.web) html += '<div class="sh-prog__contact-row"><span class="sh-prog__contact-lab">Web</span> <a href="https://' + p.contact.web + '" target="_blank" rel="noopener">' + p.contact.web + '</a></div>';
+    html += '<div class="sh-prog__contact-row" style="width: 100%;"><span class="sh-prog__contact-lab">Hours</span> ' + p.contact.hours + '</div>';
+    html += '</div>';
+    html += '<p style="font-size: 0.92rem; color: var(--tool-blue); margin-top: 6px;">' + p.notes + '</p>';
+    html += '</article>';
+  });
+  document.getElementById('sh-dv-programs').innerHTML = html;
+}
+
+// ── Summary builder (printable action sheet) ─────────────────────
+function shBuildSummary() {
+  var matched = shMatchPrograms();
+  var diag = shGetDiagnosisCopy(SH_STATE.sit, SH_STATE.time);
+  var bundle = shGetInterventions(SH_STATE.sit);
+  var now = new Date();
+  var dateStr = now.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+
+  var html = '<h3>Your San Joaquin County housing-help action sheet</h3>';
+  html += '<p style="color: var(--tool-gray); font-size: 0.88rem; margin-bottom: 14px;">Generated ' + dateStr + ' &middot; commonladder.org/static-tools/stay-housed-san-joaquin.html</p>';
+
+  html += '<h4>Your situation</h4>';
+  var sitLabels = {
+    'eviction': 'Eviction notice or court date',
+    'arrears': 'Behind on rent',
+    'utility': 'Utility shut-off',
+    'income': 'Recent income loss',
+    'doubled': 'Doubled-up, ending',
+    'dv': 'Leaving unsafe situation'
+  };
+  html += '<p>' + SH_STATE.sit.map(function(s) { return sitLabels[s] || s; }).join('; ') + '</p>';
+
+  html += '<h4>What you\'re looking for</h4>';
+  html += '<p>' + (bundle.primary.concat(bundle.secondary).join(', ') || 'Housing stability') + '</p>';
+
+  html += '<h4>Programs to call this week</h4>';
+  html += '<ol>';
+  matched.forEach(function(p) {
+    html += '<li style="margin-bottom: 10px;">';
+    html += '<strong>' + p.name + '</strong> &mdash; <a href="tel:' + p.contact.phone.replace(/[^0-9]/g, '') + '">' + p.contact.phone + '</a>';
+    if (p.contact.web) html += ' &middot; ' + p.contact.web;
+    html += '<br><span style="font-size: 0.88rem; color: var(--tool-gray);">' + p.apply.channel + '</span>';
+    html += '</li>';
+  });
+  html += '</ol>';
+
+  html += '<h4>Documents to gather first</h4>';
+  html += '<ul style="padding-left: 22px;">';
+  var commonDocs = [
+    'Photo ID for each adult',
+    'Proof of income for the last 30 days (pay stubs, benefits letter)',
+    'Your current lease',
+    'The eviction notice or disconnect notice (whichever applies)',
+    'Your landlord\'s name, phone, and address (programs pay them directly)',
+    'Social Security cards for everyone in the household'
+  ];
+  commonDocs.forEach(function(d) { html += '<li style="margin-bottom: 4px; font-size: 0.92rem;">' + d + '</li>'; });
+  html += '</ul>';
+
+  html += '<h4>Notes</h4>';
+  html += '<p style="font-size: 0.9rem;">Programs run out of money. Apply to two or three at the same time. Tell each program you\'re also applying elsewhere so they can coordinate.</p>';
+  html += '<p style="font-size: 0.9rem;">If you have a court date, get to court even if you\'re not ready. Filing an answer protects your rights.</p>';
+  html += '<p style="font-size: 0.9rem;">Need legal help? California Rural Legal Assistance (Stockton): <a href="tel:2099460605">(209) 946-0605</a> &middot; crla.org</p>';
+
+  document.getElementById('sh-summary-content').innerHTML = html;
+}
+
+// ── Feedback handlers ────────────────────────────────────────────
+function shToggleFb(which) {
+  var el = document.getElementById('sh-fb-' + which);
+  if (el) el.classList.toggle('sh-fb-card--open');
+}
+
+function shStar(val) {
+  document.querySelectorAll('.sh-star').forEach(function(s, idx) {
+    s.classList.toggle('sh-star--on', (idx + 1) <= val);
+  });
+}
+
+function shSubmitFb() {
+  // No actual submission in Phase 1 — just acknowledge.
+  document.getElementById('sh-thanks').style.display = 'block';
+  // Hide all action buttons + feedback cards after submit
+  document.querySelectorAll('#sh-step-followup .sh-fb-card, #sh-step-followup .sh-actions, #sh-step-followup .sh-privacy').forEach(function(el) {
+    el.style.display = 'none';
+  });
+}
+
+function shSkip() {
+  shSubmitFb();
+}
+
+// ── URL param support for deep links (provider mode) ─────────────
+(function() {
+  var params = new URLSearchParams(window.location.search);
+  if (params.get('start') === 'situation') {
+    shGo('situation');
+  }
+})();
+</script>
+
+<script data-id="cl-card-click">
+(function(){
+  document.querySelectorAll('.card, .post-card:not(.post-card--linked)').forEach(function(el){
+    var a = el.querySelector('a[href]');
+    if(!a) return;
+    el.addEventListener('click', function(e){
+      if(e.target.tagName==='A'||e.target.closest('a')) return;
+      window.location.href = a.href;
+    });
+  });
+})();
+</script>
+
+</body>
+</html>

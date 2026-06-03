@@ -1,8 +1,14 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
   <rect width="32" height="32" rx="6" fill="#1C3D6E"/>
-  <rect x="5" y="2" width="3.5" height="28" rx="1.75" fill="white" opacity=".92"/>
-  <rect x="23.5" y="2" width="3.5" height="28" rx="1.75" fill="white" opacity=".92"/>
-  <rect x="5" y="8"  width="22" height="3.5" rx="1.75" fill="#E8911A"/>
-  <rect x="5" y="15" width="22" height="3.5" rx="1.75" fill="#E8911A"/>
-  <rect x="5" y="22" width="22" height="3.5" rx="1.75" fill="#E8911A"/>
+  <!-- Hex cluster: 3-2-1 staircase, scaled to 32x32 with blue bg -->
+  <!-- r=4.5, all white except top hex amber -->
+  <!-- N1 (9,25) N2 (16.79,25) N3 (24.58,25) -->
+  <!-- G1 (12.9,18.25) G2 (20.69,18.25)     -->
+  <!-- O  (16.8,11.5)                         -->
+  <polygon points="9,20.5 12.9,22.75 12.9,27.25 9,29.5 5.1,27.25 5.1,22.75" fill="white" opacity=".88"/>
+  <polygon points="16.79,20.5 20.69,22.75 20.69,27.25 16.79,29.5 12.89,27.25 12.89,22.75" fill="white" opacity=".88"/>
+  <polygon points="24.58,20.5 28.48,22.75 28.48,27.25 24.58,29.5 20.68,27.25 20.68,22.75" fill="white" opacity=".88"/>
+  <polygon points="12.9,13.75 16.8,16 16.8,20.5 12.9,22.75 9,20.5 9,16" fill="white" opacity=".55"/>
+  <polygon points="20.69,13.75 24.59,16 24.59,20.5 20.69,22.75 16.79,20.5 16.79,16" fill="white" opacity=".55"/>
+  <polygon points="16.8,7 20.7,9.25 20.7,13.75 16.8,16 12.9,13.75 12.9,9.25" fill="#E8911A"/>
 </svg>
