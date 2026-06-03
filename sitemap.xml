@@ -1004,4 +1004,12 @@
     <priority>0.8</priority>
   </url>
 
+  <url>
+    <loc>https://www.commonladder.org/static-tools/id-recovery-wizard.html</loc>
+    <lastmod>2026-06-02</lastmod>
+  </url>
+  <url>
+    <loc>https://www.commonladder.org/blog/intro-id-recovery-wizard.html</loc>
+    <lastmod>2026-06-02</lastmod>
+  </url>
 </urlset>

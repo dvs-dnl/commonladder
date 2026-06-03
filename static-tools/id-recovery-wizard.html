@@ -1,0 +1,1075 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XLKR4ZSZ5J"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-XLKR4ZSZ5J');
+</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ID Recovery Wizard — Arizona · Common Ladder</title>
+<meta name="description" content="No ID, no birth certificate, no Social Security card? This free tool maps exactly which document to get first, in the right order, and points you to the Phoenix and Tucson programs that recover them for you at no cost.">
+<meta name="theme-color" content="#1C3D6E">
+<meta property="og:title" content="ID Recovery Wizard — Arizona">
+<meta property="og:description" content="Your documents depend on each other — birth certificate before ID, ID before a lot of things. This free tool maps the right order and the free programs that pay the fees.">
+<link rel="canonical" href="https://www.commonladder.org/static-tools/id-recovery-wizard.html">
+<link rel="stylesheet" href="/style.css">
+<style>
+  /* ── Tool-specific styles, layered on top of /style.css ── */
+  :root {
+    --tool-blue: #1C3D6E;
+    --tool-blue-50: #eef2f8;
+    --tool-blue-100: #d8e0ee;
+    --tool-amber: #E8911A;
+    --tool-amber-dark: #b36a00;
+    --tool-sage: #4A9E82;
+    --tool-sage-50: #e6f5f0;
+    --tool-gray: #6B7280;
+    --tool-gray-100: #f1f1ee;
+    --tool-gray-200: #e3e3df;
+    --tool-gray-300: #cfcfc8;
+    --tool-shadow: 0 2px 12px rgba(28,61,110,.10);
+    --tool-shadow-lg: 0 12px 32px rgba(28,61,110,.18);
+  }
+
+  .idw-wrap { max-width: 760px; margin: 0 auto; padding: 32px 20px 96px; }
+
+  /* Hero */
+  .idw-hero { margin-bottom: 28px; }
+  .idw-eyebrow {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: var(--tool-blue); color: #fff;
+    font-size: 0.74rem; font-weight: 600; letter-spacing: 0.08em;
+    text-transform: uppercase; padding: 5px 12px; border-radius: 999px;
+    margin-bottom: 14px;
+  }
+  .idw-hero h1 {
+    font-family: 'Manrope', sans-serif; font-weight: 700;
+    font-size: clamp(1.8rem, 4vw, 2.4rem); color: var(--tool-blue);
+    line-height: 1.15; margin-bottom: 12px;
+  }
+  .idw-hero p.lede { font-size: 1.05rem; color: var(--tool-blue); max-width: 640px; }
+
+  /* Verify notice */
+  .idw-verify {
+    background: var(--tool-sage-50); border-left: 4px solid var(--tool-sage);
+    color: #1c3a30; padding: 12px 16px; border-radius: 8px;
+    margin: 18px 0 24px; font-size: 0.92rem; line-height: 1.5;
+  }
+  .idw-verify strong { color: #14564a; }
+
+  /* Progress bar */
+  .idw-progress { margin: 28px 0 24px; }
+  .idw-progress__label {
+    font-size: 0.78rem; color: var(--tool-gray); margin-bottom: 6px;
+    font-weight: 500; display: flex; justify-content: space-between;
+  }
+  .idw-progress__track { background: var(--tool-gray-200); border-radius: 100px; height: 6px; overflow: hidden; }
+  .idw-progress__fill { background: var(--tool-amber); height: 100%; border-radius: 100px; transition: width 0.35s ease; width: 16%; }
+
+  /* Step */
+  .idw-step { display: none; }
+  .idw-step--on { display: block; animation: idwFade .25s ease; }
+  @keyframes idwFade { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+
+  .idw-h { font-family: 'Manrope', sans-serif; font-weight: 700; color: var(--tool-blue); font-size: 1.5rem; line-height: 1.25; margin-bottom: 8px; }
+  .idw-sub { font-size: 0.98rem; color: var(--tool-gray); margin-bottom: 22px; max-width: 600px; }
+
+  /* Choice cards */
+  .idw-choice {
+    display: block; width: 100%; border: 2px solid var(--tool-gray-200);
+    border-radius: 12px; padding: 16px 18px; margin-bottom: 12px;
+    cursor: pointer; background: #fff; text-align: left; font-family: inherit;
+    transition: all .15s ease; box-shadow: var(--tool-shadow);
+  }
+  .idw-choice:hover { border-color: var(--tool-blue); background: var(--tool-blue-50); }
+  .idw-choice:focus-visible { outline: 3px solid var(--tool-amber); outline-offset: 2px; }
+  .idw-choice--selected { border-color: var(--tool-amber); background: #fef6ea; }
+  .idw-choice__hd { display: flex; align-items: flex-start; gap: 14px; }
+  .idw-choice__icon {
+    width: 38px; height: 38px; border-radius: 10px;
+    background: var(--tool-blue-50); color: var(--tool-blue);
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0; font-size: 1.15rem; font-weight: 700;
+  }
+  .idw-choice--selected .idw-choice__icon { background: #fde2bd; color: var(--tool-amber-dark); }
+  .idw-choice__body { flex: 1; }
+  .idw-choice__title { font-family: 'Manrope', sans-serif; font-weight: 700; color: var(--tool-blue); font-size: 1.02rem; display: block; margin-bottom: 3px; }
+  .idw-choice__sub { font-size: 0.88rem; color: var(--tool-gray); line-height: 1.4; }
+
+  /* Checkbox grid (multi-select chips) */
+  .idw-checks { display: grid; grid-template-columns: 1fr; gap: 10px; margin-bottom: 18px; }
+  @media (min-width: 560px) { .idw-checks { grid-template-columns: 1fr 1fr; } }
+  .idw-check {
+    display: flex; align-items: flex-start; gap: 10px; padding: 12px 14px;
+    border: 1.5px solid var(--tool-gray-200); border-radius: 10px;
+    background: #fff; cursor: pointer; transition: all .12s ease; font-family: inherit;
+  }
+  .idw-check:hover { border-color: var(--tool-blue); }
+  .idw-check input { margin-top: 2px; accent-color: var(--tool-amber); }
+  .idw-check--on { border-color: var(--tool-amber); background: #fef6ea; }
+  .idw-check__lab { font-size: 0.96rem; color: var(--tool-blue); font-weight: 600; line-height: 1.3; }
+  .idw-check__hint { display:block; font-size: 0.82rem; color: var(--tool-gray); font-weight: 400; margin-top: 2px; line-height: 1.35; }
+
+  /* Action row */
+  .idw-actions { display: flex; gap: 10px; margin-top: 28px; flex-wrap: wrap; }
+  .idw-btn {
+    flex: 1; min-width: 130px; padding: 14px 20px; border-radius: 999px;
+    font-family: inherit; font-weight: 600; font-size: 0.98rem; cursor: pointer;
+    border: 2px solid transparent; text-align: center; transition: all .15s ease;
+  }
+  .idw-btn--primary { background: var(--tool-amber); color: #fff; border-color: var(--tool-amber); }
+  .idw-btn--primary:hover { background: var(--tool-amber-dark); border-color: var(--tool-amber-dark); }
+  .idw-btn--ghost { background: #fff; color: var(--tool-blue); border-color: var(--tool-gray-300); }
+  .idw-btn--ghost:hover { border-color: var(--tool-blue); }
+  .idw-btn:focus-visible { outline: 3px solid var(--tool-amber); outline-offset: 2px; }
+  .idw-btn:disabled { opacity: .55; cursor: not-allowed; }
+
+  /* Plan / output */
+  .idw-summary { background: #fff; border-radius: 14px; padding: 24px 22px; box-shadow: var(--tool-shadow-lg); margin: 8px 0 24px; }
+  .idw-diag { background: var(--tool-blue); color: #fff; border-radius: 12px; padding: 18px 20px; margin: 0 0 18px; }
+  .idw-diag__lab {
+    display: inline-block; background: rgba(255,255,255,.15); padding: 3px 10px;
+    border-radius: 999px; font-size: 0.74rem; letter-spacing: 0.06em;
+    text-transform: uppercase; font-weight: 600; margin-bottom: 10px;
+  }
+  .idw-diag h2 { font-family: 'Manrope', sans-serif; font-weight: 700; font-size: 1.3rem; color: #fff; margin: 0 0 6px; }
+  .idw-diag p { color: #e7ecf3; font-size: 0.96rem; line-height: 1.5; margin: 0; }
+
+  /* Step cards (ordered list of actions) */
+  .idw-step-card { border: 1px solid var(--tool-gray-200); border-radius: 12px; background: #fff; box-shadow: var(--tool-shadow); margin-bottom: 14px; overflow: hidden; }
+  .idw-step-card__head { display: flex; align-items: center; gap: 14px; padding: 16px 18px; background: var(--tool-blue-50); border-bottom: 1px solid var(--tool-blue-100); }
+  .idw-step-card__num {
+    width: 36px; height: 36px; border-radius: 50%; background: var(--tool-amber);
+    color: #fff; display: flex; align-items: center; justify-content: center;
+    font-weight: 700; flex-shrink: 0; box-shadow: 0 2px 6px rgba(232,145,26,.35);
+  }
+  .idw-step-card--anchor .idw-step-card__num { background: var(--tool-sage); box-shadow: 0 2px 6px rgba(74,158,130,.35); }
+  .idw-step-card__title { font-family: 'Manrope', sans-serif; font-weight: 700; color: var(--tool-blue); font-size: 1.08rem; margin: 0; flex: 1; line-height: 1.3; }
+  .idw-step-card__time { font-size: 0.78rem; color: var(--tool-gray); background: #fff; padding: 4px 10px; border-radius: 999px; white-space: nowrap; }
+  .idw-step-card__body { padding: 16px 18px 18px; }
+  .idw-step-card__why { color: var(--tool-blue); font-size: 0.96rem; margin: 0 0 12px; line-height: 1.5; }
+  .idw-step-card__why strong { color: var(--tool-amber-dark); }
+
+  .idw-where { margin: 12px 0 4px; }
+  .idw-where__title { font-size: 0.84rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--tool-gray); font-weight: 600; margin: 0 0 8px; }
+  .idw-where__list { list-style: none; padding: 0; margin: 0; }
+  .idw-where__list li { padding: 10px 12px; background: var(--tool-gray-100); border-radius: 8px; margin-bottom: 6px; font-size: 0.92rem; color: var(--tool-blue); line-height: 1.5; }
+  .idw-where__list li strong { color: var(--tool-blue); }
+  .idw-where__list li em { color: var(--tool-gray); font-style: normal; font-size: 0.86rem; }
+  .idw-where__row { display: flex; gap: 12px; align-items: flex-start; justify-content: space-between; }
+  .idw-where__body { flex: 1; min-width: 0; }
+  .idw-add {
+    flex-shrink: 0; background: #fff; color: var(--tool-amber-dark);
+    border: 1.5px solid var(--tool-amber); border-radius: 999px; font-family: inherit;
+    font-weight: 600; font-size: 0.78rem; padding: 5px 12px; cursor: pointer;
+    white-space: nowrap; transition: all .12s ease; line-height: 1.2;
+  }
+  .idw-add:hover { background: var(--tool-amber); color: #fff; }
+  .idw-add:focus-visible { outline: 3px solid var(--tool-amber); outline-offset: 2px; }
+  .idw-add::before { content: "+ "; font-weight: 700; }
+
+  .idw-bring { background: #fff8ec; border: 1px solid #f3d6a3; border-radius: 8px; padding: 10px 12px; margin: 10px 0; font-size: 0.9rem; color: var(--tool-amber-dark); }
+  .idw-bring strong { color: var(--tool-amber-dark); }
+  .idw-cost { background: var(--tool-blue-50); border: 1px solid var(--tool-blue-100); border-radius: 8px; padding: 10px 12px; margin: 10px 0; font-size: 0.9rem; color: var(--tool-blue); line-height: 1.5; }
+  .idw-cost strong { color: var(--tool-blue); }
+  .idw-shortcut { background: var(--tool-sage-50); border: 1px solid #b5dcce; border-radius: 8px; padding: 10px 12px; margin: 10px 0; font-size: 0.9rem; color: #14564a; line-height: 1.5; }
+  .idw-shortcut strong { color: #0e3e34; }
+  .idw-unlocks { font-size: 0.84rem; color: var(--tool-gray); margin-top: 8px; font-style: italic; }
+  .idw-unlocks::before { content: "↪ "; color: var(--tool-amber); font-style: normal; }
+
+  /* DV safe alert */
+  .idw-safe-alert { background: #fef6ea; border: 2px solid var(--tool-amber); border-radius: 12px; padding: 16px 18px; margin-bottom: 20px; }
+  .idw-safe-alert h3 { font-family: 'Manrope', sans-serif; color: var(--tool-amber-dark); margin: 0 0 6px; font-size: 1.05rem; font-weight: 700; }
+  .idw-safe-alert p { font-size: 0.92rem; color: var(--tool-blue); margin: 4px 0; line-height: 1.5; }
+  .idw-leave { display: inline-block; margin-top: 10px; color: var(--tool-amber-dark); font-weight: 700; text-decoration: underline; }
+
+  /* Privacy + feedback */
+  .idw-privacy { font-size: 0.85rem; color: var(--tool-gray); background: var(--tool-gray-100); padding: 12px 16px; border-radius: 8px; margin: 14px 0 8px; line-height: 1.5; }
+  .idw-privacy strong { color: var(--tool-blue); font-weight: 600; }
+  .idw-fb-link { display: inline-block; margin-top: 12px; color: var(--tool-blue); font-size: 0.88rem; text-decoration: underline; }
+  .idw-done { width: 64px; height: 64px; border-radius: 50%; background: var(--tool-sage); color: #fff; display: flex; align-items: center; justify-content: center; margin: 4px auto 16px; font-size: 2rem; }
+
+  /* Print rules */
+  @media print {
+    .crisis-bar, .nav, .footer, .idw-progress, .idw-actions, .idw-step:not(#idw-step-plan), .idw-eyebrow, .nav__exit, .idw-fb-link, .idw-add { display: none !important; }
+    .idw-wrap { padding: 0; max-width: none; }
+    body { background: #fff; }
+    .idw-summary { border: 1px solid #000; box-shadow: none; }
+    .idw-step-card { break-inside: avoid; box-shadow: none; border: 1px solid #444; }
+    .idw-diag { background: #fff !important; color: #000 !important; border: 2px solid #000; }
+    .idw-diag h2, .idw-diag p { color: #000 !important; }
+  }
+</style>
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+</head>
+<body>
+
+<a href="#main" class="skip-link">Skip to main content</a>
+
+<div class="crisis-bar" role="region" aria-label="Crisis help">
+  <strong>Need help right now?</strong>
+  <a href="tel:211">Call 211</a><span class="crisis-bar__sep">·</span>
+  <a href="sms:741741?body=HOME">Text HOME to 741741</a><span class="crisis-bar__sep">·</span>
+  <a href="tel:988">988 Suicide &amp; Crisis</a>
+</div>
+
+<nav class="nav" aria-label="Primary">
+  <div class="nav__inner">
+    <a href="/" class="nav__logo" aria-label="Common Ladder home">
+      <svg width="28" height="28" viewBox="0 0 28 28" fill="none" aria-hidden="true">
+        <polygon points="7.6,19 11.06,21 11.06,25 7.6,27 4.14,25 4.14,21" fill="white" opacity=".88"/>
+        <polygon points="14.53,19 17.99,21 17.99,25 14.53,27 11.06,25 11.06,21" fill="white" opacity=".88"/>
+        <polygon points="21.46,19 24.92,21 24.92,25 21.46,27 17.99,25 17.99,21" fill="white" opacity=".88"/>
+        <polygon points="11.06,13 14.53,15 14.53,19 11.06,21 7.6,19 7.6,15" fill="#A8C4E0" opacity=".85"/>
+        <polygon points="17.99,13 21.46,15 21.46,19 17.99,21 14.53,19 14.53,15" fill="#A8C4E0" opacity=".85"/>
+        <polygon points="14.53,7 17.99,9 17.99,13 14.53,15 11.06,13 11.06,9" fill="#E8911A"/>
+      </svg>
+      <span class="nav__wordmark">common<span>ladder</span></span>
+    </a>
+    <button class="nav__toggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="primary-nav" onclick="this.setAttribute('aria-expanded', document.getElementById('primary-nav').classList.toggle('open') ? 'true' : 'false')">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav__links" id="primary-nav">
+      <li><a href="/providers.html">For providers</a></li>
+      <li><a href="/learn/">Learn</a></li>
+      <li><a href="/about.html">About</a></li>
+      <li><a href="/find.html" class="nav__cta">Find resources</a></li>
+      <li><a href="/static-tools/my-ladder.html" class="nav__cta nav__cta--ladder">My Ladder</a></li>
+      <li><a href="https://www.weather.gov/" rel="noreferrer" class="nav__exit" onclick="event.preventDefault();window.location.replace('https://www.weather.gov/')">Leave page</a></li>
+    </ul>
+  </div>
+</nav>
+
+<main id="main">
+<div class="idw-wrap">
+
+  <header class="idw-hero">
+    <span class="idw-eyebrow">Arizona · ID &amp; documents</span>
+    <h1>ID Recovery Wizard</h1>
+    <p class="lede">Your documents depend on each other. You usually need a birth certificate before a state ID, and a state ID before a lot of other things. Tell us what you already have, and we&rsquo;ll map exactly which document to get first &mdash; and point you to the Arizona programs that recover them for you <strong>at no cost</strong>.</p>
+  </header>
+
+  <div class="idw-verify" role="note">
+    <strong>Verify before you go.</strong> Hours, fees, and rules change, and several programs are walk-in on specific days only. Call ahead or check the program&rsquo;s website before traveling. If something here is out of date, please <a href="/contact.html" style="color:#14564a;font-weight:600;">let us know</a>.
+  </div>
+
+  <!-- Progress bar -->
+  <div class="idw-progress" role="status" aria-live="polite">
+    <div class="idw-progress__label">
+      <span id="idw-progress-text">Step 1 of 5</span>
+      <span><a href="#" onclick="idwGo('entry'); return false;" style="color: var(--tool-gray); font-size: 0.78rem; text-decoration: underline;">Start over</a></span>
+    </div>
+    <div class="idw-progress__track"><div class="idw-progress__fill" id="idw-progress-fill"></div></div>
+  </div>
+
+  <!-- STEP 1 — Entry / Safety -->
+  <section class="idw-step idw-step--on" id="idw-step-entry">
+    <h2 class="idw-h">First, a safety check.</h2>
+    <p class="idw-sub">Are you currently fleeing domestic violence, trafficking, or another safety threat? If yes, replacing ID can sometimes expose your location &mdash; we&rsquo;ll route you to confidential help that handles documents safely.</p>
+
+    <div class="idw-safe-alert" role="alert">
+      <h3>If you&rsquo;re in danger right now</h3>
+      <p>Call <strong>911</strong> or the <strong>National DV Hotline at 1-800-799-7233</strong> (also reachable by texting <strong>START to 88788</strong>). They connect you to local Arizona DV advocates who help replace documents without exposing where you&rsquo;re staying.</p>
+      <a href="https://www.weather.gov/" rel="noreferrer" class="idw-leave" onclick="event.preventDefault();window.location.replace('https://www.weather.gov/')">Quick exit to weather.gov &rarr;</a>
+    </div>
+
+    <button class="idw-choice" data-safety="dv" onclick="idwPickSafety('dv', this)">
+      <div class="idw-choice__hd">
+        <div class="idw-choice__icon">!</div>
+        <div class="idw-choice__body">
+          <span class="idw-choice__title">Yes &mdash; I&rsquo;m fleeing DV or in an unsafe situation</span>
+          <span class="idw-choice__sub">Route me to confidential help that replaces documents safely.</span>
+        </div>
+      </div>
+    </button>
+    <button class="idw-choice" data-safety="general" onclick="idwPickSafety('general', this)">
+      <div class="idw-choice__hd">
+        <div class="idw-choice__icon">&rarr;</div>
+        <div class="idw-choice__body">
+          <span class="idw-choice__title">No &mdash; continue with the wizard</span>
+          <span class="idw-choice__sub">Map which documents to get first based on what I have.</span>
+        </div>
+      </div>
+    </button>
+
+    <div class="idw-actions">
+      <button class="idw-btn idw-btn--primary" id="idw-entry-next" onclick="idwEntryNext()" disabled>Continue &rarr;</button>
+    </div>
+  </section>
+
+  <!-- STEP 2 — Region -->
+  <section class="idw-step" id="idw-step-region">
+    <h2 class="idw-h">Where are you right now?</h2>
+    <p class="idw-sub">Arizona has a free program &mdash; the Homeless ID Project &mdash; that recovers IDs and birth certificates for you and pays the fees. It has walk-in sites across the Phoenix and Tucson metros. Where you are decides which sites are closest.</p>
+
+    <button class="idw-choice" data-region="phoenix" onclick="idwPickRegion('phoenix', this)">
+      <div class="idw-choice__hd">
+        <div class="idw-choice__icon">P</div>
+        <div class="idw-choice__body">
+          <span class="idw-choice__title">Phoenix metro</span>
+          <span class="idw-choice__sub">Phoenix, Mesa, Tempe, Glendale, and nearby. Multiple free ID-help sites.</span>
+        </div>
+      </div>
+    </button>
+    <button class="idw-choice" data-region="tucson" onclick="idwPickRegion('tucson', this)">
+      <div class="idw-choice__hd">
+        <div class="idw-choice__icon">T</div>
+        <div class="idw-choice__body">
+          <span class="idw-choice__title">Tucson metro</span>
+          <span class="idw-choice__sub">Free ID help is available through a Tucson partner site.</span>
+        </div>
+      </div>
+    </button>
+    <button class="idw-choice" data-region="az" onclick="idwPickRegion('az', this)">
+      <div class="idw-choice__hd">
+        <div class="idw-choice__icon">AZ</div>
+        <div class="idw-choice__body">
+          <span class="idw-choice__title">Elsewhere in Arizona</span>
+          <span class="idw-choice__sub">We&rsquo;ll map the same document order and route you through 211 to local help.</span>
+        </div>
+      </div>
+    </button>
+    <button class="idw-choice" data-region="outside" onclick="idwPickRegion('outside', this)">
+      <div class="idw-choice__hd">
+        <div class="idw-choice__icon">US</div>
+        <div class="idw-choice__body">
+          <span class="idw-choice__title">Outside Arizona</span>
+          <span class="idw-choice__sub">The document logic still applies. We&rsquo;ll point you to your local Continuum of Care.</span>
+        </div>
+      </div>
+    </button>
+
+    <div class="idw-actions">
+      <button class="idw-btn idw-btn--ghost" onclick="idwGo('entry')">&larr; Back</button>
+      <button class="idw-btn idw-btn--primary" id="idw-region-next" onclick="idwGo('have')" disabled>Continue &rarr;</button>
+    </div>
+  </section>
+
+  <!-- STEP 3 — Documents I currently have -->
+  <section class="idw-step" id="idw-step-have">
+    <h2 class="idw-h">What do you already have?</h2>
+    <p class="idw-sub">Check anything that&rsquo;s true. &ldquo;Have&rdquo; means in your possession now, or you can get it from a trusted person within a day. Leave the rest unchecked &mdash; that&rsquo;s exactly what the wizard is for.</p>
+
+    <div class="idw-checks" id="idw-have-grid">
+      <label class="idw-check" data-key="stateId">
+        <input type="checkbox">
+        <span><span class="idw-check__lab">A current or recently-expired state ID or license</span><span class="idw-check__hint">Any U.S. state. Expired within the last year still helps.</span></span>
+      </label>
+      <label class="idw-check" data-key="birthCert">
+        <input type="checkbox">
+        <span><span class="idw-check__lab">My birth certificate</span><span class="idw-check__hint">An original or certified copy &mdash; not a hospital souvenir.</span></span>
+      </label>
+      <label class="idw-check" data-key="ssnCard">
+        <input type="checkbox">
+        <span><span class="idw-check__lab">My Social Security card or number</span><span class="idw-check__hint">The physical card, or you know your full 9-digit number.</span></span>
+      </label>
+      <label class="idw-check" data-key="hadAzLicense">
+        <input type="checkbox">
+        <span><span class="idw-check__lab">I&rsquo;ve had an Arizona ID or license before</span><span class="idw-check__hint">You&rsquo;re likely already in the MVD system &mdash; this can skip the birth certificate step.</span></span>
+      </label>
+      <label class="idw-check" data-key="mailingAddress">
+        <input type="checkbox">
+        <span><span class="idw-check__lab">A place I can receive mail</span><span class="idw-check__hint">Where documents can actually be delivered this month.</span></span>
+      </label>
+      <label class="idw-check" data-key="proofResidency">
+        <input type="checkbox">
+        <span><span class="idw-check__lab">Proof of Arizona address, or a homeless-status letter</span><span class="idw-check__hint">Two address documents, or one verification letter from a shelter, case manager, or ADES.</span></span>
+      </label>
+    </div>
+
+    <div class="idw-actions">
+      <button class="idw-btn idw-btn--ghost" onclick="idwGo('region')">&larr; Back</button>
+      <button class="idw-btn idw-btn--primary" onclick="idwGo('birthplace')">Continue &rarr;</button>
+    </div>
+  </section>
+
+  <!-- STEP 4 — Birthplace -->
+  <section class="idw-step" id="idw-step-birthplace">
+    <h2 class="idw-h">Where were you born?</h2>
+    <p class="idw-sub">The birth certificate is the root document &mdash; almost everything else is built from it. Where you were born decides how you order a replacement and how long it takes.</p>
+
+    <button class="idw-choice" data-birthplace="az" onclick="idwPickBirthplace('az', this)">
+      <div class="idw-choice__hd">
+        <div class="idw-choice__icon">AZ</div>
+        <div class="idw-choice__body">
+          <span class="idw-choice__title">In Arizona</span>
+          <span class="idw-choice__sub">Fastest path &mdash; you can often get a certified copy same day in Maricopa County.</span>
+        </div>
+      </div>
+    </button>
+    <button class="idw-choice" data-birthplace="state" onclick="idwPickBirthplace('state', this)">
+      <div class="idw-choice__hd">
+        <div class="idw-choice__icon">&#9733;</div>
+        <div class="idw-choice__body">
+          <span class="idw-choice__title">In another U.S. state</span>
+          <span class="idw-choice__sub">Each state runs its own process. This is usually the slowest step &mdash; start it first.</span>
+        </div>
+      </div>
+    </button>
+    <button class="idw-choice" data-birthplace="outside" onclick="idwPickBirthplace('outside', this)">
+      <div class="idw-choice__hd">
+        <div class="idw-choice__icon">&#127758;</div>
+        <div class="idw-choice__body">
+          <span class="idw-choice__title">Outside the United States</span>
+          <span class="idw-choice__sub">Your identity proof works differently &mdash; we&rsquo;ll route you to the right help.</span>
+        </div>
+      </div>
+    </button>
+    <button class="idw-choice" data-birthplace="unsure" onclick="idwPickBirthplace('unsure', this)">
+      <div class="idw-choice__hd">
+        <div class="idw-choice__icon">?</div>
+        <div class="idw-choice__body">
+          <span class="idw-choice__title">I&rsquo;m not sure / I&rsquo;d rather not say</span>
+          <span class="idw-choice__sub">No problem. We&rsquo;ll keep the plan general and let a caseworker sort the details.</span>
+        </div>
+      </div>
+    </button>
+
+    <div class="idw-actions">
+      <button class="idw-btn idw-btn--ghost" onclick="idwGo('have')">&larr; Back</button>
+      <button class="idw-btn idw-btn--primary" id="idw-birth-next" onclick="idwGo('extras')" disabled>Continue &rarr;</button>
+    </div>
+  </section>
+
+  <!-- STEP 5 — Extras -->
+  <section class="idw-step" id="idw-step-extras">
+    <h2 class="idw-h">A couple more things.</h2>
+    <p class="idw-sub">Check anything that applies. These open faster or free-er paths &mdash; for example, homeless veterans can get an Arizona ID with the fee fully waived.</p>
+
+    <div class="idw-checks" id="idw-extras-grid">
+      <label class="idw-check" data-key="veteran">
+        <input type="checkbox">
+        <span><span class="idw-check__lab">I&rsquo;m a U.S. military veteran</span><span class="idw-check__hint">Arizona waives the full ID/license fee for homeless veterans, and the VA can pull your records.</span></span>
+      </label>
+      <label class="idw-check" data-key="needMailHelp">
+        <input type="checkbox">
+        <span><span class="idw-check__lab">I have no safe place to receive mail</span><span class="idw-check__hint">We&rsquo;ll put &ldquo;set up a mailing address&rdquo; near the top &mdash; every document gets mailed.</span></span>
+      </label>
+      <label class="idw-check" data-key="needForHousing">
+        <input type="checkbox">
+        <span><span class="idw-check__lab">I need this for housing or a job</span><span class="idw-check__hint">Tells us to flag the documents those applications usually require.</span></span>
+      </label>
+      <label class="idw-check" data-key="lostEverything">
+        <input type="checkbox">
+        <span><span class="idw-check__lab">I&rsquo;ve lost everything &mdash; no documents at all</span><span class="idw-check__hint">That&rsquo;s OK. Staff can start the chain from zero. We&rsquo;ll show you where.</span></span>
+      </label>
+    </div>
+
+    <div class="idw-actions">
+      <button class="idw-btn idw-btn--ghost" onclick="idwGo('birthplace')">&larr; Back</button>
+      <button class="idw-btn idw-btn--primary" onclick="idwBuildPlan()">Show my plan &rarr;</button>
+    </div>
+  </section>
+
+  <!-- STEP 6 — The plan (output) -->
+  <section class="idw-step" id="idw-step-plan">
+    <h2 class="idw-h">Your document recovery plan</h2>
+    <p class="idw-sub">Here&rsquo;s the order that works, with where to go and what each step unlocks. <strong>You don&rsquo;t have to do this alone</strong> &mdash; in Arizona, the Homeless ID Project can run most of this for you and pay the fees.</p>
+
+    <div class="idw-summary" id="idw-plan-out">
+      <!-- diagnosis + step cards injected by JS -->
+    </div>
+
+    <div class="idw-privacy">
+      <strong>What we did with your answers:</strong> nothing left this page. No personal information was stored, no application was submitted, and nothing was sent to any agency. You apply directly with each program.
+    </div>
+
+    <a href="/contact.html" class="idw-fb-link">Something here is wrong or out of date &rarr;</a>
+
+    <div class="idw-actions">
+      <button class="idw-btn idw-btn--ghost" onclick="window.print()">Print my plan</button>
+      <button class="idw-btn idw-btn--ghost" onclick="idwGo('extras')">&larr; Edit answers</button>
+      <button class="idw-btn idw-btn--primary" onclick="idwGo('done')">I&rsquo;m done &rarr;</button>
+    </div>
+  </section>
+
+  <!-- DV branch -->
+  <section class="idw-step" id="idw-step-dv">
+    <h2 class="idw-h">Safety first.</h2>
+    <p class="idw-sub">Replacing documents while you&rsquo;re fleeing can accidentally create a paper trail &mdash; a mailing address, a new record &mdash; that an abuser could use to find you. DV advocates know how to recover your ID and birth certificate safely, including using confidential addresses.</p>
+
+    <div class="idw-safe-alert">
+      <h3>Start with one call &mdash; advocates handle documents confidentially.</h3>
+      <p><strong>National DV Hotline:</strong> <a href="tel:18007997233">1-800-799-7233</a> &middot; 24/7, multi-lingual, free, anonymous. Tell them you&rsquo;re in Arizona and need to replace ID safely &mdash; they connect you to a local advocate.</p>
+      <p><strong>Text START to 88788</strong> if calling isn&rsquo;t safe.</p>
+      <p style="margin-top:14px;"><strong>Arizona DV agencies</strong> that help with safe document recovery and confidential addresses:</p>
+      <ul style="margin:6px 0 6px 18px; padding:0; font-size:0.92rem; color:var(--tool-blue); line-height:1.6;">
+        <li>Sojourner Center &mdash; Phoenix &middot; <em>sojournercenter.org</em></li>
+        <li>Chrysalis &mdash; Phoenix and Scottsdale &middot; <em>noabuse.org</em></li>
+        <li>A New Leaf &mdash; East Valley &middot; <em>turnanewleaf.org</em></li>
+        <li>Emerge Center Against Domestic Abuse &mdash; Tucson &middot; <em>emergecenter.org</em></li>
+      </ul>
+      <p style="margin-top:10px"><strong>Address Confidentiality Program (Arizona):</strong> the Secretary of State runs a program that gives survivors a substitute mailing address. Ask your advocate to enroll you &mdash; then documents can be mailed safely.</p>
+      <a href="https://www.weather.gov/" rel="noreferrer" class="idw-leave" onclick="event.preventDefault();window.location.replace('https://www.weather.gov/')">Quick exit to weather.gov &rarr;</a>
+    </div>
+
+    <div class="idw-privacy" style="margin-top:18px;">
+      <strong>Why we route you here:</strong> the general path involves setting up a mailing address and creating new records. For someone in danger, the order and the address matter for safety, not just speed. An advocate sequences it so your location stays protected.
+    </div>
+
+    <div class="idw-actions">
+      <button class="idw-btn idw-btn--ghost" onclick="idwGo('entry')">&larr; Start over</button>
+    </div>
+  </section>
+
+  <!-- Done -->
+  <section class="idw-step" id="idw-step-done">
+    <div class="idw-summary" style="text-align:center;">
+      <div class="idw-done" aria-hidden="true">&check;</div>
+      <h2 class="idw-h" style="text-align:center;">You&rsquo;ve got a plan.</h2>
+      <p class="idw-sub" style="margin-left:auto;margin-right:auto;">If you&rsquo;d like to keep this list, print it now &mdash; we don&rsquo;t save it. The single best move in Arizona is to bring this plan to a Homeless ID Project walk-in and let them run it with you.</p>
+
+      <div class="idw-actions" style="justify-content:center;">
+        <button class="idw-btn idw-btn--primary" onclick="window.print()">Print my plan</button>
+        <a class="idw-btn idw-btn--ghost" href="/contact.html">Report a correction</a>
+      </div>
+
+      <div class="idw-privacy" style="margin-top:24px;text-align:left;">
+        <strong>Related tools on Common Ladder:</strong>
+        <ul style="margin:8px 0 0 18px; padding:0;">
+          <li><a href="/blog/id-recovery-phoenix.html">How to replace a lost ID in Phoenix</a> &mdash; the full written guide</li>
+          <li><a href="/static-tools/resource-sequencing-maricopa.html">Resource Sequencing Navigator</a> &mdash; if ID is one of several things you&rsquo;re juggling</li>
+          <li><a href="/static-tools/benefit-screener.html">Benefit Screener</a> &mdash; what you can apply for once you have ID</li>
+          <li><a href="/static-tools/coc-finder.html">CoC finder</a> &mdash; if you&rsquo;re outside Arizona</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="idw-actions">
+      <button class="idw-btn idw-btn--ghost" onclick="idwGo('entry')">Start over</button>
+    </div>
+  </section>
+
+</div>
+</main>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer__grid">
+      <div class="footer__brand">
+        <h3>Common Ladder</h3>
+        <p>The civic resource platform connecting people experiencing homelessness with every service in your community.</p>
+      </div>
+      <div>
+        <h4>Find help</h4>
+        <ul>
+          <li><a href="/find.html?cat=shelter">Shelter</a></li>
+          <li><a href="/find.html?cat=food">Food</a></li>
+          <li><a href="/help/id-documents/">ID &amp; documents</a></li>
+          <li><a href="/help/">All categories</a></li>
+          <li><a href="/static-tools/maricopa-navigator.html">Maricopa navigator</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>For providers</h4>
+        <ul>
+          <li><a href="/providers.html">Tools &amp; referrals</a></li>
+          <li><a href="/providers.html#case-manager-guide">Case manager guide</a></li>
+          <li><a href="/data-reports.html">Data &amp; reports</a></li>
+          <li><a href="/learn/">Four learning pathways</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>About</h4>
+        <ul>
+          <li><a href="/about.html">Our mission</a></li>
+          <li><a href="/about.html#methodology">Methodology</a></li>
+          <li><a href="/about.html#team">Team</a></li>
+          <li><a href="/contact.html">Contact</a></li>
+          <li><a href="/privacy.html">Privacy</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer__transparency">
+      <strong>Transparency:</strong> Common Ladder is an independent civic project. We do not sell user data, run ads, or accept payment from listed resources. This tool does not submit applications on your behalf &mdash; you apply directly with each program.
+    </div>
+    <div class="footer__bottom">
+      <span>&copy; 2026 Common Ladder. Free to use, always.</span>
+      <span><time datetime="2026-06-02">Last updated June 2, 2026</time></span>
+    </div>
+  </div>
+</footer>
+
+<script>
+// ─────────────────────────────────────────────────────────────────
+// ID Recovery Wizard — Arizona
+// Pure client-side: no PII storage, no application submission.
+// Authoring rule: only list orgs we know exist and have verified.
+// Fees and hours are noted as of mid-2026 and flagged "verify."
+// Source check (June 2026): Homeless ID Project locations/hours from
+// homelessidproject.org (page modified 2026-03-21); AZ birth cert $20
+// certified copy (Maricopa County Vital Records); AZ state ID $12 with
+// homeless fee-waiver certification form; SSN replacement via SSA.
+// ─────────────────────────────────────────────────────────────────
+
+const IDW_STATE = {
+  safety: null,        // 'dv' | 'general'
+  region: null,        // 'phoenix' | 'tucson' | 'az' | 'outside'
+  have: {},            // checkbox keys → true
+  birthplace: null,    // 'az' | 'state' | 'outside' | 'unsure'
+  extras: {}           // checkbox keys → true
+};
+
+// The node graph: each entry is a discrete document-recovery action.
+const IDW_NODES = {
+
+  'homeless-id-project': {
+    anchor: true,
+    title: 'Start at the Homeless ID Project — they run this for you',
+    time: 'Walk-in; ID arrives in 7–10 business days',
+    why: 'This is the shortcut almost nobody knows about. In Arizona, the Homeless ID Project assists with the whole chain — replacement state ID or driver\'s license AND the birth certificate behind it — and they <strong>pay the document fees</strong>. They have Tele-MVD access on site, so you usually don\'t need a separate MVD trip, and you leave with a temporary paper ID.',
+    where: [
+      { name: 'Phoenix — Keys to Change campus', detail: '1125 W Jackson St, Phoenix 85007 · inside the Lodestar Day Resource Center · Mon–Fri 8AM–1PM (closed every 2nd Wed & 3rd Mon) · first come, first served', site: 'homelessidproject.org' },
+      { name: 'Phoenix / Sunnyslope — Acacia Library', detail: '750 E Townley Ave, Phoenix 85020 · 2nd & 4th Thursdays 1–3:30PM', site: 'homelessidproject.org/id-service-locations' },
+      { name: 'Mesa — St. Vincent de Paul Dining Room', detail: '49 W Broadway Rd, Mesa 85210 · 2nd & 4th Tuesdays 1–3:30PM', site: 'homelessidproject.org/id-service-locations' },
+      { name: 'Tempe — Tempe Community Action Agency', detail: '2146 Apache Blvd, Tempe 85281 · 1st & 3rd Mondays 1–3:30PM', site: 'homelessidproject.org/id-service-locations' },
+      { name: 'Glendale — Arizona Justice Center', detail: '5585 W Glenn Dr, Glendale 85301 · Wednesdays 1–3:30PM', site: 'homelessidproject.org/id-service-locations' }
+    ],
+    bring: 'Whatever documents you do have — but you can start even with nothing. Staff begin the chain from zero. Going early in the open window helps, since sites are first come, first served.',
+    cost: 'Free. The Homeless ID Project funds the eligible document fees (birth certificate, state ID). What they cannot do: decide your case, expedite government processing, or override state rules.',
+    shortcut: 'If you\'ve had an Arizona license before, you\'re likely already in the MVD system, and you usually will not need a birth certificate to get a replacement ID. Mention this at intake — it can collapse several steps into one visit.',
+    unlocks: 'Birth certificate, state ID or driver\'s license, secure document storage — and through those, shelter intake, benefits, jobs, and housing applications.'
+  },
+
+  'homeless-id-tucson': {
+    anchor: true,
+    title: 'Start with the Homeless ID Project — Tucson',
+    time: 'Call first; ID arrives in 7–10 business days',
+    why: 'The same Arizona program that recovers IDs and birth certificates at no cost operates in the Tucson metro. They assist with the application, fund eligible fees, and provide secure storage so you don\'t lose the documents again.',
+    where: [
+      { name: 'Tucson — Gospel Rescue Mission (Center of Opportunity)', detail: '4550 S Palo Verde Rd, Tucson 85714 · assistance for residents of the Center of Opportunity', site: 'homelessidproject.org/id-service-locations' },
+      { name: 'Tucson — all other locations', detail: 'Call for current walk-in sites and times', site: '520-739-3165' }
+    ],
+    bring: 'Whatever you have — they can start with nothing. Call 520-739-3165 first to confirm the nearest open site.',
+    cost: 'Free. Eligible document fees are funded by the program.',
+    shortcut: 'If you\'ve held an Arizona license before, you\'re probably already in the MVD system and can skip the birth-certificate step for a replacement ID. Ask at intake.',
+    unlocks: 'Birth certificate, state ID, secure document storage, and the services that all require ID.'
+  },
+
+  'mailing-address': {
+    title: 'Set up a mailing address you can actually use',
+    time: 'Same day at most sites',
+    why: 'Every replacement document — birth certificate, ID, Social Security card — gets <strong>mailed</strong> somewhere. Without an address that receives mail, the whole chain stalls at the last step. Fix this early.',
+    where: [
+      { name: 'Keys to Change campus mailroom', detail: '1125 W Jackson St, Phoenix · the only dedicated "post office" for people experiencing homelessness in the country — register to receive mail here', site: 'keystochangeaz.org' },
+      { name: 'Andre House', detail: '213 S 11th Ave, Phoenix · mail service for guests', site: 'andrehouse.org' },
+      { name: 'Justa Center', detail: '1001 W Jefferson St, Phoenix · mail + day services for adults 55+', site: 'justacenter.org' }
+    ],
+    bring: 'Usually nothing for mail-only setup. Some sites ask you to register as a guest first.',
+    cost: 'Free.',
+    shortcut: 'A trusted family member or friend\'s address works for mail-only purposes — you do not have to live somewhere to receive mail there. The Homeless ID Project can also have documents mailed to the Keys campus for you to pick up.',
+    unlocks: 'Delivery of every document below — birth certificate, state ID, Social Security card.'
+  },
+
+  'birth-cert-az': {
+    title: 'Get your Arizona birth certificate',
+    time: 'Same day in person; 2–4 weeks by mail',
+    why: 'The birth certificate is the root document. You need it to replace a state ID (unless you\'re already in the MVD system) and it counts as identity proof for a Social Security card. Born in Arizona means the fastest path.',
+    where: [
+      { name: 'Maricopa County Office of Vital Registration', detail: 'In person, often same-day · 602-506-6805 · order online via the county site', site: 'maricopa.gov/5995' },
+      { name: 'Arizona Department of Health Services — Bureau of Vital Records', detail: '1818 W Adams St, Phoenix · in person or by mail · statewide births', site: 'azdhs.gov/licensing/vital-records' }
+    ],
+    bring: 'A photo ID if you have one. If you have no ID at all, AZ Vital Records allows a notarized identity-verification process — call to ask for the current form. You\'ll also need your full name at birth, date of birth, and parents\' names (including mother\'s maiden name).',
+    cost: 'About $20 per certified copy. The Homeless ID Project pays this fee if you go through them — which is why they\'re step 1 for most people in this plan.',
+    shortcut: 'Some libraries and credit unions offer free notary services — call ahead. If you have no ID, the notarized alternate process is the route around it.',
+    unlocks: 'Social Security card replacement, state ID.'
+  },
+
+  'birth-cert-state': {
+    title: 'Order your birth certificate from your birth state',
+    time: '2–6 weeks — the slowest step, so start it first',
+    why: 'If you were born in another U.S. state, that state\'s Vital Records office issues your birth certificate, each with its own process. This is almost always the longest wait in the whole chain, so it should be the <strong>first</strong> thing you start — then work everything else in parallel.',
+    where: [
+      { name: 'VitalChek', detail: 'Online ordering for most U.S. states · fee plus service charge', site: 'vitalchek.com' },
+      { name: 'Your birth state\'s Vital Records office', detail: 'Search "[state] vital records birth certificate" — ordering directly is usually cheapest', site: '' },
+      { name: 'Homeless ID Project', detail: 'Can help request out-of-state birth certificates and fund the fee — bring what you know about your birth details', site: 'homelessidproject.org' }
+    ],
+    bring: 'Full name at birth, date of birth, city and state of birth, and parents\' full names (including mother\'s maiden name). A mailing address for delivery. Some states waive fees with proof of hardship — ask.',
+    cost: 'Varies by state (roughly $15–$35). The Homeless ID Project can fund eligible out-of-state birth certificate fees.',
+    shortcut: 'Don\'t wait for the birth certificate to arrive before starting the other steps. Order it, then immediately set up your mailing address and Social Security card so they\'re moving at the same time.',
+    unlocks: 'Social Security card replacement, state ID.'
+  },
+
+  'birth-cert-outside': {
+    title: 'Born outside the U.S.? Use the right identity documents',
+    time: 'Varies — start by talking to someone who can pull your records',
+    why: 'If you were born outside the United States, a U.S. birth certificate isn\'t your identity document — your citizenship, naturalization, or immigration paperwork is. Replacing those runs through different agencies, so the right first move is to talk to someone who can identify which documents apply to you.',
+    where: [
+      { name: 'Homeless ID Project', detail: 'Start here — staff can help figure out which supporting documents you need and where to request them', site: 'homelessidproject.org' },
+      { name: 'USCIS (citizenship/immigration records)', detail: 'Form N-565 replaces a naturalization or citizenship certificate', site: 'uscis.gov' },
+      { name: 'Your country\'s consulate', detail: 'For a foreign birth certificate or passport, your consulate is the issuing authority', site: '' },
+      { name: 'Community legal aid', detail: 'Call 211 to reach immigration legal help if your status documents are also lost', site: 'arizona211.org' }
+    ],
+    bring: 'Anything you remember about your immigration history — an A-number, a prior green card or passport number, naturalization date. Nothing is required to start the conversation.',
+    cost: 'Replacement fees vary by document and agency; some have fee waivers. Ask about waivers up front.',
+    shortcut: 'Even if you\'ve lost everything, the agencies above can often locate your record from your name and date of birth. Don\'t assume you\'re stuck — ask.',
+    unlocks: 'Social Security card, state ID, and proof of work authorization where it applies.'
+  },
+
+  'ssn-card': {
+    title: 'Replace your Social Security card',
+    time: '7–14 days by mail',
+    why: 'Most employers and many benefits programs need your Social Security number. AHCCCS (Arizona Medicaid) and SNAP both use it even when they don\'t require the physical card. Replacing it is free.',
+    where: [
+      { name: 'Social Security Administration office', detail: 'Multiple Maricopa County offices · in person, by appointment · 1-800-772-1213', site: 'ssa.gov/number-card/replace-card' },
+      { name: 'my Social Security online', detail: 'If you already have an account, you may be able to request a replacement card online', site: 'ssa.gov/myaccount' }
+    ],
+    bring: 'Proof of identity. A photo ID is ideal, but if you have none, SSA accepts combinations of non-photo documents — a school or medical record, plus government mail. Documents must be originals or certified copies, not photocopies.',
+    cost: 'Free — the SSA never charges for a replacement card.',
+    shortcut: 'You can often replace your SSN card the same day you receive your birth certificate, because SSA accepts the birth certificate as identity proof. You do not have to wait until you have a state ID first.',
+    unlocks: 'Employment paperwork (I-9), finalizing SNAP and AHCCCS, opening a bank account.'
+  },
+
+  'homeless-letter': {
+    title: 'Get a homeless-status verification letter',
+    time: '1–3 days once you\'re in touch with a case manager or 211',
+    why: 'Arizona\'s MVD lets a homeless-status verification letter <strong>substitute for proof of residency</strong> when you apply for a state ID. If you can\'t produce two address documents, this single letter is what gets you past the residency requirement.',
+    where: [
+      { name: '211 Arizona', detail: 'Call 211 — they refer you to the nearest case manager or agency that issues these letters', site: 'arizona211.org' },
+      { name: 'Any shelter or day center you\'re engaged with', detail: 'Most case managers can write this on agency letterhead', site: '' },
+      { name: 'ADES (Arizona Dept. of Economic Security)', detail: 'Can issue a homeless designation once you have a case file open', site: 'des.az.gov' }
+    ],
+    bring: 'Yourself. No ID is required to start a 211 referral. Have a way to be reached.',
+    cost: 'Free.',
+    shortcut: 'One visit to a day center (Andre House, Justa Center, St. Vincent de Paul) to meet a case manager is usually enough to get this letter the same week. You do not have to be enrolled in a shelter program to receive it.',
+    unlocks: 'State ID (the letter substitutes for proof of Arizona residency), plus expedited SNAP and AHCCCS.'
+  },
+
+  'state-id-az': {
+    title: 'Get your Arizona state ID',
+    time: 'Same day at MVD with an appointment; mailed within 1–2 weeks',
+    why: 'The state ID is the document everything routes through — shelter intake at most programs, jobs, benefits offices, bank accounts, and leases. This is usually the last link in the chain because it needs the documents above it.',
+    where: [
+      { name: 'Arizona Motor Vehicle Division (MVD)', detail: 'Multiple Maricopa County locations · book online at azdot.gov to skip the walk-in line', site: 'azdot.gov/mvd' },
+      { name: 'Homeless ID Project (Tele-MVD)', detail: 'Can process your ID on site without a separate MVD trip — and pay the fee', site: 'homelessidproject.org' }
+    ],
+    bring: 'Birth certificate (or proof you\'re already in the MVD system) + Social Security card or number + two documents proving Arizona residency OR a homeless-status verification letter.',
+    cost: 'The standard Arizona state ID fee is about $12. A fee waiver for people experiencing homelessness is available with a certification form from a verified social-service agency — and the Homeless ID Project pays the fee outright. People 65+ and SSI recipients can get the ID free.',
+    shortcut: 'The homeless fee waiver is not posted at the counter — you have to ask, and bring your homeless-status verification letter. That same letter also satisfies the residency requirement in place of utility bills or a lease.',
+    unlocks: 'Shelter intake at most programs, employment, bank accounts, leases, voting, and most benefits and healthcare.'
+  },
+
+  'veteran-id': {
+    title: 'Veterans: your Arizona ID fee is fully waived',
+    time: 'Same visit once your veteran status is confirmed',
+    why: 'Arizona law waives the entire driver\'s license or state ID fee for veterans experiencing homelessness. On top of that, the VA can pull your service records on the spot, so a lost DD-214 doesn\'t stop you.',
+    where: [
+      { name: 'Homeless ID Project — veteran assistance', detail: 'Has a dedicated path for veterans and can confirm the fee waiver', site: 'homelessidproject.org/veterans' },
+      { name: 'Arizona MVD', detail: 'Waives the fee with a VA letter, or a letter on the letterhead of a verified homeless-services provider confirming homelessness within the past 60 days', site: 'azdot.gov/mvd' },
+      { name: 'VA Phoenix — Homeless Programs', detail: '650 E Indian School Rd, Phoenix · can pull your service record even without a DD-214', site: 'phoenix.va.gov' },
+      { name: 'National Call Center for Homeless Veterans', detail: '1-877-424-3838 · 24/7', site: '' }
+    ],
+    bring: 'DD-214 if you have it; if not, the VA can locate your record. For the MVD fee waiver, bring a VA letter or a homeless-services provider letter dated within 60 days.',
+    cost: 'Free — the full ID/license fee is waived for homeless veterans, separate from the general homeless waiver.',
+    shortcut: 'You do not need an honorable discharge to use VA homeless programs or the ID fee waiver — other-than-honorable discharges can still qualify. Don\'t assume you\'re excluded; ask.',
+    unlocks: 'A no-cost ID plus the parallel VA system: HUD-VASH housing vouchers, SSVF rapid rehousing, and VA healthcare.'
+  },
+
+  'secure-storage': {
+    title: 'Store your documents somewhere safe so you don\'t start over',
+    time: 'Set up once you have a document in hand',
+    why: 'Losing documents to theft, weather, or a swept campsite is the most common reason people end up back at step one. Free secure storage breaks that cycle — your originals are kept safe and you carry only copies.',
+    where: [
+      { name: 'Homeless ID Project — secure storage', detail: 'Free, reliable storage that protects your originals from loss, theft, or damage', site: 'homelessidproject.org' },
+      { name: 'Keys to Change campus mailroom', detail: 'Holds mail and documents securely for registered campus users', site: 'keystochangeaz.org' }
+    ],
+    bring: 'The documents you want to protect. Keep a photo of each on a phone or in a free email account as a backup.',
+    cost: 'Free.',
+    shortcut: 'Take a clear phone photo of every document the moment you receive it, and email it to yourself. Even if the originals are lost again, the images speed up the next replacement.',
+    unlocks: 'Not having to repeat this whole process the next time something goes missing.'
+  }
+};
+
+// ─────────────────────────────────────────────────────────────────
+// Solver: given user state, return ordered list of node IDs.
+// ─────────────────────────────────────────────────────────────────
+function idwBuildPlan() {
+  const out = document.getElementById('idw-plan-out');
+  const have = IDW_STATE.have;
+  const region = IDW_STATE.region;
+  const bp = IDW_STATE.birthplace;
+  const ex = IDW_STATE.extras;
+  const lost = !!ex.lostEverything;
+
+  let plan = [];
+
+  // 1. Anchor: the Homeless ID Project, for AZ metros. This is the dominant path.
+  if (region === 'phoenix') plan.push('homeless-id-project');
+  else if (region === 'tucson') plan.push('homeless-id-tucson');
+
+  // 2. Mailing address early if they have none / asked for help — every doc gets mailed.
+  if (!have.mailingAddress || ex.needMailHelp || lost) plan.push('mailing-address');
+
+  // 3. Birth certificate (root doc). Skip only if they already have it, OR they're
+  //    already in the MVD system AND have an SSN (then a replacement ID rarely needs it).
+  const needsBirthCert = !have.birthCert && !(have.hadAzLicense && have.ssnCard);
+  if (needsBirthCert) {
+    if (bp === 'az') plan.push('birth-cert-az');
+    else if (bp === 'state') plan.push('birth-cert-state');
+    else if (bp === 'outside') plan.push('birth-cert-outside');
+    else { // 'unsure' or unset — default to AZ path with a general note in diagnosis
+      plan.push('birth-cert-az');
+    }
+  }
+
+  // 4. Social Security card.
+  if (!have.ssnCard) plan.push('ssn-card');
+
+  // 5. State ID. If no residency proof, the homeless letter comes first as a substitute.
+  if (!have.stateId) {
+    if (!have.proofResidency) plan.push('homeless-letter');
+    if (ex.veteran) plan.push('veteran-id'); else plan.push('state-id-az');
+  } else if (ex.veteran) {
+    // Already has ID but veteran — still surface the VA pathway as a bonus.
+    plan.push('veteran-id');
+  }
+
+  // 6. Secure storage to close the loop.
+  plan.push('secure-storage');
+
+  // 7. De-dupe preserving order, cap at 7.
+  plan = plan.filter((id, i) => plan.indexOf(id) === i).slice(0, 7);
+
+  const diag = idwDiagnose(region, have, bp, ex);
+
+  let html = `
+    <div class="idw-diag">
+      <span class="idw-diag__lab">${diag.lab}</span>
+      <h2>${diag.headline}</h2>
+      <p>${diag.body}</p>
+    </div>
+  `;
+  plan.forEach((id, i) => {
+    const node = IDW_NODES[id];
+    if (!node) return;
+    html += idwRenderStep(node, i + 1, id);
+  });
+
+  if (region === 'outside') {
+    html += `
+      <div class="idw-shortcut" style="margin-top:18px;">
+        <strong>You’re outside Arizona.</strong> The order above still holds — birth certificate, then Social Security card, then state ID — but the specific offices and free programs differ by state. Use the <a href="/static-tools/coc-finder.html" style="color:#0e3e34;font-weight:700;text-decoration:underline;">CoC finder</a> to locate the homeless-services agency in your area; most metros have an ID-recovery program like Arizona’s.
+      </div>
+    `;
+  }
+
+  out.innerHTML = html;
+  idwGo('plan');
+}
+
+function idwDiagnose(region, have, bp, ex) {
+  const lost = !!ex.lostEverything;
+  const inMetro = (region === 'phoenix' || region === 'tucson');
+
+  if (lost && inMetro) {
+    return {
+      lab: 'Starting from zero',
+      headline: 'No documents? You can still start today.',
+      body: 'Losing everything feels like the end of the road, but it isn’t. The Homeless ID Project starts the chain with nothing but your name and date of birth, and pays the fees along the way. Bring this plan to a walk-in site and let staff run it with you — the steps below are the order they’ll work in.'
+    };
+  }
+  if (inMetro) {
+    return {
+      lab: 'Arizona free-ID path',
+      headline: 'There’s a program that does most of this for you.',
+      body: 'The single most useful move is step 1: the Homeless ID Project recovers your ID and birth certificate at no cost and has Tele-MVD on site. The rest of the list shows the full chain in order, so you understand what’s happening — but you don’t have to assemble it alone.'
+    };
+  }
+  if (region === 'az') {
+    return {
+      lab: 'Elsewhere in Arizona',
+      headline: 'Same document order, routed through 211.',
+      body: 'The free ID program’s walk-in sites are concentrated in the Phoenix and Tucson metros, but the document chain below is identical statewide. Call 211 to find the closest case manager who can issue a homeless-status letter and help with fees, then work the steps in order.'
+    };
+  }
+  // outside
+  return {
+    lab: 'Outside Arizona',
+    headline: 'The logic travels; the offices change.',
+    body: 'Birth certificate first, then Social Security card, then state ID — that order holds in every state. The specific offices and the free recovery programs differ, so use the CoC finder below to locate your local homeless-services agency.'
+  };
+}
+
+// Category mapping for My Ladder add-to-plan.
+const IDW_CAT_MAP = {
+  'homeless-id-project': 'shelter',
+  'homeless-id-tucson':  'shelter',
+  'mailing-address':     'shelter',
+  'birth-cert-az':       'shelter',
+  'birth-cert-state':    'shelter',
+  'birth-cert-outside':  'legal',
+  'ssn-card':            'benefits',
+  'homeless-letter':     'shelter',
+  'state-id-az':         'shelter',
+  'veteran-id':          'benefits',
+  'secure-storage':      'shelter'
+};
+
+function idwEscape(s) {
+  return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+
+function idwRenderStep(node, num, nodeId) {
+  let where = '';
+  if (node.where && node.where.length) {
+    where = `
+      <div class="idw-where">
+        <p class="idw-where__title">Where to go</p>
+        <ul class="idw-where__list">
+          ${node.where.map((w, i) => `
+            <li>
+              <div class="idw-where__row">
+                <div class="idw-where__body">
+                  <strong>${w.name}</strong>${w.detail ? ` &mdash; <em>${w.detail}</em>` : ''}
+                  ${w.site ? ` &middot; <em>${w.site}</em>` : ''}
+                </div>
+                <button type="button" class="idw-add" data-node="${idwEscape(nodeId)}" data-where-i="${i}" onclick="idwAddToPlan(this)" aria-label="Add ${idwEscape(w.name)} to My Ladder plan">Add to plan</button>
+              </div>
+            </li>
+          `).join('')}
+        </ul>
+      </div>
+    `;
+  }
+  return `
+    <article class="idw-step-card${node.anchor ? ' idw-step-card--anchor' : ''}">
+      <header class="idw-step-card__head">
+        <div class="idw-step-card__num">${node.anchor ? '★' : num}</div>
+        <h3 class="idw-step-card__title">${node.title}</h3>
+        <span class="idw-step-card__time">${node.time}</span>
+      </header>
+      <div class="idw-step-card__body">
+        <p class="idw-step-card__why">${node.why}</p>
+        ${where}
+        ${node.bring ? `<div class="idw-bring"><strong>Bring:</strong> ${node.bring}</div>` : ''}
+        ${node.cost ? `<div class="idw-cost"><strong>Cost:</strong> ${node.cost}</div>` : ''}
+        ${node.shortcut ? `<div class="idw-shortcut"><strong>Shortcut:</strong> ${node.shortcut}</div>` : ''}
+        ${node.unlocks ? `<div class="idw-unlocks">Unlocks: ${node.unlocks}</div>` : ''}
+      </div>
+    </article>
+  `;
+}
+
+function idwStripTags(s) {
+  return String(s || '').replace(/<[^>]+>/g, '').replace(/\s+/g, ' ').trim();
+}
+
+function idwAddToPlan(btn) {
+  const nodeId = btn.getAttribute('data-node');
+  const i = parseInt(btn.getAttribute('data-where-i'), 10);
+  const node = IDW_NODES[nodeId];
+  if (!node || !node.where || !node.where[i]) return;
+  const w = node.where[i];
+
+  const notesParts = [
+    'Step in your ID plan: ' + node.title,
+    '',
+    idwStripTags(node.why)
+  ];
+  if (node.bring) notesParts.push('', 'Bring: ' + idwStripTags(node.bring));
+  if (node.cost)  notesParts.push('', 'Cost: ' + idwStripTags(node.cost));
+  if (w.site) notesParts.push('', 'Website: ' + w.site);
+
+  const followups = [];
+  if (node.shortcut) followups.push({ text: 'Shortcut: ' + idwStripTags(node.shortcut) });
+  if (node.unlocks)  followups.push({ text: 'Unlocks: ' + idwStripTags(node.unlocks) });
+  if (node.time)     followups.push({ text: 'Time estimate: ' + idwStripTags(node.time) });
+
+  const planData = {
+    cat:       IDW_CAT_MAP[nodeId] || 'shelter',
+    name:      w.name + ' — ' + node.title,
+    phone:     '',
+    address:   idwStripTags(w.detail || ''),
+    notes:     notesParts.join('\n'),
+    followups: followups,
+    source:    'ID Recovery Wizard'
+  };
+
+  try {
+    const encoded = btoa(unescape(encodeURIComponent(JSON.stringify(planData))));
+    window.open('https://my.commonladder.org/?add=' + encoded, '_blank', 'noopener');
+  } catch (e) {
+    alert('Could not open My Ladder. Please visit my.commonladder.org to add this resource manually.');
+  }
+}
+
+// ─────────────────────────────────────────────────────────────────
+// Navigation + UI wiring
+// ─────────────────────────────────────────────────────────────────
+const IDW_STEP_ORDER = ['entry', 'region', 'have', 'birthplace', 'extras', 'plan'];
+
+function idwGo(step) {
+  if (step === 'dv') {
+    document.querySelectorAll('.idw-step').forEach(s => s.classList.remove('idw-step--on'));
+    document.getElementById('idw-step-dv').classList.add('idw-step--on');
+    document.getElementById('idw-progress-text').textContent = 'Safety path';
+    document.getElementById('idw-progress-fill').style.width = '100%';
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    return;
+  }
+  if (step === 'done') {
+    document.querySelectorAll('.idw-step').forEach(s => s.classList.remove('idw-step--on'));
+    document.getElementById('idw-step-done').classList.add('idw-step--on');
+    document.getElementById('idw-progress-text').textContent = 'Done';
+    document.getElementById('idw-progress-fill').style.width = '100%';
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    return;
+  }
+  const idx = IDW_STEP_ORDER.indexOf(step);
+  if (idx === -1) return;
+  document.querySelectorAll('.idw-step').forEach(s => s.classList.remove('idw-step--on'));
+  document.getElementById('idw-step-' + step).classList.add('idw-step--on');
+  document.getElementById('idw-progress-text').textContent = `Step ${idx + 1} of ${IDW_STEP_ORDER.length}`;
+  document.getElementById('idw-progress-fill').style.width = `${((idx + 1) / IDW_STEP_ORDER.length) * 100}%`;
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function idwPickSafety(val, el) {
+  IDW_STATE.safety = val;
+  document.querySelectorAll('[data-safety]').forEach(b => b.classList.remove('idw-choice--selected'));
+  el.classList.add('idw-choice--selected');
+  document.getElementById('idw-entry-next').disabled = false;
+}
+function idwEntryNext() {
+  if (IDW_STATE.safety === 'dv') idwGo('dv'); else idwGo('region');
+}
+function idwPickRegion(val, el) {
+  IDW_STATE.region = val;
+  document.querySelectorAll('[data-region]').forEach(b => b.classList.remove('idw-choice--selected'));
+  el.classList.add('idw-choice--selected');
+  document.getElementById('idw-region-next').disabled = false;
+}
+function idwPickBirthplace(val, el) {
+  IDW_STATE.birthplace = val;
+  document.querySelectorAll('[data-birthplace]').forEach(b => b.classList.remove('idw-choice--selected'));
+  el.classList.add('idw-choice--selected');
+  document.getElementById('idw-birth-next').disabled = false;
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+  document.querySelectorAll('#idw-have-grid .idw-check').forEach(lbl => {
+    const key = lbl.dataset.key;
+    const cb = lbl.querySelector('input');
+    cb.addEventListener('change', () => {
+      IDW_STATE.have[key] = cb.checked;
+      lbl.classList.toggle('idw-check--on', cb.checked);
+    });
+  });
+  document.querySelectorAll('#idw-extras-grid .idw-check').forEach(lbl => {
+    const key = lbl.dataset.key;
+    const cb = lbl.querySelector('input');
+    cb.addEventListener('change', () => {
+      IDW_STATE.extras[key] = cb.checked;
+      lbl.classList.toggle('idw-check--on', cb.checked);
+    });
+  });
+});
+</script>
+
+</body>
+</html>
