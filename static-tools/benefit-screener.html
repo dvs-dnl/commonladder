@@ -527,7 +527,7 @@
   <div class="q-card" id="q-zip" data-q="7">
     <h2>What's your ZIP code?</h2>
     <p class="q-note">We use this to surface local emergency contacts and resources in your area. This is optional — skip it if you'd prefer.</p>
-    <input type="text" id="zip-input" class="zip-input" placeholder="e.g. 85003" maxlength="5" inputmode="numeric" pattern="[0-9]{5}" autocomplete="postal-code" aria-label="ZIP code">
+    <input type="text" id="zip-input" class="zip-input" placeholder="e.g. 85003" maxlength="5" inputmode="numeric" pattern="[0-9]{5}" autocomplete="off" aria-label="ZIP code">
     <p class="zip-hint">5-digit ZIP code · optional</p>
     <div class="q-nav">
       <button class="btn-back" onclick="back('q-zip','q6')">← Back</button>
@@ -670,9 +670,16 @@ function updateProgress(idx) {
   document.getElementById('progress-fill').style.width = pct + '%';
 }
 
+// Pre-populate ZIP from last entry (localStorage, not browser autocomplete)
+(function() {
+  var saved = localStorage.getItem('cl_zip');
+  if (saved) document.getElementById('zip-input').value = saved;
+})();
+
 function captureZipAndShow() {
   var zip = document.getElementById('zip-input').value.trim();
   answers.zip = zip;
+  if (zip) localStorage.setItem('cl_zip', zip);
   showResults();
 }
 
@@ -682,7 +689,7 @@ function restart() {
   document.querySelectorAll('.choice-btn').forEach(function(b){ b.classList.remove('selected'); });
   document.querySelectorAll('.btn-next').forEach(function(b){ b.disabled = true; });
   document.getElementById('next-q-zip').disabled = false; // ZIP is optional
-  document.getElementById('zip-input').value = '';
+  document.getElementById('zip-input').value = localStorage.getItem('cl_zip') || '';
   document.getElementById('results').style.display = 'none';
   document.getElementById('q1').classList.add('active');
   document.getElementById('progress-wrap').style.display = 'none';
@@ -967,6 +974,11 @@ function showResults() {
   // GA event
   try { gtag('event', 'screener_complete', { benefits_count: benefits.length, housing: housing, zip: zipCode }); } catch(e){}
 }
+
+// Reset if browser restores page from back/forward cache (bfcache)
+window.addEventListener('pageshow', function(e) {
+  if (e.persisted) restart();
+});
 
 function toggleBenefit(id) {
   var body = document.getElementById('body-' + id);
