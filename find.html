@@ -150,6 +150,62 @@
 }
 .navigator-link:hover { border-color: var(--blue); }
 
+/* Benefit screener promo hero */
+.screener-promo {
+  background: linear-gradient(135deg, var(--blue) 0%, #2a5298 100%);
+  border-radius: 14px;
+  padding: 1.25rem 1.5rem;
+  margin-bottom: 1.5rem;
+  color: #fff;
+}
+.screener-promo__eyebrow {
+  font-size: .7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .08em;
+  color: var(--amber);
+  margin-bottom: .35rem;
+}
+.screener-promo__heading {
+  font-size: 1.05rem;
+  font-weight: 800;
+  line-height: 1.35;
+  margin-bottom: .85rem;
+}
+.screener-promo__sub {
+  font-size: .82rem;
+  opacity: .8;
+  line-height: 1.5;
+  margin-bottom: .9rem;
+}
+.screener-promo__btn {
+  display: inline-block;
+  background: var(--amber);
+  color: #fff;
+  border-radius: 8px;
+  padding: .6rem 1.2rem;
+  font-size: .88rem;
+  font-weight: 700;
+  text-decoration: none;
+  transition: opacity .15s;
+}
+.screener-promo__btn:hover { opacity: .88; text-decoration: none; color: #fff; }
+.cat-divider {
+  display: flex;
+  align-items: center;
+  gap: .75rem;
+  margin-bottom: 1.25rem;
+  font-size: .78rem;
+  color: var(--gray);
+}
+.cat-divider::before,
+.cat-divider::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--border);
+}
+
 /* Non-shelter result */
 .resource-cards { display: flex; flex-direction: column; gap: .65rem; }
 .resource-card { background: #fff; border: 1.5px solid var(--border); border-radius: 10px; padding: .9rem 1rem; }
@@ -214,7 +270,14 @@
 
   <!-- ══ STEP 1: Category ══ -->
   <div class="find-step active" id="step-cat">
-    <div class="step-eyebrow">Find resources</div>
+    <div class="screener-promo">
+      <div class="screener-promo__eyebrow">Personalized benefits plan</div>
+      <div class="screener-promo__heading">Get a custom plan based on your needs and what's available in your community</div>
+      <div class="screener-promo__sub">Answer a few questions about your household, income, and situation — we'll match you to every benefit you likely qualify for.</div>
+      <a href="/static-tools/benefit-screener.html" class="screener-promo__btn">Find my benefits →</a>
+    </div>
+    <div class="cat-divider">or choose a specific category</div>
+        <div class="step-eyebrow">Find resources</div>
     <h1 class="step-title">What do you need?</h1>
     <p class="step-sub">Pick what's most urgent right now. We'll connect you to the right local program.</p>
     <div class="cat-grid">
