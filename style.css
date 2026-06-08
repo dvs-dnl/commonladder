@@ -841,6 +841,55 @@ h1, h2, h3, h4 {
 .sources ol { margin-left: 1.5rem; }
 .sources li { margin-bottom: .5rem; }
 
+/* Inline footnote reference marker.
+   Deliberately NOT a link: it lends credibility in the flow of reading
+   without inviting a click that pulls the reader off the page. The full,
+   clickable citation lives in the .footnotes list near the page bottom. */
+sup.fn-ref {
+  font-size: .68em;
+  font-weight: 600;
+  line-height: 0;
+  color: var(--blue);
+  cursor: default;
+  margin-left: 1px;
+  white-space: nowrap;
+}
+
+/* Footnotes block — sits BELOW the read-next block, just above the footer.
+   Numbered list of full citations; the external source links here ARE
+   clickable and open in a new tab. */
+.footnotes {
+  margin-top: 2.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid #E5E7EB;
+  font-size: .85rem;
+  color: #4B5563;
+}
+.footnotes h2 {
+  font-size: .8rem !important;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--gray);
+  margin: 0 0 .75rem !important;
+}
+.footnotes ol { margin: 0 0 0 1.4rem; padding: 0; }
+.footnotes li { margin-bottom: .5rem; line-height: 1.5; }
+.footnotes a { color: var(--blue); text-decoration: underline; }
+.footnotes a:hover { color: var(--amber); }
+
+/* FAQ block — answer-engine / AEO structuring on resource guides.
+   The visible Q&A here is mirrored by a FAQPage JSON-LD block in <head>. */
+.faq { margin: 2.5rem 0 0; }
+.faq > h2 { font-size: 1.25rem !important; color: var(--blue) !important; margin: 0 0 1rem !important; }
+.faq__item {
+  border-top: 1px solid #E5E7EB;
+  padding: 1rem 0;
+}
+.faq__item:last-child { border-bottom: 1px solid #E5E7EB; }
+.faq__item h3 { font-size: 1rem !important; color: var(--dark) !important; margin: 0 0 .4rem !important; }
+.faq__item p { margin: 0; color: #374151; }
+.faq__item p + p { margin-top: .5rem; }
+
 
 /* ─── Global focus styles ────────────────────────────────────────────── */
 /* Amber ring is visible on both light (page) and dark (nav) backgrounds.

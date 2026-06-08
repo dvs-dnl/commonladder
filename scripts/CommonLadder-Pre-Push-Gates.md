@@ -36,7 +36,7 @@ the whole post and the break is invisible in the browser. **Incident:** structur
 drift on blog posts.
 
 ### G3 — GA tag consistent + present on every page
-Exactly one GA4 measurement ID site-wide (`G-XLKR4ZSZ5J`), and it must appear on every
+Exactly one GA4 measurement ID site-wide (`G-3YXK0RL6XV`), and it must appear on every
 non-exempt page. `garden-planner.html` is exempt (intentionally off-brand, design-canon
 Rule 7). **Incident:** the `Design canon audit fixes: … GA tag` commit — analytics broke
 when a page shipped without the tag, and a stray legacy ID is the classic copy-paste bug

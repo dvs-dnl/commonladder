@@ -26,7 +26,7 @@ from pathlib import Path
 REPO = Path(__file__).resolve().parents[1]
 os.chdir(REPO)
 
-GA_ID = "G-XLKR4ZSZ5J"  # the one canonical Common Ladder GA4 measurement ID
+GA_ID = "G-3YXK0RL6XV"  # the one canonical Common Ladder GA4 measurement ID
 
 # Pages intentionally outside the brand shell / not audited for canon compliance.
 SHELL_EXEMPT = {
