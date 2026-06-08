@@ -47,9 +47,9 @@ Every non-redirect, non-exempt page must contain a `<nav>` and a `<footer>`. **I
 `find.html` shipped without a `<footer>` — the canon calls this "the most common omission
 pattern" (Rule 3) — and `static-tools/flagstaff-navigator.html` shipped without a global
 `<nav>`. Redirect stubs (`http-equiv="refresh"`) and `garden-planner.html` are exempt.
-`flagstaff-navigator.html` is a **tracked editorial exception** (it uses a standalone
-"app" shell; converting it is queued in `research/pipeline-backfill-queue.md`, Tier 1) and
-is excluded from the nav half of this gate via `NAV_PRESENT_EXEMPT` until that's drained.
+`flagstaff-navigator.html` was converted to the standard shell on 2026-06-07 (global nav +
+wordmark, self-contained shell CSS), so `NAV_PRESENT_EXEMPT` is now empty — there are no
+nav-presence exemptions.
 
 ### G5 — Internal links + favicon resolve (no 404s)
 Every `href` to an internal path — plus the `/favicon.svg` referenced by the favicon link
@@ -82,8 +82,8 @@ against that specific regression returning.
 ## WARN gates (never block)
 
 ### G8 — Single `<h1>` per page
-SEO + a11y. Currently surfaces that most city navigators render no `<h1>` (their
-`county-badge` heading isn't marked up as one) — a real backlog item, not a blocker.
+SEO + a11y. The city navigators were backfilled with a screen-reader `<h1>` (2026-06-07);
+this gate keeps every page at exactly one `<h1>`.
 
 ### G9 — No amber/sage as text color (WCAG AA)
 Flags inline `color:#E8911A` / `color:#4A9E82` on text contexts (filtering out
@@ -92,8 +92,8 @@ background/border/fill/button uses). Amber and sage both fail AA as text on whit
 canon's own process is "grep, then human-review" — some flagged lines are legitimate.
 
 ### G10 — Head baseline (viewport / charset / canonical / favicon link)
-The universal page-type baseline. Searches the real `<head>` block. Currently flags 3
-navigators missing a `<link rel="canonical">`.
+The universal page-type baseline. Searches the real `<head>` block. Canonical coverage was
+brought to 179/179 on 2026-06-07.
 
 ### G11 — `cl-card-click` present on card pages
 Cards are fully clickable via the `cl-card-click` delegation snippet (canon Rule 4/5);

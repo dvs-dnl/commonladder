@@ -292,7 +292,24 @@ html,body{overflow-x:hidden;max-width:100%;}
     }
     footer a { color: var(--cl-muted); }
     footer a:hover { color: var(--cl-text); }
-  </style>
+  
+/* Global shell — self-contained (this navigator does not link style.css) */
+.skip-link{position:absolute;left:-9999px;top:auto}
+.skip-link:focus{left:8px;top:8px;background:#fff;color:#1C3D6E;padding:8px 12px;z-index:1000;border-radius:6px}
+.crisis-bar{background:#7a1f2b;color:#fff;text-align:center;padding:.45rem 1rem;font-size:.9rem}
+.crisis-bar a{color:#fff;text-decoration:underline}
+.crisis-bar__sep{margin:0 .5rem;opacity:.6}
+.nav{background:#1C3D6E}
+.nav__inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;gap:1rem;padding:.6rem 1rem;flex-wrap:wrap}
+.nav__logo{display:flex;align-items:center;gap:.5rem;color:#fff;text-decoration:none;font-weight:700;font-size:1.15rem}
+.nav__wordmark span{color:#E8911A}
+.nav__toggle{display:none}
+.nav__links{list-style:none;display:flex;align-items:center;gap:1rem;margin:0 0 0 auto;padding:0;flex-wrap:wrap}
+.nav__links a{color:#fff;text-decoration:none;font-size:.95rem}
+.nav__cta{background:#E8911A;color:#1C3D6E!important;padding:.4rem .85rem;border-radius:6px;font-weight:600}
+.nav__cta--ladder{background:transparent;border:1px solid rgba(255,255,255,.55);color:#fff!important}
+.nav__exit{border:1px solid rgba(255,255,255,.4);padding:.3rem .6rem;border-radius:6px;opacity:.85}
+</style>
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
 
   <meta property="og:type" content="website">
@@ -308,16 +325,37 @@ html,body{overflow-x:hidden;max-width:100%;}
 </head>
 <body>
 
-  <!-- Common Ladder home badge -->
-  <a href="https://www.commonladder.org" class="cl-home-badge" target="_blank" rel="noopener" aria-label="Common Ladder home">
-    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <rect width="16" height="16" rx="4" fill="#b45309"/>
-      <path d="M4 12V7.2L8 4l4 3.2V12h-2.5V9.5h-3V12H4z" fill="#fff"/>
-    </svg>
-    commonladder.org
-  </a>
 
-  <div class="app" role="main">
+<a href="#main" class="skip-link">Skip to main content</a>
+
+<div class="crisis-bar" role="region" aria-label="Crisis help">
+  <strong>Need help right now?</strong>
+  <a href="tel:211">Call 211</a><span class="crisis-bar__sep">·</span>
+  <a href="sms:741741?body=HOME">Text HOME to 741741</a><span class="crisis-bar__sep">·</span>
+  <a href="tel:988">988 Suicide &amp; Crisis</a>
+</div>
+<nav class="nav" aria-label="Primary">
+  <div class="nav__inner">
+    <a href="/" class="nav__logo" aria-label="Common Ladder home">
+      <svg width="28" height="28" viewBox="0 0 28 28" fill="none" aria-hidden="true"><svg x="2" y="3" width="24" height="22" viewBox="0 0 120 96" preserveAspectRatio="xMidYMid meet"><g transform="translate(14 12)"><polygon points="0,60 18,72 36,60 36,36 18,24 0,36" fill="white" opacity=".92"/><polygon points="28,48 46,60 64,48 64,24 46,12 28,24" fill="#4A9E82"/><polygon points="56,36 74,48 92,36 92,12 74,0 56,12" fill="#E8911A"/></g></svg></svg>
+      <span class="nav__wordmark">common<span>ladder</span></span>
+    </a>
+    <button class="nav__toggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="primary-nav" onclick="this.setAttribute('aria-expanded', document.getElementById('primary-nav').classList.toggle('open') ? 'true' : 'false')">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav__links" id="primary-nav">
+            <li><a href="/providers.html">For providers</a></li>
+      <li><a href="/learn/">Learn</a></li>
+      <li><a href="/about.html">About</a></li>
+      <li><a href="/find.html" class="nav__cta">Find resources</a></li>
+      <li><a href="/static-tools/my-ladder.html" class="nav__cta nav__cta--ladder">My Ladder</a></li>
+      <li><a href="https://www.weather.gov/" rel="noreferrer" class="nav__exit" onclick="event.preventDefault();window.location.replace('https://www.weather.gov/')">Leave page</a></li>
+    </ul>
+  </div>
+</nav>
+
+
+  <div class="app" id="main" role="main">
 
     <!-- County badge -->
     <div class="county-badge">

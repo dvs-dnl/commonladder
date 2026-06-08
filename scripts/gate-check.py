@@ -38,11 +38,9 @@ TEMPLATE_FILES = {
     "help/resource-template.html",
     "static-tools/navigator-template.html",
 }
-# Known editorial exception, tracked in research/pipeline-backfill-queue.md (Tier 1):
-# flagstaff-navigator.html shipped as a standalone "app"-shell navigator without the
-# global <nav>. Converting it to the standard shell is an editorial task, not mechanical,
-# so it is excluded from the nav-presence gate until that queue item is drained.
-NAV_PRESENT_EXEMPT = {"static-tools/flagstaff-navigator.html"}
+# (Historical) flagstaff-navigator.html once shipped without the global <nav>; it was
+# converted to the standard shell on 2026-06-07, so there are no nav-presence exemptions.
+NAV_PRESENT_EXEMPT = set()  # flagstaff converted to the standard shell 2026-06-07; no exemptions
 
 CRITICAL_FAIL = []
 WARN = []
@@ -317,7 +315,7 @@ def gate_nav_cta():
 # ============================================================
 def gate_single_h1():
     bad = []
-    for p in all_pages():
+    for p in all_pages(include_exempt=False):
         n = len(re.findall(r"<h1\b", _read(p), re.IGNORECASE))
         if n != 1:
             bad.append(f"{rel(p)}: {n}")
