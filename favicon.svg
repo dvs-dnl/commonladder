@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 28 28" role="img" aria-label="Common Ladder">
+  <rect width="28" height="28" rx="6" fill="#1C3D6E"/>
+  <polygon points="7.6,19 11.06,21 11.06,25 7.6,27 4.14,25 4.14,21" fill="#ffffff" opacity=".88"/>
+  <polygon points="14.53,19 17.99,21 17.99,25 14.53,27 11.06,25 11.06,21" fill="#ffffff" opacity=".88"/>
+  <polygon points="21.46,19 24.92,21 24.92,25 21.46,27 17.99,25 17.99,21" fill="#ffffff" opacity=".88"/>
+  <polygon points="11.06,13 14.53,15 14.53,19 11.06,21 7.6,19 7.6,15" fill="#ffffff" opacity=".55"/>
+  <polygon points="17.99,13 21.46,15 21.46,19 17.99,21 14.53,19 14.53,15" fill="#ffffff" opacity=".55"/>
+  <polygon points="14.53,7 17.99,9 17.99,13 14.53,15 11.06,13 11.06,9" fill="#E8911A"/>
+</svg>

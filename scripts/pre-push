@@ -1,0 +1,45 @@
+#!/usr/bin/env bash
+#
+# Git pre-push hook for commonladder.org.
+#
+# Runs, in order:
+#   1. scripts/check-conflicts.sh  — aborts on unresolved merge-conflict markers
+#   2. scripts/gate-check.py       — aborts if any CRITICAL regression gate fails
+# WARN gates print but never block.
+#
+# Install once per clone with:
+#   bash scripts/install-hooks.sh        # sets core.hooksPath -> scripts/
+#
+# Bypass for a one-off (use sparingly, document why in the commit message):
+#   git push --no-verify
+#
+REPO_ROOT="$(git rev-parse --show-toplevel)"
+cd "$REPO_ROOT" || exit 1
+
+# 1) conflict markers
+if [ -f scripts/check-conflicts.sh ]; then
+  if ! bash scripts/check-conflicts.sh "$REPO_ROOT"; then
+    echo "" >&2
+    echo "✗ Pre-push aborted: unresolved merge-conflict markers." >&2
+    exit 1
+  fi
+fi
+
+# 2) regression gates
+echo "→ Running commonladder pre-push gates…"
+if ! python3 scripts/gate-check.py; then
+  cat >&2 <<'MSG'
+
+✗ Pre-push gate failed.
+
+Push refused because a CRITICAL gate failed. See the output above for the specific
+gate(s) and AutoVet/CommonLadder-Pre-Push-Gates.md for the rationale.
+
+To override (only when you understand the failure and have already logged it):
+  git push --no-verify
+MSG
+  exit 1
+fi
+
+echo "→ All CRITICAL gates passed. Continuing push."
+exit 0
