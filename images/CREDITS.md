@@ -37,7 +37,7 @@ These slots need a real Unsplash short ID added to `download-photos.sh` and a ro
 - `hero/garden-planner.jpg` — hands in soil
 - `cards/region-northeast.jpg` through `region-pacific.jpg` — 6 regional gardens
 
-See the curated search queries in `PHOTOS.md` and the brand guide (`brand/common-ladder-brand.md` § Imagery → Sourcing playbook) for each.
+See the curated search queries in `PHOTOS.md` and the brand guide (`brand-source/common-ladder-brand.md` § Imagery → Sourcing playbook) for each.
 
 ## AI-generated photos
 

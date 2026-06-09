@@ -1,6 +1,6 @@
 # Photo Brief — Common Ladder
 
-This file lists every photo slot on the site, what the photo should depict, and the alt text that ships with it. See `../../brand/common-ladder-brand.md` § Imagery for the full policy.
+This file lists every photo slot on the site, what the photo should depict, and the alt text that ships with it. See `../../brand-source/common-ladder-brand.md` § Imagery for the full policy.
 
 **Sourcing order:** Unsplash → Pexels → AI-generated only as fallback. All filenames live under `images/cards/` or `images/hero/` as `.jpg` at quality 80.
 
