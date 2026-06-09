@@ -136,3 +136,23 @@ To wire it: confirm the orchestrator's `repo_workdir` for commonladder points at
 where `git config --local core.hooksPath` returns `scripts/`, and run
 `bash scripts/install-hooks.sh` there once if not. After that, any CRITICAL regression
 refuses the push at the orchestrator boundary, the same as a local push.
+
+
+---
+
+## Gates added 2026-06-09 (ported from autovetting)
+
+### CL-G13 — No single-quoted JS strings with inner apostrophes
+JS object fields like `label: 'Don't...'` break the entire IIFE with `Unexpected identifier 't'`. Fields in inline JS data structures must use double-quoted strings when content contains apostrophes. Same shape as autovetting G7.
+
+### CL-G14 — No debug cruft in shipped JS
+`<script>` blocks must not contain `console.log`, `console.debug`, `console.info`, `console.trace`, or `debugger;`. `console.warn` and `console.error` ARE allowed — legitimate runtime error reporting. `alert()` is NOT in the regex — it's a user-prompt UX call (used in tools like budget.html / static-tools navigators), not debug.
+
+### CL-G15 — Every `<img>` has alt attribute
+Universal accessibility. Civic-resource site users include screen-reader users and assistive-tech users — alt text is non-negotiable. `alt=""` is acceptable for purely decorative images.
+
+### CL-G16 — `target="_blank"` carries `rel="noopener"`
+Tabnabbing protection. Especially critical because the site links out to many external CoC / state / federal sites; `rel="noopener"` prevents the destination from controlling the opener tab via `window.opener`. The gate also caught 14 unsafe external links on benefit-screener.html — all backfilled with `rel="noopener noreferrer"`.
+
+### CL-G17 — Content `<img>`s use `loading="lazy"` (WARN)
+Performance — below-the-fold images shouldn't block page load. Exempts logos, favicons, the honeycomb mark, and apple-touch-icon (above-the-fold by definition).

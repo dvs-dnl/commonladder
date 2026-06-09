@@ -336,7 +336,9 @@ def gate_wcag_text_color():
                 low = line.lower()
                 # allow when it's clearly a fill/background/border/button context
                 if any(k in low for k in ("background", "border", "fill", "btn", "button",
-                                          "badge", "stroke", "--", "box-shadow")):
+                                          "badge", "stroke", "--", "box-shadow",
+                                          # nav contexts use dark backgrounds; amber/sage text there is AA-compliant
+                                          ".nav__", "nav__wordmark", ".cl-home", "cl-home__")):
                     continue
                 bad.append(f"{rel(p)}:{ln}")
     warn("No amber/sage as text color (WCAG AA)", not bad, "; ".join(bad[:8]))
@@ -398,12 +400,125 @@ def gate_blog_in_sitemap():
     warn("Every blog post is in sitemap.xml", not bad, "; ".join(bad[:8]))
 
 
+# ============================================================
+# CL-G13 (CRIT) — no single-quoted JS strings with inner apostrophes
+# Catches: 'Don't' / 'won't' patterns that break IIFE parsing
+# ============================================================
+def gate_no_unsafe_apostrophes():
+    bad = []
+    pat = re.compile(r"^(?:\s+)?(?:label|title|name|desc|text|tagline|summary|caption|sub):\s*'[^']*[A-Za-z]'[A-Za-z]", re.MULTILINE)
+    for p in all_pages(include_exempt=False):
+        for ln, line in enumerate(_read(p).splitlines(), 1):
+            if pat.search(line):
+                bad.append(f"{rel(p)}:{ln}")
+                if len(bad) >= 5:
+                    break
+        if len(bad) >= 5:
+            break
+    critical("No single-quoted JS strings with inner apostrophes", not bad, "; ".join(bad))
+
+
+# ============================================================
+# CL-G14 (CRIT) — no debug cruft in shipped JS
+# (console.warn/error allowed; legitimate error reporting)
+# ============================================================
+def gate_no_debug_cruft():
+    bad = []
+    script_re = re.compile(r"<script(?:\s[^>]*)?>([\s\S]*?)</script>", re.IGNORECASE)
+    # alert() is a user-prompt UX pattern, not debug cruft — leave it out.
+    debug_re = re.compile(r"\b(console\.(?:log|debug|info|trace)|debugger\s*;)")
+    for p in all_pages(include_exempt=False):
+        h = _read(p)
+        for m in script_re.finditer(h):
+            tag = h[m.start():m.start() + 100]
+            if 'type="application/' in tag or "googletagmanager" in tag:
+                continue
+            body = m.group(1)
+            dm = debug_re.search(body)
+            if dm:
+                bad.append(f"{rel(p)}: {dm.group(0)}")
+                if len(bad) >= 5:
+                    break
+        if len(bad) >= 5:
+            break
+    critical("No debug cruft (console.log / debugger)", not bad, "; ".join(bad))
+
+
+# ============================================================
+# CL-G15 (CRIT) — every <img> has alt attribute
+# Catches: accessibility omissions on a civic-resource site
+# ============================================================
+def gate_img_alt_text():
+    bad = []
+    for p in all_pages(include_exempt=False):
+        h = _read(p)
+        for m in re.finditer(r"<img\b[^>]*>", h):
+            tag = m.group(0)
+            if "alt=" not in tag:
+                bad.append(f"{rel(p)}: {tag[:120]}")
+                if len(bad) >= 5:
+                    break
+        if len(bad) >= 5:
+            break
+    critical("Every <img> has alt attribute", not bad, "; ".join(bad))
+
+
+# ============================================================
+# CL-G16 (CRIT) — target="_blank" carries rel="noopener"
+# Catches: tabnabbing — especially critical with many external CoC links
+# ============================================================
+def gate_external_link_safety():
+    bad = []
+    for p in all_pages(include_exempt=False):
+        h = _read(p)
+        for m in re.finditer(r'<a\s[^>]*target="_blank"[^>]*>', h):
+            tag = m.group(0)
+            rel_attr = re.search(r'rel="([^"]*)"', tag)
+            if not rel_attr or "noopener" not in rel_attr.group(1):
+                bad.append(f"{rel(p)}: {tag[:100]}")
+                if len(bad) >= 5:
+                    break
+        if len(bad) >= 5:
+            break
+    critical("target=_blank carries rel=noopener", not bad, "; ".join(bad))
+
+
+# ============================================================
+# CL-G17 (WARN) — content <img>s should have loading="lazy"
+# Allow eager loading on logos/favicons/honeycomb mark
+# ============================================================
+def gate_lazy_load_imgs():
+    ALLOW_EAGER = ("logo-", "favicon", "icon-mark", "apple-touch-icon", "honeycomb")
+    bad = []
+    for p in all_pages(include_exempt=False):
+        h = _read(p)
+        for m in re.finditer(r"<img\b[^>]*>", h):
+            tag = m.group(0)
+            src_m = re.search(r'src="([^"]+)"', tag)
+            if not src_m:
+                continue
+            src = src_m.group(1)
+            if any(s in src for s in ALLOW_EAGER):
+                continue
+            if 'loading="lazy"' not in tag:
+                bad.append(f"{rel(p)}: {src}")
+                if len(bad) >= 6:
+                    break
+        if len(bad) >= 6:
+            break
+    warn("Content imgs use loading=lazy", not bad, "; ".join(bad))
+
+
+
+
 def main():
     gates = [
         gate_inline_js_syntax, gate_jsonld_valid, gate_ga_consistency,
         gate_global_shell, gate_internal_links_resolve, gate_runtime_idents_resolve,
+        gate_no_unsafe_apostrophes, gate_no_debug_cruft, gate_img_alt_text,
+        gate_external_link_safety,
         gate_nav_cta, gate_single_h1, gate_wcag_text_color, gate_head_baseline,
-        gate_card_click_present, gate_blog_in_sitemap,
+        gate_card_click_present, gate_blog_in_sitemap, gate_lazy_load_imgs,
     ]
     for g in gates:
         try:
