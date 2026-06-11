@@ -14,7 +14,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Richmond, VA Homelessness Resource Navigator — Common Ladder</title>
 <meta name="description" content="Find shelter, food, health care, and housing programs in Richmond, Virginia. Free, no signup.">
-<link rel="canonical" href="https://www.commonladder.org/static-tools/richmond-navigator.html">
+<link rel="canonical" href="https://commonladder.org/static-tools/richmond-navigator.html">
 <style>
   /* ── Reset & Base ── */
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -451,12 +451,12 @@
   <meta property="og:site_name" content="Common Ladder">
   <meta property="og:title" content="Richmond, VA Homelessness Resource Navigator — Common Ladder">
   <meta property="og:description" content="Find shelter, food, health care, and housing programs in Richmond, Virginia. Free, no signup.">
-  <meta property="og:url" content="https://www.commonladder.org/static-tools/richmond-navigator.html">
-  <meta property="og:image" content="https://www.commonladder.org/images/og-default.png">
+  <meta property="og:url" content="https://commonladder.org/static-tools/richmond-navigator.html">
+  <meta property="og:image" content="https://commonladder.org/images/og-default.png">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Richmond, VA Homelessness Resource Navigator — Common Ladder">
   <meta name="twitter:description" content="Find shelter, food, health care, and housing programs in Richmond, Virginia. Free, no signup.">
-  <meta name="twitter:image" content="https://www.commonladder.org/images/og-default.png">
+  <meta name="twitter:image" content="https://commonladder.org/images/og-default.png">
 </head>
 <body>
 <h1 style="position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0;">Richmond, VA Homelessness Resource Navigator</h1>
@@ -490,12 +490,14 @@
   </div>
 </nav>
 
+<main id="main">
+
 
 
 
 
 <!-- Common Ladder home badge — always present, fixed top-right -->
-<a href="https://www.commonladder.org" class="cl-home" aria-label="Return to Common Ladder home">
+<a href="https://commonladder.org" class="cl-home" aria-label="Return to Common Ladder home">
   <svg width="18" height="18" viewBox="0 0 28 28" fill="none" aria-hidden="true">
     <rect x="4" y="2" width="3" height="24" rx="1.5" fill="white" opacity=".9"/>
     <rect x="21" y="2" width="3" height="24" rx="1.5" fill="white" opacity=".9"/>
@@ -511,6 +513,8 @@
 
 <!-- Footer — update CoC ID and location text -->
 <a href="/resources.html" class="quick-help" aria-label="Find help now"><svg class="icon" viewBox="0 0 16 16" aria-hidden="true" style="margin-right:.35em;vertical-align:-.15em"><path d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z" fill="currentColor"/></svg> Find help now</a>
+
+</main>
 
 <footer class="footer">
   <div class="container">
@@ -555,7 +559,7 @@
     </div>
     <div class="footer__bottom">
       <span>&copy; 2026 Common Ladder. Free to use, always.</span>
-      <span><time datetime="2026-06-01">Last updated June 1, 2026</time></span>
+      <span><time datetime="2026-06-01">Last updated June 1, 2026</time></span> <span>&middot; Wrong number? <a href="mailto:corrections.commonladder@gmail.com?subject=Correction:%20/static-tools/richmond-navigator.html">Report an error</a></span>
     </div>
   </div>
 </footer>
@@ -1039,6 +1043,26 @@
       window.location.href = a.href;
     });
   });
+})();
+</script>
+<script>
+/* cl-freshness-guard: if the footer verification stamp is older than 60 days,
+   show a "call 211 to confirm" notice at the top of the page content. */
+(function () {
+  var t = document.querySelector('footer time[datetime]') || document.querySelector('time[datetime]');
+  if (!t) return;
+  var d = new Date(t.getAttribute('datetime') + 'T00:00:00');
+  if (isNaN(d.getTime())) return;
+  var days = (Date.now() - d.getTime()) / 86400000;
+  if (days <= 60) return;
+  var note = document.createElement('div');
+  note.setAttribute('role', 'note');
+  note.style.cssText = 'background:#fdf3e3;border:1px solid #b36a00;color:#333;padding:10px 14px;border-radius:8px;margin:14px auto;max-width:760px;font-size:.95rem;line-height:1.45;';
+  note.innerHTML = 'Phone numbers and hours on this page were last verified <strong>' +
+    t.textContent.replace(/Last updated\s*/i, '') +
+    '</strong> and may have changed. <a href="tel:211">Call 211</a> to confirm before you go.';
+  var host = document.getElementById('main') || document.body;
+  host.insertBefore(note, host.firstChild);
 })();
 </script>
 </body>

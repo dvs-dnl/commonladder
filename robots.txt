@@ -1,3 +1,3 @@
 User-agent: *
 Allow: /
-Sitemap: https://www.commonladder.org/sitemap.xml
+Sitemap: https://commonladder.org/sitemap.xml

@@ -13,7 +13,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Benefit Screener — Find Benefits You May Qualify For · Common Ladder</title>
 <meta name="description" content="Answer a few questions and get a personalized list of federal and Arizona benefits you likely qualify for — SNAP, Medicaid, SSI, LIHEAP, VA, WIC, and more. No account required.">
-<link rel="canonical" href="https://www.commonladder.org/static-tools/benefit-screener.html">
+<link rel="canonical" href="https://commonladder.org/static-tools/benefit-screener.html">
 <link rel="stylesheet" href="../style.css">
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
   <link rel="alternate icon" type="image/png" href="/favicon-32.png">
@@ -307,12 +307,12 @@
   <meta property="og:site_name" content="Common Ladder">
   <meta property="og:title" content="Benefit Screener — Find Benefits You May Qualify For · Common Ladder">
   <meta property="og:description" content="Answer a few questions and get a personalized list of federal and Arizona benefits you likely qualify for — SNAP, Medicaid, SSI, LIHEAP, VA, WIC, and more. No account required.">
-  <meta property="og:url" content="https://www.commonladder.org/static-tools/benefit-screener.html">
-  <meta property="og:image" content="https://www.commonladder.org/images/og-default.png">
+  <meta property="og:url" content="https://commonladder.org/static-tools/benefit-screener.html">
+  <meta property="og:image" content="https://commonladder.org/images/og-default.png">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Benefit Screener — Find Benefits You May Qualify For · Common Ladder">
   <meta name="twitter:description" content="Answer a few questions and get a personalized list of federal and Arizona benefits you likely qualify for — SNAP, Medicaid, SSI, LIHEAP, VA, WIC, and more. No account required.">
-  <meta name="twitter:image" content="https://www.commonladder.org/images/og-default.png">
+  <meta name="twitter:image" content="https://commonladder.org/images/og-default.png">
 </head>
 <body>
 
@@ -362,10 +362,11 @@
     <p>A few questions. About 2 minutes. No account required.</p>
     <p>Answer what you can — every question has a "not sure" option.</p>
     <div class="screener-trust">
-      <span>Nothing is stored or shared</span>
+      <span>Your answers stay on your device</span>
       <span>No signup required</span>
       <span>Free to use</span>
     </div>
+    <p class="q-note" style="margin-top:.75rem;">This is a screening tool, not an application or an eligibility decision — each program makes its own determination. Dollar figures are current as of June 2026 and change every year. Always confirm with the agency or call 211.</p>
   </div>
 
   <!-- Progress -->
@@ -558,6 +559,7 @@
     </div>
     <div id="benefits-list"></div>
     <div class="results-footer">
+      <p class="q-note">Screening estimate only — not an eligibility decision. Figures as of June 2026 (FY 2026 federal limits; AHCCCS limits published Feb 2026). Confirm amounts and rules with each agency before relying on them.</p>
       <h3>Not sure where to start?</h3>
       <p>Call <strong>211</strong> — Arizona's free social services helpline connects you to a real person who can help you apply for multiple programs at once.</p>
       <a href="tel:211" class="apply-btn">Call 2-1-1 free</a>
@@ -753,10 +755,10 @@ function showResults() {
         priority: homeless || veryLowIncome,
         icon: '🍎',
         name: 'SNAP (Food Benefits)',
-        sub: 'Up to $291/month for a single person',
+        sub: 'Up to $298/month for a single person (FY 2026)',
         type: 'priority',
-        what: 'SNAP provides a monthly credit on an EBT card to buy groceries at most stores. A single adult with no income qualifies for the maximum benefit — currently about $291/month. Larger households with children receive more.',
-        amount: 'Up to $291/month (individual) · Up to $973/month (family of 4)',
+        what: 'SNAP provides a monthly credit on an EBT card to buy groceries at most stores. A single adult with no income qualifies for the maximum benefit — $298/month for federal fiscal year 2026. Larger households with children receive more.',
+        amount: 'Up to $298/month (individual) · Up to $994/month (family of 4) — FY 2026',
         apply: 'Apply online at <a href="https://healthearizonaplus.gov" target="_blank" rel="noopener noreferrer">healthearizonaplus.gov</a> or call <a href="tel:18554327587">1-855-432-7587</a> (DES). You can apply without a permanent address — use a shelter or service address.',
         phone: '1-855-432-7587',
         link: 'https://healthearizonaplus.gov'
@@ -774,7 +776,7 @@ function showResults() {
         name: 'AHCCCS (Arizona Medicaid)',
         sub: 'Free or low-cost health coverage',
         type: 'priority',
-        what: 'AHCCCS is Arizona\'s free health insurance for people with low incomes. It covers doctor visits, prescriptions, mental health care, hospital stays, and more. Most adults earning under about $1,838/month qualify. Being unhoused does not disqualify you.',
+        what: 'AHCCCS is Arizona\'s free health insurance for people with low incomes. It covers doctor visits, prescriptions, mental health care, hospital stays, and more. Most adults earning under about $1,769/month (2026 limit, single person) qualify. Being unhoused does not disqualify you.',
         amount: 'Free coverage · no monthly premium for most members',
         apply: 'Apply at <a href="https://healthearizonaplus.gov" target="_blank" rel="noopener noreferrer">healthearizonaplus.gov</a> or call <a href="tel:18554327587">1-855-432-7587</a>. You can apply the same day and coverage often starts immediately.',
         phone: '1-855-432-7587',

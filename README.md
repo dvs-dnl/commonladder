@@ -4,7 +4,7 @@
 
 Civic homelessness resource platform connecting people experiencing homelessness, nonprofits, case managers, government, and donors to tools and services across their community.
 
-🌐 [commonladder.org](https://www.commonladder.org)
+🌐 [commonladder.org](https://commonladder.org)
 
 ## Structure
 - `wp-theme/` — Custom WordPress theme (Common Ladder)

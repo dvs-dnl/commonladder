@@ -4,63 +4,63 @@
   <!-- Core pages -->
   
   <url>
-    <loc>https://www.commonladder.org/</loc>
+    <loc>https://commonladder.org/</loc>
     <lastmod>2026-05-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   
   <url>
-    <loc>https://www.commonladder.org/resources.html</loc>
+    <loc>https://commonladder.org/resources.html</loc>
     <lastmod>2026-05-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   
   <url>
-    <loc>https://www.commonladder.org/learn/</loc>
+    <loc>https://commonladder.org/learn/</loc>
     <lastmod>2026-05-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   
   <url>
-    <loc>https://www.commonladder.org/about.html</loc>
+    <loc>https://commonladder.org/about.html</loc>
     <lastmod>2026-05-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   
   <url>
-    <loc>https://www.commonladder.org/contact.html</loc>
+    <loc>https://commonladder.org/contact.html</loc>
     <lastmod>2026-05-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   
   <url>
-    <loc>https://www.commonladder.org/providers.html</loc>
+    <loc>https://commonladder.org/providers.html</loc>
     <lastmod>2026-05-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   
   <url>
-    <loc>https://www.commonladder.org/donors.html</loc>
+    <loc>https://commonladder.org/donors.html</loc>
     <lastmod>2026-05-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   
   <url>
-    <loc>https://www.commonladder.org/data-reports.html</loc>
+    <loc>https://commonladder.org/data-reports.html</loc>
     <lastmod>2026-05-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   
   <url>
-    <loc>https://www.commonladder.org/privacy.html</loc>
+    <loc>https://commonladder.org/privacy.html</loc>
     <lastmod>2026-05-22</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.4</priority>
@@ -68,91 +68,91 @@
   <!-- Blog articles (legacy URLs preserved for inbound links; primary discovery is via /learn.html, /help/, /providers.html, /learn/evidence/) -->
   
   <url>
-    <loc>https://www.commonladder.org/blog/emergency-shelter-phoenix-tonight.html</loc>
+    <loc>https://commonladder.org/blog/emergency-shelter-phoenix-tonight.html</loc>
     <lastmod>2026-05-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   
   <url>
-    <loc>https://www.commonladder.org/blog/free-health-clinics-phoenix.html</loc>
+    <loc>https://commonladder.org/blog/free-health-clinics-phoenix.html</loc>
     <lastmod>2026-05-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   
   <url>
-    <loc>https://www.commonladder.org/blog/free-meals-phoenix.html</loc>
+    <loc>https://commonladder.org/blog/free-meals-phoenix.html</loc>
     <lastmod>2026-05-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   
   <url>
-    <loc>https://www.commonladder.org/blog/emergency-shelter-phoenix.html</loc>
+    <loc>https://commonladder.org/blog/emergency-shelter-phoenix.html</loc>
     <lastmod>2026-05-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   
   <url>
-    <loc>https://www.commonladder.org/blog/case-manager-guide.html</loc>
+    <loc>https://commonladder.org/blog/case-manager-guide.html</loc>
     <lastmod>2026-05-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   
   <url>
-    <loc>https://www.commonladder.org/blog/5-ways-to-help-phoenix.html</loc>
+    <loc>https://commonladder.org/blog/5-ways-to-help-phoenix.html</loc>
     <lastmod>2026-05-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
-    <loc>https://www.commonladder.org/blog/id-recovery-phoenix.html</loc>
+    <loc>https://commonladder.org/blog/id-recovery-phoenix.html</loc>
     <lastmod>2026-05-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
-    <loc>https://www.commonladder.org/blog/federal-homelessness-spending-outcomes.html</loc>
+    <loc>https://commonladder.org/blog/federal-homelessness-spending-outcomes.html</loc>
     <lastmod>2026-05-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
-    <loc>https://www.commonladder.org/blog/high-performing-coc-structural-predictors.html</loc>
+    <loc>https://commonladder.org/blog/high-performing-coc-structural-predictors.html</loc>
     <lastmod>2026-05-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
-    <loc>https://www.commonladder.org/blog/state-id-homeless.html</loc>
+    <loc>https://commonladder.org/blog/state-id-homeless.html</loc>
     <lastmod>2026-05-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
-    <loc>https://www.commonladder.org/blog/federal-spending-rebuttal.html</loc>
+    <loc>https://commonladder.org/blog/federal-spending-rebuttal.html</loc>
     <lastmod>2026-05-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
-    <loc>https://www.commonladder.org/blog/high-performing-coc.html</loc>
+    <loc>https://commonladder.org/blog/high-performing-coc.html</loc>
     <lastmod>2026-05-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
-    <loc>https://www.commonladder.org/budget.html</loc>
+    <loc>https://commonladder.org/budget.html</loc>
     <lastmod>2026-05-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
@@ -161,14 +161,14 @@
   <!-- City landing pages -->
 
   <url>
-    <loc>https://www.commonladder.org/phoenix.html</loc>
+    <loc>https://commonladder.org/phoenix.html</loc>
     <lastmod>2026-05-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
 
   <url>
-    <loc>https://www.commonladder.org/tucson.html</loc>
+    <loc>https://commonladder.org/tucson.html</loc>
     <lastmod>2026-05-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
@@ -177,7 +177,7 @@
   <!-- Evidence & policy hub -->
 
   <url>
-    <loc>https://www.commonladder.org/evidence/</loc>
+    <loc>https://commonladder.org/evidence/</loc>
     <lastmod>2026-05-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
@@ -186,14 +186,14 @@
   <!-- About section -->
 
   <url>
-    <loc>https://www.commonladder.org/about/methodology.html</loc>
+    <loc>https://commonladder.org/about/methodology.html</loc>
     <lastmod>2026-05-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
-    <loc>https://www.commonladder.org/press.html</loc>
+    <loc>https://commonladder.org/press.html</loc>
     <lastmod>2026-05-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -202,84 +202,84 @@
   <!-- Resource directory — 12 canonical categories -->
 
   <url>
-    <loc>https://www.commonladder.org/help/housing-shelter/</loc>
+    <loc>https://commonladder.org/help/housing-shelter/</loc>
     <lastmod>2026-05-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
 
   <url>
-    <loc>https://www.commonladder.org/help/food/</loc>
+    <loc>https://commonladder.org/help/food/</loc>
     <lastmod>2026-05-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
 
   <url>
-    <loc>https://www.commonladder.org/help/health/</loc>
+    <loc>https://commonladder.org/help/health/</loc>
     <lastmod>2026-05-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
 
   <url>
-    <loc>https://www.commonladder.org/help/mental-health-recovery/</loc>
+    <loc>https://commonladder.org/help/mental-health-recovery/</loc>
     <lastmod>2026-05-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
 
   <url>
-    <loc>https://www.commonladder.org/help/money-benefits/</loc>
+    <loc>https://commonladder.org/help/money-benefits/</loc>
     <lastmod>2026-05-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
-    <loc>https://www.commonladder.org/help/work-training/</loc>
+    <loc>https://commonladder.org/help/work-training/</loc>
     <lastmod>2026-05-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
-    <loc>https://www.commonladder.org/help/legal-help/</loc>
+    <loc>https://commonladder.org/help/legal-help/</loc>
     <lastmod>2026-05-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
-    <loc>https://www.commonladder.org/help/id-documents/</loc>
+    <loc>https://commonladder.org/help/id-documents/</loc>
     <lastmod>2026-05-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
-    <loc>https://www.commonladder.org/help/family-children/</loc>
+    <loc>https://commonladder.org/help/family-children/</loc>
     <lastmod>2026-05-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
-    <loc>https://www.commonladder.org/help/safety/</loc>
+    <loc>https://commonladder.org/help/safety/</loc>
     <lastmod>2026-05-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
 
   <url>
-    <loc>https://www.commonladder.org/help/getting-around/</loc>
+    <loc>https://commonladder.org/help/getting-around/</loc>
     <lastmod>2026-05-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
-    <loc>https://www.commonladder.org/help/hygiene-essentials/</loc>
+    <loc>https://commonladder.org/help/hygiene-essentials/</loc>
     <lastmod>2026-05-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
@@ -288,623 +288,636 @@
   <!-- Static tools -->
   
   <url>
-    <loc>https://www.commonladder.org/static-tools/maricopa-navigator.html</loc>
+    <loc>https://commonladder.org/static-tools/maricopa-navigator.html</loc>
     <lastmod>2026-05-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   
   <url>
-    <loc>https://www.commonladder.org/static-tools/tucson-navigator.html</loc>
+    <loc>https://commonladder.org/static-tools/tucson-navigator.html</loc>
     <lastmod>2026-05-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
 
   <url>
-    <loc>https://www.commonladder.org/static-tools/flagstaff-navigator.html</loc>
+    <loc>https://commonladder.org/static-tools/flagstaff-navigator.html</loc>
     <lastmod>2026-06-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
-    <loc>https://www.commonladder.org/static-tools/nyc-navigator.html</loc>
+    <loc>https://commonladder.org/static-tools/nyc-navigator.html</loc>
     <lastmod>2026-05-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   
   <url>
-    <loc>https://www.commonladder.org/static-tools/los-angeles-navigator.html</loc>
+    <loc>https://commonladder.org/static-tools/los-angeles-navigator.html</loc>
     <lastmod>2026-05-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   
   <url>
-    <loc>https://www.commonladder.org/static-tools/chicago-navigator.html</loc>
+    <loc>https://commonladder.org/static-tools/chicago-navigator.html</loc>
     <lastmod>2026-05-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   
   <url>
-    <loc>https://www.commonladder.org/static-tools/seattle-navigator.html</loc>
+    <loc>https://commonladder.org/static-tools/seattle-navigator.html</loc>
     <lastmod>2026-05-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   
   <url>
-    <loc>https://www.commonladder.org/static-tools/denver-navigator.html</loc>
+    <loc>https://commonladder.org/static-tools/denver-navigator.html</loc>
     <lastmod>2026-05-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   
   <url>
-    <loc>https://www.commonladder.org/static-tools/san-diego-navigator.html</loc>
+    <loc>https://commonladder.org/static-tools/san-diego-navigator.html</loc>
     <lastmod>2026-05-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   
   <url>
-    <loc>https://www.commonladder.org/static-tools/san-jose-navigator.html</loc>
+    <loc>https://commonladder.org/static-tools/san-jose-navigator.html</loc>
     <lastmod>2026-05-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   
   <url>
-    <loc>https://www.commonladder.org/static-tools/oakland-navigator.html</loc>
+    <loc>https://commonladder.org/static-tools/oakland-navigator.html</loc>
     <lastmod>2026-05-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   
   <url>
-    <loc>https://www.commonladder.org/static-tools/san-francisco-navigator.html</loc>
+    <loc>https://commonladder.org/static-tools/san-francisco-navigator.html</loc>
     <lastmod>2026-05-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   
   <url>
-    <loc>https://www.commonladder.org/static-tools/las-vegas-navigator.html</loc>
+    <loc>https://commonladder.org/static-tools/las-vegas-navigator.html</loc>
     <lastmod>2026-05-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   
   <url>
-    <loc>https://www.commonladder.org/static-tools/portland-navigator.html</loc>
+    <loc>https://commonladder.org/static-tools/portland-navigator.html</loc>
     <lastmod>2026-05-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   
   <url>
-    <loc>https://www.commonladder.org/static-tools/orange-county-navigator.html</loc>
+    <loc>https://commonladder.org/static-tools/orange-county-navigator.html</loc>
     <lastmod>2026-05-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   
   <url>
-    <loc>https://www.commonladder.org/static-tools/sacramento-navigator.html</loc>
+    <loc>https://commonladder.org/static-tools/sacramento-navigator.html</loc>
     <lastmod>2026-05-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   
   <url>
-    <loc>https://www.commonladder.org/static-tools/boston-navigator.html</loc>
+    <loc>https://commonladder.org/static-tools/boston-navigator.html</loc>
     <lastmod>2026-05-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   
   <url>
-    <loc>https://www.commonladder.org/static-tools/washington-dc-navigator.html</loc>
+    <loc>https://commonladder.org/static-tools/washington-dc-navigator.html</loc>
     <lastmod>2026-05-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   
   <url>
-    <loc>https://www.commonladder.org/static-tools/philadelphia-navigator.html</loc>
+    <loc>https://commonladder.org/static-tools/philadelphia-navigator.html</loc>
     <lastmod>2026-05-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   
   <url>
-    <loc>https://www.commonladder.org/static-tools/stockton-navigator.html</loc>
+    <loc>https://commonladder.org/static-tools/stockton-navigator.html</loc>
     <lastmod>2026-05-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   
   <url>
-    <loc>https://www.commonladder.org/static-tools/san-joaquin-navigator.html</loc>
+    <loc>https://commonladder.org/static-tools/san-joaquin-navigator.html</loc>
     <lastmod>2026-06-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   
   <url>
-    <loc>https://www.commonladder.org/static-tools/stay-housed-san-joaquin.html</loc>
+    <loc>https://commonladder.org/static-tools/stay-housed-san-joaquin.html</loc>
     <lastmod>2026-06-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   
   <url>
-    <loc>https://www.commonladder.org/static-tools/resource-sequencing-san-joaquin.html</loc>
+    <loc>https://commonladder.org/static-tools/resource-sequencing-san-joaquin.html</loc>
     <lastmod>2026-06-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   
   <url>
-    <loc>https://www.commonladder.org/blog/stockton-san-joaquin-homeless-resources.html</loc>
+    <loc>https://commonladder.org/blog/stockton-san-joaquin-homeless-resources.html</loc>
     <lastmod>2026-06-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   
   <url>
-    <loc>https://www.commonladder.org/static-tools/honolulu-navigator.html</loc>
+    <loc>https://commonladder.org/static-tools/honolulu-navigator.html</loc>
     <lastmod>2026-05-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   
   <url>
-    <loc>https://www.commonladder.org/static-tools/fresno-navigator.html</loc>
+    <loc>https://commonladder.org/static-tools/fresno-navigator.html</loc>
     <lastmod>2026-05-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   
   <url>
-    <loc>https://www.commonladder.org/static-tools/san-bernardino-navigator.html</loc>
+    <loc>https://commonladder.org/static-tools/san-bernardino-navigator.html</loc>
     <lastmod>2026-05-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   
   <url>
-    <loc>https://www.commonladder.org/static-tools/riverside-navigator.html</loc>
+    <loc>https://commonladder.org/static-tools/riverside-navigator.html</loc>
     <lastmod>2026-05-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   
   <url>
-    <loc>https://www.commonladder.org/static-tools/long-island-navigator.html</loc>
+    <loc>https://commonladder.org/static-tools/long-island-navigator.html</loc>
     <lastmod>2026-05-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   
   <url>
-    <loc>https://www.commonladder.org/static-tools/minneapolis-navigator.html</loc>
+    <loc>https://commonladder.org/static-tools/minneapolis-navigator.html</loc>
     <lastmod>2026-05-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   
   <url>
-    <loc>https://www.commonladder.org/static-tools/miami-dade-navigator.html</loc>
+    <loc>https://commonladder.org/static-tools/miami-dade-navigator.html</loc>
     <lastmod>2026-05-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   
   <url>
-    <loc>https://www.commonladder.org/static-tools/dallas-navigator.html</loc>
+    <loc>https://commonladder.org/static-tools/dallas-navigator.html</loc>
     <lastmod>2026-05-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   
   <url>
-    <loc>https://www.commonladder.org/static-tools/san-antonio-navigator.html</loc>
+    <loc>https://commonladder.org/static-tools/san-antonio-navigator.html</loc>
     <lastmod>2026-05-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   
   <url>
-    <loc>https://www.commonladder.org/static-tools/long-beach-navigator.html</loc>
+    <loc>https://commonladder.org/static-tools/long-beach-navigator.html</loc>
     <lastmod>2026-05-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   
   <url>
-    <loc>https://www.commonladder.org/static-tools/houston-navigator.html</loc>
+    <loc>https://commonladder.org/static-tools/houston-navigator.html</loc>
     <lastmod>2026-05-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   
   <url>
-    <loc>https://www.commonladder.org/static-tools/springfield-ma-navigator.html</loc>
+    <loc>https://commonladder.org/static-tools/springfield-ma-navigator.html</loc>
     <lastmod>2026-05-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   
   <url>
-    <loc>https://www.commonladder.org/static-tools/austin-navigator.html</loc>
+    <loc>https://commonladder.org/static-tools/austin-navigator.html</loc>
     <lastmod>2026-05-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   
   <url>
-    <loc>https://www.commonladder.org/static-tools/atlanta-navigator.html</loc>
+    <loc>https://commonladder.org/static-tools/atlanta-navigator.html</loc>
     <lastmod>2026-05-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   
   <url>
-    <loc>https://www.commonladder.org/static-tools/orlando-navigator.html</loc>
+    <loc>https://commonladder.org/static-tools/orlando-navigator.html</loc>
     <lastmod>2026-05-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   
   <url>
-    <loc>https://www.commonladder.org/static-tools/albuquerque-navigator.html</loc>
+    <loc>https://commonladder.org/static-tools/albuquerque-navigator.html</loc>
     <lastmod>2026-05-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   
   <url>
-    <loc>https://www.commonladder.org/static-tools/contra-costa-navigator.html</loc>
+    <loc>https://commonladder.org/static-tools/contra-costa-navigator.html</loc>
     <lastmod>2026-05-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   
   <url>
-    <loc>https://www.commonladder.org/static-tools/bakersfield-navigator.html</loc>
+    <loc>https://commonladder.org/static-tools/bakersfield-navigator.html</loc>
     <lastmod>2026-05-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   
   <url>
-    <loc>https://www.commonladder.org/static-tools/tacoma-navigator.html</loc>
+    <loc>https://commonladder.org/static-tools/tacoma-navigator.html</loc>
     <lastmod>2026-05-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   
   <url>
-    <loc>https://www.commonladder.org/static-tools/broward-navigator.html</loc>
+    <loc>https://commonladder.org/static-tools/broward-navigator.html</loc>
     <lastmod>2026-05-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   
   <url>
-    <loc>https://www.commonladder.org/static-tools/fort-worth-navigator.html</loc>
+    <loc>https://commonladder.org/static-tools/fort-worth-navigator.html</loc>
     <lastmod>2026-05-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   
   <url>
-    <loc>https://www.commonladder.org/static-tools/newark-navigator.html</loc>
+    <loc>https://commonladder.org/static-tools/newark-navigator.html</loc>
     <lastmod>2026-05-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   
   <url>
-    <loc>https://www.commonladder.org/static-tools/salt-lake-city-navigator.html</loc>
+    <loc>https://commonladder.org/static-tools/salt-lake-city-navigator.html</loc>
     <lastmod>2026-05-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   
   <url>
-    <loc>https://www.commonladder.org/static-tools/charlotte-navigator.html</loc>
+    <loc>https://commonladder.org/static-tools/boise-navigator.html</loc>
+    <lastmod>2026-06-09</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  
+  <url>
+    <loc>https://commonladder.org/static-tools/charlotte-navigator.html</loc>
     <lastmod>2026-05-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   
   <url>
-    <loc>https://www.commonladder.org/static-tools/nashville-navigator.html</loc>
+    <loc>https://commonladder.org/static-tools/nashville-navigator.html</loc>
     <lastmod>2026-05-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   
   <url>
-    <loc>https://www.commonladder.org/static-tools/kansas-city-navigator.html</loc>
+    <loc>https://commonladder.org/static-tools/kansas-city-navigator.html</loc>
     <lastmod>2026-05-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   
   <url>
-    <loc>https://www.commonladder.org/static-tools/indianapolis-navigator.html</loc>
+    <loc>https://commonladder.org/static-tools/indianapolis-navigator.html</loc>
     <lastmod>2026-05-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   
   <url>
-    <loc>https://www.commonladder.org/static-tools/detroit-navigator.html</loc>
+    <loc>https://commonladder.org/static-tools/detroit-navigator.html</loc>
     <lastmod>2026-05-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   
   <url>
-    <loc>https://www.commonladder.org/static-tools/cleveland-navigator.html</loc>
+    <loc>https://commonladder.org/static-tools/cleveland-navigator.html</loc>
     <lastmod>2026-05-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   
   <url>
-    <loc>https://www.commonladder.org/static-tools/columbus-navigator.html</loc>
+    <loc>https://commonladder.org/static-tools/columbus-navigator.html</loc>
     <lastmod>2026-05-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   
   <url>
-    <loc>https://www.commonladder.org/static-tools/oklahoma-city-navigator.html</loc>
+    <loc>https://commonladder.org/static-tools/oklahoma-city-navigator.html</loc>
     <lastmod>2026-05-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   
   <url>
-    <loc>https://www.commonladder.org/static-tools/louisville-navigator.html</loc>
+    <loc>https://commonladder.org/static-tools/louisville-navigator.html</loc>
     <lastmod>2026-05-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   
   <url>
-    <loc>https://www.commonladder.org/static-tools/baltimore-navigator.html</loc>
+    <loc>https://commonladder.org/static-tools/baltimore-navigator.html</loc>
     <lastmod>2026-05-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   
   <url>
-    <loc>https://www.commonladder.org/static-tools/omaha-navigator.html</loc>
+    <loc>https://commonladder.org/static-tools/omaha-navigator.html</loc>
     <lastmod>2026-05-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   
   <url>
-    <loc>https://www.commonladder.org/static-tools/tulsa-navigator.html</loc>
+    <loc>https://commonladder.org/static-tools/tulsa-navigator.html</loc>
+    <lastmod>2026-05-23</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://commonladder.org/static-tools/wichita-navigator.html</loc>
+    <lastmod>2026-06-08</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  
+  <url>
+    <loc>https://commonladder.org/static-tools/quincy-brockton-navigator.html</loc>
     <lastmod>2026-05-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   
   <url>
-    <loc>https://www.commonladder.org/static-tools/quincy-brockton-navigator.html</loc>
+    <loc>https://commonladder.org/static-tools/reno-navigator.html</loc>
     <lastmod>2026-05-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   
   <url>
-    <loc>https://www.commonladder.org/static-tools/reno-navigator.html</loc>
+    <loc>https://commonladder.org/static-tools/buffalo-navigator.html</loc>
     <lastmod>2026-05-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   
   <url>
-    <loc>https://www.commonladder.org/static-tools/buffalo-navigator.html</loc>
+    <loc>https://commonladder.org/static-tools/new-orleans-navigator.html</loc>
     <lastmod>2026-05-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   
   <url>
-    <loc>https://www.commonladder.org/static-tools/new-orleans-navigator.html</loc>
+    <loc>https://commonladder.org/static-tools/jacksonville-navigator.html</loc>
     <lastmod>2026-05-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   
   <url>
-    <loc>https://www.commonladder.org/static-tools/jacksonville-navigator.html</loc>
+    <loc>https://commonladder.org/static-tools/colorado-springs-navigator.html</loc>
     <lastmod>2026-05-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   
   <url>
-    <loc>https://www.commonladder.org/static-tools/colorado-springs-navigator.html</loc>
+    <loc>https://commonladder.org/static-tools/worcester-navigator.html</loc>
     <lastmod>2026-05-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   
   <url>
-    <loc>https://www.commonladder.org/static-tools/worcester-navigator.html</loc>
+    <loc>https://commonladder.org/static-tools/cincinnati-navigator.html</loc>
     <lastmod>2026-05-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   
   <url>
-    <loc>https://www.commonladder.org/static-tools/cincinnati-navigator.html</loc>
+    <loc>https://commonladder.org/static-tools/rochester-navigator.html</loc>
     <lastmod>2026-05-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   
   <url>
-    <loc>https://www.commonladder.org/static-tools/rochester-navigator.html</loc>
+    <loc>https://commonladder.org/static-tools/milwaukee-navigator.html</loc>
     <lastmod>2026-05-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   
   <url>
-    <loc>https://www.commonladder.org/static-tools/milwaukee-navigator.html</loc>
+    <loc>https://commonladder.org/static-tools/memphis-navigator.html</loc>
     <lastmod>2026-05-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   
   <url>
-    <loc>https://www.commonladder.org/static-tools/memphis-navigator.html</loc>
+    <loc>https://commonladder.org/static-tools/grand-rapids-navigator.html</loc>
     <lastmod>2026-05-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   
   <url>
-    <loc>https://www.commonladder.org/static-tools/grand-rapids-navigator.html</loc>
+    <loc>https://commonladder.org/static-tools/tampa-navigator.html</loc>
     <lastmod>2026-05-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   
   <url>
-    <loc>https://www.commonladder.org/static-tools/tampa-navigator.html</loc>
+    <loc>https://commonladder.org/static-tools/pittsburgh-navigator.html</loc>
     <lastmod>2026-05-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   
   <url>
-    <loc>https://www.commonladder.org/static-tools/pittsburgh-navigator.html</loc>
+    <loc>https://commonladder.org/static-tools/redding-navigator.html</loc>
     <lastmod>2026-05-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   
   <url>
-    <loc>https://www.commonladder.org/static-tools/redding-navigator.html</loc>
+    <loc>https://commonladder.org/static-tools/spokane-navigator.html</loc>
     <lastmod>2026-05-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   
   <url>
-    <loc>https://www.commonladder.org/static-tools/spokane-navigator.html</loc>
+    <loc>https://commonladder.org/static-tools/pinellas-navigator.html</loc>
     <lastmod>2026-05-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   
   <url>
-    <loc>https://www.commonladder.org/static-tools/pinellas-navigator.html</loc>
+    <loc>https://commonladder.org/static-tools/hartford-navigator.html</loc>
     <lastmod>2026-05-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   
   <url>
-    <loc>https://www.commonladder.org/static-tools/hartford-navigator.html</loc>
+    <loc>https://commonladder.org/static-tools/anchorage-navigator.html</loc>
     <lastmod>2026-05-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   
   <url>
-    <loc>https://www.commonladder.org/static-tools/anchorage-navigator.html</loc>
+    <loc>https://commonladder.org/static-tools/birmingham-navigator.html</loc>
     <lastmod>2026-05-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   
   <url>
-    <loc>https://www.commonladder.org/static-tools/birmingham-navigator.html</loc>
+    <loc>https://commonladder.org/static-tools/peninsula-navigator.html</loc>
     <lastmod>2026-05-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   
   <url>
-    <loc>https://www.commonladder.org/static-tools/peninsula-navigator.html</loc>
+    <loc>https://commonladder.org/static-tools/trenton-navigator.html</loc>
     <lastmod>2026-05-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   
   <url>
-    <loc>https://www.commonladder.org/static-tools/trenton-navigator.html</loc>
+    <loc>https://commonladder.org/static-tools/charleston-navigator.html</loc>
     <lastmod>2026-05-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   
   <url>
-    <loc>https://www.commonladder.org/static-tools/charleston-navigator.html</loc>
+    <loc>https://commonladder.org/static-tools/columbia-navigator.html</loc>
     <lastmod>2026-05-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   
   <url>
-    <loc>https://www.commonladder.org/static-tools/columbia-navigator.html</loc>
+    <loc>https://commonladder.org/static-tools/wilmington-navigator.html</loc>
     <lastmod>2026-05-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   
   <url>
-    <loc>https://www.commonladder.org/static-tools/wilmington-navigator.html</loc>
+    <loc>https://commonladder.org/static-tools/atlantic-city-navigator.html</loc>
     <lastmod>2026-05-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   
   <url>
-    <loc>https://www.commonladder.org/static-tools/atlantic-city-navigator.html</loc>
+    <loc>https://commonladder.org/static-tools/norfolk-navigator.html</loc>
     <lastmod>2026-05-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   
   <url>
-    <loc>https://www.commonladder.org/static-tools/norfolk-navigator.html</loc>
+    <loc>https://commonladder.org/static-tools/st-louis-city-navigator.html</loc>
     <lastmod>2026-05-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   
   <url>
-    <loc>https://www.commonladder.org/static-tools/st-louis-city-navigator.html</loc>
+    <loc>https://commonladder.org/static-tools/st-louis-county-navigator.html</loc>
     <lastmod>2026-05-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   
   <url>
-    <loc>https://www.commonladder.org/static-tools/st-louis-county-navigator.html</loc>
-    <lastmod>2026-05-23</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.commonladder.org/static-tools/virginia-beach-navigator.html</loc>
+    <loc>https://commonladder.org/static-tools/virginia-beach-navigator.html</loc>
     <lastmod>2026-05-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
@@ -914,257 +927,269 @@
   <!-- New IA: Find help directory + Providers + Learn/Evidence -->
   
   <url>
-    <loc>https://www.commonladder.org/help/</loc>
+    <loc>https://commonladder.org/help/</loc>
     <lastmod>2026-05-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.95</priority>
   </url>
   
   <url>
-    <loc>https://www.commonladder.org/help/emergency-shelter/</loc>
+    <loc>https://commonladder.org/help/emergency-shelter/</loc>
     <lastmod>2026-05-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.85</priority>
   </url>
   
   <url>
-    <loc>https://www.commonladder.org/help/transitional-housing/</loc>
+    <loc>https://commonladder.org/help/transitional-housing/</loc>
     <lastmod>2026-05-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.85</priority>
   </url>
   
   <url>
-    <loc>https://www.commonladder.org/help/rapid-rehousing/</loc>
+    <loc>https://commonladder.org/help/rapid-rehousing/</loc>
     <lastmod>2026-05-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.85</priority>
   </url>
   
   <url>
-    <loc>https://www.commonladder.org/help/permanent-supportive-housing/</loc>
+    <loc>https://commonladder.org/help/permanent-supportive-housing/</loc>
     <lastmod>2026-05-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.85</priority>
   </url>
   
   <url>
-    <loc>https://www.commonladder.org/help/food-assistance/</loc>
+    <loc>https://commonladder.org/help/food-assistance/</loc>
     <lastmod>2026-05-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.85</priority>
   </url>
   
   <url>
-    <loc>https://www.commonladder.org/help/healthcare/</loc>
+    <loc>https://commonladder.org/help/healthcare/</loc>
     <lastmod>2026-05-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.85</priority>
   </url>
   
   <url>
-    <loc>https://www.commonladder.org/help/substance-use/</loc>
+    <loc>https://commonladder.org/help/substance-use/</loc>
     <lastmod>2026-05-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.85</priority>
   </url>
   
   <url>
-    <loc>https://www.commonladder.org/help/employment/</loc>
+    <loc>https://commonladder.org/help/employment/</loc>
     <lastmod>2026-05-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.85</priority>
   </url>
   
   <url>
-    <loc>https://www.commonladder.org/help/legal-aid/</loc>
+    <loc>https://commonladder.org/help/legal-aid/</loc>
     <lastmod>2026-05-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.85</priority>
   </url>
   
   <url>
-    <loc>https://www.commonladder.org/help/id-documents/</loc>
+    <loc>https://commonladder.org/help/id-documents/</loc>
     <lastmod>2026-05-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.85</priority>
   </url>
   
   <url>
-    <loc>https://www.commonladder.org/help/veteran-services/</loc>
+    <loc>https://commonladder.org/help/veteran-services/</loc>
     <lastmod>2026-05-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.85</priority>
   </url>
   
   <url>
-    <loc>https://www.commonladder.org/help/family-services/</loc>
+    <loc>https://commonladder.org/help/family-services/</loc>
     <lastmod>2026-05-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.85</priority>
   </url>
   
   <url>
-    <loc>https://www.commonladder.org/learn/evidence/</loc>
+    <loc>https://commonladder.org/learn/evidence/</loc>
     <lastmod>2026-05-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
-    <loc>https://www.commonladder.org/static-tools/id-recovery-wizard.html</loc>
+    <loc>https://commonladder.org/static-tools/id-recovery-wizard.html</loc>
     <lastmod>2026-06-02</lastmod>
   </url>
   <url>
-    <loc>https://www.commonladder.org/blog/intro-id-recovery-wizard.html</loc>
+    <loc>https://commonladder.org/blog/intro-id-recovery-wizard.html</loc>
     <lastmod>2026-06-02</lastmod>
   </url>
 
   <!-- Backfilled 2026-06-07: pipeline-audit gap closure -->
   <url>
-    <loc>https://www.commonladder.org/blog.html</loc>
+    <loc>https://commonladder.org/blog.html</loc>
     <lastmod>2026-06-07</lastmod>
   </url>
   <url>
-    <loc>https://www.commonladder.org/blog/cash-transfers-homelessness-evidence.html</loc>
+    <loc>https://commonladder.org/blog/cash-transfers-homelessness-evidence.html</loc>
     <lastmod>2026-06-07</lastmod>
   </url>
   <url>
-    <loc>https://www.commonladder.org/blog/emergency-shelter-sacramento.html</loc>
+    <loc>https://commonladder.org/blog/emergency-shelter-sacramento.html</loc>
     <lastmod>2026-06-07</lastmod>
   </url>
   <url>
-    <loc>https://www.commonladder.org/blog/free-food-health-sacramento.html</loc>
+    <loc>https://commonladder.org/blog/free-food-health-sacramento.html</loc>
     <lastmod>2026-06-07</lastmod>
   </url>
   <url>
-    <loc>https://www.commonladder.org/blog/homeless-prevention-phoenix.html</loc>
+    <loc>https://commonladder.org/blog/homeless-prevention-phoenix.html</loc>
     <lastmod>2026-06-07</lastmod>
   </url>
   <url>
-    <loc>https://www.commonladder.org/blog/homeless-veteran-services-phoenix.html</loc>
+    <loc>https://commonladder.org/blog/homeless-veteran-services-phoenix.html</loc>
     <lastmod>2026-06-07</lastmod>
   </url>
   <url>
-    <loc>https://www.commonladder.org/blog/homelessness-prevention-targeting.html</loc>
+    <loc>https://commonladder.org/blog/homelessness-prevention-targeting.html</loc>
     <lastmod>2026-06-07</lastmod>
   </url>
   <url>
-    <loc>https://www.commonladder.org/blog/housing-first-evidence.html</loc>
+    <loc>https://commonladder.org/blog/housing-first-evidence.html</loc>
     <lastmod>2026-06-07</lastmod>
   </url>
   <url>
-    <loc>https://www.commonladder.org/blog/intro-benefit-screener.html</loc>
+    <loc>https://commonladder.org/blog/intro-benefit-screener.html</loc>
     <lastmod>2026-06-07</lastmod>
   </url>
   <url>
-    <loc>https://www.commonladder.org/blog/mental-health-homeless-phoenix.html</loc>
+    <loc>https://commonladder.org/blog/mental-health-homeless-phoenix.html</loc>
     <lastmod>2026-06-07</lastmod>
   </url>
   <url>
-    <loc>https://www.commonladder.org/blog/rrh-vs-psh-matching-evidence.html</loc>
+    <loc>https://commonladder.org/blog/rrh-vs-psh-matching-evidence.html</loc>
     <lastmod>2026-06-07</lastmod>
   </url>
   <url>
-    <loc>https://www.commonladder.org/blog/showers-hygiene-homeless-phoenix.html</loc>
+    <loc>https://commonladder.org/blog/showers-hygiene-homeless-phoenix.html</loc>
     <lastmod>2026-06-07</lastmod>
   </url>
   <url>
-    <loc>https://www.commonladder.org/blog/spending-up-outcomes-down-ahar.html</loc>
+    <loc>https://commonladder.org/blog/spending-up-outcomes-down-ahar.html</loc>
     <lastmod>2026-06-07</lastmod>
   </url>
   <url>
-    <loc>https://www.commonladder.org/blog/utility-assistance-phoenix.html</loc>
+    <loc>https://commonladder.org/blog/utility-assistance-phoenix.html</loc>
     <lastmod>2026-06-07</lastmod>
   </url>
   <url>
-    <loc>https://www.commonladder.org/find.html</loc>
+    <loc>https://commonladder.org/find.html</loc>
     <lastmod>2026-06-07</lastmod>
   </url>
   <url>
-    <loc>https://www.commonladder.org/help/sacramento/</loc>
+    <loc>https://commonladder.org/help/sacramento/</loc>
     <lastmod>2026-06-07</lastmod>
   </url>
   <url>
-    <loc>https://www.commonladder.org/learn/causes/</loc>
+    <loc>https://commonladder.org/learn/causes/</loc>
     <lastmod>2026-06-07</lastmod>
   </url>
   <url>
-    <loc>https://www.commonladder.org/learn/evidence/community-diagnostic/</loc>
+    <loc>https://commonladder.org/learn/evidence/community-diagnostic/</loc>
     <lastmod>2026-06-07</lastmod>
   </url>
   <url>
-    <loc>https://www.commonladder.org/learn/evidence/core-framework/</loc>
+    <loc>https://commonladder.org/learn/evidence/core-framework/</loc>
     <lastmod>2026-06-07</lastmod>
   </url>
   <url>
-    <loc>https://www.commonladder.org/learn/evidence/funder-guide/</loc>
+    <loc>https://commonladder.org/learn/evidence/funder-guide/</loc>
     <lastmod>2026-06-07</lastmod>
   </url>
   <url>
-    <loc>https://www.commonladder.org/learn/evidence/housing-math/</loc>
+    <loc>https://commonladder.org/learn/evidence/housing-math/</loc>
     <lastmod>2026-06-07</lastmod>
   </url>
   <url>
-    <loc>https://www.commonladder.org/learn/society/</loc>
+    <loc>https://commonladder.org/learn/society/</loc>
     <lastmod>2026-06-07</lastmod>
   </url>
   <url>
-    <loc>https://www.commonladder.org/learn/solutions/</loc>
+    <loc>https://commonladder.org/learn/solutions/</loc>
     <lastmod>2026-06-07</lastmod>
   </url>
   <url>
-    <loc>https://www.commonladder.org/learn/who/</loc>
+    <loc>https://commonladder.org/learn/who/</loc>
     <lastmod>2026-06-07</lastmod>
   </url>
   <url>
-    <loc>https://www.commonladder.org/sacramento.html</loc>
+    <loc>https://commonladder.org/sacramento.html</loc>
     <lastmod>2026-06-07</lastmod>
   </url>
   <url>
-    <loc>https://www.commonladder.org/static-tools/benefit-screener.html</loc>
+    <loc>https://commonladder.org/static-tools/benefit-screener.html</loc>
     <lastmod>2026-06-06</lastmod>
   </url>
   <url>
-    <loc>https://www.commonladder.org/static-tools/el-paso-navigator.html</loc>
+    <loc>https://commonladder.org/static-tools/el-paso-navigator.html</loc>
     <lastmod>2026-06-07</lastmod>
   </url>
   <url>
-    <loc>https://www.commonladder.org/static-tools/</loc>
+    <loc>https://commonladder.org/static-tools/</loc>
     <lastmod>2026-06-07</lastmod>
   </url>
   <url>
-    <loc>https://www.commonladder.org/static-tools/my-ladder.html</loc>
+    <loc>https://commonladder.org/static-tools/my-ladder.html</loc>
     <lastmod>2026-06-07</lastmod>
   </url>
   <url>
-    <loc>https://www.commonladder.org/static-tools/providence-navigator.html</loc>
+    <loc>https://commonladder.org/static-tools/providence-navigator.html</loc>
     <lastmod>2026-06-07</lastmod>
   </url>
   <url>
-    <loc>https://www.commonladder.org/static-tools/resource-sequencing-maricopa.html</loc>
+    <loc>https://commonladder.org/static-tools/resource-sequencing-maricopa.html</loc>
     <lastmod>2026-06-07</lastmod>
   </url>
   <url>
-    <loc>https://www.commonladder.org/static-tools/richmond-navigator.html</loc>
+    <loc>https://commonladder.org/static-tools/richmond-navigator.html</loc>
     <lastmod>2026-06-07</lastmod>
   </url>
   <url>
-    <loc>https://www.commonladder.org/static-tools/shelter-finder-az.html</loc>
+    <loc>https://commonladder.org/static-tools/shelter-finder-az.html</loc>
     <lastmod>2026-06-07</lastmod>
   </url>
   <url>
-    <loc>https://www.commonladder.org/static-tools/stay-housed-maricopa.html</loc>
+    <loc>https://commonladder.org/static-tools/stay-housed-maricopa.html</loc>
     <lastmod>2026-06-07</lastmod>
   </url>
   <url>
-    <loc>https://www.commonladder.org/blog/cooling-centers-heat-relief-phoenix.html</loc>
+    <loc>https://commonladder.org/blog/cooling-centers-heat-relief-phoenix.html</loc>
     <lastmod>2026-06-07</lastmod>
   </url>
   <url>
-    <loc>https://www.commonladder.org/static-tools/raleigh-navigator.html</loc>
+    <loc>https://commonladder.org/static-tools/raleigh-navigator.html</loc>
     <lastmod>2026-06-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://commonladder.org/static-tools/cooling-center-locator.html</loc>
+    <lastmod>2026-06-09</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://commonladder.org/blog/intro-cooling-center-locator.html</loc>
+    <lastmod>2026-06-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
   </url>
 </urlset>

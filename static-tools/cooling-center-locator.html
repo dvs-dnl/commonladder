@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-3YXK0RL6XV"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-3YXK0RL6XV');
+</script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cooling Center Locator — Phoenix &amp; Maricopa County · Common Ladder</title>
+  <meta name="description" content="Find a free, air-conditioned cooling center near you in Phoenix and Maricopa County. Opens the live Heat Relief Network map (200+ sites, pet-friendly filter), plus a year-round fallback list with addresses, phones, and hours. No ID, no money, no account needed.">
+  <link rel="canonical" href="https://commonladder.org/static-tools/cooling-center-locator.html">
+  <link rel="stylesheet" href="/style.css">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="alternate icon" type="image/png" href="/favicon-32.png">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Cooling Center Locator — Phoenix & Maricopa County",
+    "url": "https://commonladder.org/static-tools/cooling-center-locator.html",
+    "applicationCategory": "UtilityApplication",
+    "operatingSystem": "Any",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+    "publisher": { "@type": "Organization", "name": "Common Ladder", "url": "https://commonladder.org" },
+    "description": "Free tool that points people in Phoenix and Maricopa County to the nearest free cooling center: live Heat Relief Network map link, optional ZIP-code routing, and a verified year-round fallback list."
+  }
+  </script>
+  <noscript><style>.nav__links{display:flex!important;flex-wrap:wrap!important;}.nav__toggle{display:none!important;}#ccl-zip-tool{display:none!important;}</style></noscript>
+
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Common Ladder">
+  <meta property="og:title" content="Cooling Center Locator — Phoenix &amp; Maricopa County · Common Ladder">
+  <meta property="og:description" content="Find a free, air-conditioned cooling center near you in Phoenix and Maricopa County. Live Heat Relief Network map link plus a year-round fallback list. No ID, no money, no account needed.">
+  <meta property="og:url" content="https://commonladder.org/static-tools/cooling-center-locator.html">
+  <meta property="og:image" content="https://commonladder.org/images/og-default.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Cooling Center Locator — Phoenix &amp; Maricopa County · Common Ladder">
+  <meta name="twitter:description" content="Find a free, air-conditioned cooling center near you in Phoenix and Maricopa County. Live Heat Relief Network map link plus a year-round fallback list. No ID, no money, no account needed.">
+  <meta name="twitter:image" content="https://commonladder.org/images/og-default.png">
+
+  <style>
+    .ccl-wrap{max-width:760px;margin:0 auto;padding:1.5rem 1.25rem 3rem;}
+    .ccl-hero{margin:1rem 0 1.5rem;}
+    .ccl-hero h1{font-size:clamp(1.6rem,5vw,2.2rem);color:#1C3D6E;margin:0 0 .5rem;}
+    .ccl-hero p{font-size:1.02rem;max-width:60ch;}
+    .ccl-911{background:#fdf2f2;border-left:4px solid #c0392b;border-radius:6px;padding:.9rem 1.1rem;margin:1.25rem 0;font-size:.95rem;}
+    .ccl-map-cta{background:linear-gradient(135deg,#1C3D6E 0%,#2a5298 100%);border-radius:12px;padding:1.5rem 1.5rem 1.6rem;margin:1.5rem 0;color:#fff;}
+    .ccl-map-cta h2{color:#fff;font-size:1.25rem;margin:0 0 .5rem;}
+    .ccl-map-cta p{color:rgba(255,255,255,.9);font-size:.95rem;margin:0 0 1rem;}
+    .ccl-map-cta ul{color:rgba(255,255,255,.9);font-size:.9rem;margin:0 0 1.15rem;padding-left:1.2rem;}
+    .ccl-map-cta li{margin:.3rem 0;}
+    .ccl-btn{display:inline-block;background:#E8911A;color:#fff;font-weight:700;font-size:1rem;padding:.8rem 1.5rem;border-radius:8px;text-decoration:none;border:0;cursor:pointer;}
+    .ccl-btn:hover{background:#d07f10;}
+    .ccl-btn--ghost{background:rgba(255,255,255,.14);border:1.5px solid rgba(255,255,255,.7);margin-left:.6rem;}
+    .ccl-btn--ghost:hover{background:rgba(255,255,255,.24);}
+    .ccl-season{border-radius:8px;padding:.8rem 1.1rem;margin:0 0 1.25rem;font-size:.93rem;}
+    .ccl-season--in{background:#eef6f2;border-left:4px solid #4A9E82;}
+    .ccl-season--out{background:#fbf3e6;border-left:4px solid #b36a00;}
+    .ccl-zip{background:#fff;border:1px solid #e0ddd8;border-radius:12px;padding:1.4rem 1.5rem;margin:1.5rem 0;}
+    .ccl-zip h2{font-size:1.15rem;color:#1C3D6E;margin:0 0 .35rem;}
+    .ccl-zip p.ccl-sub{font-size:.9rem;color:#5a5752;margin:0 0 1rem;}
+    .ccl-zip-row{display:flex;gap:.6rem;flex-wrap:wrap;}
+    .ccl-zip input{flex:1 1 140px;min-width:0;font-size:1.15rem;padding:.7rem .9rem;border:1.5px solid #c8c4bd;border-radius:8px;}
+    .ccl-zip input:focus{outline:2px solid #1C3D6E;outline-offset:1px;}
+    .ccl-result{margin-top:1.1rem;border-radius:8px;padding:1rem 1.15rem;background:#f0f4f8;border-left:4px solid #1C3D6E;font-size:.95rem;display:none;}
+    .ccl-result h3{font-size:1.02rem;color:#1C3D6E;margin:0 0 .4rem;}
+    .ccl-result ul{margin:.5rem 0 0;padding-left:1.15rem;}
+    .ccl-result li{margin:.3rem 0;}
+    .ccl-note{font-size:.86rem;color:#5a5752;margin-top:.6rem;}
+    .ccl-sites h2{color:#1C3D6E;font-size:1.35rem;margin:2.25rem 0 .4rem;}
+    .ccl-site{background:#fff;border:1px solid #e0ddd8;border-radius:10px;padding:1.1rem 1.25rem;margin:.9rem 0;}
+    .ccl-site h3{font-size:1.05rem;color:#1C3D6E;margin:0 0 .25rem;}
+    .ccl-site .ccl-badge{display:inline-block;font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.05em;border-radius:999px;padding:.18rem .6rem;margin:0 .35rem .45rem 0;}
+    .ccl-badge--year{background:#eef6f2;color:#2e6d59;}
+    .ccl-badge--summer{background:#fbf3e6;color:#b36a00;}
+    .ccl-badge--pop{background:#eef1f6;color:#1C3D6E;}
+    .ccl-site dl{display:grid;grid-template-columns:auto 1fr;gap:.25rem .8rem;font-size:.92rem;margin:.5rem 0 0;}
+    .ccl-site dt{font-weight:600;color:#5a5752;}
+    .ccl-site dd{margin:0;}
+    .ccl-verify{margin-top:2rem;padding:1rem 1.25rem;background:#f0f4f8;border-left:3px solid #1C3D6E;border-radius:4px;font-size:.9rem;}
+    .ccl-heat{background:#fff;border:1px solid #e0ddd8;border-radius:10px;padding:1.1rem 1.25rem;margin:1.75rem 0 0;}
+    .ccl-heat h2{font-size:1.15rem;color:#1C3D6E;margin:0 0 .5rem;}
+    .ccl-heat ul{font-size:.93rem;padding-left:1.2rem;margin:.4rem 0 0;}
+    .ccl-heat li{margin:.35rem 0;}
+    .breadcrumb{max-width:760px;margin:1.25rem auto 0;padding:0 1.25rem;font-size:.85rem;list-style:none;display:flex;gap:.45rem;flex-wrap:wrap;}
+    .breadcrumb li+li::before{content:"/";margin-right:.45rem;color:#a09c95;}
+    .breadcrumb a{color:#1C3D6E;}
+    @media (max-width:480px){.ccl-btn--ghost{margin-left:0;margin-top:.6rem;}}
+  </style>
+</head>
+<body>
+
+<a href="#main" class="skip-link">Skip to main content</a>
+
+<div class="crisis-bar" role="region" aria-label="Crisis help">
+  <strong>Need help right now?</strong>
+  <a href="tel:211">Call 211</a><span class="crisis-bar__sep">·</span>
+  <a href="sms:741741?body=HOME">Text HOME to 741741</a><span class="crisis-bar__sep">·</span>
+  <a href="tel:988">988 Suicide &amp; Crisis</a>
+</div>
+
+<nav class="nav" aria-label="Primary">
+  <div class="nav__inner">
+    <a href="/" class="nav__logo" aria-label="Common Ladder home">
+      <svg width="28" height="28" viewBox="0 0 247 247" fill="none" aria-hidden="true"><g transform="translate(-12.00,-16.00)"> <path fill="#E8911A" fill-opacity="1" fill-rule="evenodd" d="M 254.00,51.00 L 234.00,85.64 L 194.00,85.64 L 174.00,51.00 L 194.00,16.36 L 234.00,16.36 Z M 231.50,51.00 L 222.75,66.16 L 205.25,66.16 L 196.50,51.00 L 205.25,35.84 L 222.75,35.84 Z"/> <path fill="#9FBCBA" fill-opacity="1" fill-rule="evenodd" d="M 148.00,118.00 L 128.00,152.64 L 88.00,152.64 L 68.00,118.00 L 88.00,83.36 L 128.00,83.36 Z M 125.50,118.00 L 116.75,133.16 L 99.25,133.16 L 90.50,118.00 L 99.25,102.84 L 116.75,102.84 Z"/> <path fill="#9FBCBA" fill-opacity="1" fill-rule="evenodd" d="M 259.00,118.00 L 239.00,152.64 L 199.00,152.64 L 179.00,118.00 L 199.00,83.36 L 239.00,83.36 Z M 236.50,118.00 L 227.75,133.16 L 210.25,133.16 L 201.50,118.00 L 210.25,102.84 L 227.75,102.84 Z"/> <path fill="#FFFFFF" fill-opacity="0.94" fill-rule="evenodd" d="M 207.00,164.00 L 187.00,198.64 L 147.00,198.64 L 127.00,164.00 L 147.00,129.36 L 187.00,129.36 Z M 184.50,164.00 L 175.75,179.16 L 158.25,179.16 L 149.50,164.00 L 158.25,148.84 L 175.75,148.84 Z"/> <path fill="#FFFFFF" fill-opacity="0.94" fill-rule="evenodd" d="M 92.00,164.00 L 72.00,198.64 L 32.00,198.64 L 12.00,164.00 L 32.00,129.36 L 72.00,129.36 Z M 69.50,164.00 L 60.75,179.16 L 43.25,179.16 L 34.50,164.00 L 43.25,148.84 L 60.75,148.84 Z"/> <path fill="#FFFFFF" fill-opacity="0.94" fill-rule="evenodd" d="M 161.00,228.00 L 141.00,262.64 L 101.00,262.64 L 81.00,228.00 L 101.00,193.36 L 141.00,193.36 Z M 138.50,228.00 L 129.75,243.16 L 112.25,243.16 L 103.50,228.00 L 112.25,212.84 L 129.75,212.84 Z"/> </g></svg>
+      <span class="nav__wordmark">common<span>ladder</span></span>
+    </a>
+    <button class="nav__toggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="primary-nav" onclick="this.setAttribute('aria-expanded', document.getElementById('primary-nav').classList.toggle('open') ? 'true' : 'false')">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav__links" id="primary-nav">
+      <li><a href="/providers.html">For providers</a></li>
+      <li><a href="/learn/">Learn</a></li>
+      <li><a href="/about.html">About</a></li>
+      <li><a href="/find.html" class="nav__cta">Find resources</a></li>
+      <li><a href="/static-tools/my-ladder.html" class="nav__cta nav__cta--ladder">My Ladder</a></li>
+      <li><a href="https://www.weather.gov/" rel="noreferrer" class="nav__exit" onclick="event.preventDefault();window.location.replace('https://www.weather.gov/')">Leave page</a></li>
+    </ul>
+  </div>
+</nav>
+
+<ol class="breadcrumb" aria-label="Breadcrumb">
+  <li><a href="/">Home</a></li>
+  <li><a href="/static-tools/">Tools</a></li>
+  <li aria-current="page">Cooling Center Locator</li>
+</ol>
+
+<main id="main">
+<div class="ccl-wrap">
+
+  <header class="ccl-hero">
+    <h1>Cooling Center Locator <span style="display:block;font-size:.6em;color:#5a5752;font-weight:600;margin-top:.25rem">Phoenix &amp; Maricopa County</span></h1>
+    <p>Every cooling center on this page is <strong>free</strong> and open to the public. You do not need an ID, an address, money, or an appointment — walk in, cool down, and drink water for as long as the site is open.</p>
+  </header>
+
+  <div class="ccl-911" role="note">
+    <strong>Overheating right now?</strong> If you or someone near you has hot, dry skin, has stopped sweating, or seems confused — that is heat stroke. <strong>Call 911.</strong> Move somewhere cool and shaded while you wait.
+  </div>
+
+  <div id="ccl-season" class="ccl-season ccl-season--in" role="status">
+    <strong>Heat Relief Network season:</strong> the live map runs <strong>May 1 – September 30</strong>. Outside those dates, use the year-round list below or call 2-1-1.
+  </div>
+
+  <section class="ccl-map-cta" aria-label="Heat Relief Network map">
+    <h2>Find the nearest open site on the live map</h2>
+    <p>The Maricopa Association of Governments runs the regional <strong>Heat Relief Network</strong> — the most complete, most current map of free heat relief in the Valley, updated daily through the season.</p>
+    <ul>
+      <li><strong>200+ locations</strong> — indoor cooling centers, respite sites, and hydration stations</li>
+      <li><strong>Pet-friendly filter</strong> built in — find sites that welcome your animal</li>
+      <li>Search by your location and filter by hours and services</li>
+    </ul>
+    <a class="ccl-btn" href="https://hrn.azmag.gov" target="_blank" rel="noopener">Open the Heat Relief Network map →</a>
+    <a class="ccl-btn ccl-btn--ghost" href="tel:211">Or call 2-1-1 (free, 24/7)</a>
+  </section>
+
+  <section class="ccl-zip" id="ccl-zip-tool" aria-label="Find sites near your ZIP code">
+    <h2>Start from your ZIP code <span style="font-weight:400;font-size:.85em;color:#5a5752">(optional)</span></h2>
+    <p class="ccl-sub">If you'd rather not enter anything, that's completely fine — the map and the list below work without it. Your ZIP stays on this device and is never sent anywhere.</p>
+    <div class="ccl-zip-row">
+      <label for="ccl-zip-input" class="sr-only" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)">Your ZIP code</label>
+      <input id="ccl-zip-input" type="text" inputmode="numeric" autocomplete="postal-code" maxlength="5" placeholder="e.g. 85007">
+      <button class="ccl-btn" id="ccl-zip-go" type="button">Show options near me</button>
+    </div>
+    <div class="ccl-result" id="ccl-zip-result" role="status" aria-live="polite"></div>
+  </section>
+
+  <noscript>
+    <p style="background:#fbf3e6;border-left:4px solid #b36a00;border-radius:6px;padding:.8rem 1.1rem;font-size:.93rem;">The ZIP search needs JavaScript, but you don't need it: every site is listed below, and 2-1-1 can route you by phone.</p>
+  </noscript>
+
+  <section class="ccl-sites" aria-label="Reliable cooling sites in Phoenix">
+    <h2>The most reliable sites — when the map is down or out of season</h2>
+    <p style="font-size:.95rem;max-width:62ch;">These six sites are the backbone of heat relief in Phoenix. Several run <strong>year-round</strong>; the rest run all summer. Hours shift week to week — when in doubt, call first or dial 2-1-1.</p>
+
+    <div class="ccl-site" id="site-respite">
+      <h3>City of Phoenix 24/7 Heat Respite Center</h3>
+      <span class="ccl-badge ccl-badge--summer">Summer season</span><span class="ccl-badge ccl-badge--pop">Open 24 hours</span>
+      <dl>
+        <dt>Address</dt><dd>20 W. Jackson St., Phoenix, AZ 85003 (downtown)</dd>
+        <dt>Hours</dt><dd>24 hours a day, 7 days a week, through the summer</dd>
+        <dt>Good to know</dt><dd>Cooled indoor space, drinking water, and on-site navigators who can connect you to shelter and services. No ID required.</dd>
+      </dl>
+    </div>
+
+    <div class="ccl-site" id="site-lodestar">
+      <h3>Lodestar Day Resource Center (Human Services Campus)</h3>
+      <span class="ccl-badge ccl-badge--year">Year-round</span>
+      <dl>
+        <dt>Address</dt><dd>1125 W. Jackson St., Phoenix, AZ 85007</dd>
+        <dt>Phone</dt><dd><a href="tel:6023939930">(602) 393-9930</a></dd>
+        <dt>Hours</dt><dd>7 days a week, 7:30 a.m. – 5 p.m.</dd>
+        <dt>Good to know</dt><dd>Air-conditioned day center on the Human Services Campus with water, restrooms, and connections to shelter, meals, and case management.</dd>
+      </dl>
+    </div>
+
+    <div class="ccl-site" id="site-burton-barr">
+      <h3>Burton Barr Central Library</h3>
+      <span class="ccl-badge ccl-badge--year">Year-round</span>
+      <dl>
+        <dt>Address</dt><dd>1221 N. Central Ave., Phoenix, AZ 85004</dd>
+        <dt>Phone</dt><dd><a href="tel:6022624636">(602) 262-4636</a></dd>
+        <dt>Hours</dt><dd>Mon/Fri/Sat 9 a.m.–5 p.m. · Tue–Thu 9 a.m.–7 p.m. · Sun 1–5 p.m.</dd>
+        <dt>Good to know</dt><dd>Free to enter — no library card needed to sit and cool down. Restrooms and water fountains inside.</dd>
+      </dl>
+    </div>
+
+    <div class="ccl-site" id="site-cholla">
+      <h3>Cholla Library</h3>
+      <span class="ccl-badge ccl-badge--year">Year-round</span><span class="ccl-badge ccl-badge--summer">Extended summer hours</span>
+      <dl>
+        <dt>Address</dt><dd>10050 N. Metro Pkwy. E., Phoenix, AZ 85051</dd>
+        <dt>Summer hours</dt><dd>Until 9 p.m. Monday–Saturday; noon–9 p.m. Sundays and holidays</dd>
+        <dt>Good to know</dt><dd>Designated extended-hours cooling site with full library services into the evening — one of the few air-conditioned options after 5 p.m.</dd>
+      </dl>
+    </div>
+
+    <div class="ccl-site" id="site-justa">
+      <h3>Justa Center <span style="font-weight:400;font-size:.85em">(adults 55+)</span></h3>
+      <span class="ccl-badge ccl-badge--year">Year-round day center</span><span class="ccl-badge ccl-badge--summer">Summer cooling &amp; hydration</span>
+      <dl>
+        <dt>Address</dt><dd>1001 W. Jefferson St., Phoenix, AZ 85007</dd>
+        <dt>Cooling / hydration</dt><dd><a href="tel:6027832175">(602) 783-2175</a></dd>
+        <dt>Main office</dt><dd><a href="tel:6022546524">(602) 254-6524</a></dd>
+        <dt>Summer hours</dt><dd>Extended June–October, roughly 7 a.m. – 7:30 p.m.</dd>
+        <dt>Good to know</dt><dd>Day center for adults 55 and older experiencing homelessness — also helps with ID, benefits, meals, and a nurse's clinic.</dd>
+      </dl>
+    </div>
+
+    <div class="ccl-site" id="site-svdp">
+      <h3>St. Vincent de Paul — Phoenix Dining Room (Key Campus)</h3>
+      <span class="ccl-badge ccl-badge--summer">June 1 – Sept 30</span><span class="ccl-badge ccl-badge--pop">Overnight cots</span>
+      <dl>
+        <dt>Address</dt><dd>1075 W. Jackson St., Phoenix, AZ 85007</dd>
+        <dt>Day respite</dt><dd>1 p.m. – 5 p.m., 7 days a week</dd>
+        <dt>Overnight heat relief</dt><dd>6 p.m. – 5 a.m., 7 days a week — 170 cots for a safe, cool place to sleep</dd>
+        <dt>East Valley?</dt><dd>Mesa Dining Room, 49 W. Broadway Rd., Mesa — day respite noon–5 p.m. daily; free showers Tue/Thu/Sun 9:30–11:30 a.m.</dd>
+      </dl>
+    </div>
+  </section>
+
+  <section class="ccl-heat" aria-label="Heat illness warning signs">
+    <h2>Know the signs of heat illness</h2>
+    <ul>
+      <li><strong>Heat exhaustion:</strong> heavy sweating, cold and clammy skin, weakness, nausea, dizziness, headache. Get to shade or AC, sip water, cool the skin.</li>
+      <li><strong>Heat stroke — call 911:</strong> hot but <em>dry</em> skin or you've stopped sweating, confusion, slurred speech, fast pulse, fainting. Life-threatening. Call 911 and move the person somewhere cool.</li>
+    </ul>
+  </section>
+
+  <div style="margin-top:1.75rem;font-size:.95rem;">
+    <p>Planning beyond today? Add cooling stops to a <a href="/static-tools/my-ladder.html">My Ladder</a> plan, check the full <a href="/blog/cooling-centers-heat-relief-phoenix.html">Phoenix heat relief guide</a>, or start <a href="/find.html">Find resources</a> for shelter, food, and more.</p>
+  </div>
+
+  <div class="ccl-verify">
+    <strong>Verify before you go / call ahead.</strong> Cooling-center hours and locations change throughout the season. Call 2-1-1 or check the Heat Relief Network map before traveling to any site. If a phone number is out of service, dial 211 for a current referral. <em>Last verified: June 2026.</em>
+  </div>
+
+  <p style="margin-top:1.5rem; color:var(--gray); font-size:.875rem;"><em>Have a correction or an update? <a href="/contact.html">Contact us</a> — we verify and update this information regularly.</em></p>
+
+</div>
+</main>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer__grid">
+      <div class="footer__brand">
+        <h3>Common Ladder</h3>
+        <p>The civic resource platform connecting people experiencing homelessness with every service in your community.</p>
+      </div>
+      <div>
+        <h4>Find help</h4>
+        <ul>
+          <li><a href="/find.html?cat=shelter">Shelter</a></li>
+          <li><a href="/find.html?cat=food">Food</a></li>
+          <li><a href="/find.html?cat=legal">Legal</a></li>
+          <li><a href="/help/">All categories</a></li>
+          <li><a href="/static-tools/">Local navigators</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>For providers</h4>
+        <ul>
+          <li><a href="/providers.html">Tools &amp; referrals</a></li>
+          <li><a href="/providers.html#case-manager-guide">Case manager guide</a></li>
+          <li><a href="/data-reports.html">Data &amp; reports</a></li>
+          <li><a href="/learn/">Four learning pathways</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>About</h4>
+        <ul>
+          <li><a href="/about.html">Our mission</a></li>
+          <li><a href="/about.html#methodology">Methodology</a></li>
+          <li><a href="/about.html#team">Team</a></li>
+          <li><a href="/brand/visual-guidelines.html">Brand guidelines</a></li>
+          <li><a href="/contact.html">Contact</a></li>
+          <li><a href="/privacy.html">Privacy</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer__transparency">
+      <strong>Transparency:</strong> Common Ladder is an independent civic project. We do not sell user data, run ads, or accept payment from listed resources.
+    </div>
+    <div class="footer__bottom">
+      <span>&copy; 2026 Common Ladder. Free to use, always.</span>
+      <span><time datetime="2026-06-09">Last updated June 9, 2026</time></span>
+    </div>
+  </div>
+</footer>
+
+<script data-id="cl-card-click">
+(function(){
+  document.querySelectorAll('.card, .post-card:not(.post-card--linked)').forEach(function(el){
+    var a = el.querySelector('a[href]');
+    if(!a) return;
+    el.addEventListener('click', function(e){
+      if(e.target.tagName='A'||e.target.closest('a')) return;
+      window.location.href = a.href;
+    });
+  });
+})();
+</script>
+
+<script>
+(function(){
+  'use strict';
+
+  /* ---- Season banner: HRN map runs May 1 – Sep 30 ---- */
+  var seasonEl = document.getElementById('ccl-season');
+  var now = new Date();
+  var m = now.getMonth() + 1; // 1-12
+  var inSeason = (m >= 5 && m <= 9);
+  if (seasonEl) {
+    if (inSeason) {
+      seasonEl.className = 'ccl-season ccl-season--in';
+      seasonEl.innerHTML = '<strong>The Heat Relief Network map is live now</strong> (it runs May 1 &ndash; September 30 and is updated daily). It is the best first stop today.';
+    } else {
+      seasonEl.className = 'ccl-season ccl-season--out';
+      seasonEl.innerHTML = '<strong>The Heat Relief Network map is out of season</strong> (it runs May 1 &ndash; September 30). Use the year-round sites below, or call 2-1-1 &mdash; it answers all year.';
+    }
+  }
+
+  /* ---- ZIP routing (all local, nothing sent anywhere) ---- */
+  var input = document.getElementById('ccl-zip-input');
+  var btn = document.getElementById('ccl-zip-go');
+  var result = document.getElementById('ccl-zip-result');
+  if (!input || !btn || !result) return;
+
+  // Remember last ZIP on this device only
+  try {
+    var saved = localStorage.getItem('ccl-zip');
+    if (saved) input.value = saved;
+  } catch (e) {}
+
+  var MAP_LINK = '<a href="https://hrn.azmag.gov" target="_blank" rel="noopener"><strong>Heat Relief Network map</strong></a>';
+
+  function areaResult(zip) {
+    var p3 = zip.substring(0, 3);
+    var p2 = zip.substring(0, 2);
+
+    if (p3 === '850' || p3 === '851') {
+      return '<h3>Phoenix area &mdash; you have strong options nearby</h3>'
+        + '<ul>'
+        + '<li><a href="#site-respite">City of Phoenix 24/7 Respite Center</a> &mdash; 20 W. Jackson St. (open around the clock in summer)</li>'
+        + '<li><a href="#site-lodestar">Lodestar Day Resource Center</a> &mdash; 1125 W. Jackson St., daily 7:30 a.m.&ndash;5 p.m., year-round</li>'
+        + '<li><a href="#site-burton-barr">Burton Barr Central Library</a> &mdash; 1221 N. Central Ave., year-round</li>'
+        + '<li>North Phoenix? <a href="#site-cholla">Cholla Library</a> has evening hours until 9 p.m.</li>'
+        + '</ul>'
+        + '<p class="ccl-note">For the closest open site today, check the ' + MAP_LINK + ' or call 2-1-1.</p>';
+    }
+    if (p3 === '852') {
+      return '<h3>East Valley (Mesa / Tempe / Chandler / Gilbert / Scottsdale)</h3>'
+        + '<ul>'
+        + '<li><strong>St. Vincent de Paul Mesa Dining Room</strong> &mdash; 49 W. Broadway Rd., Mesa. Day respite noon&ndash;5 p.m. daily (June 1&ndash;Sept 30); free showers Tue/Thu/Sun mornings</li>'
+        + '<li>East Valley cities open library and city-facility cooling sites each summer &mdash; they are all on the live map</li>'
+        + '</ul>'
+        + '<p class="ccl-note">The ' + MAP_LINK + ' has every East Valley site with today’s hours &mdash; or call 2-1-1.</p>';
+    }
+    if (p3 === '853') {
+      return '<h3>West Valley (Glendale / Peoria / Avondale / Goodyear / Surprise / Buckeye)</h3>'
+        + '<ul>'
+        + '<li>West Valley cities run cooling centers at libraries and community centers through the season &mdash; all mapped on the live map</li>'
+        + '<li>Closer to downtown? <a href="#site-lodestar">Lodestar Day Resource Center</a> and the <a href="#site-respite">24/7 Respite Center</a> are just west of central Phoenix</li>'
+        + '</ul>'
+        + '<p class="ccl-note">The ' + MAP_LINK + ' has every West Valley site with today’s hours &mdash; or call 2-1-1.</p>';
+    }
+    if (p2 === '85' || p2 === '86') {
+      var extra = '';
+      if (p3 === '857') extra = ' If you’re in Tucson, our <a href="/static-tools/tucson-navigator.html">Tucson navigator</a> covers shelter and services there.';
+      if (p3 === '860') extra = ' If you’re in Flagstaff, our <a href="/static-tools/flagstaff-navigator.html">Flagstaff navigator</a> covers shelter and services there.';
+      return '<h3>You’re in Arizona, outside Maricopa County</h3>'
+        + '<p>The Heat Relief Network map covers the Phoenix metro area, but <strong>2-1-1 Arizona works statewide</strong> &mdash; dial <a href="tel:211">2-1-1</a> for cooling and heat-relief sites in your county.' + extra + '</p>';
+    }
+    return '<h3>That ZIP looks like it’s outside Arizona</h3>'
+      + '<p>This tool covers Phoenix and Maricopa County. Wherever you are, <strong><a href="tel:211">2-1-1</a></strong> can point you to local cooling and heat-relief options &mdash; it works in most of the country.</p>';
+  }
+
+  function run() {
+    var zip = (input.value || '').trim();
+    if (!/^[0-9]{5}$/.test(zip)) {
+      result.style.display = 'block';
+      result.innerHTML = '<h3>That doesn’t look like a 5-digit ZIP &mdash; no problem</h3>'
+        + '<p>You can try again, skip it entirely and use the ' + MAP_LINK + ', or just call <a href="tel:211">2-1-1</a> &mdash; they’ll find the nearest site for you.</p>';
+      return;
+    }
+    try { localStorage.setItem('ccl-zip', zip); } catch (e) {}
+    result.style.display = 'block';
+    result.innerHTML = areaResult(zip);
+  }
+
+  btn.addEventListener('click', run);
+  input.addEventListener('keydown', function(e){ if (e.key === 'Enter') run(); });
+})();
+</script>
+</body>
+</html>

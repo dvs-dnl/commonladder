@@ -394,7 +394,7 @@ def gate_blog_in_sitemap():
     norm = {l.rstrip("/").lower() for l in locs}
     bad = []
     for p in sorted(REPO.glob("blog/*.html")):
-        url = f"https://www.commonladder.org/{rel(p)}".lower()
+        url = f"https://commonladder.org/{rel(p)}".lower()
         if url not in norm and url.rstrip("/") not in norm:
             bad.append(rel(p))
     warn("Every blog post is in sitemap.xml", not bad, "; ".join(bad[:8]))
@@ -511,6 +511,23 @@ def gate_lazy_load_imgs():
 
 
 
+
+# ============================================================
+# G18 (CRITICAL) — skip-link target exists
+# Incident: docs/accessibility-audit.md 2026-05-24 Critical #1 — every page links
+# href="#main" but ~100 pages had no id="main", so the skip link clicked into the
+# void (WCAG 2.4.1). Fixed fleet-wide 2026-06-10 (cl-skiplinks-2026-06-10).
+# ============================================================
+def gate_skip_link_target():
+    bad = []
+    for p in all_pages(include_exempt=False):
+        s = _read(p)
+        for anchor in set(re.findall(r'class="skip-link"[^>]*href="#([\w-]+)"', s) + re.findall(r'href="#([\w-]+)"[^>]*class="skip-link"', s)):
+            if f'id="{anchor}"' not in s:
+                bad.append(f"{rel(p)}: #{anchor}")
+    critical("Skip-link target exists (id matches skip-link href)", not bad, "; ".join(bad[:8]))
+
+
 def main():
     gates = [
         gate_inline_js_syntax, gate_jsonld_valid, gate_ga_consistency,
@@ -519,6 +536,7 @@ def main():
         gate_external_link_safety,
         gate_nav_cta, gate_single_h1, gate_wcag_text_color, gate_head_baseline,
         gate_card_click_present, gate_blog_in_sitemap, gate_lazy_load_imgs,
+        gate_skip_link_target,
     ]
     for g in gates:
         try:

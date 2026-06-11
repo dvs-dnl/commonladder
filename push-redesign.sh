@@ -36,4 +36,4 @@ echo ""
 echo "=== done ==="
 git --no-pager log --oneline -5
 echo ""
-echo "Live: https://www.commonladder.org"
+echo "Live: https://commonladder.org"

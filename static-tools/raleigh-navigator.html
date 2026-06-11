@@ -13,7 +13,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Find Help in Raleigh / Wake County — NC-507</title>
   <meta name="description" content="Free resource navigator for people experiencing homelessness in Raleigh and Wake County, NC. Connects you to shelter, coordinated entry, veteran services, youth programs, and permanent housing — Wake County CoC NC-507.">
-  <link rel="canonical" href="https://www.commonladder.org/static-tools/raleigh-navigator.html">
+  <link rel="canonical" href="https://commonladder.org/static-tools/raleigh-navigator.html">
   <style>
 html,body{overflow-x:hidden;max-width:100%;}
 
@@ -319,12 +319,12 @@ html,body{overflow-x:hidden;max-width:100%;}
   <meta property="og:site_name" content="Common Ladder">
   <meta property="og:title" content="Find Help in Raleigh / Wake County — NC-507">
   <meta property="og:description" content="Free step-by-step navigator for people experiencing homelessness in Raleigh and Wake County, NC. Shelter, coordinated entry, veteran and youth pathways — CoC NC-507.">
-  <meta property="og:url" content="https://www.commonladder.org/static-tools/raleigh-navigator.html">
-  <meta property="og:image" content="https://www.commonladder.org/images/og-default.png">
+  <meta property="og:url" content="https://commonladder.org/static-tools/raleigh-navigator.html">
+  <meta property="og:image" content="https://commonladder.org/images/og-default.png">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Find Help in Raleigh / Wake County — NC-507">
   <meta name="twitter:description" content="Free step-by-step navigator for people experiencing homelessness in Raleigh and Wake County, NC. Shelter, coordinated entry, veteran and youth pathways — CoC NC-507.">
-  <meta name="twitter:image" content="https://www.commonladder.org/images/og-default.png">
+  <meta name="twitter:image" content="https://commonladder.org/images/og-default.png">
 </head>
 <body>
 
@@ -763,7 +763,7 @@ html,body{overflow-x:hidden;max-width:100%;}
       Is this information out of date?
       <a href="mailto:hello@commonladder.org?subject=Resource update: Raleigh NC-507">Email us</a>
       and we'll fix it.<br>
-      <a href="https://www.commonladder.org" target="_blank" rel="noopener">commonladder.org</a>
+      <a href="https://commonladder.org" target="_blank" rel="noopener">commonladder.org</a>
     </p>
   </footer>
 
@@ -859,5 +859,25 @@ html,body{overflow-x:hidden;max-width:100%;}
     renderQuestion();
   </script>
 
+<script>
+/* cl-freshness-guard: if the footer verification stamp is older than 60 days,
+   show a "call 211 to confirm" notice at the top of the page content. */
+(function () {
+  var t = document.querySelector('footer time[datetime]') || document.querySelector('time[datetime]');
+  if (!t) return;
+  var d = new Date(t.getAttribute('datetime') + 'T00:00:00');
+  if (isNaN(d.getTime())) return;
+  var days = (Date.now() - d.getTime()) / 86400000;
+  if (days <= 60) return;
+  var note = document.createElement('div');
+  note.setAttribute('role', 'note');
+  note.style.cssText = 'background:#fdf3e3;border:1px solid #b36a00;color:#333;padding:10px 14px;border-radius:8px;margin:14px auto;max-width:760px;font-size:.95rem;line-height:1.45;';
+  note.innerHTML = 'Phone numbers and hours on this page were last verified <strong>' +
+    t.textContent.replace(/Last updated\s*/i, '') +
+    '</strong> and may have changed. <a href="tel:211">Call 211</a> to confirm before you go.';
+  var host = document.getElementById('main') || document.body;
+  host.insertBefore(note, host.firstChild);
+})();
+</script>
 </body>
 </html>
