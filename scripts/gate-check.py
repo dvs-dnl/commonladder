@@ -528,6 +528,29 @@ def gate_skip_link_target():
     critical("Skip-link target exists (id matches skip-link href)", not bad, "; ".join(bad[:8]))
 
 
+
+# ============================================================
+# G19 (CRITICAL) — wizard CSS isolation
+# Incident 2026-06-11: the 2026-06-08 shell rollout added /style.css to navigator
+# pages; its listing-card rules (.card padding:0/flex/pointer, child margins, .btn,
+# .section-head) loaded after each wizard's inline <style> and collapsed wizard
+# padding (screenshot: tucson welcome card). Any page that mounts a JS wizard in
+# #app AND loads /style.css must carry the cl-css-isolation guard, and its
+# cl-card-click snippet must skip #app cards.
+# ============================================================
+def gate_wizard_css_isolation():
+    bad = []
+    for p in all_pages(include_exempt=False):
+        s = _read(p)
+        if 'id="app"' not in s or "/style.css" not in s or "<style>" not in s:
+            continue
+        if "cl-css-isolation" not in s:
+            bad.append(f"{rel(p)}: missing cl-css-isolation guard")
+        if 'data-id="cl-card-click"' in s and "el.closest('#app')" not in s:
+            bad.append(f"{rel(p)}: cl-card-click not excluding #app")
+    critical("Wizard CSS isolated from global stylesheet", not bad, "; ".join(bad[:8]))
+
+
 def main():
     gates = [
         gate_inline_js_syntax, gate_jsonld_valid, gate_ga_consistency,
@@ -536,7 +559,7 @@ def main():
         gate_external_link_safety,
         gate_nav_cta, gate_single_h1, gate_wcag_text_color, gate_head_baseline,
         gate_card_click_present, gate_blog_in_sitemap, gate_lazy_load_imgs,
-        gate_skip_link_target,
+        gate_skip_link_target, gate_wizard_css_isolation,
     ]
     for g in gates:
         try:

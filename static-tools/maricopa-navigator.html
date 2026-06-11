@@ -90,10 +90,8 @@
     height: 100%;
     border-radius: 100px;
     transition: width 0.35s ease;
-  }
-
-  /* ── Cards ── */
-  .card {
+  } #app /* ── Cards ── */
+  .card{
     background: var(--card-bg);
     border-radius: 16px;
     padding: 32px 28px;
@@ -375,9 +373,7 @@
     letter-spacing: 0.07em;
     color: var(--muted);
     margin: 24px 0 12px;
-  }
-
-  .resource-list { list-style: none; }
+  } #app .resource-list{ list-style: none; }
   .resource-item {
     border: 1.5px solid var(--border);
     border-radius: 10px;
@@ -486,8 +482,7 @@
 
   /* ── Print styles ── */
   @media print {
-    body { background: #fff; }
-    .card { box-shadow: none; border: 1px solid #ccc; }
+    body { background: #fff; } #app .card{ box-shadow: none; border: 1px solid #ccc; }
     .btn-restart, .progress-wrap, footer .share-note { display: none; }
     .call-link { background: #333 !important; }
     a[href^="tel"]::after { content: " (" attr(href) ")"; font-size: 0.85em; }
@@ -504,8 +499,7 @@
 
   /* ── Responsive tweaks ── */
   @media (max-width: 420px) {
-    html { font-size: 17px; }
-    .card { padding: 24px 18px; }
+    html { font-size: 17px; } #app .card{ padding: 24px 18px; }
     h1 { font-size: 1.35rem; }
     .conf-tooltip { width: 200px; left: 0; transform: none; }
     .conf-tooltip::after { left: 24px; transform: none; }
@@ -725,6 +719,19 @@
     .weather-card__title { font-size: 1rem; }
     .weather-card__cta { display: block; text-align: center; margin: 6px 0; }
   }
+
+  /* ── cl-css-isolation-2026-06-11: the global shell loads /style.css AFTER this
+     block, and its listing-page rules (.card padding:0/flex/pointer/child margins,
+     .btn, .section-head) were overriding the wizard styles above. Selectors above
+     are #app-prefixed to win the cascade; these rules neutralize global-only
+     properties the wizard never declared. ── */
+  #app .card { cursor: default; display: block; }
+  #app .card:hover { transform: none; }
+  #app .card > h3, #app .card > p, #app .card > a, #app .card > .btn { margin-left: 0; margin-right: 0; }
+  #app .card > *:last-child { margin-bottom: 0; }
+  #app .card p { color: var(--text); font-size: inherit; }
+  #app .btn { font-family: inherit; }
+  #app .section-head { text-align: left; }
 </style>
   <link rel="stylesheet" href="/style.css">
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
@@ -1621,6 +1628,7 @@
 <script data-id="cl-card-click">
 (function(){
   document.querySelectorAll('.card, .post-card:not(.post-card--linked)').forEach(function(el){
+    if(el.closest('#app')) return; /* wizard cards are not link cards */
     var a = el.querySelector('a[href]');
     if(!a) return;
     el.addEventListener('click', function(e){

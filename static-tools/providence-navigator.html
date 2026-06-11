@@ -73,10 +73,8 @@
     border-radius: 100px;
     margin-bottom: 28px;
   }
-  .county-badge svg { flex-shrink: 0; }
-
-  /* ── Question card ── */
-  .card {
+  .county-badge svg { flex-shrink: 0; } #app /* ── Question card ── */
+  .card{
     background: var(--card-bg);
     border-radius: 16px;
     padding: 32px 28px;
@@ -112,9 +110,7 @@
     display: flex;
     gap: 12px;
     flex-wrap: wrap;
-  }
-
-  .btn {
+  } #app .btn{
     flex: 1;
     min-width: 120px;
     padding: 14px 20px;
@@ -124,8 +120,7 @@
     font-weight: 600;
     cursor: pointer;
     transition: background 0.15s, transform 0.1s;
-  }
-  .btn:active { transform: scale(0.98); }
+  } #app .btn:active{ transform: scale(0.98); }
 
   .btn-yes  { background: var(--primary); color: #fff; }
   .btn-yes:hover  { background: #154360; }
@@ -244,9 +239,7 @@
     padding: 16px 18px;
     font-size: 0.95rem;
     margin-bottom: 20px;
-  }
-
-  .section-head {
+  } #app .section-head{
     font-size: 0.75rem;
     font-weight: 700;
     letter-spacing: 0.07em;
@@ -434,13 +427,25 @@
 
   /* ── Mobile ── */
   @media (max-width: 480px) {
-    html { font-size: 16px; }
-    .card { padding: 24px 18px; }
+    html { font-size: 16px; } #app .card{ padding: 24px 18px; }
     .cl-home span { display: none; } /* icon only on small screens */
     .cl-home { padding: 8px 10px; }
     .conf-tooltip { width: 200px; left: 0; transform: none; }
     .conf-tooltip::after { left: 24px; transform: none; }
   }
+
+  /* ── cl-css-isolation-2026-06-11: the global shell loads /style.css AFTER this
+     block, and its listing-page rules (.card padding:0/flex/pointer/child margins,
+     .btn, .section-head) were overriding the wizard styles above. Selectors above
+     are #app-prefixed to win the cascade; these rules neutralize global-only
+     properties the wizard never declared. ── */
+  #app .card { cursor: default; display: block; }
+  #app .card:hover { transform: none; }
+  #app .card > h3, #app .card > p, #app .card > a, #app .card > .btn { margin-left: 0; margin-right: 0; }
+  #app .card > *:last-child { margin-bottom: 0; }
+  #app .card p { color: var(--text); font-size: inherit; }
+  #app .btn { font-family: inherit; }
+  #app .section-head { text-align: left; }
 </style>
   <link rel="stylesheet" href="/style.css">
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
@@ -1038,6 +1043,7 @@
 <script data-id="cl-card-click">
 (function(){
   document.querySelectorAll('.card, .post-card:not(.post-card--linked)').forEach(function(el){
+    if(el.closest('#app')) return; /* wizard cards are not link cards */
     var a = el.querySelector('a[href]');
     if(!a) return;
     el.addEventListener('click', function(e){
