@@ -472,7 +472,8 @@
   <strong>Need help right now?</strong>
   <a href="tel:211">Call 211</a><span class="crisis-bar__sep">·</span>
   <a href="sms:741741?body=HOME">Text HOME to 741741</a><span class="crisis-bar__sep">·</span>
-  <a href="tel:988">988 Suicide &amp; Crisis</a>
+  <a href="tel:988">988 Suicide &amp; Crisis</a><span class="crisis-bar__sep">·</span>
+  <a href="tel:18007997233">DV 1-800-799-7233</a>
 </div>
 
 <nav class="nav" aria-label="Primary">
@@ -512,6 +513,8 @@
   </svg>
   <span>common<span class="cl-home__rung">ladder</span></span>
 </a>
+
+<div role="note" style="background:#ffedd5;border:1px solid #9a3412;color:#6b2710;border-radius:10px;padding:14px 18px;margin:0 auto 18px;max-width:680px;font-size:.9rem;line-height:1.5;"><strong style="color:#9a3412;">AI-researched, not locally verified.</strong> Common Ladder is based in Arizona. We built this guide from public sources but don’t yet verify these listings by phone the way we do our Arizona tools. Use it to learn <em>what to ask for</em>, then <strong>call <a href="tel:211" style="color:#9a3412;">211</a></strong> for the current local provider. Last researched <time datetime="2026-06-14">June 14, 2026</time>. Wrong info? <a href="mailto:corrections.commonladder@gmail.com?subject=Resource%20update:%20Spokane" style="color:#9a3412;">Tell us</a>.</div>
 
 <!-- App shell — all screens rendered by JS into here -->
 <div id="app"></div>
@@ -651,17 +654,17 @@
      Keep firstAction to one clear sentence + phone number.
      resources: 3 is ideal; 2 minimum; 4 maximum.
   ═══════════════════════════════════════════════════════════ */
-  var PATHWAYS = {
+    var PATHWAYS = {
 
     result_veterans: {
       label: "Veterans Pathway",
       badgeClass: "badge-veterans",
       badgeIcon: "🎖",
-      headline: "Goodwill SSVF and Mann-Grandstaff VAMC anchor the veterans system.",
-      firstAction: "Call <strong>Goodwill SSVF Eligibility</strong> at <strong>(509) 828-2449</strong> — Supportive Services for Veteran Families covers Spokane County for rapid re-housing. Or call <strong>Mann-Grandstaff VA Medical Center</strong> at <strong>(509) 434-7000</strong>, 4815 N Assembly St — ask for the Homeless Veteran Care team (HCHV/HUD-VASH).",
-      callNumber: "tel:5098282449",
-      callLabel: "Call Goodwill SSVF: (509) 828-2449",
-      what_to_expect: "Goodwill Industries of the Inland Northwest is the SSVF grantee for Spokane and northern Idaho — they screen eligibility, then help with rapid re-housing and prevention. Mann-Grandstaff VAMC operates HCHV and HUD-VASH for homeless veterans. Volunteers of America operates dedicated Veterans Housing in Spokane.",
+      headline: "There's a dedicated system built for veterans.",
+      firstAction: "Call <strong>211</strong> — free, 24/7 — and say: <em>“I’m a veteran and I’m homeless or about to be.”</em> Ask to be connected to the <strong>VA’s Health Care for Homeless Veterans (HCHV)</strong> program and your local <strong>coordinated-entry assessment</strong>. Veterans qualify for both VA housing (HUD-VASH) and the local Continuum of Care at the same time.",
+      callNumber: "tel:211",
+      callLabel: "Call 211",
+      what_to_expect: "211 will route you to the nearest VA homeless-program coordinator and your local CoC. The National Call Center for Homeless Veterans is available 24/7 anywhere in the U.S. if you can’t reach a local office.",
       bring: [
         "DD-214 discharge papers (if you have them — not required to call)",
         "Photo ID (if available)",
@@ -669,28 +672,22 @@
       ],
       resources: [
         {
-          name: "Mann-Grandstaff VAMC (main)",
-          phone: "(509) 434-7000",
-          tel: "tel:5094347000",
-          note: "4815 N Assembly St. Ask for Homeless Veteran Care."
-        },
-        {
-          name: "VOA Veterans Housing — Spokane",
-          phone: "(509) 624-2378",
-          tel: "tel:5096242378",
-          note: "Transitional housing for veterans; intake via HCHV referral."
-        },
-        {
           name: "National Call Center for Homeless Veterans",
           phone: "1-877-424-3838",
           tel: "tel:18774243838",
           note: "24/7. Available everywhere."
         },
+        {
+          name: "Veterans Crisis Line",
+          phone: "988",
+          tel: "tel:988",
+          note: "Press 1 for the VA crisis line."
+        },
       ],
       confidence: {
-        level: "research",
-        note: "Numbers from discovergoodwill.org, va.gov/spokane-health-care, voaspokane.org. Last reviewed May 2026.",
-        lastChecked: "May 2026"
+        level: "unverified",
+        note: "AI-researched from public sources — not locally phone-verified. Call 211 to confirm the current local provider. Last researched June 14, 2026.",
+        lastChecked: "June 14, 2026"
       }
     },
 
@@ -698,41 +695,34 @@
       label: "Youth Pathway",
       badgeClass: "badge-youth",
       badgeIcon: "🌱",
-      headline: "Volunteers of America runs both youth shelters in Spokane.",
-      firstAction: "If you are <strong>13–17</strong>, call <strong>Crosswalk Youth Shelter</strong> at <strong>(509) 688-1112</strong> — 24/7 emergency shelter, 1440 N Haven St. If you are <strong>18–24</strong>, call the <strong>Young Adult Shelter</strong> at <strong>(509) 309-3744</strong>, 3104 E Augusta Ave — also the Coordinated Entry access point for youth & young adults.",
-      callNumber: "tel:5096881112",
-      callLabel: "Call Crosswalk: (509) 688-1112",
-      what_to_expect: "VOA Crosswalk Youth Shelter serves minors ages 13–17 with 24/7 emergency shelter and outreach. The VOA Young Adult Shelter serves 18–24 and doubles as the Youth/Young Adult Coordinated Entry access point for WA-502. Eastern WA 211 routes additional youth resources when shelters are full.",
+      headline: "If you’re 24 or under, there’s a youth-specific path.",
+      firstAction: "Call or text <strong>211</strong> and say: <em>“I’m 24 or younger and I need a safe place to stay.”</em> Ask for the <strong>youth emergency shelter</strong> and the <strong>runaway &amp; homeless youth (RHY) program</strong> in your area.",
+      callNumber: "tel:211",
+      callLabel: "Call 211",
+      what_to_expect: "211 routes you to the nearest youth shelter or drop-in center. The national backstops below are always available, day or night.",
       bring: [
         "Photo ID (helpful — not required for crisis services)",
         "Anything important you can carry",
-        "Nothing required to call the shelter",
+        "Nothing is required to call",
       ],
       resources: [
         {
-          name: "VOA Young Adult Shelter / YYA CE",
-          phone: "(509) 309-3744",
-          tel: "tel:5093093744",
-          note: "3104 E Augusta Ave. Ages 18–24; also Coordinated Entry for youth & young adults."
-        },
-        {
-          name: "Eastern WA 211 (EW211)",
-          phone: "1-866-904-9060",
-          tel: "tel:18669049060",
-          note: "Or dial 211 / text EW211 to 898211. M–F 8a–5p."
+          name: "Safe Place",
+          phone: "Text SAFE + your location to 44357",
+          tel: "sms:44357?body=SAFE",
+          note: "Or walk into any QuikTrip and ask staff to call for you."
         },
         {
           name: "National Runaway Safeline",
           phone: "1-800-786-2929",
           tel: "tel:18007862929",
-          note: "24/7 for runaway + homeless youth nationwide."
+          note: "24/7, free, confidential."
         },
       ],
-      extra_note: "⚠️ Under 18? Crosswalk staff know the local rules. They will help.",
       confidence: {
-        level: "research",
-        note: "Numbers from voaspokane.org, fbhwa.org/programs/additional-support-services/eastern-washington-211-ew211. Last reviewed May 2026.",
-        lastChecked: "May 2026"
+        level: "unverified",
+        note: "AI-researched from public sources — not locally phone-verified. Call 211 to confirm the current local provider. Last researched June 14, 2026.",
+        lastChecked: "June 14, 2026"
       }
     },
 
@@ -740,41 +730,34 @@
       label: "Families Pathway",
       badgeClass: "badge-families",
       badgeIcon: "🏠",
-      headline: "Catholic Charities HFCA is the Families Coordinated Entry line.",
-      firstAction: "Call <strong>Catholic Charities Eastern WA — HFCA (Homeless Family Coordinated Assessment)</strong> at <strong>(509) 325-5005</strong> — the Families CE access point for WA-502. Or call <strong>Family Promise of Spokane</strong> at <strong>(509) 747-5487</strong> for emergency family shelter (after-hours line: (509) 723-4663).",
-      callNumber: "tel:5093255005",
-      callLabel: "Call HFCA: (509) 325-5005",
-      what_to_expect: "HFCA is the front door for families with children under the City of Spokane CoC. Family Promise of Spokane operates emergency family shelter at 2002 E Mission Ave. Saint Margaret's Shelter (Catholic Charities) provides emergency + transitional shelter for families; intake routes through HFCA. YWCA Spokane operates the 24-hour DV helpline for families fleeing intimate-partner violence.",
+      headline: "Families are kept together in the shelter system.",
+      firstAction: "Call or text <strong>211</strong> and say: <em>“I have my kids with me and we need shelter tonight.”</em> Ask for <strong>family emergency shelter</strong> and the <strong>coordinated-entry assessment</strong> for rapid re-housing.",
+      callNumber: "tel:211",
+      callLabel: "Call 211",
+      what_to_expect: "211 routes you to family shelter and the local coordinated-entry system. If you are fleeing domestic violence, use the confidential hotline below instead — DV shelter is separate and won’t list your location.",
       bring: [
         "Photo ID for adults (if available)",
-        "Birth certificates for children (helpful but not always required)",
+        "Birth certificates for children (helpful, not always required)",
         "Documentation of income or benefits (if available)",
-        "Social security cards (if you have them)",
       ],
       resources: [
         {
-          name: "Family Promise of Spokane",
-          phone: "(509) 747-5487",
-          tel: "tel:5097475487",
-          note: "2002 E Mission Ave. Emergency shelter for families with children."
+          name: "National Domestic Violence Hotline",
+          phone: "1-800-799-7233",
+          tel: "tel:18007997233",
+          note: "24/7, confidential. Text START to 88788. Connects you to a local confidential DV shelter."
         },
         {
-          name: "YWCA Spokane (24-hour DV helpline)",
-          phone: "(509) 326-2255",
-          tel: "tel:5093262255",
-          note: "Families fleeing intimate-partner violence."
-        },
-        {
-          name: "Eastern WA 211",
+          name: "United Way 211",
           phone: "211",
           tel: "tel:211",
-          note: "Or 1-866-904-9060. Text EW211 to 898211."
+          note: "Family shelter + coordinated entry."
         },
       ],
       confidence: {
-        level: "research",
-        note: "Numbers from my.spokanecity.org/endinghomelessness/coc/coordinated-entry, familypromiseofspokane.org, ywcaspokane.org, cceasternwa.org. Last reviewed May 2026.",
-        lastChecked: "May 2026"
+        level: "unverified",
+        note: "AI-researched from public sources — not locally phone-verified. Call 211 to confirm the current local provider. Last researched June 14, 2026.",
+        lastChecked: "June 14, 2026"
       }
     },
 
@@ -782,11 +765,11 @@
       label: "Chronic Homelessness Pathway",
       badgeClass: "badge-chronic",
       badgeIcon: "🔑",
-      headline: "SNAP Singles CE is the front door; Frontier handles behavioral health.",
-      firstAction: "Call <strong>SNAP Singles Coordinated Entry</strong> at <strong>(509) 456-7627</strong> — Spokane Neighborhood Action Partners is the CE access point for singles 25+. For 24/7 mental health or SUD crisis, call <strong>Frontier Behavioral Health Regional Crisis Line</strong> at <strong>1-877-266-1818</strong>.",
-      callNumber: "tel:5094567627",
-      callLabel: "Call SNAP CE: (509) 456-7627",
-      what_to_expect: "SNAP is the Singles Coordinated Entry operator (walk-in 124 E Pacific Ave Mon–Wed). Frontier Behavioral Health operates the regional 24/7 crisis line and a dedicated Homeless Outreach Team. Compassionate Addiction Treatment offers low-barrier walk-in MOUD and primary care for unsheltered adults.",
+      headline: "The housing list starts with one assessment.",
+      firstAction: "Call or text <strong>211</strong> and say: <em>“I’ve been homeless a long time and I want to get on the housing list.”</em> Ask for the <strong>coordinated-entry assessment</strong> — in this system, permanent supportive housing is reached by being assessed and placed on the community housing-referral list. The assessment is the door; there is no separate number.",
+      callNumber: "tel:211",
+      callLabel: "Call 211",
+      what_to_expect: "A coordinated-entry assessor will ask about your situation and add you to the local housing-referral list. While you wait, ask 211 for tonight’s shelter and a daytime drop-in center.",
       bring: [
         "Photo ID (any form)",
         "Documentation of health conditions (if available — not required to be assessed)",
@@ -794,29 +777,22 @@
       ],
       resources: [
         {
-          name: "Frontier Behavioral Health — Homeless Outreach Team",
-          phone: "(509) 838-4651",
-          tel: "tel:5098384651",
-          note: "Outreach + connection to services for unsheltered adults."
-        },
-        {
-          name: "Compassionate Addiction Treatment (CAT)",
-          phone: "(509) 919-3362",
-          tel: "tel:5099193362",
-          note: "960 E 3rd Ave. Low-barrier SUD treatment, walk-in MOUD."
-        },
-        {
-          name: "988 Suicide & Crisis Lifeline",
+          name: "988 Suicide &amp; Crisis Lifeline",
           phone: "988",
           tel: "tel:988",
-          note: "24/7 national crisis line. Press 1 for veterans."
+          note: "Behavioral-health crisis support + SOAR disability-benefit help tied to housing."
+        },
+        {
+          name: "United Way 211",
+          phone: "211",
+          tel: "tel:211",
+          note: "Coordinated entry + shelter while you wait."
         },
       ],
-      extra_note: "📋 Qualifying conditions include physical, mental health, or substance use disorders that substantially affect daily functioning. You don't need a formal diagnosis to be assessed.",
       confidence: {
-        level: "research",
-        note: "Numbers from snapwa.org, fbhwa.org, catspokane.org, my.spokanecity.org/endinghomelessness. Last reviewed May 2026.",
-        lastChecked: "May 2026"
+        level: "unverified",
+        note: "AI-researched from public sources — not locally phone-verified. Call 211 to confirm the current local provider. Last researched June 14, 2026.",
+        lastChecked: "June 14, 2026"
       }
     },
 
@@ -824,11 +800,11 @@
       label: "Single Adults Pathway",
       badgeClass: "badge-adult",
       badgeIcon: "📞",
-      headline: "SNAP runs Singles CE; House of Charity and UGM are the main shelters.",
-      firstAction: "Call <strong>SNAP Singles Coordinated Entry</strong> at <strong>(509) 456-7627</strong> — the CE access point for adults 25+. Or call <strong>House of Charity</strong> at <strong>(509) 624-7821</strong>, 32 W Pacific Ave — Catholic Charities' main men's emergency shelter.",
-      callNumber: "tel:5094567627",
-      callLabel: "Call SNAP CE: (509) 456-7627",
-      what_to_expect: "SNAP operates Singles CE for WA-502 — walk-in 124 E Pacific Ave (Mon/Tue/Wed 8am & 1pm). House of Charity is the largest single-adult men's emergency shelter. Union Gospel Mission runs a men's recovery shelter and a separate women & children's shelter. The City's specialized shelter sites (including Cannon Street) accept referrals from CE.",
+      headline: "Start with tonight’s shelter, then the housing list.",
+      firstAction: "Call or text <strong>211</strong> and say: <em>“I need a shelter bed tonight.”</em> Ask for <strong>tonight’s open beds for single adults</strong>, the nearest <strong>daytime drop-in center</strong> (showers, mail, case management), and a <strong>free meal site</strong>. 211 is multilingual and 24/7.",
+      callNumber: "tel:211",
+      callLabel: "Call 211",
+      what_to_expect: "211 has the current shelter-bed picture for your area, which changes daily. Ask them to also start a coordinated-entry assessment so you’re working toward housing, not just tonight.",
       bring: [
         "Photo ID (helpful but not always required)",
         "Social security card or number (if available)",
@@ -836,30 +812,24 @@
       ],
       resources: [
         {
-          name: "Union Gospel Mission — Men's Shelter",
-          phone: "(509) 535-8510",
-          tel: "tel:5095358510",
-          note: "1224 E Trent Ave. Men's emergency shelter + recovery."
+          name: "Find a free clinic (FQHC)",
+          phone: "Ask 211",
+          tel: "tel:211",
+          note: "Federally Qualified Health Centers treat everyone regardless of ability to pay."
         },
         {
-          name: "Union Gospel Mission — Women & Children's Shelter",
-          phone: "(509) 535-0486",
-          tel: "tel:5095350486",
-          note: "1515 E Illinois Ave. Women + children."
-        },
-        {
-          name: "VOA Hope House Respite Center",
-          phone: "(509) 816-1669",
-          tel: "tel:5098161669",
-          note: "318 S Adams. Women-only medical respite; referral-based."
+          name: "988 Suicide &amp; Crisis Lifeline",
+          phone: "988",
+          tel: "tel:988",
+          note: "24/7 mental-health support."
         },
       ],
       confidence: {
-        level: "research",
-        note: "Numbers from snapwa.org, cceasternwa.org, uniongospelmission.org, voaspokane.org, my.spokanecity.org. Last reviewed May 2026.",
-        lastChecked: "May 2026"
+        level: "unverified",
+        note: "AI-researched from public sources — not locally phone-verified. Call 211 to confirm the current local provider. Last researched June 14, 2026.",
+        lastChecked: "June 14, 2026"
       }
-    }
+    },
 
   }; // end PATHWAYS
 

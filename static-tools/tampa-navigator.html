@@ -472,7 +472,8 @@
   <strong>Need help right now?</strong>
   <a href="tel:211">Call 211</a><span class="crisis-bar__sep">·</span>
   <a href="sms:741741?body=HOME">Text HOME to 741741</a><span class="crisis-bar__sep">·</span>
-  <a href="tel:988">988 Suicide &amp; Crisis</a>
+  <a href="tel:988">988 Suicide &amp; Crisis</a><span class="crisis-bar__sep">·</span>
+  <a href="tel:18007997233">DV 1-800-799-7233</a>
 </div>
 
 <nav class="nav" aria-label="Primary">
@@ -512,6 +513,8 @@
   </svg>
   <span>common<span class="cl-home__rung">ladder</span></span>
 </a>
+
+<div role="note" style="background:#ffedd5;border:1px solid #9a3412;color:#6b2710;border-radius:10px;padding:14px 18px;margin:0 auto 18px;max-width:680px;font-size:.9rem;line-height:1.5;"><strong style="color:#9a3412;">AI-researched, not locally verified.</strong> Common Ladder is based in Arizona. We built this guide from public sources but don’t yet verify these listings by phone the way we do our Arizona tools. Use it to learn <em>what to ask for</em>, then <strong>call <a href="tel:211" style="color:#9a3412;">211</a></strong> for the current local provider. Last researched <time datetime="2026-06-14">June 14, 2026</time>. Wrong info? <a href="mailto:corrections.commonladder@gmail.com?subject=Resource%20update:%20Tampa" style="color:#9a3412;">Tell us</a>.</div>
 
 <!-- App shell — all screens rendered by JS into here -->
 <div id="app"></div>
@@ -651,17 +654,17 @@
      Keep firstAction to one clear sentence + phone number.
      resources: 3 is ideal; 2 minimum; 4 maximum.
   ═══════════════════════════════════════════════════════════ */
-  var PATHWAYS = {
+    var PATHWAYS = {
 
     result_veterans: {
       label: "Veterans Pathway",
       badgeClass: "badge-veterans",
       badgeIcon: "🎖",
-      headline: "There's a dedicated system built for you.",
-      firstAction: "Call <strong>SVdP CARES SSVF</strong> at <strong>1-844-455-7783</strong> (1-844-455-SSVF) — the regional SSVF grantee for Hillsborough/Tampa Bay. They rapid-rehouse veteran households and help prevent imminent housing loss.",
-      callNumber: "tel:18444557783",
-      callLabel: "Call SVdP CARES SSVF: 1-844-455-7783",
-      what_to_expect: "SSVF screens for VA eligibility, then provides Housing First case management, rental/utility help, and benefits navigation. If you need medical care or have nowhere to sleep tonight, the VA's national hotline routes to James A. Haley VA Hospital's homeless team.",
+      headline: "There's a dedicated system built for veterans.",
+      firstAction: "Call <strong>211</strong> — free, 24/7 — and say: <em>“I’m a veteran and I’m homeless or about to be.”</em> Ask to be connected to the <strong>VA’s Health Care for Homeless Veterans (HCHV)</strong> program and your local <strong>coordinated-entry assessment</strong>. Veterans qualify for both VA housing (HUD-VASH) and the local Continuum of Care at the same time.",
+      callNumber: "tel:211",
+      callLabel: "Call 211",
+      what_to_expect: "211 will route you to the nearest VA homeless-program coordinator and your local CoC. The National Call Center for Homeless Veterans is available 24/7 anywhere in the U.S. if you can’t reach a local office.",
       bring: [
         "DD-214 discharge papers (if you have them — not required to call)",
         "Photo ID (if available)",
@@ -669,28 +672,22 @@
       ],
       resources: [
         {
-          name: "James A. Haley Veterans' Hospital (HCHV)",
-          phone: "(813) 972-2000",
-          tel: "tel:8139722000",
-          note: "13000 Bruce B Downs Blvd, Tampa. Ask for Homeless Veterans Program."
-        },
-        {
           name: "National Call Center for Homeless Veterans",
           phone: "1-877-424-3838",
           tel: "tel:18774243838",
-          note: "24/7. Routes to local VA homeless care coordinators."
+          note: "24/7. Available everywhere."
         },
         {
-          name: "Florida Veterans Support Line (211)",
-          phone: "1-844-693-5838",
-          tel: "tel:18446935838",
-          note: "1-844-MYFLVET. Statewide. Text 'FLVeterans' to 898211."
+          name: "Veterans Crisis Line",
+          phone: "988",
+          tel: "tel:988",
+          note: "Press 1 for the VA crisis line."
         },
       ],
       confidence: {
-        level: "research",
-        note: "Numbers from svdpsp.org, va.gov/tampa-health-care, firstcontact.org. VA Tampa publishes only email for the HCHV coordinator — use the main hospital line and ask for the Homeless Veterans Program. Last reviewed May 2026.",
-        lastChecked: "May 2026"
+        level: "unverified",
+        note: "AI-researched from public sources — not locally phone-verified. Call 211 to confirm the current local provider. Last researched June 14, 2026.",
+        lastChecked: "June 14, 2026"
       }
     },
 
@@ -698,41 +695,34 @@
       label: "Youth Pathway",
       badgeClass: "badge-youth",
       badgeIcon: "🌱",
-      headline: "Call 211 — most Tampa youth programs are by referral.",
-      firstAction: "Dial <strong>211</strong> (24/7, Crisis Center of Tampa Bay) or text <strong>'safe' to 4HELP (44357)</strong> — 211 is the verified entry point that routes to local youth providers and Safe Place sites. Hillsborough has no Covenant House and no single 24/7 youth shelter intake line.",
+      headline: "If you’re 24 or under, there’s a youth-specific path.",
+      firstAction: "Call or text <strong>211</strong> and say: <em>“I’m 24 or younger and I need a safe place to stay.”</em> Ask for the <strong>youth emergency shelter</strong> and the <strong>runaway &amp; homeless youth (RHY) program</strong> in your area.",
       callNumber: "tel:211",
-      callLabel: "Call 211 (Crisis Center of Tampa Bay)",
-      what_to_expect: "211 screens you and refers to the right youth program. Most local youth housing is by referral (often through school social workers) rather than walk-in — expect eligibility questions about age and school enrollment, and a wait for a bed. Immediate crisis cases route through the Crisis Center of Tampa Bay.",
+      callLabel: "Call 211",
+      what_to_expect: "211 routes you to the nearest youth shelter or drop-in center. The national backstops below are always available, day or night.",
       bring: [
         "Photo ID (helpful — not required for crisis services)",
-        "School enrollment info if you're in high school",
-        "Nothing required to call 211",
+        "Anything important you can carry",
+        "Nothing is required to call",
       ],
       resources: [
         {
-          name: "Starting Right, Now",
-          phone: "(813) 868-1995",
-          tel: "tel:8138681995",
-          note: "Unaccompanied high-school youth 15-19, Hillsborough/Pinellas. Referral only."
-        },
-        {
-          name: "Peace Outreach Resource Center",
-          phone: "(813) 512-6312",
-          tel: "tel:8135126312",
-          note: "Drop-in for youth 16–24. Mon/Fri 2:30–5:30pm."
+          name: "Safe Place",
+          phone: "Text SAFE + your location to 44357",
+          tel: "sms:44357?body=SAFE",
+          note: "Or walk into any QuikTrip and ask staff to call for you."
         },
         {
           name: "National Runaway Safeline",
           phone: "1-800-786-2929",
           tel: "tel:18007862929",
-          note: "1-800-RUNAWAY. 24/7 fallback."
+          note: "24/7, free, confidential."
         },
       ],
-      extra_note: "⚠️ Under 18? Call 211 first. Florida law affects what shelters can do without a guardian; 211 will route you safely.",
       confidence: {
-        level: "research",
-        note: "Numbers from tampa.gov, teenconnecttampabay.org (Healthy Start Coalition of Hillsborough), startingrightnow.org. Covenant House does NOT operate in Tampa — nearest sites are Fort Lauderdale and Orlando. Last reviewed May 2026.",
-        lastChecked: "May 2026"
+        level: "unverified",
+        note: "AI-researched from public sources — not locally phone-verified. Call 211 to confirm the current local provider. Last researched June 14, 2026.",
+        lastChecked: "June 14, 2026"
       }
     },
 
@@ -740,41 +730,34 @@
       label: "Families Pathway",
       badgeClass: "badge-families",
       badgeIcon: "🏠",
-      headline: "Metropolitan Ministries is the family shelter intake for Hillsborough.",
-      firstAction: "Call <strong>Metropolitan Ministries Intake</strong> at <strong>(813) 209-1222</strong> — primary family shelter intake for Hillsborough County. Serves families with children and single women experiencing or at risk of homelessness.",
-      callNumber: "tel:8132091222",
-      callLabel: "Call Metropolitan Ministries: (813) 209-1222",
-      what_to_expect: "Metropolitan Ministries asks families to apply online or by phone; an intake specialist calls back to verify eligibility and place the family in emergency shelter or prevention services. THHI's Coordinated Entry runs in parallel for longer-term housing placement.",
+      headline: "Families are kept together in the shelter system.",
+      firstAction: "Call or text <strong>211</strong> and say: <em>“I have my kids with me and we need shelter tonight.”</em> Ask for <strong>family emergency shelter</strong> and the <strong>coordinated-entry assessment</strong> for rapid re-housing.",
+      callNumber: "tel:211",
+      callLabel: "Call 211",
+      what_to_expect: "211 routes you to family shelter and the local coordinated-entry system. If you are fleeing domestic violence, use the confidential hotline below instead — DV shelter is separate and won’t list your location.",
       bring: [
         "Photo ID for adults (if available)",
-        "Birth certificates for children (helpful but not always required)",
+        "Birth certificates for children (helpful, not always required)",
         "Documentation of income or benefits (if available)",
-        "Social security cards (if you have them)",
       ],
       resources: [
         {
-          name: "Metropolitan Ministries (main)",
-          phone: "(813) 209-1000",
-          tel: "tel:8132091000",
-          note: "2002 N. Florida Ave, Tampa, FL 33602."
+          name: "National Domestic Violence Hotline",
+          phone: "1-800-799-7233",
+          tel: "tel:18007997233",
+          note: "24/7, confidential. Text START to 88788. Connects you to a local confidential DV shelter."
         },
         {
-          name: "The Spring of Tampa Bay (DV shelter, women + children)",
-          phone: "(813) 247-7233",
-          tel: "tel:8132477233",
-          note: "24-hour crisis line. 247-SAFE. Confidential location."
-        },
-        {
-          name: "Dawning Family Services",
-          phone: "(813) 875-2024",
-          tel: "tel:8138752024",
-          note: "Rapid rehousing for families."
+          name: "United Way 211",
+          phone: "211",
+          tel: "tel:211",
+          note: "Family shelter + coordinated entry."
         },
       ],
       confidence: {
-        level: "research",
-        note: "Numbers from tampa.gov, thespring.org. Last reviewed May 2026.",
-        lastChecked: "May 2026"
+        level: "unverified",
+        note: "AI-researched from public sources — not locally phone-verified. Call 211 to confirm the current local provider. Last researched June 14, 2026.",
+        lastChecked: "June 14, 2026"
       }
     },
 
@@ -782,11 +765,11 @@
       label: "Chronic Homelessness Pathway",
       badgeClass: "badge-chronic",
       badgeIcon: "🔑",
-      headline: "THHI is the Coordinated Entry front door for FL-501.",
-      firstAction: "Call <strong>Tampa Hillsborough Homeless Initiative (THHI)</strong> at <strong>(813) 223-6115</strong> — THHI is the FL-501 CoC lead and the front door to Coordinated Entry, which prioritizes chronically homeless adults for permanent supportive housing.",
-      callNumber: "tel:8132236115",
-      callLabel: "Call THHI: (813) 223-6115",
-      what_to_expect: "THHI does not run shelters directly — they route callers to Designated Access Points and into the HMIS (UNITY) assessment that drives the CoC's prioritization list. Expect a VI-SPDAT-style assessment and a wait. People sleeping outside can be reached through the City of Tampa Homeless Outreach Team or the Coffee Shop drop-in.",
+      headline: "The housing list starts with one assessment.",
+      firstAction: "Call or text <strong>211</strong> and say: <em>“I’ve been homeless a long time and I want to get on the housing list.”</em> Ask for the <strong>coordinated-entry assessment</strong> — in this system, permanent supportive housing is reached by being assessed and placed on the community housing-referral list. The assessment is the door; there is no separate number.",
+      callNumber: "tel:211",
+      callLabel: "Call 211",
+      what_to_expect: "A coordinated-entry assessor will ask about your situation and add you to the local housing-referral list. While you wait, ask 211 for tonight’s shelter and a daytime drop-in center.",
       bring: [
         "Photo ID (any form)",
         "Documentation of health conditions (if available — not required to be assessed)",
@@ -794,29 +777,22 @@
       ],
       resources: [
         {
-          name: "City of Tampa Homeless Outreach Team (HCD)",
-          phone: "(813) 274-8960",
-          tel: "tel:8132748960",
-          note: "Locates unsheltered individuals and connects them to assessment."
+          name: "988 Suicide &amp; Crisis Lifeline",
+          phone: "988",
+          tel: "tel:988",
+          note: "Behavioral-health crisis support + SOAR disability-benefit help tied to housing."
         },
         {
-          name: "The Coffee Shop Drop-in Center",
-          phone: "(813) 272-2311",
-          tel: "tel:8132722311",
-          note: "6220 N. Nebraska Ave, Tampa. Showers, laundry, phones. M–F 8am–1pm."
-        },
-        {
-          name: "211 Tampa Bay",
+          name: "United Way 211",
           phone: "211",
           tel: "tel:211",
-          note: "24/7. Or (727) 210-4211. Text ZIP to 898211."
+          note: "Coordinated entry + shelter while you wait."
         },
       ],
-      extra_note: "📋 Qualifying conditions include physical, mental health, or substance use disorders that substantially affect daily functioning. You don't need a formal diagnosis to be assessed.",
       confidence: {
-        level: "research",
-        note: "Numbers from thhi.org, tampa.gov. THHI does not publish a CE line separate from its main number — ask for Coordinated Entry. Last reviewed May 2026.",
-        lastChecked: "May 2026"
+        level: "unverified",
+        note: "AI-researched from public sources — not locally phone-verified. Call 211 to confirm the current local provider. Last researched June 14, 2026.",
+        lastChecked: "June 14, 2026"
       }
     },
 
@@ -824,11 +800,11 @@
       label: "Single Adults Pathway",
       badgeClass: "badge-adult",
       badgeIcon: "📞",
-      headline: "Salvation Army Red Shield is Tampa's largest no-waitlist single-adult shelter.",
-      firstAction: "Call/walk in to <strong>Salvation Army Red Shield Center</strong> at <strong>(813) 549-0641</strong> — 132-bed 24/7 first-come/first-served shelter for single adults, the largest no-waitlist single-adult intake in Tampa. Bring photo ID.",
-      callNumber: "tel:8135490641",
-      callLabel: "Call Salvation Army Red Shield: (813) 549-0641",
-      what_to_expect: "Red Shield is walk-in, first-come/first-served, no reservations, no cost. If full, the next stops are Tampa Hope (Catholic Charities, 235 beds, case-managed) and New Beginnings (40-bed shelter on Nebraska Ave). 211 is the catch-all for diversion.",
+      headline: "Start with tonight’s shelter, then the housing list.",
+      firstAction: "Call or text <strong>211</strong> and say: <em>“I need a shelter bed tonight.”</em> Ask for <strong>tonight’s open beds for single adults</strong>, the nearest <strong>daytime drop-in center</strong> (showers, mail, case management), and a <strong>free meal site</strong>. 211 is multilingual and 24/7.",
+      callNumber: "tel:211",
+      callLabel: "Call 211",
+      what_to_expect: "211 has the current shelter-bed picture for your area, which changes daily. Ask them to also start a coordinated-entry assessment so you’re working toward housing, not just tonight.",
       bring: [
         "Photo ID (helpful but not always required)",
         "Social security card or number (if available)",
@@ -836,30 +812,24 @@
       ],
       resources: [
         {
-          name: "Catholic Charities Tampa Hope",
-          phone: "(813) 394-2881",
-          tel: "tel:8133942881",
-          note: "3704 E. 3rd Ave, Tampa, FL 33605. 235 beds, case management."
-        },
-        {
-          name: "New Beginnings of Tampa",
-          phone: "(813) 971-6961",
-          tel: "tel:8139716961",
-          note: "8535 N. Nebraska Ave, Tampa. 40 beds, first-come/first-served."
-        },
-        {
-          name: "211 Tampa Bay",
-          phone: "211",
+          name: "Find a free clinic (FQHC)",
+          phone: "Ask 211",
           tel: "tel:211",
-          note: "24/7. Or (727) 210-4211. Text ZIP to 898211."
+          note: "Federally Qualified Health Centers treat everyone regardless of ability to pay."
+        },
+        {
+          name: "988 Suicide &amp; Crisis Lifeline",
+          phone: "988",
+          tel: "tel:988",
+          note: "24/7 mental-health support."
         },
       ],
       confidence: {
-        level: "research",
-        note: "Numbers from tampa.gov (City of Tampa Housing & Community Development). Last reviewed May 2026.",
-        lastChecked: "May 2026"
+        level: "unverified",
+        note: "AI-researched from public sources — not locally phone-verified. Call 211 to confirm the current local provider. Last researched June 14, 2026.",
+        lastChecked: "June 14, 2026"
       }
-    }
+    },
 
   }; // end PATHWAYS
 

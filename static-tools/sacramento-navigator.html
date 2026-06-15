@@ -472,7 +472,8 @@
   <strong>Need help right now?</strong>
   <a href="tel:211">Call 211</a><span class="crisis-bar__sep">·</span>
   <a href="sms:741741?body=HOME">Text HOME to 741741</a><span class="crisis-bar__sep">·</span>
-  <a href="tel:988">988 Suicide &amp; Crisis</a>
+  <a href="tel:988">988 Suicide &amp; Crisis</a><span class="crisis-bar__sep">·</span>
+  <a href="tel:18007997233">DV 1-800-799-7233</a>
 </div>
 
 <nav class="nav" aria-label="Primary">
@@ -512,6 +513,8 @@
   </svg>
   <span>common<span class="cl-home__rung">ladder</span></span>
 </a>
+
+<div role="note" style="background:#ffedd5;border:1px solid #9a3412;color:#6b2710;border-radius:10px;padding:14px 18px;margin:0 auto 18px;max-width:680px;font-size:.9rem;line-height:1.5;"><strong style="color:#9a3412;">AI-researched, not locally verified.</strong> Common Ladder is based in Arizona. We built this guide from public sources but don’t yet verify these listings by phone the way we do our Arizona tools. Use it to learn <em>what to ask for</em>, then <strong>call <a href="tel:211" style="color:#9a3412;">211</a></strong> for the current local provider. Last researched <time datetime="2026-06-14">June 14, 2026</time>. Wrong info? <a href="mailto:corrections.commonladder@gmail.com?subject=Resource%20update:%20Sacramento,%20CA" style="color:#9a3412;">Tell us</a>.</div>
 
 <!-- App shell — all screens rendered by JS into here -->
 <div id="app"></div>
@@ -651,29 +654,23 @@
      Keep firstAction to one clear sentence + phone number.
      resources: 3 is ideal; 2 minimum; 4 maximum.
   ═══════════════════════════════════════════════════════════ */
-  var PATHWAYS = {
+    var PATHWAYS = {
 
     result_veterans: {
       label: "Veterans Pathway",
       badgeClass: "badge-veterans",
-      badgeIcon: "\ud83c\udf96",
-      headline: "There's a dedicated system built for you.",
-      firstAction: "Call the <strong>Sacramento VA homeless veteran care coordinator</strong> at <strong>(916) 843-7271</strong> \u2014 the VA's dedicated line for housing help (HUD-VASH and Health Care for Homeless Veterans). Or call the <strong>National Call Center for Homeless Veterans</strong> at <strong>1-877-424-3838</strong> (24/7).",
-      callNumber: "tel:9168437271",
-      callLabel: "Call VA Homeless Veteran Care: (916) 843-7271",
-      what_to_expect: "Sacramento VA Medical Center at 10535 Hospital Way, Mather runs HUD-VASH and Health Care for Homeless Veterans, with a homeless walk-in clinic at Building 800 where veterans are screened and referred to shelter. The Veterans Crisis Line is 988 then press 1. For emergency shelter that night, dial 2-1-1 \u2014 the coordinated-entry front door for greater Sacramento.",
+      badgeIcon: "🎖",
+      headline: "There's a dedicated system built for veterans.",
+      firstAction: "Call <strong>211</strong> — free, 24/7 — and say: <em>“I’m a veteran and I’m homeless or about to be.”</em> Ask to be connected to the <strong>VA’s Health Care for Homeless Veterans (HCHV)</strong> program and your local <strong>coordinated-entry assessment</strong>. Veterans qualify for both VA housing (HUD-VASH) and the local Continuum of Care at the same time.",
+      callNumber: "tel:211",
+      callLabel: "Call 211",
+      what_to_expect: "211 will route you to the nearest VA homeless-program coordinator and your local CoC. The National Call Center for Homeless Veterans is available 24/7 anywhere in the U.S. if you can’t reach a local office.",
       bring: [
-        "DD-214 discharge papers (if you have them \u2014 not required to call)",
+        "DD-214 discharge papers (if you have them — not required to call)",
         "Photo ID (if available)",
         "Any VA documentation you have",
       ],
       resources: [
-        {
-          name: "Sacramento VA Medical Center (Mather)",
-          phone: "(916) 843-7000",
-          tel: "tel:9168437000",
-          note: "10535 Hospital Way, Mather. Main line; ask for Homeless Veteran Care."
-        },
         {
           name: "National Call Center for Homeless Veterans",
           phone: "1-877-424-3838",
@@ -681,154 +678,133 @@
           note: "24/7. Available everywhere."
         },
         {
-          name: "211 Sacramento",
-          phone: "211",
-          tel: "tel:211",
-          note: "Or (916) 498-1000. Coordinated-entry front door, 24/7."
+          name: "Veterans Crisis Line",
+          phone: "988",
+          tel: "tel:988",
+          note: "Press 1 for the VA crisis line."
         },
       ],
       confidence: {
-        level: "research",
-        note: "Numbers from va.gov/northern-california-health-care/health-services/homeless-veteran-care (homeless coordinator 916-843-7271 + facility 916-843-7000), va.gov national call center. Last reviewed June 2026.",
-        lastChecked: "June 2026"
+        level: "unverified",
+        note: "AI-researched from public sources — not locally phone-verified. Call 211 to confirm the current local provider. Last researched June 14, 2026.",
+        lastChecked: "June 14, 2026"
       }
     },
 
     result_youth: {
       label: "Youth Pathway",
       badgeClass: "badge-youth",
-      badgeIcon: "\ud83c\udf31",
-      headline: "WIND Youth Services is the central Sacramento youth provider.",
-      firstAction: "Call <strong>WIND Youth Services</strong> at <strong>(916) 504-3313</strong> \u2014 drop-in center for ages 18\u201324 at 815 S Street. If you are 12\u201317, call WIND's <strong>24-hour adolescent shelter line</strong> at <strong>(916) 628-1492</strong>.",
-      callNumber: "tel:9165043313",
-      callLabel: "Call WIND Youth Services: (916) 504-3313",
-      what_to_expect: "WIND Youth Services serves ages 12\u201324. The drop-in center (815 S Street) is for ages 18\u201324 with meals, showers, case management, and free ID-replacement help; case-management intakes are Mondays 9\u201311am and Thursdays 2\u20134pm. The 24-hour adolescent line serves ages 12\u201317. For emergency housing, young adults 18\u201324 can also dial 2-1-1. WEAVE provides 24/7 domestic-violence crisis support.",
+      badgeIcon: "🌱",
+      headline: "If you’re 24 or under, there’s a youth-specific path.",
+      firstAction: "Call or text <strong>211</strong> and say: <em>“I’m 24 or younger and I need a safe place to stay.”</em> Ask for the <strong>youth emergency shelter</strong> and the <strong>runaway &amp; homeless youth (RHY) program</strong> in your area.",
+      callNumber: "tel:211",
+      callLabel: "Call 211",
+      what_to_expect: "211 routes you to the nearest youth shelter or drop-in center. The national backstops below are always available, day or night.",
       bring: [
-        "Photo ID (helpful \u2014 WIND staff can help you get one)",
+        "Photo ID (helpful — not required for crisis services)",
         "Anything important you can carry",
-        "Nothing required to call",
+        "Nothing is required to call",
       ],
       resources: [
         {
-          name: "WIND \u2014 24-hr adolescent shelter line (12\u201317)",
-          phone: "(916) 628-1492",
-          tel: "tel:9166281492",
-          note: "For youth 12\u201317 or a parent/guardian."
+          name: "Safe Place",
+          phone: "Text SAFE + your location to 44357",
+          tel: "sms:44357?body=SAFE",
+          note: "Or walk into any QuikTrip and ask staff to call for you."
         },
         {
-          name: "WEAVE 24-Hour Support",
-          phone: "(916) 920-2952",
-          tel: "tel:9169202952",
-          note: "DV/sexual-assault crisis line (Sacramento County)."
-        },
-        {
-          name: "211 Sacramento",
-          phone: "211",
-          tel: "tel:211",
-          note: "Or (916) 498-1000. 24/7."
+          name: "National Runaway Safeline",
+          phone: "1-800-786-2929",
+          tel: "tel:18007862929",
+          note: "24/7, free, confidential."
         },
       ],
-      extra_note: "\u26a0\ufe0f Under 18? California allows minors to access certain shelter services without parental consent. WIND Youth Services and WEAVE know the local rules.",
       confidence: {
-        level: "research",
-        note: "Numbers from windyouthservices.org/contact (main 916-504-3313, adolescent line 916-628-1492). Last reviewed June 2026.",
-        lastChecked: "June 2026"
+        level: "unverified",
+        note: "AI-researched from public sources — not locally phone-verified. Call 211 to confirm the current local provider. Last researched June 14, 2026.",
+        lastChecked: "June 14, 2026"
       }
     },
 
     result_families: {
       label: "Families Pathway",
       badgeClass: "badge-families",
-      badgeIcon: "\ud83c\udfe0",
-      headline: "Dial 2-1-1 \u2014 the front door for family shelter.",
-      firstAction: "Call <strong>2-1-1</strong> (or <strong>(916) 498-1000</strong>) \u2014 Sacramento Steps Forward directs all family shelter intake through 2-1-1's Coordinated Access System. For women and children, <strong>Saint John's Program for Real Change</strong> at <strong>(916) 453-1482</strong> runs a residential program and a short-term respite shelter.",
+      badgeIcon: "🏠",
+      headline: "Families are kept together in the shelter system.",
+      firstAction: "Call or text <strong>211</strong> and say: <em>“I have my kids with me and we need shelter tonight.”</em> Ask for <strong>family emergency shelter</strong> and the <strong>coordinated-entry assessment</strong> for rapid re-housing.",
       callNumber: "tel:211",
-      callLabel: "Call or dial 2-1-1",
-      what_to_expect: "Sacramento Steps Forward administers the Coordinated Access System; 2-1-1 is the public front door for family shelter assessment. Saint John's Program for Real Change serves women and children (sobriety required for most programs). Next Move runs emergency family shelter and the Mather Community Campus, with intake through 2-1-1. Loaves & Fishes Maryhouse is a daytime drop-in for women and families.",
+      callLabel: "Call 211",
+      what_to_expect: "211 routes you to family shelter and the local coordinated-entry system. If you are fleeing domestic violence, use the confidential hotline below instead — DV shelter is separate and won’t list your location.",
       bring: [
         "Photo ID for adults (if available)",
-        "Birth certificates for children (helpful but not always required)",
+        "Birth certificates for children (helpful, not always required)",
         "Documentation of income or benefits (if available)",
-        "Social security cards (if you have them)",
       ],
       resources: [
         {
-          name: "Saint John's Program for Real Change",
-          phone: "(916) 453-1482",
-          tel: "tel:9164531482",
-          note: "Women & children. Residential program + 7-day respite shelter."
+          name: "National Domestic Violence Hotline",
+          phone: "1-800-799-7233",
+          tel: "tel:18007997233",
+          note: "24/7, confidential. Text START to 88788. Connects you to a local confidential DV shelter."
         },
         {
-          name: "Next Move Homeless Services",
-          phone: "(916) 454-2120",
-          tel: "tel:9164542120",
-          note: "8001 Folsom Blvd. Family shelter; intake via 2-1-1."
-        },
-        {
-          name: "Loaves & Fishes \u2014 Maryhouse",
-          phone: "(916) 637-2450",
-          tel: "tel:9166372450",
-          note: "1351 North C St. Daytime drop-in for women & families."
+          name: "United Way 211",
+          phone: "211",
+          tel: "tel:211",
+          note: "Family shelter + coordinated entry."
         },
       ],
       confidence: {
-        level: "research",
-        note: "Numbers from sacramentostepsforward.org, saintjohnsprogram.org (916-453-1482), nextmovesacramento.org (916-454-2120), sacloaves.org (Maryhouse 916-637-2450). Last reviewed June 2026.",
-        lastChecked: "June 2026"
+        level: "unverified",
+        note: "AI-researched from public sources — not locally phone-verified. Call 211 to confirm the current local provider. Last researched June 14, 2026.",
+        lastChecked: "June 14, 2026"
       }
     },
 
     result_chronic: {
       label: "Chronic Homelessness Pathway",
       badgeClass: "badge-chronic",
-      badgeIcon: "\ud83d\udd11",
-      headline: "Coordinated Entry runs through 2-1-1.",
-      firstAction: "Call <strong>2-1-1</strong> (or <strong>(916) 498-1000</strong>) \u2014 Sacramento Steps Forward, the lead Continuum of Care agency, directs all coordinated-entry intake through 2-1-1's Coordinated Access System for permanent supportive housing.",
+      badgeIcon: "🔑",
+      headline: "The housing list starts with one assessment.",
+      firstAction: "Call or text <strong>211</strong> and say: <em>“I’ve been homeless a long time and I want to get on the housing list.”</em> Ask for the <strong>coordinated-entry assessment</strong> — in this system, permanent supportive housing is reached by being assessed and placed on the community housing-referral list. The assessment is the door; there is no separate number.",
       callNumber: "tel:211",
-      callLabel: "Call or dial 2-1-1",
-      what_to_expect: "Sacramento Steps Forward is the lead agency for the Sacramento City & County Continuum of Care (CA-503) and administers the Coordinated Access System for chronic homelessness and permanent supportive housing. HOPE Cooperative operates supportive housing, behavioral health, and a crisis respite center. WellSpace Health provides health care and medical respite for people experiencing homelessness.",
+      callLabel: "Call 211",
+      what_to_expect: "A coordinated-entry assessor will ask about your situation and add you to the local housing-referral list. While you wait, ask 211 for tonight’s shelter and a daytime drop-in center.",
       bring: [
         "Photo ID (any form)",
-        "Documentation of health conditions (if available \u2014 not required to be assessed)",
+        "Documentation of health conditions (if available — not required to be assessed)",
         "Any records of prior housing or service history",
       ],
       resources: [
         {
-          name: "HOPE Cooperative",
-          phone: "(916) 441-0123",
-          tel: "tel:9164410123",
-          note: "Permanent supportive housing + behavioral health."
+          name: "988 Suicide &amp; Crisis Lifeline",
+          phone: "988",
+          tel: "tel:988",
+          note: "Behavioral-health crisis support + SOAR disability-benefit help tied to housing."
         },
         {
-          name: "WellSpace Health (Health Care for the Homeless)",
-          phone: "(916) 737-5555",
-          tel: "tel:9167375555",
-          note: "FQHC. Medical, behavioral health, medical respite."
-        },
-        {
-          name: "211 Sacramento",
+          name: "United Way 211",
           phone: "211",
           tel: "tel:211",
-          note: "Or (916) 498-1000. Coordinated-entry front door, 24/7."
+          note: "Coordinated entry + shelter while you wait."
         },
       ],
-      extra_note: "\ud83d\udccb Qualifying conditions include physical, mental health, or substance use disorders that substantially affect daily functioning. You don't need a formal diagnosis to be assessed.",
       confidence: {
-        level: "research",
-        note: "CoC code CA-503 confirmed via HUD (files.hudexchange.info); intake path and lead agency from sacramentostepsforward.org; WellSpace from wellspacehealth.org (916-737-5555). Last reviewed June 2026.",
-        lastChecked: "June 2026"
+        level: "unverified",
+        note: "AI-researched from public sources — not locally phone-verified. Call 211 to confirm the current local provider. Last researched June 14, 2026.",
+        lastChecked: "June 14, 2026"
       }
     },
 
     result_adult: {
       label: "Single Adults Pathway",
       badgeClass: "badge-adult",
-      badgeIcon: "\ud83d\udcde",
-      headline: "Dial 2-1-1 for a shelter assessment \u2014 or walk in to Union Gospel Mission.",
-      firstAction: "Call <strong>2-1-1</strong> (or <strong>(916) 498-1000</strong>) for a single-adult shelter assessment \u2014 most Sacramento shelters, including the Salvation Army Center of Hope, take intake through 2-1-1. For a men's bed tonight without a referral, <strong>Union Gospel Mission</strong> (400 Bannon St) signs up beds nightly at 5:30pm: <strong>(916) 447-3268</strong>.",
+      badgeIcon: "📞",
+      headline: "Start with tonight’s shelter, then the housing list.",
+      firstAction: "Call or text <strong>211</strong> and say: <em>“I need a shelter bed tonight.”</em> Ask for <strong>tonight’s open beds for single adults</strong>, the nearest <strong>daytime drop-in center</strong> (showers, mail, case management), and a <strong>free meal site</strong>. 211 is multilingual and 24/7.",
       callNumber: "tel:211",
-      callLabel: "Call or dial 2-1-1",
-      what_to_expect: "Adults seeking shelter are assessed through 2-1-1. The Salvation Army Center of Hope (1200 North B Street) is the county's largest shelter (130 beds, 30\u201390 day stays) and takes intake through 2-1-1. Union Gospel Mission runs a men's shelter with nightly first-come bed sign-ups at 5:30pm (photo ID and a current negative TB card required). Loaves & Fishes is the largest daytime services campus with meals, hygiene, and case management.",
+      callLabel: "Call 211",
+      what_to_expect: "211 has the current shelter-bed picture for your area, which changes daily. Ask them to also start a coordinated-entry assessment so you’re working toward housing, not just tonight.",
       bring: [
         "Photo ID (helpful but not always required)",
         "Social security card or number (if available)",
@@ -836,30 +812,24 @@
       ],
       resources: [
         {
-          name: "Union Gospel Mission (men's shelter)",
-          phone: "(916) 447-3268",
-          tel: "tel:9164473268",
-          note: "400 Bannon St. Nightly bed sign-up 5:30pm; ID + TB card required."
-        },
-        {
-          name: "Loaves & Fishes (day services campus)",
-          phone: "(916) 446-0874",
-          tel: "tel:9164460874",
-          note: "1351 North C St. Meals, hygiene, case management."
-        },
-        {
-          name: "211 Sacramento",
-          phone: "211",
+          name: "Find a free clinic (FQHC)",
+          phone: "Ask 211",
           tel: "tel:211",
-          note: "Or (916) 498-1000. Shelter assessment + coordinated entry, 24/7."
+          note: "Federally Qualified Health Centers treat everyone regardless of ability to pay."
+        },
+        {
+          name: "988 Suicide &amp; Crisis Lifeline",
+          phone: "988",
+          tel: "tel:988",
+          note: "24/7 mental-health support."
         },
       ],
       confidence: {
-        level: "research",
-        note: "211 intake path confirmed via sacramento.salvationarmy.org (Center of Hope, 1200 North B St; routes to 211); Union Gospel Mission from ugmsac.com (916-447-3268, 400 Bannon St); Loaves & Fishes from sacloaves.org (916-446-0874). Salvation Army direct line is aggregator-only and intentionally omitted \u2014 default to 211. Last reviewed June 2026.",
-        lastChecked: "June 2026"
+        level: "unverified",
+        note: "AI-researched from public sources — not locally phone-verified. Call 211 to confirm the current local provider. Last researched June 14, 2026.",
+        lastChecked: "June 14, 2026"
       }
-    }
+    },
 
   }; // end PATHWAYS
 

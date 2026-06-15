@@ -472,7 +472,8 @@
   <strong>Need help right now?</strong>
   <a href="tel:211">Call 211</a><span class="crisis-bar__sep">·</span>
   <a href="sms:741741?body=HOME">Text HOME to 741741</a><span class="crisis-bar__sep">·</span>
-  <a href="tel:988">988 Suicide &amp; Crisis</a>
+  <a href="tel:988">988 Suicide &amp; Crisis</a><span class="crisis-bar__sep">·</span>
+  <a href="tel:18007997233">DV 1-800-799-7233</a>
 </div>
 
 <nav class="nav" aria-label="Primary">
@@ -512,6 +513,8 @@
   </svg>
   <span>common<span class="cl-home__rung">ladder</span></span>
 </a>
+
+<div role="note" style="background:#ffedd5;border:1px solid #9a3412;color:#6b2710;border-radius:10px;padding:14px 18px;margin:0 auto 18px;max-width:680px;font-size:.9rem;line-height:1.5;"><strong style="color:#9a3412;">AI-researched, not locally verified.</strong> Common Ladder is based in Arizona. We built this guide from public sources but don’t yet verify these listings by phone the way we do our Arizona tools. Use it to learn <em>what to ask for</em>, then <strong>call <a href="tel:211" style="color:#9a3412;">211</a></strong> for the current local provider. Last researched <time datetime="2026-06-14">June 14, 2026</time>. Wrong info? <a href="mailto:corrections.commonladder@gmail.com?subject=Resource%20update:%20Los%20Angeles" style="color:#9a3412;">Tell us</a>.</div>
 
 <!-- App shell — all screens rendered by JS into here -->
 <div id="app"></div>
@@ -651,184 +654,157 @@
      Keep firstAction to one clear sentence + phone number.
      resources: 3 is ideal; 2 minimum; 4 maximum.
   ═══════════════════════════════════════════════════════════ */
-  var PATHWAYS = {
+    var PATHWAYS = {
 
     result_veterans: {
       label: "Veterans Pathway",
       badgeClass: "badge-veterans",
-      badgeIcon: "\ud83c\udf96",
-      headline: "There's a dedicated system built for you.",
-      firstAction: "Walk in or call the <strong>VA Greater LA West LA CRRC (Welcome Center)</strong> at <strong>(310) 268-3269</strong>. Located at 11301 Wilshire Blvd, Bldg 402, LA 90073. Mon\u2013Fri 7:30am\u20134pm. Or call the 24/7 National Call Center for Homeless Veterans at <strong>1-877-4AID-VET (1-877-424-3838)</strong>.",
-      callNumber: "tel:3102683269",
-      callLabel: "Call VA West LA CRRC: (310) 268-3269",
-      what_to_expect: "VA Greater LA serves all veterans in LA County and connects you to HUD-VASH vouchers, SSVF rapid rehousing, and HPACT primary care. SSVF providers differ by Service Planning Area (SPA): U.S. VETS covers Inglewood/Long Beach, PATH covers downtown/Westside/Antelope Valley, VOA-LA and Village for Vets cover other SPAs.",
+      badgeIcon: "🎖",
+      headline: "There's a dedicated system built for veterans.",
+      firstAction: "Call <strong>211</strong> — free, 24/7 — and say: <em>“I’m a veteran and I’m homeless or about to be.”</em> Ask to be connected to the <strong>VA’s Health Care for Homeless Veterans (HCHV)</strong> program and your local <strong>coordinated-entry assessment</strong>. Veterans qualify for both VA housing (HUD-VASH) and the local Continuum of Care at the same time.",
+      callNumber: "tel:211",
+      callLabel: "Call 211",
+      what_to_expect: "211 will route you to the nearest VA homeless-program coordinator and your local CoC. The National Call Center for Homeless Veterans is available 24/7 anywhere in the U.S. if you can’t reach a local office.",
       bring: [
-        "DD-214 discharge papers (if you have them \u2014 not required to call)",
+        "DD-214 discharge papers (if you have them — not required to call)",
         "Photo ID (if available)",
         "Any VA documentation you have",
       ],
       resources: [
-        {
-          name: "VA Greater LA \u2014 Temporary Housing Hotline",
-          phone: "(310) 268-3350",
-          tel: "tel:3102683350",
-          note: "VA temporary housing referrals, Mon\u2013Fri 7:30am\u20134pm. After hours: call 211."
-        },
-        {
-          name: "PATH \u2014 SSVF (SPAs 1, 2, 4, 5)",
-          phone: "(213) 610-6409",
-          tel: "tel:2136106409",
-          note: "SSVF intake for Antelope Valley, San Fernando, Downtown, Westside."
-        },
         {
           name: "National Call Center for Homeless Veterans",
           phone: "1-877-424-3838",
           tel: "tel:18774243838",
           note: "24/7. Available everywhere."
         },
+        {
+          name: "Veterans Crisis Line",
+          phone: "988",
+          tel: "tel:988",
+          note: "Press 1 for the VA crisis line."
+        },
       ],
       confidence: {
-        level: "research",
-        note: "Numbers sourced from va.gov/greater-los-angeles-health-care and verified SSVF provider roster. Last reviewed May 2026.",
-        lastChecked: "May 2026"
+        level: "unverified",
+        note: "AI-researched from public sources — not locally phone-verified. Call 211 to confirm the current local provider. Last researched June 14, 2026.",
+        lastChecked: "June 14, 2026"
       }
     },
 
     result_youth: {
       label: "Youth Pathway",
       badgeClass: "badge-youth",
-      badgeIcon: "\ud83c\udf31",
-      headline: "You have access to youth-specific services across LA County.",
-      firstAction: "Call the <strong>LAHSA Youth Shelter Hotline</strong> at <strong>1-800-548-6047</strong> \u2014 for youth ages 16\u201324 needing shelter tonight. Or call <strong>Covenant House California \u2014 Los Angeles</strong> at <strong>(323) 461-3131</strong>, 24/7 crisis shelter at 1325 N. Western Ave, Hollywood.",
-      callNumber: "tel:18005486047",
-      callLabel: "Call LAHSA Youth: 1-800-548-6047",
-      what_to_expect: "LA has dedicated youth providers across the county. Covenant House (Hollywood) offers 24/7 crisis beds. Safe Place for Youth (Venice) runs a drop-in center and outreach for ages 12\u201325. The LA LGBT Center Youth Center serves LGBTQ+ youth 16\u201324 at 1118 N McCadden Pl. Drop-in centers do not require ID.",
+      badgeIcon: "🌱",
+      headline: "If you’re 24 or under, there’s a youth-specific path.",
+      firstAction: "Call or text <strong>211</strong> and say: <em>“I’m 24 or younger and I need a safe place to stay.”</em> Ask for the <strong>youth emergency shelter</strong> and the <strong>runaway &amp; homeless youth (RHY) program</strong> in your area.",
+      callNumber: "tel:211",
+      callLabel: "Call 211",
+      what_to_expect: "211 routes you to the nearest youth shelter or drop-in center. The national backstops below are always available, day or night.",
       bring: [
-        "Photo ID (helpful \u2014 call ahead to confirm what's required)",
+        "Photo ID (helpful — not required for crisis services)",
         "Anything important you can carry",
-        "Nothing required to use a drop-in center",
+        "Nothing is required to call",
       ],
       resources: [
         {
-          name: "Safe Place for Youth (Venice)",
-          phone: "(310) 902-2283",
-          tel: "tel:3109022283",
-          note: "Drop-in and outreach for ages 12\u201325 at 2471 Lincoln Blvd. Press option 2."
+          name: "Safe Place",
+          phone: "Text SAFE + your location to 44357",
+          tel: "sms:44357?body=SAFE",
+          note: "Or walk into any QuikTrip and ask staff to call for you."
         },
         {
-          name: "LA LGBT Center \u2014 Youth Center",
-          phone: "(323) 860-2280",
-          tel: "tel:3238602280",
-          note: "Services for LGBTQ+ youth 16\u201324 at 1118 N McCadden Pl."
-        },
-        {
-          name: "LA County 211",
-          phone: "211",
-          tel: "tel:211",
-          note: "Call or text 211 (or 800-339-6993). 24/7 multilingual."
+          name: "National Runaway Safeline",
+          phone: "1-800-786-2929",
+          tel: "tel:18007862929",
+          note: "24/7, free, confidential."
         },
       ],
-      extra_note: "\u26a0\ufe0f Under 18? California allows minors to access certain shelter services without parental consent. Covenant House CA and runaway/homeless youth (RHY) providers can help \u2014 ask about confidentiality.",
       confidence: {
-        level: "research",
-        note: "Numbers from lahsa.org/ces, covenanthousecalifornia.org, safeplaceforyouth.org, lalgbtcenter.org. Last reviewed May 2026.",
-        lastChecked: "May 2026"
+        level: "unverified",
+        note: "AI-researched from public sources — not locally phone-verified. Call 211 to confirm the current local provider. Last researched June 14, 2026.",
+        lastChecked: "June 14, 2026"
       }
     },
 
     result_families: {
       label: "Families Pathway",
       badgeClass: "badge-families",
-      badgeIcon: "\ud83c\udfe0",
-      headline: "Families with children get connected through LA County 211.",
-      firstAction: "Call <strong>211</strong> (or <strong>1-800-339-6993</strong>). LAHSA directs all families needing shelter to 211, which pre-screens and warm-transfers you to your local Family Solutions Center based on where you are.",
+      badgeIcon: "🏠",
+      headline: "Families are kept together in the shelter system.",
+      firstAction: "Call or text <strong>211</strong> and say: <em>“I have my kids with me and we need shelter tonight.”</em> Ask for <strong>family emergency shelter</strong> and the <strong>coordinated-entry assessment</strong> for rapid re-housing.",
       callNumber: "tel:211",
-      callLabel: "Call or text 211",
-      what_to_expect: "LA County is large \u2014 your Family Solutions Center depends on which Service Planning Area (SPA) you're in. 211 will route you. The Family Solutions Center will do an assessment (CES Survey) and connect you to family shelter, rapid rehousing, or prevention. Children retain the right to stay in their current school under McKinney-Vento.",
+      callLabel: "Call 211",
+      what_to_expect: "211 routes you to family shelter and the local coordinated-entry system. If you are fleeing domestic violence, use the confidential hotline below instead — DV shelter is separate and won’t list your location.",
       bring: [
         "Photo ID for adults (if available)",
-        "Birth certificates for children (helpful but not always required)",
+        "Birth certificates for children (helpful, not always required)",
         "Documentation of income or benefits (if available)",
-        "Social security cards (if you have them)",
       ],
       resources: [
         {
-          name: "LA County 211 (24/7)",
-          phone: "1-800-339-6993",
-          tel: "tel:18003396993",
-          note: "Direct 10-digit dial \u2014 same as dialing 211."
+          name: "National Domestic Violence Hotline",
+          phone: "1-800-799-7233",
+          tel: "tel:18007997233",
+          note: "24/7, confidential. Text START to 88788. Connects you to a local confidential DV shelter."
         },
         {
-          name: "LAHSA Information Line",
-          phone: "(213) 233-4798",
-          tel: "tel:2132334798",
-          note: "Resource & referral, Mon\u2013Fri 7:30am\u20134:30pm."
-        },
-        {
-          name: "LAHSA Main",
-          phone: "(213) 683-3333",
-          tel: "tel:2136833333",
-          note: "Lead CoC agency \u2014 general info."
+          name: "United Way 211",
+          phone: "211",
+          tel: "tel:211",
+          note: "Family shelter + coordinated entry."
         },
       ],
       confidence: {
-        level: "research",
-        note: "Family Solutions Center access via 211 is LAHSA's published pathway. Last reviewed May 2026.",
-        lastChecked: "May 2026"
+        level: "unverified",
+        note: "AI-researched from public sources — not locally phone-verified. Call 211 to confirm the current local provider. Last researched June 14, 2026.",
+        lastChecked: "June 14, 2026"
       }
     },
 
     result_chronic: {
       label: "Chronic Homelessness Pathway",
       badgeClass: "badge-chronic",
-      badgeIcon: "\ud83d\udd11",
-      headline: "Permanent supportive housing may be the right fit for you.",
-      firstAction: "Call <strong>211</strong> for a Coordinated Entry System (CES) screening. They'll route you to the nearest Access Center for the <strong>CES Survey</strong> \u2014 the assessment that determines your priority for Permanent Supportive Housing in LA County.",
+      badgeIcon: "🔑",
+      headline: "The housing list starts with one assessment.",
+      firstAction: "Call or text <strong>211</strong> and say: <em>“I’ve been homeless a long time and I want to get on the housing list.”</em> Ask for the <strong>coordinated-entry assessment</strong> — in this system, permanent supportive housing is reached by being assessed and placed on the community housing-referral list. The assessment is the door; there is no separate number.",
       callNumber: "tel:211",
-      callLabel: "Call or text 211 for CES",
-      what_to_expect: "LA's CES has separate tracks for single adults, families, and youth. After the CES Survey assessment, you're prioritized for available PSH units. While you wait \u2014 and waits can be long \u2014 you can access emergency shelter through the LAHSA Adult Shelter Hotline at 1-800-548-6047. Case management is available throughout.",
+      callLabel: "Call 211",
+      what_to_expect: "A coordinated-entry assessor will ask about your situation and add you to the local housing-referral list. While you wait, ask 211 for tonight’s shelter and a daytime drop-in center.",
       bring: [
         "Photo ID (any form)",
-        "Documentation of health conditions (if available \u2014 not required to be assessed)",
+        "Documentation of health conditions (if available — not required to be assessed)",
         "Any records of prior housing or service history",
       ],
       resources: [
         {
-          name: "LAHSA Adult Shelter Hotline",
-          phone: "1-800-548-6047",
-          tel: "tel:18005486047",
-          note: "Published shelter access line for adults 18+."
+          name: "988 Suicide &amp; Crisis Lifeline",
+          phone: "988",
+          tel: "tel:988",
+          note: "Behavioral-health crisis support + SOAR disability-benefit help tied to housing."
         },
         {
-          name: "LAHSA CES Information Line",
-          phone: "(213) 225-6581",
-          tel: "tel:2132256581",
-          note: "CES info, Mon\u2013Fri 7:30am\u20134:30pm."
-        },
-        {
-          name: "LA County 211",
+          name: "United Way 211",
           phone: "211",
           tel: "tel:211",
-          note: "24/7 multilingual front door for CES screening."
+          note: "Coordinated entry + shelter while you wait."
         },
       ],
-      extra_note: "\ud83d\udccb Qualifying conditions include physical, mental health, or substance use disorders that substantially affect daily functioning. You don't need a formal diagnosis to be assessed.",
       confidence: {
-        level: "research",
-        note: "Numbers from lahsa.org/ces and 211la.org. CES Survey replaced VI-SPDAT in LA's adult system. Last reviewed May 2026.",
-        lastChecked: "May 2026"
+        level: "unverified",
+        note: "AI-researched from public sources — not locally phone-verified. Call 211 to confirm the current local provider. Last researched June 14, 2026.",
+        lastChecked: "June 14, 2026"
       }
     },
 
     result_adult: {
       label: "Single Adults Pathway",
       badgeClass: "badge-adult",
-      badgeIcon: "\ud83d\udcde",
-      headline: "Here's where to go for emergency shelter and housing help.",
-      firstAction: "Call the <strong>LAHSA Adult Shelter Hotline</strong> at <strong>1-800-548-6047</strong>. Or walk in to <strong>The Midnight Mission</strong> at 601 S. San Pedro St (Skid Row), Los Angeles 90014. Call <strong>211</strong> 24/7 for any after-hours need.",
-      callNumber: "tel:18005486047",
-      callLabel: "Call LAHSA: 1-800-548-6047",
-      what_to_expect: "LAHSA's hotline can refer you to emergency shelter, A Bridge Home interim housing, and connect you with case management. Skid Row missions (Midnight Mission, Union Rescue Mission) accept walk-ins. Most shelters do intake in the late afternoon or evening \u2014 call to confirm.",
+      badgeIcon: "📞",
+      headline: "Start with tonight’s shelter, then the housing list.",
+      firstAction: "Call or text <strong>211</strong> and say: <em>“I need a shelter bed tonight.”</em> Ask for <strong>tonight’s open beds for single adults</strong>, the nearest <strong>daytime drop-in center</strong> (showers, mail, case management), and a <strong>free meal site</strong>. 211 is multilingual and 24/7.",
+      callNumber: "tel:211",
+      callLabel: "Call 211",
+      what_to_expect: "211 has the current shelter-bed picture for your area, which changes daily. Ask them to also start a coordinated-entry assessment so you’re working toward housing, not just tonight.",
       bring: [
         "Photo ID (helpful but not always required)",
         "Social security card or number (if available)",
@@ -836,30 +812,24 @@
       ],
       resources: [
         {
-          name: "The Midnight Mission (Skid Row)",
-          phone: "(213) 624-9258",
-          tel: "tel:2136249258",
-          note: "601 S. San Pedro St \u2014 services, shelter, recovery."
-        },
-        {
-          name: "Union Rescue Mission (Skid Row)",
-          phone: "(213) 347-6300",
-          tel: "tel:2133476300",
-          note: "545 S. San Pedro St \u2014 main switchboard for shelter and programs."
-        },
-        {
-          name: "LA County 211",
-          phone: "211",
+          name: "Find a free clinic (FQHC)",
+          phone: "Ask 211",
           tel: "tel:211",
-          note: "Call or text 211 (or 800-339-6993). 24/7."
+          note: "Federally Qualified Health Centers treat everyone regardless of ability to pay."
+        },
+        {
+          name: "988 Suicide &amp; Crisis Lifeline",
+          phone: "988",
+          tel: "tel:988",
+          note: "24/7 mental-health support."
         },
       ],
       confidence: {
-        level: "research",
-        note: "Numbers sourced from lahsa.org, midnightmission.org, urm.org, and 211la.org. Last reviewed May 2026.",
-        lastChecked: "May 2026"
+        level: "unverified",
+        note: "AI-researched from public sources — not locally phone-verified. Call 211 to confirm the current local provider. Last researched June 14, 2026.",
+        lastChecked: "June 14, 2026"
       }
-    }
+    },
 
   }; // end PATHWAYS
 

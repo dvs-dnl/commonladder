@@ -472,7 +472,8 @@
   <strong>Need help right now?</strong>
   <a href="tel:211">Call 211</a><span class="crisis-bar__sep">·</span>
   <a href="sms:741741?body=HOME">Text HOME to 741741</a><span class="crisis-bar__sep">·</span>
-  <a href="tel:988">988 Suicide &amp; Crisis</a>
+  <a href="tel:988">988 Suicide &amp; Crisis</a><span class="crisis-bar__sep">·</span>
+  <a href="tel:18007997233">DV 1-800-799-7233</a>
 </div>
 
 <nav class="nav" aria-label="Primary">
@@ -512,6 +513,8 @@
   </svg>
   <span>common<span class="cl-home__rung">ladder</span></span>
 </a>
+
+<div role="note" style="background:#ffedd5;border:1px solid #9a3412;color:#6b2710;border-radius:10px;padding:14px 18px;margin:0 auto 18px;max-width:680px;font-size:.9rem;line-height:1.5;"><strong style="color:#9a3412;">AI-researched, not locally verified.</strong> Common Ladder is based in Arizona. We built this guide from public sources but don’t yet verify these listings by phone the way we do our Arizona tools. Use it to learn <em>what to ask for</em>, then <strong>call <a href="tel:211" style="color:#9a3412;">211</a></strong> for the current local provider. Last researched <time datetime="2026-06-14">June 14, 2026</time>. Wrong info? <a href="mailto:corrections.commonladder@gmail.com?subject=Resource%20update:%20Salt%20Lake%20City%20&%20County" style="color:#9a3412;">Tell us</a>.</div>
 
 <!-- App shell — all screens rendered by JS into here -->
 <div id="app"></div>
@@ -651,29 +654,23 @@
      Keep firstAction to one clear sentence + phone number.
      resources: 3 is ideal; 2 minimum; 4 maximum.
   ═══════════════════════════════════════════════════════════ */
-  var PATHWAYS = {
+    var PATHWAYS = {
 
     result_veterans: {
       label: "Veterans Pathway",
       badgeClass: "badge-veterans",
-      badgeIcon: "\ud83c\udf96",
-      headline: "There's a dedicated system built for you.",
-      firstAction: "Call <strong>Volunteers of America Utah SSVF</strong> at <strong>(801) 689-1516</strong> \u2014 Supportive Services for Veteran Families with rapid rehousing and prevention. M\u2013F 8:30am\u20134:30pm. Or call <strong>George E. Wahlen VA Salt Lake City Healthcare</strong> via the National Call Center at <strong>1-877-4AID-VET</strong>.",
-      callNumber: "tel:8016891516",
-      callLabel: "Call VOA Utah SSVF: (801) 689-1516",
-      what_to_expect: "George E. Wahlen VA Salt Lake City Healthcare System (500 Foothill Dr) provides HUD-VASH and HCHV. VOA Utah is the lead local SSVF grantee. The Salt Lake County Coordinated Entry Triage Line at (801) 990-9999 also routes veterans to appropriate housing.",
+      badgeIcon: "🎖",
+      headline: "There's a dedicated system built for veterans.",
+      firstAction: "Call <strong>211</strong> — free, 24/7 — and say: <em>“I’m a veteran and I’m homeless or about to be.”</em> Ask to be connected to the <strong>VA’s Health Care for Homeless Veterans (HCHV)</strong> program and your local <strong>coordinated-entry assessment</strong>. Veterans qualify for both VA housing (HUD-VASH) and the local Continuum of Care at the same time.",
+      callNumber: "tel:211",
+      callLabel: "Call 211",
+      what_to_expect: "211 will route you to the nearest VA homeless-program coordinator and your local CoC. The National Call Center for Homeless Veterans is available 24/7 anywhere in the U.S. if you can’t reach a local office.",
       bring: [
-        "DD-214 discharge papers (if you have them \u2014 not required to call)",
+        "DD-214 discharge papers (if you have them — not required to call)",
         "Photo ID (if available)",
         "Any VA documentation you have",
       ],
       resources: [
-        {
-          name: "Salt Lake County CES Triage",
-          phone: "(801) 990-9999",
-          tel: "tel:8019909999",
-          note: "Single point of entry for shelter & housing assessment. 8am\u20135pm."
-        },
         {
           name: "National Call Center for Homeless Veterans",
           phone: "1-877-424-3838",
@@ -684,151 +681,130 @@
           name: "Veterans Crisis Line",
           phone: "988",
           tel: "tel:988",
-          note: "Press 1 for VA crisis line."
+          note: "Press 1 for the VA crisis line."
         },
       ],
       confidence: {
-        level: "research",
-        note: "Numbers from va.gov/salt-lake-city-health-care, voaut.org. Last reviewed May 2026.",
-        lastChecked: "May 2026"
+        level: "unverified",
+        note: "AI-researched from public sources — not locally phone-verified. Call 211 to confirm the current local provider. Last researched June 14, 2026.",
+        lastChecked: "June 14, 2026"
       }
     },
 
     result_youth: {
       label: "Youth Pathway",
       badgeClass: "badge-youth",
-      badgeIcon: "\ud83c\udf31",
-      headline: "VOA Utah Youth Resource Center serves ages 15\u201322.",
-      firstAction: "Call <strong>VOA Utah Youth Resource Center</strong> at <strong>(801) 364-0744</strong> \u2014 drop-in + emergency shelter, ages 15\u201322. 888 S 400 W, Salt Lake City. Intake 8:30am\u20136pm.",
-      callNumber: "tel:8013640744",
-      callLabel: "Call VOA Youth: (801) 364-0744",
-      what_to_expect: "VOA Utah's Youth Resource Center is the central youth provider. Family Promise Salt Lake provides interfaith shelter and case management for children & families. Christmas Box International runs the Transitioning to Adult Living program for foster youth ages 14\u201322 facing homelessness.",
+      badgeIcon: "🌱",
+      headline: "If you’re 24 or under, there’s a youth-specific path.",
+      firstAction: "Call or text <strong>211</strong> and say: <em>“I’m 24 or younger and I need a safe place to stay.”</em> Ask for the <strong>youth emergency shelter</strong> and the <strong>runaway &amp; homeless youth (RHY) program</strong> in your area.",
+      callNumber: "tel:211",
+      callLabel: "Call 211",
+      what_to_expect: "211 routes you to the nearest youth shelter or drop-in center. The national backstops below are always available, day or night.",
       bring: [
-        "Photo ID (helpful \u2014 not required for drop-in)",
+        "Photo ID (helpful — not required for crisis services)",
         "Anything important you can carry",
-        "Nothing required to walk in",
+        "Nothing is required to call",
       ],
       resources: [
         {
-          name: "Family Promise Salt Lake",
-          phone: "(801) 961-8622",
-          tel: "tel:8019618622",
-          note: "814 W 800 S. Interfaith shelter for children & families."
+          name: "Safe Place",
+          phone: "Text SAFE + your location to 44357",
+          tel: "sms:44357?body=SAFE",
+          note: "Or walk into any QuikTrip and ask staff to call for you."
         },
         {
-          name: "Christmas Box International",
-          phone: "(801) 747-2201",
-          tel: "tel:8017472201",
-          note: "Foster youth ages 14\u201322, transitioning to adult living."
-        },
-        {
-          name: "Utah 211",
-          phone: "211",
-          tel: "tel:211",
-          note: "Or text 801-845-2211. 24/7."
+          name: "National Runaway Safeline",
+          phone: "1-800-786-2929",
+          tel: "tel:18007862929",
+          note: "24/7, free, confidential."
         },
       ],
-      extra_note: "\u26a0\ufe0f Under 18? VOA Youth Resource Center is for you \u2014 drop-in M\u2013F 8:30am\u20136pm.",
       confidence: {
-        level: "research",
-        note: "Numbers from voaut.org, familypromisesaltlake.org, thechristmasbox.org. Last reviewed May 2026.",
-        lastChecked: "May 2026"
+        level: "unverified",
+        note: "AI-researched from public sources — not locally phone-verified. Call 211 to confirm the current local provider. Last researched June 14, 2026.",
+        lastChecked: "June 14, 2026"
       }
     },
 
     result_families: {
       label: "Families Pathway",
       badgeClass: "badge-families",
-      badgeIcon: "\ud83c\udfe0",
-      headline: "The Road Home Midvale Family Resource Center is the main family shelter.",
-      firstAction: "Call <strong>The Road Home Midvale Family Resource Center</strong> at <strong>(801) 569-1201</strong> \u2014 529 W 9th Ave, Midvale. Salt Lake County's main family emergency shelter. For DV crisis, YWCA Utah 24-hr line: <strong>(801) 537-8600</strong>.",
-      callNumber: "tel:8015691201",
-      callLabel: "Call Midvale FRC: (801) 569-1201",
-      what_to_expect: "The Road Home operates the Midvale Family Resource Center. YWCA Utah provides DV-focused emergency shelter, transitional housing, and family services at 310 E 300 S, SLC. The Family Support Center runs a crisis nursery and family stabilization across multiple Salt Lake County sites.",
+      badgeIcon: "🏠",
+      headline: "Families are kept together in the shelter system.",
+      firstAction: "Call or text <strong>211</strong> and say: <em>“I have my kids with me and we need shelter tonight.”</em> Ask for <strong>family emergency shelter</strong> and the <strong>coordinated-entry assessment</strong> for rapid re-housing.",
+      callNumber: "tel:211",
+      callLabel: "Call 211",
+      what_to_expect: "211 routes you to family shelter and the local coordinated-entry system. If you are fleeing domestic violence, use the confidential hotline below instead — DV shelter is separate and won’t list your location.",
       bring: [
         "Photo ID for adults (if available)",
-        "Birth certificates for children (helpful but not always required)",
+        "Birth certificates for children (helpful, not always required)",
         "Documentation of income or benefits (if available)",
-        "Social security cards (if you have them)",
       ],
       resources: [
         {
-          name: "YWCA Utah (24-hr DV crisis)",
-          phone: "(801) 537-8600",
-          tel: "tel:8015378600",
-          note: "Or 1-855-992-2752. DV shelter, transitional housing."
+          name: "National Domestic Violence Hotline",
+          phone: "1-800-799-7233",
+          tel: "tel:18007997233",
+          note: "24/7, confidential. Text START to 88788. Connects you to a local confidential DV shelter."
         },
         {
-          name: "The Family Support Center",
-          phone: "(801) 955-9110",
-          tel: "tel:8019559110",
-          note: "Crisis nursery + family stabilization, multiple SL County sites."
-        },
-        {
-          name: "Utah 211",
+          name: "United Way 211",
           phone: "211",
           tel: "tel:211",
-          note: "Or text 801-845-2211."
+          note: "Family shelter + coordinated entry."
         },
       ],
       confidence: {
-        level: "research",
-        note: "Numbers from theroadhome.org, ywcautah.org, familysupportcenter.org. Last reviewed May 2026.",
-        lastChecked: "May 2026"
+        level: "unverified",
+        note: "AI-researched from public sources — not locally phone-verified. Call 211 to confirm the current local provider. Last researched June 14, 2026.",
+        lastChecked: "June 14, 2026"
       }
     },
 
     result_chronic: {
       label: "Chronic Homelessness Pathway",
       badgeClass: "badge-chronic",
-      badgeIcon: "\ud83d\udd11",
-      headline: "Salt Lake County Coordinated Entry Triage is the chronic pathway.",
-      firstAction: "Call the <strong>Salt Lake County Coordinated Entry / Triage Line</strong> at <strong>(801) 990-9999</strong> \u2014 single point of entry for shelter & housing assessment. 8am\u20135pm. Operated through Salt Lake Valley Coalition to End Homelessness (SLVCEH).",
-      callNumber: "tel:8019909999",
-      callLabel: "Call CES Triage: (801) 990-9999",
-      what_to_expect: "The system uses three Homeless Resource Centers (HRCs): Geraldine E. King (women, VOA-operated), Gail Miller (co-ed, Road Home), and Pamela Atkinson (men, Road Home). The Road Home (1415 S Main St) is the main operator. The INN Between provides medical respite and hospice for unhoused adults. Catholic Community Services runs Weigand Resource Center day services.",
+      badgeIcon: "🔑",
+      headline: "The housing list starts with one assessment.",
+      firstAction: "Call or text <strong>211</strong> and say: <em>“I’ve been homeless a long time and I want to get on the housing list.”</em> Ask for the <strong>coordinated-entry assessment</strong> — in this system, permanent supportive housing is reached by being assessed and placed on the community housing-referral list. The assessment is the door; there is no separate number.",
+      callNumber: "tel:211",
+      callLabel: "Call 211",
+      what_to_expect: "A coordinated-entry assessor will ask about your situation and add you to the local housing-referral list. While you wait, ask 211 for tonight’s shelter and a daytime drop-in center.",
       bring: [
         "Photo ID (any form)",
-        "Documentation of health conditions (if available \u2014 not required to be assessed)",
+        "Documentation of health conditions (if available — not required to be assessed)",
         "Any records of prior housing or service history",
       ],
       resources: [
         {
-          name: "The Road Home (main)",
-          phone: "(801) 359-4142",
-          tel: "tel:8013594142",
-          note: "PSH, RRH, HRC operator. 1415 S Main St."
+          name: "988 Suicide &amp; Crisis Lifeline",
+          phone: "988",
+          tel: "tel:988",
+          note: "Behavioral-health crisis support + SOAR disability-benefit help tied to housing."
         },
         {
-          name: "The INN Between",
-          phone: "(801) 410-8314",
-          tel: "tel:8014108314",
-          note: "1216 E 1300 S. Medical respite & hospice for unhoused adults."
-        },
-        {
-          name: "Catholic Community Services \u2014 Weigand RC",
-          phone: "(801) 977-9119",
-          tel: "tel:8019779119",
-          note: "437 W 200 S. Day services, meals, mailroom."
+          name: "United Way 211",
+          phone: "211",
+          tel: "tel:211",
+          note: "Coordinated entry + shelter while you wait."
         },
       ],
-      extra_note: "\ud83d\udccb Qualifying conditions include physical, mental health, or substance use disorders that substantially affect daily functioning. You don't need a formal diagnosis to be assessed.",
       confidence: {
-        level: "research",
-        note: "Numbers from saltlakecounty.gov, theroadhome.org, tibhospice.org, ccsutah.org. Last reviewed May 2026.",
-        lastChecked: "May 2026"
+        level: "unverified",
+        note: "AI-researched from public sources — not locally phone-verified. Call 211 to confirm the current local provider. Last researched June 14, 2026.",
+        lastChecked: "June 14, 2026"
       }
     },
 
     result_adult: {
       label: "Single Adults Pathway",
       badgeClass: "badge-adult",
-      badgeIcon: "\ud83d\udcde",
-      headline: "Three Homeless Resource Centers serve single adults.",
-      firstAction: "Call the <strong>Salt Lake County CES Triage</strong> at <strong>(801) 990-9999</strong> for routing to one of the three HRCs: Geraldine E. King Women's RC (131 E 700 S, 200 beds), Gail Miller RC (242 W Paramount Ave, co-ed, 200 beds), or Pamela Atkinson Men's RC (3380 S 1000 W, South SLC, 300 beds).",
-      callNumber: "tel:8019909999",
-      callLabel: "Call CES Triage: (801) 990-9999",
-      what_to_expect: "The 3-HRC system replaced the downtown Road Home shelter in 2019. King is women-only (VOA-Utah operated). Miller is co-ed (Road Home). Atkinson is men-only (Road Home). Catholic Community Services Weigand provides day services. Utah 211 is statewide 24/7.",
+      badgeIcon: "📞",
+      headline: "Start with tonight’s shelter, then the housing list.",
+      firstAction: "Call or text <strong>211</strong> and say: <em>“I need a shelter bed tonight.”</em> Ask for <strong>tonight’s open beds for single adults</strong>, the nearest <strong>daytime drop-in center</strong> (showers, mail, case management), and a <strong>free meal site</strong>. 211 is multilingual and 24/7.",
+      callNumber: "tel:211",
+      callLabel: "Call 211",
+      what_to_expect: "211 has the current shelter-bed picture for your area, which changes daily. Ask them to also start a coordinated-entry assessment so you’re working toward housing, not just tonight.",
       bring: [
         "Photo ID (helpful but not always required)",
         "Social security card or number (if available)",
@@ -836,30 +812,24 @@
       ],
       resources: [
         {
-          name: "Gail Miller Resource Center (co-ed)",
-          phone: "(801) 456-5900",
-          tel: "tel:8014565900",
-          note: "242 W Paramount Ave. 200 beds, co-ed adults."
-        },
-        {
-          name: "Pamela Atkinson Resource Center (men)",
-          phone: "(801) 359-4142",
-          tel: "tel:8013594142",
-          note: "3380 S 1000 W. 300 beds. Road Home main line."
-        },
-        {
-          name: "Utah 211",
-          phone: "211",
+          name: "Find a free clinic (FQHC)",
+          phone: "Ask 211",
           tel: "tel:211",
-          note: "Or text 801-845-2211. 24/7."
+          note: "Federally Qualified Health Centers treat everyone regardless of ability to pay."
+        },
+        {
+          name: "988 Suicide &amp; Crisis Lifeline",
+          phone: "988",
+          tel: "tel:988",
+          note: "24/7 mental-health support."
         },
       ],
       confidence: {
-        level: "research",
-        note: "Numbers from theroadhome.org/resourcecenter, voaut.org, ccsutah.org. Last reviewed May 2026.",
-        lastChecked: "May 2026"
+        level: "unverified",
+        note: "AI-researched from public sources — not locally phone-verified. Call 211 to confirm the current local provider. Last researched June 14, 2026.",
+        lastChecked: "June 14, 2026"
       }
-    }
+    },
 
   }; // end PATHWAYS
 

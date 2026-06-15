@@ -472,7 +472,8 @@
   <strong>Need help right now?</strong>
   <a href="tel:211">Call 211</a><span class="crisis-bar__sep">·</span>
   <a href="sms:741741?body=HOME">Text HOME to 741741</a><span class="crisis-bar__sep">·</span>
-  <a href="tel:988">988 Suicide &amp; Crisis</a>
+  <a href="tel:988">988 Suicide &amp; Crisis</a><span class="crisis-bar__sep">·</span>
+  <a href="tel:18007997233">DV 1-800-799-7233</a>
 </div>
 
 <nav class="nav" aria-label="Primary">
@@ -512,6 +513,8 @@
   </svg>
   <span>common<span class="cl-home__rung">ladder</span></span>
 </a>
+
+<div role="note" style="background:#ffedd5;border:1px solid #9a3412;color:#6b2710;border-radius:10px;padding:14px 18px;margin:0 auto 18px;max-width:680px;font-size:.9rem;line-height:1.5;"><strong style="color:#9a3412;">AI-researched, not locally verified.</strong> Common Ladder is based in Arizona. We built this guide from public sources but don’t yet verify these listings by phone the way we do our Arizona tools. Use it to learn <em>what to ask for</em>, then <strong>call <a href="tel:211" style="color:#9a3412;">211</a></strong> for the current local provider. Last researched <time datetime="2026-06-14">June 14, 2026</time>. Wrong info? <a href="mailto:corrections.commonladder@gmail.com?subject=Resource%20update:%20Ft%20Lauderdale%20/%20Broward%20County" style="color:#9a3412;">Tell us</a>.</div>
 
 <!-- App shell — all screens rendered by JS into here -->
 <div id="app"></div>
@@ -651,34 +654,28 @@
      Keep firstAction to one clear sentence + phone number.
      resources: 3 is ideal; 2 minimum; 4 maximum.
   ═══════════════════════════════════════════════════════════ */
-  var PATHWAYS = {
+    var PATHWAYS = {
 
     result_veterans: {
       label: "Veterans Pathway",
       badgeClass: "badge-veterans",
-      badgeIcon: "\ud83c\udf96",
-      headline: "There's a dedicated system built for you.",
-      firstAction: "Call the <strong>National Call Center for Homeless Veterans</strong> at <strong>1-877-424-3838</strong> \u2014 24/7 federal SSVF/HUD-VASH gateway. Or visit <strong>William 'Bill' Kling VA Outpatient Clinic</strong> at <strong>(954) 475-5500</strong>, 9800 W Commercial Blvd, Sunrise.",
-      callNumber: "tel:18774243838",
-      callLabel: "Call 1-877-4AID-VET",
-      what_to_expect: "Kling VA Clinic (Sunrise) is Miami VA Healthcare System's Broward branch, M\u2013F 8am\u20134:30pm. Broward Outreach Center (a Miami Rescue Mission division) provides shelter and case management with locations in Pompano and Hollywood. Pompano Beach Vet Center at (954) 984-1669 offers VA readjustment counseling at 2300 W Sample Rd Ste 102.",
+      badgeIcon: "🎖",
+      headline: "There's a dedicated system built for veterans.",
+      firstAction: "Call <strong>211</strong> — free, 24/7 — and say: <em>“I’m a veteran and I’m homeless or about to be.”</em> Ask to be connected to the <strong>VA’s Health Care for Homeless Veterans (HCHV)</strong> program and your local <strong>coordinated-entry assessment</strong>. Veterans qualify for both VA housing (HUD-VASH) and the local Continuum of Care at the same time.",
+      callNumber: "tel:211",
+      callLabel: "Call 211",
+      what_to_expect: "211 will route you to the nearest VA homeless-program coordinator and your local CoC. The National Call Center for Homeless Veterans is available 24/7 anywhere in the U.S. if you can’t reach a local office.",
       bring: [
-        "DD-214 discharge papers (if you have them \u2014 not required to call)",
+        "DD-214 discharge papers (if you have them — not required to call)",
         "Photo ID (if available)",
         "Any VA documentation you have",
       ],
       resources: [
         {
-          name: "Broward Outreach Center \u2014 Pompano",
-          phone: "(954) 979-6365",
-          tel: "tel:9549796365",
-          note: "1700 Blount Rd, Pompano 33069. Veteran services."
-        },
-        {
-          name: "Pompano Beach Vet Center",
-          phone: "(954) 984-1669",
-          tel: "tel:9549841669",
-          note: "2300 W Sample Rd Ste 102. VA readjustment counseling."
+          name: "National Call Center for Homeless Veterans",
+          phone: "1-877-424-3838",
+          tel: "tel:18774243838",
+          note: "24/7. Available everywhere."
         },
         {
           name: "Veterans Crisis Line",
@@ -688,147 +685,126 @@
         },
       ],
       confidence: {
-        level: "research",
-        note: "Numbers from va.gov/miami-health-care, broward outreach center, va.gov pompano vet center. Last reviewed June 2026.",
-        lastChecked: "June 2026"
+        level: "unverified",
+        note: "AI-researched from public sources — not locally phone-verified. Call 211 to confirm the current local provider. Last researched June 14, 2026.",
+        lastChecked: "June 14, 2026"
       }
     },
 
     result_youth: {
       label: "Youth Pathway",
       badgeClass: "badge-youth",
-      badgeIcon: "\ud83c\udf31",
-      headline: "Covenant House Florida (Fort Lauderdale) is the lead youth shelter.",
-      firstAction: "Call <strong>Covenant House Florida \u2014 Fort Lauderdale</strong> at <strong>(954) 561-5559</strong> (toll-free 1-800-683-8338) \u2014 733 Breakers Ave, Fort Lauderdale 33304. 24/7 shelter & support for ages 18\u201324.",
-      callNumber: "tel:9545615559",
-      callLabel: "Call Covenant House: (954) 561-5559",
-      what_to_expect: "Covenant House Florida is the lead youth shelter in Fort Lauderdale. HANDY Inc. at 1717 N Andrews Ave serves abused/neglected/disadvantaged youth ages birth\u201325 across Broward. Children's Harbor in Pembroke Pines provides family group homes for siblings in foster care and Brown's Harbor TIL for youth 18\u201323 aging out.",
+      badgeIcon: "🌱",
+      headline: "If you’re 24 or under, there’s a youth-specific path.",
+      firstAction: "Call or text <strong>211</strong> and say: <em>“I’m 24 or younger and I need a safe place to stay.”</em> Ask for the <strong>youth emergency shelter</strong> and the <strong>runaway &amp; homeless youth (RHY) program</strong> in your area.",
+      callNumber: "tel:211",
+      callLabel: "Call 211",
+      what_to_expect: "211 routes you to the nearest youth shelter or drop-in center. The national backstops below are always available, day or night.",
       bring: [
-        "Photo ID (helpful \u2014 not required for crisis services)",
+        "Photo ID (helpful — not required for crisis services)",
         "Anything important you can carry",
-        "Nothing required for 24/7 shelter line",
+        "Nothing is required to call",
       ],
       resources: [
         {
-          name: "HANDY Inc.",
-          phone: "(954) 522-2911",
-          tel: "tel:9545222911",
-          note: "1717 N Andrews Ave. Birth\u201325, Broward."
+          name: "Safe Place",
+          phone: "Text SAFE + your location to 44357",
+          tel: "sms:44357?body=SAFE",
+          note: "Or walk into any QuikTrip and ask staff to call for you."
         },
         {
-          name: "Children's Harbor",
-          phone: "(954) 252-3072",
-          tel: "tel:9542523072",
-          note: "Foster care. Brown's Harbor TIL for ages 18\u201323."
-        },
-        {
-          name: "211 Broward",
-          phone: "211",
-          tel: "tel:211",
-          note: "Or (954) 537-0211. 24/7 hotline."
+          name: "National Runaway Safeline",
+          phone: "1-800-786-2929",
+          tel: "tel:18007862929",
+          note: "24/7, free, confidential."
         },
       ],
-      extra_note: "\u26a0\ufe0f Under 18? Call Covenant House Florida or HANDY Inc. \u2014 they will help.",
       confidence: {
-        level: "research",
-        note: "Numbers from covenanthouse.org, handyinc.org, childrensharbor.org. Last reviewed June 2026.",
-        lastChecked: "June 2026"
+        level: "unverified",
+        note: "AI-researched from public sources — not locally phone-verified. Call 211 to confirm the current local provider. Last researched June 14, 2026.",
+        lastChecked: "June 14, 2026"
       }
     },
 
     result_families: {
       label: "Families Pathway",
       badgeClass: "badge-families",
-      badgeIcon: "\ud83c\udfe0",
-      headline: "Call the BPHI Homeless Helpline for family shelter intake.",
-      firstAction: "Call the <strong>BPHI Homeless Helpline</strong> at <strong>(954) 563-4357</strong> (954-563-HELP) \u2014 primary CES intake for Broward CoC. Open 8am\u20137pm daily. Walk-ins not accepted at family shelters.",
-      callNumber: "tel:9545634357",
-      callLabel: "Call Helpline: (954) 563-4357",
-      what_to_expect: "Broward Partnership (BPHI) operates the Central Homeless Assistance Center at 920 NW 7th Ave, Fort Lauderdale \u2014 entry via Helpline only. Salvation Army of Broward County operates Red Shield Lodge and Plymouth Colony. Women in Distress at (954) 761-1133 (24-hr) is a 136-bed DV shelter with services in English/Spanish/Creole/Portuguese.",
+      badgeIcon: "🏠",
+      headline: "Families are kept together in the shelter system.",
+      firstAction: "Call or text <strong>211</strong> and say: <em>“I have my kids with me and we need shelter tonight.”</em> Ask for <strong>family emergency shelter</strong> and the <strong>coordinated-entry assessment</strong> for rapid re-housing.",
+      callNumber: "tel:211",
+      callLabel: "Call 211",
+      what_to_expect: "211 routes you to family shelter and the local coordinated-entry system. If you are fleeing domestic violence, use the confidential hotline below instead — DV shelter is separate and won’t list your location.",
       bring: [
         "Photo ID for adults (if available)",
-        "Birth certificates for children (helpful but not always required)",
+        "Birth certificates for children (helpful, not always required)",
         "Documentation of income or benefits (if available)",
-        "Social security cards (if you have them)",
       ],
       resources: [
         {
-          name: "Salvation Army of Broward County",
-          phone: "(954) 524-6991",
-          tel: "tel:9545246991",
-          note: "1445 W Broward Blvd. Family shelter intake via Helpline."
+          name: "National Domestic Violence Hotline",
+          phone: "1-800-799-7233",
+          tel: "tel:18007997233",
+          note: "24/7, confidential. Text START to 88788. Connects you to a local confidential DV shelter."
         },
         {
-          name: "Women in Distress (DV 24-hr)",
-          phone: "(954) 761-1133",
-          tel: "tel:9547611133",
-          note: "136-bed DV shelter. English/Spanish/Creole/Portuguese."
-        },
-        {
-          name: "211 Broward",
+          name: "United Way 211",
           phone: "211",
           tel: "tel:211",
-          note: "Or (954) 537-0211. 24/7."
+          note: "Family shelter + coordinated entry."
         },
       ],
       confidence: {
-        level: "research",
-        note: "Numbers from bphi.org, salvationarmyflorida.org/FortLauderdale, womenindistress.org. Last reviewed June 2026.",
-        lastChecked: "June 2026"
+        level: "unverified",
+        note: "AI-researched from public sources — not locally phone-verified. Call 211 to confirm the current local provider. Last researched June 14, 2026.",
+        lastChecked: "June 14, 2026"
       }
     },
 
     result_chronic: {
       label: "Chronic Homelessness Pathway",
       badgeClass: "badge-chronic",
-      badgeIcon: "\ud83d\udd11",
-      headline: "BPHI Homeless Helpline is the CEA access point for all subpopulations.",
-      firstAction: "Call the <strong>BPHI Homeless Helpline</strong> at <strong>(954) 563-4357</strong> \u2014 system-wide Coordinated Entry Access (CEA) point per HCoC Written Standards. Outreach is dispatched from this number.",
-      callNumber: "tel:9545634357",
-      callLabel: "Call Helpline: (954) 563-4357",
-      what_to_expect: "Broward County HIP is the lead CoC at (954) 357-6167 (admin). Broward Partnership (BPHI) is the largest comprehensive provider with 498 emergency beds, 83 scattered-site permanent housing units, and street outreach. Broward Outreach Center Pompano (1700 Blount Rd) operates the 200-bed North Homeless Assistance Center (NHAC).",
+      badgeIcon: "🔑",
+      headline: "The housing list starts with one assessment.",
+      firstAction: "Call or text <strong>211</strong> and say: <em>“I’ve been homeless a long time and I want to get on the housing list.”</em> Ask for the <strong>coordinated-entry assessment</strong> — in this system, permanent supportive housing is reached by being assessed and placed on the community housing-referral list. The assessment is the door; there is no separate number.",
+      callNumber: "tel:211",
+      callLabel: "Call 211",
+      what_to_expect: "A coordinated-entry assessor will ask about your situation and add you to the local housing-referral list. While you wait, ask 211 for tonight’s shelter and a daytime drop-in center.",
       bring: [
         "Photo ID (any form)",
-        "Documentation of health conditions (if available \u2014 not required to be assessed)",
+        "Documentation of health conditions (if available — not required to be assessed)",
         "Any records of prior housing or service history",
       ],
       resources: [
         {
-          name: "Broward County HIP (lead agency)",
-          phone: "(954) 357-6167",
-          tel: "tel:9543576167",
-          note: "CoC admin. mwright@broward.org."
+          name: "988 Suicide &amp; Crisis Lifeline",
+          phone: "988",
+          tel: "tel:988",
+          note: "Behavioral-health crisis support + SOAR disability-benefit help tied to housing."
         },
         {
-          name: "Broward Outreach Center \u2014 Pompano (NHAC)",
-          phone: "(954) 979-6365",
-          tel: "tel:9549796365",
-          note: "1700 Blount Rd. 200-bed North Homeless Assistance Center."
-        },
-        {
-          name: "211 Broward",
-          phone: "(954) 537-0211",
-          tel: "tel:9545370211",
-          note: "Or dial 211. 24/7."
+          name: "United Way 211",
+          phone: "211",
+          tel: "tel:211",
+          note: "Coordinated entry + shelter while you wait."
         },
       ],
-      extra_note: "\ud83d\udccb Qualifying conditions include physical, mental health, or substance use disorders that substantially affect daily functioning. You don't need a formal diagnosis to be assessed.",
       confidence: {
-        level: "research",
-        note: "Numbers from broward.org, bphi.org, browardoutreachcenter.com, 211-broward.org. Last reviewed June 2026.",
-        lastChecked: "June 2026"
+        level: "unverified",
+        note: "AI-researched from public sources — not locally phone-verified. Call 211 to confirm the current local provider. Last researched June 14, 2026.",
+        lastChecked: "June 14, 2026"
       }
     },
 
     result_adult: {
       label: "Single Adults Pathway",
       badgeClass: "badge-adult",
-      badgeIcon: "\ud83d\udcde",
-      headline: "All shelter access in Broward routes through the BPHI Homeless Helpline.",
-      firstAction: "Call the <strong>BPHI Homeless Helpline</strong> at <strong>(954) 563-4357</strong> \u2014 primary CES intake for single adults in Broward. Or call <strong>211 Broward</strong> at <strong>(954) 537-0211</strong> 24/7.",
-      callNumber: "tel:9545634357",
-      callLabel: "Call Helpline: (954) 563-4357",
-      what_to_expect: "BPHI Central Homeless Assistance Center (920 NW 7th Ave, Fort Lauderdale) operates single-adult emergency shelter beds \u2014 entry via Helpline only. Broward Outreach Center has locations in Pompano Beach (1700 Blount Rd) and Hollywood (2056 Scott St). Salvation Army Fort Lauderdale runs Red Shield Lodge for single-adult emergency shelter.",
+      badgeIcon: "📞",
+      headline: "Start with tonight’s shelter, then the housing list.",
+      firstAction: "Call or text <strong>211</strong> and say: <em>“I need a shelter bed tonight.”</em> Ask for <strong>tonight’s open beds for single adults</strong>, the nearest <strong>daytime drop-in center</strong> (showers, mail, case management), and a <strong>free meal site</strong>. 211 is multilingual and 24/7.",
+      callNumber: "tel:211",
+      callLabel: "Call 211",
+      what_to_expect: "211 has the current shelter-bed picture for your area, which changes daily. Ask them to also start a coordinated-entry assessment so you’re working toward housing, not just tonight.",
       bring: [
         "Photo ID (helpful but not always required)",
         "Social security card or number (if available)",
@@ -836,30 +812,24 @@
       ],
       resources: [
         {
-          name: "Broward Outreach Center \u2014 Hollywood",
-          phone: "(954) 926-7417",
-          tel: "tel:9549267417",
-          note: "2056 Scott St, Hollywood. Day shelter + emergency housing."
+          name: "Find a free clinic (FQHC)",
+          phone: "Ask 211",
+          tel: "tel:211",
+          note: "Federally Qualified Health Centers treat everyone regardless of ability to pay."
         },
         {
-          name: "Salvation Army Fort Lauderdale",
-          phone: "(954) 524-6991",
-          tel: "tel:9545246991",
-          note: "1445 W Broward Blvd. Red Shield Lodge."
-        },
-        {
-          name: "211 Broward (24/7)",
-          phone: "(954) 537-0211",
-          tel: "tel:9545370211",
-          note: "Or dial 211. 24/7."
+          name: "988 Suicide &amp; Crisis Lifeline",
+          phone: "988",
+          tel: "tel:988",
+          note: "24/7 mental-health support."
         },
       ],
       confidence: {
-        level: "research",
-        note: "Numbers from bphi.org, browardoutreachcenter.com, salvationarmyflorida.org, 211-broward.org. Last reviewed June 2026.",
-        lastChecked: "June 2026"
+        level: "unverified",
+        note: "AI-researched from public sources — not locally phone-verified. Call 211 to confirm the current local provider. Last researched June 14, 2026.",
+        lastChecked: "June 14, 2026"
       }
-    }
+    },
 
   }; // end PATHWAYS
 

@@ -472,7 +472,8 @@
   <strong>Need help right now?</strong>
   <a href="tel:211">Call 211</a><span class="crisis-bar__sep">·</span>
   <a href="sms:741741?body=HOME">Text HOME to 741741</a><span class="crisis-bar__sep">·</span>
-  <a href="tel:988">988 Suicide &amp; Crisis</a>
+  <a href="tel:988">988 Suicide &amp; Crisis</a><span class="crisis-bar__sep">·</span>
+  <a href="tel:18007997233">DV 1-800-799-7233</a>
 </div>
 
 <nav class="nav" aria-label="Primary">
@@ -512,6 +513,8 @@
   </svg>
   <span>common<span class="cl-home__rung">ladder</span></span>
 </a>
+
+<div role="note" style="background:#ffedd5;border:1px solid #9a3412;color:#6b2710;border-radius:10px;padding:14px 18px;margin:0 auto 18px;max-width:680px;font-size:.9rem;line-height:1.5;"><strong style="color:#9a3412;">AI-researched, not locally verified.</strong> Common Ladder is based in Arizona. We built this guide from public sources but don’t yet verify these listings by phone the way we do our Arizona tools. Use it to learn <em>what to ask for</em>, then <strong>call <a href="tel:211" style="color:#9a3412;">211</a></strong> for the current local provider. Last researched <time datetime="2026-06-14">June 14, 2026</time>. Wrong info? <a href="mailto:corrections.commonladder@gmail.com?subject=Resource%20update:%20Memphis%20/%20Shelby%20County" style="color:#9a3412;">Tell us</a>.</div>
 
 <!-- App shell — all screens rendered by JS into here -->
 <div id="app"></div>
@@ -651,184 +654,157 @@
      Keep firstAction to one clear sentence + phone number.
      resources: 3 is ideal; 2 minimum; 4 maximum.
   ═══════════════════════════════════════════════════════════ */
-  var PATHWAYS = {
+    var PATHWAYS = {
 
     result_veterans: {
       label: "Veterans Pathway",
       badgeClass: "badge-veterans",
-      badgeIcon: "\ud83c\udf96",
-      headline: "There's a dedicated system built for you.",
-      firstAction: "Call <strong>Memphis VA Medical Center \u2014 Homeless Veteran Care</strong> at <strong>(901) 523-8990 ext. 5661</strong> \u2014 homeless services care coordinator. M\u2013F 8am\u20132:30pm. Or call <strong>Alpha Omega Veterans Services</strong> at <strong>(901) 726-5066</strong>, 1183 Madison Ave.",
-      callNumber: "tel:9015238990",
-      callLabel: "Call Memphis VA Homeless: (901) 523-8990 x5661",
-      what_to_expect: "Memphis VAMC operates HUD-VASH and HCHV. Alpha Omega Veterans Services provides transitional/permanent housing and supportive services for homeless veterans. Catholic Charities of West Tennessee at 1325 Jefferson Ave (901-722-4700) runs SSVF \u2014 the only veteran-specific rapid rehousing/prevention program in Shelby County.",
+      badgeIcon: "🎖",
+      headline: "There's a dedicated system built for veterans.",
+      firstAction: "Call <strong>211</strong> — free, 24/7 — and say: <em>“I’m a veteran and I’m homeless or about to be.”</em> Ask to be connected to the <strong>VA’s Health Care for Homeless Veterans (HCHV)</strong> program and your local <strong>coordinated-entry assessment</strong>. Veterans qualify for both VA housing (HUD-VASH) and the local Continuum of Care at the same time.",
+      callNumber: "tel:211",
+      callLabel: "Call 211",
+      what_to_expect: "211 will route you to the nearest VA homeless-program coordinator and your local CoC. The National Call Center for Homeless Veterans is available 24/7 anywhere in the U.S. if you can’t reach a local office.",
       bring: [
-        "DD-214 discharge papers (if you have them \u2014 not required to call)",
+        "DD-214 discharge papers (if you have them — not required to call)",
         "Photo ID (if available)",
         "Any VA documentation you have",
       ],
       resources: [
         {
-          name: "Catholic Charities of West Tennessee (SSVF)",
-          phone: "(901) 722-4700",
-          tel: "tel:9017224700",
-          note: "1325 Jefferson Ave. Only Shelby County SSVF program."
-        },
-        {
           name: "National Call Center for Homeless Veterans",
           phone: "1-877-424-3838",
           tel: "tel:18774243838",
-          note: "24/7."
+          note: "24/7. Available everywhere."
         },
         {
           name: "Veterans Crisis Line",
           phone: "988",
           tel: "tel:988",
-          note: "Press 1 for VA crisis line."
+          note: "Press 1 for the VA crisis line."
         },
       ],
       confidence: {
-        level: "research",
-        note: "Numbers from va.gov/memphis-health-care, alphaomegaveterans.org, ccwtn.org. Last reviewed May 2026.",
-        lastChecked: "May 2026"
+        level: "unverified",
+        note: "AI-researched from public sources — not locally phone-verified. Call 211 to confirm the current local provider. Last researched June 14, 2026.",
+        lastChecked: "June 14, 2026"
       }
     },
 
     result_youth: {
       label: "Youth Pathway",
       badgeClass: "badge-youth",
-      badgeIcon: "\ud83c\udf31",
-      headline: "Youth Villages runs a 24-hour youth respite line.",
-      firstAction: "Call <strong>Youth Villages Runaway/Crisis Shelter</strong> at <strong>(901) 276-7233</strong> (901-276-SAFE) \u2014 24-hour respite for youth ages 13\u201317 in crisis. 1582 Poplar Ave. Or call <strong>Door of Hope Memphis</strong> at <strong>(901) 552-5331</strong>, 245 N. Bellevue Blvd.",
-      callNumber: "tel:9012767233",
-      callLabel: "Call Youth Villages: (901) 276-SAFE",
-      what_to_expect: "Youth Villages provides 24-hour youth crisis respite. Door of Hope offers housing and supportive services including for transitional-age youth. Main Youth Villages office: (901) 251-5000.",
+      badgeIcon: "🌱",
+      headline: "If you’re 24 or under, there’s a youth-specific path.",
+      firstAction: "Call or text <strong>211</strong> and say: <em>“I’m 24 or younger and I need a safe place to stay.”</em> Ask for the <strong>youth emergency shelter</strong> and the <strong>runaway &amp; homeless youth (RHY) program</strong> in your area.",
+      callNumber: "tel:211",
+      callLabel: "Call 211",
+      what_to_expect: "211 routes you to the nearest youth shelter or drop-in center. The national backstops below are always available, day or night.",
       bring: [
-        "Photo ID (helpful \u2014 not required for crisis services)",
+        "Photo ID (helpful — not required for crisis services)",
         "Anything important you can carry",
-        "Nothing required for the 24-hour line",
+        "Nothing is required to call",
       ],
       resources: [
         {
-          name: "Youth Villages (main)",
-          phone: "(901) 251-5000",
-          tel: "tel:9012515000",
-          note: "Largest youth services agency in Memphis."
+          name: "Safe Place",
+          phone: "Text SAFE + your location to 44357",
+          tel: "sms:44357?body=SAFE",
+          note: "Or walk into any QuikTrip and ask staff to call for you."
         },
         {
-          name: "Door of Hope Memphis",
-          phone: "(901) 552-5331",
-          tel: "tel:9015525331",
-          note: "245 N. Bellevue Blvd. Housing + supportive services."
-        },
-        {
-          name: "211 Mid-South (LINC)",
-          phone: "211",
-          tel: "tel:211",
-          note: "Or (901) 415-2790. United Way of the Mid-South."
+          name: "National Runaway Safeline",
+          phone: "1-800-786-2929",
+          tel: "tel:18007862929",
+          note: "24/7, free, confidential."
         },
       ],
-      extra_note: "\u26a0\ufe0f Under 18? Youth Villages 24-hour crisis respite is for you.",
       confidence: {
-        level: "research",
-        note: "Numbers from youthvillages.org, doorofhopememphis.org. Last reviewed May 2026.",
-        lastChecked: "May 2026"
+        level: "unverified",
+        note: "AI-researched from public sources — not locally phone-verified. Call 211 to confirm the current local provider. Last researched June 14, 2026.",
+        lastChecked: "June 14, 2026"
       }
     },
 
     result_families: {
       label: "Families Pathway",
       badgeClass: "badge-families",
-      badgeIcon: "\ud83c\udfe0",
-      headline: "YWCA, Memphis Union Mission, and Salvation Army serve families.",
-      firstAction: "For DV crisis call <strong>YWCA Greater Memphis 24-hr Crisis Line</strong> at <strong>(901) 725-4277</strong>. For family shelter/recovery, <strong>Salvation Army Renewal Place</strong> at <strong>(901) 543-8586</strong> \u2014 696 Jackson Ave. Up to 2-year residential for women with addiction and their children (keeps families together).",
-      callNumber: "tel:9017254277",
-      callLabel: "Call YWCA Crisis: (901) 725-4277",
-      what_to_expect: "YWCA Greater Memphis is the DV shelter (main 901-323-2211; 766 S. Highland St). Memphis Union Mission Calvary Colony Family Center at 4535 Benjestown Rd (901-357-9641) provides intact-family ministry and family residential program. Salvation Army Renewal Place keeps mothers and children together up to two years.",
+      badgeIcon: "🏠",
+      headline: "Families are kept together in the shelter system.",
+      firstAction: "Call or text <strong>211</strong> and say: <em>“I have my kids with me and we need shelter tonight.”</em> Ask for <strong>family emergency shelter</strong> and the <strong>coordinated-entry assessment</strong> for rapid re-housing.",
+      callNumber: "tel:211",
+      callLabel: "Call 211",
+      what_to_expect: "211 routes you to family shelter and the local coordinated-entry system. If you are fleeing domestic violence, use the confidential hotline below instead — DV shelter is separate and won’t list your location.",
       bring: [
         "Photo ID for adults (if available)",
-        "Birth certificates for children (helpful but not always required)",
+        "Birth certificates for children (helpful, not always required)",
         "Documentation of income or benefits (if available)",
-        "Social security cards (if you have them)",
       ],
       resources: [
         {
-          name: "Memphis Union Mission \u2014 Calvary Colony Family Center",
-          phone: "(901) 357-9641",
-          tel: "tel:9013579641",
-          note: "4535 Benjestown Rd. Intact-family ministry, family residential program."
+          name: "National Domestic Violence Hotline",
+          phone: "1-800-799-7233",
+          tel: "tel:18007997233",
+          note: "24/7, confidential. Text START to 88788. Connects you to a local confidential DV shelter."
         },
         {
-          name: "YWCA Greater Memphis \u2014 Main",
-          phone: "(901) 323-2211",
-          tel: "tel:9013232211",
-          note: "766 S. Highland St."
-        },
-        {
-          name: "211 Mid-South (LINC)",
+          name: "United Way 211",
           phone: "211",
           tel: "tel:211",
-          note: "Or (901) 415-2790."
+          note: "Family shelter + coordinated entry."
         },
       ],
       confidence: {
-        level: "research",
-        note: "Numbers from memphisywca.org, memphisunionmission.org, southernusa.salvationarmy.org. Last reviewed May 2026.",
-        lastChecked: "May 2026"
+        level: "unverified",
+        note: "AI-researched from public sources — not locally phone-verified. Call 211 to confirm the current local provider. Last researched June 14, 2026.",
+        lastChecked: "June 14, 2026"
       }
     },
 
     result_chronic: {
       label: "Chronic Homelessness Pathway",
       badgeClass: "badge-chronic",
-      badgeIcon: "\ud83d\udd11",
-      headline: "Hospitality Hub of Memphis is the single point of entry.",
-      firstAction: "Call or go to <strong>Hospitality Hub of Memphis</strong> at <strong>(901) 730-1736</strong> \u2014 590 Washington Ave. Regional single point of entry for homeless adults: coordinated entry, ID replacement, mail, case management, day services.",
-      callNumber: "tel:9017301736",
-      callLabel: "Call Hospitality Hub: (901) 730-1736",
-      what_to_expect: "Community Alliance for the Homeless (CAFTH) is the OH-500 CoC lead at (901) 527-1302. The Hub is the CoC's single point of entry for adults entering coordinated entry assessment. Door of Hope at (901) 552-5331 offers permanent supportive housing for chronically homeless adults.",
+      badgeIcon: "🔑",
+      headline: "The housing list starts with one assessment.",
+      firstAction: "Call or text <strong>211</strong> and say: <em>“I’ve been homeless a long time and I want to get on the housing list.”</em> Ask for the <strong>coordinated-entry assessment</strong> — in this system, permanent supportive housing is reached by being assessed and placed on the community housing-referral list. The assessment is the door; there is no separate number.",
+      callNumber: "tel:211",
+      callLabel: "Call 211",
+      what_to_expect: "A coordinated-entry assessor will ask about your situation and add you to the local housing-referral list. While you wait, ask 211 for tonight’s shelter and a daytime drop-in center.",
       bring: [
         "Photo ID (any form)",
-        "Documentation of health conditions (if available \u2014 not required to be assessed)",
+        "Documentation of health conditions (if available — not required to be assessed)",
         "Any records of prior housing or service history",
       ],
       resources: [
         {
-          name: "Community Alliance for the Homeless (CoC lead)",
-          phone: "(901) 527-1302",
-          tel: "tel:9015271302",
-          note: "2670 Union Ave Ext, Ste 700. Planning + coordination."
+          name: "988 Suicide &amp; Crisis Lifeline",
+          phone: "988",
+          tel: "tel:988",
+          note: "Behavioral-health crisis support + SOAR disability-benefit help tied to housing."
         },
         {
-          name: "Door of Hope (PSH)",
-          phone: "(901) 552-5331",
-          tel: "tel:9015525331",
-          note: "245 N. Bellevue. PSH for chronically homeless adults."
-        },
-        {
-          name: "211 Mid-South (LINC)",
+          name: "United Way 211",
           phone: "211",
           tel: "tel:211",
-          note: "Or (901) 415-2790. Toll-free: 1-855-354-4211."
+          note: "Coordinated entry + shelter while you wait."
         },
       ],
-      extra_note: "\ud83d\udccb Qualifying conditions include physical, mental health, or substance use disorders that substantially affect daily functioning. You don't need a formal diagnosis to be assessed.",
       confidence: {
-        level: "research",
-        note: "Numbers from hospitalityhub.org, cafth.org, doorofhopememphis.org. Last reviewed May 2026.",
-        lastChecked: "May 2026"
+        level: "unverified",
+        note: "AI-researched from public sources — not locally phone-verified. Call 211 to confirm the current local provider. Last researched June 14, 2026.",
+        lastChecked: "June 14, 2026"
       }
     },
 
     result_adult: {
       label: "Single Adults Pathway",
       badgeClass: "badge-adult",
-      badgeIcon: "\ud83d\udcde",
-      headline: "Memphis Union Mission is the largest single-adult shelter.",
-      firstAction: "Walk in or call <strong>Memphis Union Mission</strong> at <strong>(901) 526-8403</strong> \u2014 383 Poplar Ave. Largest emergency shelter in Memphis; men's emergency shelter open 24/7.",
-      callNumber: "tel:9015268403",
-      callLabel: "Call MUM: (901) 526-8403",
-      what_to_expect: "Memphis Union Mission is the largest shelter (main office 901-526-8434). Calvary Rescue Mission at 960 S. 3rd St (901-775-2570) is a faith-based men's shelter with intake daily 4\u20137pm. Hospitality Hub provides day services and CES intake.",
+      badgeIcon: "📞",
+      headline: "Start with tonight’s shelter, then the housing list.",
+      firstAction: "Call or text <strong>211</strong> and say: <em>“I need a shelter bed tonight.”</em> Ask for <strong>tonight’s open beds for single adults</strong>, the nearest <strong>daytime drop-in center</strong> (showers, mail, case management), and a <strong>free meal site</strong>. 211 is multilingual and 24/7.",
+      callNumber: "tel:211",
+      callLabel: "Call 211",
+      what_to_expect: "211 has the current shelter-bed picture for your area, which changes daily. Ask them to also start a coordinated-entry assessment so you’re working toward housing, not just tonight.",
       bring: [
         "Photo ID (helpful but not always required)",
         "Social security card or number (if available)",
@@ -836,30 +812,24 @@
       ],
       resources: [
         {
-          name: "Calvary Rescue Mission",
-          phone: "(901) 775-2570",
-          tel: "tel:9017752570",
-          note: "960 S. 3rd St. Faith-based men's shelter. Intake 4\u20137pm."
-        },
-        {
-          name: "Salvation Army Memphis Renewal Place",
-          phone: "(901) 543-8586",
-          tel: "tel:9015438586",
-          note: "Women + children residential recovery program."
-        },
-        {
-          name: "211 Mid-South",
-          phone: "211",
+          name: "Find a free clinic (FQHC)",
+          phone: "Ask 211",
           tel: "tel:211",
-          note: "Or (901) 415-2790."
+          note: "Federally Qualified Health Centers treat everyone regardless of ability to pay."
+        },
+        {
+          name: "988 Suicide &amp; Crisis Lifeline",
+          phone: "988",
+          tel: "tel:988",
+          note: "24/7 mental-health support."
         },
       ],
       confidence: {
-        level: "research",
-        note: "Numbers from memphisunionmission.org, calvaryrescue.com, hospitalityhub.org. Last reviewed May 2026.",
-        lastChecked: "May 2026"
+        level: "unverified",
+        note: "AI-researched from public sources — not locally phone-verified. Call 211 to confirm the current local provider. Last researched June 14, 2026.",
+        lastChecked: "June 14, 2026"
       }
-    }
+    },
 
   }; // end PATHWAYS
 

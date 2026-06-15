@@ -310,6 +310,11 @@ html,body{overflow-x:hidden;max-width:100%;}
 .nav__cta{background:#E8911A;color:#1C3D6E!important;padding:.4rem .85rem;border-radius:6px;font-weight:600}
 .nav__cta--ladder{background:transparent;border:1px solid rgba(255,255,255,.55);color:#fff!important}
 .nav__exit{border:1px solid rgba(255,255,255,.4);padding:.3rem .6rem;border-radius:6px;opacity:.85}
+
+    .stub-banner{background:var(--cl-unverified-bg);border:1px solid var(--cl-unverified);border-radius:var(--cl-radius);padding:14px 18px;font-size:.88rem;line-height:1.5;color:#6b2710;}
+    .stub-banner strong{color:var(--cl-unverified);}
+    .ask-for{background:var(--cl-btn-yes-lt);border-left:3px solid var(--cl-btn-yes);border-radius:6px;padding:12px 14px;margin-bottom:16px;font-size:.9rem;line-height:1.55;}
+    .ask-for strong{color:var(--cl-btn-yes);}
   </style>
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
   <link rel="alternate icon" type="image/png" href="/favicon-32.png">
@@ -334,7 +339,8 @@ html,body{overflow-x:hidden;max-width:100%;}
   <strong>Need help right now?</strong>
   <a href="tel:211">Call 211</a><span class="crisis-bar__sep">·</span>
   <a href="sms:741741?body=HOME">Text HOME to 741741</a><span class="crisis-bar__sep">·</span>
-  <a href="tel:988">988 Suicide &amp; Crisis</a>
+  <a href="tel:988">988 Suicide &amp; Crisis</a><span class="crisis-bar__sep">·</span>
+  <a href="tel:18007997233">DV 1-800-799-7233</a>
 </div>
 <nav class="nav" aria-label="Primary">
   <div class="nav__inner">
@@ -359,12 +365,15 @@ html,body{overflow-x:hidden;max-width:100%;}
 
   <div class="app" id="main" role="main">
 
-    <!-- County badge -->
+
+    <div class="stub-banner" role="note"><strong>AI-researched, not locally verified.</strong> Common Ladder is based in Arizona. We built this guide from public sources but don't yet verify these listings by phone the way we do our Arizona tools. Use it to learn <em>what to ask for</em>, then <strong>call <a href="tel:211">211</a></strong> for the current local provider. If a number here is wrong, <a href="mailto:corrections.commonladder@gmail.com?subject=Resource%20update:%20Wichita%20/%20Sedgwick%20County">tell us</a>.</div>
+
+        <!-- County badge -->
     <div class="county-badge">
       <div class="coc-label">Resource Navigator</div>
       <h1>Find Help in Wichita / Sedgwick County</h1>
       <div class="coc-id">Sedgwick County, KS &mdash; KS-502 (Wichita/Sedgwick County Continuum of Care)</div>
-      <p class="intro">Answer 4 quick questions and we'll point you to the right door. All services are free.</p>
+      <p class="intro">Answer 4 quick questions and we'll tell you exactly what to ask 211 for. All services are free.</p>
     </div>
 
     <!-- Progress dots -->
@@ -386,332 +395,71 @@ html,body{overflow-x:hidden;max-width:100%;}
     </div>
 
     <!-- ── RESULT: Veterans ── -->
-    <div class="result-card" id="result_veterans" role="region" aria-label="Veteran services">
+    <div class="result-card" id="result_veterans" role="region" aria-label="veterans services">
       <div class="result-header">
         <div>
-          <div class="result-title">🎖️ Veteran Homeless Services</div>
+          <div class="result-title">🎖 Veteran Homeless Services</div>
           <div class="result-subtitle">Wichita / Sedgwick County, KS</div>
         </div>
-        <span class="confidence-badge verified">Verified</span>
+        <span class="confidence-badge unverified">Confirm by phone</span>
       </div>
       <div class="result-body">
-
-        <div class="resource-block">
-          <div class="resource-name">Robert J. Dole VA Medical Center — Homeless Programs</div>
-          <div class="resource-detail">
-            5500 E. Kellogg Dr., Wichita, KS 67218<br>
-            Main: <a href="tel:3166852221">(316) 685-2221</a> — ask for the Homeless Veteran Care Coordinator or Health Care for Homeless Veterans (HCHV)<br>
-            Services: outreach, HUD-VASH vouchers, case management, VA healthcare enrollment, and
-            transitional housing referrals for veterans who are homeless or at risk. Social work staff
-            available Mon–Fri.
-          </div>
-        </div>
-
-        <div class="divider"></div>
-
-        <div class="resource-block">
-          <div class="resource-name">United Way of the Plains 211 — Coordinated Entry</div>
-          <div class="resource-detail">
-            Call <a href="tel:211">211</a> or text your ZIP code to <strong>898-211</strong><br>
-            Veterans are eligible for both VA housing programs <em>and</em> the local Continuum of Care
-            (KS-502). 211 connects you to the Coalition to End Homelessness coordinated-entry assessment
-            so you can be screened for both at once. Free, confidential, 24/7.
-          </div>
-        </div>
-
-        <div class="divider"></div>
-
-        <div class="resource-block">
-          <div class="resource-name">Veterans Crisis Line</div>
-          <div class="resource-detail">
-            Call <a href="tel:988">988</a> and press <strong>1</strong> — free, confidential, 24/7.<br>
-            National Call Center for Homeless Veterans: <a href="tel:18774243838">1-877-424-3838</a>
-          </div>
-        </div>
-
-        <div class="checked-note">
-          Confidence: <strong>Verified</strong> — sourced from va.gov/wichita-health-care, wichita.gov,
-          and unitedwayplains.org. Phone numbers verified from .gov/.org sources. Last checked: June 2026.
-        </div>
+        <div class="ask-for"><strong>Call <a href="tel:211">211</a> (or text your ZIP to 898-211)</strong> and say: <em>"I'm a veteran and I'm homeless or about to be."</em> Ask to be connected to the <strong>VA's Health Care for Homeless Veterans (HCHV)</strong> program and the local <strong>coordinated-entry assessment</strong> — veterans qualify for both VA housing (HUD-VASH) and the local Continuum of Care at once.</div><div class="resource-block"><div class="resource-name">National backstops (always current)</div><div class="resource-detail">Veterans Crisis Line: call <a href="tel:988">988</a> then press <strong>1</strong> — 24/7.<br>National Call Center for Homeless Veterans: <a href="tel:18774243838">1-877-424-3838</a>.</div></div><div class="checked-note">AI-researched from public sources — not locally phone-verified. Call 211 to confirm the current local provider. Last researched: June 14, 2026.</div>
       </div>
     </div>
-
-    <!-- ── RESULT: Youth ── -->
-    <div class="result-card" id="result_youth" role="region" aria-label="Youth services">
+<!-- ── RESULT: Youth ── -->
+    <div class="result-card" id="result_youth" role="region" aria-label="youth services">
       <div class="result-header">
         <div>
           <div class="result-title">🌱 Youth Homeless Services (24 &amp; under)</div>
           <div class="result-subtitle">Wichita / Sedgwick County, KS</div>
         </div>
-        <span class="confidence-badge verified">Verified</span>
+        <span class="confidence-badge unverified">Confirm by phone</span>
       </div>
       <div class="result-body">
-
-        <div class="resource-block">
-          <div class="resource-name">Wichita Children's Home — CrossRoads Shelter</div>
-          <div class="resource-detail">
-            7271 E. 37th St. N., Wichita, KS 67226<br>
-            <a href="tel:3166846581">(316) 684-6581</a><br>
-            The community's <strong>only 24-hour low-barrier emergency shelter for youth ages 18–24</strong>
-            experiencing homelessness. Immediate help: food, hygiene supplies, showers, clothing, laundry,
-            mail service, health care, WiFi and computers. The 30+ day program builds a plan toward stable
-            housing, education, and employment.
-          </div>
-        </div>
-
-        <div class="divider"></div>
-
-        <div class="resource-block">
-          <div class="resource-name">Wichita Children's Home — Youth Crisis Hotline &amp; Safe Place</div>
-          <div class="resource-detail">
-            If you are 24 or under and need help now: call <a href="tel:3162624663">(316) 262-HOME</a>
-            (316-262-4663).<br>
-            <strong>Safe Place:</strong> text the word <strong>SAFE</strong> and your location to
-            <strong>44357</strong>, or walk into any area QuikTrip (a designated Safe Place site) and ask
-            staff to call for you.
-          </div>
-        </div>
-
-        <div class="divider"></div>
-
-        <div class="resource-block">
-          <div class="resource-name">United Way of the Plains 211 — After-Hours Backstop</div>
-          <div class="resource-detail">
-            Call or text <a href="tel:211">211</a> (or text your ZIP to 898-211) — 24/7. For shelter
-            referrals and youth services across Sedgwick County when other access points are closed.
-          </div>
-        </div>
-
-        <div class="checked-note">
-          Confidence: <strong>Verified</strong> — sourced from wch.org and unitedwayplains.org.
-          CrossRoads is the sole dedicated 18–24 youth shelter in KS-502 as of June 2026.
-          Last checked: June 2026.
-        </div>
+        <div class="ask-for"><strong>Call or text <a href="tel:211">211</a></strong> and say: <em>"I'm 24 or younger and I need a safe place to stay."</em> Ask for the <strong>youth emergency shelter</strong> and the <strong>runaway &amp; homeless youth (RHY) program</strong>.</div><div class="resource-block"><div class="resource-name">National backstops (always current)</div><div class="resource-detail"><strong>Safe Place:</strong> text <strong>SAFE</strong> + your location to <strong>44357</strong>, or walk into any QuikTrip and ask staff to call for you.<br>National Runaway Safeline: <a href="tel:18007862929">1-800-786-2929</a> — 24/7.</div></div><div class="checked-note">AI-researched from public sources — not locally phone-verified. Call 211 to confirm the current local provider. Last researched: June 14, 2026.</div>
       </div>
     </div>
-
-    <!-- ── RESULT: Families ── -->
-    <div class="result-card" id="result_families" role="region" aria-label="Family services">
+<!-- ── RESULT: Families ── -->
+    <div class="result-card" id="result_families" role="region" aria-label="families services">
       <div class="result-header">
         <div>
           <div class="result-title">👨‍👩‍👧 Family Shelter &amp; Services</div>
           <div class="result-subtitle">Wichita / Sedgwick County, KS</div>
         </div>
-        <span class="confidence-badge verified">Verified</span>
+        <span class="confidence-badge unverified">Confirm by phone</span>
       </div>
       <div class="result-body">
-
-        <div class="resource-block">
-          <div class="resource-name">HumanKind Ministries — The Inn</div>
-          <div class="resource-detail">
-            320 E. Central Ave., Wichita, KS 67202<br>
-            <a href="tel:3162648051">(316) 264-8051</a><br>
-            A 60-bed, <strong>24-hour</strong> shelter providing beds, meals, clothing, and basic
-            essentials to <strong>individuals and families</strong>. Beds are first come, first served —
-            call ahead to confirm availability. Typical stay is 30–90 days with case management toward
-            permanent housing.
-          </div>
-        </div>
-
-        <div class="divider"></div>
-
-        <div class="resource-block">
-          <div class="resource-name">The Salvation Army — South Central Area Command</div>
-          <div class="resource-detail">
-            350 N. Market St., Wichita, KS 67202<br>
-            <a href="tel:3162632769">(316) 263-2769</a><br>
-            Emergency shelter and homeless services for single women, couples, and families, plus meals
-            and case management. Call for current intake hours and bed availability.
-          </div>
-        </div>
-
-        <div class="divider"></div>
-
-        <div class="resource-block">
-          <div class="resource-name">Wichita Family Crisis Center — Domestic Violence Shelter</div>
-          <div class="resource-detail">
-            24-hour confidential hotline: <a href="tel:3162677233">(316) 267-SAFE / 267-7233</a><br>
-            Outreach &amp; support groups: <a href="tel:3162632313">(316) 263-2313</a><br>
-            If you or your children are fleeing domestic violence, call the hotline first. The center
-            (formerly the YWCA) maintains a confidential emergency shelter with crisis intervention,
-            safety planning, and advocacy. Free and available to all.
-          </div>
-        </div>
-
-        <div class="divider"></div>
-
-        <div class="resource-block">
-          <div class="resource-name">United Way of the Plains 211 — Coordinated Entry</div>
-          <div class="resource-detail">
-            Call or text <a href="tel:211">211</a> (text your ZIP to 898-211) — 24/7. Your first call for
-            family shelter and the coordinated-entry assessment that connects households to rapid
-            re-housing and permanent housing in KS-502.
-          </div>
-        </div>
-
-        <div class="checked-note">
-          Confidence: <strong>Verified</strong> — sourced from humankindwichita.org,
-          salvationarmyusa.org, wichitafamilycrisiscenter.org, and unitedwayplains.org. Shelter capacity
-          is first come, first served and may vary. Last checked: June 2026.
-        </div>
+        <div class="ask-for"><strong>Call or text <a href="tel:211">211</a></strong> and say: <em>"I have my kids with me and we need shelter tonight."</em> Ask for <strong>family emergency shelter</strong> and the <strong>coordinated-entry assessment</strong> for rapid re-housing.</div><div class="resource-block"><div class="resource-name">If you're fleeing domestic violence</div><div class="resource-detail">Call the <strong>National Domestic Violence Hotline</strong>: <a href="tel:18007997233">1-800-799-7233</a> (24/7, confidential) — they connect you to a local confidential DV shelter, which is separate from the regular system and won't list your location. Or text <strong>START</strong> to <strong>88788</strong>.</div></div><div class="checked-note">AI-researched from public sources — not locally phone-verified. Call 211 to confirm the current local provider. Last researched: June 14, 2026.</div>
       </div>
     </div>
-
-    <!-- ── RESULT: Chronic ── -->
-    <div class="result-card" id="result_chronic" role="region" aria-label="Chronic homelessness services">
+<!-- ── RESULT: Chronic ── -->
+    <div class="result-card" id="result_chronic" role="region" aria-label="chronic services">
       <div class="result-header">
         <div>
           <div class="result-title">🏠 Permanent Supportive Housing</div>
           <div class="result-subtitle">Chronically Homeless — Wichita / Sedgwick County, KS</div>
         </div>
-        <span class="confidence-badge research">Research</span>
+        <span class="confidence-badge unverified">Confirm by phone</span>
       </div>
       <div class="result-body">
-
-        <div class="resource-block">
-          <div class="resource-name">United Way of the Plains 211 — Coordinated Entry (Required First Step)</div>
-          <div class="resource-detail">
-            Permanent supportive housing in KS-502 is accessed through the Coalition to End Homelessness
-            coordinated-entry system. You <strong>must be assessed</strong> to be placed on the housing
-            referral list.<br><br>
-            <strong>Start here:</strong> call <a href="tel:211">211</a> or text your ZIP to
-            <strong>898-211</strong>. A 211 specialist will ask about your situation and route you to a
-            housing navigator. Providers meet weekly to ensure every assessed household has a housing plan.
-          </div>
-        </div>
-
-        <div class="divider"></div>
-
-        <div class="resource-block">
-          <div class="resource-name">City of Wichita — Housing First Program</div>
-          <div class="resource-detail">
-            <a href="tel:3164623724">(316) 462-3724</a> (Shelly Haupt, Housing &amp; Community Services)<br>
-            Provides rent and utility assistance plus case management to place chronically homeless
-            individuals into permanent rental housing. Uses HUD's chronic-homelessness definition
-            (a disabling condition <em>and</em> homeless for a year or in four-plus episodes over three
-            years). Participants meet weekly with a case manager and contribute up to 30% of income toward rent.
-          </div>
-        </div>
-
-        <div class="divider"></div>
-
-        <div class="resource-block">
-          <div class="resource-name">HumanKind Ministries — The Inn (Shelter While You Wait)</div>
-          <div class="resource-detail">
-            320 E. Central Ave., Wichita, KS 67202 · <a href="tel:3162648051">(316) 264-8051</a><br>
-            24-hour emergency shelter with case management to keep you safe and connected while you await
-            a housing placement. Beds first come, first served — call ahead.
-          </div>
-        </div>
-
-        <div class="divider"></div>
-
-        <div class="resource-block">
-          <div class="resource-name">988 — Mental Health &amp; Crisis Support</div>
-          <div class="resource-detail">
-            Call or text <a href="tel:988">988</a> — free, 24/7. If a behavioral health condition is part
-            of your situation, 988 can connect you to Sedgwick County COMCARE crisis services, which also
-            support disability-benefit (SOAR) and treatment access tied to supportive housing.
-          </div>
-        </div>
-
-        <div class="checked-note">
-          Confidence: <strong>Research</strong> — sourced from wichita.gov/homelessness-programs and
-          unitedwayplains.org. PSH placements are waitlisted; coordinated-entry assessment is required
-          before any referral. Last checked: June 2026.
-        </div>
+        <div class="ask-for"><strong>Call or text <a href="tel:211">211</a></strong> and say: <em>"I've been homeless a long time and I want to get on the housing list."</em> Ask for the <strong>coordinated-entry assessment</strong> — permanent supportive housing is reached by being assessed and placed on the community housing-referral list. The assessment is the door.</div><div class="resource-block"><div class="resource-name">While you wait</div><div class="resource-detail">Ask 211 for tonight's <strong>emergency shelter</strong> and a <strong>daytime drop-in center</strong>. If a behavioral-health condition is part of your situation, call <a href="tel:988">988</a> for county crisis services and SOAR disability-benefit help.</div></div><div class="checked-note">AI-researched from public sources — not locally phone-verified. Call 211 to confirm the current local provider. Last researched: June 14, 2026.</div>
       </div>
     </div>
-
-    <!-- ── RESULT: Adult (general) ── -->
-    <div class="result-card" id="result_adult" role="region" aria-label="Adult shelter services">
+<!-- ── RESULT: Adult (general) ── -->
+    <div class="result-card" id="result_adult" role="region" aria-label="adult services">
       <div class="result-header">
         <div>
           <div class="result-title">🚪 Emergency Shelter — Single Adults</div>
           <div class="result-subtitle">Wichita / Sedgwick County, KS</div>
         </div>
-        <span class="confidence-badge verified">Verified</span>
+        <span class="confidence-badge unverified">Confirm by phone</span>
       </div>
       <div class="result-body">
-
-        <div class="resource-block">
-          <div class="resource-name">HumanKind Ministries — The Inn</div>
-          <div class="resource-detail">
-            320 E. Central Ave., Wichita, KS 67202<br>
-            <a href="tel:3162648051">(316) 264-8051</a><br>
-            <strong>60-bed, 24-hour shelter</strong> for individuals and families — beds, meals, clothing,
-            and basic essentials. First come, first served; call ahead to confirm availability. Case
-            management supports the path to permanent housing.
-          </div>
-        </div>
-
-        <div class="divider"></div>
-
-        <div class="resource-block">
-          <div class="resource-name">The Salvation Army — South Central Area Command</div>
-          <div class="resource-detail">
-            350 N. Market St., Wichita, KS 67202<br>
-            <a href="tel:3162632769">(316) 263-2769</a><br>
-            Emergency homeless services for single women, couples, and families. Call for current intake
-            hours and bed availability.
-          </div>
-        </div>
-
-        <div class="divider"></div>
-
-        <div class="resource-block">
-          <div class="resource-name">United Methodist Open Door — Homeless Resource Center (Daytime)</div>
-          <div class="resource-detail">
-            402 E. 2nd St. N., Wichita, KS 67202<br>
-            <a href="tel:3162659371">(316) 265-9371</a> — Mon–Fri 7:30am–4:00pm<br>
-            A daytime drop-in center for homeless adults and families: showers, mail, restrooms, case
-            management, and referrals. A good place to get connected during the day when overnight
-            shelters are closed.
-          </div>
-        </div>
-
-        <div class="divider"></div>
-
-        <div class="resource-block">
-          <div class="resource-name">The Lord's Diner — Free Meals</div>
-          <div class="resource-detail">
-            520 N. Broadway St., Wichita, KS 67214<br>
-            <a href="tel:3162664966">(316) 266-4966</a><br>
-            Free dinner every Mon–Sat, 5:30–7:30pm, and free lunch Mon–Fri, 10am–2pm. Everyone is
-            welcome — no questions asked, no ID required.
-          </div>
-        </div>
-
-        <div class="divider"></div>
-
-        <div class="resource-block">
-          <div class="resource-name">Hunter Health &amp; GraceMed — Health Care for Everyone</div>
-          <div class="resource-detail">
-            Hunter Health (Federally Qualified Health Center): <a href="tel:3162622415">(316) 262-2415</a> —
-            medical, dental, and behavioral health regardless of ability to pay.<br>
-            GraceMed runs a Homeless Healthcare Outreach program (medical, dental, podiatry, behavioral
-            health, vision, pharmacy) at shelters and outreach sites. Ask any shelter or 211 to connect you.
-          </div>
-        </div>
-
-        <div class="divider"></div>
-
-        <div class="resource-block">
-          <div class="resource-name">United Way of the Plains 211 — After-Hours Backstop</div>
-          <div class="resource-detail">
-            Call or text <a href="tel:211">211</a> (text your ZIP to 898-211) — 24/7, multilingual. For
-            shelter options, food, and community services when shelters are full or closed.
-          </div>
-        </div>
-
-        <div class="checked-note">
-          Confidence: <strong>Verified</strong> — sourced from humankindwichita.org,
-          salvationarmyusa.org, umopendoor.org, thelordsdiner.org, hunterhealth.org, gracemed.org, and
-          unitedwayplains.org. Shelter capacity is first come, first served and may vary seasonally.
-          Last checked: June 2026.
-        </div>
+        <div class="ask-for"><strong>Call or text <a href="tel:211">211</a></strong> and say: <em>"I need a shelter bed tonight."</em> Ask for <strong>tonight's open beds for single adults</strong>, the nearest <strong>daytime drop-in center</strong> (showers, mail, case management), and a <strong>free meal site</strong>. 211 is multilingual and 24/7.</div><div class="resource-block"><div class="resource-name">Free health care</div><div class="resource-detail">Ask 211 for the nearest <strong>Federally Qualified Health Center (FQHC)</strong> — medical, dental, and behavioral health regardless of ability to pay.</div></div><div class="checked-note">AI-researched from public sources — not locally phone-verified. Call 211 to confirm the current local provider. Last researched: June 14, 2026.</div>
       </div>
     </div>
+
 
     <!-- Restart -->
     <div class="restart-row" id="restart-row">
@@ -724,8 +472,9 @@ html,body{overflow-x:hidden;max-width:100%;}
   <footer>
     <p>
       <strong>KS-502 — Wichita/Sedgwick County Continuum of Care</strong> &mdash; Sedgwick County, KS<br>
+      AI-researched, not locally verified · Last researched <time datetime="2026-06-14">June 14, 2026</time>.<br>
       Is this information out of date?
-      <a href="mailto:hello@commonladder.org?subject=Resource update: Wichita KS-502">Email us</a>
+      <a href="mailto:corrections.commonladder@gmail.com?subject=Resource update: Wichita KS-502">Email us</a>
       and we'll fix it.<br>
       <a href="https://commonladder.org" target="_blank" rel="noopener">commonladder.org</a>
     </p>

@@ -468,7 +468,8 @@ html,body{overflow-x:hidden;max-width:100%;}
   <strong>Need help right now?</strong>
   <a href="tel:211">Call 211</a><span class="crisis-bar__sep">·</span>
   <a href="sms:741741?body=HOME">Text HOME to 741741</a><span class="crisis-bar__sep">·</span>
-  <a href="tel:988">988 Suicide &amp; Crisis</a>
+  <a href="tel:988">988 Suicide &amp; Crisis</a><span class="crisis-bar__sep">·</span>
+  <a href="tel:18007997233">DV 1-800-799-7233</a>
 </div>
 <nav class="nav" aria-label="Primary">
   <div class="nav__inner">
@@ -506,6 +507,8 @@ html,body{overflow-x:hidden;max-width:100%;}
   </svg>
   <span>common<span class="cl-home__rung">ladder</span></span>
 </a>
+
+<div role="note" style="background:#ffedd5;border:1px solid #9a3412;color:#6b2710;border-radius:10px;padding:14px 18px;margin:0 auto 18px;max-width:680px;font-size:.9rem;line-height:1.5;"><strong style="color:#9a3412;">AI-researched, not locally verified.</strong> Common Ladder is based in Arizona. We built this guide from public sources but don’t yet verify these listings by phone the way we do our Arizona tools. Use it to learn <em>what to ask for</em>, then <strong>call <a href="tel:211" style="color:#9a3412;">211</a></strong> for the current local provider. Last researched <time datetime="2026-06-14">June 14, 2026</time>. Wrong info? <a href="mailto:corrections.commonladder@gmail.com?subject=Resource%20update:%20Atlantic%20City" style="color:#9a3412;">Tell us</a>.</div>
 
 <!-- App shell — all screens rendered by JS into here -->
 <div id="app"></div>
@@ -645,17 +648,17 @@ html,body{overflow-x:hidden;max-width:100%;}
      Keep firstAction to one clear sentence + phone number.
      resources: 3 is ideal; 2 minimum; 4 maximum.
   ═══════════════════════════════════════════════════════════ */
-  var PATHWAYS = {
+    var PATHWAYS = {
 
     result_veterans: {
       label: "Veterans Pathway",
       badgeClass: "badge-veterans",
       badgeIcon: "🎖",
-      headline: "There's a dedicated system built for you.",
-      firstAction: "Call the <strong>National Call Center for Homeless Veterans</strong> at <strong>1-877-424-3838</strong> (24/7). Or call <strong>Catholic Charities of South Jersey SSVF</strong> at <strong>(856) 340-9242</strong> — the SSVF grantee covering Atlantic County.",
-      callNumber: "tel:18774243838",
-      callLabel: "Call VA Homeless: 1-877-424-3838",
-      what_to_expect: "Catholic Charities of South Jersey runs the SSVF (Supportive Services for Veteran Families) grant covering Atlantic County and provides rapid re-housing and prevention for low-income veteran families. The Atlantic County VA Clinic in Linwood (under VA Wilmington Health Care System) runs HCHV and HUD-VASH outreach. The national hotline routes you to whichever program fits.",
+      headline: "There's a dedicated system built for veterans.",
+      firstAction: "Call <strong>211</strong> — free, 24/7 — and say: <em>“I’m a veteran and I’m homeless or about to be.”</em> Ask to be connected to the <strong>VA’s Health Care for Homeless Veterans (HCHV)</strong> program and your local <strong>coordinated-entry assessment</strong>. Veterans qualify for both VA housing (HUD-VASH) and the local Continuum of Care at the same time.",
+      callNumber: "tel:211",
+      callLabel: "Call 211",
+      what_to_expect: "211 will route you to the nearest VA homeless-program coordinator and your local CoC. The National Call Center for Homeless Veterans is available 24/7 anywhere in the U.S. if you can’t reach a local office.",
       bring: [
         "DD-214 discharge papers (if you have them — not required to call)",
         "Photo ID (if available)",
@@ -663,28 +666,22 @@ html,body{overflow-x:hidden;max-width:100%;}
       ],
       resources: [
         {
-          name: "Catholic Charities South Jersey SSVF",
-          phone: "(856) 340-9242",
-          tel: "tel:8563409242",
-          note: "Atlantic County SSVF grantee. Rapid re-housing + prevention."
-        },
-        {
-          name: "Atlantic County VA Clinic (Linwood)",
-          phone: "1-800-461-8262",
-          tel: "tel:18004618262",
-          note: "1201 New Rd, Suite 120, Linwood. Under VA Wilmington HCS. Mon–Fri 8a–4:30p."
-        },
-        {
-          name: "VA Homeless National Call Center",
+          name: "National Call Center for Homeless Veterans",
           phone: "1-877-424-3838",
           tel: "tel:18774243838",
-          note: "24/7. Routes to local HCHV / HUD-VASH coordinators."
+          note: "24/7. Available everywhere."
+        },
+        {
+          name: "Veterans Crisis Line",
+          phone: "988",
+          tel: "tel:988",
+          note: "Press 1 for the VA crisis line."
         },
       ],
       confidence: {
-        level: "research",
-        note: "Numbers from catholiccharitiessouthjersey.org/Veteran-Services, va.gov/wilmington-health-care/locations/atlantic-county-va-clinic, va.gov/homeless. Last reviewed June 2026.",
-        lastChecked: "June 2026"
+        level: "unverified",
+        note: "AI-researched from public sources — not locally phone-verified. Call 211 to confirm the current local provider. Last researched June 14, 2026.",
+        lastChecked: "June 14, 2026"
       }
     },
 
@@ -692,41 +689,34 @@ html,body{overflow-x:hidden;max-width:100%;}
       label: "Youth Pathway",
       badgeClass: "badge-youth",
       badgeIcon: "🌱",
-      headline: "Covenant House New Jersey runs a 24/7 youth site in Atlantic City.",
-      firstAction: "Call <strong>Covenant House Atlantic City</strong> 24/7 at <strong>(609) 348-4070</strong> — 929 Atlantic Ave, Atlantic City. Crisis shelter and outreach for youth and young adults (ages 18–21). Or call the <strong>National Runaway Safeline</strong> at <strong>1-800-786-2929</strong>.",
-      callNumber: "tel:6093484070",
-      callLabel: "Call Covenant House AC: (609) 348-4070",
-      what_to_expect: "Covenant House Atlantic City — part of Covenant House New Jersey — operates a 24/7 youth engagement center at 929 Atlantic Avenue with shelter, outreach, and aftercare for young people experiencing homelessness or trafficking. Text 844-912-1291 if calling isn't safe. The Atlantic Homeless Alliance can also assess unaccompanied youth through the county Coordinated Entry System. National Runaway Safeline arranges Home Free bus tickets for ages 12–21.",
+      headline: "If you’re 24 or under, there’s a youth-specific path.",
+      firstAction: "Call or text <strong>211</strong> and say: <em>“I’m 24 or younger and I need a safe place to stay.”</em> Ask for the <strong>youth emergency shelter</strong> and the <strong>runaway &amp; homeless youth (RHY) program</strong> in your area.",
+      callNumber: "tel:211",
+      callLabel: "Call 211",
+      what_to_expect: "211 routes you to the nearest youth shelter or drop-in center. The national backstops below are always available, day or night.",
       bring: [
         "Photo ID (helpful — not required for crisis services)",
         "Anything important you can carry",
-        "Nothing required to call the crisis line",
+        "Nothing is required to call",
       ],
       resources: [
         {
-          name: "Atlantic Homeless Alliance (CES intake)",
-          phone: "(609) 343-2282",
-          tel: "tel:6093432282",
-          note: "1333 Atlantic Ave, 1st Floor, Atlantic City. Operated by JFS. Mon–Fri 8:30a–2p."
+          name: "Safe Place",
+          phone: "Text SAFE + your location to 44357",
+          tel: "sms:44357?body=SAFE",
+          note: "Or walk into any QuikTrip and ask staff to call for you."
         },
         {
           name: "National Runaway Safeline",
           phone: "1-800-786-2929",
           tel: "tel:18007862929",
-          note: "24/7 federal RHY hotline. Call or text. Home Free bus tickets."
-        },
-        {
-          name: "988 Suicide & Crisis Lifeline",
-          phone: "988",
-          tel: "tel:988",
-          note: "24/7 crisis line for any young person in crisis."
+          note: "24/7, free, confidential."
         },
       ],
-      extra_note: "⚠️ Covenant House Atlantic City takes walk-ins 24/7 — knock on the door.",
       confidence: {
-        level: "research",
-        note: "Numbers from covenanthouse.org/homeless-shelters/atlantic-city-new-jersey, covenanthousenj.org, jfsatlantic.org/atlantic-homeless-alliance, 1800runaway.org. Last reviewed June 2026.",
-        lastChecked: "June 2026"
+        level: "unverified",
+        note: "AI-researched from public sources — not locally phone-verified. Call 211 to confirm the current local provider. Last researched June 14, 2026.",
+        lastChecked: "June 14, 2026"
       }
     },
 
@@ -734,41 +724,34 @@ html,body{overflow-x:hidden;max-width:100%;}
       label: "Families Pathway",
       badgeClass: "badge-families",
       badgeIcon: "🏠",
-      headline: "Atlantic Homeless Alliance is the required CES intake for families.",
-      firstAction: "Call the <strong>Atlantic Homeless Alliance</strong> at <strong>(609) 343-2282</strong> — 1333 Atlantic Ave, 1st Floor, Atlantic City (Mon–Fri 8:30 am–2 pm). For domestic violence, call <strong>AVANZAR</strong> 24/7 at <strong>1-800-286-4184</strong>.",
-      callNumber: "tel:6093432282",
-      callLabel: "Call AHA: (609) 343-2282",
-      what_to_expect: "The Atlantic Homeless Alliance — operated by Jewish Family Service of Atlantic & Cape May — is the Coordinated Entry System for Atlantic County and is required for placement on the shelter prioritization list. After hours, dial NJ 211. AVANZAR (formerly The Women's Center of Atlantic County) runs the county DV shelter and 24/7 hotline; text the hotline number 609-569-5437 if calling isn't safe. Atlantic City Rescue Mission accepts families through warm-handoff referrals from AHA.",
+      headline: "Families are kept together in the shelter system.",
+      firstAction: "Call or text <strong>211</strong> and say: <em>“I have my kids with me and we need shelter tonight.”</em> Ask for <strong>family emergency shelter</strong> and the <strong>coordinated-entry assessment</strong> for rapid re-housing.",
+      callNumber: "tel:211",
+      callLabel: "Call 211",
+      what_to_expect: "211 routes you to family shelter and the local coordinated-entry system. If you are fleeing domestic violence, use the confidential hotline below instead — DV shelter is separate and won’t list your location.",
       bring: [
         "Photo ID for adults (if available)",
-        "Birth certificates for children (helpful but not always required)",
+        "Birth certificates for children (helpful, not always required)",
         "Documentation of income or benefits (if available)",
-        "Social security cards (if you have them)",
       ],
       resources: [
         {
-          name: "AVANZAR (DV 24/7)",
-          phone: "1-800-286-4184",
-          tel: "tel:18002864184",
-          note: "Formerly The Women's Center of Atlantic County. Text 609-569-5437."
+          name: "National Domestic Violence Hotline",
+          phone: "1-800-799-7233",
+          tel: "tel:18007997233",
+          note: "24/7, confidential. Text START to 88788. Connects you to a local confidential DV shelter."
         },
         {
-          name: "AVANZAR Office",
-          phone: "(609) 601-9925",
-          tel: "tel:6096019925",
-          note: "927 N. Main St, Bldg D, Pleasantville. Mon–Fri admin + intake."
-        },
-        {
-          name: "NJ 211 (after-hours CES backstop)",
+          name: "United Way 211",
           phone: "211",
           tel: "tel:211",
-          note: "Or 1-877-652-1148. 24/7. State Homeless Hotline."
+          note: "Family shelter + coordinated entry."
         },
       ],
       confidence: {
-        level: "research",
-        note: "Numbers from jfsatlantic.org/atlantic-homeless-alliance, avanzarnow.org, nj211.org/initiative/state-homeless-hotline. Last reviewed June 2026.",
-        lastChecked: "June 2026"
+        level: "unverified",
+        note: "AI-researched from public sources — not locally phone-verified. Call 211 to confirm the current local provider. Last researched June 14, 2026.",
+        lastChecked: "June 14, 2026"
       }
     },
 
@@ -776,11 +759,11 @@ html,body{overflow-x:hidden;max-width:100%;}
       label: "Chronic Homelessness Pathway",
       badgeClass: "badge-chronic",
       badgeIcon: "🔑",
-      headline: "Atlantic Homeless Alliance + AtlantiCare coordinate PSH and crisis.",
-      firstAction: "Call the <strong>Atlantic Homeless Alliance</strong> at <strong>(609) 343-2282</strong> for housing assessment. For a mental-health crisis, call <strong>AtlantiCare PIP</strong> 24/7 at <strong>(609) 344-1118</strong> — Atlantic County's designated screening center.",
-      callNumber: "tel:6093432282",
-      callLabel: "Call AHA: (609) 343-2282",
-      what_to_expect: "AHA (operated by JFS) runs the county's PATH outreach team and is the entry point for CoC-funded PSH in Atlantic County. AtlantiCare Psychiatric Intervention Program (PIP) at the AtlantiCare Regional Medical Center ER is the 24/7 county-designated screener for mental-health crisis. Adult Intervention Crisis Services (AIS) offers walk-in pre-crisis support during the day.",
+      headline: "The housing list starts with one assessment.",
+      firstAction: "Call or text <strong>211</strong> and say: <em>“I’ve been homeless a long time and I want to get on the housing list.”</em> Ask for the <strong>coordinated-entry assessment</strong> — in this system, permanent supportive housing is reached by being assessed and placed on the community housing-referral list. The assessment is the door; there is no separate number.",
+      callNumber: "tel:211",
+      callLabel: "Call 211",
+      what_to_expect: "A coordinated-entry assessor will ask about your situation and add you to the local housing-referral list. While you wait, ask 211 for tonight’s shelter and a daytime drop-in center.",
       bring: [
         "Photo ID (any form)",
         "Documentation of health conditions (if available — not required to be assessed)",
@@ -788,29 +771,22 @@ html,body{overflow-x:hidden;max-width:100%;}
       ],
       resources: [
         {
-          name: "AtlantiCare PIP (24/7 screener)",
-          phone: "(609) 344-1118",
-          tel: "tel:6093441118",
-          note: "1925 Pacific Ave, Atlantic City. County-designated MH screening center."
-        },
-        {
-          name: "AIS Walk-in Crisis (daytime)",
-          phone: "(609) 572-8555",
-          tel: "tel:6095728555",
-          note: "13 N. Hartford Ave, Atlantic City. Pre-crisis walk-in support."
-        },
-        {
-          name: "988 Suicide & Crisis Lifeline",
+          name: "988 Suicide &amp; Crisis Lifeline",
           phone: "988",
           tel: "tel:988",
-          note: "24/7 mental-health crisis line, available everywhere."
+          note: "Behavioral-health crisis support + SOAR disability-benefit help tied to housing."
+        },
+        {
+          name: "United Way 211",
+          phone: "211",
+          tel: "tel:211",
+          note: "Coordinated entry + shelter while you wait."
         },
       ],
-      extra_note: "📋 Qualifying conditions include physical, mental health, or substance use disorders that substantially affect daily functioning. You don't need a formal diagnosis to be assessed.",
       confidence: {
-        level: "research",
-        note: "Numbers from jfsatlantic.org/atlantic-homeless-alliance (PATH), namiacm.org/crisis-info/atlantic-county-crisis-info, 988lifeline.org. Last reviewed June 2026.",
-        lastChecked: "June 2026"
+        level: "unverified",
+        note: "AI-researched from public sources — not locally phone-verified. Call 211 to confirm the current local provider. Last researched June 14, 2026.",
+        lastChecked: "June 14, 2026"
       }
     },
 
@@ -818,11 +794,11 @@ html,body{overflow-x:hidden;max-width:100%;}
       label: "Single Adults Pathway",
       badgeClass: "badge-adult",
       badgeIcon: "📞",
-      headline: "Atlantic Homeless Alliance is the CES intake for single adults.",
-      firstAction: "Call the <strong>Atlantic Homeless Alliance</strong> at <strong>(609) 343-2282</strong> — 1333 Atlantic Ave, 1st Floor, Atlantic City (Mon–Fri 8:30 am–2 pm). After hours dial <strong>NJ 211</strong>.",
-      callNumber: "tel:6093432282",
-      callLabel: "Call AHA: (609) 343-2282",
-      what_to_expect: "AHA is the Coordinated Entry System for Atlantic County — required for placement at Atlantic City Rescue Mission and other CoC-funded adult shelters. After hours and on weekends, NJ 211 routes you to the State Homeless Hotline and emergency placement. Sister Jean's Kitchen serves daily meals and operates a food pantry at 108 N. Pennsylvania Ave (kitchen Mon–Fri 11 am–1 pm).",
+      headline: "Start with tonight’s shelter, then the housing list.",
+      firstAction: "Call or text <strong>211</strong> and say: <em>“I need a shelter bed tonight.”</em> Ask for <strong>tonight’s open beds for single adults</strong>, the nearest <strong>daytime drop-in center</strong> (showers, mail, case management), and a <strong>free meal site</strong>. 211 is multilingual and 24/7.",
+      callNumber: "tel:211",
+      callLabel: "Call 211",
+      what_to_expect: "211 has the current shelter-bed picture for your area, which changes daily. Ask them to also start a coordinated-entry assessment so you’re working toward housing, not just tonight.",
       bring: [
         "Photo ID (helpful but not always required)",
         "Social security card or number (if available)",
@@ -830,30 +806,24 @@ html,body{overflow-x:hidden;max-width:100%;}
       ],
       resources: [
         {
-          name: "Sister Jean's Kitchen (meals)",
-          phone: "(609) 236-8353",
-          tel: "tel:6092368353",
-          note: "108 N. Pennsylvania Ave. Kitchen Mon–Fri 11a–1p. Pantry Tue/Wed/Thu."
-        },
-        {
-          name: "NJ 211 (after-hours intake)",
-          phone: "211",
+          name: "Find a free clinic (FQHC)",
+          phone: "Ask 211",
           tel: "tel:211",
-          note: "Or 1-877-652-1148. 24/7. State Homeless Hotline."
+          note: "Federally Qualified Health Centers treat everyone regardless of ability to pay."
         },
         {
-          name: "988 Suicide & Crisis Lifeline",
+          name: "988 Suicide &amp; Crisis Lifeline",
           phone: "988",
           tel: "tel:988",
-          note: "24/7 crisis support for anyone in mental-health distress."
+          note: "24/7 mental-health support."
         },
       ],
       confidence: {
-        level: "research",
-        note: "Numbers from jfsatlantic.org/atlantic-homeless-alliance, sisterjeanskitchen.org, nj211.org/initiative/state-homeless-hotline, 988lifeline.org. Last reviewed June 2026.",
-        lastChecked: "June 2026"
+        level: "unverified",
+        note: "AI-researched from public sources — not locally phone-verified. Call 211 to confirm the current local provider. Last researched June 14, 2026.",
+        lastChecked: "June 14, 2026"
       }
-    }
+    },
 
   }; // end PATHWAYS
 

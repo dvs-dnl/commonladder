@@ -460,7 +460,8 @@
   <strong>Need help right now?</strong>
   <a href="tel:211">Call 211</a><span class="crisis-bar__sep">·</span>
   <a href="sms:741741?body=HOME">Text HOME to 741741</a><span class="crisis-bar__sep">·</span>
-  <a href="tel:988">988 Suicide &amp; Crisis</a>
+  <a href="tel:988">988 Suicide &amp; Crisis</a><span class="crisis-bar__sep">·</span>
+  <a href="tel:18007997233">DV 1-800-799-7233</a>
 </div>
 
 <nav class="nav" aria-label="Primary">
@@ -501,6 +502,8 @@
   </svg>
   <span>common<span class="cl-home__rung">ladder</span></span>
 </a>
+
+<div role="note" style="background:#ffedd5;border:1px solid #9a3412;color:#6b2710;border-radius:10px;padding:14px 18px;margin:0 auto 18px;max-width:680px;font-size:.9rem;line-height:1.5;"><strong style="color:#9a3412;">AI-researched, not locally verified.</strong> Common Ladder is based in Arizona. We built this guide from public sources but don’t yet verify these listings by phone the way we do our Arizona tools. Use it to learn <em>what to ask for</em>, then <strong>call <a href="tel:211" style="color:#9a3412;">211</a></strong> for the current local provider. Last researched <time datetime="2026-06-14">June 14, 2026</time>. Wrong info? <a href="mailto:corrections.commonladder@gmail.com?subject=Resource%20update:%20Boise%20&amp;%20Ada%20County" style="color:#9a3412;">Tell us</a>.</div>
 
 <!-- App shell — all screens rendered by JS into here -->
 <div id="app"></div>
@@ -640,215 +643,182 @@
      Keep firstAction to one clear sentence + phone number.
      resources: 3 is ideal; 2 minimum; 4 maximum.
   ═══════════════════════════════════════════════════════════ */
-  var PATHWAYS = {
+    var PATHWAYS = {
 
     result_veterans: {
-      label: 'Veterans Pathway',
-      badgeClass: 'badge-veterans',
-      badgeIcon: '🎖',
-      headline: 'There\'s a dedicated system built for you.',
-      firstAction: 'Call the National Call Center for Homeless Veterans right now: <strong>1-877-4AID-VET (1-877-424-3838)</strong>. Available 24/7. You do NOT need your DD-214 to call.',
-      callNumber: 'tel:18774243838',
-      callLabel: 'Call 1-877-4AID-VET',
-      what_to_expect: 'Boise\'s VA runs Health Care for Homeless Veterans (HCHV) and HUD-VASH (rental vouchers plus VA case management). Local Supportive Services for Veteran Families (SSVF) through El-Ada Community Action Partnership offers rapid rehousing and homelessness prevention. You do not need to be enrolled in VA health care to start.',
+      label: "Veterans Pathway",
+      badgeClass: "badge-veterans",
+      badgeIcon: "🎖",
+      headline: "There's a dedicated system built for veterans.",
+      firstAction: "Call <strong>211</strong> — free, 24/7 — and say: <em>“I’m a veteran and I’m homeless or about to be.”</em> Ask to be connected to the <strong>VA’s Health Care for Homeless Veterans (HCHV)</strong> program and your local <strong>coordinated-entry assessment</strong>. Veterans qualify for both VA housing (HUD-VASH) and the local Continuum of Care at the same time.",
+      callNumber: "tel:211",
+      callLabel: "Call 211",
+      what_to_expect: "211 will route you to the nearest VA homeless-program coordinator and your local CoC. The National Call Center for Homeless Veterans is available 24/7 anywhere in the U.S. if you can’t reach a local office.",
       bring: [
-        'DD-214 discharge papers (if you have them — not required to call)',
-        'Photo ID (if available)',
-        'Any VA documentation you have'
+        "DD-214 discharge papers (if you have them — not required to call)",
+        "Photo ID (if available)",
+        "Any VA documentation you have",
       ],
       resources: [
         {
-          name: 'Boise VA Medical Center — Homeless Veterans Program',
-          phone: '(208) 422-1039',
-          tel: 'tel:2084221039',
-          note: 'Health Care for Homeless Veterans and HUD-VASH. Ask for the Homeless Program.'
+          name: "National Call Center for Homeless Veterans",
+          phone: "1-877-424-3838",
+          tel: "tel:18774243838",
+          note: "24/7. Available everywhere."
         },
         {
-          name: 'El-Ada Community Action Partnership — SSVF',
-          phone: '(208) 345-2820',
-          tel: 'tel:2083452820',
-          note: 'Supportive Services for Veteran Families — rapid rehousing & prevention. 2250 S. Vista Ave, Boise.'
+          name: "Veterans Crisis Line",
+          phone: "988",
+          tel: "tel:988",
+          note: "Press 1 for the VA crisis line."
         },
-        {
-          name: 'National Call Center for Homeless Veterans',
-          phone: '1-877-424-3838',
-          tel: 'tel:18774243838',
-          note: 'Available 24/7. Can connect you to programs anywhere in the country.'
-        }
       ],
       confidence: {
-        level: 'research',
-        note: 'Sourced from VA Boise (boise.va.gov), El-Ada Community Action Partnership, and Boise City/Ada County Housing Authorities. Last reviewed June 2026.',
-        lastChecked: 'June 2026'
+        level: "unverified",
+        note: "AI-researched from public sources — not locally phone-verified. Call 211 to confirm the current local provider. Last researched June 14, 2026.",
+        lastChecked: "June 14, 2026"
       }
     },
 
     result_youth: {
-      label: 'Youth Pathway',
-      badgeClass: 'badge-youth',
-      badgeIcon: '🌱',
-      headline: 'You have access to youth-specific services here.',
-      firstAction: 'Under 18? Idaho Youth Ranch Hays House at <strong>(208) 322-2308</strong> — 24/7 emergency shelter for ages 9–17. 18–24? Call Our Path Home Connect at <strong>(208) 336-4663</strong> to start a housing assessment.',
-      callNumber: 'tel:2083222308',
-      callLabel: 'Call Hays House: (208) 322-2308',
-      what_to_expect: 'Idaho Youth Ranch Hays House provides 24/7 emergency shelter, counseling, and basic needs for youth ages 9–17 — no parental consent needed to call. Young adults 18–24 are served through Our Path Home Connect coordinated entry and CATCH street outreach, which connect to shelter, rapid rehousing, and case management.',
+      label: "Youth Pathway",
+      badgeClass: "badge-youth",
+      badgeIcon: "🌱",
+      headline: "If you’re 24 or under, there’s a youth-specific path.",
+      firstAction: "Call or text <strong>211</strong> and say: <em>“I’m 24 or younger and I need a safe place to stay.”</em> Ask for the <strong>youth emergency shelter</strong> and the <strong>runaway &amp; homeless youth (RHY) program</strong> in your area.",
+      callNumber: "tel:211",
+      callLabel: "Call 211",
+      what_to_expect: "211 routes you to the nearest youth shelter or drop-in center. The national backstops below are always available, day or night.",
       bring: [
-        'Photo ID if you have one (not required to call)',
-        'Nothing required to call the Hays House helpline',
-        'For ages 18–24: any income or benefits paperwork you have'
+        "Photo ID (helpful — not required for crisis services)",
+        "Anything important you can carry",
+        "Nothing is required to call",
       ],
       resources: [
         {
-          name: 'Idaho Youth Ranch — Hays House',
-          phone: '(208) 322-2308',
-          tel: 'tel:2083222308',
-          note: '24/7 emergency shelter & helpline for ages 9–17.'
+          name: "Safe Place",
+          phone: "Text SAFE + your location to 44357",
+          tel: "sms:44357?body=SAFE",
+          note: "Or walk into any QuikTrip and ask staff to call for you."
         },
         {
-          name: 'Our Path Home Connect — Housing Crisis Hotline',
-          phone: '(208) 336-4663',
-          tel: 'tel:2083364663',
-          note: 'Coordinated entry access point for young adults 18–24.'
+          name: "National Runaway Safeline",
+          phone: "1-800-786-2929",
+          tel: "tel:18007862929",
+          note: "24/7, free, confidential."
         },
-        {
-          name: '211 Idaho CareLine',
-          phone: 'Dial 211 or text 898211',
-          tel: 'tel:211',
-          note: 'Mon–Fri 8am–6pm MST. Statewide resource referrals.'
-        }
       ],
-      extra_note: '⚠️ Under 18? Idaho Youth Ranch Hays House can shelter you without parental consent. If you are unsure where to turn, call them at (208) 322-2308 any time.',
       confidence: {
-        level: 'research',
-        note: 'Sourced from Idaho Youth Ranch (youthranch.org), Our Path Home, and Idaho CareLine 211. Last reviewed June 2026.',
-        lastChecked: 'June 2026'
+        level: "unverified",
+        note: "AI-researched from public sources — not locally phone-verified. Call 211 to confirm the current local provider. Last researched June 14, 2026.",
+        lastChecked: "June 14, 2026"
       }
     },
 
     result_families: {
-      label: 'Families Pathway',
-      badgeClass: 'badge-families',
-      badgeIcon: '🏠',
-      headline: 'Families with children are prioritized in the shelter system.',
-      firstAction: 'Call Our Path Home\'s family housing line at <strong>(208) 495-4240</strong> — staff do a quick survey and build a plan to get your family housed as fast as possible.',
-      callNumber: 'tel:2084954240',
-      callLabel: 'Call Our Path Home: (208) 495-4240',
-      what_to_expect: 'Families with children are prioritized in Ada County\'s coordinated entry. Our Path Home Connect surveys each household and routes to family shelter, rapid rehousing, or prevention help. Emergency family beds are available at Boise Rescue Mission\'s City Light Home and at Interfaith Sanctuary (now via a waitlist). Children keep their school-stability rights under McKinney-Vento.',
+      label: "Families Pathway",
+      badgeClass: "badge-families",
+      badgeIcon: "🏠",
+      headline: "Families are kept together in the shelter system.",
+      firstAction: "Call or text <strong>211</strong> and say: <em>“I have my kids with me and we need shelter tonight.”</em> Ask for <strong>family emergency shelter</strong> and the <strong>coordinated-entry assessment</strong> for rapid re-housing.",
+      callNumber: "tel:211",
+      callLabel: "Call 211",
+      what_to_expect: "211 routes you to family shelter and the local coordinated-entry system. If you are fleeing domestic violence, use the confidential hotline below instead — DV shelter is separate and won’t list your location.",
       bring: [
-        'Birth certificates for children (helpful but not always required)',
-        'Photo ID for adults',
-        'Documentation of income or benefits (if available)',
-        'Social security cards (if you have them)'
+        "Photo ID for adults (if available)",
+        "Birth certificates for children (helpful, not always required)",
+        "Documentation of income or benefits (if available)",
       ],
       resources: [
         {
-          name: 'Our Path Home — Family Housing Line',
-          phone: '(208) 495-4240',
-          tel: 'tel:2084954240',
-          note: 'Coordinated entry for families with children.'
+          name: "National Domestic Violence Hotline",
+          phone: "1-800-799-7233",
+          tel: "tel:18007997233",
+          note: "24/7, confidential. Text START to 88788. Connects you to a local confidential DV shelter."
         },
         {
-          name: 'Boise Rescue Mission — City Light Home for Women & Children',
-          phone: '(208) 368-9901',
-          tel: 'tel:2083689901',
-          note: 'Emergency shelter, meals & programs. 1404 W. Jefferson St, Boise.'
+          name: "United Way 211",
+          phone: "211",
+          tel: "tel:211",
+          note: "Family shelter + coordinated entry."
         },
-        {
-          name: 'Interfaith Sanctuary',
-          phone: '(208) 343-2630',
-          tel: 'tel:2083432630',
-          note: '100 family beds. Join the waitlist at FindHelpIdaho.org — no walk-ins.'
-        }
       ],
       confidence: {
-        level: 'research',
-        note: 'Sourced from Our Path Home (ourpathhome.org), Boise Rescue Mission, and Interfaith Sanctuary. Last reviewed June 2026.',
-        lastChecked: 'June 2026'
+        level: "unverified",
+        note: "AI-researched from public sources — not locally phone-verified. Call 211 to confirm the current local provider. Last researched June 14, 2026.",
+        lastChecked: "June 14, 2026"
       }
     },
 
     result_chronic: {
-      label: 'Chronic Homelessness Pathway',
-      badgeClass: 'badge-chronic',
-      badgeIcon: '🔑',
-      headline: 'Permanent supportive housing may be the right fit for you.',
-      firstAction: 'Call the Our Path Home Connect Housing Crisis Hotline at <strong>(208) 336-4663 (336-HOME)</strong> and ask for a <strong>coordinated entry assessment</strong> — this is how Ada County matches people to permanent supportive housing.',
-      callNumber: 'tel:2083364663',
-      callLabel: 'Call Our Path Home: (208) 336-4663',
-      what_to_expect: 'Ada County uses Our Path Home Connect coordinated entry (run with CATCH Idaho) to assess and prioritize people for permanent supportive housing and Housing First programs. While you wait, Interfaith Sanctuary and Boise Rescue Mission provide emergency shelter, and CATCH street outreach can help you stay connected. You don\'t need a formal diagnosis to be assessed.',
+      label: "Chronic Homelessness Pathway",
+      badgeClass: "badge-chronic",
+      badgeIcon: "🔑",
+      headline: "The housing list starts with one assessment.",
+      firstAction: "Call or text <strong>211</strong> and say: <em>“I’ve been homeless a long time and I want to get on the housing list.”</em> Ask for the <strong>coordinated-entry assessment</strong> — in this system, permanent supportive housing is reached by being assessed and placed on the community housing-referral list. The assessment is the door; there is no separate number.",
+      callNumber: "tel:211",
+      callLabel: "Call 211",
+      what_to_expect: "A coordinated-entry assessor will ask about your situation and add you to the local housing-referral list. While you wait, ask 211 for tonight’s shelter and a daytime drop-in center.",
       bring: [
-        'Photo ID (any form)',
-        'Documentation of health conditions (if available — not required to be assessed)',
-        'Any records of prior housing or service history'
+        "Photo ID (any form)",
+        "Documentation of health conditions (if available — not required to be assessed)",
+        "Any records of prior housing or service history",
       ],
       resources: [
         {
-          name: 'Our Path Home Connect — Housing Crisis Hotline',
-          phone: '(208) 336-4663',
-          tel: 'tel:2083364663',
-          note: 'Coordinated entry & PSH assessment for Ada County.'
+          name: "988 Suicide &amp; Crisis Lifeline",
+          phone: "988",
+          tel: "tel:988",
+          note: "Behavioral-health crisis support + SOAR disability-benefit help tied to housing."
         },
         {
-          name: 'Interfaith Sanctuary',
-          phone: '(208) 343-2630',
-          tel: 'tel:2083432630',
-          note: 'Emergency shelter while you wait. Waitlist at FindHelpIdaho.org.'
+          name: "United Way 211",
+          phone: "211",
+          tel: "tel:211",
+          note: "Coordinated entry + shelter while you wait."
         },
-        {
-          name: '211 Idaho CareLine',
-          phone: 'Dial 211 or 800-926-2588',
-          tel: 'tel:211',
-          note: 'Mon–Fri 8am–6pm MST. Also connects to behavioral health help.'
-        }
       ],
-      extra_note: '📋 Qualifying conditions include physical, mental health, or substance use disorders that substantially affect daily functioning. You don\'t need a formal diagnosis to be assessed.',
       confidence: {
-        level: 'research',
-        note: 'Sourced from Our Path Home / CATCH Idaho (catchidaho.org) and Idaho CareLine 211. Last reviewed June 2026.',
-        lastChecked: 'June 2026'
+        level: "unverified",
+        note: "AI-researched from public sources — not locally phone-verified. Call 211 to confirm the current local provider. Last researched June 14, 2026.",
+        lastChecked: "June 14, 2026"
       }
     },
 
     result_adult: {
-      label: 'Single Adults Pathway',
-      badgeClass: 'badge-adult',
-      badgeIcon: '📞',
-      headline: 'Here\'s where to go for emergency shelter and housing help.',
-      firstAction: 'Two main shelters serve single adults. <strong>Interfaith Sanctuary</strong> (4306 W. State St) is now waitlist-only — join at <strong>FindHelpIdaho.org</strong> or call (208) 343-2630. Men can also walk in to <strong>Boise Rescue Mission\'s River of Life</strong> (575 S. 13th St); check-in is at 4pm daily.',
-      callNumber: 'tel:2083432630',
-      callLabel: 'Call Interfaith Sanctuary: (208) 343-2630',
-      what_to_expect: 'Interfaith Sanctuary has 205 beds (105 for single adults) but no longer takes walk-ins — you must join the waitlist at FindHelpIdaho.org or call to be added. Boise Rescue Mission\'s River of Life is a walk-in men\'s shelter with 3 meals a day and a 4pm check-in. Both connect to Our Path Home coordinated entry for housing. ID is not required to be added to a list, but bring it if you have it.',
+      label: "Single Adults Pathway",
+      badgeClass: "badge-adult",
+      badgeIcon: "📞",
+      headline: "Start with tonight’s shelter, then the housing list.",
+      firstAction: "Call or text <strong>211</strong> and say: <em>“I need a shelter bed tonight.”</em> Ask for <strong>tonight’s open beds for single adults</strong>, the nearest <strong>daytime drop-in center</strong> (showers, mail, case management), and a <strong>free meal site</strong>. 211 is multilingual and 24/7.",
+      callNumber: "tel:211",
+      callLabel: "Call 211",
+      what_to_expect: "211 has the current shelter-bed picture for your area, which changes daily. Ask them to also start a coordinated-entry assessment so you’re working toward housing, not just tonight.",
       bring: [
-        'Photo ID (helpful but not always required)',
-        'Social security card or number (if available)',
-        'Any documentation of income or benefits'
+        "Photo ID (helpful but not always required)",
+        "Social security card or number (if available)",
+        "Any documentation of income or benefits",
       ],
       resources: [
         {
-          name: 'Interfaith Sanctuary',
-          phone: '(208) 343-2630',
-          tel: 'tel:2083432630',
-          note: '4306 W. State St. 105 adult beds — join waitlist at FindHelpIdaho.org (no walk-ins).'
+          name: "Find a free clinic (FQHC)",
+          phone: "Ask 211",
+          tel: "tel:211",
+          note: "Federally Qualified Health Centers treat everyone regardless of ability to pay."
         },
         {
-          name: 'Boise Rescue Mission — River of Life (men)',
-          phone: '(208) 389-9840',
-          tel: 'tel:2083899840',
-          note: '575 S. 13th St. Walk-in men\'s shelter, check-in 4pm, 3 meals daily.'
+          name: "988 Suicide &amp; Crisis Lifeline",
+          phone: "988",
+          tel: "tel:988",
+          note: "24/7 mental-health support."
         },
-        {
-          name: 'Our Path Home Connect — Housing Crisis Hotline',
-          phone: '(208) 336-4663',
-          tel: 'tel:2083364663',
-          note: 'Coordinated entry for housing help.'
-        }
       ],
       confidence: {
-        level: 'research',
-        note: 'Sourced from Interfaith Sanctuary (interfaithsanctuary.org), Boise Rescue Mission (boiserm.org), and Our Path Home. Last reviewed June 2026.',
-        lastChecked: 'June 2026'
+        level: "unverified",
+        note: "AI-researched from public sources — not locally phone-verified. Call 211 to confirm the current local provider. Last researched June 14, 2026.",
+        lastChecked: "June 14, 2026"
       }
-    }
+    },
 
   }; // end PATHWAYS
 

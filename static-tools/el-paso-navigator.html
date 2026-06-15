@@ -472,7 +472,8 @@
   <strong>Need help right now?</strong>
   <a href="tel:211">Call 211</a><span class="crisis-bar__sep">·</span>
   <a href="sms:741741?body=HOME">Text HOME to 741741</a><span class="crisis-bar__sep">·</span>
-  <a href="tel:988">988 Suicide &amp; Crisis</a>
+  <a href="tel:988">988 Suicide &amp; Crisis</a><span class="crisis-bar__sep">·</span>
+  <a href="tel:18007997233">DV 1-800-799-7233</a>
 </div>
 
 <nav class="nav" aria-label="Primary">
@@ -512,6 +513,8 @@
   </svg>
   <span>common<span class="cl-home__rung">ladder</span></span>
 </a>
+
+<div role="note" style="background:#ffedd5;border:1px solid #9a3412;color:#6b2710;border-radius:10px;padding:14px 18px;margin:0 auto 18px;max-width:680px;font-size:.9rem;line-height:1.5;"><strong style="color:#9a3412;">AI-researched, not locally verified.</strong> Common Ladder is based in Arizona. We built this guide from public sources but don’t yet verify these listings by phone the way we do our Arizona tools. Use it to learn <em>what to ask for</em>, then <strong>call <a href="tel:211" style="color:#9a3412;">211</a></strong> for the current local provider. Last researched <time datetime="2026-06-14">June 14, 2026</time>. Wrong info? <a href="mailto:corrections.commonladder@gmail.com?subject=Resource%20update:%20El%20Paso" style="color:#9a3412;">Tell us</a>.</div>
 
 <!-- App shell — all screens rendered by JS into here -->
 <div id="app"></div>
@@ -651,184 +654,157 @@
      Keep firstAction to one clear sentence + phone number.
      resources: 3 is ideal; 2 minimum; 4 maximum.
   ═══════════════════════════════════════════════════════════ */
-  var PATHWAYS = {
+    var PATHWAYS = {
 
     result_veterans: {
       label: "Veterans Pathway",
       badgeClass: "badge-veterans",
-      badgeIcon: "\ud83c\udf96",
-      headline: "There's a dedicated system built for you.",
-      firstAction: "Call the <strong>VA El Paso Homeless Program</strong> at <strong>(915) 564-6100, ext. 6161</strong>. Ask for the homeless program intake social worker. Walk-in at 5001 N. Piedras St, El Paso \u2014 Mental Health Dept, 2nd floor. 24/7 backup: <strong>1-877-4AID-VET (1-877-424-3838)</strong>.",
-      callNumber: "tel:9155646100",
-      callLabel: "Call VA El Paso: (915) 564-6100 ext 6161",
-      what_to_expect: "VA El Paso runs HUD-VASH and HCHV out of 5001 N. Piedras St. Endeavors and American GI Forum are the El Paso SSVF grantees for rapid rehousing and prevention. You do NOT need a DD-214 in hand to be screened \u2014 the VA can pull your record. Veterans Crisis Line is 988 + press 1.",
+      badgeIcon: "🎖",
+      headline: "There's a dedicated system built for veterans.",
+      firstAction: "Call <strong>211</strong> — free, 24/7 — and say: <em>“I’m a veteran and I’m homeless or about to be.”</em> Ask to be connected to the <strong>VA’s Health Care for Homeless Veterans (HCHV)</strong> program and your local <strong>coordinated-entry assessment</strong>. Veterans qualify for both VA housing (HUD-VASH) and the local Continuum of Care at the same time.",
+      callNumber: "tel:211",
+      callLabel: "Call 211",
+      what_to_expect: "211 will route you to the nearest VA homeless-program coordinator and your local CoC. The National Call Center for Homeless Veterans is available 24/7 anywhere in the U.S. if you can’t reach a local office.",
       bring: [
-        "DD-214 discharge papers (if you have them \u2014 not required to call)",
+        "DD-214 discharge papers (if you have them — not required to call)",
         "Photo ID (if available)",
         "Any VA documentation you have",
       ],
       resources: [
         {
-          name: "Endeavors \u2014 SSVF El Paso",
-          phone: "(915) 603-5460",
-          tel: "tel:9156035460",
-          note: "SSVF rapid rehousing and homelessness prevention for veteran families."
-        },
-        {
-          name: "American GI Forum \u2014 SSVF El Paso",
-          phone: "(915) 774-0525",
-          tel: "tel:9157740525",
-          note: "Second SSVF grantee covering El Paso."
-        },
-        {
           name: "National Call Center for Homeless Veterans",
           phone: "1-877-424-3838",
           tel: "tel:18774243838",
-          note: "24/7. Can connect you to programs anywhere in the country."
+          note: "24/7. Available everywhere."
+        },
+        {
+          name: "Veterans Crisis Line",
+          phone: "988",
+          tel: "tel:988",
+          note: "Press 1 for the VA crisis line."
         },
       ],
       confidence: {
-        level: "research",
-        note: "Numbers from va.gov/el-paso-health-care, endeavors.org, agif-nvop.org, and epchomeless.org veteran-resources page. Last reviewed May 2026.",
-        lastChecked: "May 2026"
+        level: "unverified",
+        note: "AI-researched from public sources — not locally phone-verified. Call 211 to confirm the current local provider. Last researched June 14, 2026.",
+        lastChecked: "June 14, 2026"
       }
     },
 
     result_youth: {
       label: "Youth Pathway",
       badgeClass: "badge-youth",
-      badgeIcon: "\ud83c\udf31",
-      headline: "El Paso has dedicated youth shelter and outreach for ages 11\u201324.",
-      firstAction: "Call the <strong>El Paso Center for Children Youth Emergency Shelter</strong> at <strong>(915) 562-4765</strong> \u2014 ages 11\u201317 for emergency shelter, plus youth outreach and transitional housing for ages 18\u201324. They\u2019ll help arrange transportation if you can\u2019t get there.",
-      callNumber: "tel:9155624765",
-      callLabel: "Call EPCC: (915) 562-4765",
-      what_to_expect: "The El Paso Center for Children operates emergency shelter for minors (11\u201317) and runaway/youth-outreach services. For ages 18\u201324, El Paso Human Services, Inc. (EPHSI) runs youth-specific case management, rapid rehousing, and transitional housing through the CoC. 211 Texas works in El Paso and can route after-hours.",
+      badgeIcon: "🌱",
+      headline: "If you’re 24 or under, there’s a youth-specific path.",
+      firstAction: "Call or text <strong>211</strong> and say: <em>“I’m 24 or younger and I need a safe place to stay.”</em> Ask for the <strong>youth emergency shelter</strong> and the <strong>runaway &amp; homeless youth (RHY) program</strong> in your area.",
+      callNumber: "tel:211",
+      callLabel: "Call 211",
+      what_to_expect: "211 routes you to the nearest youth shelter or drop-in center. The national backstops below are always available, day or night.",
       bring: [
-        "Photo ID (helpful \u2014 not required for crisis services)",
-        "Nothing required to use drop-in or call the youth shelter line",
+        "Photo ID (helpful — not required for crisis services)",
         "Anything important you can carry",
+        "Nothing is required to call",
       ],
       resources: [
         {
-          name: "El Paso Center for Children",
-          phone: "(915) 565-8361",
-          tel: "tel:9155658361",
-          note: "Main office. Youth outreach + 11\u201317 emergency shelter + 18\u201324 housing programs."
+          name: "Safe Place",
+          phone: "Text SAFE + your location to 44357",
+          tel: "sms:44357?body=SAFE",
+          note: "Or walk into any QuikTrip and ask staff to call for you."
         },
         {
-          name: "El Paso Human Services, Inc. (EPHSI)",
-          phone: "(915) 838-9608",
-          tel: "tel:9158389608",
-          note: "Comprehensive CoC services for homeless youth 18\u201324."
-        },
-        {
-          name: "211 Texas",
-          phone: "Call or text 211",
-          tel: "tel:211",
-          note: "24/7 connection to local youth and crisis services."
+          name: "National Runaway Safeline",
+          phone: "1-800-786-2929",
+          tel: "tel:18007862929",
+          note: "24/7, free, confidential."
         },
       ],
-      extra_note: "\u26a0\ufe0f Under 18? Texas allows minors to access emergency shelter without parental consent in crisis situations. Call EPCC or 211 if you\u2019re unsure.",
       confidence: {
-        level: "research",
-        note: "Numbers from epccinc.org, tnoys.org provider directory, and El Paso Coalition for the Homeless shelter list. Last reviewed May 2026.",
-        lastChecked: "May 2026"
+        level: "unverified",
+        note: "AI-researched from public sources — not locally phone-verified. Call 211 to confirm the current local provider. Last researched June 14, 2026.",
+        lastChecked: "June 14, 2026"
       }
     },
 
     result_families: {
       label: "Families Pathway",
       badgeClass: "badge-families",
-      badgeIcon: "\ud83c\udfe0",
-      headline: "Families with children are prioritized in the El Paso shelter system.",
-      firstAction: "Call the <strong>Salvation Army of El Paso Family Shelter</strong> at <strong>(915) 544-9811</strong> for emergency family shelter, or <strong>Reynolds Home for Women & Children</strong> at <strong>(915) 274-2598</strong> (8023 San Jose Rd). For coordinated entry, also call <strong>El Paso Coalition for the Homeless</strong> at <strong>(915) 843-2170</strong>.",
-      callNumber: "tel:9155449811",
-      callLabel: "Call Salvation Army El Paso: (915) 544-9811",
-      what_to_expect: "El Paso Coalition for the Homeless runs Coordinated Entry for the CoC \u2014 assessment is by phone before placement. Reynolds Home serves women and children. Salvation Army has family beds. For domestic-violence emergencies, the Center Against Sexual & Family Violence runs a 24/7 hotline at (915) 593-7300.",
+      badgeIcon: "🏠",
+      headline: "Families are kept together in the shelter system.",
+      firstAction: "Call or text <strong>211</strong> and say: <em>“I have my kids with me and we need shelter tonight.”</em> Ask for <strong>family emergency shelter</strong> and the <strong>coordinated-entry assessment</strong> for rapid re-housing.",
+      callNumber: "tel:211",
+      callLabel: "Call 211",
+      what_to_expect: "211 routes you to family shelter and the local coordinated-entry system. If you are fleeing domestic violence, use the confidential hotline below instead — DV shelter is separate and won’t list your location.",
       bring: [
         "Photo ID for adults (if available)",
-        "Birth certificates for children (helpful but not always required)",
+        "Birth certificates for children (helpful, not always required)",
         "Documentation of income or benefits (if available)",
-        "Social security cards (if you have them)",
       ],
       resources: [
         {
-          name: "Reynolds Home for Women & Children",
-          phone: "(915) 274-2598",
-          tel: "tel:9152742598",
-          note: "8023 San Jose Rd. Shelter for women and their children."
+          name: "National Domestic Violence Hotline",
+          phone: "1-800-799-7233",
+          tel: "tel:18007997233",
+          note: "24/7, confidential. Text START to 88788. Connects you to a local confidential DV shelter."
         },
         {
-          name: "Center Against Sexual & Family Violence (DV 24/7)",
-          phone: "(915) 593-7300",
-          tel: "tel:9155937300",
-          note: "24-hour DV hotline. Emergency shelter available."
-        },
-        {
-          name: "211 Texas",
-          phone: "Call or text 211",
+          name: "United Way 211",
+          phone: "211",
           tel: "tel:211",
-          note: "24/7. Ask specifically about family shelter availability."
+          note: "Family shelter + coordinated entry."
         },
       ],
       confidence: {
-        level: "research",
-        note: "Numbers from epchomeless.org shelter list, reynoldshome.org, salvationarmyusa.org El Paso, and casfv.org. Last reviewed May 2026.",
-        lastChecked: "May 2026"
+        level: "unverified",
+        note: "AI-researched from public sources — not locally phone-verified. Call 211 to confirm the current local provider. Last researched June 14, 2026.",
+        lastChecked: "June 14, 2026"
       }
     },
 
     result_chronic: {
       label: "Chronic Homelessness Pathway",
       badgeClass: "badge-chronic",
-      badgeIcon: "\ud83d\udd11",
-      headline: "El Paso Coalition for the Homeless runs Coordinated Entry for PSH and RRH.",
-      firstAction: "Call <strong>El Paso Coalition for the Homeless Coordinated Entry</strong> at <strong>(915) 843-2170</strong> (6044 Gateway East, Suite 410). Ask for a <strong>coordinated entry assessment</strong> \u2014 this is how PSH and rapid rehousing are accessed across the El Paso CoC.",
-      callNumber: "tel:9158432170",
-      callLabel: "Call CE: (915) 843-2170",
-      what_to_expect: "El Paso Coalition for the Homeless (TX-603 lead) operates the CE system with phone and in-person access points. Assessment is required before PSH/RRH placement. While you wait, Opportunity Center for the Homeless (1208 Myrtle Ave, (915) 577-0069) is the main day/night emergency shelter for adults. Behavioral health crisis: Emergence Health Network 24/7 line (915) 779-1800.",
+      badgeIcon: "🔑",
+      headline: "The housing list starts with one assessment.",
+      firstAction: "Call or text <strong>211</strong> and say: <em>“I’ve been homeless a long time and I want to get on the housing list.”</em> Ask for the <strong>coordinated-entry assessment</strong> — in this system, permanent supportive housing is reached by being assessed and placed on the community housing-referral list. The assessment is the door; there is no separate number.",
+      callNumber: "tel:211",
+      callLabel: "Call 211",
+      what_to_expect: "A coordinated-entry assessor will ask about your situation and add you to the local housing-referral list. While you wait, ask 211 for tonight’s shelter and a daytime drop-in center.",
       bring: [
         "Photo ID (any form)",
-        "Documentation of health conditions (if available \u2014 not required to be assessed)",
+        "Documentation of health conditions (if available — not required to be assessed)",
         "Any records of prior housing or service history",
       ],
       resources: [
         {
-          name: "Opportunity Center for the Homeless",
-          phone: "(915) 577-0069",
-          tel: "tel:9155770069",
-          note: "1208 Myrtle Ave. Bridge shelter while awaiting PSH/RRH placement."
+          name: "988 Suicide &amp; Crisis Lifeline",
+          phone: "988",
+          tel: "tel:988",
+          note: "Behavioral-health crisis support + SOAR disability-benefit help tied to housing."
         },
         {
-          name: "Emergence Health Network (24/7 behavioral health)",
-          phone: "(915) 779-1800",
-          tel: "tel:9157791800",
-          note: "Local mental health authority. Crisis line operates 24/7."
-        },
-        {
-          name: "211 Texas",
-          phone: "Call or text 211",
+          name: "United Way 211",
+          phone: "211",
           tel: "tel:211",
-          note: "24/7. Can also route to behavioral health crisis services."
+          note: "Coordinated entry + shelter while you wait."
         },
       ],
-      extra_note: "\ud83d\udccb Qualifying conditions include physical, mental health, or substance use disorders that substantially affect daily functioning. You don\u2019t need a formal diagnosis to be assessed.",
       confidence: {
-        level: "research",
-        note: "Numbers from epchomeless.org coordinated-assessment page, homelessopportunitycenter.org, and emergencehealthnetwork.org. Last reviewed May 2026.",
-        lastChecked: "May 2026"
+        level: "unverified",
+        note: "AI-researched from public sources — not locally phone-verified. Call 211 to confirm the current local provider. Last researched June 14, 2026.",
+        lastChecked: "June 14, 2026"
       }
     },
 
     result_adult: {
       label: "Single Adults Pathway",
       badgeClass: "badge-adult",
-      badgeIcon: "\ud83d\udcde",
-      headline: "Opportunity Center for the Homeless is the primary single-adult intake.",
-      firstAction: "Call or walk in to the <strong>Opportunity Center for the Homeless</strong> at <strong>(915) 577-0069</strong> \u2014 1208 Myrtle Ave, El Paso, TX 79901. They\u2019re the area\u2019s largest emergency shelter for single men, women, and youth and serve as a CE access point.",
-      callNumber: "tel:9155770069",
-      callLabel: "Call Opportunity Center: (915) 577-0069",
-      what_to_expect: "Opportunity Center for the Homeless operates several campuses (men, women, youth) around 1208 Myrtle Ave. Rescue Mission of El Paso at 221 N. Lee St ((915) 532-2575) also takes single adults and serves daily meals. For CE assessment and PSH/RRH access, contact El Paso Coalition for the Homeless at (915) 843-2170.",
+      badgeIcon: "📞",
+      headline: "Start with tonight’s shelter, then the housing list.",
+      firstAction: "Call or text <strong>211</strong> and say: <em>“I need a shelter bed tonight.”</em> Ask for <strong>tonight’s open beds for single adults</strong>, the nearest <strong>daytime drop-in center</strong> (showers, mail, case management), and a <strong>free meal site</strong>. 211 is multilingual and 24/7.",
+      callNumber: "tel:211",
+      callLabel: "Call 211",
+      what_to_expect: "211 has the current shelter-bed picture for your area, which changes daily. Ask them to also start a coordinated-entry assessment so you’re working toward housing, not just tonight.",
       bring: [
         "Photo ID (helpful but not always required)",
         "Social security card or number (if available)",
@@ -836,30 +812,24 @@
       ],
       resources: [
         {
-          name: "Rescue Mission of El Paso",
-          phone: "(915) 532-2575",
-          tel: "tel:9155322575",
-          note: "221 N. Lee St. Shelter and daily meals for adults."
-        },
-        {
-          name: "El Paso Coalition for the Homeless (CE)",
-          phone: "(915) 843-2170",
-          tel: "tel:9158432170",
-          note: "6044 Gateway East Ste 410. Coordinated Entry assessment for PSH/RRH."
-        },
-        {
-          name: "211 Texas",
-          phone: "Call or text 211",
+          name: "Find a free clinic (FQHC)",
+          phone: "Ask 211",
           tel: "tel:211",
-          note: "24/7. Real-time referrals and connection to local services."
+          note: "Federally Qualified Health Centers treat everyone regardless of ability to pay."
+        },
+        {
+          name: "988 Suicide &amp; Crisis Lifeline",
+          phone: "988",
+          tel: "tel:988",
+          note: "24/7 mental-health support."
         },
       ],
       confidence: {
-        level: "research",
-        note: "Numbers from homelessopportunitycenter.org, rmelp.org, epchomeless.org. Last reviewed May 2026.",
-        lastChecked: "May 2026"
+        level: "unverified",
+        note: "AI-researched from public sources — not locally phone-verified. Call 211 to confirm the current local provider. Last researched June 14, 2026.",
+        lastChecked: "June 14, 2026"
       }
-    }
+    },
 
   }; // end PATHWAYS
 

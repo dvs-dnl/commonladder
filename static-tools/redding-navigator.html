@@ -472,7 +472,8 @@
   <strong>Need help right now?</strong>
   <a href="tel:211">Call 211</a><span class="crisis-bar__sep">·</span>
   <a href="sms:741741?body=HOME">Text HOME to 741741</a><span class="crisis-bar__sep">·</span>
-  <a href="tel:988">988 Suicide &amp; Crisis</a>
+  <a href="tel:988">988 Suicide &amp; Crisis</a><span class="crisis-bar__sep">·</span>
+  <a href="tel:18007997233">DV 1-800-799-7233</a>
 </div>
 
 <nav class="nav" aria-label="Primary">
@@ -512,6 +513,8 @@
   </svg>
   <span>common<span class="cl-home__rung">ladder</span></span>
 </a>
+
+<div role="note" style="background:#ffedd5;border:1px solid #9a3412;color:#6b2710;border-radius:10px;padding:14px 18px;margin:0 auto 18px;max-width:680px;font-size:.9rem;line-height:1.5;"><strong style="color:#9a3412;">AI-researched, not locally verified.</strong> Common Ladder is based in Arizona. We built this guide from public sources but don’t yet verify these listings by phone the way we do our Arizona tools. Use it to learn <em>what to ask for</em>, then <strong>call <a href="tel:211" style="color:#9a3412;">211</a></strong> for the current local provider. Last researched <time datetime="2026-06-14">June 14, 2026</time>. Wrong info? <a href="mailto:corrections.commonladder@gmail.com?subject=Resource%20update:%20Redding%20&%20Shasta%20County" style="color:#9a3412;">Tell us</a>.</div>
 
 <!-- App shell — all screens rendered by JS into here -->
 <div id="app"></div>
@@ -651,17 +654,17 @@
      Keep firstAction to one clear sentence + phone number.
      resources: 3 is ideal; 2 minimum; 4 maximum.
   ═══════════════════════════════════════════════════════════ */
-  var PATHWAYS = {
+    var PATHWAYS = {
 
     result_veterans: {
       label: "Veterans Pathway",
       badgeClass: "badge-veterans",
       badgeIcon: "🎖",
-      headline: "There's a dedicated veterans system across the NorCal CoC.",
-      firstAction: "Call <strong>Nation's Finest — Redding</strong> at <strong>(530) 223-3211</strong> — SSVF grantee for the NorCal CoC, 153 Hartnell Ave Suite 100. Or call the <strong>Redding VA Clinic</strong> at <strong>(530) 225-4170</strong>, 351 Hartnell Ave — ask for HUD-VASH / homeless veteran care.",
-      callNumber: "tel:5302233211",
-      callLabel: "Call Nation's Finest: (530) 223-3211",
-      what_to_expect: "Nation's Finest (formerly Vietnam Veterans of California) is the SSVF rapid re-housing grantee serving Shasta County. The Redding VA Clinic, part of VA Northern California Health Care System, operates HUD-VASH and HCHV referrals. Shasta County Veterans Services Office helps with benefits and claims. FaithWorks' House of Cornelius offers transitional housing for homeless veterans.",
+      headline: "There's a dedicated system built for veterans.",
+      firstAction: "Call <strong>211</strong> (or text your ZIP to 855-211) — free, 24/7 — and say: <em>“I’m a veteran and I’m homeless or about to be.”</em> Ask to be connected to the <strong>VA’s Health Care for Homeless Veterans (HCHV)</strong> program and your local <strong>coordinated-entry assessment</strong>. Veterans qualify for both VA housing (HUD-VASH) and the local Continuum of Care at the same time.",
+      callNumber: "tel:211",
+      callLabel: "Call 211",
+      what_to_expect: "211 will route you to the nearest VA homeless-program coordinator and your local CoC. The National Call Center for Homeless Veterans is available 24/7 anywhere in the U.S. if you can’t reach a local office.",
       bring: [
         "DD-214 discharge papers (if you have them — not required to call)",
         "Photo ID (if available)",
@@ -669,28 +672,22 @@
       ],
       resources: [
         {
-          name: "Shasta County Veterans Services Office",
-          phone: "(530) 225-5616",
-          tel: "tel:5302255616",
-          note: "1855 Shasta St, Redding. County benefits, claims, advocacy."
-        },
-        {
-          name: "FaithWorks — House of Cornelius",
-          phone: "(530) 242-1121",
-          tel: "tel:5302421121",
-          note: "Transitional housing for homeless veterans."
-        },
-        {
           name: "National Call Center for Homeless Veterans",
           phone: "1-877-424-3838",
           tel: "tel:18774243838",
           note: "24/7. Available everywhere."
         },
+        {
+          name: "Veterans Crisis Line",
+          phone: "988",
+          tel: "tel:988",
+          note: "Press 1 for the VA crisis line."
+        },
       ],
       confidence: {
-        level: "research",
-        note: "Numbers from nationsfinest.org, va.gov/northern-california-health-care, shastacounty.gov/veterans, faith-works.cc. Last reviewed May 2026.",
-        lastChecked: "May 2026"
+        level: "unverified",
+        note: "AI-researched from public sources — not locally phone-verified. Call 211 to confirm the current local provider. Last researched June 14, 2026.",
+        lastChecked: "June 14, 2026"
       }
     },
 
@@ -698,41 +695,34 @@
       label: "Youth Pathway",
       badgeClass: "badge-youth",
       badgeIcon: "🌱",
-      headline: "Limited youth-shelter capacity — 211 NorCal is the fastest route.",
-      firstAction: "Call <strong>2-1-1 NorCal</strong> — dial <strong>211</strong> (or 1-855-211-7822) — 24/7 information & referral for Shasta County including youth crisis options. Or call the <strong>Shasta Family YMCA</strong> at <strong>(530) 246-9622</strong>, 1155 N Court St — case-managed support for former foster youth and homeless young people.",
+      headline: "If you’re 24 or under, there’s a youth-specific path.",
+      firstAction: "Call or text <strong>211</strong> (or text your ZIP to 855-211) and say: <em>“I’m 24 or younger and I need a safe place to stay.”</em> Ask for the <strong>youth emergency shelter</strong> and the <strong>runaway &amp; homeless youth (RHY) program</strong> in your area.",
       callNumber: "tel:211",
-      callLabel: "Call 211 NorCal",
-      what_to_expect: "Shasta County does not have a Covenant House or HUD-funded dedicated youth shelter. The Shasta Family YMCA offers case management for former foster youth and homeless young adults. McKinney-Vento services for school-age youth route through Shasta County Office of Education. 211 NorCal will route you to the closest open option.",
+      callLabel: "Call 211",
+      what_to_expect: "211 routes you to the nearest youth shelter or drop-in center. The national backstops below are always available, day or night.",
       bring: [
         "Photo ID (helpful — not required for crisis services)",
         "Anything important you can carry",
-        "Nothing required to call 211",
+        "Nothing is required to call",
       ],
       resources: [
         {
-          name: "Shasta Family YMCA",
-          phone: "(530) 246-9622",
-          tel: "tel:5302469622",
-          note: "1155 N Court St, Redding. Case management for former foster + homeless youth."
+          name: "Safe Place",
+          phone: "Text SAFE + your location to 44357",
+          tel: "sms:44357?body=SAFE",
+          note: "Or walk into any QuikTrip and ask staff to call for you."
         },
         {
-          name: "Shasta County Office of Education — Homeless Youth Liaison",
-          phone: "(530) 225-0011",
-          tel: "tel:5302250011",
-          note: "McKinney-Vento support for school-age youth. Main SCOE line; ask for Homeless Youth Support."
-        },
-        {
-          name: "2-1-1 NorCal (Shasta)",
-          phone: "211",
-          tel: "tel:211",
-          note: "Or 1-855-211-7822. Text ZIP to 898211."
+          name: "National Runaway Safeline",
+          phone: "1-800-786-2929",
+          tel: "tel:18007862929",
+          note: "24/7, free, confidential."
         },
       ],
-      extra_note: "⚠️ Under 18? Call 211 first. The dispatcher will help connect you with a safe option.",
       confidence: {
-        level: "research",
-        note: "Numbers from sfymca.org, shastacoe.org, 211norcal.org. Shasta County has no dedicated unaccompanied youth shelter. Last reviewed May 2026.",
-        lastChecked: "May 2026"
+        level: "unverified",
+        note: "AI-researched from public sources — not locally phone-verified. Call 211 to confirm the current local provider. Last researched June 14, 2026.",
+        lastChecked: "June 14, 2026"
       }
     },
 
@@ -740,41 +730,34 @@
       label: "Families Pathway",
       badgeClass: "badge-families",
       badgeIcon: "🏠",
-      headline: "Shasta County HHSA CalWORKs is the main family path.",
-      firstAction: "Call <strong>Shasta County HHSA</strong> at <strong>(530) 225-5000</strong> — ask about CalWORKs Homeless Assistance and the Housing Support Program. Walk-in: 1400 California St, Redding (Mon–Fri 8a–5p). If you are fleeing domestic violence, call <strong>One SAFE Place</strong> at <strong>(530) 244-0117</strong> — 24-hour line.",
-      callNumber: "tel:5302255000",
-      callLabel: "Call Shasta HHSA: (530) 225-5000",
-      what_to_expect: "Shasta County HHSA operates the CalWORKs Homeless Assistance Program (temporary + permanent housing aid for cash-aided families) and the Housing Support Program (HSP) for CalWORKs families exiting homelessness. One SAFE Place is the only DV shelter in the county. Good News Rescue Mission's New Life Center serves women and children.",
+      headline: "Families are kept together in the shelter system.",
+      firstAction: "Call or text <strong>211</strong> (or text your ZIP to 855-211) and say: <em>“I have my kids with me and we need shelter tonight.”</em> Ask for <strong>family emergency shelter</strong> and the <strong>coordinated-entry assessment</strong> for rapid re-housing.",
+      callNumber: "tel:211",
+      callLabel: "Call 211",
+      what_to_expect: "211 routes you to family shelter and the local coordinated-entry system. If you are fleeing domestic violence, use the confidential hotline below instead — DV shelter is separate and won’t list your location.",
       bring: [
         "Photo ID for adults (if available)",
-        "Birth certificates for children (helpful but not always required)",
+        "Birth certificates for children (helpful, not always required)",
         "Documentation of income or benefits (if available)",
-        "Social security cards (if you have them)",
       ],
       resources: [
         {
-          name: "One SAFE Place (24-hour DV line)",
-          phone: "(530) 244-0117",
-          tel: "tel:5302440117",
-          note: "2250 Benton Drive, Redding. Shelter + advocacy for families fleeing violence."
+          name: "National Domestic Violence Hotline",
+          phone: "1-800-799-7233",
+          tel: "tel:18007997233",
+          note: "24/7, confidential. Text START to 88788. Connects you to a local confidential DV shelter."
         },
         {
-          name: "Good News Rescue Mission — Family Services",
-          phone: "(530) 242-5920",
-          tel: "tel:5302425920",
-          note: "2842 S Market St, Redding. New Life Center for women + children."
-        },
-        {
-          name: "2-1-1 NorCal",
+          name: "United Way 211",
           phone: "211",
           tel: "tel:211",
-          note: "Or 1-855-211-7822. Family resource routing for Shasta."
+          note: "Family shelter + coordinated entry."
         },
       ],
       confidence: {
-        level: "research",
-        note: "Numbers from shastacounty.gov/health-human-services, ospshasta.org, gnrm.org, 211norcal.org. Last reviewed May 2026.",
-        lastChecked: "May 2026"
+        level: "unverified",
+        note: "AI-researched from public sources — not locally phone-verified. Call 211 to confirm the current local provider. Last researched June 14, 2026.",
+        lastChecked: "June 14, 2026"
       }
     },
 
@@ -782,11 +765,11 @@
       label: "Chronic Homelessness Pathway",
       badgeClass: "badge-chronic",
       badgeIcon: "🔑",
-      headline: "Shasta County HHSA's Unsheltered Adult program is the CES front door.",
-      firstAction: "Call the <strong>Shasta County HHSA Unsheltered Adult Homeless Assistance Program</strong> at <strong>(530) 245-6645</strong>. For 24/7 mental health crisis support, call <strong>(530) 225-5252</strong> or <strong>1-888-385-5201</strong>.",
-      callNumber: "tel:5302456645",
-      callLabel: "Call HHSA Unsheltered: (530) 245-6645",
-      what_to_expect: "HHSA's Unsheltered Adult program handles outreach, case management, and Coordinated Entry intake for single adults. Hill Country Health & Wellness operates the Mobile Crisis Outreach Team (MCOT) county-wide. Shasta Community Health Center's HOPE program provides street medicine and post-hospital medical respite. Northern Valley Catholic Social Service operates supportive housing for adults with mental illness.",
+      headline: "The housing list starts with one assessment.",
+      firstAction: "Call or text <strong>211</strong> (or text your ZIP to 855-211) and say: <em>“I’ve been homeless a long time and I want to get on the housing list.”</em> Ask for the <strong>coordinated-entry assessment</strong> — in this system, permanent supportive housing is reached by being assessed and placed on the community housing-referral list. The assessment is the door; there is no separate number.",
+      callNumber: "tel:211",
+      callLabel: "Call 211",
+      what_to_expect: "A coordinated-entry assessor will ask about your situation and add you to the local housing-referral list. While you wait, ask 211 for tonight’s shelter and a daytime drop-in center.",
       bring: [
         "Photo ID (any form)",
         "Documentation of health conditions (if available — not required to be assessed)",
@@ -794,29 +777,22 @@
       ],
       resources: [
         {
-          name: "Hill Country Mobile Crisis Outreach Team (MCOT)",
-          phone: "(530) 238-7133",
-          tel: "tel:5302387133",
-          note: "24/7 mental health crisis response, county-wide."
+          name: "988 Suicide &amp; Crisis Lifeline",
+          phone: "988",
+          tel: "tel:988",
+          note: "Behavioral-health crisis support + SOAR disability-benefit help tied to housing."
         },
         {
-          name: "Shasta Community Health Center — HOPE",
-          phone: "(530) 246-5710",
-          tel: "tel:5302465710",
-          note: "1035 Placer St. Street medicine + medical respite for unsheltered adults."
-        },
-        {
-          name: "Northern Valley Catholic Social Service",
-          phone: "(530) 241-0552",
-          tel: "tel:5302410552",
-          note: "Housing + behavioral health for adults with serious mental illness."
+          name: "United Way 211",
+          phone: "211",
+          tel: "tel:211",
+          note: "Coordinated entry + shelter while you wait."
         },
       ],
-      extra_note: "📋 Qualifying conditions include physical, mental health, or substance use disorders that substantially affect daily functioning. You don't need a formal diagnosis to be assessed.",
       confidence: {
-        level: "research",
-        note: "Numbers from shastacounty.gov, shastahealth.org/hope, nvcss.org. Last reviewed May 2026.",
-        lastChecked: "May 2026"
+        level: "unverified",
+        note: "AI-researched from public sources — not locally phone-verified. Call 211 to confirm the current local provider. Last researched June 14, 2026.",
+        lastChecked: "June 14, 2026"
       }
     },
 
@@ -824,11 +800,11 @@
       label: "Single Adults Pathway",
       badgeClass: "badge-adult",
       badgeIcon: "📞",
-      headline: "Good News Rescue Mission is Redding's main emergency shelter.",
-      firstAction: "Call <strong>Good News Rescue Mission</strong> at <strong>(530) 242-5920</strong> — 2842 S Market St, Redding. Largest emergency shelter for adults in Shasta County. Or call the <strong>HHSA Unsheltered Adult program</strong> at <strong>(530) 245-6645</strong> for Coordinated Entry intake.",
-      callNumber: "tel:5302425920",
-      callLabel: "Call GNRM: (530) 242-5920",
-      what_to_expect: "Good News Rescue Mission runs an emergency shelter, meals, and recovery programs. HHSA's Unsheltered Adult program is the official Coordinated Entry access point for single adults. Shasta Community Health Center's HOPE program does street outreach and connects unsheltered adults to care.",
+      headline: "Start with tonight’s shelter, then the housing list.",
+      firstAction: "Call or text <strong>211</strong> (or text your ZIP to 855-211) and say: <em>“I need a shelter bed tonight.”</em> Ask for <strong>tonight’s open beds for single adults</strong>, the nearest <strong>daytime drop-in center</strong> (showers, mail, case management), and a <strong>free meal site</strong>. 211 is multilingual and 24/7.",
+      callNumber: "tel:211",
+      callLabel: "Call 211",
+      what_to_expect: "211 has the current shelter-bed picture for your area, which changes daily. Ask them to also start a coordinated-entry assessment so you’re working toward housing, not just tonight.",
       bring: [
         "Photo ID (helpful but not always required)",
         "Social security card or number (if available)",
@@ -836,30 +812,24 @@
       ],
       resources: [
         {
-          name: "Shasta County HHSA — Unsheltered Adult",
-          phone: "(530) 245-6645",
-          tel: "tel:5302456645",
-          note: "Coordinated Entry for single adults. Email housingassistance@co.shasta.ca.us."
-        },
-        {
-          name: "Shasta Community Health Center — HOPE",
-          phone: "(530) 246-5710",
-          tel: "tel:5302465710",
-          note: "Street medicine + outreach for unsheltered adults."
-        },
-        {
-          name: "2-1-1 NorCal",
-          phone: "211",
+          name: "Find a free clinic (FQHC)",
+          phone: "Ask 211",
           tel: "tel:211",
-          note: "Or 1-855-211-7822. Text ZIP to 898211."
+          note: "Federally Qualified Health Centers treat everyone regardless of ability to pay."
+        },
+        {
+          name: "988 Suicide &amp; Crisis Lifeline",
+          phone: "988",
+          tel: "tel:988",
+          note: "24/7 mental-health support."
         },
       ],
       confidence: {
-        level: "research",
-        note: "Numbers from gnrm.org, shastacounty.gov/health-human-services, shastahealth.org/hope, 211norcal.org. Last reviewed May 2026.",
-        lastChecked: "May 2026"
+        level: "unverified",
+        note: "AI-researched from public sources — not locally phone-verified. Call 211 to confirm the current local provider. Last researched June 14, 2026.",
+        lastChecked: "June 14, 2026"
       }
-    }
+    },
 
   }; // end PATHWAYS
 

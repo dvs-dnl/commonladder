@@ -472,7 +472,8 @@
   <strong>Need help right now?</strong>
   <a href="tel:211">Call 211</a><span class="crisis-bar__sep">·</span>
   <a href="sms:741741?body=HOME">Text HOME to 741741</a><span class="crisis-bar__sep">·</span>
-  <a href="tel:988">988 Suicide &amp; Crisis</a>
+  <a href="tel:988">988 Suicide &amp; Crisis</a><span class="crisis-bar__sep">·</span>
+  <a href="tel:18007997233">DV 1-800-799-7233</a>
 </div>
 
 <nav class="nav" aria-label="Primary">
@@ -512,6 +513,8 @@
   </svg>
   <span>common<span class="cl-home__rung">ladder</span></span>
 </a>
+
+<div role="note" style="background:#ffedd5;border:1px solid #9a3412;color:#6b2710;border-radius:10px;padding:14px 18px;margin:0 auto 18px;max-width:680px;font-size:.9rem;line-height:1.5;"><strong style="color:#9a3412;">AI-researched, not locally verified.</strong> Common Ladder is based in Arizona. We built this guide from public sources but don’t yet verify these listings by phone the way we do our Arizona tools. Use it to learn <em>what to ask for</em>, then <strong>call <a href="tel:211" style="color:#9a3412;">211</a></strong> for the current local provider. Last researched <time datetime="2026-06-14">June 14, 2026</time>. Wrong info? <a href="mailto:corrections.commonladder@gmail.com?subject=Resource%20update:%20Boston" style="color:#9a3412;">Tell us</a>.</div>
 
 <!-- App shell — all screens rendered by JS into here -->
 <div id="app"></div>
@@ -651,185 +654,157 @@
      Keep firstAction to one clear sentence + phone number.
      resources: 3 is ideal; 2 minimum; 4 maximum.
   ═══════════════════════════════════════════════════════════ */
-  var PATHWAYS = {
+    var PATHWAYS = {
 
     result_veterans: {
       label: "Veterans Pathway",
       badgeClass: "badge-veterans",
-      badgeIcon: "\ud83c\udf96",
-      headline: "Boston has the strongest veteran shelter system in New England.",
-      firstAction: "Call the <strong>New England Center and Home for Veterans (NECHV)</strong> at <strong>(617) 371-1800</strong> \u2014 17 Court St, Boston. The main Boston veteran shelter with 24/7 intake. Or call <strong>VA Boston Healthcare \u2014 Jamaica Plain</strong> at <strong>(617) 232-9500</strong>.",
-      callNumber: "tel:6173711800",
-      callLabel: "Call NECHV: (617) 371-1800",
-      what_to_expect: "NECHV operates Boston's main veteran shelter with intake 24/7 at 17 Court St. VA Boston Healthcare has campuses at Jamaica Plain (150 South Huntington Ave), West Roxbury (1400 VFW Parkway), and Brockton (940 Belmont St). VOA Massachusetts runs the local SSVF program for rapid rehousing.",
+      badgeIcon: "🎖",
+      headline: "There's a dedicated system built for veterans.",
+      firstAction: "Call <strong>211</strong> (or text your ZIP to 877-211) — free, 24/7 — and say: <em>“I’m a veteran and I’m homeless or about to be.”</em> Ask to be connected to the <strong>VA’s Health Care for Homeless Veterans (HCHV)</strong> program and your local <strong>coordinated-entry assessment</strong>. Veterans qualify for both VA housing (HUD-VASH) and the local Continuum of Care at the same time.",
+      callNumber: "tel:211",
+      callLabel: "Call 211",
+      what_to_expect: "211 will route you to the nearest VA homeless-program coordinator and your local CoC. The National Call Center for Homeless Veterans is available 24/7 anywhere in the U.S. if you can’t reach a local office.",
       bring: [
-        "DD-214 discharge papers (if you have them \u2014 not required to call)",
+        "DD-214 discharge papers (if you have them — not required to call)",
         "Photo ID (if available)",
         "Any VA documentation you have",
       ],
       resources: [
-        {
-          name: "Volunteers of America Massachusetts \u2014 SSVF",
-          phone: "(617) 390-0232",
-          tel: "tel:6173900232",
-          note: "Supportive Services for Veteran Families \u2014 rapid rehousing & prevention."
-        },
-        {
-          name: "VA Boston Healthcare \u2014 West Roxbury",
-          phone: "(617) 323-7700",
-          tel: "tel:6173237700",
-          note: "1400 VFW Parkway. Acute/surgical care."
-        },
         {
           name: "National Call Center for Homeless Veterans",
           phone: "1-877-424-3838",
           tel: "tel:18774243838",
           note: "24/7. Available everywhere."
         },
+        {
+          name: "Veterans Crisis Line",
+          phone: "988",
+          tel: "tel:988",
+          note: "Press 1 for the VA crisis line."
+        },
       ],
       confidence: {
-        level: "research",
-        note: "Numbers from va.gov/boston-health-care, nechv.org, voamass.org. Last reviewed June 2026.",
-        lastChecked: "June 2026"
+        level: "unverified",
+        note: "AI-researched from public sources — not locally phone-verified. Call 211 to confirm the current local provider. Last researched June 14, 2026.",
+        lastChecked: "June 14, 2026"
       }
     },
 
     result_youth: {
       label: "Youth Pathway",
       badgeClass: "badge-youth",
-      badgeIcon: "\ud83c\udf31",
-      headline: "Bridge Over Troubled Waters is Boston's lead youth provider.",
-      firstAction: "Call <strong>Bridge Over Troubled Waters</strong> at <strong>(617) 423-9575</strong>, 47 West St, Boston \u2014 24-hour line for ages 14\u201324 with street outreach, shelter, and transitional living.",
-      callNumber: "tel:6174239575",
-      callLabel: "Call Bridge: (617) 423-9575",
-      what_to_expect: "Bridge Over Troubled Waters provides comprehensive services for ages 14\u201324, including street outreach, emergency shelter, transitional living, and education/employment programs. Youth On Fire (Cambridge) is a drop-in for street-involved youth with meals, hygiene, HIV/STI testing, and housing navigation. The Home for Little Wanderers operates additional programs for runaway, LGBTQ+, and transitional-age youth.",
+      badgeIcon: "🌱",
+      headline: "If you’re 24 or under, there’s a youth-specific path.",
+      firstAction: "Call or text <strong>211</strong> (or text your ZIP to 877-211) and say: <em>“I’m 24 or younger and I need a safe place to stay.”</em> Ask for the <strong>youth emergency shelter</strong> and the <strong>runaway &amp; homeless youth (RHY) program</strong> in your area.",
+      callNumber: "tel:211",
+      callLabel: "Call 211",
+      what_to_expect: "211 routes you to the nearest youth shelter or drop-in center. The national backstops below are always available, day or night.",
       bring: [
-        "Photo ID (helpful \u2014 not required for crisis services)",
+        "Photo ID (helpful — not required for crisis services)",
         "Anything important you can carry",
-        "Nothing required to call the 24-hr line",
+        "Nothing is required to call",
       ],
       resources: [
         {
-          name: "Youth On Fire (Cambridge drop-in)",
-          phone: "(617) 661-2508",
-          tel: "tel:6176612508",
-          note: "1 Church St, Cambridge. Street-involved youth 14\u201324."
-        },
-        {
-          name: "The Home for Little Wanderers",
-          phone: "(617) 267-3700",
-          tel: "tel:6172673700",
-          note: "10 Guest St, Boston. Programs for runaway, LGBTQ+, transitional-age youth."
+          name: "Safe Place",
+          phone: "Text SAFE + your location to 44357",
+          tel: "sms:44357?body=SAFE",
+          note: "Or walk into any QuikTrip and ask staff to call for you."
         },
         {
           name: "National Runaway Safeline",
           phone: "1-800-786-2929",
           tel: "tel:18007862929",
-          note: "24/7 national crisis line. 1-800-RUNAWAY."
+          note: "24/7, free, confidential."
         },
       ],
-      extra_note: "\u26a0\ufe0f Under 18? Massachusetts allows runaway/homeless youth (RHY) access in many situations. Bridge Over Troubled Waters knows the local rules.",
       confidence: {
-        level: "research",
-        note: "Numbers from bridgeotw.org, aac.org/youth-on-fire, thehome.org. Last reviewed June 2026.",
-        lastChecked: "June 2026"
+        level: "unverified",
+        note: "AI-researched from public sources — not locally phone-verified. Call 211 to confirm the current local provider. Last researched June 14, 2026.",
+        lastChecked: "June 14, 2026"
       }
     },
 
     result_families: {
       label: "Families Pathway",
       badgeClass: "badge-families",
-      badgeIcon: "\ud83c\udfe0",
-      headline: "Massachusetts has a legal right to shelter for families with children.",
-      firstAction: "Call the <strong>Emergency Assistance (EA) Family Shelter Line</strong> at <strong>1-866-584-0653</strong>, Mon\u2013Fri 8am\u20135pm. Massachusetts has had a statutory right to shelter for families with children since 1983 \u2014 you cannot be denied if you meet eligibility.",
-      callNumber: "tel:18665840653",
-      callLabel: "Call EA Shelter: 1-866-584-0653",
-      what_to_expect: "EA (Emergency Assistance) and HomeBASE are administered by the state Executive Office of Housing and Livable Communities (EOHLC) for pregnant people and families with children under 21. Recent (2025) reforms added a 6-month length-of-stay limit and a 4,000-family capacity cap, but the underlying right to shelter remains in effect. For language assistance, call (617) 573-1106. For domestic violence, call SafeLink at 1-877-785-2020.",
+      badgeIcon: "🏠",
+      headline: "Families are kept together in the shelter system.",
+      firstAction: "Call or text <strong>211</strong> (or text your ZIP to 877-211) and say: <em>“I have my kids with me and we need shelter tonight.”</em> Ask for <strong>family emergency shelter</strong> and the <strong>coordinated-entry assessment</strong> for rapid re-housing.",
+      callNumber: "tel:211",
+      callLabel: "Call 211",
+      what_to_expect: "211 routes you to family shelter and the local coordinated-entry system. If you are fleeing domestic violence, use the confidential hotline below instead — DV shelter is separate and won’t list your location.",
       bring: [
         "Photo ID for adults (if available)",
-        "Birth certificates for children (helpful but not always required)",
+        "Birth certificates for children (helpful, not always required)",
         "Documentation of income or benefits (if available)",
-        "Social security cards (if you have them)",
       ],
       resources: [
         {
-          name: "EA Language Assistance Line",
-          phone: "(617) 573-1106",
-          tel: "tel:6175731106",
-          note: "Multilingual support for EA application."
+          name: "National Domestic Violence Hotline",
+          phone: "1-800-799-7233",
+          tel: "tel:18007997233",
+          note: "24/7, confidential. Text START to 88788. Connects you to a local confidential DV shelter."
         },
         {
-          name: "Mass 2-1-1",
+          name: "United Way 211",
           phone: "211",
           tel: "tel:211",
-          note: "Or 1-877-211-6277. 24/7 statewide referrals."
-        },
-        {
-          name: "SafeLink (DV statewide 24/7)",
-          phone: "1-877-785-2020",
-          tel: "tel:18777852020",
-          note: "Boston's largest DV provider, statewide hotline."
+          note: "Family shelter + coordinated entry."
         },
       ],
-      extra_note: "\ud83d\udee1\ufe0f Massachusetts Right to Shelter (since 1983): Families with children under 21 and pregnant people who meet income eligibility cannot be denied shelter. Recent reforms added time limits but the right remains.",
       confidence: {
-        level: "research",
-        note: "EA intake line from mass.gov. Mass right-to-shelter context from masslegalhelp.org. Last reviewed June 2026.",
-        lastChecked: "June 2026"
+        level: "unverified",
+        note: "AI-researched from public sources — not locally phone-verified. Call 211 to confirm the current local provider. Last researched June 14, 2026.",
+        lastChecked: "June 14, 2026"
       }
     },
 
     result_chronic: {
       label: "Chronic Homelessness Pathway",
       badgeClass: "badge-chronic",
-      badgeIcon: "\ud83d\udd11",
-      headline: "Pine Street Inn and BHCHP serve chronically homeless adults.",
-      firstAction: "Call <strong>Pine Street Inn Triage</strong> at <strong>(617) 892-9100</strong> (press 1 for shelter triage) \u2014 444 Harrison Ave, Boston. Pine Street is the main hub for chronically homeless adults.",
-      callNumber: "tel:6178929100",
-      callLabel: "Call Pine Street Inn: (617) 892-9100",
-      what_to_expect: "Pine Street Inn operates Boston's main shelters, street outreach, and work programs. Boston Health Care for the Homeless Program (BHCHP) provides integrated medical and behavioral health care at 780 Albany St, including the Barbara McInnis House medical respite. The City of Boston Office of Housing Stability runs the Coordinated Access System (CAS) for PSH/RRH matching.",
+      badgeIcon: "🔑",
+      headline: "The housing list starts with one assessment.",
+      firstAction: "Call or text <strong>211</strong> (or text your ZIP to 877-211) and say: <em>“I’ve been homeless a long time and I want to get on the housing list.”</em> Ask for the <strong>coordinated-entry assessment</strong> — in this system, permanent supportive housing is reached by being assessed and placed on the community housing-referral list. The assessment is the door; there is no separate number.",
+      callNumber: "tel:211",
+      callLabel: "Call 211",
+      what_to_expect: "A coordinated-entry assessor will ask about your situation and add you to the local housing-referral list. While you wait, ask 211 for tonight’s shelter and a daytime drop-in center.",
       bring: [
         "Photo ID (any form)",
-        "Documentation of health conditions (if available \u2014 not required to be assessed)",
+        "Documentation of health conditions (if available — not required to be assessed)",
         "Any records of prior housing or service history",
       ],
       resources: [
         {
-          name: "Boston Health Care for the Homeless (BHCHP)",
-          phone: "(857) 654-1000",
-          tel: "tel:8576541000",
-          note: "780 Albany St. Integrated medical/behavioral health for homeless adults."
+          name: "988 Suicide &amp; Crisis Lifeline",
+          phone: "988",
+          tel: "tel:988",
+          note: "Behavioral-health crisis support + SOAR disability-benefit help tied to housing."
         },
         {
-          name: "City of Boston Office of Housing Stability",
-          phone: "(617) 635-4200",
-          tel: "tel:6176354200",
-          note: "26 Court St. Runs Boston Coordinated Access System (cas.boston.gov)."
-        },
-        {
-          name: "Mass 2-1-1",
+          name: "United Way 211",
           phone: "211",
           tel: "tel:211",
-          note: "Or 1-877-211-6277. 24/7 statewide."
+          note: "Coordinated entry + shelter while you wait."
         },
       ],
-      extra_note: "\ud83d\udccb Qualifying conditions include physical, mental health, or substance use disorders that substantially affect daily functioning. You don't need a formal diagnosis to be assessed.",
       confidence: {
-        level: "research",
-        note: "Numbers from pinestreetinn.org, bhchp.org, boston.gov. Last reviewed June 2026.",
-        lastChecked: "June 2026"
+        level: "unverified",
+        note: "AI-researched from public sources — not locally phone-verified. Call 211 to confirm the current local provider. Last researched June 14, 2026.",
+        lastChecked: "June 14, 2026"
       }
     },
 
     result_adult: {
       label: "Single Adults Pathway",
       badgeClass: "badge-adult",
-      badgeIcon: "\ud83d\udcde",
-      headline: "Here's where to go for emergency shelter and housing help.",
-      firstAction: "Call <strong>Pine Street Inn</strong> at <strong>(617) 892-9100</strong> \u2014 main intake for Boston's largest emergency shelter network (men's and women's shelters, outreach, work programs).",
-      callNumber: "tel:6178929100",
-      callLabel: "Call Pine Street Inn: (617) 892-9100",
-      what_to_expect: "Pine Street Inn operates the largest single-adult shelter network in Boston. Boston Rescue Mission (Kingston House, 39 Kingston St) is a faith-based shelter with recovery services. St. Francis House at 39 Boylston St is the largest daytime resource center in New England \u2014 meals, clothing, clinical services, and workforce programs.",
+      badgeIcon: "📞",
+      headline: "Start with tonight’s shelter, then the housing list.",
+      firstAction: "Call or text <strong>211</strong> (or text your ZIP to 877-211) and say: <em>“I need a shelter bed tonight.”</em> Ask for <strong>tonight’s open beds for single adults</strong>, the nearest <strong>daytime drop-in center</strong> (showers, mail, case management), and a <strong>free meal site</strong>. 211 is multilingual and 24/7.",
+      callNumber: "tel:211",
+      callLabel: "Call 211",
+      what_to_expect: "211 has the current shelter-bed picture for your area, which changes daily. Ask them to also start a coordinated-entry assessment so you’re working toward housing, not just tonight.",
       bring: [
         "Photo ID (helpful but not always required)",
         "Social security card or number (if available)",
@@ -837,30 +812,24 @@
       ],
       resources: [
         {
-          name: "Boston Rescue Mission (Kingston House)",
-          phone: "(617) 338-9000",
-          tel: "tel:6173389000",
-          note: "39 Kingston St. Faith-based shelter, recovery services."
-        },
-        {
-          name: "St. Francis House",
-          phone: "(617) 542-4211",
-          tel: "tel:6175424211",
-          note: "39 Boylston St. Largest daytime resource center in New England."
-        },
-        {
-          name: "Mass 2-1-1",
-          phone: "211",
+          name: "Find a free clinic (FQHC)",
+          phone: "Ask 211",
           tel: "tel:211",
-          note: "Or 1-877-211-6277. 24/7 statewide."
+          note: "Federally Qualified Health Centers treat everyone regardless of ability to pay."
+        },
+        {
+          name: "988 Suicide &amp; Crisis Lifeline",
+          phone: "988",
+          tel: "tel:988",
+          note: "24/7 mental-health support."
         },
       ],
       confidence: {
-        level: "research",
-        note: "Numbers from pinestreetinn.org, brm.org, stfrancishouse.org, mass211.org. Last reviewed June 2026.",
-        lastChecked: "June 2026"
+        level: "unverified",
+        note: "AI-researched from public sources — not locally phone-verified. Call 211 to confirm the current local provider. Last researched June 14, 2026.",
+        lastChecked: "June 14, 2026"
       }
-    }
+    },
 
   }; // end PATHWAYS
 

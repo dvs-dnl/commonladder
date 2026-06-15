@@ -468,7 +468,8 @@ html,body{overflow-x:hidden;max-width:100%;}
   <strong>Need help right now?</strong>
   <a href="tel:211">Call 211</a><span class="crisis-bar__sep">·</span>
   <a href="sms:741741?body=HOME">Text HOME to 741741</a><span class="crisis-bar__sep">·</span>
-  <a href="tel:988">988 Suicide &amp; Crisis</a>
+  <a href="tel:988">988 Suicide &amp; Crisis</a><span class="crisis-bar__sep">·</span>
+  <a href="tel:18007997233">DV 1-800-799-7233</a>
 </div>
 <nav class="nav" aria-label="Primary">
   <div class="nav__inner">
@@ -506,6 +507,8 @@ html,body{overflow-x:hidden;max-width:100%;}
   </svg>
   <span>common<span class="cl-home__rung">ladder</span></span>
 </a>
+
+<div role="note" style="background:#ffedd5;border:1px solid #9a3412;color:#6b2710;border-radius:10px;padding:14px 18px;margin:0 auto 18px;max-width:680px;font-size:.9rem;line-height:1.5;"><strong style="color:#9a3412;">AI-researched, not locally verified.</strong> Common Ladder is based in Arizona. We built this guide from public sources but don’t yet verify these listings by phone the way we do our Arizona tools. Use it to learn <em>what to ask for</em>, then <strong>call <a href="tel:211" style="color:#9a3412;">211</a></strong> for the current local provider. Last researched <time datetime="2026-06-14">June 14, 2026</time>. Wrong info? <a href="mailto:corrections.commonladder@gmail.com?subject=Resource%20update:%20Birmingham" style="color:#9a3412;">Tell us</a>.</div>
 
 <!-- App shell — all screens rendered by JS into here -->
 <div id="app"></div>
@@ -645,17 +648,17 @@ html,body{overflow-x:hidden;max-width:100%;}
      Keep firstAction to one clear sentence + phone number.
      resources: 3 is ideal; 2 minimum; 4 maximum.
   ═══════════════════════════════════════════════════════════ */
-  var PATHWAYS = {
+    var PATHWAYS = {
 
     result_veterans: {
       label: "Veterans Pathway",
       badgeClass: "badge-veterans",
       badgeIcon: "🎖",
-      headline: "There's a dedicated system built for you.",
-      firstAction: "Call the <strong>Birmingham VA Medical Center</strong> at <strong>(205) 933-8101</strong> — 700 S 19th Street, Birmingham. Ask for the Homeless Veteran Program (HUD-VASH / HCHV). Or call the <strong>National Call Center for Homeless Veterans</strong> at <strong>1-877-424-3838</strong> (24/7).",
-      callNumber: "tel:2059338101",
-      callLabel: "Call Birmingham VA: (205) 933-8101",
-      what_to_expect: "The Birmingham VA Medical Center is the regional hub for veteran homelessness services and runs HUD-VASH and HCHV outreach for greater Birmingham. The VA can refer you to SSVF (Supportive Services for Veteran Families) for case management and rapid re-housing. Three Hots and a Cot operates transitional housing for Birmingham-area veterans. The national 24/7 line is a backstop if you cannot reach a local coordinator.",
+      headline: "There's a dedicated system built for veterans.",
+      firstAction: "Call <strong>211</strong> — free, 24/7 — and say: <em>“I’m a veteran and I’m homeless or about to be.”</em> Ask to be connected to the <strong>VA’s Health Care for Homeless Veterans (HCHV)</strong> program and your local <strong>coordinated-entry assessment</strong>. Veterans qualify for both VA housing (HUD-VASH) and the local Continuum of Care at the same time.",
+      callNumber: "tel:211",
+      callLabel: "Call 211",
+      what_to_expect: "211 will route you to the nearest VA homeless-program coordinator and your local CoC. The National Call Center for Homeless Veterans is available 24/7 anywhere in the U.S. if you can’t reach a local office.",
       bring: [
         "DD-214 discharge papers (if you have them — not required to call)",
         "Photo ID (if available)",
@@ -663,28 +666,22 @@ html,body{overflow-x:hidden;max-width:100%;}
       ],
       resources: [
         {
-          name: "Birmingham VA Medical Center",
-          phone: "(205) 933-8101",
-          tel: "tel:2059338101",
-          note: "700 S 19th St. HUD-VASH + HCHV outreach. Ask for the Homeless Veteran Program."
-        },
-        {
-          name: "Three Hots and a Cot",
-          phone: "(205) 520-2356",
-          tel: "tel:2055202356",
-          note: "Birmingham veteran transitional housing, meals, job-search support."
-        },
-        {
           name: "National Call Center for Homeless Veterans",
           phone: "1-877-424-3838",
           tel: "tel:18774243838",
-          note: "24/7 free confidential hotline. Routes to local VA + SSVF."
+          note: "24/7. Available everywhere."
+        },
+        {
+          name: "Veterans Crisis Line",
+          phone: "988",
+          tel: "tel:988",
+          note: "Press 1 for the VA crisis line."
         },
       ],
       confidence: {
-        level: "research",
-        note: "Numbers from va.gov/birmingham-health-care/contact-us, cotsforvets.org/contact, department.va.gov/homeless/nationalcallcenter. Last reviewed June 2026.",
-        lastChecked: "June 2026"
+        level: "unverified",
+        note: "AI-researched from public sources — not locally phone-verified. Call 211 to confirm the current local provider. Last researched June 14, 2026.",
+        lastChecked: "June 14, 2026"
       }
     },
 
@@ -692,41 +689,34 @@ html,body{overflow-x:hidden;max-width:100%;}
       label: "Youth Pathway",
       badgeClass: "badge-youth",
       badgeIcon: "🌱",
-      headline: "211 Central Alabama is the triage line for youth across AL-500.",
-      firstAction: "Call <strong>211 Central Alabama</strong> at <strong>2-1-1</strong> (or <strong>1-888-421-1266</strong>) — 24/7. Ask for a youth-specific referral in Jefferson, Shelby, or St. Clair County. Or call the <strong>National Runaway Safeline</strong> at <strong>1-800-786-2929</strong> (24/7).",
-      callNumber: "tel:18884211266",
-      callLabel: "Call 211 Central Alabama: 1-888-421-1266",
-      what_to_expect: "Birmingham does not have a Covenant House location (confirmed absent from Alabama). 211 Central Alabama (United Way of Central Alabama) is the front door for connecting youth and young adults to family reunification, host-home, and shelter options across the AL-500 footprint. YWCA Central Alabama serves transition-age youth through family and shelter programs. The National Runaway Safeline is a 24/7 federal backstop.",
+      headline: "If you’re 24 or under, there’s a youth-specific path.",
+      firstAction: "Call or text <strong>211</strong> and say: <em>“I’m 24 or younger and I need a safe place to stay.”</em> Ask for the <strong>youth emergency shelter</strong> and the <strong>runaway &amp; homeless youth (RHY) program</strong> in your area.",
+      callNumber: "tel:211",
+      callLabel: "Call 211",
+      what_to_expect: "211 routes you to the nearest youth shelter or drop-in center. The national backstops below are always available, day or night.",
       bring: [
         "Photo ID (helpful — not required for crisis services)",
         "Anything important you can carry",
-        "Nothing required to call the crisis line",
+        "Nothing is required to call",
       ],
       resources: [
         {
-          name: "211 Central Alabama",
-          phone: "1-888-421-1266",
-          tel: "tel:18884211266",
-          note: "Or dial 2-1-1. 24/7 across Jefferson, Shelby, St. Clair Counties."
-        },
-        {
-          name: "YWCA Central Alabama",
-          phone: "(205) 322-9922",
-          tel: "tel:2053229922",
-          note: "Youth + family programs, Interfaith Hospitality House, CREW youth program."
+          name: "Safe Place",
+          phone: "Text SAFE + your location to 44357",
+          tel: "sms:44357?body=SAFE",
+          note: "Or walk into any QuikTrip and ask staff to call for you."
         },
         {
           name: "National Runaway Safeline",
           phone: "1-800-786-2929",
           tel: "tel:18007862929",
-          note: "24/7 federal RHY hotline. Call or text. Home Free bus tickets available."
+          note: "24/7, free, confidential."
         },
       ],
-      extra_note: "⚠️ Under 18? 211 Central Alabama knows the local rules. They will help.",
       confidence: {
-        level: "research",
-        note: "Numbers from uwca.org/need-help/211-call-center, ywcabham.org/contact-us, 1800runaway.org. Covenant House confirmed absent from AL per covenanthouse.org/locations. Last reviewed June 2026.",
-        lastChecked: "June 2026"
+        level: "unverified",
+        note: "AI-researched from public sources — not locally phone-verified. Call 211 to confirm the current local provider. Last researched June 14, 2026.",
+        lastChecked: "June 14, 2026"
       }
     },
 
@@ -734,41 +724,34 @@ html,body{overflow-x:hidden;max-width:100%;}
       label: "Families Pathway",
       badgeClass: "badge-families",
       badgeIcon: "🏠",
-      headline: "Jessie's Place and YWCA are the doors for women and children.",
-      firstAction: "Call <strong>Jimmie Hale Mission — Jessie's Place</strong> at <strong>(205) 323-5878</strong> for emergency shelter for women and children. If you are fleeing domestic violence, call the <strong>YWCA 24-Hour Crisis Line</strong> at <strong>(205) 322-4878</strong> first.",
-      callNumber: "tel:2053235878",
-      callLabel: "Call Jimmie Hale: (205) 323-5878",
-      what_to_expect: "Jessie's Place (Jimmie Hale Mission) is Birmingham's main women-and-children residential program, offering shelter with medical, dental, education, and parenting support. The YWCA Central Alabama operates a domestic violence shelter and the Interfaith Hospitality House for families in Jefferson, Blount, and St. Clair Counties. Pathways serves women and women-with-children through a downtown day center and Stepping Stones overnight shelter.",
+      headline: "Families are kept together in the shelter system.",
+      firstAction: "Call or text <strong>211</strong> and say: <em>“I have my kids with me and we need shelter tonight.”</em> Ask for <strong>family emergency shelter</strong> and the <strong>coordinated-entry assessment</strong> for rapid re-housing.",
+      callNumber: "tel:211",
+      callLabel: "Call 211",
+      what_to_expect: "211 routes you to family shelter and the local coordinated-entry system. If you are fleeing domestic violence, use the confidential hotline below instead — DV shelter is separate and won’t list your location.",
       bring: [
         "Photo ID for adults (if available)",
-        "Birth certificates for children (helpful but not always required)",
+        "Birth certificates for children (helpful, not always required)",
         "Documentation of income or benefits (if available)",
-        "Social security cards (if you have them)",
       ],
       resources: [
         {
-          name: "Jimmie Hale Mission — Jessie's Place",
-          phone: "(205) 323-5878",
-          tel: "tel:2053235878",
-          note: "Downtown Birmingham. Residential program for women + children (up to 30)."
+          name: "National Domestic Violence Hotline",
+          phone: "1-800-799-7233",
+          tel: "tel:18007997233",
+          note: "24/7, confidential. Text START to 88788. Connects you to a local confidential DV shelter."
         },
         {
-          name: "YWCA 24-Hour Crisis Line",
-          phone: "(205) 322-4878",
-          tel: "tel:2053224878",
-          note: "DV shelter for women + children. Jefferson, Blount, St. Clair Counties."
-        },
-        {
-          name: "Pathways — Day Center + Stepping Stones",
-          phone: "(205) 322-6854",
-          tel: "tel:2053226854",
-          note: "409 Richard Arrington Jr Blvd N. Day services + overnight shelter for women and women w/ children."
+          name: "United Way 211",
+          phone: "211",
+          tel: "tel:211",
+          note: "Family shelter + coordinated entry."
         },
       ],
       confidence: {
-        level: "research",
-        note: "Numbers from jimmiehalemission.com/jessies-place, ywcabham.org/end-domestic-violence/domestic-violence-services, pathwayshome.org/contact. Last reviewed June 2026.",
-        lastChecked: "June 2026"
+        level: "unverified",
+        note: "AI-researched from public sources — not locally phone-verified. Call 211 to confirm the current local provider. Last researched June 14, 2026.",
+        lastChecked: "June 14, 2026"
       }
     },
 
@@ -776,11 +759,11 @@ html,body{overflow-x:hidden;max-width:100%;}
       label: "Chronic Homelessness Pathway",
       badgeClass: "badge-chronic",
       badgeIcon: "🔑",
-      headline: "One Roof is the door to Permanent Supportive Housing in AL-500.",
-      firstAction: "Call <strong>One Roof</strong> at <strong>(205) 254-8833</strong> — 730 8th Ave W Ste 100, Birmingham. CoC lead and Coordinated Entry administrator for Jefferson, Shelby, and St. Clair Counties. Or call <strong>One Roof Street Outreach</strong> at <strong>(205) 920-1895</strong>.",
-      callNumber: "tel:2052548833",
-      callLabel: "Call One Roof: (205) 254-8833",
-      what_to_expect: "One Roof administers Coordinated Entry (CE) for AL-500, using VI-SPDAT to prioritize people with the highest vulnerabilities for permanent supportive housing referrals. After assessment you may be referred to PSH providers like Pathways' Safe Haven program (for women with serious mental illness). One Roof Street Outreach can meet people who are unsheltered.",
+      headline: "The housing list starts with one assessment.",
+      firstAction: "Call or text <strong>211</strong> and say: <em>“I’ve been homeless a long time and I want to get on the housing list.”</em> Ask for the <strong>coordinated-entry assessment</strong> — in this system, permanent supportive housing is reached by being assessed and placed on the community housing-referral list. The assessment is the door; there is no separate number.",
+      callNumber: "tel:211",
+      callLabel: "Call 211",
+      what_to_expect: "A coordinated-entry assessor will ask about your situation and add you to the local housing-referral list. While you wait, ask 211 for tonight’s shelter and a daytime drop-in center.",
       bring: [
         "Photo ID (any form)",
         "Documentation of health conditions (if available — not required to be assessed)",
@@ -788,35 +771,22 @@ html,body{overflow-x:hidden;max-width:100%;}
       ],
       resources: [
         {
-          name: "One Roof (CoC Lead, CE)",
-          phone: "(205) 254-8833",
-          tel: "tel:2052548833",
-          note: "730 8th Ave W Ste 100. CoC backbone + Coordinated Entry administrator."
-        },
-        {
-          name: "One Roof Street Outreach",
-          phone: "(205) 920-1895",
-          tel: "tel:2059201895",
-          note: "Outreach team for unsheltered residents across Jefferson + Shelby + St. Clair."
-        },
-        {
-          name: "Pathways — Safe Haven PSH",
-          phone: "(205) 322-6854",
-          tel: "tel:2053226854",
-          note: "Permanent supportive housing for chronically homeless women with SMI."
-        },
-        {
-          name: "988 Suicide & Crisis Lifeline",
+          name: "988 Suicide &amp; Crisis Lifeline",
           phone: "988",
           tel: "tel:988",
-          note: "24/7 mental-health crisis line, available everywhere."
+          note: "Behavioral-health crisis support + SOAR disability-benefit help tied to housing."
+        },
+        {
+          name: "United Way 211",
+          phone: "211",
+          tel: "tel:211",
+          note: "Coordinated entry + shelter while you wait."
         },
       ],
-      extra_note: "📋 Qualifying conditions include physical, mental health, or substance use disorders that substantially affect daily functioning. You don't need a formal diagnosis to be assessed.",
       confidence: {
-        level: "research",
-        note: "Numbers from oneroofonline.org/contact-one-roof, oneroofonline.org/contact-street-outreach, pathwayshome.org/contact, 988lifeline.org. Last reviewed June 2026.",
-        lastChecked: "June 2026"
+        level: "unverified",
+        note: "AI-researched from public sources — not locally phone-verified. Call 211 to confirm the current local provider. Last researched June 14, 2026.",
+        lastChecked: "June 14, 2026"
       }
     },
 
@@ -824,11 +794,11 @@ html,body{overflow-x:hidden;max-width:100%;}
       label: "Single Adults Pathway",
       badgeClass: "badge-adult",
       badgeIcon: "📞",
-      headline: "Birmingham has gender-separated emergency shelters downtown.",
-      firstAction: "If you are a man, call <strong>Firehouse Shelter</strong> at <strong>(205) 252-9571</strong> — 626 2nd Ave N. If you are a woman, call <strong>First Light Shelter</strong> at <strong>(205) 323-4277</strong> — 2230 Fourth Ave N. Both are 24/7 emergency shelters.",
-      callNumber: "tel:2052529571",
-      callLabel: "Call Firehouse Shelter: (205) 252-9571",
-      what_to_expect: "Birmingham has clear gender-separated shelter capacity. Firehouse Ministries and Jimmie Hale's Shepura Men's Center cover men. First Light and Pathways cover women. All are downtown-area and accept walk-ins, but calling ahead helps confirm bed availability. Coordinated Entry through One Roof can route you to longer-term housing after stabilization.",
+      headline: "Start with tonight’s shelter, then the housing list.",
+      firstAction: "Call or text <strong>211</strong> and say: <em>“I need a shelter bed tonight.”</em> Ask for <strong>tonight’s open beds for single adults</strong>, the nearest <strong>daytime drop-in center</strong> (showers, mail, case management), and a <strong>free meal site</strong>. 211 is multilingual and 24/7.",
+      callNumber: "tel:211",
+      callLabel: "Call 211",
+      what_to_expect: "211 has the current shelter-bed picture for your area, which changes daily. Ask them to also start a coordinated-entry assessment so you’re working toward housing, not just tonight.",
       bring: [
         "Photo ID (helpful but not always required)",
         "Social security card or number (if available)",
@@ -836,30 +806,24 @@ html,body{overflow-x:hidden;max-width:100%;}
       ],
       resources: [
         {
-          name: "Firehouse Ministries (men)",
-          phone: "(205) 252-9571",
-          tel: "tel:2052529571",
-          note: "626 2nd Ave N. Emergency shelter for men experiencing chronic homelessness."
+          name: "Find a free clinic (FQHC)",
+          phone: "Ask 211",
+          tel: "tel:211",
+          note: "Federally Qualified Health Centers treat everyone regardless of ability to pay."
         },
         {
-          name: "Jimmie Hale — Shepura Men's Center",
-          phone: "(205) 323-5878",
-          tel: "tel:2053235878",
-          note: "Downtown Birmingham. 80+ beds for men, residential program."
-        },
-        {
-          name: "First Light Shelter (women + children)",
-          phone: "(205) 323-4277",
-          tel: "tel:2053234277",
-          note: "2230 Fourth Ave N. 24/7 emergency shelter for homeless women."
+          name: "988 Suicide &amp; Crisis Lifeline",
+          phone: "988",
+          tel: "tel:988",
+          note: "24/7 mental-health support."
         },
       ],
       confidence: {
-        level: "research",
-        note: "Numbers from firehouseshelter.com/contact-us, jimmiehalemission.com/shepura-mens-center, firstlightshelter.org/about_us/contact_us.html. Last reviewed June 2026.",
-        lastChecked: "June 2026"
+        level: "unverified",
+        note: "AI-researched from public sources — not locally phone-verified. Call 211 to confirm the current local provider. Last researched June 14, 2026.",
+        lastChecked: "June 14, 2026"
       }
-    }
+    },
 
   }; // end PATHWAYS
 

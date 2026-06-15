@@ -472,7 +472,8 @@
   <strong>Need help right now?</strong>
   <a href="tel:211">Call 211</a><span class="crisis-bar__sep">·</span>
   <a href="sms:741741?body=HOME">Text HOME to 741741</a><span class="crisis-bar__sep">·</span>
-  <a href="tel:988">988 Suicide &amp; Crisis</a>
+  <a href="tel:988">988 Suicide &amp; Crisis</a><span class="crisis-bar__sep">·</span>
+  <a href="tel:18007997233">DV 1-800-799-7233</a>
 </div>
 
 <nav class="nav" aria-label="Primary">
@@ -512,6 +513,8 @@
   </svg>
   <span>common<span class="cl-home__rung">ladder</span></span>
 </a>
+
+<div role="note" style="background:#ffedd5;border:1px solid #9a3412;color:#6b2710;border-radius:10px;padding:14px 18px;margin:0 auto 18px;max-width:680px;font-size:.9rem;line-height:1.5;"><strong style="color:#9a3412;">AI-researched, not locally verified.</strong> Common Ladder is based in Arizona. We built this guide from public sources but don’t yet verify these listings by phone the way we do our Arizona tools. Use it to learn <em>what to ask for</em>, then <strong>call <a href="tel:211" style="color:#9a3412;">211</a></strong> for the current local provider. Last researched <time datetime="2026-06-14">June 14, 2026</time>. Wrong info? <a href="mailto:corrections.commonladder@gmail.com?subject=Resource%20update:%20Metro%20Denver" style="color:#9a3412;">Tell us</a>.</div>
 
 <!-- App shell — all screens rendered by JS into here -->
 <div id="app"></div>
@@ -651,184 +654,157 @@
      Keep firstAction to one clear sentence + phone number.
      resources: 3 is ideal; 2 minimum; 4 maximum.
   ═══════════════════════════════════════════════════════════ */
-  var PATHWAYS = {
+    var PATHWAYS = {
 
     result_veterans: {
       label: "Veterans Pathway",
       badgeClass: "badge-veterans",
-      badgeIcon: "\ud83c\udf96",
-      headline: "There's a dedicated system built for you.",
-      firstAction: "Call <strong>Rocky Mountain Regional VA Medical Center</strong> at <strong>(303) 399-8020</strong> (Aurora) and ask for the Homeless Veteran Care coordinator. Or call <strong>VOA Colorado SSVF Denver Metro</strong> at <strong>(303) 297-0408</strong> for rapid rehousing. National line: 1-877-4AID-VET.",
-      callNumber: "tel:3033998020",
-      callLabel: "Call Rocky Mountain VA: (303) 399-8020",
-      what_to_expect: "Rocky Mountain Regional VAMC in Aurora has a 40-bed residential rehab program for homeless veterans. Volunteers of America Colorado runs SSVF rapid rehousing and prevention across the Denver metro. The National Call Center for Homeless Veterans is open 24/7 and can connect you nationwide.",
+      badgeIcon: "🎖",
+      headline: "There's a dedicated system built for veterans.",
+      firstAction: "Call <strong>211</strong> (or text your ZIP to 898-211) — free, 24/7 — and say: <em>“I’m a veteran and I’m homeless or about to be.”</em> Ask to be connected to the <strong>VA’s Health Care for Homeless Veterans (HCHV)</strong> program and your local <strong>coordinated-entry assessment</strong>. Veterans qualify for both VA housing (HUD-VASH) and the local Continuum of Care at the same time.",
+      callNumber: "tel:211",
+      callLabel: "Call 211",
+      what_to_expect: "211 will route you to the nearest VA homeless-program coordinator and your local CoC. The National Call Center for Homeless Veterans is available 24/7 anywhere in the U.S. if you can’t reach a local office.",
       bring: [
-        "DD-214 discharge papers (if you have them \u2014 not required to call)",
+        "DD-214 discharge papers (if you have them — not required to call)",
         "Photo ID (if available)",
         "Any VA documentation you have",
       ],
       resources: [
         {
-          name: "VOA Colorado \u2014 SSVF Denver Metro",
-          phone: "(303) 297-0408",
-          tel: "tel:3032970408",
-          note: "Supportive Services for Veteran Families \u2014 rapid rehousing & prevention."
-        },
-        {
-          name: "Rocky Mountain Regional VA Medical Center",
-          phone: "(303) 399-8020",
-          tel: "tel:3033998020",
-          note: "1700 N. Wheeling St., Aurora. Ask for the Homeless Veteran Program."
-        },
-        {
           name: "National Call Center for Homeless Veterans",
           phone: "1-877-424-3838",
           tel: "tel:18774243838",
-          note: "24/7. Available everywhere in the U.S."
+          note: "24/7. Available everywhere."
+        },
+        {
+          name: "Veterans Crisis Line",
+          phone: "988",
+          tel: "tel:988",
+          note: "Press 1 for the VA crisis line."
         },
       ],
       confidence: {
-        level: "research",
-        note: "Numbers from va.gov and voacolorado.org. Last reviewed June 2026.",
-        lastChecked: "June 2026"
+        level: "unverified",
+        note: "AI-researched from public sources — not locally phone-verified. Call 211 to confirm the current local provider. Last researched June 14, 2026.",
+        lastChecked: "June 14, 2026"
       }
     },
 
     result_youth: {
       label: "Youth Pathway",
       badgeClass: "badge-youth",
-      badgeIcon: "\ud83c\udf31",
-      headline: "Urban Peak is Denver's licensed shelter for youth, 24/7.",
-      firstAction: "Call <strong>Urban Peak Denver</strong> at <strong>(303) 974-2900</strong> \u2014 24-hour line for Denver's only licensed shelter for homeless youth ages 12\u201324, at 1630 S. Acoma St. The Spot drop-in at 2100 Stout St uses the same number.",
-      callNumber: "tel:3039742900",
-      callLabel: "Call Urban Peak: (303) 974-2900",
-      what_to_expect: "Urban Peak operates a shelter for ages 15\u201320 and a drop-in (The Spot) for ages 15\u201324 with outreach, education, and employment services. Comitis Crisis Center in Aurora is the primary family/youth crisis shelter east of Denver. For after-hours behavioral health, call Colorado Crisis Services at 1-844-493-8255 or text TALK to 38255.",
+      badgeIcon: "🌱",
+      headline: "If you’re 24 or under, there’s a youth-specific path.",
+      firstAction: "Call or text <strong>211</strong> (or text your ZIP to 898-211) and say: <em>“I’m 24 or younger and I need a safe place to stay.”</em> Ask for the <strong>youth emergency shelter</strong> and the <strong>runaway &amp; homeless youth (RHY) program</strong> in your area.",
+      callNumber: "tel:211",
+      callLabel: "Call 211",
+      what_to_expect: "211 routes you to the nearest youth shelter or drop-in center. The national backstops below are always available, day or night.",
       bring: [
-        "Photo ID (helpful \u2014 call ahead to confirm what's required)",
+        "Photo ID (helpful — not required for crisis services)",
         "Anything important you can carry",
-        "Nothing required to use The Spot drop-in",
+        "Nothing is required to call",
       ],
       resources: [
         {
-          name: "Comitis Crisis Center (Aurora)",
-          phone: "(303) 341-9160",
-          tel: "tel:3033419160",
-          note: "2178 Victor St, Aurora. Emergency family shelter for families with children under 18."
+          name: "Safe Place",
+          phone: "Text SAFE + your location to 44357",
+          tel: "sms:44357?body=SAFE",
+          note: "Or walk into any QuikTrip and ask staff to call for you."
         },
         {
-          name: "Colorado Crisis Services (24/7)",
-          phone: "1-844-493-8255",
-          tel: "tel:18444938255",
-          note: "Mental/behavioral health crisis. Text TALK to 38255."
-        },
-        {
-          name: "211 Colorado",
-          phone: "211",
-          tel: "tel:211",
-          note: "Or call 1-888-217-1215. Text ZIP to 898-211. Multilingual, 24/7."
+          name: "National Runaway Safeline",
+          phone: "1-800-786-2929",
+          tel: "tel:18007862929",
+          note: "24/7, free, confidential."
         },
       ],
-      extra_note: "\u26a0\ufe0f Under 18? Colorado has runaway/homeless youth (RHY) services that allow access without parental consent in many situations. Urban Peak is the right first call.",
       confidence: {
-        level: "research",
-        note: "Numbers from urbanpeak.org, comitiscrisiscenter.org. Last reviewed June 2026.",
-        lastChecked: "June 2026"
+        level: "unverified",
+        note: "AI-researched from public sources — not locally phone-verified. Call 211 to confirm the current local provider. Last researched June 14, 2026.",
+        lastChecked: "June 14, 2026"
       }
     },
 
     result_families: {
       label: "Families Pathway",
       badgeClass: "badge-families",
-      badgeIcon: "\ud83c\udfe0",
-      headline: "Families enter the Denver shelter system through the Salvation Army Connection Center.",
-      firstAction: "Call the <strong>Salvation Army Connection Center</strong> at <strong>(303) 295-3366</strong>, Mon\u2013Fri 7am\u20139pm \u2014 single front door for Salvation Army family shelters including Lambuth Family Center. For backup, call <strong>211</strong>.",
-      callNumber: "tel:3032953366",
-      callLabel: "Call Connection Center: (303) 295-3366",
-      what_to_expect: "Denver's family shelter intake is centralized through the Salvation Army Connection Center. Families with children get priority. The Gathering Place is a daytime refuge for women, children, and transgender individuals. Family Promise provides shelter, diversion, and case management. Children retain the right to stay in their current school under McKinney-Vento.",
+      badgeIcon: "🏠",
+      headline: "Families are kept together in the shelter system.",
+      firstAction: "Call or text <strong>211</strong> (or text your ZIP to 898-211) and say: <em>“I have my kids with me and we need shelter tonight.”</em> Ask for <strong>family emergency shelter</strong> and the <strong>coordinated-entry assessment</strong> for rapid re-housing.",
+      callNumber: "tel:211",
+      callLabel: "Call 211",
+      what_to_expect: "211 routes you to family shelter and the local coordinated-entry system. If you are fleeing domestic violence, use the confidential hotline below instead — DV shelter is separate and won’t list your location.",
       bring: [
         "Photo ID for adults (if available)",
-        "Birth certificates for children (helpful but not always required)",
+        "Birth certificates for children (helpful, not always required)",
         "Documentation of income or benefits (if available)",
-        "Social security cards (if you have them)",
       ],
       resources: [
         {
-          name: "Family Promise of Greater Denver",
-          phone: "(303) 675-0713",
-          tel: "tel:3036750713",
-          note: "Shelter, diversion, and case management for families with children."
+          name: "National Domestic Violence Hotline",
+          phone: "1-800-799-7233",
+          tel: "tel:18007997233",
+          note: "24/7, confidential. Text START to 88788. Connects you to a local confidential DV shelter."
         },
         {
-          name: "The Gathering Place (Denver)",
-          phone: "(303) 321-4198",
-          tel: "tel:3033214198",
-          note: "1535 High St. Daytime drop-in for women, children, and transgender individuals."
-        },
-        {
-          name: "211 Colorado",
+          name: "United Way 211",
           phone: "211",
           tel: "tel:211",
-          note: "Or 1-888-217-1215. 24/7 statewide referrals."
+          note: "Family shelter + coordinated entry."
         },
       ],
       confidence: {
-        level: "research",
-        note: "Connection Center as central family intake confirmed on salvationarmyusa.org. Last reviewed June 2026.",
-        lastChecked: "June 2026"
+        level: "unverified",
+        note: "AI-researched from public sources — not locally phone-verified. Call 211 to confirm the current local provider. Last researched June 14, 2026.",
+        lastChecked: "June 14, 2026"
       }
     },
 
     result_chronic: {
       label: "Chronic Homelessness Pathway",
       badgeClass: "badge-chronic",
-      badgeIcon: "\ud83d\udd11",
-      headline: "OneHome / MDHI Coordinated Entry is the path to permanent supportive housing.",
-      firstAction: "Call <strong>211</strong> (or <strong>1-888-217-1215</strong>) \u2014 MDHI directs all help-seekers to 211 as the first call. They'll route you to a OneHome Access Point for the coordinated entry assessment that determines PSH priority.",
+      badgeIcon: "🔑",
+      headline: "The housing list starts with one assessment.",
+      firstAction: "Call or text <strong>211</strong> (or text your ZIP to 898-211) and say: <em>“I’ve been homeless a long time and I want to get on the housing list.”</em> Ask for the <strong>coordinated-entry assessment</strong> — in this system, permanent supportive housing is reached by being assessed and placed on the community housing-referral list. The assessment is the door; there is no separate number.",
       callNumber: "tel:211",
-      callLabel: "Call or dial 211",
-      what_to_expect: "MDHI (Metro Denver Homeless Initiative) administers the OneHome Coordinated Entry System across 7 metro counties. After assessment, you're prioritized for available PSH units. Colorado Coalition for the Homeless is the region's largest provider of integrated housing, healthcare, and supportive services. While you wait, Denver Rescue Mission and Catholic Charities Samaritan House provide adult shelter.",
+      callLabel: "Call 211",
+      what_to_expect: "A coordinated-entry assessor will ask about your situation and add you to the local housing-referral list. While you wait, ask 211 for tonight’s shelter and a daytime drop-in center.",
       bring: [
         "Photo ID (any form)",
-        "Documentation of health conditions (if available \u2014 not required to be assessed)",
+        "Documentation of health conditions (if available — not required to be assessed)",
         "Any records of prior housing or service history",
       ],
       resources: [
         {
-          name: "Colorado Coalition for the Homeless",
-          phone: "(303) 293-2217",
-          tel: "tel:3032932217",
-          note: "2111 Champa St. Largest integrated housing/healthcare provider in the region."
+          name: "988 Suicide &amp; Crisis Lifeline",
+          phone: "988",
+          tel: "tel:988",
+          note: "Behavioral-health crisis support + SOAR disability-benefit help tied to housing."
         },
         {
-          name: "Denver Rescue Mission \u2014 Lawrence Street",
-          phone: "(303) 294-0157",
-          tel: "tel:3032940157",
-          note: "2222 Lawrence St. Adult men's shelter, day services, meals."
-        },
-        {
-          name: "211 Colorado",
+          name: "United Way 211",
           phone: "211",
           tel: "tel:211",
-          note: "Or 1-888-217-1215. 24/7 statewide referrals."
+          note: "Coordinated entry + shelter while you wait."
         },
       ],
-      extra_note: "\ud83d\udccb Qualifying conditions include physical, mental health, or substance use disorders that substantially affect daily functioning. You don't need a formal diagnosis to be assessed.",
       confidence: {
-        level: "research",
-        note: "MDHI directs intake through 211. Numbers from coloradocoalition.org and denverrescuemission.org. Last reviewed June 2026.",
-        lastChecked: "June 2026"
+        level: "unverified",
+        note: "AI-researched from public sources — not locally phone-verified. Call 211 to confirm the current local provider. Last researched June 14, 2026.",
+        lastChecked: "June 14, 2026"
       }
     },
 
     result_adult: {
       label: "Single Adults Pathway",
       badgeClass: "badge-adult",
-      badgeIcon: "\ud83d\udcde",
-      headline: "Here's where to go for emergency shelter and housing help.",
-      firstAction: "Walk in to <strong>Denver Rescue Mission \u2014 Lawrence Street Shelter</strong> at <strong>2222 Lawrence St</strong> (call <strong>(303) 294-0157</strong>). Or call <strong>211</strong> to be routed to nearest available adult shelter and resources.",
-      callNumber: "tel:3032940157",
-      callLabel: "Call Denver Rescue Mission: (303) 294-0157",
-      what_to_expect: "Denver Rescue Mission operates two main shelters \u2014 Lawrence Street Community Center (downtown) and Holly Center (5725 E. 39th Ave). Catholic Charities Samaritan House serves women, families, and veterans, plus walk-up evening intake for men. Denver Day Works (Bayaud Enterprises) is a supported work program with Monday orientations at 1pm.",
+      badgeIcon: "📞",
+      headline: "Start with tonight’s shelter, then the housing list.",
+      firstAction: "Call or text <strong>211</strong> (or text your ZIP to 898-211) and say: <em>“I need a shelter bed tonight.”</em> Ask for <strong>tonight’s open beds for single adults</strong>, the nearest <strong>daytime drop-in center</strong> (showers, mail, case management), and a <strong>free meal site</strong>. 211 is multilingual and 24/7.",
+      callNumber: "tel:211",
+      callLabel: "Call 211",
+      what_to_expect: "211 has the current shelter-bed picture for your area, which changes daily. Ask them to also start a coordinated-entry assessment so you’re working toward housing, not just tonight.",
       bring: [
         "Photo ID (helpful but not always required)",
         "Social security card or number (if available)",
@@ -836,30 +812,24 @@
       ],
       resources: [
         {
-          name: "Catholic Charities \u2014 Samaritan House (Denver)",
-          phone: "(303) 294-0241",
-          tel: "tel:3032940241",
-          note: "2301 Lawrence St. Emergency shelter for women, families, veterans, walk-up for men."
-        },
-        {
-          name: "Denver Day Works (Bayaud Enterprises)",
-          phone: "(303) 830-6885",
-          tel: "tel:3038306885",
-          note: "333 W. Bayaud Ave. Low-barrier supported work program. Mon orientations at 1pm."
-        },
-        {
-          name: "211 Colorado",
-          phone: "211",
+          name: "Find a free clinic (FQHC)",
+          phone: "Ask 211",
           tel: "tel:211",
-          note: "Or 1-888-217-1215. 24/7 statewide referrals."
+          note: "Federally Qualified Health Centers treat everyone regardless of ability to pay."
+        },
+        {
+          name: "988 Suicide &amp; Crisis Lifeline",
+          phone: "988",
+          tel: "tel:988",
+          note: "24/7 mental-health support."
         },
       ],
       confidence: {
-        level: "research",
-        note: "Numbers from denverrescuemission.org, ccdenver.org, bayaudenterprises.org. Last reviewed June 2026.",
-        lastChecked: "June 2026"
+        level: "unverified",
+        note: "AI-researched from public sources — not locally phone-verified. Call 211 to confirm the current local provider. Last researched June 14, 2026.",
+        lastChecked: "June 14, 2026"
       }
-    }
+    },
 
   }; // end PATHWAYS
 

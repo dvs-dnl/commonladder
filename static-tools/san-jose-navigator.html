@@ -472,7 +472,8 @@
   <strong>Need help right now?</strong>
   <a href="tel:211">Call 211</a><span class="crisis-bar__sep">·</span>
   <a href="sms:741741?body=HOME">Text HOME to 741741</a><span class="crisis-bar__sep">·</span>
-  <a href="tel:988">988 Suicide &amp; Crisis</a>
+  <a href="tel:988">988 Suicide &amp; Crisis</a><span class="crisis-bar__sep">·</span>
+  <a href="tel:18007997233">DV 1-800-799-7233</a>
 </div>
 
 <nav class="nav" aria-label="Primary">
@@ -512,6 +513,8 @@
   </svg>
   <span>common<span class="cl-home__rung">ladder</span></span>
 </a>
+
+<div role="note" style="background:#ffedd5;border:1px solid #9a3412;color:#6b2710;border-radius:10px;padding:14px 18px;margin:0 auto 18px;max-width:680px;font-size:.9rem;line-height:1.5;"><strong style="color:#9a3412;">AI-researched, not locally verified.</strong> Common Ladder is based in Arizona. We built this guide from public sources but don’t yet verify these listings by phone the way we do our Arizona tools. Use it to learn <em>what to ask for</em>, then <strong>call <a href="tel:211" style="color:#9a3412;">211</a></strong> for the current local provider. Last researched <time datetime="2026-06-14">June 14, 2026</time>. Wrong info? <a href="mailto:corrections.commonladder@gmail.com?subject=Resource%20update:%20San%20Jose%20/%20Santa%20Clara%20County" style="color:#9a3412;">Tell us</a>.</div>
 
 <!-- App shell — all screens rendered by JS into here -->
 <div id="app"></div>
@@ -651,184 +654,157 @@
      Keep firstAction to one clear sentence + phone number.
      resources: 3 is ideal; 2 minimum; 4 maximum.
   ═══════════════════════════════════════════════════════════ */
-  var PATHWAYS = {
+    var PATHWAYS = {
 
     result_veterans: {
       label: "Veterans Pathway",
       badgeClass: "badge-veterans",
-      badgeIcon: "\ud83c\udf96",
-      headline: "There's a dedicated system built for you.",
-      firstAction: "Call <strong>HomeFirst Veteran Services</strong> at <strong>(408) 510-7600</strong> \u2014 HomeFirst is the SSVF grantee for Santa Clara County. Email: veteransinfo@homefirstscc.org. Or call the 24/7 National Call Center at <strong>1-877-4AID-VET</strong>.",
-      callNumber: "tel:4085107600",
-      callLabel: "Call HomeFirst: (408) 510-7600",
-      what_to_expect: "VA Palo Alto Health Care System serves Santa Clara County veterans \u2014 main switchboard (650) 493-5000, ask for Homeless Veteran Care. HomeFirst is the local SSVF (Supportive Services for Veteran Families) grantee. Nation's Finest also provides SSVF services across the Bay Area.",
+      badgeIcon: "🎖",
+      headline: "There's a dedicated system built for veterans.",
+      firstAction: "Call <strong>211</strong> — free, 24/7 — and say: <em>“I’m a veteran and I’m homeless or about to be.”</em> Ask to be connected to the <strong>VA’s Health Care for Homeless Veterans (HCHV)</strong> program and your local <strong>coordinated-entry assessment</strong>. Veterans qualify for both VA housing (HUD-VASH) and the local Continuum of Care at the same time.",
+      callNumber: "tel:211",
+      callLabel: "Call 211",
+      what_to_expect: "211 will route you to the nearest VA homeless-program coordinator and your local CoC. The National Call Center for Homeless Veterans is available 24/7 anywhere in the U.S. if you can’t reach a local office.",
       bring: [
-        "DD-214 discharge papers (if you have them \u2014 not required to call)",
+        "DD-214 discharge papers (if you have them — not required to call)",
         "Photo ID (if available)",
         "Any VA documentation you have",
       ],
       resources: [
-        {
-          name: "VA Palo Alto Health Care System",
-          phone: "(650) 493-5000",
-          tel: "tel:6504935000",
-          note: "Main switchboard. Ask for Homeless Veteran Care / HCHV."
-        },
-        {
-          name: "Nation's Finest (Bay Area SSVF)",
-          phone: "(650) 566-0240",
-          tel: "tel:6505660240",
-          note: "Additional SSVF provider serving Santa Clara County."
-        },
         {
           name: "National Call Center for Homeless Veterans",
           phone: "1-877-424-3838",
           tel: "tel:18774243838",
           note: "24/7. Available everywhere."
         },
+        {
+          name: "Veterans Crisis Line",
+          phone: "988",
+          tel: "tel:988",
+          note: "Press 1 for the VA crisis line."
+        },
       ],
       confidence: {
-        level: "research",
-        note: "Numbers from va.gov, homefirstscc.org, calvet.ca.gov SSVF roster. Last reviewed May 2026.",
-        lastChecked: "May 2026"
+        level: "unverified",
+        note: "AI-researched from public sources — not locally phone-verified. Call 211 to confirm the current local provider. Last researched June 14, 2026.",
+        lastChecked: "June 14, 2026"
       }
     },
 
     result_youth: {
       label: "Youth Pathway",
       badgeClass: "badge-youth",
-      badgeIcon: "\ud83c\udf31",
-      headline: "Bill Wilson Center is the central youth provider in Santa Clara County.",
-      firstAction: "Call <strong>Bill Wilson Center Youth Crisis Hotline</strong> at <strong>1-888-247-7717</strong> \u2014 toll-free 24/7. Or the local 24-hour Crisis Line at <strong>(408) 850-6125</strong>. Drop-in center for ages 18\u201324 at 693 South 2nd Street, San Jose: (408) 925-0231.",
-      callNumber: "tel:18882477717",
-      callLabel: "Call BWC Crisis: 1-888-247-7717",
-      what_to_expect: "Bill Wilson Center (BWC) is the lead youth provider in the county. They operate the Here4You hotline for all-ages coordinated entry, a 24/7 crisis line, and a drop-in center for ages 18\u201324. HomeFirst also runs Transition Aged Youth (TAY) programs.",
+      badgeIcon: "🌱",
+      headline: "If you’re 24 or under, there’s a youth-specific path.",
+      firstAction: "Call or text <strong>211</strong> and say: <em>“I’m 24 or younger and I need a safe place to stay.”</em> Ask for the <strong>youth emergency shelter</strong> and the <strong>runaway &amp; homeless youth (RHY) program</strong> in your area.",
+      callNumber: "tel:211",
+      callLabel: "Call 211",
+      what_to_expect: "211 routes you to the nearest youth shelter or drop-in center. The national backstops below are always available, day or night.",
       bring: [
-        "Photo ID (helpful \u2014 not required for crisis services)",
+        "Photo ID (helpful — not required for crisis services)",
         "Anything important you can carry",
-        "Nothing required for drop-in or crisis call",
+        "Nothing is required to call",
       ],
       resources: [
         {
-          name: "Bill Wilson Center \u2014 Drop-In (ages 18\u201324)",
-          phone: "(408) 925-0231",
-          tel: "tel:4089250231",
-          note: "693 South 2nd Street, San Jose."
+          name: "Safe Place",
+          phone: "Text SAFE + your location to 44357",
+          tel: "sms:44357?body=SAFE",
+          note: "Or walk into any QuikTrip and ask staff to call for you."
         },
         {
-          name: "Bill Wilson Center \u2014 Main / Intake",
-          phone: "(408) 243-0222",
-          tel: "tel:4082430222",
-          note: "3490 The Alameda, Santa Clara."
-        },
-        {
-          name: "Here4You Hotline (Coordinated Entry)",
-          phone: "(408) 385-2400",
-          tel: "tel:4083852400",
-          note: "7 days/week, 9am\u20137pm. Operated by Bill Wilson Center."
+          name: "National Runaway Safeline",
+          phone: "1-800-786-2929",
+          tel: "tel:18007862929",
+          note: "24/7, free, confidential."
         },
       ],
-      extra_note: "\u26a0\ufe0f Under 18? California allows minors to access certain shelter services without parental consent. BWC and Huckleberry Youth Programs know the local rules \u2014 call them first.",
       confidence: {
-        level: "research",
-        note: "Numbers from billwilsoncenter.org, scc.bitfocus.com/here4you. Last reviewed May 2026.",
-        lastChecked: "May 2026"
+        level: "unverified",
+        note: "AI-researched from public sources — not locally phone-verified. Call 211 to confirm the current local provider. Last researched June 14, 2026.",
+        lastChecked: "June 14, 2026"
       }
     },
 
     result_families: {
       label: "Families Pathway",
       badgeClass: "badge-families",
-      badgeIcon: "\ud83c\udfe0",
-      headline: "Call Here4You for family shelter and Coordinated Entry.",
-      firstAction: "Call the <strong>Here4You Hotline</strong> at <strong>(408) 385-2400</strong>, 7 days/week 9am\u20137pm \u2014 Santa Clara County's coordinated entry hotline for singles, couples, and families. Or call <strong>LifeMoves Georgia Travis House</strong> directly at <strong>(408) 271-1630</strong>.",
-      callNumber: "tel:4083852400",
-      callLabel: "Call Here4You: (408) 385-2400",
-      what_to_expect: "Here4You routes you to family shelter and coordinated entry assessment. LifeMoves Georgia Travis House (260 Commercial St, San Jose) is the 24-hour shelter for women and families. Sacred Heart Community Service provides food, financial assistance, and housing advocacy. The Office of Supportive Housing's homelessness prevention line is (408) 926-8885.",
+      badgeIcon: "🏠",
+      headline: "Families are kept together in the shelter system.",
+      firstAction: "Call or text <strong>211</strong> and say: <em>“I have my kids with me and we need shelter tonight.”</em> Ask for <strong>family emergency shelter</strong> and the <strong>coordinated-entry assessment</strong> for rapid re-housing.",
+      callNumber: "tel:211",
+      callLabel: "Call 211",
+      what_to_expect: "211 routes you to family shelter and the local coordinated-entry system. If you are fleeing domestic violence, use the confidential hotline below instead — DV shelter is separate and won’t list your location.",
       bring: [
         "Photo ID for adults (if available)",
-        "Birth certificates for children (helpful but not always required)",
+        "Birth certificates for children (helpful, not always required)",
         "Documentation of income or benefits (if available)",
-        "Social security cards (if you have them)",
       ],
       resources: [
         {
-          name: "LifeMoves Georgia Travis House",
-          phone: "(408) 271-1630",
-          tel: "tel:4082711630",
-          note: "260 Commercial St, San Jose. 24-hour shelter for women and families."
+          name: "National Domestic Violence Hotline",
+          phone: "1-800-799-7233",
+          tel: "tel:18007997233",
+          note: "24/7, confidential. Text START to 88788. Connects you to a local confidential DV shelter."
         },
         {
-          name: "OSH Homelessness Prevention",
-          phone: "(408) 926-8885",
-          tel: "tel:4089268885",
-          note: "Santa Clara County Office of Supportive Housing prevention/diversion intake."
-        },
-        {
-          name: "211 Bay Area",
+          name: "United Way 211",
           phone: "211",
           tel: "tel:211",
-          note: "Or text ZIP to 898211. 24/7 multilingual."
+          note: "Family shelter + coordinated entry."
         },
       ],
       confidence: {
-        level: "research",
-        note: "Numbers from scc.bitfocus.com/here4you, lifemoves.org, osh.santaclaracounty.gov. Last reviewed May 2026.",
-        lastChecked: "May 2026"
+        level: "unverified",
+        note: "AI-researched from public sources — not locally phone-verified. Call 211 to confirm the current local provider. Last researched June 14, 2026.",
+        lastChecked: "June 14, 2026"
       }
     },
 
     result_chronic: {
       label: "Chronic Homelessness Pathway",
       badgeClass: "badge-chronic",
-      badgeIcon: "\ud83d\udd11",
-      headline: "Permanent supportive housing may be the right fit for you.",
-      firstAction: "Call the <strong>Here4You Hotline</strong> at <strong>(408) 385-2400</strong>, 7 days/week 9am\u20137pm \u2014 required first call for Coordinated Entry assessment in Santa Clara County. Or call <strong>HomeFirst</strong> at <strong>(408) 510-7600</strong>.",
-      callNumber: "tel:4083852400",
-      callLabel: "Call Here4You: (408) 385-2400",
-      what_to_expect: "Santa Clara County's Office of Supportive Housing administers the CoC. Here4You is the coordinated entry intake. HomeFirst is the lead shelter and rapid rehousing operator. PATH San Jose provides outreach and permanent supportive housing. While you wait, HomeFirst's Boccardo Reception Center (2011 Little Orchard Blvd) is the largest single-adult shelter.",
+      badgeIcon: "🔑",
+      headline: "The housing list starts with one assessment.",
+      firstAction: "Call or text <strong>211</strong> and say: <em>“I’ve been homeless a long time and I want to get on the housing list.”</em> Ask for the <strong>coordinated-entry assessment</strong> — in this system, permanent supportive housing is reached by being assessed and placed on the community housing-referral list. The assessment is the door; there is no separate number.",
+      callNumber: "tel:211",
+      callLabel: "Call 211",
+      what_to_expect: "A coordinated-entry assessor will ask about your situation and add you to the local housing-referral list. While you wait, ask 211 for tonight’s shelter and a daytime drop-in center.",
       bring: [
         "Photo ID (any form)",
-        "Documentation of health conditions (if available \u2014 not required to be assessed)",
+        "Documentation of health conditions (if available — not required to be assessed)",
         "Any records of prior housing or service history",
       ],
       resources: [
         {
-          name: "HomeFirst Services Helpline",
-          phone: "(408) 510-7600",
-          tel: "tel:4085107600",
-          note: "Shelter access, outreach, permanent supportive housing referrals."
+          name: "988 Suicide &amp; Crisis Lifeline",
+          phone: "988",
+          tel: "tel:988",
+          note: "Behavioral-health crisis support + SOAR disability-benefit help tied to housing."
         },
         {
-          name: "PATH San Jose",
-          phone: "(408) 802-6377",
-          tel: "tel:4088026377",
-          note: "31 N. 2nd Street, Suite 265. Outreach, interim housing, PSH."
-        },
-        {
-          name: "Santa Clara County Office of Supportive Housing",
-          phone: "(408) 278-6400",
-          tel: "tel:4082786400",
-          note: "Lead CoC agency. Main county line."
+          name: "United Way 211",
+          phone: "211",
+          tel: "tel:211",
+          note: "Coordinated entry + shelter while you wait."
         },
       ],
-      extra_note: "\ud83d\udccb Qualifying conditions include physical, mental health, or substance use disorders that substantially affect daily functioning. You don't need a formal diagnosis to be assessed.",
       confidence: {
-        level: "research",
-        note: "Numbers from osh.santaclaracounty.gov, homefirstscc.org, epath.org. Last reviewed May 2026.",
-        lastChecked: "May 2026"
+        level: "unverified",
+        note: "AI-researched from public sources — not locally phone-verified. Call 211 to confirm the current local provider. Last researched June 14, 2026.",
+        lastChecked: "June 14, 2026"
       }
     },
 
     result_adult: {
       label: "Single Adults Pathway",
       badgeClass: "badge-adult",
-      badgeIcon: "\ud83d\udcde",
-      headline: "Here's where to go for emergency shelter and housing help.",
-      firstAction: "Call the <strong>Here4You Hotline</strong> at <strong>(408) 385-2400</strong>, 7 days/week 9am\u20137pm. Or go to <strong>HomeFirst Boccardo Reception Center</strong> at <strong>2011 Little Orchard Blvd, San Jose</strong> \u2014 the largest single-adult shelter (front desk (408) 510-7521).",
-      callNumber: "tel:4083852400",
-      callLabel: "Call Here4You: (408) 385-2400",
-      what_to_expect: "HomeFirst's Boccardo Reception Center is the county's primary single-adult shelter. LifeMoves operates multiple shelters across the Bay Area. Sacred Heart Community Service in San Jose provides food, financial assistance, and housing advocacy. After hours, call 211 Bay Area.",
+      badgeIcon: "📞",
+      headline: "Start with tonight’s shelter, then the housing list.",
+      firstAction: "Call or text <strong>211</strong> and say: <em>“I need a shelter bed tonight.”</em> Ask for <strong>tonight’s open beds for single adults</strong>, the nearest <strong>daytime drop-in center</strong> (showers, mail, case management), and a <strong>free meal site</strong>. 211 is multilingual and 24/7.",
+      callNumber: "tel:211",
+      callLabel: "Call 211",
+      what_to_expect: "211 has the current shelter-bed picture for your area, which changes daily. Ask them to also start a coordinated-entry assessment so you’re working toward housing, not just tonight.",
       bring: [
         "Photo ID (helpful but not always required)",
         "Social security card or number (if available)",
@@ -836,30 +812,24 @@
       ],
       resources: [
         {
-          name: "HomeFirst Boccardo Reception Center",
-          phone: "(408) 510-7521",
-          tel: "tel:4085107521",
-          note: "2011 Little Orchard Blvd, San Jose. Largest single-adult shelter."
-        },
-        {
-          name: "Sacred Heart Community Service",
-          phone: "(408) 278-2160",
-          tel: "tel:4082782160",
-          note: "1381 S 1st St, San Jose. Food, financial assistance, housing advocacy."
-        },
-        {
-          name: "211 Bay Area",
-          phone: "211",
+          name: "Find a free clinic (FQHC)",
+          phone: "Ask 211",
           tel: "tel:211",
-          note: "Or text ZIP to 898211. 24/7 multilingual."
+          note: "Federally Qualified Health Centers treat everyone regardless of ability to pay."
+        },
+        {
+          name: "988 Suicide &amp; Crisis Lifeline",
+          phone: "988",
+          tel: "tel:988",
+          note: "24/7 mental-health support."
         },
       ],
       confidence: {
-        level: "research",
-        note: "Numbers from homefirstscc.org, sacredheartcs.org, lifemoves.org. Last reviewed May 2026.",
-        lastChecked: "May 2026"
+        level: "unverified",
+        note: "AI-researched from public sources — not locally phone-verified. Call 211 to confirm the current local provider. Last researched June 14, 2026.",
+        lastChecked: "June 14, 2026"
       }
-    }
+    },
 
   }; // end PATHWAYS
 

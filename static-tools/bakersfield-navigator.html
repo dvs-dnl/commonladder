@@ -472,7 +472,8 @@
   <strong>Need help right now?</strong>
   <a href="tel:211">Call 211</a><span class="crisis-bar__sep">·</span>
   <a href="sms:741741?body=HOME">Text HOME to 741741</a><span class="crisis-bar__sep">·</span>
-  <a href="tel:988">988 Suicide &amp; Crisis</a>
+  <a href="tel:988">988 Suicide &amp; Crisis</a><span class="crisis-bar__sep">·</span>
+  <a href="tel:18007997233">DV 1-800-799-7233</a>
 </div>
 
 <nav class="nav" aria-label="Primary">
@@ -512,6 +513,8 @@
   </svg>
   <span>common<span class="cl-home__rung">ladder</span></span>
 </a>
+
+<div role="note" style="background:#ffedd5;border:1px solid #9a3412;color:#6b2710;border-radius:10px;padding:14px 18px;margin:0 auto 18px;max-width:680px;font-size:.9rem;line-height:1.5;"><strong style="color:#9a3412;">AI-researched, not locally verified.</strong> Common Ladder is based in Arizona. We built this guide from public sources but don’t yet verify these listings by phone the way we do our Arizona tools. Use it to learn <em>what to ask for</em>, then <strong>call <a href="tel:211" style="color:#9a3412;">211</a></strong> for the current local provider. Last researched <time datetime="2026-06-14">June 14, 2026</time>. Wrong info? <a href="mailto:corrections.commonladder@gmail.com?subject=Resource%20update:%20Bakersfield%20/%20Kern%20County" style="color:#9a3412;">Tell us</a>.</div>
 
 <!-- App shell — all screens rendered by JS into here -->
 <div id="app"></div>
@@ -651,184 +654,157 @@
      Keep firstAction to one clear sentence + phone number.
      resources: 3 is ideal; 2 minimum; 4 maximum.
   ═══════════════════════════════════════════════════════════ */
-  var PATHWAYS = {
+    var PATHWAYS = {
 
     result_veterans: {
       label: "Veterans Pathway",
       badgeClass: "badge-veterans",
-      badgeIcon: "\ud83c\udf96",
-      headline: "There's a dedicated system built for you.",
-      firstAction: "Call <strong>California Veterans Assistance Foundation (CVAF) \u2014 SSVF Kern</strong> at <strong>(661) 829-5908</strong> \u2014 VA-funded SSVF grantee for Kern County. Rental assistance, deposits, utility help. Or call <strong>VA Bakersfield Outpatient Clinic</strong> at <strong>(661) 632-1800</strong>.",
-      callNumber: "tel:6618295908",
-      callLabel: "Call CVAF SSVF: (661) 829-5908",
-      what_to_expect: "VA Bakersfield Outpatient Clinic at 1801 Westwind Dr provides primary care and mental health for veterans. CVAF is the local SSVF grantee at 1617 30th St. The Open Door Network (formerly Bakersfield Homeless Center) also operates veteran services from its 1600 E Truxtun campus.",
+      badgeIcon: "🎖",
+      headline: "There's a dedicated system built for veterans.",
+      firstAction: "Call <strong>211</strong> — free, 24/7 — and say: <em>“I’m a veteran and I’m homeless or about to be.”</em> Ask to be connected to the <strong>VA’s Health Care for Homeless Veterans (HCHV)</strong> program and your local <strong>coordinated-entry assessment</strong>. Veterans qualify for both VA housing (HUD-VASH) and the local Continuum of Care at the same time.",
+      callNumber: "tel:211",
+      callLabel: "Call 211",
+      what_to_expect: "211 will route you to the nearest VA homeless-program coordinator and your local CoC. The National Call Center for Homeless Veterans is available 24/7 anywhere in the U.S. if you can’t reach a local office.",
       bring: [
-        "DD-214 discharge papers (if you have them \u2014 not required to call)",
+        "DD-214 discharge papers (if you have them — not required to call)",
         "Photo ID (if available)",
         "Any VA documentation you have",
       ],
       resources: [
-        {
-          name: "The Open Door Network \u2014 Veteran programs",
-          phone: "(661) 322-9199",
-          tel: "tel:6613229199",
-          note: "Veteran services from the 1600 E Truxtun campus."
-        },
-        {
-          name: "VA Bakersfield Outpatient Clinic",
-          phone: "(661) 632-1800",
-          tel: "tel:6616321800",
-          note: "1801 Westwind Dr. Primary care + mental health."
-        },
         {
           name: "National Call Center for Homeless Veterans",
           phone: "1-877-424-3838",
           tel: "tel:18774243838",
           note: "24/7. Available everywhere."
         },
+        {
+          name: "Veterans Crisis Line",
+          phone: "988",
+          tel: "tel:988",
+          note: "Press 1 for the VA crisis line."
+        },
       ],
       confidence: {
-        level: "research",
-        note: "Numbers from cavaf.org, va.gov, pure1.org. Last reviewed June 2026.",
-        lastChecked: "June 2026"
+        level: "unverified",
+        note: "AI-researched from public sources — not locally phone-verified. Call 211 to confirm the current local provider. Last researched June 14, 2026.",
+        lastChecked: "June 14, 2026"
       }
     },
 
     result_youth: {
       label: "Youth Pathway",
       badgeClass: "badge-youth",
-      badgeIcon: "\ud83c\udf31",
-      headline: "Open Door Network and Kern Behavioral Health support youth.",
-      firstAction: "For youth in crisis, call <strong>The Open Door Network DV/SA 24-hr Crisis</strong> at <strong>(661) 327-1091</strong> \u2014 also serves teen DV awareness and children. For youth mental health, call <strong>Kern County Behavioral Health Children's 24-hour Crisis</strong> at <strong>1-800-991-5272</strong>.",
-      callNumber: "tel:6613271091",
-      callLabel: "Call Crisis: (661) 327-1091",
-      what_to_expect: "The Open Door Network (formed by 2022 merger of Bakersfield Homeless Center and Alliance Against Family Violence) handles teen DV and family crisis. Kern Behavioral Health runs 24/7 youth crisis lines. Garden Pathways at 1616 29th St provides mentoring for at-risk youth, pregnant/parenting teens, and former foster youth.",
+      badgeIcon: "🌱",
+      headline: "If you’re 24 or under, there’s a youth-specific path.",
+      firstAction: "Call or text <strong>211</strong> and say: <em>“I’m 24 or younger and I need a safe place to stay.”</em> Ask for the <strong>youth emergency shelter</strong> and the <strong>runaway &amp; homeless youth (RHY) program</strong> in your area.",
+      callNumber: "tel:211",
+      callLabel: "Call 211",
+      what_to_expect: "211 routes you to the nearest youth shelter or drop-in center. The national backstops below are always available, day or night.",
       bring: [
-        "Photo ID (helpful \u2014 not required for crisis services)",
+        "Photo ID (helpful — not required for crisis services)",
         "Anything important you can carry",
-        "Nothing required for crisis lines",
+        "Nothing is required to call",
       ],
       resources: [
         {
-          name: "Garden Pathways",
-          phone: "(661) 633-9133",
-          tel: "tel:6616339133",
-          note: "1616 29th St. Mentoring for at-risk youth, pregnant/parenting, ex-foster."
+          name: "Safe Place",
+          phone: "Text SAFE + your location to 44357",
+          tel: "sms:44357?body=SAFE",
+          note: "Or walk into any QuikTrip and ask staff to call for you."
         },
         {
-          name: "Kern BH Mobile Crisis Response",
-          phone: "(661) 868-8200",
-          tel: "tel:6618688200",
-          note: "24/7 mobile crisis. Also dial 988."
-        },
-        {
-          name: "211 Kern (CAPK)",
-          phone: "211",
-          tel: "tel:211",
-          note: "Or (661) 336-5200. 24/7."
+          name: "National Runaway Safeline",
+          phone: "1-800-786-2929",
+          tel: "tel:18007862929",
+          note: "24/7, free, confidential."
         },
       ],
-      extra_note: "\u26a0\ufe0f Under 18? Kern BH Children's Crisis Line 1-800-991-5272 is for you. The Open Door Network can also help.",
       confidence: {
-        level: "research",
-        note: "Numbers from domesticshelters.org (Open Door), kernbhrs.org, gardenpathways.org. Last reviewed June 2026.",
-        lastChecked: "June 2026"
+        level: "unverified",
+        note: "AI-researched from public sources — not locally phone-verified. Call 211 to confirm the current local provider. Last researched June 14, 2026.",
+        lastChecked: "June 14, 2026"
       }
     },
 
     result_families: {
       label: "Families Pathway",
       badgeClass: "badge-families",
-      badgeIcon: "\ud83c\udfe0",
-      headline: "The Open Door Network is Bakersfield's family shelter.",
-      firstAction: "Call <strong>The Open Door Network</strong> at <strong>(661) 322-9199</strong> \u2014 1600 E Truxtun Ave, Bakersfield. Bakersfield's only shelter dedicated exclusively to families. 60-day emergency + transitional housing.",
-      callNumber: "tel:6613229199",
-      callLabel: "Call Open Door Network: (661) 322-9199",
-      what_to_expect: "The Open Door Network was formed by the 2022 merger of Bakersfield Homeless Center and Alliance Against Family Violence. The Mission at Kern County (formerly Bakersfield Rescue Mission) is the largest emergency shelter provider with family programs at 816 E 21st St. For DV-fleeing families, the Open Door Network 24-hr crisis line is (661) 327-1091.",
+      badgeIcon: "🏠",
+      headline: "Families are kept together in the shelter system.",
+      firstAction: "Call or text <strong>211</strong> and say: <em>“I have my kids with me and we need shelter tonight.”</em> Ask for <strong>family emergency shelter</strong> and the <strong>coordinated-entry assessment</strong> for rapid re-housing.",
+      callNumber: "tel:211",
+      callLabel: "Call 211",
+      what_to_expect: "211 routes you to family shelter and the local coordinated-entry system. If you are fleeing domestic violence, use the confidential hotline below instead — DV shelter is separate and won’t list your location.",
       bring: [
         "Photo ID for adults (if available)",
-        "Birth certificates for children (helpful but not always required)",
+        "Birth certificates for children (helpful, not always required)",
         "Documentation of income or benefits (if available)",
-        "Social security cards (if you have them)",
       ],
       resources: [
         {
-          name: "The Mission at Kern County",
-          phone: "(661) 325-0863",
-          tel: "tel:6613250863",
-          note: "816 E 21st St. Largest emergency shelter, family programs."
+          name: "National Domestic Violence Hotline",
+          phone: "1-800-799-7233",
+          tel: "tel:18007997233",
+          note: "24/7, confidential. Text START to 88788. Connects you to a local confidential DV shelter."
         },
         {
-          name: "The Open Door Network \u2014 DV/SA 24-hr Crisis",
-          phone: "(661) 327-1091",
-          tel: "tel:6613271091",
-          note: "Emergency shelter and services for families fleeing DV/SA or trafficking."
-        },
-        {
-          name: "211 Kern",
+          name: "United Way 211",
           phone: "211",
           tel: "tel:211",
-          note: "Or (661) 336-5200. 24/7."
+          note: "Family shelter + coordinated entry."
         },
       ],
       confidence: {
-        level: "research",
-        note: "Numbers from pure1.org (Open Door), themissionkc.org. Last reviewed June 2026.",
-        lastChecked: "June 2026"
+        level: "unverified",
+        note: "AI-researched from public sources — not locally phone-verified. Call 211 to confirm the current local provider. Last researched June 14, 2026.",
+        lastChecked: "June 14, 2026"
       }
     },
 
     result_chronic: {
       label: "Chronic Homelessness Pathway",
       badgeClass: "badge-chronic",
-      badgeIcon: "\ud83d\udd11",
-      headline: "211 Kern is the BKRHC Coordinated Entry front door.",
-      firstAction: "Call <strong>211</strong> (or <strong>(661) 336-5200</strong>) \u2014 operated by CAPK as the Kern County Coordinated Entry System access point. Required entry for PSH/chronic-prioritization assessments.",
+      badgeIcon: "🔑",
+      headline: "The housing list starts with one assessment.",
+      firstAction: "Call or text <strong>211</strong> and say: <em>“I’ve been homeless a long time and I want to get on the housing list.”</em> Ask for the <strong>coordinated-entry assessment</strong> — in this system, permanent supportive housing is reached by being assessed and placed on the community housing-referral list. The assessment is the door; there is no separate number.",
       callNumber: "tel:211",
-      callLabel: "Call or dial 211",
-      what_to_expect: "Bakersfield-Kern Regional Homeless Collaborative (BKRHC) is the lead CoC agency. CAPK operates 211 and runs the CES. The Open Door Network's case management and PSH referrals happen at 1600 E Truxtun. The Mission at Kern County has 240 beds with recovery and chronic-homeless programs.",
+      callLabel: "Call 211",
+      what_to_expect: "A coordinated-entry assessor will ask about your situation and add you to the local housing-referral list. While you wait, ask 211 for tonight’s shelter and a daytime drop-in center.",
       bring: [
         "Photo ID (any form)",
-        "Documentation of health conditions (if available \u2014 not required to be assessed)",
+        "Documentation of health conditions (if available — not required to be assessed)",
         "Any records of prior housing or service history",
       ],
       resources: [
         {
-          name: "BKRHC (CoC Lead)",
-          phone: "(661) 526-0111",
-          tel: "tel:6615260111",
-          note: "Coordinates programs across providers. Not direct client services."
+          name: "988 Suicide &amp; Crisis Lifeline",
+          phone: "988",
+          tel: "tel:988",
+          note: "Behavioral-health crisis support + SOAR disability-benefit help tied to housing."
         },
         {
-          name: "The Open Door Network (CES partner)",
-          phone: "(661) 322-9199",
-          tel: "tel:6613229199",
-          note: "1600 E Truxtun. Case management, PSH referrals."
-        },
-        {
-          name: "The Mission at Kern County",
-          phone: "(661) 325-0863",
-          tel: "tel:6613250863",
-          note: "240 beds. Recovery + chronic-homeless programs."
+          name: "United Way 211",
+          phone: "211",
+          tel: "tel:211",
+          note: "Coordinated entry + shelter while you wait."
         },
       ],
-      extra_note: "\ud83d\udccb Qualifying conditions include physical, mental health, or substance use disorders that substantially affect daily functioning. You don't need a formal diagnosis to be assessed.",
       confidence: {
-        level: "research",
-        note: "Numbers from bkrhc.org, capk.org. Last reviewed June 2026.",
-        lastChecked: "June 2026"
+        level: "unverified",
+        note: "AI-researched from public sources — not locally phone-verified. Call 211 to confirm the current local provider. Last researched June 14, 2026.",
+        lastChecked: "June 14, 2026"
       }
     },
 
     result_adult: {
       label: "Single Adults Pathway",
       badgeClass: "badge-adult",
-      badgeIcon: "\ud83d\udcde",
-      headline: "The Mission at Kern County is the largest single-adult shelter.",
-      firstAction: "Walk in or call <strong>The Mission at Kern County</strong> at <strong>(661) 325-0863</strong> \u2014 816 E 21st St. 240-bed overnight shelter (5pm\u20137am), meals, recovery, job training.",
-      callNumber: "tel:6613250863",
-      callLabel: "Call The Mission: (661) 325-0863",
-      what_to_expect: "The Mission at Kern County (formerly Bakersfield Rescue Mission) is the largest single-adult emergency shelter. The Open Door Network has single-adult intake at 1600 E Truxtun and operates single-women shelter through merged DV programs. Flood Ministries provides street outreach and housing placement at 1830 Truxtun Ave #210.",
+      badgeIcon: "📞",
+      headline: "Start with tonight’s shelter, then the housing list.",
+      firstAction: "Call or text <strong>211</strong> and say: <em>“I need a shelter bed tonight.”</em> Ask for <strong>tonight’s open beds for single adults</strong>, the nearest <strong>daytime drop-in center</strong> (showers, mail, case management), and a <strong>free meal site</strong>. 211 is multilingual and 24/7.",
+      callNumber: "tel:211",
+      callLabel: "Call 211",
+      what_to_expect: "211 has the current shelter-bed picture for your area, which changes daily. Ask them to also start a coordinated-entry assessment so you’re working toward housing, not just tonight.",
       bring: [
         "Photo ID (helpful but not always required)",
         "Social security card or number (if available)",
@@ -836,30 +812,24 @@
       ],
       resources: [
         {
-          name: "The Open Door Network (Bakersfield Homeless Center)",
-          phone: "(661) 322-9199",
-          tel: "tel:6613229199",
-          note: "1600 E Truxtun. Single-adult intake."
-        },
-        {
-          name: "Flood Ministries \u2014 Outreach",
-          phone: "(661) 323-5663",
-          tel: "tel:6613235663",
-          note: "1830 Truxtun Ave #210. Street outreach + housing placement."
-        },
-        {
-          name: "211 Kern",
-          phone: "211",
+          name: "Find a free clinic (FQHC)",
+          phone: "Ask 211",
           tel: "tel:211",
-          note: "Or (661) 336-5200. 24/7."
+          note: "Federally Qualified Health Centers treat everyone regardless of ability to pay."
+        },
+        {
+          name: "988 Suicide &amp; Crisis Lifeline",
+          phone: "988",
+          tel: "tel:988",
+          note: "24/7 mental-health support."
         },
       ],
       confidence: {
-        level: "research",
-        note: "Numbers from themissionkc.org, pure1.org, floodbako.com. Last reviewed June 2026.",
-        lastChecked: "June 2026"
+        level: "unverified",
+        note: "AI-researched from public sources — not locally phone-verified. Call 211 to confirm the current local provider. Last researched June 14, 2026.",
+        lastChecked: "June 14, 2026"
       }
-    }
+    },
 
   }; // end PATHWAYS
 

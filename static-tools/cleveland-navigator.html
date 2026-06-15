@@ -472,7 +472,8 @@
   <strong>Need help right now?</strong>
   <a href="tel:211">Call 211</a><span class="crisis-bar__sep">·</span>
   <a href="sms:741741?body=HOME">Text HOME to 741741</a><span class="crisis-bar__sep">·</span>
-  <a href="tel:988">988 Suicide &amp; Crisis</a>
+  <a href="tel:988">988 Suicide &amp; Crisis</a><span class="crisis-bar__sep">·</span>
+  <a href="tel:18007997233">DV 1-800-799-7233</a>
 </div>
 
 <nav class="nav" aria-label="Primary">
@@ -512,6 +513,8 @@
   </svg>
   <span>common<span class="cl-home__rung">ladder</span></span>
 </a>
+
+<div role="note" style="background:#ffedd5;border:1px solid #9a3412;color:#6b2710;border-radius:10px;padding:14px 18px;margin:0 auto 18px;max-width:680px;font-size:.9rem;line-height:1.5;"><strong style="color:#9a3412;">AI-researched, not locally verified.</strong> Common Ladder is based in Arizona. We built this guide from public sources but don’t yet verify these listings by phone the way we do our Arizona tools. Use it to learn <em>what to ask for</em>, then <strong>call <a href="tel:211" style="color:#9a3412;">211</a></strong> for the current local provider. Last researched <time datetime="2026-06-14">June 14, 2026</time>. Wrong info? <a href="mailto:corrections.commonladder@gmail.com?subject=Resource%20update:%20Cleveland%20/%20Cuyahoga%20County" style="color:#9a3412;">Tell us</a>.</div>
 
 <!-- App shell — all screens rendered by JS into here -->
 <div id="app"></div>
@@ -651,184 +654,157 @@
      Keep firstAction to one clear sentence + phone number.
      resources: 3 is ideal; 2 minimum; 4 maximum.
   ═══════════════════════════════════════════════════════════ */
-  var PATHWAYS = {
+    var PATHWAYS = {
 
     result_veterans: {
       label: "Veterans Pathway",
       badgeClass: "badge-veterans",
-      badgeIcon: "\ud83c\udf96",
-      headline: "There's a dedicated system built for you.",
-      firstAction: "Call the <strong>VA Community Resource & Referral Center (CRRC)</strong> at <strong>(216) 391-0264 ext. 48601</strong> \u2014 7000 Euclid Ave Ste 202, walk-in M\u2013F 9am\u2013noon for homeless veterans. Or call <strong>Louis Stokes Cleveland VAMC</strong> at <strong>(216) 791-3800</strong>.",
-      callNumber: "tel:2163910264",
-      callLabel: "Call VA CRRC: (216) 391-0264 x48601",
-      what_to_expect: "Louis Stokes Cleveland VAMC operates HUD-VASH and HCHV. The VA CRRC at 7000 Euclid Ave is the walk-in hub for homeless veterans. VOA Ohio & Indiana runs SSVF for Cleveland at 775 E. 152nd St with prevention and rapid rehousing.",
+      badgeIcon: "🎖",
+      headline: "There's a dedicated system built for veterans.",
+      firstAction: "Call <strong>211</strong> — free, 24/7 — and say: <em>“I’m a veteran and I’m homeless or about to be.”</em> Ask to be connected to the <strong>VA’s Health Care for Homeless Veterans (HCHV)</strong> program and your local <strong>coordinated-entry assessment</strong>. Veterans qualify for both VA housing (HUD-VASH) and the local Continuum of Care at the same time.",
+      callNumber: "tel:211",
+      callLabel: "Call 211",
+      what_to_expect: "211 will route you to the nearest VA homeless-program coordinator and your local CoC. The National Call Center for Homeless Veterans is available 24/7 anywhere in the U.S. if you can’t reach a local office.",
       bring: [
-        "DD-214 discharge papers (if you have them \u2014 not required to call)",
+        "DD-214 discharge papers (if you have them — not required to call)",
         "Photo ID (if available)",
         "Any VA documentation you have",
       ],
       resources: [
         {
-          name: "VOA Ohio & Indiana \u2014 SSVF (Cleveland)",
-          phone: "(216) 302-2602",
-          tel: "tel:2163022602",
-          note: "775 E. 152nd St. Prevention + rapid rehousing."
-        },
-        {
           name: "National Call Center for Homeless Veterans",
           phone: "1-877-424-3838",
           tel: "tel:18774243838",
-          note: "24/7."
+          note: "24/7. Available everywhere."
         },
         {
           name: "Veterans Crisis Line",
           phone: "988",
           tel: "tel:988",
-          note: "Press 1 for VA crisis line."
+          note: "Press 1 for the VA crisis line."
         },
       ],
       confidence: {
-        level: "research",
-        note: "Numbers from va.gov/northeast-ohio-health-care, voaohin.org. Last reviewed June 2026.",
-        lastChecked: "June 2026"
+        level: "unverified",
+        note: "AI-researched from public sources — not locally phone-verified. Call 211 to confirm the current local provider. Last researched June 14, 2026.",
+        lastChecked: "June 14, 2026"
       }
     },
 
     result_youth: {
       label: "Youth Pathway",
       badgeClass: "badge-youth",
-      badgeIcon: "\ud83c\udf31",
-      headline: "Bellefaire JCB runs the 24/7 homeless youth hotline.",
-      firstAction: "Call the <strong>Bellefaire JCB Homeless & Missing Youth 24/7 Hotline</strong> at <strong>(216) 570-8010</strong> \u2014 on-call staff dispatch for runaway/missing/homeless youth. Bellefaire main: (216) 932-2800.",
-      callNumber: "tel:2165708010",
-      callLabel: "Call Bellefaire 24/7: (216) 570-8010",
-      what_to_expect: "Bellefaire JCB operates the 24/7 youth hotline and Emergency Youth Shelter for Cuyahoga County. Lutheran Metropolitan Ministry (LMM) Youth Resiliency Services at 4515 Superior Ave provides trauma-informed services for housing-unstable youth and operates an Emergency Youth Shelter.",
+      badgeIcon: "🌱",
+      headline: "If you’re 24 or under, there’s a youth-specific path.",
+      firstAction: "Call or text <strong>211</strong> and say: <em>“I’m 24 or younger and I need a safe place to stay.”</em> Ask for the <strong>youth emergency shelter</strong> and the <strong>runaway &amp; homeless youth (RHY) program</strong> in your area.",
+      callNumber: "tel:211",
+      callLabel: "Call 211",
+      what_to_expect: "211 routes you to the nearest youth shelter or drop-in center. The national backstops below are always available, day or night.",
       bring: [
-        "Photo ID (helpful \u2014 not required for crisis services)",
+        "Photo ID (helpful — not required for crisis services)",
         "Anything important you can carry",
-        "Nothing required for the 24/7 hotline",
+        "Nothing is required to call",
       ],
       resources: [
         {
-          name: "Lutheran Metropolitan Ministry \u2014 Youth Resiliency",
-          phone: "(216) 696-0370",
-          tel: "tel:2166960370",
-          note: "4515 Superior Ave. Trauma-informed services + Emergency Youth Shelter."
+          name: "Safe Place",
+          phone: "Text SAFE + your location to 44357",
+          tel: "sms:44357?body=SAFE",
+          note: "Or walk into any QuikTrip and ask staff to call for you."
         },
         {
-          name: "Bellefaire JCB (main)",
-          phone: "(216) 932-2800",
-          tel: "tel:2169322800",
-          note: "Backup/main intake."
-        },
-        {
-          name: "211 Cleveland (24/7)",
-          phone: "211",
-          tel: "tel:211",
-          note: "Or 1-800-552-1183."
+          name: "National Runaway Safeline",
+          phone: "1-800-786-2929",
+          tel: "tel:18007862929",
+          note: "24/7, free, confidential."
         },
       ],
-      extra_note: "\u26a0\ufe0f Under 18? Bellefaire's 24/7 hotline is for you.",
       confidence: {
-        level: "research",
-        note: "Numbers from bellefairejcb.org, lutheranmetro.org. Last reviewed June 2026.",
-        lastChecked: "June 2026"
+        level: "unverified",
+        note: "AI-researched from public sources — not locally phone-verified. Call 211 to confirm the current local provider. Last researched June 14, 2026.",
+        lastChecked: "June 14, 2026"
       }
     },
 
     result_families: {
       label: "Families Pathway",
       badgeClass: "badge-families",
-      badgeIcon: "\ud83c\udfe0",
-      headline: "Catholic Charities Family CE and West Side Catholic Center serve families.",
-      firstAction: "Call <strong>Catholic Charities Diocese of Cleveland \u2014 Family Coordinated Entry</strong> at <strong>(440) 242-0455</strong> \u2014 voicemail anytime. Or call <strong>West Side Catholic Center</strong> at <strong>(216) 631-4741</strong>, 3135 Lorain Ave \u2014 women & families shelter, day services.",
-      callNumber: "tel:4402420455",
-      callLabel: "Call CC Family CE: (440) 242-0455",
-      what_to_expect: "Catholic Charities Diocese of Cleveland operates the Family Coordinated Entry line. West Side Catholic Center provides women & families shelter, day services, and Zacchaeus Housing. Family Promise of Greater Cleveland runs family emergency shelter and housing. Norma Herr Women's Center (operated by YWCA Greater Cleveland) is the only low-barrier women's shelter \u2014 entry via Coordinated Intake.",
+      badgeIcon: "🏠",
+      headline: "Families are kept together in the shelter system.",
+      firstAction: "Call or text <strong>211</strong> and say: <em>“I have my kids with me and we need shelter tonight.”</em> Ask for <strong>family emergency shelter</strong> and the <strong>coordinated-entry assessment</strong> for rapid re-housing.",
+      callNumber: "tel:211",
+      callLabel: "Call 211",
+      what_to_expect: "211 routes you to family shelter and the local coordinated-entry system. If you are fleeing domestic violence, use the confidential hotline below instead — DV shelter is separate and won’t list your location.",
       bring: [
         "Photo ID for adults (if available)",
-        "Birth certificates for children (helpful but not always required)",
+        "Birth certificates for children (helpful, not always required)",
         "Documentation of income or benefits (if available)",
-        "Social security cards (if you have them)",
       ],
       resources: [
         {
-          name: "Catholic Charities \u2014 Main Intake",
-          phone: "1-800-860-7373",
-          tel: "tel:18008607373",
-          note: "M\u2013F 8am\u20134pm general intake. 7911 Detroit Ave."
+          name: "National Domestic Violence Hotline",
+          phone: "1-800-799-7233",
+          tel: "tel:18007997233",
+          note: "24/7, confidential. Text START to 88788. Connects you to a local confidential DV shelter."
         },
         {
-          name: "Family Promise of Greater Cleveland",
-          phone: "(216) 767-4060",
-          tel: "tel:2167674060",
-          note: "Family emergency shelter + housing."
-        },
-        {
-          name: "Coordinated Intake (FrontLine)",
-          phone: "(216) 674-6700",
-          tel: "tel:2166746700",
-          note: "Gateway to Norma Herr Women's Center."
+          name: "United Way 211",
+          phone: "211",
+          tel: "tel:211",
+          note: "Family shelter + coordinated entry."
         },
       ],
       confidence: {
-        level: "research",
-        note: "Numbers from ccdocle.org, wsccenter.org, familypromisecle.org, ywcaofcleveland.org. Last reviewed June 2026.",
-        lastChecked: "June 2026"
+        level: "unverified",
+        note: "AI-researched from public sources — not locally phone-verified. Call 211 to confirm the current local provider. Last researched June 14, 2026.",
+        lastChecked: "June 14, 2026"
       }
     },
 
     result_chronic: {
       label: "Chronic Homelessness Pathway",
       badgeClass: "badge-chronic",
-      badgeIcon: "\ud83d\udd11",
-      headline: "FrontLine Coordinated Intake is the chronic pathway.",
-      firstAction: "Call <strong>Cuyahoga County Coordinated Intake (FrontLine Service)</strong> at <strong>(216) 674-6700</strong> \u2014 M\u2013F 8am\u20138pm. Gateway for chronic homelessness and all single adults.",
-      callNumber: "tel:2166746700",
-      callLabel: "Call FrontLine: (216) 674-6700",
-      what_to_expect: "Cuyahoga County Office of Homeless Services is the CoC lead at (216) 420-6844. FrontLine Service operates Coordinated Intake. Lutheran Metropolitan Ministry runs 2100 Lakeside Men's Shelter (the largest adult shelter) plus PSH. The City Mission's Crossroads (men) and Laura's Home (women) provide crisis center services.",
+      badgeIcon: "🔑",
+      headline: "The housing list starts with one assessment.",
+      firstAction: "Call or text <strong>211</strong> and say: <em>“I’ve been homeless a long time and I want to get on the housing list.”</em> Ask for the <strong>coordinated-entry assessment</strong> — in this system, permanent supportive housing is reached by being assessed and placed on the community housing-referral list. The assessment is the door; there is no separate number.",
+      callNumber: "tel:211",
+      callLabel: "Call 211",
+      what_to_expect: "A coordinated-entry assessor will ask about your situation and add you to the local housing-referral list. While you wait, ask 211 for tonight’s shelter and a daytime drop-in center.",
       bring: [
         "Photo ID (any form)",
-        "Documentation of health conditions (if available \u2014 not required to be assessed)",
+        "Documentation of health conditions (if available — not required to be assessed)",
         "Any records of prior housing or service history",
       ],
       resources: [
         {
-          name: "Cuyahoga County Office of Homeless Services",
-          phone: "(216) 420-6844",
-          tel: "tel:2164206844",
-          note: "CoC lead agency."
+          name: "988 Suicide &amp; Crisis Lifeline",
+          phone: "988",
+          tel: "tel:988",
+          note: "Behavioral-health crisis support + SOAR disability-benefit help tied to housing."
         },
         {
-          name: "Lutheran Metropolitan Ministry (main)",
-          phone: "(216) 696-0370",
-          tel: "tel:2166960370",
-          note: "Operates 2100 Lakeside + PSH."
-        },
-        {
-          name: "211 Cleveland",
+          name: "United Way 211",
           phone: "211",
           tel: "tel:211",
-          note: "Or 1-800-552-1183. 24/7."
+          note: "Coordinated entry + shelter while you wait."
         },
       ],
-      extra_note: "\ud83d\udccb Qualifying conditions include physical, mental health, or substance use disorders that substantially affect daily functioning. You don't need a formal diagnosis to be assessed.",
       confidence: {
-        level: "research",
-        note: "Numbers from frontlineservice.org, hhs.cuyahogacounty.gov, lutheranmetro.org. Last reviewed June 2026.",
-        lastChecked: "June 2026"
+        level: "unverified",
+        note: "AI-researched from public sources — not locally phone-verified. Call 211 to confirm the current local provider. Last researched June 14, 2026.",
+        lastChecked: "June 14, 2026"
       }
     },
 
     result_adult: {
       label: "Single Adults Pathway",
       badgeClass: "badge-adult",
-      badgeIcon: "\ud83d\udcde",
-      headline: "2100 Lakeside (LMM) is Cleveland's primary adult emergency shelter.",
-      firstAction: "Call <strong>2100 Lakeside Men's Shelter (Lutheran Metropolitan Ministry)</strong> at <strong>(216) 566-0047</strong> \u2014 Cleveland's largest adult emergency shelter. Or call <strong>The City Mission Crossroads Men's Crisis Center</strong> at <strong>(216) 431-3510</strong>, 5310 Carnegie Ave (24/7).",
-      callNumber: "tel:2165660047",
-      callLabel: "Call 2100 Lakeside: (216) 566-0047",
-      what_to_expect: "2100 Lakeside (LMM-operated) is the primary adult emergency shelter \u2014 entry via Coordinated Intake. The City Mission operates Crossroads Men's Crisis Center (24/7) and Laura's Home Women's Crisis Center at (216) 472-5500. Salvation Army Cleveland Harbor Light Complex at 1710 Prospect Ave provides men's/family shelter plus detox.",
+      badgeIcon: "📞",
+      headline: "Start with tonight’s shelter, then the housing list.",
+      firstAction: "Call or text <strong>211</strong> and say: <em>“I need a shelter bed tonight.”</em> Ask for <strong>tonight’s open beds for single adults</strong>, the nearest <strong>daytime drop-in center</strong> (showers, mail, case management), and a <strong>free meal site</strong>. 211 is multilingual and 24/7.",
+      callNumber: "tel:211",
+      callLabel: "Call 211",
+      what_to_expect: "211 has the current shelter-bed picture for your area, which changes daily. Ask them to also start a coordinated-entry assessment so you’re working toward housing, not just tonight.",
       bring: [
         "Photo ID (helpful but not always required)",
         "Social security card or number (if available)",
@@ -836,30 +812,24 @@
       ],
       resources: [
         {
-          name: "The City Mission \u2014 Laura's Home (women)",
-          phone: "(216) 472-5500",
-          tel: "tel:2164725500",
-          note: "Women & women with children."
-        },
-        {
-          name: "Salvation Army Cleveland \u2014 Harbor Light Complex",
-          phone: "(216) 781-3773",
-          tel: "tel:2167813773",
-          note: "1710 Prospect Ave. Men's/family shelter, detox 216-781-2121."
-        },
-        {
-          name: "211 Cleveland (24/7)",
-          phone: "211",
+          name: "Find a free clinic (FQHC)",
+          phone: "Ask 211",
           tel: "tel:211",
-          note: "Or 1-800-552-1183. After-hours/general referral."
+          note: "Federally Qualified Health Centers treat everyone regardless of ability to pay."
+        },
+        {
+          name: "988 Suicide &amp; Crisis Lifeline",
+          phone: "988",
+          tel: "tel:988",
+          note: "24/7 mental-health support."
         },
       ],
       confidence: {
-        level: "research",
-        note: "Numbers from frontlineservice.org, thecitymission.org, easternusa.salvationarmy.org. Last reviewed June 2026.",
-        lastChecked: "June 2026"
+        level: "unverified",
+        note: "AI-researched from public sources — not locally phone-verified. Call 211 to confirm the current local provider. Last researched June 14, 2026.",
+        lastChecked: "June 14, 2026"
       }
-    }
+    },
 
   }; // end PATHWAYS
 

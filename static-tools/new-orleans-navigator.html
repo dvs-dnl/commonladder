@@ -472,7 +472,8 @@
   <strong>Need help right now?</strong>
   <a href="tel:211">Call 211</a><span class="crisis-bar__sep">·</span>
   <a href="sms:741741?body=HOME">Text HOME to 741741</a><span class="crisis-bar__sep">·</span>
-  <a href="tel:988">988 Suicide &amp; Crisis</a>
+  <a href="tel:988">988 Suicide &amp; Crisis</a><span class="crisis-bar__sep">·</span>
+  <a href="tel:18007997233">DV 1-800-799-7233</a>
 </div>
 
 <nav class="nav" aria-label="Primary">
@@ -512,6 +513,8 @@
   </svg>
   <span>common<span class="cl-home__rung">ladder</span></span>
 </a>
+
+<div role="note" style="background:#ffedd5;border:1px solid #9a3412;color:#6b2710;border-radius:10px;padding:14px 18px;margin:0 auto 18px;max-width:680px;font-size:.9rem;line-height:1.5;"><strong style="color:#9a3412;">AI-researched, not locally verified.</strong> Common Ladder is based in Arizona. We built this guide from public sources but don’t yet verify these listings by phone the way we do our Arizona tools. Use it to learn <em>what to ask for</em>, then <strong>call <a href="tel:211" style="color:#9a3412;">211</a></strong> for the current local provider. Last researched <time datetime="2026-06-14">June 14, 2026</time>. Wrong info? <a href="mailto:corrections.commonladder@gmail.com?subject=Resource%20update:%20New%20Orleans%20/%20Jefferson%20Parish" style="color:#9a3412;">Tell us</a>.</div>
 
 <!-- App shell — all screens rendered by JS into here -->
 <div id="app"></div>
@@ -651,184 +654,157 @@
      Keep firstAction to one clear sentence + phone number.
      resources: 3 is ideal; 2 minimum; 4 maximum.
   ═══════════════════════════════════════════════════════════ */
-  var PATHWAYS = {
+    var PATHWAYS = {
 
     result_veterans: {
       label: "Veterans Pathway",
       badgeClass: "badge-veterans",
-      badgeIcon: "\ud83c\udf96",
-      headline: "There's a dedicated system built for you.",
-      firstAction: "Call <strong>VOA Southeast Louisiana SSVF</strong> at <strong>(504) 482-2130</strong> \u2014 Supportive Services for Veteran Families (rapid rehousing, prevention, case management). Or call <strong>Southeast Louisiana Veterans Health Care System</strong> at <strong>(504) 507-2000</strong>, 2400 Canal St.",
-      callNumber: "tel:5044822130",
-      callLabel: "Call VOA SSVF: (504) 482-2130",
-      what_to_expect: "SLVHCS New Orleans VA Medical Center is the primary VA medical home. VOA Southeast Louisiana runs the local SSVF program (also Northshore at 985-674-0488). National Call Center for Homeless Veterans is 24/7.",
+      badgeIcon: "🎖",
+      headline: "There's a dedicated system built for veterans.",
+      firstAction: "Call <strong>211</strong> — free, 24/7 — and say: <em>“I’m a veteran and I’m homeless or about to be.”</em> Ask to be connected to the <strong>VA’s Health Care for Homeless Veterans (HCHV)</strong> program and your local <strong>coordinated-entry assessment</strong>. Veterans qualify for both VA housing (HUD-VASH) and the local Continuum of Care at the same time.",
+      callNumber: "tel:211",
+      callLabel: "Call 211",
+      what_to_expect: "211 will route you to the nearest VA homeless-program coordinator and your local CoC. The National Call Center for Homeless Veterans is available 24/7 anywhere in the U.S. if you can’t reach a local office.",
       bring: [
-        "DD-214 discharge papers (if you have them \u2014 not required to call)",
+        "DD-214 discharge papers (if you have them — not required to call)",
         "Photo ID (if available)",
         "Any VA documentation you have",
       ],
       resources: [
         {
-          name: "VA SLVHCS \u2014 main",
-          phone: "(504) 507-2000",
-          tel: "tel:5045072000",
-          note: "2400 Canal St. Ask for HCHV program."
-        },
-        {
           name: "National Call Center for Homeless Veterans",
           phone: "1-877-424-3838",
           tel: "tel:18774243838",
-          note: "24/7."
+          note: "24/7. Available everywhere."
         },
         {
           name: "Veterans Crisis Line",
           phone: "988",
           tel: "tel:988",
-          note: "Press 1 for VA crisis line."
+          note: "Press 1 for the VA crisis line."
         },
       ],
       confidence: {
-        level: "research",
-        note: "Numbers from va.gov/southeast-louisiana-health-care, voasela.org. Last reviewed May 2026.",
-        lastChecked: "May 2026"
+        level: "unverified",
+        note: "AI-researched from public sources — not locally phone-verified. Call 211 to confirm the current local provider. Last researched June 14, 2026.",
+        lastChecked: "June 14, 2026"
       }
     },
 
     result_youth: {
       label: "Youth Pathway",
       badgeClass: "badge-youth",
-      badgeIcon: "\ud83c\udf31",
-      headline: "Covenant House New Orleans serves youth 24/7.",
-      firstAction: "Call <strong>Covenant House New Orleans</strong> at <strong>(504) 584-1111</strong> \u2014 24/7/365 emergency shelter, transitional housing, healthcare, education and employment services. 611 N. Rampart St.",
-      callNumber: "tel:5045841111",
-      callLabel: "Call Covenant House: (504) 584-1111",
-      what_to_expect: "Covenant House NOLA is the lead youth provider with 24/7 access for ages including pregnant/parenting youth. Youth Empowerment Project (YEP) provides community-based wraparound for ages 7\u201324 \u2014 mentoring, GED, and workforce. Eden House offers long-term residential support for adult women survivors of trafficking with a 24/7 Emergency Center.",
+      badgeIcon: "🌱",
+      headline: "If you’re 24 or under, there’s a youth-specific path.",
+      firstAction: "Call or text <strong>211</strong> and say: <em>“I’m 24 or younger and I need a safe place to stay.”</em> Ask for the <strong>youth emergency shelter</strong> and the <strong>runaway &amp; homeless youth (RHY) program</strong> in your area.",
+      callNumber: "tel:211",
+      callLabel: "Call 211",
+      what_to_expect: "211 routes you to the nearest youth shelter or drop-in center. The national backstops below are always available, day or night.",
       bring: [
-        "Photo ID (helpful \u2014 not required for crisis services)",
+        "Photo ID (helpful — not required for crisis services)",
         "Anything important you can carry",
-        "Nothing required for 24/7 line",
+        "Nothing is required to call",
       ],
       resources: [
         {
-          name: "Youth Empowerment Project (YEP)",
-          phone: "(504) 522-1316",
-          tel: "tel:5045221316",
-          note: "Ages 7\u201324. Mentoring, GED, workforce."
+          name: "Safe Place",
+          phone: "Text SAFE + your location to 44357",
+          tel: "sms:44357?body=SAFE",
+          note: "Or walk into any QuikTrip and ask staff to call for you."
         },
         {
-          name: "Eden House \u2014 Emergency Center (24/7)",
-          phone: "(504) 387-8321",
-          tel: "tel:5043878321",
-          note: "Hospital-based crisis response. Long-term: (504) 407-0943."
-        },
-        {
-          name: "211 Louisiana",
-          phone: "211",
-          tel: "tel:211",
-          note: "24/7 statewide."
+          name: "National Runaway Safeline",
+          phone: "1-800-786-2929",
+          tel: "tel:18007862929",
+          note: "24/7, free, confidential."
         },
       ],
-      extra_note: "\u26a0\ufe0f Under 18? Covenant House NOLA serves youth in crisis 24/7.",
       confidence: {
-        level: "research",
-        note: "Numbers from covenanthousenola.org, youthempowermentproject.org, eden-centers.org. Last reviewed May 2026.",
-        lastChecked: "May 2026"
+        level: "unverified",
+        note: "AI-researched from public sources — not locally phone-verified. Call 211 to confirm the current local provider. Last researched June 14, 2026.",
+        lastChecked: "June 14, 2026"
       }
     },
 
     result_families: {
       label: "Families Pathway",
       badgeClass: "badge-families",
-      badgeIcon: "\ud83c\udfe0",
-      headline: "Salvation Army Center of Hope is the largest family shelter.",
-      firstAction: "Call <strong>The Salvation Army \u2014 New Orleans Center of Hope</strong> at <strong>(504) 899-4569</strong> \u2014 4500 S. Claiborne Ave. Largest family emergency shelter in the CoC. Operates Pathway of Hope case management.",
-      callNumber: "tel:5048994569",
-      callLabel: "Call Center of Hope: (504) 899-4569",
-      what_to_expect: "Salvation Army Center of Hope provides emergency shelter for families and single adults. UNITY of Greater New Orleans Coordinated Entry at (504) 821-4496 routes families to shelter. VOA Southeast Louisiana provides additional family services through SSVF and behavioral health programs.",
+      badgeIcon: "🏠",
+      headline: "Families are kept together in the shelter system.",
+      firstAction: "Call or text <strong>211</strong> and say: <em>“I have my kids with me and we need shelter tonight.”</em> Ask for <strong>family emergency shelter</strong> and the <strong>coordinated-entry assessment</strong> for rapid re-housing.",
+      callNumber: "tel:211",
+      callLabel: "Call 211",
+      what_to_expect: "211 routes you to family shelter and the local coordinated-entry system. If you are fleeing domestic violence, use the confidential hotline below instead — DV shelter is separate and won’t list your location.",
       bring: [
         "Photo ID for adults (if available)",
-        "Birth certificates for children (helpful but not always required)",
+        "Birth certificates for children (helpful, not always required)",
         "Documentation of income or benefits (if available)",
-        "Social security cards (if you have them)",
       ],
       resources: [
         {
-          name: "UNITY of Greater New Orleans \u2014 Coordinated Entry",
-          phone: "(504) 821-4496",
-          tel: "tel:5048214496",
-          note: "Single front door. Toll-free: 1-888-899-4589. Ext. 1012."
+          name: "National Domestic Violence Hotline",
+          phone: "1-800-799-7233",
+          tel: "tel:18007997233",
+          note: "24/7, confidential. Text START to 88788. Connects you to a local confidential DV shelter."
         },
         {
-          name: "VOA Southeast Louisiana",
-          phone: "(504) 482-2130",
-          tel: "tel:5044822130",
-          note: "Family services through SSVF + behavioral health."
-        },
-        {
-          name: "211 Louisiana",
+          name: "United Way 211",
           phone: "211",
           tel: "tel:211",
-          note: "Statewide 24/7."
+          note: "Family shelter + coordinated entry."
         },
       ],
       confidence: {
-        level: "research",
-        note: "Numbers from salvationarmyusa.org, unitygno.org, voasela.org. Last reviewed May 2026.",
-        lastChecked: "May 2026"
+        level: "unverified",
+        note: "AI-researched from public sources — not locally phone-verified. Call 211 to confirm the current local provider. Last researched June 14, 2026.",
+        lastChecked: "June 14, 2026"
       }
     },
 
     result_chronic: {
       label: "Chronic Homelessness Pathway",
       badgeClass: "badge-chronic",
-      badgeIcon: "\ud83d\udd11",
-      headline: "UNITY of Greater New Orleans administers Coordinated Entry.",
-      firstAction: "Call <strong>UNITY of Greater New Orleans</strong> at <strong>(504) 821-4496</strong> (toll-free 1-888-899-4589) \u2014 single front door to CoC housing resources for LA-503. Coordinated Entry intake: ext. 1012 / vcoffin@unitygno.org.",
-      callNumber: "tel:5048214496",
-      callLabel: "Call UNITY: (504) 821-4496",
-      what_to_expect: "UNITY operates outreach for chronically homeless adults including abandoned-building teams. Travelers Aid Society of Greater New Orleans at 1530 Gravier St provides day shelter, employment program, and Critical Time Intervention case management. New Orleans Mission is the largest faith-based emergency shelter.",
+      badgeIcon: "🔑",
+      headline: "The housing list starts with one assessment.",
+      firstAction: "Call or text <strong>211</strong> and say: <em>“I’ve been homeless a long time and I want to get on the housing list.”</em> Ask for the <strong>coordinated-entry assessment</strong> — in this system, permanent supportive housing is reached by being assessed and placed on the community housing-referral list. The assessment is the door; there is no separate number.",
+      callNumber: "tel:211",
+      callLabel: "Call 211",
+      what_to_expect: "A coordinated-entry assessor will ask about your situation and add you to the local housing-referral list. While you wait, ask 211 for tonight’s shelter and a daytime drop-in center.",
       bring: [
         "Photo ID (any form)",
-        "Documentation of health conditions (if available \u2014 not required to be assessed)",
+        "Documentation of health conditions (if available — not required to be assessed)",
         "Any records of prior housing or service history",
       ],
       resources: [
         {
-          name: "Travelers Aid Society of Greater New Orleans",
-          phone: "(504) 658-2944",
-          tel: "tel:5046582944",
-          note: "1530 Gravier St. Day shelter + SHEP employment + CTI case mgmt."
+          name: "988 Suicide &amp; Crisis Lifeline",
+          phone: "988",
+          tel: "tel:988",
+          note: "Behavioral-health crisis support + SOAR disability-benefit help tied to housing."
         },
         {
-          name: "New Orleans Mission",
-          phone: "(504) 523-2116",
-          tel: "tel:5045232116",
-          note: "Largest faith-based shelter. Medical clinic, recovery, retreat."
-        },
-        {
-          name: "211 Louisiana",
+          name: "United Way 211",
           phone: "211",
           tel: "tel:211",
-          note: "24/7."
+          note: "Coordinated entry + shelter while you wait."
         },
       ],
-      extra_note: "\ud83d\udccb Qualifying conditions include physical, mental health, or substance use disorders that substantially affect daily functioning. You don't need a formal diagnosis to be assessed.",
       confidence: {
-        level: "research",
-        note: "Numbers from unitygno.org, travelersaidsocietyneworleans.org, neworleansmission.org. Last reviewed May 2026.",
-        lastChecked: "May 2026"
+        level: "unverified",
+        note: "AI-researched from public sources — not locally phone-verified. Call 211 to confirm the current local provider. Last researched June 14, 2026.",
+        lastChecked: "June 14, 2026"
       }
     },
 
     result_adult: {
       label: "Single Adults Pathway",
       badgeClass: "badge-adult",
-      badgeIcon: "\ud83d\udcde",
-      headline: "New Orleans Mission and Ozanam Inn serve single adults.",
-      firstAction: "Walk in or call <strong>New Orleans Mission</strong> at <strong>(504) 523-2116</strong> \u2014 primary low-barrier adult emergency shelter for the CoC. Or call <strong>Ozanam Inn (St. Vincent de Paul)</strong> at <strong>(504) 523-1184</strong>, 2239 Poydras St \u2014 emergency and residential programs for men and (in the new facility) women.",
-      callNumber: "tel:5045232116",
-      callLabel: "Call NO Mission: (504) 523-2116",
-      what_to_expect: "New Orleans Mission is the city's largest faith-based shelter with medical clinic, recovery, and Lynhaven (trafficking survivors) programs. Ozanam Inn is the longest continuously running shelter in NOLA. Travelers Aid Society provides day shelter and case management. 211 Louisiana is 24/7.",
+      badgeIcon: "📞",
+      headline: "Start with tonight’s shelter, then the housing list.",
+      firstAction: "Call or text <strong>211</strong> and say: <em>“I need a shelter bed tonight.”</em> Ask for <strong>tonight’s open beds for single adults</strong>, the nearest <strong>daytime drop-in center</strong> (showers, mail, case management), and a <strong>free meal site</strong>. 211 is multilingual and 24/7.",
+      callNumber: "tel:211",
+      callLabel: "Call 211",
+      what_to_expect: "211 has the current shelter-bed picture for your area, which changes daily. Ask them to also start a coordinated-entry assessment so you’re working toward housing, not just tonight.",
       bring: [
         "Photo ID (helpful but not always required)",
         "Social security card or number (if available)",
@@ -836,30 +812,24 @@
       ],
       resources: [
         {
-          name: "Ozanam Inn (St. Vincent de Paul)",
-          phone: "(504) 523-1184",
-          tel: "tel:5045231184",
-          note: "2239 Poydras St. Longest continuously running shelter."
-        },
-        {
-          name: "Travelers Aid Society",
-          phone: "(504) 658-2944",
-          tel: "tel:5046582944",
-          note: "Day shelter, SHEP employment, CTI case mgmt."
-        },
-        {
-          name: "211 Louisiana",
-          phone: "211",
+          name: "Find a free clinic (FQHC)",
+          phone: "Ask 211",
           tel: "tel:211",
-          note: "24/7."
+          note: "Federally Qualified Health Centers treat everyone regardless of ability to pay."
+        },
+        {
+          name: "988 Suicide &amp; Crisis Lifeline",
+          phone: "988",
+          tel: "tel:988",
+          note: "24/7 mental-health support."
         },
       ],
       confidence: {
-        level: "research",
-        note: "Numbers from neworleansmission.org, ozanaminn.org, travelersaidsocietyneworleans.org. Last reviewed May 2026.",
-        lastChecked: "May 2026"
+        level: "unverified",
+        note: "AI-researched from public sources — not locally phone-verified. Call 211 to confirm the current local provider. Last researched June 14, 2026.",
+        lastChecked: "June 14, 2026"
       }
-    }
+    },
 
   }; // end PATHWAYS
 

@@ -468,7 +468,8 @@ html,body{overflow-x:hidden;max-width:100%;}
   <strong>Need help right now?</strong>
   <a href="tel:211">Call 211</a><span class="crisis-bar__sep">·</span>
   <a href="sms:741741?body=HOME">Text HOME to 741741</a><span class="crisis-bar__sep">·</span>
-  <a href="tel:988">988 Suicide &amp; Crisis</a>
+  <a href="tel:988">988 Suicide &amp; Crisis</a><span class="crisis-bar__sep">·</span>
+  <a href="tel:18007997233">DV 1-800-799-7233</a>
 </div>
 <nav class="nav" aria-label="Primary">
   <div class="nav__inner">
@@ -506,6 +507,8 @@ html,body{overflow-x:hidden;max-width:100%;}
   </svg>
   <span>common<span class="cl-home__rung">ladder</span></span>
 </a>
+
+<div role="note" style="background:#ffedd5;border:1px solid #9a3412;color:#6b2710;border-radius:10px;padding:14px 18px;margin:0 auto 18px;max-width:680px;font-size:.9rem;line-height:1.5;"><strong style="color:#9a3412;">AI-researched, not locally verified.</strong> Common Ladder is based in Arizona. We built this guide from public sources but don’t yet verify these listings by phone the way we do our Arizona tools. Use it to learn <em>what to ask for</em>, then <strong>call <a href="tel:211" style="color:#9a3412;">211</a></strong> for the current local provider. Last researched <time datetime="2026-06-14">June 14, 2026</time>. Wrong info? <a href="mailto:corrections.commonladder@gmail.com?subject=Resource%20update:%20Anchorage" style="color:#9a3412;">Tell us</a>.</div>
 
 <!-- App shell — all screens rendered by JS into here -->
 <div id="app"></div>
@@ -645,17 +648,17 @@ html,body{overflow-x:hidden;max-width:100%;}
      Keep firstAction to one clear sentence + phone number.
      resources: 3 is ideal; 2 minimum; 4 maximum.
   ═══════════════════════════════════════════════════════════ */
-  var PATHWAYS = {
+    var PATHWAYS = {
 
     result_veterans: {
       label: "Veterans Pathway",
       badgeClass: "badge-veterans",
       badgeIcon: "🎖",
-      headline: "There's a dedicated system built for you.",
-      firstAction: "Call the <strong>National Call Center for Homeless Veterans</strong> at <strong>1-877-424-3838</strong> (24/7). They will connect you to the Alaska VA Homeless Program team and to local SSVF. In Anchorage, <strong>Catholic Social Services SSVF</strong> at <strong>(907) 222-7383</strong> handles veteran case management and rapid re-housing.",
-      callNumber: "tel:18774243838",
-      callLabel: "Call VA Homeless: 1-877-424-3838",
-      what_to_expect: "The Alaska VA Healthcare System (Rasmuson Campus) runs HCHV and HUD-VASH for Anchorage. You do not need to be enrolled in VA health care to call the national line — they will help even if you have not used VA benefits before. Catholic Social Services SSVF serves veterans and veteran families in Anchorage Municipality and Mat-Su.",
+      headline: "There's a dedicated system built for veterans.",
+      firstAction: "Call <strong>211</strong> — free, 24/7 — and say: <em>“I’m a veteran and I’m homeless or about to be.”</em> Ask to be connected to the <strong>VA’s Health Care for Homeless Veterans (HCHV)</strong> program and your local <strong>coordinated-entry assessment</strong>. Veterans qualify for both VA housing (HUD-VASH) and the local Continuum of Care at the same time.",
+      callNumber: "tel:211",
+      callLabel: "Call 211",
+      what_to_expect: "211 will route you to the nearest VA homeless-program coordinator and your local CoC. The National Call Center for Homeless Veterans is available 24/7 anywhere in the U.S. if you can’t reach a local office.",
       bring: [
         "DD-214 discharge papers (if you have them — not required to call)",
         "Photo ID (if available)",
@@ -663,28 +666,22 @@ html,body{overflow-x:hidden;max-width:100%;}
       ],
       resources: [
         {
-          name: "Alaska VA Healthcare System",
-          phone: "1-888-353-7574",
-          tel: "tel:18883537574",
-          note: "1201 N Muldoon Rd, Anchorage. Toll-free main line — ask for Homeless Veteran Care / HUD-VASH."
-        },
-        {
-          name: "Catholic Social Services SSVF",
-          phone: "(907) 222-7383",
-          tel: "tel:9072227383",
-          note: "4600 Debarr Rd Suite 201. Case management + RRH for veteran households (Anchorage + Mat-Su)."
-        },
-        {
           name: "National Call Center for Homeless Veterans",
           phone: "1-877-424-3838",
           tel: "tel:18774243838",
-          note: "24/7 free confidential hotline. Routes to local VA Homeless Programs."
+          note: "24/7. Available everywhere."
+        },
+        {
+          name: "Veterans Crisis Line",
+          phone: "988",
+          tel: "tel:988",
+          note: "Press 1 for the VA crisis line."
         },
       ],
       confidence: {
-        level: "research",
-        note: "Numbers from va.gov/alaska-health-care/contact-us, cssalaska.org/our-programs/veteran-services, department.va.gov/homeless/nationalcallcenter. Last reviewed June 2026.",
-        lastChecked: "June 2026"
+        level: "unverified",
+        note: "AI-researched from public sources — not locally phone-verified. Call 211 to confirm the current local provider. Last researched June 14, 2026.",
+        lastChecked: "June 14, 2026"
       }
     },
 
@@ -692,41 +689,34 @@ html,body{overflow-x:hidden;max-width:100%;}
       label: "Youth Pathway",
       badgeClass: "badge-youth",
       badgeIcon: "🌱",
-      headline: "Covenant House Alaska is open 24/7 — no referral required.",
-      firstAction: "Call <strong>Covenant House Alaska</strong> at <strong>(907) 272-1255</strong> — 755 A Street, Anchorage. 24/7 crisis line and walk-in Youth Engagement Center for ages 13–24. Or call the <strong>National Runaway Safeline</strong> at <strong>1-800-786-2929</strong> (24/7).",
-      callNumber: "tel:9072721255",
-      callLabel: "Call Covenant House: (907) 272-1255",
-      what_to_expect: "Covenant House Alaska's Youth Engagement Center is open 24 hours a day, 365 days a year, with no cost and no referral required. Youth ages 13–24 can call or walk in for crisis intervention, shelter, food, case management, and a Coordinated Entry assessment. Choosing Our Roots is the dedicated CE access point for transition-age LGBTQIA2+ youth (18–24).",
+      headline: "If you’re 24 or under, there’s a youth-specific path.",
+      firstAction: "Call or text <strong>211</strong> and say: <em>“I’m 24 or younger and I need a safe place to stay.”</em> Ask for the <strong>youth emergency shelter</strong> and the <strong>runaway &amp; homeless youth (RHY) program</strong> in your area.",
+      callNumber: "tel:211",
+      callLabel: "Call 211",
+      what_to_expect: "211 routes you to the nearest youth shelter or drop-in center. The national backstops below are always available, day or night.",
       bring: [
         "Photo ID (helpful — not required for crisis services)",
         "Anything important you can carry",
-        "Nothing required to call the crisis line",
+        "Nothing is required to call",
       ],
       resources: [
         {
-          name: "Covenant House Alaska",
-          phone: "(907) 272-1255",
-          tel: "tel:9072721255",
-          note: "755 A Street. 24/7 youth crisis line + walk-in. Ages 13–24."
-        },
-        {
-          name: "Choosing Our Roots",
-          phone: "(907) 764-6233",
-          tel: "tel:9077646233",
-          note: "Coordinated Entry access point for LGBTQIA2+ youth 18–24. Mon–Fri 10 am–4 pm."
+          name: "Safe Place",
+          phone: "Text SAFE + your location to 44357",
+          tel: "sms:44357?body=SAFE",
+          note: "Or walk into any QuikTrip and ask staff to call for you."
         },
         {
           name: "National Runaway Safeline",
           phone: "1-800-786-2929",
           tel: "tel:18007862929",
-          note: "24/7 federal RHY hotline. Call or text. Home Free bus tickets available."
+          note: "24/7, free, confidential."
         },
       ],
-      extra_note: "⚠️ Under 18? Covenant House Alaska knows the local rules. They will help.",
       confidence: {
-        level: "research",
-        note: "Numbers from covenanthouseak.org/about-us/contact-us, aceh.org/coordinated-entry, 1800runaway.org. Last reviewed June 2026.",
-        lastChecked: "June 2026"
+        level: "unverified",
+        note: "AI-researched from public sources — not locally phone-verified. Call 211 to confirm the current local provider. Last researched June 14, 2026.",
+        lastChecked: "June 14, 2026"
       }
     },
 
@@ -734,41 +724,34 @@ html,body{overflow-x:hidden;max-width:100%;}
       label: "Families Pathway",
       badgeClass: "badge-families",
       badgeIcon: "🏠",
-      headline: "Clare House and AWAIC are the 24/7 doors for women with children.",
-      firstAction: "Call <strong>Clare House</strong> at <strong>(907) 563-4545</strong> — 4110 Spenard Road, Anchorage. 24/7 emergency shelter for women with children and expectant mothers. If you are fleeing domestic violence, call the <strong>AWAIC 24-Hour Crisis Line</strong> at <strong>(907) 272-0100</strong> first.",
-      callNumber: "tel:9075634545",
-      callLabel: "Call Clare House: (907) 563-4545",
-      what_to_expect: "Clare House (Catholic Social Services) is Anchorage's primary emergency shelter for women with children and expectant mothers, open 24 hours a day, 365 days a year. AWAIC operates a 24/7 DV crisis line and emergency shelter for survivors and their kids — no provider referral required. RurAL CAP Safe Harbor is the dedicated Coordinated Entry access point for families with minors.",
+      headline: "Families are kept together in the shelter system.",
+      firstAction: "Call or text <strong>211</strong> and say: <em>“I have my kids with me and we need shelter tonight.”</em> Ask for <strong>family emergency shelter</strong> and the <strong>coordinated-entry assessment</strong> for rapid re-housing.",
+      callNumber: "tel:211",
+      callLabel: "Call 211",
+      what_to_expect: "211 routes you to family shelter and the local coordinated-entry system. If you are fleeing domestic violence, use the confidential hotline below instead — DV shelter is separate and won’t list your location.",
       bring: [
         "Photo ID for adults (if available)",
-        "Birth certificates for children (helpful but not always required)",
+        "Birth certificates for children (helpful, not always required)",
         "Documentation of income or benefits (if available)",
-        "Social security cards (if you have them)",
       ],
       resources: [
         {
-          name: "Clare House (Catholic Social Services)",
-          phone: "(907) 563-4545",
-          tel: "tel:9075634545",
-          note: "4110 Spenard Rd. 24/7 emergency shelter for women + children and expectant mothers."
+          name: "National Domestic Violence Hotline",
+          phone: "1-800-799-7233",
+          tel: "tel:18007997233",
+          note: "24/7, confidential. Text START to 88788. Connects you to a local confidential DV shelter."
         },
         {
-          name: "AWAIC 24-Hour Crisis Line",
-          phone: "(907) 272-0100",
-          tel: "tel:9072720100",
-          note: "100 W 13th Ave. 24/7 DV crisis line + emergency shelter. No referral needed."
-        },
-        {
-          name: "RurAL CAP Safe Harbor (Family CE)",
-          phone: "(907) 279-2511",
-          tel: "tel:9072792511",
-          note: "207 Muldoon Rd. Coordinated Entry access point for families with minors. Mon–Fri 8 am–5 pm."
+          name: "United Way 211",
+          phone: "211",
+          tel: "tel:211",
+          note: "Family shelter + coordinated entry."
         },
       ],
       confidence: {
-        level: "research",
-        note: "Numbers from cssalaska.org/our-programs/clare-house, awaic.org/about-awaic/contact-us, aceh.org/coordinated-entry. Last reviewed June 2026.",
-        lastChecked: "June 2026"
+        level: "unverified",
+        note: "AI-researched from public sources — not locally phone-verified. Call 211 to confirm the current local provider. Last researched June 14, 2026.",
+        lastChecked: "June 14, 2026"
       }
     },
 
@@ -776,11 +759,11 @@ html,body{overflow-x:hidden;max-width:100%;}
       label: "Chronic Homelessness Pathway",
       badgeClass: "badge-chronic",
       badgeIcon: "🔑",
-      headline: "ACEH coordinates the door to Permanent Supportive Housing.",
-      firstAction: "Call <strong>Anchorage Coalition to End Homelessness (ACEH)</strong> at <strong>(907) 312-9530</strong> — 3427 E Tudor Rd Suite A. Or walk in Tues + Thurs, 10 am–noon and 1–4 pm, for a Coordinated Entry assessment.",
-      callNumber: "tel:9073129530",
-      callLabel: "Call ACEH: (907) 312-9530",
-      what_to_expect: "Anchorage uses Coordinated Entry (CE) administered by ACEH. Anyone seeking permanent supportive housing must first complete a CE assessment at an access point. After assessment you are placed in the CE Prioritization Pool — the most vulnerable receive housing referrals first, and wait times vary. Staying in regular contact with your access point is critical.",
+      headline: "The housing list starts with one assessment.",
+      firstAction: "Call or text <strong>211</strong> and say: <em>“I’ve been homeless a long time and I want to get on the housing list.”</em> Ask for the <strong>coordinated-entry assessment</strong> — in this system, permanent supportive housing is reached by being assessed and placed on the community housing-referral list. The assessment is the door; there is no separate number.",
+      callNumber: "tel:211",
+      callLabel: "Call 211",
+      what_to_expect: "A coordinated-entry assessor will ask about your situation and add you to the local housing-referral list. While you wait, ask 211 for tonight’s shelter and a daytime drop-in center.",
       bring: [
         "Photo ID (any form)",
         "Documentation of health conditions (if available — not required to be assessed)",
@@ -788,35 +771,22 @@ html,body{overflow-x:hidden;max-width:100%;}
       ],
       resources: [
         {
-          name: "ACEH (CoC Lead, CE intake)",
-          phone: "(907) 312-9530",
-          tel: "tel:9073129530",
-          note: "3427 E Tudor Rd Ste A. Walk-ins Tues + Thurs. CE assessments for all populations."
-        },
-        {
-          name: "3rd Avenue Resource & Navigation Center (CSS)",
-          phone: "(907) 222-7388",
-          tel: "tel:9072227388",
-          note: "1101 E 3rd Ave. All-population CE access point. Mon–Fri 8:30 am–3 pm."
-        },
-        {
-          name: "RurAL CAP Outreach (CE for single adults)",
-          phone: "(907) 717-2267",
-          tel: "tel:9077172267",
-          note: "Coordinated Entry access for single adults. Operates Housing First PSH (Karluk Manor)."
-        },
-        {
-          name: "988 Suicide & Crisis Lifeline",
+          name: "988 Suicide &amp; Crisis Lifeline",
           phone: "988",
           tel: "tel:988",
-          note: "24/7 mental-health crisis line, available everywhere."
+          note: "Behavioral-health crisis support + SOAR disability-benefit help tied to housing."
+        },
+        {
+          name: "United Way 211",
+          phone: "211",
+          tel: "tel:211",
+          note: "Coordinated entry + shelter while you wait."
         },
       ],
-      extra_note: "📋 Qualifying conditions include physical, mental health, or substance use disorders that substantially affect daily functioning. You don't need a formal diagnosis to be assessed.",
       confidence: {
-        level: "research",
-        note: "Numbers from aceh.org/contact-us, aceh.org/coordinated-entry, 988lifeline.org. Last reviewed June 2026.",
-        lastChecked: "June 2026"
+        level: "unverified",
+        note: "AI-researched from public sources — not locally phone-verified. Call 211 to confirm the current local provider. Last researched June 14, 2026.",
+        lastChecked: "June 14, 2026"
       }
     },
 
@@ -824,11 +794,11 @@ html,body{overflow-x:hidden;max-width:100%;}
       label: "Single Adults Pathway",
       badgeClass: "badge-adult",
       badgeIcon: "📞",
-      headline: "Brother Francis Shelter is the low-barrier door for adults 18+.",
-      firstAction: "Call <strong>Brother Francis Shelter</strong> at <strong>(907) 277-1731</strong> — 1021 E 3rd Ave, Anchorage. 24/7 low-barrier emergency shelter for adults 18+. Or call the <strong>3rd Avenue Resource & Navigation Center</strong> at <strong>(907) 222-7388</strong> for a Coordinated Entry assessment.",
-      callNumber: "tel:9072771731",
-      callLabel: "Call Brother Francis: (907) 277-1731",
-      what_to_expect: "Brother Francis Shelter (Catholic Social Services) is Anchorage's primary low-barrier emergency shelter for adults 18+, open 24 hours a day, 365 days a year, with on-site Caring Clinic and medical respite. Bean's Cafe provides daytime services and meals 365 days a year. Anchorage Gospel Rescue Mission runs sober shelter, meals, and longer-term men's and women's programs. All single adults should also complete a Coordinated Entry assessment.",
+      headline: "Start with tonight’s shelter, then the housing list.",
+      firstAction: "Call or text <strong>211</strong> and say: <em>“I need a shelter bed tonight.”</em> Ask for <strong>tonight’s open beds for single adults</strong>, the nearest <strong>daytime drop-in center</strong> (showers, mail, case management), and a <strong>free meal site</strong>. 211 is multilingual and 24/7.",
+      callNumber: "tel:211",
+      callLabel: "Call 211",
+      what_to_expect: "211 has the current shelter-bed picture for your area, which changes daily. Ask them to also start a coordinated-entry assessment so you’re working toward housing, not just tonight.",
       bring: [
         "Photo ID (helpful but not always required)",
         "Social security card or number (if available)",
@@ -836,30 +806,24 @@ html,body{overflow-x:hidden;max-width:100%;}
       ],
       resources: [
         {
-          name: "Brother Francis Shelter (CSS)",
-          phone: "(907) 277-1731",
-          tel: "tel:9072771731",
-          note: "1021 E 3rd Ave. 24/7 low-barrier shelter for adults 18+. On-site Caring Clinic."
+          name: "Find a free clinic (FQHC)",
+          phone: "Ask 211",
+          tel: "tel:211",
+          note: "Federally Qualified Health Centers treat everyone regardless of ability to pay."
         },
         {
-          name: "Bean's Cafe",
-          phone: "(907) 433-8601",
-          tel: "tel:9074338601",
-          note: "1020 E 4th Ave. Daytime shelter + breakfast and lunch, 365 days a year."
-        },
-        {
-          name: "Anchorage Gospel Rescue Mission",
-          phone: "(907) 563-5603",
-          tel: "tel:9075635603",
-          note: "2823 E Tudor Rd. Sober shelter, meals, longer-term men's + women's programs."
+          name: "988 Suicide &amp; Crisis Lifeline",
+          phone: "988",
+          tel: "tel:988",
+          note: "24/7 mental-health support."
         },
       ],
       confidence: {
-        level: "research",
-        note: "Numbers from cssalaska.org/our-programs/brother-francis-shelter, beanscafe.org/contact-us, anchoragerescue.org. Last reviewed June 2026.",
-        lastChecked: "June 2026"
+        level: "unverified",
+        note: "AI-researched from public sources — not locally phone-verified. Call 211 to confirm the current local provider. Last researched June 14, 2026.",
+        lastChecked: "June 14, 2026"
       }
-    }
+    },
 
   }; // end PATHWAYS
 

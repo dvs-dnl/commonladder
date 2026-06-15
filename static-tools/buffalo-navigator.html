@@ -472,7 +472,8 @@
   <strong>Need help right now?</strong>
   <a href="tel:211">Call 211</a><span class="crisis-bar__sep">·</span>
   <a href="sms:741741?body=HOME">Text HOME to 741741</a><span class="crisis-bar__sep">·</span>
-  <a href="tel:988">988 Suicide &amp; Crisis</a>
+  <a href="tel:988">988 Suicide &amp; Crisis</a><span class="crisis-bar__sep">·</span>
+  <a href="tel:18007997233">DV 1-800-799-7233</a>
 </div>
 
 <nav class="nav" aria-label="Primary">
@@ -512,6 +513,8 @@
   </svg>
   <span>common<span class="cl-home__rung">ladder</span></span>
 </a>
+
+<div role="note" style="background:#ffedd5;border:1px solid #9a3412;color:#6b2710;border-radius:10px;padding:14px 18px;margin:0 auto 18px;max-width:680px;font-size:.9rem;line-height:1.5;"><strong style="color:#9a3412;">AI-researched, not locally verified.</strong> Common Ladder is based in Arizona. We built this guide from public sources but don’t yet verify these listings by phone the way we do our Arizona tools. Use it to learn <em>what to ask for</em>, then <strong>call <a href="tel:211" style="color:#9a3412;">211</a></strong> for the current local provider. Last researched <time datetime="2026-06-14">June 14, 2026</time>. Wrong info? <a href="mailto:corrections.commonladder@gmail.com?subject=Resource%20update:%20Buffalo%20/%20Niagara%20Falls%20/%20Erie" style="color:#9a3412;">Tell us</a>.</div>
 
 <!-- App shell — all screens rendered by JS into here -->
 <div id="app"></div>
@@ -651,184 +654,157 @@
      Keep firstAction to one clear sentence + phone number.
      resources: 3 is ideal; 2 minimum; 4 maximum.
   ═══════════════════════════════════════════════════════════ */
-  var PATHWAYS = {
+    var PATHWAYS = {
 
     result_veterans: {
       label: "Veterans Pathway",
       badgeClass: "badge-veterans",
-      badgeIcon: "\ud83c\udf96",
-      headline: "There's a dedicated system built for you.",
-      firstAction: "Call <strong>Buffalo VA Medical Center</strong> at <strong>(716) 834-9200</strong> \u2014 main operator; ask for the Homeless Coordinator (HCHV). Or call <strong>Veterans One-Stop Center of WNY</strong> at <strong>(716) 898-0110</strong>, 1255 Niagara St Ste 230. M\u2013F 8:30am\u20135pm.",
-      callNumber: "tel:7168349200",
-      callLabel: "Call Buffalo VA: (716) 834-9200",
-      what_to_expect: "Buffalo VAMC provides HUD-VASH and HCHV programs. Veterans One-Stop Center of WNY offers housing and emergency services for veterans and co-hosts the annual Stand Down for Veterans event with VA WNY. National Call Center for Homeless Veterans is 24/7.",
+      badgeIcon: "🎖",
+      headline: "There's a dedicated system built for veterans.",
+      firstAction: "Call <strong>211</strong> — free, 24/7 — and say: <em>“I’m a veteran and I’m homeless or about to be.”</em> Ask to be connected to the <strong>VA’s Health Care for Homeless Veterans (HCHV)</strong> program and your local <strong>coordinated-entry assessment</strong>. Veterans qualify for both VA housing (HUD-VASH) and the local Continuum of Care at the same time.",
+      callNumber: "tel:211",
+      callLabel: "Call 211",
+      what_to_expect: "211 will route you to the nearest VA homeless-program coordinator and your local CoC. The National Call Center for Homeless Veterans is available 24/7 anywhere in the U.S. if you can’t reach a local office.",
       bring: [
-        "DD-214 discharge papers (if you have them \u2014 not required to call)",
+        "DD-214 discharge papers (if you have them — not required to call)",
         "Photo ID (if available)",
         "Any VA documentation you have",
       ],
       resources: [
         {
-          name: "VA Buffalo \u2014 Appointments",
-          phone: "1-888-838-7697",
-          tel: "tel:18888387697",
-          note: "Toll-free appointment scheduling."
-        },
-        {
           name: "National Call Center for Homeless Veterans",
           phone: "1-877-424-3838",
           tel: "tel:18774243838",
-          note: "24/7."
+          note: "24/7. Available everywhere."
         },
         {
           name: "Veterans Crisis Line",
           phone: "988",
           tel: "tel:988",
-          note: "Press 1 for VA crisis line."
+          note: "Press 1 for the VA crisis line."
         },
       ],
       confidence: {
-        level: "research",
-        note: "Numbers from va.gov/western-new-york-health-care, vocwny.org. Last reviewed June 2026.",
-        lastChecked: "June 2026"
+        level: "unverified",
+        note: "AI-researched from public sources — not locally phone-verified. Call 211 to confirm the current local provider. Last researched June 14, 2026.",
+        lastChecked: "June 14, 2026"
       }
     },
 
     result_youth: {
       label: "Youth Pathway",
       badgeClass: "badge-youth",
-      badgeIcon: "\ud83c\udf31",
-      headline: "Compass House is Buffalo's 24-hour youth crisis center.",
-      firstAction: "Call <strong>Compass House 24/7 Crisis Line</strong> at <strong>(716) 886-0935</strong> \u2014 Emergency Shelter at 370 Linwood Ave, Buffalo for ages 12\u201317. Voluntary, free, confidential.",
-      callNumber: "tel:7168860935",
-      callLabel: "Call Compass House: (716) 886-0935",
-      what_to_expect: "Compass House operates 24/7 youth crisis services and emergency shelter for ages 12\u201317. Gerard Place at 2515 Bailey Ave provides supportive housing and wrap-around services for single-parent and homeless families. 211 WNY operates the Erie County DSS After-Hours Homeless Program (M\u2013F 4pm\u20138am; 24h weekends/holidays).",
+      badgeIcon: "🌱",
+      headline: "If you’re 24 or under, there’s a youth-specific path.",
+      firstAction: "Call or text <strong>211</strong> and say: <em>“I’m 24 or younger and I need a safe place to stay.”</em> Ask for the <strong>youth emergency shelter</strong> and the <strong>runaway &amp; homeless youth (RHY) program</strong> in your area.",
+      callNumber: "tel:211",
+      callLabel: "Call 211",
+      what_to_expect: "211 routes you to the nearest youth shelter or drop-in center. The national backstops below are always available, day or night.",
       bring: [
-        "Photo ID (helpful \u2014 not required for crisis services)",
+        "Photo ID (helpful — not required for crisis services)",
         "Anything important you can carry",
-        "Nothing required for 24/7 crisis line",
+        "Nothing is required to call",
       ],
       resources: [
         {
-          name: "Gerard Place",
-          phone: "(716) 897-9948",
-          tel: "tel:7168979948",
-          note: "Ext. 114. 2515 Bailey Ave. Supportive housing for single-parent/homeless families."
+          name: "Safe Place",
+          phone: "Text SAFE + your location to 44357",
+          tel: "sms:44357?body=SAFE",
+          note: "Or walk into any QuikTrip and ask staff to call for you."
         },
         {
-          name: "211 WNY",
-          phone: "211",
-          tel: "tel:211",
-          note: "Or 1-888-696-9211 (TTY). 24/7."
-        },
-        {
-          name: "Erie County DSS \u2014 Emergency Services",
-          phone: "(716) 858-8000",
-          tel: "tel:7168588000",
-          note: "Rath Building 4th Fl, 158 Pearl St. M\u2013F 8:30am\u20134pm."
+          name: "National Runaway Safeline",
+          phone: "1-800-786-2929",
+          tel: "tel:18007862929",
+          note: "24/7, free, confidential."
         },
       ],
-      extra_note: "\u26a0\ufe0f Under 18? Compass House's 24/7 crisis line is for you.",
       confidence: {
-        level: "research",
-        note: "Numbers from compasshouse.org, gerardplace.org, 211wny.org. Last reviewed June 2026.",
-        lastChecked: "June 2026"
+        level: "unverified",
+        note: "AI-researched from public sources — not locally phone-verified. Call 211 to confirm the current local provider. Last researched June 14, 2026.",
+        lastChecked: "June 14, 2026"
       }
     },
 
     result_families: {
       label: "Families Pathway",
       badgeClass: "badge-families",
-      badgeIcon: "\ud83c\udfe0",
-      headline: "Buffalo City Mission Cornerstone Manor serves women & families.",
-      firstAction: "Call <strong>Buffalo City Mission \u2014 Cornerstone Manor</strong> at <strong>(716) 854-8181 ext. 111</strong> \u2014 150 E North St. Emergency shelter for up to 16 single women + 3 families. Transitional for 12 families + 46 women.",
-      callNumber: "tel:7168548181",
-      callLabel: "Call Cornerstone Manor: (716) 854-8181 x111",
-      what_to_expect: "Buffalo City Mission Cornerstone Manor is the main women & families shelter. Erie County DSS at (716) 858-8000 (Rath Building, 158 Pearl St) handles emergency family shelter. After-hours, dial 211. Compass House family-focused services also use the (716) 886-0935 line.",
+      badgeIcon: "🏠",
+      headline: "Families are kept together in the shelter system.",
+      firstAction: "Call or text <strong>211</strong> and say: <em>“I have my kids with me and we need shelter tonight.”</em> Ask for <strong>family emergency shelter</strong> and the <strong>coordinated-entry assessment</strong> for rapid re-housing.",
+      callNumber: "tel:211",
+      callLabel: "Call 211",
+      what_to_expect: "211 routes you to family shelter and the local coordinated-entry system. If you are fleeing domestic violence, use the confidential hotline below instead — DV shelter is separate and won’t list your location.",
       bring: [
         "Photo ID for adults (if available)",
-        "Birth certificates for children (helpful but not always required)",
+        "Birth certificates for children (helpful, not always required)",
         "Documentation of income or benefits (if available)",
-        "Social security cards (if you have them)",
       ],
       resources: [
         {
-          name: "Erie County DSS \u2014 Emergency Family Shelter",
-          phone: "(716) 858-8000",
-          tel: "tel:7168588000",
-          note: "Rath Building, 158 Pearl St 4th Fl. After-hours: 211."
+          name: "National Domestic Violence Hotline",
+          phone: "1-800-799-7233",
+          tel: "tel:18007997233",
+          note: "24/7, confidential. Text START to 88788. Connects you to a local confidential DV shelter."
         },
         {
-          name: "Compass House Family",
-          phone: "(716) 886-0935",
-          tel: "tel:7168860935",
-          note: "24/7 crisis line. Family-focused services."
-        },
-        {
-          name: "211 WNY",
+          name: "United Way 211",
           phone: "211",
           tel: "tel:211",
-          note: "Or 1-888-696-9211. 24/7."
+          note: "Family shelter + coordinated entry."
         },
       ],
       confidence: {
-        level: "research",
-        note: "Numbers from buffalocitymission.org, erie.gov, 211wny.org. Last reviewed June 2026.",
-        lastChecked: "June 2026"
+        level: "unverified",
+        note: "AI-researched from public sources — not locally phone-verified. Call 211 to confirm the current local provider. Last researched June 14, 2026.",
+        lastChecked: "June 14, 2026"
       }
     },
 
     result_chronic: {
       label: "Chronic Homelessness Pathway",
       badgeClass: "badge-chronic",
-      badgeIcon: "\ud83d\udd11",
-      headline: "Homeless Alliance of WNY runs Coordinated Entry via 211.",
-      firstAction: "Call <strong>Homeless Alliance of Western New York</strong> at <strong>(716) 853-1101</strong> \u2014 CoC lead at 625 Delaware Ave Ste 410. Or dial <strong>211</strong> for system access. Erie County uses 'No Wrong Door' CES.",
-      callNumber: "tel:7168531101",
-      callLabel: "Call HAWNY: (716) 853-1101",
-      what_to_expect: "Homeless Alliance of WNY is the CoC lead with a 'No Wrong Door' CES model. Buffalo City Mission at 100 E Tupper St offers long-term and emergency shelter, recovery, and case management. Restoration Society at 66 Englewood Ave (716-832-2141) operates PSH and a 365-night drop-in at Harbor House (586 Genesee St, 9pm\u20137am).",
+      badgeIcon: "🔑",
+      headline: "The housing list starts with one assessment.",
+      firstAction: "Call or text <strong>211</strong> and say: <em>“I’ve been homeless a long time and I want to get on the housing list.”</em> Ask for the <strong>coordinated-entry assessment</strong> — in this system, permanent supportive housing is reached by being assessed and placed on the community housing-referral list. The assessment is the door; there is no separate number.",
+      callNumber: "tel:211",
+      callLabel: "Call 211",
+      what_to_expect: "A coordinated-entry assessor will ask about your situation and add you to the local housing-referral list. While you wait, ask 211 for tonight’s shelter and a daytime drop-in center.",
       bring: [
         "Photo ID (any form)",
-        "Documentation of health conditions (if available \u2014 not required to be assessed)",
+        "Documentation of health conditions (if available — not required to be assessed)",
         "Any records of prior housing or service history",
       ],
       resources: [
         {
-          name: "Buffalo City Mission (main)",
-          phone: "(716) 854-8181",
-          tel: "tel:7168548181",
-          note: "100 E Tupper St. Long-term + emergency shelter, recovery, case mgmt."
+          name: "988 Suicide &amp; Crisis Lifeline",
+          phone: "988",
+          tel: "tel:988",
+          note: "Behavioral-health crisis support + SOAR disability-benefit help tied to housing."
         },
         {
-          name: "Restoration Society, Inc. (main)",
-          phone: "(716) 832-2141",
-          tel: "tel:7168322141",
-          note: "Option 1. 66 Englewood Ave. PSH, behavioral health."
-        },
-        {
-          name: "RSI Harbor House Drop-In (9p\u20137a, 365 nights)",
-          phone: "(716) 842-4184",
-          tel: "tel:7168424184",
-          note: "586 Genesee St."
+          name: "United Way 211",
+          phone: "211",
+          tel: "tel:211",
+          note: "Coordinated entry + shelter while you wait."
         },
       ],
-      extra_note: "\ud83d\udccb Qualifying conditions include physical, mental health, or substance use disorders that substantially affect daily functioning. You don't need a formal diagnosis to be assessed.",
       confidence: {
-        level: "research",
-        note: "Numbers from wnyhomeless.org, buffalocitymission.org, rsiwny.org. Last reviewed June 2026.",
-        lastChecked: "June 2026"
+        level: "unverified",
+        note: "AI-researched from public sources — not locally phone-verified. Call 211 to confirm the current local provider. Last researched June 14, 2026.",
+        lastChecked: "June 14, 2026"
       }
     },
 
     result_adult: {
       label: "Single Adults Pathway",
       badgeClass: "badge-adult",
-      badgeIcon: "\ud83d\udcde",
-      headline: "Buffalo City Mission serves single adults \u2014 men and women.",
-      firstAction: "Call <strong>Buffalo City Mission</strong> at <strong>(716) 854-8181</strong> \u2014 Men's Program (Alfiero Family Center of Hope and Promise) via ext. 432, 137, or 415 (24/7). Women & children via Cornerstone Manor ext. 111.",
-      callNumber: "tel:7168548181",
-      callLabel: "Call Buffalo City Mission: (716) 854-8181",
-      what_to_expect: "Buffalo City Mission's men's program at 100 E Tupper St takes 24/7 intake. Restoration Society serves single adults at (716) 832-2141 with PSH and Harbor House drop-in. Friends of Night People at 394 Hudson St provides meals, clothing, medical, and advocacy.",
+      badgeIcon: "📞",
+      headline: "Start with tonight’s shelter, then the housing list.",
+      firstAction: "Call or text <strong>211</strong> and say: <em>“I need a shelter bed tonight.”</em> Ask for <strong>tonight’s open beds for single adults</strong>, the nearest <strong>daytime drop-in center</strong> (showers, mail, case management), and a <strong>free meal site</strong>. 211 is multilingual and 24/7.",
+      callNumber: "tel:211",
+      callLabel: "Call 211",
+      what_to_expect: "211 has the current shelter-bed picture for your area, which changes daily. Ask them to also start a coordinated-entry assessment so you’re working toward housing, not just tonight.",
       bring: [
         "Photo ID (helpful but not always required)",
         "Social security card or number (if available)",
@@ -836,30 +812,24 @@
       ],
       resources: [
         {
-          name: "Restoration Society",
-          phone: "(716) 832-2141",
-          tel: "tel:7168322141",
-          note: "Single-adult housing, peer recovery. Harbor House drop-in: (716) 842-4184."
-        },
-        {
-          name: "Friends of Night People",
-          phone: "(716) 884-5375",
-          tel: "tel:7168845375",
-          note: "394 Hudson St. Meals, clothing, medical, advocacy."
-        },
-        {
-          name: "211 WNY",
-          phone: "211",
+          name: "Find a free clinic (FQHC)",
+          phone: "Ask 211",
           tel: "tel:211",
-          note: "Or 1-888-696-9211. 24/7."
+          note: "Federally Qualified Health Centers treat everyone regardless of ability to pay."
+        },
+        {
+          name: "988 Suicide &amp; Crisis Lifeline",
+          phone: "988",
+          tel: "tel:988",
+          note: "24/7 mental-health support."
         },
       ],
       confidence: {
-        level: "research",
-        note: "Numbers from buffalocitymission.org, rsiwny.org, friendsofnightpeople.com. Last reviewed June 2026.",
-        lastChecked: "June 2026"
+        level: "unverified",
+        note: "AI-researched from public sources — not locally phone-verified. Call 211 to confirm the current local provider. Last researched June 14, 2026.",
+        lastChecked: "June 14, 2026"
       }
-    }
+    },
 
   }; // end PATHWAYS
 

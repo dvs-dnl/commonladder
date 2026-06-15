@@ -468,7 +468,8 @@ html,body{overflow-x:hidden;max-width:100%;}
   <strong>Need help right now?</strong>
   <a href="tel:211">Call 211</a><span class="crisis-bar__sep">·</span>
   <a href="sms:741741?body=HOME">Text HOME to 741741</a><span class="crisis-bar__sep">·</span>
-  <a href="tel:988">988 Suicide &amp; Crisis</a>
+  <a href="tel:988">988 Suicide &amp; Crisis</a><span class="crisis-bar__sep">·</span>
+  <a href="tel:18007997233">DV 1-800-799-7233</a>
 </div>
 <nav class="nav" aria-label="Primary">
   <div class="nav__inner">
@@ -506,6 +507,8 @@ html,body{overflow-x:hidden;max-width:100%;}
   </svg>
   <span>common<span class="cl-home__rung">ladder</span></span>
 </a>
+
+<div role="note" style="background:#ffedd5;border:1px solid #9a3412;color:#6b2710;border-radius:10px;padding:14px 18px;margin:0 auto 18px;max-width:680px;font-size:.9rem;line-height:1.5;"><strong style="color:#9a3412;">AI-researched, not locally verified.</strong> Common Ladder is based in Arizona. We built this guide from public sources but don’t yet verify these listings by phone the way we do our Arizona tools. Use it to learn <em>what to ask for</em>, then <strong>call <a href="tel:211" style="color:#9a3412;">211</a></strong> for the current local provider. Last researched <time datetime="2026-06-14">June 14, 2026</time>. Wrong info? <a href="mailto:corrections.commonladder@gmail.com?subject=Resource%20update:%20St.%20Petersburg%20/%20Pinellas" style="color:#9a3412;">Tell us</a>.</div>
 
 <!-- App shell — all screens rendered by JS into here -->
 <div id="app"></div>
@@ -645,17 +648,17 @@ html,body{overflow-x:hidden;max-width:100%;}
      Keep firstAction to one clear sentence + phone number.
      resources: 3 is ideal; 2 minimum; 4 maximum.
   ═══════════════════════════════════════════════════════════ */
-  var PATHWAYS = {
+    var PATHWAYS = {
 
     result_veterans: {
       label: "Veterans Pathway",
       badgeClass: "badge-veterans",
       badgeIcon: "🎖",
-      headline: "There's a dedicated system built for you.",
-      firstAction: "Call the <strong>National Call Center for Homeless Veterans</strong> at <strong>1-877-424-3838</strong> (24/7). Or call <strong>Bay Pines VA Healthcare</strong> at <strong>(727) 398-6661</strong>, 10000 Bay Pines Blvd, St. Petersburg — ask for the HCHV/homeless coordinator.",
-      callNumber: "tel:18774243838",
-      callLabel: "Call VA Homeless: 1-877-424-3838",
-      what_to_expect: "Bay Pines VA Healthcare System runs HCHV and HUD-VASH for Pinellas veterans. St. Vincent de Paul CARES is the SSVF grantee for the Tampa Bay region — financial assistance and rapid re-housing for veteran households. Homeless Empowerment Program (HEP) in Clearwater also serves veterans and operates dedicated veteran housing at 1120 N. Betty Lane.",
+      headline: "There's a dedicated system built for veterans.",
+      firstAction: "Call <strong>211</strong> — free, 24/7 — and say: <em>“I’m a veteran and I’m homeless or about to be.”</em> Ask to be connected to the <strong>VA’s Health Care for Homeless Veterans (HCHV)</strong> program and your local <strong>coordinated-entry assessment</strong>. Veterans qualify for both VA housing (HUD-VASH) and the local Continuum of Care at the same time.",
+      callNumber: "tel:211",
+      callLabel: "Call 211",
+      what_to_expect: "211 will route you to the nearest VA homeless-program coordinator and your local CoC. The National Call Center for Homeless Veterans is available 24/7 anywhere in the U.S. if you can’t reach a local office.",
       bring: [
         "DD-214 discharge papers (if you have them — not required to call)",
         "Photo ID (if available)",
@@ -663,28 +666,22 @@ html,body{overflow-x:hidden;max-width:100%;}
       ],
       resources: [
         {
-          name: "Bay Pines VA Healthcare System",
-          phone: "(727) 398-6661",
-          tel: "tel:7273986661",
-          note: "10000 Bay Pines Blvd, St. Petersburg. Ask for homeless coordinator."
+          name: "National Call Center for Homeless Veterans",
+          phone: "1-877-424-3838",
+          tel: "tel:18774243838",
+          note: "24/7. Available everywhere."
         },
         {
-          name: "St. Vincent de Paul CARES — SSVF",
-          phone: "1-844-455-7783",
-          tel: "tel:18444557783",
-          note: "SSVF rapid re-housing + prevention for veteran families."
-        },
-        {
-          name: "Homeless Empowerment Program (HEP)",
-          phone: "(727) 442-9041",
-          tel: "tel:7274429041",
-          note: "1120 N. Betty Lane, Clearwater. Veteran housing + workforce."
+          name: "Veterans Crisis Line",
+          phone: "988",
+          tel: "tel:988",
+          note: "Press 1 for the VA crisis line."
         },
       ],
       confidence: {
-        level: "research",
-        note: "Numbers from va.gov/bay-pines-health-care, svdpsp.org, pinellas.gov/shelter-resources. Last reviewed May 2026.",
-        lastChecked: "May 2026"
+        level: "unverified",
+        note: "AI-researched from public sources — not locally phone-verified. Call 211 to confirm the current local provider. Last researched June 14, 2026.",
+        lastChecked: "June 14, 2026"
       }
     },
 
@@ -692,41 +689,34 @@ html,body{overflow-x:hidden;max-width:100%;}
       label: "Youth Pathway",
       badgeClass: "badge-youth",
       badgeIcon: "🌱",
-      headline: "Family Resources SafePlace2B is the local RHY shelter for youth 10–17.",
-      firstAction: "Call <strong>Family Resources SafePlace2B (Clearwater)</strong> at <strong>(727) 298-1607</strong> — 1615 Union St, Clearwater. 24/7 short-term residential for runaway/homeless youth 10–17. Or call the <strong>St. Petersburg site</strong> at <strong>(727) 893-1893</strong>.",
-      callNumber: "tel:7272981607",
-      callLabel: "Call SafePlace2B: (727) 298-1607",
-      what_to_expect: "Pinellas has no Covenant House. Family Resources is the federally funded Runaway and Homeless Youth (RHY) provider — 24/7 walk-ins accepted. Youth Improvement Services serves LGBTQIA+, immigrant, and minority youth 18–24 with emergency housing referral.",
+      headline: "If you’re 24 or under, there’s a youth-specific path.",
+      firstAction: "Call or text <strong>211</strong> and say: <em>“I’m 24 or younger and I need a safe place to stay.”</em> Ask for the <strong>youth emergency shelter</strong> and the <strong>runaway &amp; homeless youth (RHY) program</strong> in your area.",
+      callNumber: "tel:211",
+      callLabel: "Call 211",
+      what_to_expect: "211 routes you to the nearest youth shelter or drop-in center. The national backstops below are always available, day or night.",
       bring: [
         "Photo ID (helpful — not required for crisis services)",
         "Anything important you can carry",
-        "Nothing required to call the crisis line",
+        "Nothing is required to call",
       ],
       resources: [
         {
-          name: "Family Resources SafePlace2B — St. Petersburg",
-          phone: "(727) 893-1893",
-          tel: "tel:7278931893",
-          note: "3761 5th Ave N, St. Petersburg. Walk-ins accepted, ages 10–17."
-        },
-        {
-          name: "Youth Improvement Services",
-          phone: "(727) 201-0724",
-          tel: "tel:7272010724",
-          note: "Emergency housing for LGBTQIA+ + minority youth 18–24."
+          name: "Safe Place",
+          phone: "Text SAFE + your location to 44357",
+          tel: "sms:44357?body=SAFE",
+          note: "Or walk into any QuikTrip and ask staff to call for you."
         },
         {
           name: "National Runaway Safeline",
           phone: "1-800-786-2929",
           tel: "tel:18007862929",
-          note: "24/7 federal RHY hotline. Call or text. Home Free bus tickets available."
+          note: "24/7, free, confidential."
         },
       ],
-      extra_note: "⚠️ Under 18? Family Resources knows the local rules. They will help.",
       confidence: {
-        level: "research",
-        note: "Numbers from pinellashomeless.org/resourceguide, 1800runaway.org. Last reviewed May 2026.",
-        lastChecked: "May 2026"
+        level: "unverified",
+        note: "AI-researched from public sources — not locally phone-verified. Call 211 to confirm the current local provider. Last researched June 14, 2026.",
+        lastChecked: "June 14, 2026"
       }
     },
 
@@ -734,41 +724,34 @@ html,body{overflow-x:hidden;max-width:100%;}
       label: "Families Pathway",
       badgeClass: "badge-families",
       badgeIcon: "🏠",
-      headline: "Call First Contact's Homeless Helpline to enter the Family Shelter Prioritization List.",
-      firstAction: "Call <strong>First Contact — Homeless Helpline</strong> at <strong>2-1-1</strong> (or direct <strong>(727) 210-4211</strong>) — required CES entry to be added to the family shelter waitlist for Pinellas. You can also text your ZIP code to <strong>898211</strong>.",
-      callNumber: "tel:7272104211",
-      callLabel: "Call Homeless Helpline: (727) 210-4211",
-      what_to_expect: "The Homeless Leadership Alliance of Pinellas (HLA) is the CoC lead. CES intake is funneled through First Contact / 211 Tampa Bay. Salvation Army St. Petersburg and Hope Villages of America provide family shelter; CASA runs the 24-hr DV hotline. Family Promise of Pinellas serves families with children via 211 routing.",
+      headline: "Families are kept together in the shelter system.",
+      firstAction: "Call or text <strong>211</strong> and say: <em>“I have my kids with me and we need shelter tonight.”</em> Ask for <strong>family emergency shelter</strong> and the <strong>coordinated-entry assessment</strong> for rapid re-housing.",
+      callNumber: "tel:211",
+      callLabel: "Call 211",
+      what_to_expect: "211 routes you to family shelter and the local coordinated-entry system. If you are fleeing domestic violence, use the confidential hotline below instead — DV shelter is separate and won’t list your location.",
       bring: [
         "Photo ID for adults (if available)",
-        "Birth certificates for children (helpful but not always required)",
+        "Birth certificates for children (helpful, not always required)",
         "Documentation of income or benefits (if available)",
-        "Social security cards (if you have them)",
       ],
       resources: [
         {
-          name: "Salvation Army St. Petersburg — Emergency Shelter",
-          phone: "(727) 230-1578",
-          tel: "tel:7272301578",
-          note: "310 14th Ave S. Adults + families. (Alt: 727-822-4954 via county listing.)"
+          name: "National Domestic Violence Hotline",
+          phone: "1-800-799-7233",
+          tel: "tel:18007997233",
+          note: "24/7, confidential. Text START to 88788. Connects you to a local confidential DV shelter."
         },
         {
-          name: "Hope Villages of America — The Haven (DV)",
-          phone: "(727) 442-4128",
-          tel: "tel:7274424128",
-          note: "Emergency Safe House for DV survivors and families."
-        },
-        {
-          name: "CASA — 24-hr DV Hotline",
-          phone: "(727) 895-4912",
-          tel: "tel:7278954912",
-          note: "Community Action Stops Abuse. Pinellas DV shelter + crisis line."
+          name: "United Way 211",
+          phone: "211",
+          tel: "tel:211",
+          note: "Family shelter + coordinated entry."
         },
       ],
       confidence: {
-        level: "research",
-        note: "Numbers from firstcontact.org, pinellas.gov/shelter-resources, pinellashomeless.org/resourceguide, ctcadv.org (DV pattern). Last reviewed May 2026.",
-        lastChecked: "May 2026"
+        level: "unverified",
+        note: "AI-researched from public sources — not locally phone-verified. Call 211 to confirm the current local provider. Last researched June 14, 2026.",
+        lastChecked: "June 14, 2026"
       }
     },
 
@@ -776,11 +759,11 @@ html,body{overflow-x:hidden;max-width:100%;}
       label: "Chronic Homelessness Pathway",
       badgeClass: "badge-chronic",
       badgeIcon: "🔑",
-      headline: "Homeless Leadership Alliance + Boley Centers run the Pinellas PSH pipeline.",
-      firstAction: "Call <strong>First Contact — Homeless Helpline</strong> at <strong>2-1-1</strong> (or direct <strong>(727) 210-4211</strong>) for Coordinated Entry assessment. The <strong>Homeless Leadership Alliance</strong> CoC office is <strong>(727) 933-0100</strong>.",
-      callNumber: "tel:7272104211",
-      callLabel: "Call Homeless Helpline: (727) 210-4211",
-      what_to_expect: "HLA of Pinellas is the CoC backbone agency — they coordinate the Shelter Prioritization List and Permanent Supportive Housing referrals. Boley Centers is the primary PSH and SMI housing provider. Eleos Wellness (formerly PEMHS) provides mobile crisis and post-crisis engagement; Directions for Living runs the SOAR benefits-access program.",
+      headline: "The housing list starts with one assessment.",
+      firstAction: "Call or text <strong>211</strong> and say: <em>“I’ve been homeless a long time and I want to get on the housing list.”</em> Ask for the <strong>coordinated-entry assessment</strong> — in this system, permanent supportive housing is reached by being assessed and placed on the community housing-referral list. The assessment is the door; there is no separate number.",
+      callNumber: "tel:211",
+      callLabel: "Call 211",
+      what_to_expect: "A coordinated-entry assessor will ask about your situation and add you to the local housing-referral list. While you wait, ask 211 for tonight’s shelter and a daytime drop-in center.",
       bring: [
         "Photo ID (any form)",
         "Documentation of health conditions (if available — not required to be assessed)",
@@ -788,29 +771,22 @@ html,body{overflow-x:hidden;max-width:100%;}
       ],
       resources: [
         {
-          name: "Homeless Leadership Alliance of Pinellas",
-          phone: "(727) 933-0100",
-          tel: "tel:7279330100",
-          note: "CoC lead. 647 1st Ave N, St. Petersburg. Note: HLA does not directly fund rent/utilities."
+          name: "988 Suicide &amp; Crisis Lifeline",
+          phone: "988",
+          tel: "tel:988",
+          note: "Behavioral-health crisis support + SOAR disability-benefit help tied to housing."
         },
         {
-          name: "Boley Centers",
-          phone: "(727) 821-4819",
-          tel: "tel:7278214819",
-          note: "Permanent supportive housing, HUD-subsidized apartments, safe havens, vouchers."
-        },
-        {
-          name: "Eleos Wellness (mobile crisis)",
-          phone: "(727) 545-6477",
-          tel: "tel:7275456477",
-          note: "Crisis evaluation + post-crisis engagement. Partners with Safe Harbor."
+          name: "United Way 211",
+          phone: "211",
+          tel: "tel:211",
+          note: "Coordinated entry + shelter while you wait."
         },
       ],
-      extra_note: "📋 Qualifying conditions include physical, mental health, or substance use disorders that substantially affect daily functioning. You don't need a formal diagnosis to be assessed.",
       confidence: {
-        level: "research",
-        note: "Numbers from pinellashomeless.org/resourceguide, pinellassheriff.gov/SafeHarbor. Last reviewed May 2026.",
-        lastChecked: "May 2026"
+        level: "unverified",
+        note: "AI-researched from public sources — not locally phone-verified. Call 211 to confirm the current local provider. Last researched June 14, 2026.",
+        lastChecked: "June 14, 2026"
       }
     },
 
@@ -818,11 +794,11 @@ html,body{overflow-x:hidden;max-width:100%;}
       label: "Single Adults Pathway",
       badgeClass: "badge-adult",
       badgeIcon: "📞",
-      headline: "Pinellas Hope and Safe Harbor are the largest adult shelter systems in Pinellas.",
-      firstAction: "Call <strong>Pinellas Hope (Catholic Charities)</strong> at <strong>(727) 556-6397</strong> — 1213 16th St N, St. Petersburg. Largest adult emergency shelter; Tuesday intakes. Or call <strong>Pinellas Safe Harbor (PCSO)</strong> at <strong>(727) 464-8058</strong> — 24-hr walk-ins, 14840 49th St N, Clearwater (Pinellas residents only).",
-      callNumber: "tel:7275566397",
-      callLabel: "Call Pinellas Hope: (727) 556-6397",
-      what_to_expect: "Pinellas Hope is a Catholic Charities-run shelter with cottages + tent transitional units. Safe Harbor is operated by the Pinellas County Sheriff's Office as a jail-diversion alternative. St. Vincent de Paul C.A.R.E. Center in St. Pete accepts adults Monday–Thursday 1–4 pm. WestCare Turning Point serves adults with active substance-use issues.",
+      headline: "Start with tonight’s shelter, then the housing list.",
+      firstAction: "Call or text <strong>211</strong> and say: <em>“I need a shelter bed tonight.”</em> Ask for <strong>tonight’s open beds for single adults</strong>, the nearest <strong>daytime drop-in center</strong> (showers, mail, case management), and a <strong>free meal site</strong>. 211 is multilingual and 24/7.",
+      callNumber: "tel:211",
+      callLabel: "Call 211",
+      what_to_expect: "211 has the current shelter-bed picture for your area, which changes daily. Ask them to also start a coordinated-entry assessment so you’re working toward housing, not just tonight.",
       bring: [
         "Photo ID (helpful but not always required)",
         "Social security card or number (if available)",
@@ -830,30 +806,24 @@ html,body{overflow-x:hidden;max-width:100%;}
       ],
       resources: [
         {
-          name: "Pinellas Safe Harbor (PCSO)",
-          phone: "(727) 464-8058",
-          tel: "tel:7274648058",
-          note: "14840 49th St N, Clearwater. Sheriff-run shelter, jail-diversion. 24-hr walk-ins, Pinellas residents only."
+          name: "Find a free clinic (FQHC)",
+          phone: "Ask 211",
+          tel: "tel:211",
+          note: "Federally Qualified Health Centers treat everyone regardless of ability to pay."
         },
         {
-          name: "St. Vincent de Paul C.A.R.E. Center",
-          phone: "(727) 954-8676",
-          tel: "tel:7279548676",
-          note: "401 15th St N, St. Petersburg. Adults M–Th 1–4 pm intake."
-        },
-        {
-          name: "Homeless Empowerment Program (HEP)",
-          phone: "(727) 442-9041",
-          tel: "tel:7274429041",
-          note: "1120 N. Betty Lane, Clearwater. Adult shelter + workforce."
+          name: "988 Suicide &amp; Crisis Lifeline",
+          phone: "988",
+          tel: "tel:988",
+          note: "24/7 mental-health support."
         },
       ],
       confidence: {
-        level: "research",
-        note: "Numbers from pinellashope.org/emergency-shelter, pinellassheriff.gov/SafeHarbor, pinellas.gov/shelter-resources. Last reviewed May 2026.",
-        lastChecked: "May 2026"
+        level: "unverified",
+        note: "AI-researched from public sources — not locally phone-verified. Call 211 to confirm the current local provider. Last researched June 14, 2026.",
+        lastChecked: "June 14, 2026"
       }
-    }
+    },
 
   }; // end PATHWAYS
 

@@ -468,7 +468,8 @@ html,body{overflow-x:hidden;max-width:100%;}
   <strong>Need help right now?</strong>
   <a href="tel:211">Call 211</a><span class="crisis-bar__sep">·</span>
   <a href="sms:741741?body=HOME">Text HOME to 741741</a><span class="crisis-bar__sep">·</span>
-  <a href="tel:988">988 Suicide &amp; Crisis</a>
+  <a href="tel:988">988 Suicide &amp; Crisis</a><span class="crisis-bar__sep">·</span>
+  <a href="tel:18007997233">DV 1-800-799-7233</a>
 </div>
 <nav class="nav" aria-label="Primary">
   <div class="nav__inner">
@@ -506,6 +507,8 @@ html,body{overflow-x:hidden;max-width:100%;}
   </svg>
   <span>common<span class="cl-home__rung">ladder</span></span>
 </a>
+
+<div role="note" style="background:#ffedd5;border:1px solid #9a3412;color:#6b2710;border-radius:10px;padding:14px 18px;margin:0 auto 18px;max-width:680px;font-size:.9rem;line-height:1.5;"><strong style="color:#9a3412;">AI-researched, not locally verified.</strong> Common Ladder is based in Arizona. We built this guide from public sources but don’t yet verify these listings by phone the way we do our Arizona tools. Use it to learn <em>what to ask for</em>, then <strong>call <a href="tel:211" style="color:#9a3412;">211</a></strong> for the current local provider. Last researched <time datetime="2026-06-14">June 14, 2026</time>. Wrong info? <a href="mailto:corrections.commonladder@gmail.com?subject=Resource%20update:%20Charleston%20Low%20Country" style="color:#9a3412;">Tell us</a>.</div>
 
 <!-- App shell — all screens rendered by JS into here -->
 <div id="app"></div>
@@ -645,17 +648,17 @@ html,body{overflow-x:hidden;max-width:100%;}
      Keep firstAction to one clear sentence + phone number.
      resources: 3 is ideal; 2 minimum; 4 maximum.
   ═══════════════════════════════════════════════════════════ */
-  var PATHWAYS = {
+    var PATHWAYS = {
 
     result_veterans: {
       label: "Veterans Pathway",
       badgeClass: "badge-veterans",
       badgeIcon: "🎖",
-      headline: "There's a dedicated system built for you.",
-      firstAction: "Call the <strong>National Call Center for Homeless Veterans</strong> at <strong>1-877-424-3838</strong> (24/7). Or call the <strong>Ralph H. Johnson VA Medical Center</strong> at <strong>(843) 577-5011</strong> and ask for Homeless Programs / HUD-VASH.",
-      callNumber: "tel:18774243838",
-      callLabel: "Call VA Homeless: 1-877-424-3838",
-      what_to_expect: "Ralph H. Johnson VAMC runs HCHV outreach and HUD-VASH for the Lowcountry. The VA Community Resource & Referral Center (CRRC) at 2424 City Hall Lane, North Charleston, is a walk-in drop-in center for homeless vets (Mon–Fri 8 AM–3 PM). One80 Place is the SC-500 SSVF grantee — rapid re-housing + homelessness prevention serving all six SC-500 counties plus several neighboring counties.",
+      headline: "There's a dedicated system built for veterans.",
+      firstAction: "Call <strong>211</strong> — free, 24/7 — and say: <em>“I’m a veteran and I’m homeless or about to be.”</em> Ask to be connected to the <strong>VA’s Health Care for Homeless Veterans (HCHV)</strong> program and your local <strong>coordinated-entry assessment</strong>. Veterans qualify for both VA housing (HUD-VASH) and the local Continuum of Care at the same time.",
+      callNumber: "tel:211",
+      callLabel: "Call 211",
+      what_to_expect: "211 will route you to the nearest VA homeless-program coordinator and your local CoC. The National Call Center for Homeless Veterans is available 24/7 anywhere in the U.S. if you can’t reach a local office.",
       bring: [
         "DD-214 discharge papers (if you have them — not required to call)",
         "Photo ID (if available)",
@@ -663,28 +666,22 @@ html,body{overflow-x:hidden;max-width:100%;}
       ],
       resources: [
         {
-          name: "Ralph H. Johnson VAMC",
-          phone: "(843) 577-5011",
-          tel: "tel:8435775011",
-          note: "109 Bee St, Charleston. Main line — ask for Homeless Programs."
+          name: "National Call Center for Homeless Veterans",
+          phone: "1-877-424-3838",
+          tel: "tel:18774243838",
+          note: "24/7. Available everywhere."
         },
         {
-          name: "VA CRRC (walk-in)",
-          phone: "(843) 577-5011",
-          tel: "tel:8435775011",
-          note: "2424 City Hall Ln, N. Charleston. M–F 8 AM–3 PM for homeless vets."
-        },
-        {
-          name: "One80 Place SSVF",
-          phone: "(843) 723-9477",
-          tel: "tel:8437239477",
-          note: "SC-500 SSVF grantee — rapid re-housing for veterans, all 6 counties."
+          name: "Veterans Crisis Line",
+          phone: "988",
+          tel: "tel:988",
+          note: "Press 1 for the VA crisis line."
         },
       ],
       confidence: {
-        level: "research",
-        note: "Numbers from va.gov/charleston-health-care, va.gov/charleston-health-care/health-services/homeless-veteran-care, one80place.org/get-help. Last reviewed June 2026.",
-        lastChecked: "June 2026"
+        level: "unverified",
+        note: "AI-researched from public sources — not locally phone-verified. Call 211 to confirm the current local provider. Last researched June 14, 2026.",
+        lastChecked: "June 14, 2026"
       }
     },
 
@@ -692,41 +689,34 @@ html,body{overflow-x:hidden;max-width:100%;}
       label: "Youth Pathway",
       badgeClass: "badge-youth",
       badgeIcon: "🌱",
-      headline: "The Lowcountry Homeless Connection Line + RHY hotline are your first calls.",
-      firstAction: "Call the <strong>Lowcountry Homeless Connection Line</strong> at <strong>(843) 737-8357</strong> — Diversion Specialists assess and route to youth-appropriate providers. Or call the <strong>National Runaway Safeline</strong> at <strong>1-800-786-2929</strong> (24/7).",
-      callNumber: "tel:8437378357",
-      callLabel: "Call Homeless Connection: (843) 737-8357",
-      what_to_expect: "Charleston has no Covenant House (Covenant House has no SC location). Landmarks for Families (formerly Carolina Youth Development Center) runs the Charleston Emergency Shelter at 5055 Lackawanna Blvd, N. Charleston — youth ages 0–21 in crisis. Florence Crittenton operates residential housing for pregnant and parenting teens at 19 St. Margaret St. National RHY hotline can arrange Home Free bus tickets for youth 12–21.",
+      headline: "If you’re 24 or under, there’s a youth-specific path.",
+      firstAction: "Call or text <strong>211</strong> and say: <em>“I’m 24 or younger and I need a safe place to stay.”</em> Ask for the <strong>youth emergency shelter</strong> and the <strong>runaway &amp; homeless youth (RHY) program</strong> in your area.",
+      callNumber: "tel:211",
+      callLabel: "Call 211",
+      what_to_expect: "211 routes you to the nearest youth shelter or drop-in center. The national backstops below are always available, day or night.",
       bring: [
         "Photo ID (helpful — not required for crisis services)",
         "Anything important you can carry",
-        "Nothing required to call the crisis line",
+        "Nothing is required to call",
       ],
       resources: [
+        {
+          name: "Safe Place",
+          phone: "Text SAFE + your location to 44357",
+          tel: "sms:44357?body=SAFE",
+          note: "Or walk into any QuikTrip and ask staff to call for you."
+        },
         {
           name: "National Runaway Safeline",
           phone: "1-800-786-2929",
           tel: "tel:18007862929",
-          note: "24/7 federal RHY hotline. Call or text. Home Free bus tickets available."
-        },
-        {
-          name: "Landmarks for Families",
-          phone: "(843) 266-5200",
-          tel: "tel:8432665200",
-          note: "5055 Lackawanna Blvd, N. Charleston. Emergency youth shelter, ages 0–21."
-        },
-        {
-          name: "Florence Crittenton Programs of SC",
-          phone: "(843) 722-7526",
-          tel: "tel:8437227526",
-          note: "19 St. Margaret St. Residential for pregnant/parenting teens."
+          note: "24/7, free, confidential."
         },
       ],
-      extra_note: "⚠️ Under 18? The Homeless Connection Line knows the local rules. They will help.",
       confidence: {
-        level: "research",
-        note: "Numbers from lowcountrycoc.org/gethelp, cydc.org, florencecrittentonsc.org/contact, 1800runaway.org. Covenant House confirmed absent from SC per covenanthouse.org/locations. Last reviewed June 2026.",
-        lastChecked: "June 2026"
+        level: "unverified",
+        note: "AI-researched from public sources — not locally phone-verified. Call 211 to confirm the current local provider. Last researched June 14, 2026.",
+        lastChecked: "June 14, 2026"
       }
     },
 
@@ -734,41 +724,34 @@ html,body{overflow-x:hidden;max-width:100%;}
       label: "Families Pathway",
       badgeClass: "badge-families",
       badgeIcon: "🏠",
-      headline: "The Homeless Connection Line is the front door for family shelter in the Lowcountry.",
-      firstAction: "Call the <strong>Lowcountry Homeless Connection Line</strong> at <strong>(843) 737-8357</strong> — a Diversion Specialist will assess your situation and refer you to family shelter and rapid re-housing. Families fleeing domestic violence should call <strong>My Sister's House</strong> at <strong>1-800-273-4673</strong> (24/7).",
-      callNumber: "tel:8437378357",
-      callLabel: "Call Homeless Connection: (843) 737-8357",
-      what_to_expect: "All shelter intake in SC-500 is coordinated through the Homeless Connection Line. My Sister's House serves Charleston, Berkeley, and Dorchester counties with confidential DV shelter. Hopeful Horizons covers Beaufort, Jasper, Hampton, and Colleton — the four southern SC-500 counties — for DV, sexual assault, and child abuse. OriginSC provides HUD-approved housing counseling and eviction prevention.",
+      headline: "Families are kept together in the shelter system.",
+      firstAction: "Call or text <strong>211</strong> and say: <em>“I have my kids with me and we need shelter tonight.”</em> Ask for <strong>family emergency shelter</strong> and the <strong>coordinated-entry assessment</strong> for rapid re-housing.",
+      callNumber: "tel:211",
+      callLabel: "Call 211",
+      what_to_expect: "211 routes you to family shelter and the local coordinated-entry system. If you are fleeing domestic violence, use the confidential hotline below instead — DV shelter is separate and won’t list your location.",
       bring: [
         "Photo ID for adults (if available)",
-        "Birth certificates for children (helpful but not always required)",
+        "Birth certificates for children (helpful, not always required)",
         "Documentation of income or benefits (if available)",
-        "Social security cards (if you have them)",
       ],
       resources: [
         {
-          name: "My Sister's House (DV, tri-county)",
-          phone: "1-800-273-4673",
-          tel: "tel:18002734673",
-          note: "24/7 DV shelter — Charleston, Berkeley, Dorchester. Confidential intake."
+          name: "National Domestic Violence Hotline",
+          phone: "1-800-799-7233",
+          tel: "tel:18007997233",
+          note: "24/7, confidential. Text START to 88788. Connects you to a local confidential DV shelter."
         },
         {
-          name: "Hopeful Horizons (DV, southern counties)",
-          phone: "1-800-868-2632",
-          tel: "tel:18008682632",
-          note: "24/7 crisis — Beaufort, Jasper, Hampton, Colleton. Shelter + advocacy."
-        },
-        {
-          name: "OriginSC (housing counseling)",
-          phone: "(843) 628-3000",
-          tel: "tel:8436283000",
-          note: "8084 Rivers Ave, N. Charleston. Eviction prevention + HUD counseling."
+          name: "United Way 211",
+          phone: "211",
+          tel: "tel:211",
+          note: "Family shelter + coordinated entry."
         },
       ],
       confidence: {
-        level: "research",
-        note: "Numbers from lowcountrycoc.org/gethelp, mysistershouse.org, hopefulhorizons.org/contact-us, originsc.org/contact. Last reviewed June 2026.",
-        lastChecked: "June 2026"
+        level: "unverified",
+        note: "AI-researched from public sources — not locally phone-verified. Call 211 to confirm the current local provider. Last researched June 14, 2026.",
+        lastChecked: "June 14, 2026"
       }
     },
 
@@ -776,11 +759,11 @@ html,body{overflow-x:hidden;max-width:100%;}
       label: "Chronic Homelessness Pathway",
       badgeClass: "badge-chronic",
       badgeIcon: "🔑",
-      headline: "One80 Place + the Homeless Connection Line coordinate Permanent Supportive Housing.",
-      firstAction: "Call the <strong>Lowcountry Homeless Connection Line</strong> at <strong>(843) 737-8357</strong>. Or walk into <strong>One80 Place</strong> at <strong>35 Walnut St, Charleston</strong> — call <strong>(843) 723-9477</strong>.",
-      callNumber: "tel:8437378357",
-      callLabel: "Call Homeless Connection: (843) 737-8357",
-      what_to_expect: "One80 Place is the SC-500 CoC lead and HMIS lead. Dedicated Plus prioritization (long-term homelessness + disabling condition) is applied via the CoC By-Name List. PSH placements include One80 Place's permanent supportive housing portfolio and HUD-VASH for chronically homeless veterans through the Ralph H. Johnson VAMC. 988 is the 24/7 mental-health crisis line.",
+      headline: "The housing list starts with one assessment.",
+      firstAction: "Call or text <strong>211</strong> and say: <em>“I’ve been homeless a long time and I want to get on the housing list.”</em> Ask for the <strong>coordinated-entry assessment</strong> — in this system, permanent supportive housing is reached by being assessed and placed on the community housing-referral list. The assessment is the door; there is no separate number.",
+      callNumber: "tel:211",
+      callLabel: "Call 211",
+      what_to_expect: "A coordinated-entry assessor will ask about your situation and add you to the local housing-referral list. While you wait, ask 211 for tonight’s shelter and a daytime drop-in center.",
       bring: [
         "Photo ID (any form)",
         "Documentation of health conditions (if available — not required to be assessed)",
@@ -788,29 +771,22 @@ html,body{overflow-x:hidden;max-width:100%;}
       ],
       resources: [
         {
-          name: "One80 Place (CoC Lead / PSH)",
-          phone: "(843) 723-9477",
-          tel: "tel:8437239477",
-          note: "35 Walnut St, Charleston. SC-500 CoC lead. PSH + RRH portfolio."
-        },
-        {
-          name: "Ralph H. Johnson VAMC (HUD-VASH)",
-          phone: "(843) 577-5011",
-          tel: "tel:8435775011",
-          note: "PSH vouchers + clinical case mgmt for chronically homeless vets."
-        },
-        {
-          name: "988 Suicide & Crisis Lifeline",
+          name: "988 Suicide &amp; Crisis Lifeline",
           phone: "988",
           tel: "tel:988",
-          note: "24/7 mental-health crisis line, available everywhere."
+          note: "Behavioral-health crisis support + SOAR disability-benefit help tied to housing."
+        },
+        {
+          name: "United Way 211",
+          phone: "211",
+          tel: "tel:211",
+          note: "Coordinated entry + shelter while you wait."
         },
       ],
-      extra_note: "📋 Qualifying conditions include physical, mental health, or substance use disorders that substantially affect daily functioning. You don't need a formal diagnosis to be assessed.",
       confidence: {
-        level: "research",
-        note: "Numbers from one80place.org/housing-services, va.gov/charleston-health-care/health-services/homeless-veteran-care, 988lifeline.org. Last reviewed June 2026.",
-        lastChecked: "June 2026"
+        level: "unverified",
+        note: "AI-researched from public sources — not locally phone-verified. Call 211 to confirm the current local provider. Last researched June 14, 2026.",
+        lastChecked: "June 14, 2026"
       }
     },
 
@@ -818,11 +794,11 @@ html,body{overflow-x:hidden;max-width:100%;}
       label: "Single Adults Pathway",
       badgeClass: "badge-adult",
       badgeIcon: "📞",
-      headline: "One80 Place at 35 Walnut Street is the main adult shelter in Charleston.",
-      firstAction: "Call <strong>One80 Place</strong> at <strong>(843) 723-9477</strong> — 35 Walnut St, Charleston. Charleston's largest single-adult emergency shelter, with kitchen, day services, and legal clinic. The <strong>Homeless Connection Line</strong> at <strong>(843) 737-8357</strong> is the required first call for coordinated entry assessment.",
-      callNumber: "tel:8437239477",
-      callLabel: "Call One80 Place: (843) 723-9477",
-      what_to_expect: "One80 Place at 35 Walnut St is the operational center of gravity for single-adult shelter in the SC-500 CoC. It also operates the Homeless Connection Line as the universal CES front door. The Salvation Army of Charleston, Berkeley & Dorchester (4248 Dorchester Rd, N. Charleston) provides emergency assistance, meals, and referrals. The City of Charleston Department of Housing and Community Development is the CDBG/ESG funder that backs many partner programs.",
+      headline: "Start with tonight’s shelter, then the housing list.",
+      firstAction: "Call or text <strong>211</strong> and say: <em>“I need a shelter bed tonight.”</em> Ask for <strong>tonight’s open beds for single adults</strong>, the nearest <strong>daytime drop-in center</strong> (showers, mail, case management), and a <strong>free meal site</strong>. 211 is multilingual and 24/7.",
+      callNumber: "tel:211",
+      callLabel: "Call 211",
+      what_to_expect: "211 has the current shelter-bed picture for your area, which changes daily. Ask them to also start a coordinated-entry assessment so you’re working toward housing, not just tonight.",
       bring: [
         "Photo ID (helpful but not always required)",
         "Social security card or number (if available)",
@@ -830,30 +806,24 @@ html,body{overflow-x:hidden;max-width:100%;}
       ],
       resources: [
         {
-          name: "One80 Place (main shelter)",
-          phone: "(843) 723-9477",
-          tel: "tel:8437239477",
-          note: "35 Walnut St, Charleston. Emergency shelter + day services."
+          name: "Find a free clinic (FQHC)",
+          phone: "Ask 211",
+          tel: "tel:211",
+          note: "Federally Qualified Health Centers treat everyone regardless of ability to pay."
         },
         {
-          name: "Salvation Army of Charleston",
-          phone: "(843) 747-5271",
-          tel: "tel:8437475271",
-          note: "4248 Dorchester Rd, N. Charleston. Emergency assistance + meals."
-        },
-        {
-          name: "Lowcountry Homeless Connection Line",
-          phone: "(843) 737-8357",
-          tel: "tel:8437378357",
-          note: "Required Coordinated Entry intake for single-adult shelter."
+          name: "988 Suicide &amp; Crisis Lifeline",
+          phone: "988",
+          tel: "tel:988",
+          note: "24/7 mental-health support."
         },
       ],
       confidence: {
-        level: "research",
-        note: "Numbers from one80place.org/contact, salvationarmyusa.org/sc/north-charleston, lowcountrycoc.org/gethelp. Last reviewed June 2026.",
-        lastChecked: "June 2026"
+        level: "unverified",
+        note: "AI-researched from public sources — not locally phone-verified. Call 211 to confirm the current local provider. Last researched June 14, 2026.",
+        lastChecked: "June 14, 2026"
       }
-    }
+    },
 
   }; // end PATHWAYS
 

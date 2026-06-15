@@ -472,7 +472,8 @@
   <strong>Need help right now?</strong>
   <a href="tel:211">Call 211</a><span class="crisis-bar__sep">·</span>
   <a href="sms:741741?body=HOME">Text HOME to 741741</a><span class="crisis-bar__sep">·</span>
-  <a href="tel:988">988 Suicide &amp; Crisis</a>
+  <a href="tel:988">988 Suicide &amp; Crisis</a><span class="crisis-bar__sep">·</span>
+  <a href="tel:18007997233">DV 1-800-799-7233</a>
 </div>
 
 <nav class="nav" aria-label="Primary">
@@ -512,6 +513,8 @@
   </svg>
   <span>common<span class="cl-home__rung">ladder</span></span>
 </a>
+
+<div role="note" style="background:#ffedd5;border:1px solid #9a3412;color:#6b2710;border-radius:10px;padding:14px 18px;margin:0 auto 18px;max-width:680px;font-size:.9rem;line-height:1.5;"><strong style="color:#9a3412;">AI-researched, not locally verified.</strong> Common Ladder is based in Arizona. We built this guide from public sources but don’t yet verify these listings by phone the way we do our Arizona tools. Use it to learn <em>what to ask for</em>, then <strong>call <a href="tel:211" style="color:#9a3412;">211</a></strong> for the current local provider. Last researched <time datetime="2026-06-14">June 14, 2026</time>. Wrong info? <a href="mailto:corrections.commonladder@gmail.com?subject=Resource%20update:%20Tulsa%20City%20&%20County" style="color:#9a3412;">Tell us</a>.</div>
 
 <!-- App shell — all screens rendered by JS into here -->
 <div id="app"></div>
@@ -651,184 +654,157 @@
      Keep firstAction to one clear sentence + phone number.
      resources: 3 is ideal; 2 minimum; 4 maximum.
   ═══════════════════════════════════════════════════════════ */
-  var PATHWAYS = {
+    var PATHWAYS = {
 
     result_veterans: {
       label: "Veterans Pathway",
       badgeClass: "badge-veterans",
-      badgeIcon: "\ud83c\udf96",
-      headline: "There's a dedicated system built for you.",
-      firstAction: "Call <strong>Coffee Bunker (Tulsa veteran services)</strong> at <strong>(918) 637-3878</strong> \u2014 community hub for veterans, active duty, Guard/Reserve and families. Or call <strong>Jack C. Montgomery VAMC (Muskogee \u2014 serves Tulsa)</strong> at <strong>(918) 577-3000</strong>.",
-      callNumber: "tel:9186373878",
-      callLabel: "Call Coffee Bunker: (918) 637-3878",
-      what_to_expect: "Jack C. Montgomery VAMC (Eastern Oklahoma VA Health Care System) provides HUD-VASH and Compensated Work Therapy. Coffee Bunker offers drop-in assistance, peer support, and housing/benefits referrals. VOA Oklahoma operates SSVF statewide from the Tulsa office at (918) 307-1500. Oklahoma Veterans United and Community Service Council also deliver SSVF services.",
+      badgeIcon: "🎖",
+      headline: "There's a dedicated system built for veterans.",
+      firstAction: "Call <strong>211</strong> — free, 24/7 — and say: <em>“I’m a veteran and I’m homeless or about to be.”</em> Ask to be connected to the <strong>VA’s Health Care for Homeless Veterans (HCHV)</strong> program and your local <strong>coordinated-entry assessment</strong>. Veterans qualify for both VA housing (HUD-VASH) and the local Continuum of Care at the same time.",
+      callNumber: "tel:211",
+      callLabel: "Call 211",
+      what_to_expect: "211 will route you to the nearest VA homeless-program coordinator and your local CoC. The National Call Center for Homeless Veterans is available 24/7 anywhere in the U.S. if you can’t reach a local office.",
       bring: [
-        "DD-214 discharge papers (if you have them \u2014 not required to call)",
+        "DD-214 discharge papers (if you have them — not required to call)",
         "Photo ID (if available)",
         "Any VA documentation you have",
       ],
       resources: [
         {
-          name: "Volunteers of America Oklahoma \u2014 Tulsa (SSVF)",
-          phone: "(918) 307-1500",
-          tel: "tel:9183071500",
-          note: "VOA Oklahoma main, Tulsa office."
-        },
-        {
           name: "National Call Center for Homeless Veterans",
           phone: "1-877-424-3838",
           tel: "tel:18774243838",
-          note: "24/7."
+          note: "24/7. Available everywhere."
         },
         {
           name: "Veterans Crisis Line",
           phone: "988",
           tel: "tel:988",
-          note: "Press 1 for VA crisis line."
+          note: "Press 1 for the VA crisis line."
         },
       ],
       confidence: {
-        level: "research",
-        note: "Numbers from va.gov/eastern-oklahoma-health-care, coffeebunker.org, voaok.org. Last reviewed May 2026.",
-        lastChecked: "May 2026"
+        level: "unverified",
+        note: "AI-researched from public sources — not locally phone-verified. Call 211 to confirm the current local provider. Last researched June 14, 2026.",
+        lastChecked: "June 14, 2026"
       }
     },
 
     result_youth: {
       label: "Youth Pathway",
       badgeClass: "badge-youth",
-      badgeIcon: "\ud83c\udf31",
-      headline: "Youth Services of Tulsa runs the emergency shelter.",
-      firstAction: "Call <strong>Youth Services of Tulsa (YST)</strong> at <strong>(918) 582-0061</strong> \u2014 Tulsa's adolescent emergency shelter and runaway/homeless youth services for ages 12\u201317. Transitional living for older youth.",
-      callNumber: "tel:9185820061",
-      callLabel: "Call YST: (918) 582-0061",
-      what_to_expect: "Youth Services of Tulsa operates the emergency youth shelter. For DV-related youth crisis, DVIS 24-Hour Crisis Line: (918) 743-5763. Family & Children's Services Tulsa County 24/7 Crisis Line (CRCC): (918) 744-4800.",
+      badgeIcon: "🌱",
+      headline: "If you’re 24 or under, there’s a youth-specific path.",
+      firstAction: "Call or text <strong>211</strong> and say: <em>“I’m 24 or younger and I need a safe place to stay.”</em> Ask for the <strong>youth emergency shelter</strong> and the <strong>runaway &amp; homeless youth (RHY) program</strong> in your area.",
+      callNumber: "tel:211",
+      callLabel: "Call 211",
+      what_to_expect: "211 routes you to the nearest youth shelter or drop-in center. The national backstops below are always available, day or night.",
       bring: [
-        "Photo ID (helpful \u2014 not required for crisis services)",
+        "Photo ID (helpful — not required for crisis services)",
         "Anything important you can carry",
-        "Nothing required for the shelter line",
+        "Nothing is required to call",
       ],
       resources: [
         {
-          name: "DVIS 24-Hour Crisis Line",
-          phone: "(918) 743-5763",
-          tel: "tel:9187435763",
-          note: "918-7HELP-ME. DV/SA/trafficking + youth-related crisis."
+          name: "Safe Place",
+          phone: "Text SAFE + your location to 44357",
+          tel: "sms:44357?body=SAFE",
+          note: "Or walk into any QuikTrip and ask staff to call for you."
         },
         {
-          name: "Family & Children's Services \u2014 CRCC 24/7",
-          phone: "(918) 744-4800",
-          tel: "tel:9187444800",
-          note: "Tulsa County crisis line."
-        },
-        {
-          name: "211 Tulsa (CSC)",
-          phone: "211",
-          tel: "tel:211",
-          note: "Or (918) 836-HELP / (918) 836-4357. 24/7."
+          name: "National Runaway Safeline",
+          phone: "1-800-786-2929",
+          tel: "tel:18007862929",
+          note: "24/7, free, confidential."
         },
       ],
-      extra_note: "\u26a0\ufe0f Under 18? Youth Services of Tulsa is for you.",
       confidence: {
-        level: "research",
-        note: "Numbers from yst.org, dvis.org, fcsok.org. Last reviewed May 2026.",
-        lastChecked: "May 2026"
+        level: "unverified",
+        note: "AI-researched from public sources — not locally phone-verified. Call 211 to confirm the current local provider. Last researched June 14, 2026.",
+        lastChecked: "June 14, 2026"
       }
     },
 
     result_families: {
       label: "Families Pathway",
       badgeClass: "badge-families",
-      badgeIcon: "\ud83c\udfe0",
-      headline: "Salvation Army Center of Hope is the main family shelter.",
-      firstAction: "Walk in to <strong>Salvation Army Tulsa Center of Hope</strong> at <strong>102 N. Denver Ave</strong> (call <strong>(918) 582-7201</strong>). Walk-ins accepted; check-in 4:30\u20137:30 pm daily. Emergency shelter for families and individuals.",
-      callNumber: "tel:9185827201",
-      callLabel: "Call Center of Hope: (918) 582-7201",
-      what_to_expect: "Salvation Army Center of Hope is the primary emergency shelter. Family Promise of Tulsa County provides apartment-based shelter and case management for families with children. Tulsa Day Center is open to all populations during the day and refers families to Salvation Army and Family Promise.",
+      badgeIcon: "🏠",
+      headline: "Families are kept together in the shelter system.",
+      firstAction: "Call or text <strong>211</strong> and say: <em>“I have my kids with me and we need shelter tonight.”</em> Ask for <strong>family emergency shelter</strong> and the <strong>coordinated-entry assessment</strong> for rapid re-housing.",
+      callNumber: "tel:211",
+      callLabel: "Call 211",
+      what_to_expect: "211 routes you to family shelter and the local coordinated-entry system. If you are fleeing domestic violence, use the confidential hotline below instead — DV shelter is separate and won’t list your location.",
       bring: [
         "Photo ID for adults (if available)",
-        "Birth certificates for children (helpful but not always required)",
+        "Birth certificates for children (helpful, not always required)",
         "Documentation of income or benefits (if available)",
-        "Social security cards (if you have them)",
       ],
       resources: [
         {
-          name: "Family Promise of Tulsa County",
-          phone: "(918) 392-4959",
-          tel: "tel:9183924959",
-          note: "Apartment-based shelter for families with children."
+          name: "National Domestic Violence Hotline",
+          phone: "1-800-799-7233",
+          tel: "tel:18007997233",
+          note: "24/7, confidential. Text START to 88788. Connects you to a local confidential DV shelter."
         },
         {
-          name: "Tulsa Day Center",
-          phone: "(918) 583-5588",
-          tel: "tel:9185835588",
-          note: "415 W. Archer St. Day shelter. Refers families to overnight providers."
-        },
-        {
-          name: "211 Tulsa",
+          name: "United Way 211",
           phone: "211",
           tel: "tel:211",
-          note: "Or (918) 836-HELP. 24/7."
+          note: "Family shelter + coordinated entry."
         },
       ],
       confidence: {
-        level: "research",
-        note: "Numbers from southernusa.salvationarmy.org, familypromisetulsa.org, tulsadaycenter.org. Last reviewed May 2026.",
-        lastChecked: "May 2026"
+        level: "unverified",
+        note: "AI-researched from public sources — not locally phone-verified. Call 211 to confirm the current local provider. Last researched June 14, 2026.",
+        lastChecked: "June 14, 2026"
       }
     },
 
     result_chronic: {
       label: "Chronic Homelessness Pathway",
       badgeClass: "badge-chronic",
-      badgeIcon: "\ud83d\udd11",
-      headline: "A Way Home for Tulsa (Housing Solutions) is the chronic pathway.",
-      firstAction: "Call <strong>Housing Solutions Tulsa</strong> at <strong>(918) 322-9922</strong> \u2014 CoC lead and HMIS administrator for A Way Home for Tulsa. Or dial <strong>211</strong> for coordinated entry intake.",
-      callNumber: "tel:9183229922",
-      callLabel: "Call Housing Solutions: (918) 322-9922",
-      what_to_expect: "A Way Home for Tulsa is the 60+ partner CoC collaborative. Housing Solutions Tulsa is the lead agency. CES is the gateway to Housing First placements. Tulsa Day Center is the primary day shelter for engagement and CES referrals. John 3:16 Mission operates faith-based shelter and recovery programs.",
+      badgeIcon: "🔑",
+      headline: "The housing list starts with one assessment.",
+      firstAction: "Call or text <strong>211</strong> and say: <em>“I’ve been homeless a long time and I want to get on the housing list.”</em> Ask for the <strong>coordinated-entry assessment</strong> — in this system, permanent supportive housing is reached by being assessed and placed on the community housing-referral list. The assessment is the door; there is no separate number.",
+      callNumber: "tel:211",
+      callLabel: "Call 211",
+      what_to_expect: "A coordinated-entry assessor will ask about your situation and add you to the local housing-referral list. While you wait, ask 211 for tonight’s shelter and a daytime drop-in center.",
       bring: [
         "Photo ID (any form)",
-        "Documentation of health conditions (if available \u2014 not required to be assessed)",
+        "Documentation of health conditions (if available — not required to be assessed)",
         "Any records of prior housing or service history",
       ],
       resources: [
         {
-          name: "Tulsa Day Center",
-          phone: "(918) 583-5588",
-          tel: "tel:9185835588",
-          note: "415 W. Archer St. Day shelter, showers, mail, case mgmt, CES access."
+          name: "988 Suicide &amp; Crisis Lifeline",
+          phone: "988",
+          tel: "tel:988",
+          note: "Behavioral-health crisis support + SOAR disability-benefit help tied to housing."
         },
         {
-          name: "John 3:16 Mission \u2014 The Refuge (men's)",
-          phone: "(918) 587-1186",
-          tel: "tel:9185871186",
-          note: "Long-term recovery + transitional housing for men."
-        },
-        {
-          name: "211 Tulsa",
+          name: "United Way 211",
           phone: "211",
           tel: "tel:211",
-          note: "Or (918) 836-HELP. 24/7."
+          note: "Coordinated entry + shelter while you wait."
         },
       ],
-      extra_note: "\ud83d\udccb Qualifying conditions include physical, mental health, or substance use disorders that substantially affect daily functioning. You don't need a formal diagnosis to be assessed.",
       confidence: {
-        level: "research",
-        note: "Numbers from housingsolutionstulsa.org, tulsadaycenter.org, john316mission.org. Last reviewed May 2026.",
-        lastChecked: "May 2026"
+        level: "unverified",
+        note: "AI-researched from public sources — not locally phone-verified. Call 211 to confirm the current local provider. Last researched June 14, 2026.",
+        lastChecked: "June 14, 2026"
       }
     },
 
     result_adult: {
       label: "Single Adults Pathway",
       badgeClass: "badge-adult",
-      badgeIcon: "\ud83d\udcde",
-      headline: "Tulsa Day Center and John 3:16 Mission serve single adults.",
-      firstAction: "Go to <strong>Tulsa Day Center</strong> at <strong>415 W. Archer St</strong> (call <strong>(918) 583-5588</strong>) \u2014 main day shelter for unsheltered single adults in downtown Tulsa. Or call <strong>John 3:16 Mission Downtown Shelter</strong> at <strong>(918) 587-1187</strong> \u2014 24/7 low-barrier shelter.",
-      callNumber: "tel:9185835588",
-      callLabel: "Call Tulsa Day Center: (918) 583-5588",
-      what_to_expect: "Tulsa Day Center is the hub for outreach, CES referrals, and basic needs. John 3:16 Mission has a 24/7 downtown shelter (men and women), The Refuge (men's transitional), and Family & Youth Center at (918) 592-1186. City Lights Foundation of Oklahoma operates the City-selected low-barrier shelter at 1018 W. 23rd St.",
+      badgeIcon: "📞",
+      headline: "Start with tonight’s shelter, then the housing list.",
+      firstAction: "Call or text <strong>211</strong> and say: <em>“I need a shelter bed tonight.”</em> Ask for <strong>tonight’s open beds for single adults</strong>, the nearest <strong>daytime drop-in center</strong> (showers, mail, case management), and a <strong>free meal site</strong>. 211 is multilingual and 24/7.",
+      callNumber: "tel:211",
+      callLabel: "Call 211",
+      what_to_expect: "211 has the current shelter-bed picture for your area, which changes daily. Ask them to also start a coordinated-entry assessment so you’re working toward housing, not just tonight.",
       bring: [
         "Photo ID (helpful but not always required)",
         "Social security card or number (if available)",
@@ -836,30 +812,24 @@
       ],
       resources: [
         {
-          name: "City Lights Foundation of Oklahoma",
-          phone: "(918) 204-3593",
-          tel: "tel:9182043593",
-          note: "1018 W. 23rd St. Low-barrier shelter (City contract). Homefulness program, Night Light Tulsa outreach."
-        },
-        {
-          name: "Salvation Army Tulsa Center of Hope",
-          phone: "(918) 582-7201",
-          tel: "tel:9185827201",
-          note: "102 N. Denver Ave. Emergency shelter for single adults too."
-        },
-        {
-          name: "211 Tulsa",
-          phone: "211",
+          name: "Find a free clinic (FQHC)",
+          phone: "Ask 211",
           tel: "tel:211",
-          note: "Or (918) 836-HELP / (918) 836-4357. 24/7."
+          note: "Federally Qualified Health Centers treat everyone regardless of ability to pay."
+        },
+        {
+          name: "988 Suicide &amp; Crisis Lifeline",
+          phone: "988",
+          tel: "tel:988",
+          note: "24/7 mental-health support."
         },
       ],
       confidence: {
-        level: "research",
-        note: "Numbers from tulsadaycenter.org, john316mission.org, cityoftulsa.org, citylightsok.org. Last reviewed May 2026.",
-        lastChecked: "May 2026"
+        level: "unverified",
+        note: "AI-researched from public sources — not locally phone-verified. Call 211 to confirm the current local provider. Last researched June 14, 2026.",
+        lastChecked: "June 14, 2026"
       }
-    }
+    },
 
   }; // end PATHWAYS
 

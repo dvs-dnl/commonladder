@@ -468,7 +468,8 @@ html,body{overflow-x:hidden;max-width:100%;}
   <strong>Need help right now?</strong>
   <a href="tel:211">Call 211</a><span class="crisis-bar__sep">·</span>
   <a href="sms:741741?body=HOME">Text HOME to 741741</a><span class="crisis-bar__sep">·</span>
-  <a href="tel:988">988 Suicide &amp; Crisis</a>
+  <a href="tel:988">988 Suicide &amp; Crisis</a><span class="crisis-bar__sep">·</span>
+  <a href="tel:18007997233">DV 1-800-799-7233</a>
 </div>
 <nav class="nav" aria-label="Primary">
   <div class="nav__inner">
@@ -506,6 +507,8 @@ html,body{overflow-x:hidden;max-width:100%;}
   </svg>
   <span>common<span class="cl-home__rung">ladder</span></span>
 </a>
+
+<div role="note" style="background:#ffedd5;border:1px solid #9a3412;color:#6b2710;border-radius:10px;padding:14px 18px;margin:0 auto 18px;max-width:680px;font-size:.9rem;line-height:1.5;"><strong style="color:#9a3412;">AI-researched, not locally verified.</strong> Common Ladder is based in Arizona. We built this guide from public sources but don’t yet verify these listings by phone the way we do our Arizona tools. Use it to learn <em>what to ask for</em>, then <strong>call <a href="tel:211" style="color:#9a3412;">211</a></strong> for the current local provider. Last researched <time datetime="2026-06-14">June 14, 2026</time>. Wrong info? <a href="mailto:corrections.commonladder@gmail.com?subject=Resource%20update:%20Norfolk%20&amp;%20South%20Hampton%20Roads" style="color:#9a3412;">Tell us</a>.</div>
 
 <!-- App shell — all screens rendered by JS into here -->
 <div id="app"></div>
@@ -645,17 +648,17 @@ html,body{overflow-x:hidden;max-width:100%;}
      Keep firstAction to one clear sentence + phone number.
      resources: 3 is ideal; 2 minimum; 4 maximum.
   ═══════════════════════════════════════════════════════════ */
-  var PATHWAYS = {
+    var PATHWAYS = {
 
     result_veterans: {
       label: "Veterans Pathway",
       badgeClass: "badge-veterans",
       badgeIcon: "🎖",
-      headline: "There's a dedicated system built for you.",
-      firstAction: "Call the <strong>National Call Center for Homeless Veterans</strong> at <strong>1-877-424-3838</strong> (24/7). Or call <strong>Hampton VA Medical Center HCHV / HPACT</strong> at <strong>(757) 722-9961</strong> ext. 13349 or 14417 — on-site VA homeless coordination at 100 Emancipation Drive, Hampton.",
-      callNumber: "tel:18774243838",
-      callLabel: "Call VA Homeless: 1-877-424-3838",
-      what_to_expect: "Hampton VAMC runs HCHV (Health Care for Homeless Veterans) and HUD-VASH for the South Hampton Roads region — the VAMC serves veterans across Norfolk, Chesapeake, Suffolk, and surrounding cities. STOP Inc. is the SSVF (Supportive Services for Veteran Families) grantee covering Chesapeake, Franklin, Norfolk, Portsmouth, Suffolk, Virginia Beach, Accomack, Isle of Wight, Northampton, and Southampton. You do not need to be enrolled in VA care to call the National Call Center.",
+      headline: "There's a dedicated system built for veterans.",
+      firstAction: "Call <strong>211</strong> — free, 24/7 — and say: <em>“I’m a veteran and I’m homeless or about to be.”</em> Ask to be connected to the <strong>VA’s Health Care for Homeless Veterans (HCHV)</strong> program and your local <strong>coordinated-entry assessment</strong>. Veterans qualify for both VA housing (HUD-VASH) and the local Continuum of Care at the same time.",
+      callNumber: "tel:211",
+      callLabel: "Call 211",
+      what_to_expect: "211 will route you to the nearest VA homeless-program coordinator and your local CoC. The National Call Center for Homeless Veterans is available 24/7 anywhere in the U.S. if you can’t reach a local office.",
       bring: [
         "DD-214 discharge papers (if you have them — not required to call)",
         "Photo ID (if available)",
@@ -663,28 +666,22 @@ html,body{overflow-x:hidden;max-width:100%;}
       ],
       resources: [
         {
-          name: "Hampton VA HUD-VASH",
-          phone: "(757) 722-9961 ext. 12133",
-          tel: "tel:7577229961",
-          note: "VA permanent supportive housing voucher program for veterans."
+          name: "National Call Center for Homeless Veterans",
+          phone: "1-877-424-3838",
+          tel: "tel:18774243838",
+          note: "24/7. Available everywhere."
         },
         {
-          name: "STOP Inc. SSVF",
-          phone: "(757) 858-1360",
-          tel: "tel:7578581360",
-          note: "Main office line — ask for SSVF. Covers South Hampton Roads."
-        },
-        {
-          name: "Veterans Crisis Line / 988",
+          name: "Veterans Crisis Line",
           phone: "988",
           tel: "tel:988",
-          note: "Press 1, or text 838255. 24/7 confidential crisis support for veterans."
+          note: "Press 1 for the VA crisis line."
         },
       ],
       confidence: {
-        level: "research",
-        note: "Numbers from va.gov/hampton-health-care/contact-us, stopinc.org/privacy-policy, va.gov/homeless/nationalcallcenter. Last reviewed May 2026.",
-        lastChecked: "May 2026"
+        level: "unverified",
+        note: "AI-researched from public sources — not locally phone-verified. Call 211 to confirm the current local provider. Last researched June 14, 2026.",
+        lastChecked: "June 14, 2026"
       }
     },
 
@@ -692,41 +689,34 @@ html,body{overflow-x:hidden;max-width:100%;}
       label: "Youth Pathway",
       badgeClass: "badge-youth",
       badgeIcon: "🌱",
-      headline: "Seton Youth Shelters runs the 24-hour regional crisis line for youth.",
-      firstAction: "Call <strong>Seton Youth Shelters</strong> at <strong>(757) 498-HELP (4357)</strong> (24/7) — or toll-free <strong>1-866-751-7640</strong>. Emergency shelter and crisis services for youth across South Hampton Roads. Or call the <strong>National Runaway Safeline</strong> at <strong>1-800-786-2929</strong> (24/7).",
-      callNumber: "tel:7574984357",
-      callLabel: "Call Seton 24-hr: (757) 498-HELP",
-      what_to_expect: "South Hampton Roads has no Covenant House location (the nearest Covenant House is in Washington DC). Seton Youth Shelters is the SVHC-designated youth provider for the region. The Regional Housing Crisis Hotline routes youth to coordinated entry for housing placements. The National Runaway Safeline can arrange Home Free bus tickets for youth 12–21.",
+      headline: "If you’re 24 or under, there’s a youth-specific path.",
+      firstAction: "Call or text <strong>211</strong> and say: <em>“I’m 24 or younger and I need a safe place to stay.”</em> Ask for the <strong>youth emergency shelter</strong> and the <strong>runaway &amp; homeless youth (RHY) program</strong> in your area.",
+      callNumber: "tel:211",
+      callLabel: "Call 211",
+      what_to_expect: "211 routes you to the nearest youth shelter or drop-in center. The national backstops below are always available, day or night.",
       bring: [
         "Photo ID (helpful — not required for crisis services)",
         "Anything important you can carry",
-        "Nothing required to call the crisis line",
+        "Nothing is required to call",
       ],
       resources: [
+        {
+          name: "Safe Place",
+          phone: "Text SAFE + your location to 44357",
+          tel: "sms:44357?body=SAFE",
+          note: "Or walk into any QuikTrip and ask staff to call for you."
+        },
         {
           name: "National Runaway Safeline",
           phone: "1-800-786-2929",
           tel: "tel:18007862929",
-          note: "24/7 federal RHY hotline. Call or text. Home Free bus tickets."
-        },
-        {
-          name: "Regional Housing Crisis Hotline",
-          phone: "(757) 587-4202",
-          tel: "tel:7575874202",
-          note: "Mon–Fri 8 AM–5:30 PM. Operated by ForKids. CES intake."
-        },
-        {
-          name: "988 Suicide &amp; Crisis Lifeline",
-          phone: "988",
-          tel: "tel:988",
-          note: "24/7 mental-health crisis line. Press 1 for veteran youth."
+          note: "24/7, free, confidential."
         },
       ],
-      extra_note: "⚠️ Under 18? Seton Youth Shelters knows the local rules. They will help.",
       confidence: {
-        level: "research",
-        note: "Numbers from setonyouthshelters.org/youth-outreach-program, forkids.org/hotline, 1800runaway.org. Covenant House confirmed absent from VA per covenanthouse.org/locations. Last reviewed May 2026.",
-        lastChecked: "May 2026"
+        level: "unverified",
+        note: "AI-researched from public sources — not locally phone-verified. Call 211 to confirm the current local provider. Last researched June 14, 2026.",
+        lastChecked: "June 14, 2026"
       }
     },
 
@@ -734,41 +724,34 @@ html,body{overflow-x:hidden;max-width:100%;}
       label: "Families Pathway",
       badgeClass: "badge-families",
       badgeIcon: "🏠",
-      headline: "The Regional Housing Crisis Hotline is the front door for SVHC families.",
-      firstAction: "Call the <strong>Regional Housing Crisis Hotline</strong> at <strong>(757) 587-4202</strong> (toll-free <strong>1-866-750-4431</strong>) — Mon–Fri 8 AM–5:30 PM. Operated by <strong>ForKids</strong> — designated SVHC family CES intake. After hours, dial <strong>2-1-1</strong>.",
-      callNumber: "tel:7575874202",
-      callLabel: "Call HCH: (757) 587-4202",
-      what_to_expect: "ForKids operates the Regional Housing Crisis Hotline for SVHC and runs shelter, rapid re-housing, case management, and family centers in Chesapeake (Landmark Center) and Suffolk (Birdsong Center). Union Mission Ministries runs the Norfolk Women &amp; Children's Shelter. Salvation Army Hampton Roads runs the Center of Hope emergency shelter (men and women) in Norfolk. YWCA South Hampton Roads runs the regional 24/7 DV crisis hotline.",
+      headline: "Families are kept together in the shelter system.",
+      firstAction: "Call or text <strong>211</strong> and say: <em>“I have my kids with me and we need shelter tonight.”</em> Ask for <strong>family emergency shelter</strong> and the <strong>coordinated-entry assessment</strong> for rapid re-housing.",
+      callNumber: "tel:211",
+      callLabel: "Call 211",
+      what_to_expect: "211 routes you to family shelter and the local coordinated-entry system. If you are fleeing domestic violence, use the confidential hotline below instead — DV shelter is separate and won’t list your location.",
       bring: [
         "Photo ID for adults (if available)",
-        "Birth certificates for children (helpful but not always required)",
+        "Birth certificates for children (helpful, not always required)",
         "Documentation of income or benefits (if available)",
-        "Social security cards (if you have them)",
       ],
       resources: [
         {
-          name: "Union Mission Women &amp; Children Shelter",
-          phone: "(757) 627-8686",
-          tel: "tel:7576278686",
-          note: "5100 E. Virginia Beach Blvd., Norfolk. Emergency shelter for women + families."
+          name: "National Domestic Violence Hotline",
+          phone: "1-800-799-7233",
+          tel: "tel:18007997233",
+          note: "24/7, confidential. Text START to 88788. Connects you to a local confidential DV shelter."
         },
         {
-          name: "Salvation Army Center of Hope",
-          phone: "(757) 622-3471",
-          tel: "tel:7576223471",
-          note: "203 W 19th St, Norfolk. Emergency shelter + soup kitchen."
-        },
-        {
-          name: "YWCA South Hampton Roads (DV crisis)",
-          phone: "(757) 251-0144",
-          tel: "tel:7572510144",
-          note: "24/7 regional DV crisis hotline. Partners with HER, Genieve, Samaritan House."
+          name: "United Way 211",
+          phone: "211",
+          tel: "tel:211",
+          note: "Family shelter + coordinated entry."
         },
       ],
       confidence: {
-        level: "research",
-        note: "Numbers from forkids.org/hotline, forkids.org/contact, unionmissionministries.org/contact-us, southernusa.salvationarmy.org/hamptonroads, ywca-shr.org. Last reviewed May 2026.",
-        lastChecked: "May 2026"
+        level: "unverified",
+        note: "AI-researched from public sources — not locally phone-verified. Call 211 to confirm the current local provider. Last researched June 14, 2026.",
+        lastChecked: "June 14, 2026"
       }
     },
 
@@ -776,11 +759,11 @@ html,body{overflow-x:hidden;max-width:100%;}
       label: "Chronic Homelessness Pathway",
       badgeClass: "badge-chronic",
       badgeIcon: "🔑",
-      headline: "The Planning Council + the Regional Hotline coordinate PSH and outreach.",
-      firstAction: "Call the <strong>Regional Housing Crisis Hotline</strong> at <strong>(757) 587-4202</strong> (Mon–Fri 8 AM–5:30 PM) for SVHC coordinated entry. For mental-health crisis call <strong>Norfolk CSB Behavioral Health Crisis Line</strong> at <strong>(757) 664-7690</strong> (24/7), or dial <strong>988</strong>.",
-      callNumber: "tel:7575874202",
-      callLabel: "Call HCH: (757) 587-4202",
-      what_to_expect: "The Planning Council is the SVHC (VA-501) CoC and HMIS lead. The Regional Housing Crisis Hotline (operated by ForKids) is the universal coordinated-entry front door across the six SVHC jurisdictions. Norfolk Community Services Board runs the 24/7 behavioral-health crisis line — CSB encourages calling before going to the ER. St. Columba Ecumenical Ministries runs a Norfolk day center for showers, food, and direct connection to the Housing Crisis Hotline.",
+      headline: "The housing list starts with one assessment.",
+      firstAction: "Call or text <strong>211</strong> and say: <em>“I’ve been homeless a long time and I want to get on the housing list.”</em> Ask for the <strong>coordinated-entry assessment</strong> — in this system, permanent supportive housing is reached by being assessed and placed on the community housing-referral list. The assessment is the door; there is no separate number.",
+      callNumber: "tel:211",
+      callLabel: "Call 211",
+      what_to_expect: "A coordinated-entry assessor will ask about your situation and add you to the local housing-referral list. While you wait, ask 211 for tonight’s shelter and a daytime drop-in center.",
       bring: [
         "Photo ID (any form)",
         "Documentation of health conditions (if available — not required to be assessed)",
@@ -788,29 +771,22 @@ html,body{overflow-x:hidden;max-width:100%;}
       ],
       resources: [
         {
-          name: "The Planning Council (CoC Lead)",
-          phone: "(757) 622-9268",
-          tel: "tel:7576229268",
-          note: "2551 Eltham Ave, Suite I, Norfolk. SVHC backbone + HMIS lead."
+          name: "988 Suicide &amp; Crisis Lifeline",
+          phone: "988",
+          tel: "tel:988",
+          note: "Behavioral-health crisis support + SOAR disability-benefit help tied to housing."
         },
         {
-          name: "Norfolk CSB Behavioral Health Crisis",
-          phone: "(757) 664-7690",
-          tel: "tel:7576647690",
-          note: "24/7 mental-health crisis line. Mobile crisis dispatch."
-        },
-        {
-          name: "St. Columba Day Center",
-          phone: "(757) 627-6748",
-          tel: "tel:7576276748",
-          note: "2114 Lafayette Blvd, Norfolk. Showers, food, HCH connection."
+          name: "United Way 211",
+          phone: "211",
+          tel: "tel:211",
+          note: "Coordinated entry + shelter while you wait."
         },
       ],
-      extra_note: "📋 Qualifying conditions include physical, mental health, or substance use disorders that substantially affect daily functioning. You don't need a formal diagnosis to be assessed.",
       confidence: {
-        level: "research",
-        note: "Numbers from theplanningcouncil.org/homeless-solutions/housing-crisis-hotline, hamptonroadsendshomelessness.org/svhc.html, norfolk.gov/996/Norfolk-Community-Services-Board, stcolumbaministries.com, 988lifeline.org. Last reviewed May 2026.",
-        lastChecked: "May 2026"
+        level: "unverified",
+        note: "AI-researched from public sources — not locally phone-verified. Call 211 to confirm the current local provider. Last researched June 14, 2026.",
+        lastChecked: "June 14, 2026"
       }
     },
 
@@ -818,11 +794,11 @@ html,body{overflow-x:hidden;max-width:100%;}
       label: "Single Adults Pathway",
       badgeClass: "badge-adult",
       badgeIcon: "📞",
-      headline: "Union Mission and Salvation Army are the main adult shelters in Norfolk.",
-      firstAction: "Call <strong>Union Mission Ministries Bashford Men's Shelter</strong> at <strong>(757) 627-8686</strong> — 5100 E. Virginia Beach Blvd., Norfolk. Year-round men's shelter; Mon–Fri 9 AM–2 PM screening per SVHC. Or call <strong>Salvation Army Center of Hope</strong> at <strong>(757) 622-3471</strong> — 203 W 19th St (men and women).",
-      callNumber: "tel:7576278686",
-      callLabel: "Call Union Mission: (757) 627-8686",
-      what_to_expect: "Union Mission Ministries runs Norfolk's primary year-round men's shelter (Bashford) plus the Women &amp; Children's shelter at the same address. Salvation Army Hampton Roads coordinates emergency shelter, food, and case management across Norfolk, Chesapeake, Suffolk, Portsmouth, Virginia Beach, and Western Tidewater. St. Columba Ecumenical Ministries runs a day center with showers, food, and direct routing to the Regional Housing Crisis Hotline.",
+      headline: "Start with tonight’s shelter, then the housing list.",
+      firstAction: "Call or text <strong>211</strong> and say: <em>“I need a shelter bed tonight.”</em> Ask for <strong>tonight’s open beds for single adults</strong>, the nearest <strong>daytime drop-in center</strong> (showers, mail, case management), and a <strong>free meal site</strong>. 211 is multilingual and 24/7.",
+      callNumber: "tel:211",
+      callLabel: "Call 211",
+      what_to_expect: "211 has the current shelter-bed picture for your area, which changes daily. Ask them to also start a coordinated-entry assessment so you’re working toward housing, not just tonight.",
       bring: [
         "Photo ID (helpful but not always required)",
         "Social security card or number (if available)",
@@ -830,30 +806,24 @@ html,body{overflow-x:hidden;max-width:100%;}
       ],
       resources: [
         {
-          name: "Salvation Army Hampton Roads (Area)",
-          phone: "(757) 543-8100",
-          tel: "tel:7575438100",
-          note: "5525 Raby Rd, Norfolk. Area command — shelter, food, case management."
+          name: "Find a free clinic (FQHC)",
+          phone: "Ask 211",
+          tel: "tel:211",
+          note: "Federally Qualified Health Centers treat everyone regardless of ability to pay."
         },
         {
-          name: "Salvation Army Center of Hope",
-          phone: "(757) 622-3471",
-          tel: "tel:7576223471",
-          note: "203 W 19th St, Norfolk. Emergency shelter (men + women)."
-        },
-        {
-          name: "Regional Housing Crisis Hotline",
-          phone: "(757) 587-4202",
-          tel: "tel:7575874202",
-          note: "Mon–Fri 8 AM–5:30 PM. Operated by ForKids. SVHC CES intake."
+          name: "988 Suicide &amp; Crisis Lifeline",
+          phone: "988",
+          tel: "tel:988",
+          note: "24/7 mental-health support."
         },
       ],
       confidence: {
-        level: "research",
-        note: "Numbers from unionmissionministries.org/contact-us, hamptonroadsendshomelessness.org/get-help.html, southernusa.salvationarmy.org/hamptonroads, stcolumbaministries.com, forkids.org/hotline. Last reviewed May 2026.",
-        lastChecked: "May 2026"
+        level: "unverified",
+        note: "AI-researched from public sources — not locally phone-verified. Call 211 to confirm the current local provider. Last researched June 14, 2026.",
+        lastChecked: "June 14, 2026"
       }
-    }
+    },
 
   }; // end PATHWAYS
 

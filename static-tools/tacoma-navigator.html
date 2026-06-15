@@ -472,7 +472,8 @@
   <strong>Need help right now?</strong>
   <a href="tel:211">Call 211</a><span class="crisis-bar__sep">·</span>
   <a href="sms:741741?body=HOME">Text HOME to 741741</a><span class="crisis-bar__sep">·</span>
-  <a href="tel:988">988 Suicide &amp; Crisis</a>
+  <a href="tel:988">988 Suicide &amp; Crisis</a><span class="crisis-bar__sep">·</span>
+  <a href="tel:18007997233">DV 1-800-799-7233</a>
 </div>
 
 <nav class="nav" aria-label="Primary">
@@ -512,6 +513,8 @@
   </svg>
   <span>common<span class="cl-home__rung">ladder</span></span>
 </a>
+
+<div role="note" style="background:#ffedd5;border:1px solid #9a3412;color:#6b2710;border-radius:10px;padding:14px 18px;margin:0 auto 18px;max-width:680px;font-size:.9rem;line-height:1.5;"><strong style="color:#9a3412;">AI-researched, not locally verified.</strong> Common Ladder is based in Arizona. We built this guide from public sources but don’t yet verify these listings by phone the way we do our Arizona tools. Use it to learn <em>what to ask for</em>, then <strong>call <a href="tel:211" style="color:#9a3412;">211</a></strong> for the current local provider. Last researched <time datetime="2026-06-14">June 14, 2026</time>. Wrong info? <a href="mailto:corrections.commonladder@gmail.com?subject=Resource%20update:%20Tacoma%20/%20Pierce%20County" style="color:#9a3412;">Tell us</a>.</div>
 
 <!-- App shell — all screens rendered by JS into here -->
 <div id="app"></div>
@@ -651,29 +654,23 @@
      Keep firstAction to one clear sentence + phone number.
      resources: 3 is ideal; 2 minimum; 4 maximum.
   ═══════════════════════════════════════════════════════════ */
-  var PATHWAYS = {
+    var PATHWAYS = {
 
     result_veterans: {
       label: "Veterans Pathway",
       badgeClass: "badge-veterans",
-      badgeIcon: "\ud83c\udf96",
-      headline: "There's a dedicated system built for you.",
-      firstAction: "Call <strong>Catholic Community Services SSVF Pierce</strong> at <strong>(253) 471-5340</strong> \u2014 Supportive Services for Veteran Families with rapid rehousing and prevention. Or call <strong>American Lake VA Medical Center</strong> at <strong>(253) 582-8440</strong> \u2014 9600 Veterans Dr SW, Lakewood (part of VA Puget Sound).",
-      callNumber: "tel:2534715340",
-      callLabel: "Call CCS SSVF: (253) 471-5340",
-      what_to_expect: "American Lake VAMC offers HUD-VASH, HCHV outreach, and care coordination for homeless veterans. Catholic Community Services Pierce operates the regional SSVF program. Pierce County Veterans Services provides emergency aid at (253) 798-7449. Veterans Housing Options Group (VHOG) meets Wednesdays at 1pm for veterans.",
+      badgeIcon: "🎖",
+      headline: "There's a dedicated system built for veterans.",
+      firstAction: "Call <strong>211</strong> (or text your ZIP to 877-211) — free, 24/7 — and say: <em>“I’m a veteran and I’m homeless or about to be.”</em> Ask to be connected to the <strong>VA’s Health Care for Homeless Veterans (HCHV)</strong> program and your local <strong>coordinated-entry assessment</strong>. Veterans qualify for both VA housing (HUD-VASH) and the local Continuum of Care at the same time.",
+      callNumber: "tel:211",
+      callLabel: "Call 211",
+      what_to_expect: "211 will route you to the nearest VA homeless-program coordinator and your local CoC. The National Call Center for Homeless Veterans is available 24/7 anywhere in the U.S. if you can’t reach a local office.",
       bring: [
-        "DD-214 discharge papers (if you have them \u2014 not required to call)",
+        "DD-214 discharge papers (if you have them — not required to call)",
         "Photo ID (if available)",
         "Any VA documentation you have",
       ],
       resources: [
-        {
-          name: "Pierce County Veterans Services",
-          phone: "(253) 798-7449",
-          tel: "tel:2537987449",
-          note: "Emergency aid (rent, utilities, food, medical, burial)."
-        },
         {
           name: "National Call Center for Homeless Veterans",
           phone: "1-877-424-3838",
@@ -684,151 +681,130 @@
           name: "Veterans Crisis Line",
           phone: "988",
           tel: "tel:988",
-          note: "Press 1 for VA crisis line."
+          note: "Press 1 for the VA crisis line."
         },
       ],
       confidence: {
-        level: "research",
-        note: "Numbers from va.gov/puget-sound-health-care, ccsww.org, piercecountywa.gov. Last reviewed May 2026.",
-        lastChecked: "May 2026"
+        level: "unverified",
+        note: "AI-researched from public sources — not locally phone-verified. Call 211 to confirm the current local provider. Last researched June 14, 2026.",
+        lastChecked: "June 14, 2026"
       }
     },
 
     result_youth: {
       label: "Youth Pathway",
       badgeClass: "badge-youth",
-      badgeIcon: "\ud83c\udf31",
-      headline: "Comprehensive Life Resources Beacon serves young adults.",
-      firstAction: "Call <strong>Comprehensive Life Resources \u2014 Beacon Young Adult Shelter</strong> at <strong>(253) 677-0102</strong> \u2014 drop-in + overnight shelter for young adults 18\u201324, any gender. 415 S 13th St, Tacoma. Drop-in M\u2013F 4:30\u20139pm, weekends 1\u20139pm.",
-      callNumber: "tel:2536770102",
-      callLabel: "Call Beacon YA: (253) 677-0102",
-      what_to_expect: "Beacon Young Adult Shelter is the main young-adult shelter (ages 18\u201324) in Tacoma. The REACH Center at (253) 383-3951 provides youth education, employment, and resource navigation; the ACT team (253-573-6882) directly serves youth/young adults experiencing homelessness ages 12\u201324. Communities In Schools of Tacoma is a school-based wraparound services partner.",
+      badgeIcon: "🌱",
+      headline: "If you’re 24 or under, there’s a youth-specific path.",
+      firstAction: "Call or text <strong>211</strong> (or text your ZIP to 877-211) and say: <em>“I’m 24 or younger and I need a safe place to stay.”</em> Ask for the <strong>youth emergency shelter</strong> and the <strong>runaway &amp; homeless youth (RHY) program</strong> in your area.",
+      callNumber: "tel:211",
+      callLabel: "Call 211",
+      what_to_expect: "211 routes you to the nearest youth shelter or drop-in center. The national backstops below are always available, day or night.",
       bring: [
-        "Photo ID (helpful \u2014 not required for crisis services)",
+        "Photo ID (helpful — not required for crisis services)",
         "Anything important you can carry",
-        "Nothing required to call drop-in",
+        "Nothing is required to call",
       ],
       resources: [
         {
-          name: "REACH Center \u2014 Anchor Community Team",
-          phone: "(253) 573-6882",
-          tel: "tel:2535736882",
-          note: "Youth/young adults ages 12\u201324 experiencing homelessness."
+          name: "Safe Place",
+          phone: "Text SAFE + your location to 44357",
+          tel: "sms:44357?body=SAFE",
+          note: "Or walk into any QuikTrip and ask staff to call for you."
         },
         {
-          name: "Communities In Schools of Tacoma",
-          phone: "(253) 571-4983",
-          tel: "tel:2535714983",
-          note: "School-based housing instability case management."
-        },
-        {
-          name: "211 Pierce / WA 211",
-          phone: "211",
-          tel: "tel:211",
-          note: "Or 1-877-211-9274. Pierce 24-hr Crisis: 1-800-576-7764."
+          name: "National Runaway Safeline",
+          phone: "1-800-786-2929",
+          tel: "tel:18007862929",
+          note: "24/7, free, confidential."
         },
       ],
-      extra_note: "\u26a0\ufe0f Under 18? REACH Center's ACT team is for you. Pierce County 24-hr Crisis Line: 1-800-576-7764.",
       confidence: {
-        level: "research",
-        note: "Numbers from comprehensiveliferesources.org, reachtacoma.org, ciswa.org. Last reviewed May 2026.",
-        lastChecked: "May 2026"
+        level: "unverified",
+        note: "AI-researched from public sources — not locally phone-verified. Call 211 to confirm the current local provider. Last researched June 14, 2026.",
+        lastChecked: "June 14, 2026"
       }
     },
 
     result_families: {
       label: "Families Pathway",
       badgeClass: "badge-families",
-      badgeIcon: "\ud83c\udfe0",
-      headline: "Tacoma Rescue Mission Adams Street is the family shelter.",
-      firstAction: "Call <strong>Tacoma Rescue Mission Adams Street Family Campus</strong> at <strong>(253) 383-4493 ext. 1500</strong> \u2014 2909 S Adams St. Emergency shelter and meals for families with children and pregnant women. Call M/W/F 8\u201310am to check openings.",
-      callNumber: "tel:2533834493",
-      callLabel: "Call TRM Family: (253) 383-4493 x1500",
-      what_to_expect: "Tacoma Rescue Mission Adams Street is the main family shelter. Catholic Community Services Pierce Family Housing Network coordinates rapid rehousing, shelter, and prevention. Helping Hand House in Puyallup serves all of Pierce County exclusively for families with children under 18.",
+      badgeIcon: "🏠",
+      headline: "Families are kept together in the shelter system.",
+      firstAction: "Call or text <strong>211</strong> (or text your ZIP to 877-211) and say: <em>“I have my kids with me and we need shelter tonight.”</em> Ask for <strong>family emergency shelter</strong> and the <strong>coordinated-entry assessment</strong> for rapid re-housing.",
+      callNumber: "tel:211",
+      callLabel: "Call 211",
+      what_to_expect: "211 routes you to family shelter and the local coordinated-entry system. If you are fleeing domestic violence, use the confidential hotline below instead — DV shelter is separate and won’t list your location.",
       bring: [
         "Photo ID for adults (if available)",
-        "Birth certificates for children (helpful but not always required)",
+        "Birth certificates for children (helpful, not always required)",
         "Documentation of income or benefits (if available)",
-        "Social security cards (if you have them)",
       ],
       resources: [
         {
-          name: "CCS Pierce \u2014 Family Housing Network",
-          phone: "(253) 383-3697",
-          tel: "tel:2533833697",
-          note: "Or 1-800-372-3697. RRH, shelter, prevention."
+          name: "National Domestic Violence Hotline",
+          phone: "1-800-799-7233",
+          tel: "tel:18007997233",
+          note: "24/7, confidential. Text START to 88788. Connects you to a local confidential DV shelter."
         },
         {
-          name: "Helping Hand House (Puyallup)",
-          phone: "(253) 848-6096",
-          tel: "tel:2538486096",
-          note: "Families with children under 18, all Pierce County."
-        },
-        {
-          name: "211 Pierce / WA 211",
+          name: "United Way 211",
           phone: "211",
           tel: "tel:211",
-          note: "Or 1-877-211-9274. 24/7."
+          note: "Family shelter + coordinated entry."
         },
       ],
       confidence: {
-        level: "research",
-        note: "Numbers from trm.org, ccsww.org, helpinghandhouse.org. Last reviewed May 2026.",
-        lastChecked: "May 2026"
+        level: "unverified",
+        note: "AI-researched from public sources — not locally phone-verified. Call 211 to confirm the current local provider. Last researched June 14, 2026.",
+        lastChecked: "June 14, 2026"
       }
     },
 
     result_chronic: {
       label: "Chronic Homelessness Pathway",
       badgeClass: "badge-chronic",
-      badgeIcon: "\ud83d\udd11",
-      headline: "Pierce County Coordinated Entry is the chronic pathway.",
-      firstAction: "Call <strong>Pierce County Coordinated Entry Access Point</strong> at <strong>(253) 682-3401</strong> \u2014 staffed M/Tu/Th/F 11am\u201312pm and 1pm\u20133pm. Or dial <strong>211</strong>.",
-      callNumber: "tel:2536823401",
-      callLabel: "Call Pierce CE: (253) 682-3401",
-      what_to_expect: "Pierce County Human Services is the CoC lead. Tacoma Rescue Mission Downtown (425 S Tacoma Way) is the main men's emergency shelter with a dedicated 10-bed veterans dorm. Living Access Support Alliance (LASA) provides prevention, RRH, and low-income housing services from Lakewood since 1989.",
+      badgeIcon: "🔑",
+      headline: "The housing list starts with one assessment.",
+      firstAction: "Call or text <strong>211</strong> (or text your ZIP to 877-211) and say: <em>“I’ve been homeless a long time and I want to get on the housing list.”</em> Ask for the <strong>coordinated-entry assessment</strong> — in this system, permanent supportive housing is reached by being assessed and placed on the community housing-referral list. The assessment is the door; there is no separate number.",
+      callNumber: "tel:211",
+      callLabel: "Call 211",
+      what_to_expect: "A coordinated-entry assessor will ask about your situation and add you to the local housing-referral list. While you wait, ask 211 for tonight’s shelter and a daytime drop-in center.",
       bring: [
         "Photo ID (any form)",
-        "Documentation of health conditions (if available \u2014 not required to be assessed)",
+        "Documentation of health conditions (if available — not required to be assessed)",
         "Any records of prior housing or service history",
       ],
       resources: [
         {
-          name: "Tacoma Rescue Mission \u2014 Downtown",
-          phone: "(253) 383-4493",
-          tel: "tel:2533834493",
-          note: "Ext. 1101. 425 S Tacoma Way. Men's shelter + veterans dorm."
+          name: "988 Suicide &amp; Crisis Lifeline",
+          phone: "988",
+          tel: "tel:988",
+          note: "Behavioral-health crisis support + SOAR disability-benefit help tied to housing."
         },
         {
-          name: "Living Access Support Alliance (LASA)",
-          phone: "(253) 581-8689",
-          tel: "tel:2535818689",
-          note: "8956 Gravelly Lake Dr SW, Lakewood. Prevention/RRH."
-        },
-        {
-          name: "Pierce County Human Services (main)",
-          phone: "(253) 798-4400",
-          tel: "tel:2537984400",
-          note: "3602 Pacific Ave. CoC lead agency."
+          name: "United Way 211",
+          phone: "211",
+          tel: "tel:211",
+          note: "Coordinated entry + shelter while you wait."
         },
       ],
-      extra_note: "\ud83d\udccb Qualifying conditions include physical, mental health, or substance use disorders that substantially affect daily functioning. You don't need a formal diagnosis to be assessed.",
       confidence: {
-        level: "research",
-        note: "Numbers from piercecountywa.gov, trm.org, lasapierce.org. Last reviewed May 2026.",
-        lastChecked: "May 2026"
+        level: "unverified",
+        note: "AI-researched from public sources — not locally phone-verified. Call 211 to confirm the current local provider. Last researched June 14, 2026.",
+        lastChecked: "June 14, 2026"
       }
     },
 
     result_adult: {
       label: "Single Adults Pathway",
       badgeClass: "badge-adult",
-      badgeIcon: "\ud83d\udcde",
-      headline: "Nativity House is the largest day + overnight shelter in Pierce County.",
-      firstAction: "Walk in or call <strong>Nativity House (Catholic Community Services)</strong> at <strong>(253) 502-1915</strong> \u2014 702 S 14th St, Tacoma. 167 beds (117 male, 50 female). No-barrier. Day 7am\u20135pm; Overnight waitlist check-in 4:15pm.",
-      callNumber: "tel:2535021915",
-      callLabel: "Call Nativity House: (253) 502-1915",
-      what_to_expect: "Nativity House (operated by CCS) is the largest comprehensive day + overnight shelter in Pierce County, offering meals, behavioral health, SUD support, benefits enrollment, and Coordinated Entry connection. Tacoma Rescue Mission Downtown is the largest single-adult men's shelter. Note: the legacy Tacoma Avenue Shelter was consolidated into Nativity House.",
+      badgeIcon: "📞",
+      headline: "Start with tonight’s shelter, then the housing list.",
+      firstAction: "Call or text <strong>211</strong> (or text your ZIP to 877-211) and say: <em>“I need a shelter bed tonight.”</em> Ask for <strong>tonight’s open beds for single adults</strong>, the nearest <strong>daytime drop-in center</strong> (showers, mail, case management), and a <strong>free meal site</strong>. 211 is multilingual and 24/7.",
+      callNumber: "tel:211",
+      callLabel: "Call 211",
+      what_to_expect: "211 has the current shelter-bed picture for your area, which changes daily. Ask them to also start a coordinated-entry assessment so you’re working toward housing, not just tonight.",
       bring: [
         "Photo ID (helpful but not always required)",
         "Social security card or number (if available)",
@@ -836,30 +812,24 @@
       ],
       resources: [
         {
-          name: "Tacoma Rescue Mission \u2014 Main Shelter",
-          phone: "(253) 383-4493",
-          tel: "tel:2533834493",
-          note: "Ext. 1101. 425 S Tacoma Way. Largest single-adult men's shelter."
-        },
-        {
-          name: "Pierce County 24-hr Crisis Line",
-          phone: "1-800-576-7764",
-          tel: "tel:18005767764",
-          note: "24/7 crisis."
-        },
-        {
-          name: "WA 211 (Pierce)",
-          phone: "211",
+          name: "Find a free clinic (FQHC)",
+          phone: "Ask 211",
           tel: "tel:211",
-          note: "Or 1-877-211-9274. 24/7."
+          note: "Federally Qualified Health Centers treat everyone regardless of ability to pay."
+        },
+        {
+          name: "988 Suicide &amp; Crisis Lifeline",
+          phone: "988",
+          tel: "tel:988",
+          note: "24/7 mental-health support."
         },
       ],
       confidence: {
-        level: "research",
-        note: "Numbers from ccsww.org, trm.org, piercecountywa.gov. Last reviewed May 2026.",
-        lastChecked: "May 2026"
+        level: "unverified",
+        note: "AI-researched from public sources — not locally phone-verified. Call 211 to confirm the current local provider. Last researched June 14, 2026.",
+        lastChecked: "June 14, 2026"
       }
-    }
+    },
 
   }; // end PATHWAYS
 

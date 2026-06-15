@@ -472,7 +472,8 @@
   <strong>Need help right now?</strong>
   <a href="tel:211">Call 211</a><span class="crisis-bar__sep">·</span>
   <a href="sms:741741?body=HOME">Text HOME to 741741</a><span class="crisis-bar__sep">·</span>
-  <a href="tel:988">988 Suicide &amp; Crisis</a>
+  <a href="tel:988">988 Suicide &amp; Crisis</a><span class="crisis-bar__sep">·</span>
+  <a href="tel:18007997233">DV 1-800-799-7233</a>
 </div>
 
 <nav class="nav" aria-label="Primary">
@@ -512,6 +513,8 @@
   </svg>
   <span>common<span class="cl-home__rung">ladder</span></span>
 </a>
+
+<div role="note" style="background:#ffedd5;border:1px solid #9a3412;color:#6b2710;border-radius:10px;padding:14px 18px;margin:0 auto 18px;max-width:680px;font-size:.9rem;line-height:1.5;"><strong style="color:#9a3412;">AI-researched, not locally verified.</strong> Common Ladder is based in Arizona. We built this guide from public sources but don’t yet verify these listings by phone the way we do our Arizona tools. Use it to learn <em>what to ask for</em>, then <strong>call <a href="tel:211" style="color:#9a3412;">211</a></strong> for the current local provider. Last researched <time datetime="2026-06-14">June 14, 2026</time>. Wrong info? <a href="mailto:corrections.commonladder@gmail.com?subject=Resource%20update:%20Newark%20/%20Essex%20County" style="color:#9a3412;">Tell us</a>.</div>
 
 <!-- App shell — all screens rendered by JS into here -->
 <div id="app"></div>
@@ -651,184 +654,157 @@
      Keep firstAction to one clear sentence + phone number.
      resources: 3 is ideal; 2 minimum; 4 maximum.
   ═══════════════════════════════════════════════════════════ */
-  var PATHWAYS = {
+    var PATHWAYS = {
 
     result_veterans: {
       label: "Veterans Pathway",
       badgeClass: "badge-veterans",
-      badgeIcon: "\ud83c\udf96",
-      headline: "There's a dedicated system built for you.",
-      firstAction: "Call <strong>Community Hope SSVF (NJ)</strong> at <strong>1-855-483-8466</strong> \u2014 24-hour SSVF referral hotline serving Essex County and statewide NJ. Or call <strong>East Orange VA Medical Center</strong> at <strong>(973) 676-1000</strong> and ask for the Homeless Veteran Care coordinator.",
-      callNumber: "tel:18554838466",
-      callLabel: "Call Community Hope: 1-855-483-8466",
-      what_to_expect: "East Orange VAMC operates HUD-VASH and HCHV. Community Hope is the active SSVF grantee in NJ-504 (Volunteers of America Delaware Valley does NOT operate SSVF in this CoC). Catholic Charities Archdiocese of Newark also runs SSVF at 1-855-767-8387 covering Bergen, Essex, Hudson, Union counties. NJ Vet2Vet 1-866-838-7654 (Rutgers UBHC) is a 24/7 peer counseling line.",
+      badgeIcon: "🎖",
+      headline: "There's a dedicated system built for veterans.",
+      firstAction: "Call <strong>211</strong> (or text your ZIP to 898-211) — free, 24/7 — and say: <em>“I’m a veteran and I’m homeless or about to be.”</em> Ask to be connected to the <strong>VA’s Health Care for Homeless Veterans (HCHV)</strong> program and your local <strong>coordinated-entry assessment</strong>. Veterans qualify for both VA housing (HUD-VASH) and the local Continuum of Care at the same time.",
+      callNumber: "tel:211",
+      callLabel: "Call 211",
+      what_to_expect: "211 will route you to the nearest VA homeless-program coordinator and your local CoC. The National Call Center for Homeless Veterans is available 24/7 anywhere in the U.S. if you can’t reach a local office.",
       bring: [
-        "DD-214 discharge papers (if you have them \u2014 not required to call)",
+        "DD-214 discharge papers (if you have them — not required to call)",
         "Photo ID (if available)",
         "Any VA documentation you have",
       ],
       resources: [
         {
-          name: "Catholic Charities Archdiocese of Newark \u2014 SSVF",
-          phone: "1-855-767-8387",
-          tel: "tel:18557678387",
-          note: "Bergen, Essex, Hudson, Union counties."
-        },
-        {
-          name: "NJ Vet2Vet (Rutgers UBHC)",
-          phone: "1-866-838-7654",
-          tel: "tel:18668387654",
-          note: "24/7 peer counseling."
-        },
-        {
           name: "National Call Center for Homeless Veterans",
           phone: "1-877-424-3838",
           tel: "tel:18774243838",
-          note: "24/7."
+          note: "24/7. Available everywhere."
+        },
+        {
+          name: "Veterans Crisis Line",
+          phone: "988",
+          tel: "tel:988",
+          note: "Press 1 for the VA crisis line."
         },
       ],
       confidence: {
-        level: "research",
-        note: "Numbers from va.gov/new-jersey-health-care, communityhope-nj.org, nj211.org. Last reviewed May 2026.",
-        lastChecked: "May 2026"
+        level: "unverified",
+        note: "AI-researched from public sources — not locally phone-verified. Call 211 to confirm the current local provider. Last researched June 14, 2026.",
+        lastChecked: "June 14, 2026"
       }
     },
 
     result_youth: {
       label: "Youth Pathway",
       badgeClass: "badge-youth",
-      badgeIcon: "\ud83c\udf31",
-      headline: "Covenant House NJ and the Adolescent Housing Hub serve Newark youth.",
-      firstAction: "Call <strong>Covenant House New Jersey (Newark)</strong> at <strong>(973) 621-8705</strong> \u2014 24/7 crisis center, ages 18\u201321, at 330 Washington St, Newark. Text option: 1-844-912-1291. For statewide youth housing (ages 18\u201321), call the <strong>NJ Adolescent Housing Hub (PerformCare)</strong> at <strong>1-877-652-7624</strong>.",
-      callNumber: "tel:9736218705",
-      callLabel: "Call Covenant House NJ: (973) 621-8705",
-      what_to_expect: "Covenant House NJ provides 24/7 crisis shelter for ages 18\u201321. The NJ Adolescent Housing Hub (statewide) routes youth ages 18\u201321 to age-appropriate housing programs. Newark Community Solutions at (973) 733-5180 runs the Eviction Diversion Initiative for Essex County.",
+      badgeIcon: "🌱",
+      headline: "If you’re 24 or under, there’s a youth-specific path.",
+      firstAction: "Call or text <strong>211</strong> (or text your ZIP to 898-211) and say: <em>“I’m 24 or younger and I need a safe place to stay.”</em> Ask for the <strong>youth emergency shelter</strong> and the <strong>runaway &amp; homeless youth (RHY) program</strong> in your area.",
+      callNumber: "tel:211",
+      callLabel: "Call 211",
+      what_to_expect: "211 routes you to the nearest youth shelter or drop-in center. The national backstops below are always available, day or night.",
       bring: [
-        "Photo ID (helpful \u2014 not required for crisis services)",
+        "Photo ID (helpful — not required for crisis services)",
         "Anything important you can carry",
-        "Nothing required for crisis services",
+        "Nothing is required to call",
       ],
       resources: [
         {
-          name: "NJ Adolescent Housing Hub (PerformCare)",
-          phone: "1-877-652-7624",
-          tel: "tel:18776527624",
-          note: "Statewide youth housing intake, ages 18\u201321."
+          name: "Safe Place",
+          phone: "Text SAFE + your location to 44357",
+          tel: "sms:44357?body=SAFE",
+          note: "Or walk into any QuikTrip and ask staff to call for you."
         },
         {
-          name: "Newark Community Solutions",
-          phone: "(973) 733-5180",
-          tel: "tel:9737335180",
-          note: "Eviction Diversion Initiative for Essex County."
-        },
-        {
-          name: "NJ 211",
-          phone: "211",
-          tel: "tel:211",
-          note: "Statewide 24/7 multilingual."
+          name: "National Runaway Safeline",
+          phone: "1-800-786-2929",
+          tel: "tel:18007862929",
+          note: "24/7, free, confidential."
         },
       ],
-      extra_note: "\u26a0\ufe0f Under 18? Covenant House NJ and NJ 211 know the local rules and can help.",
       confidence: {
-        level: "research",
-        note: "Numbers from covenanthousenj.org, nj.gov/njyrs, newarknj.gov. Last reviewed May 2026.",
-        lastChecked: "May 2026"
+        level: "unverified",
+        note: "AI-researched from public sources — not locally phone-verified. Call 211 to confirm the current local provider. Last researched June 14, 2026.",
+        lastChecked: "June 14, 2026"
       }
     },
 
     result_families: {
       label: "Families Pathway",
       badgeClass: "badge-families",
-      badgeIcon: "\ud83c\udfe0",
-      headline: "YMCA Newark and Apostles' House serve families.",
-      firstAction: "Call <strong>YMCA of Newark \u2014 Emergency Residence Program</strong> at <strong>(973) 624-8900 ext. 6823</strong> \u2014 260-bed shelter with private family rooms at 600 Broad St. After hours, dial 211. Or call <strong>The Apostles' House</strong> at <strong>(973) 482-0625</strong>, 24 Grant St \u2014 women & children emergency shelter.",
-      callNumber: "tel:9736248900",
-      callLabel: "Call YMCA Newark: (973) 624-8900 x6823",
-      what_to_expect: "YMCA of Newark and The Apostles' House operate the main family shelters. Catholic Charities of the Archdiocese of Newark provides family services through a 1-800-227-7413 hotline. NJ has a right to shelter for families with children but applications route through the Essex County Coordinated Entry system.",
+      badgeIcon: "🏠",
+      headline: "Families are kept together in the shelter system.",
+      firstAction: "Call or text <strong>211</strong> (or text your ZIP to 898-211) and say: <em>“I have my kids with me and we need shelter tonight.”</em> Ask for <strong>family emergency shelter</strong> and the <strong>coordinated-entry assessment</strong> for rapid re-housing.",
+      callNumber: "tel:211",
+      callLabel: "Call 211",
+      what_to_expect: "211 routes you to family shelter and the local coordinated-entry system. If you are fleeing domestic violence, use the confidential hotline below instead — DV shelter is separate and won’t list your location.",
       bring: [
         "Photo ID for adults (if available)",
-        "Birth certificates for children (helpful but not always required)",
+        "Birth certificates for children (helpful, not always required)",
         "Documentation of income or benefits (if available)",
-        "Social security cards (if you have them)",
       ],
       resources: [
         {
-          name: "Catholic Charities Archdiocese of Newark",
-          phone: "1-800-227-7413",
-          tel: "tel:18002277413",
-          note: "General hotline. Admin: (973) 596-4100."
+          name: "National Domestic Violence Hotline",
+          phone: "1-800-799-7233",
+          tel: "tel:18007997233",
+          note: "24/7, confidential. Text START to 88788. Connects you to a local confidential DV shelter."
         },
         {
-          name: "Essex County Coordinated Entry",
-          phone: "(862) 206-3233",
-          tel: "tel:8622063233",
-          note: "Primary access point. 50 S Clinton St, 5th Fl East, East Orange."
-        },
-        {
-          name: "NJ 211",
+          name: "United Way 211",
           phone: "211",
           tel: "tel:211",
-          note: "Statewide 24/7. Text ZIP to 898-211."
+          note: "Family shelter + coordinated entry."
         },
       ],
       confidence: {
-        level: "research",
-        note: "Numbers from newarkymca.org, theapostleshouse.org, ccannj.org, essexcountynj.org. Last reviewed May 2026.",
-        lastChecked: "May 2026"
+        level: "unverified",
+        note: "AI-researched from public sources — not locally phone-verified. Call 211 to confirm the current local provider. Last researched June 14, 2026.",
+        lastChecked: "June 14, 2026"
       }
     },
 
     result_chronic: {
       label: "Chronic Homelessness Pathway",
       badgeClass: "badge-chronic",
-      badgeIcon: "\ud83d\udd11",
-      headline: "Essex County Coordinated Entry System (CES) is the chronic pathway.",
-      firstAction: "Call the <strong>Essex County Coordinated Entry System</strong> at <strong>(862) 206-3233</strong> \u2014 primary access point for the CoC's Housing First system. Located at 50 S Clinton St, 5th Fl East, East Orange. Backup: Essex County DHS main (973) 395-8350.",
-      callNumber: "tel:8622063233",
-      callLabel: "Call Essex CES: (862) 206-3233",
-      what_to_expect: "Essex County DHS Office of Homeless Services is the lead CoC. The Apostles' House provides supportive housing, rapid rehousing, and a rooming house for men with long-term needs. Goodwill Rescue Mission Newark at 79 University Ave has 120+ years of history serving chronically homeless men.",
+      badgeIcon: "🔑",
+      headline: "The housing list starts with one assessment.",
+      firstAction: "Call or text <strong>211</strong> (or text your ZIP to 898-211) and say: <em>“I’ve been homeless a long time and I want to get on the housing list.”</em> Ask for the <strong>coordinated-entry assessment</strong> — in this system, permanent supportive housing is reached by being assessed and placed on the community housing-referral list. The assessment is the door; there is no separate number.",
+      callNumber: "tel:211",
+      callLabel: "Call 211",
+      what_to_expect: "A coordinated-entry assessor will ask about your situation and add you to the local housing-referral list. While you wait, ask 211 for tonight’s shelter and a daytime drop-in center.",
       bring: [
         "Photo ID (any form)",
-        "Documentation of health conditions (if available \u2014 not required to be assessed)",
+        "Documentation of health conditions (if available — not required to be assessed)",
         "Any records of prior housing or service history",
       ],
       resources: [
         {
-          name: "The Apostles' House",
-          phone: "(973) 482-0625",
-          tel: "tel:9734820625",
-          note: "Supportive housing, RRH, rooming house."
+          name: "988 Suicide &amp; Crisis Lifeline",
+          phone: "988",
+          tel: "tel:988",
+          note: "Behavioral-health crisis support + SOAR disability-benefit help tied to housing."
         },
         {
-          name: "Goodwill Rescue Mission Newark",
-          phone: "(973) 621-9560",
-          tel: "tel:9736219560",
-          note: "79 University Ave. Faith-based men's emergency shelter."
-        },
-        {
-          name: "Essex County DHS (main)",
-          phone: "(973) 395-8350",
-          tel: "tel:9733958350",
-          note: "CoC lead administrative line."
+          name: "United Way 211",
+          phone: "211",
+          tel: "tel:211",
+          note: "Coordinated entry + shelter while you wait."
         },
       ],
-      extra_note: "\ud83d\udccb Qualifying conditions include physical, mental health, or substance use disorders that substantially affect daily functioning. You don't need a formal diagnosis to be assessed.",
       confidence: {
-        level: "research",
-        note: "Numbers from essexcoc.com, theapostleshouse.org, grmnewark.org. Last reviewed May 2026.",
-        lastChecked: "May 2026"
+        level: "unverified",
+        note: "AI-researched from public sources — not locally phone-verified. Call 211 to confirm the current local provider. Last researched June 14, 2026.",
+        lastChecked: "June 14, 2026"
       }
     },
 
     result_adult: {
       label: "Single Adults Pathway",
       badgeClass: "badge-adult",
-      badgeIcon: "\ud83d\udcde",
-      headline: "Goodwill Rescue Mission Newark serves single adults.",
-      firstAction: "Walk in or call <strong>Goodwill Rescue Mission Newark</strong> at <strong>(973) 621-9560</strong> \u2014 79 University Ave. Faith-based men's emergency shelter, meals, transitional housing. Drop-in 3pm\u20137:30pm.",
-      callNumber: "tel:9736219560",
-      callLabel: "Call Goodwill RM: (973) 621-9560",
-      what_to_expect: "Goodwill Rescue Mission Newark is the long-tenured men's emergency shelter. Salvation Army Newark Ironbound Corps at 21 Clifford St operates community programs. Bridges Outreach runs street outreach 7 nights/week, 365 days/year, serving Essex and Union counties. The Newark Mayor's Office of Homeless Services has a PATH HOME text line at 85511.",
+      badgeIcon: "📞",
+      headline: "Start with tonight’s shelter, then the housing list.",
+      firstAction: "Call or text <strong>211</strong> (or text your ZIP to 898-211) and say: <em>“I need a shelter bed tonight.”</em> Ask for <strong>tonight’s open beds for single adults</strong>, the nearest <strong>daytime drop-in center</strong> (showers, mail, case management), and a <strong>free meal site</strong>. 211 is multilingual and 24/7.",
+      callNumber: "tel:211",
+      callLabel: "Call 211",
+      what_to_expect: "211 has the current shelter-bed picture for your area, which changes daily. Ask them to also start a coordinated-entry assessment so you’re working toward housing, not just tonight.",
       bring: [
         "Photo ID (helpful but not always required)",
         "Social security card or number (if available)",
@@ -836,30 +812,24 @@
       ],
       resources: [
         {
-          name: "Bridges Outreach",
-          phone: "(908) 754-9085",
-          tel: "tel:9087549085",
-          note: "Street outreach 7 nights/week. Project Connect @ St. John's: (973) 723-2307."
-        },
-        {
-          name: "Newark Mayor's Office of Homeless Services",
-          phone: "85511 (text PATH HOME)",
-          tel: "tel:85511",
-          note: "Email: EndHomelessness@ci.newark.nj.us. City general: (973) 733-4311."
-        },
-        {
-          name: "NJ 211",
-          phone: "211",
+          name: "Find a free clinic (FQHC)",
+          phone: "Ask 211",
           tel: "tel:211",
-          note: "Statewide 24/7. Text ZIP to 898-211."
+          note: "Federally Qualified Health Centers treat everyone regardless of ability to pay."
+        },
+        {
+          name: "988 Suicide &amp; Crisis Lifeline",
+          phone: "988",
+          tel: "tel:988",
+          note: "24/7 mental-health support."
         },
       ],
       confidence: {
-        level: "research",
-        note: "Numbers from grmnewark.org, salvationarmyusa.org/nj/newark, bridgesoutreach.org, newarknj.gov. Last reviewed May 2026.",
-        lastChecked: "May 2026"
+        level: "unverified",
+        note: "AI-researched from public sources — not locally phone-verified. Call 211 to confirm the current local provider. Last researched June 14, 2026.",
+        lastChecked: "June 14, 2026"
       }
-    }
+    },
 
   }; // end PATHWAYS
 

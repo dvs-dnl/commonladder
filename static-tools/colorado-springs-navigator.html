@@ -472,7 +472,8 @@
   <strong>Need help right now?</strong>
   <a href="tel:211">Call 211</a><span class="crisis-bar__sep">·</span>
   <a href="sms:741741?body=HOME">Text HOME to 741741</a><span class="crisis-bar__sep">·</span>
-  <a href="tel:988">988 Suicide &amp; Crisis</a>
+  <a href="tel:988">988 Suicide &amp; Crisis</a><span class="crisis-bar__sep">·</span>
+  <a href="tel:18007997233">DV 1-800-799-7233</a>
 </div>
 
 <nav class="nav" aria-label="Primary">
@@ -512,6 +513,8 @@
   </svg>
   <span>common<span class="cl-home__rung">ladder</span></span>
 </a>
+
+<div role="note" style="background:#ffedd5;border:1px solid #9a3412;color:#6b2710;border-radius:10px;padding:14px 18px;margin:0 auto 18px;max-width:680px;font-size:.9rem;line-height:1.5;"><strong style="color:#9a3412;">AI-researched, not locally verified.</strong> Common Ladder is based in Arizona. We built this guide from public sources but don’t yet verify these listings by phone the way we do our Arizona tools. Use it to learn <em>what to ask for</em>, then <strong>call <a href="tel:211" style="color:#9a3412;">211</a></strong> for the current local provider. Last researched <time datetime="2026-06-14">June 14, 2026</time>. Wrong info? <a href="mailto:corrections.commonladder@gmail.com?subject=Resource%20update:%20Colorado%20Springs%20/%20El%20Paso%20County" style="color:#9a3412;">Tell us</a>.</div>
 
 <!-- App shell — all screens rendered by JS into here -->
 <div id="app"></div>
@@ -651,184 +654,157 @@
      Keep firstAction to one clear sentence + phone number.
      resources: 3 is ideal; 2 minimum; 4 maximum.
   ═══════════════════════════════════════════════════════════ */
-  var PATHWAYS = {
+    var PATHWAYS = {
 
     result_veterans: {
       label: "Veterans Pathway",
       badgeClass: "badge-veterans",
-      badgeIcon: "\ud83c\udf96",
-      headline: "There's a dedicated system built for you.",
-      firstAction: "Call <strong>Mt. Carmel Veterans Service Center</strong> at <strong>(719) 772-7000</strong> \u2014 wraparound veteran services: benefits, employment, behavioral health, housing navigation. 530 Communication Cir. Or call <strong>VA Lindstrom Clinic</strong> at <strong>(719) 327-5660</strong>.",
-      callNumber: "tel:7197727000",
-      callLabel: "Call Mt. Carmel: (719) 772-7000",
-      what_to_expect: "PFC Floyd K. Lindstrom VA Clinic (3141 Centennial Blvd) is the primary VA outpatient and entry to HUD-VASH and HCHV. Mt. Carmel offers comprehensive veteran services. VOA Colorado SSVF Southern Colorado at (719) 491-1974 is the active veteran housing pathway (the historic Crawford House closed April 2022).",
+      badgeIcon: "🎖",
+      headline: "There's a dedicated system built for veterans.",
+      firstAction: "Call <strong>211</strong> — free, 24/7 — and say: <em>“I’m a veteran and I’m homeless or about to be.”</em> Ask to be connected to the <strong>VA’s Health Care for Homeless Veterans (HCHV)</strong> program and your local <strong>coordinated-entry assessment</strong>. Veterans qualify for both VA housing (HUD-VASH) and the local Continuum of Care at the same time.",
+      callNumber: "tel:211",
+      callLabel: "Call 211",
+      what_to_expect: "211 will route you to the nearest VA homeless-program coordinator and your local CoC. The National Call Center for Homeless Veterans is available 24/7 anywhere in the U.S. if you can’t reach a local office.",
       bring: [
-        "DD-214 discharge papers (if you have them \u2014 not required to call)",
+        "DD-214 discharge papers (if you have them — not required to call)",
         "Photo ID (if available)",
         "Any VA documentation you have",
       ],
       resources: [
         {
-          name: "VOA Colorado SSVF (Southern Colorado)",
-          phone: "(719) 491-1974",
-          tel: "tel:7194911974",
-          note: "Veteran families rapid rehousing and prevention."
-        },
-        {
           name: "National Call Center for Homeless Veterans",
           phone: "1-877-424-3838",
           tel: "tel:18774243838",
-          note: "24/7."
+          note: "24/7. Available everywhere."
         },
         {
           name: "Veterans Crisis Line",
           phone: "988",
           tel: "tel:988",
-          note: "Press 1 for VA crisis line."
+          note: "Press 1 for the VA crisis line."
         },
       ],
       confidence: {
-        level: "research",
-        note: "Numbers from va.gov/eastern-colorado-health-care, veteranscenter.org, voacolorado.org. Last reviewed June 2026.",
-        lastChecked: "June 2026"
+        level: "unverified",
+        note: "AI-researched from public sources — not locally phone-verified. Call 211 to confirm the current local provider. Last researched June 14, 2026.",
+        lastChecked: "June 14, 2026"
       }
     },
 
     result_youth: {
       label: "Youth Pathway",
       badgeClass: "badge-youth",
-      badgeIcon: "\ud83c\udf31",
-      headline: "The PLACE (Urban Peak Colorado Springs) is the lead youth provider.",
-      firstAction: "Call <strong>The PLACE</strong> at <strong>(719) 630-3223</strong> (M\u2013F 9am\u20135pm) or the <strong>24/7 hotline at (719) 205-7129</strong> \u2014 sole comprehensive shelter/services provider for youth ages 15\u201324 in El Paso & Teller counties. 423 E Cucharras St.",
-      callNumber: "tel:17192057129",
-      callLabel: "Call The PLACE 24/7: (719) 205-7129",
-      what_to_expect: "The PLACE (formerly Urban Peak Colorado Springs) is the dedicated youth shelter/services agency. Hope & Home (719-575-9887) is a foster care/adoption agency at 4945 N 30th St supporting youth aging out and kinship placements. Note: Cheyenne Village serves adults with intellectual/developmental disabilities, NOT homeless youth.",
+      badgeIcon: "🌱",
+      headline: "If you’re 24 or under, there’s a youth-specific path.",
+      firstAction: "Call or text <strong>211</strong> and say: <em>“I’m 24 or younger and I need a safe place to stay.”</em> Ask for the <strong>youth emergency shelter</strong> and the <strong>runaway &amp; homeless youth (RHY) program</strong> in your area.",
+      callNumber: "tel:211",
+      callLabel: "Call 211",
+      what_to_expect: "211 routes you to the nearest youth shelter or drop-in center. The national backstops below are always available, day or night.",
       bring: [
-        "Photo ID (helpful \u2014 not required for crisis services)",
+        "Photo ID (helpful — not required for crisis services)",
         "Anything important you can carry",
-        "Nothing required for 24/7 hotline",
+        "Nothing is required to call",
       ],
       resources: [
         {
-          name: "Hope & Home (foster youth support)",
-          phone: "(719) 575-9887",
-          tel: "tel:7195759887",
-          note: "4945 N 30th St. Foster + adoption agency. Aging-out + kinship."
+          name: "Safe Place",
+          phone: "Text SAFE + your location to 44357",
+          tel: "sms:44357?body=SAFE",
+          note: "Or walk into any QuikTrip and ask staff to call for you."
         },
         {
-          name: "211 Pikes Peak",
-          phone: "211",
-          tel: "tel:211",
-          note: "Or (719) 955-0742. 24/7."
-        },
-        {
-          name: "El Paso County DHS",
-          phone: "(719) 636-0000",
-          tel: "tel:7196360000",
-          note: "1675 W. Garden of the Gods Rd. TANF, child welfare, etc."
+          name: "National Runaway Safeline",
+          phone: "1-800-786-2929",
+          tel: "tel:18007862929",
+          note: "24/7, free, confidential."
         },
       ],
-      extra_note: "\u26a0\ufe0f Under 18? The PLACE 24/7 hotline at (719) 205-7129 is for you.",
       confidence: {
-        level: "research",
-        note: "Numbers from theplacecos.org, hopeandhome.org. Last reviewed June 2026.",
-        lastChecked: "June 2026"
+        level: "unverified",
+        note: "AI-researched from public sources — not locally phone-verified. Call 211 to confirm the current local provider. Last researched June 14, 2026.",
+        lastChecked: "June 14, 2026"
       }
     },
 
     result_families: {
       label: "Families Pathway",
       badgeClass: "badge-families",
-      badgeIcon: "\ud83c\udfe0",
-      headline: "Family Promise and Catholic Charities serve Colorado Springs families.",
-      firstAction: "Call <strong>Family Promise of Colorado Springs</strong> at <strong>(719) 329-1244</strong> \u2014 network of congregations providing emergency shelter and case management for families with children.",
-      callNumber: "tel:7193291244",
-      callLabel: "Call Family Promise: (719) 329-1244",
-      what_to_expect: "Catholic Charities of Central Colorado at 228 N. Cascade Ave provides Family Connections, rent assistance, and Helen Hunt Campus housing for women/families. Springs Rescue Mission partners on family housing referrals (does not operate family shelter on-site) \u2014 refers to Family Promise / Salvation Army RJ Montgomery Center.",
+      badgeIcon: "🏠",
+      headline: "Families are kept together in the shelter system.",
+      firstAction: "Call or text <strong>211</strong> and say: <em>“I have my kids with me and we need shelter tonight.”</em> Ask for <strong>family emergency shelter</strong> and the <strong>coordinated-entry assessment</strong> for rapid re-housing.",
+      callNumber: "tel:211",
+      callLabel: "Call 211",
+      what_to_expect: "211 routes you to family shelter and the local coordinated-entry system. If you are fleeing domestic violence, use the confidential hotline below instead — DV shelter is separate and won’t list your location.",
       bring: [
         "Photo ID for adults (if available)",
-        "Birth certificates for children (helpful but not always required)",
+        "Birth certificates for children (helpful, not always required)",
         "Documentation of income or benefits (if available)",
-        "Social security cards (if you have them)",
       ],
       resources: [
         {
-          name: "Catholic Charities of Central Colorado",
-          phone: "(719) 636-2345",
-          tel: "tel:7196362345",
-          note: "228 N. Cascade Ave. Family Connections, rent assistance, Helen Hunt Campus."
+          name: "National Domestic Violence Hotline",
+          phone: "1-800-799-7233",
+          tel: "tel:18007997233",
+          note: "24/7, confidential. Text START to 88788. Connects you to a local confidential DV shelter."
         },
         {
-          name: "Salvation Army \u2014 RJ Montgomery Center",
-          phone: "(719) 578-9190",
-          tel: "tel:7195789190",
-          note: "709 S. Sierra Madre. Family shelter."
-        },
-        {
-          name: "211 Pikes Peak",
+          name: "United Way 211",
           phone: "211",
           tel: "tel:211",
-          note: "Or (719) 955-0742. 24/7."
+          note: "Family shelter + coordinated entry."
         },
       ],
       confidence: {
-        level: "research",
-        note: "Numbers from familypromisecos.org, ccharitiescc.org, coloradosprings.salvationarmy.org. Last reviewed June 2026.",
-        lastChecked: "June 2026"
+        level: "unverified",
+        note: "AI-researched from public sources — not locally phone-verified. Call 211 to confirm the current local provider. Last researched June 14, 2026.",
+        lastChecked: "June 14, 2026"
       }
     },
 
     result_chronic: {
       label: "Chronic Homelessness Pathway",
       badgeClass: "badge-chronic",
-      badgeIcon: "\ud83d\udd11",
-      headline: "PPCoC Coordinated Entry is the chronic pathway.",
-      firstAction: "Call <strong>PPCoC Coordinated Entry (CHP)</strong> at <strong>(719) 471-2789</strong> \u2014 required entry point for PSH/RRH prioritization. Or dial <strong>211</strong>.",
-      callNumber: "tel:7194712789",
-      callLabel: "Call PPCoC CE: (719) 471-2789",
-      what_to_expect: "Community Health Partnership (CHP) is the CoC lead for the Pikes Peak Continuum of Care at (719) 632-5094. Springs Rescue Mission at 5 W. Las Vegas St is the largest low-barrier shelter in the region with addiction recovery, day services, and resource center. Salvation Army RJ Montgomery Center is the main shelter for men/women/families.",
+      badgeIcon: "🔑",
+      headline: "The housing list starts with one assessment.",
+      firstAction: "Call or text <strong>211</strong> and say: <em>“I’ve been homeless a long time and I want to get on the housing list.”</em> Ask for the <strong>coordinated-entry assessment</strong> — in this system, permanent supportive housing is reached by being assessed and placed on the community housing-referral list. The assessment is the door; there is no separate number.",
+      callNumber: "tel:211",
+      callLabel: "Call 211",
+      what_to_expect: "A coordinated-entry assessor will ask about your situation and add you to the local housing-referral list. While you wait, ask 211 for tonight’s shelter and a daytime drop-in center.",
       bring: [
         "Photo ID (any form)",
-        "Documentation of health conditions (if available \u2014 not required to be assessed)",
+        "Documentation of health conditions (if available — not required to be assessed)",
         "Any records of prior housing or service history",
       ],
       resources: [
         {
-          name: "Springs Rescue Mission",
-          phone: "(719) 632-1822",
-          tel: "tel:7196321822",
-          note: "5 W. Las Vegas St. Largest low-barrier shelter; recovery + day services."
+          name: "988 Suicide &amp; Crisis Lifeline",
+          phone: "988",
+          tel: "tel:988",
+          note: "Behavioral-health crisis support + SOAR disability-benefit help tied to housing."
         },
         {
-          name: "Community Health Partnership (CoC lead)",
-          phone: "(719) 632-5094",
-          tel: "tel:7196325094",
-          note: "PPCoC lead agency."
-        },
-        {
-          name: "Pikes Peak United Way 211",
+          name: "United Way 211",
           phone: "211",
           tel: "tel:211",
-          note: "Or (719) 955-0742. Bilingual 24/7."
+          note: "Coordinated entry + shelter while you wait."
         },
       ],
-      extra_note: "\ud83d\udccb Qualifying conditions include physical, mental health, or substance use disorders that substantially affect daily functioning. You don't need a formal diagnosis to be assessed.",
       confidence: {
-        level: "research",
-        note: "Numbers from ppchp.org, findhelp.org/PPCoC-CE, springsrescuemission.org. Last reviewed June 2026.",
-        lastChecked: "June 2026"
+        level: "unverified",
+        note: "AI-researched from public sources — not locally phone-verified. Call 211 to confirm the current local provider. Last researched June 14, 2026.",
+        lastChecked: "June 14, 2026"
       }
     },
 
     result_adult: {
       label: "Single Adults Pathway",
       badgeClass: "badge-adult",
-      badgeIcon: "\ud83d\udcde",
-      headline: "Springs Rescue Mission is the largest single-adult shelter.",
-      firstAction: "Walk in or call <strong>Springs Rescue Mission</strong> at <strong>(719) 632-1822</strong> \u2014 5 W. Las Vegas St. Primary single-adult shelter, day services, recovery program, meals, resource center.",
-      callNumber: "tel:7196321822",
-      callLabel: "Call Springs Rescue: (719) 632-1822",
-      what_to_expect: "Springs Rescue Mission is the lead single-adult shelter. Salvation Army Colorado Springs Corps at (719) 636-3891 operates the RJ Montgomery Center shelter (709 S. Sierra Madre, 719-578-9190). Catholic Charities Marian House at 14 W Bijou St offers soup kitchen + Hanifen Center day services for single adults.",
+      badgeIcon: "📞",
+      headline: "Start with tonight’s shelter, then the housing list.",
+      firstAction: "Call or text <strong>211</strong> and say: <em>“I need a shelter bed tonight.”</em> Ask for <strong>tonight’s open beds for single adults</strong>, the nearest <strong>daytime drop-in center</strong> (showers, mail, case management), and a <strong>free meal site</strong>. 211 is multilingual and 24/7.",
+      callNumber: "tel:211",
+      callLabel: "Call 211",
+      what_to_expect: "211 has the current shelter-bed picture for your area, which changes daily. Ask them to also start a coordinated-entry assessment so you’re working toward housing, not just tonight.",
       bring: [
         "Photo ID (helpful but not always required)",
         "Social security card or number (if available)",
@@ -836,30 +812,24 @@
       ],
       resources: [
         {
-          name: "Salvation Army CO Springs Corps",
-          phone: "(719) 636-3891",
-          tel: "tel:7196363891",
-          note: "908 Yuma St. RJ Montgomery shelter: (719) 578-9190."
-        },
-        {
-          name: "Catholic Charities \u2014 Marian House",
-          phone: "(719) 475-7314",
-          tel: "tel:7194757314",
-          note: "14 W Bijou St. Soup kitchen + Hanifen Center day services."
-        },
-        {
-          name: "211 Pikes Peak",
-          phone: "211",
+          name: "Find a free clinic (FQHC)",
+          phone: "Ask 211",
           tel: "tel:211",
-          note: "Or (719) 955-0742. 24/7."
+          note: "Federally Qualified Health Centers treat everyone regardless of ability to pay."
+        },
+        {
+          name: "988 Suicide &amp; Crisis Lifeline",
+          phone: "988",
+          tel: "tel:988",
+          note: "24/7 mental-health support."
         },
       ],
       confidence: {
-        level: "research",
-        note: "Numbers from springsrescuemission.org, coloradosprings.salvationarmy.org, ccharitiescc.org. Last reviewed June 2026.",
-        lastChecked: "June 2026"
+        level: "unverified",
+        note: "AI-researched from public sources — not locally phone-verified. Call 211 to confirm the current local provider. Last researched June 14, 2026.",
+        lastChecked: "June 14, 2026"
       }
-    }
+    },
 
   }; // end PATHWAYS
 

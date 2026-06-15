@@ -472,7 +472,8 @@
   <strong>Need help right now?</strong>
   <a href="tel:211">Call 211</a><span class="crisis-bar__sep">·</span>
   <a href="sms:741741?body=HOME">Text HOME to 741741</a><span class="crisis-bar__sep">·</span>
-  <a href="tel:988">988 Suicide &amp; Crisis</a>
+  <a href="tel:988">988 Suicide &amp; Crisis</a><span class="crisis-bar__sep">·</span>
+  <a href="tel:18007997233">DV 1-800-799-7233</a>
 </div>
 
 <nav class="nav" aria-label="Primary">
@@ -512,6 +513,8 @@
   </svg>
   <span>common<span class="cl-home__rung">ladder</span></span>
 </a>
+
+<div role="note" style="background:#ffedd5;border:1px solid #9a3412;color:#6b2710;border-radius:10px;padding:14px 18px;margin:0 auto 18px;max-width:680px;font-size:.9rem;line-height:1.5;"><strong style="color:#9a3412;">AI-researched, not locally verified.</strong> Common Ladder is based in Arizona. We built this guide from public sources but don’t yet verify these listings by phone the way we do our Arizona tools. Use it to learn <em>what to ask for</em>, then <strong>call <a href="tel:211" style="color:#9a3412;">211</a></strong> for the current local provider. Last researched <time datetime="2026-06-14">June 14, 2026</time>. Wrong info? <a href="mailto:corrections.commonladder@gmail.com?subject=Resource%20update:%20Charlotte%20/%20Mecklenburg" style="color:#9a3412;">Tell us</a>.</div>
 
 <!-- App shell — all screens rendered by JS into here -->
 <div id="app"></div>
@@ -651,184 +654,157 @@
      Keep firstAction to one clear sentence + phone number.
      resources: 3 is ideal; 2 minimum; 4 maximum.
   ═══════════════════════════════════════════════════════════ */
-  var PATHWAYS = {
+    var PATHWAYS = {
 
     result_veterans: {
       label: "Veterans Pathway",
       badgeClass: "badge-veterans",
-      badgeIcon: "\ud83c\udf96",
-      headline: "There's a dedicated system built for you.",
-      firstAction: "Call <strong>Veterans Bridge Home</strong> at <strong>1-866-249-6656</strong> \u2014 Charlotte-based veteran case management, housing navigation, and peer support. Or call <strong>W.G. Bill Hefner VAMC (Salisbury)</strong> at <strong>(704) 638-9000</strong> \u2014 the parent VA hospital for Charlotte clinics.",
-      callNumber: "tel:18662496656",
-      callLabel: "Call Veterans Bridge Home: 1-866-249-6656",
-      what_to_expect: "W.G. Bill Hefner VAMC (Salisbury) operates HUD-VASH and HCHV through its North Charlotte VA Clinic. Veterans Bridge Home is the lead Charlotte veteran resource hub. Mecklenburg County Veterans Services provides benefits/claims at (704) 336-2102 with walk-ins at Valerie C. Woodard and Ella B. Scarborough centers.",
+      badgeIcon: "🎖",
+      headline: "There's a dedicated system built for veterans.",
+      firstAction: "Call <strong>211</strong> — free, 24/7 — and say: <em>“I’m a veteran and I’m homeless or about to be.”</em> Ask to be connected to the <strong>VA’s Health Care for Homeless Veterans (HCHV)</strong> program and your local <strong>coordinated-entry assessment</strong>. Veterans qualify for both VA housing (HUD-VASH) and the local Continuum of Care at the same time.",
+      callNumber: "tel:211",
+      callLabel: "Call 211",
+      what_to_expect: "211 will route you to the nearest VA homeless-program coordinator and your local CoC. The National Call Center for Homeless Veterans is available 24/7 anywhere in the U.S. if you can’t reach a local office.",
       bring: [
-        "DD-214 discharge papers (if you have them \u2014 not required to call)",
+        "DD-214 discharge papers (if you have them — not required to call)",
         "Photo ID (if available)",
         "Any VA documentation you have",
       ],
       resources: [
-        {
-          name: "North Charlotte VA Clinic (CBOC)",
-          phone: "(704) 597-3500",
-          tel: "tel:7045973500",
-          note: "8601 University East Dr, Charlotte 28213."
-        },
-        {
-          name: "Mecklenburg County Veterans Services",
-          phone: "(704) 336-2102",
-          tel: "tel:7043362102",
-          note: "County benefits/claims. Walk-ins at Valerie C. Woodard & Ella B. Scarborough centers."
-        },
         {
           name: "National Call Center for Homeless Veterans",
           phone: "1-877-424-3838",
           tel: "tel:18774243838",
           note: "24/7. Available everywhere."
         },
+        {
+          name: "Veterans Crisis Line",
+          phone: "988",
+          tel: "tel:988",
+          note: "Press 1 for the VA crisis line."
+        },
       ],
       confidence: {
-        level: "research",
-        note: "Numbers from va.gov/salisbury-health-care, veteransbridgehome.org, css.mecknc.gov. Last reviewed June 2026.",
-        lastChecked: "June 2026"
+        level: "unverified",
+        note: "AI-researched from public sources — not locally phone-verified. Call 211 to confirm the current local provider. Last researched June 14, 2026.",
+        lastChecked: "June 14, 2026"
       }
     },
 
     result_youth: {
       label: "Youth Pathway",
       badgeClass: "badge-youth",
-      badgeIcon: "\ud83c\udf31",
-      headline: "Time Out Youth and Anuvia serve Charlotte youth.",
-      firstAction: "Call <strong>Time Out Youth</strong> at <strong>(704) 344-8335</strong> \u2014 LGBTQIA+ youth center at 3800 Monroe Rd, M\u2013F 9am\u20135pm. For substance use/mental health, call <strong>Anuvia Prevention & Recovery</strong> at <strong>(704) 376-7447</strong>.",
-      callNumber: "tel:7043448335",
-      callLabel: "Call Time Out Youth: (704) 344-8335",
-      what_to_expect: "Time Out Youth provides LGBTQIA+ youth services. Anuvia Prevention & Recovery (100 Billingsley Rd) offers substance use treatment including child and adolescent mental health services. Promise Resource Network is a peer-run mental health and recovery org serving transition-age youth via the 1-855-PEERS-NC line.",
+      badgeIcon: "🌱",
+      headline: "If you’re 24 or under, there’s a youth-specific path.",
+      firstAction: "Call or text <strong>211</strong> and say: <em>“I’m 24 or younger and I need a safe place to stay.”</em> Ask for the <strong>youth emergency shelter</strong> and the <strong>runaway &amp; homeless youth (RHY) program</strong> in your area.",
+      callNumber: "tel:211",
+      callLabel: "Call 211",
+      what_to_expect: "211 routes you to the nearest youth shelter or drop-in center. The national backstops below are always available, day or night.",
       bring: [
-        "Photo ID (helpful \u2014 not required for drop-in)",
+        "Photo ID (helpful — not required for crisis services)",
         "Anything important you can carry",
-        "Nothing required to call",
+        "Nothing is required to call",
       ],
       resources: [
         {
-          name: "Promise Resource Network",
-          phone: "1-855-733-7762",
-          tel: "tel:18557337762",
-          note: "1-855-PEERS-NC. Peer-run mental health/recovery."
+          name: "Safe Place",
+          phone: "Text SAFE + your location to 44357",
+          tel: "sms:44357?body=SAFE",
+          note: "Or walk into any QuikTrip and ask staff to call for you."
         },
         {
-          name: "Roof Above (24/7 access)",
-          phone: "(704) 284-9665",
-          tel: "tel:7042849665",
-          note: "Front door to Coordinated Entry."
-        },
-        {
-          name: "NC 211",
-          phone: "211",
-          tel: "tel:211",
-          note: "Or 1-888-892-1162. 24/7."
+          name: "National Runaway Safeline",
+          phone: "1-800-786-2929",
+          tel: "tel:18007862929",
+          note: "24/7, free, confidential."
         },
       ],
-      extra_note: "\u26a0\ufe0f Under 18? Call NC 211 \u2014 they can route you to age-appropriate services.",
       confidence: {
-        level: "research",
-        note: "Numbers from timeoutyouth.org, anuvia.org, cit.mecknc.gov. Last reviewed June 2026.",
-        lastChecked: "June 2026"
+        level: "unverified",
+        note: "AI-researched from public sources — not locally phone-verified. Call 211 to confirm the current local provider. Last researched June 14, 2026.",
+        lastChecked: "June 14, 2026"
       }
     },
 
     result_families: {
       label: "Families Pathway",
       badgeClass: "badge-families",
-      badgeIcon: "\ud83c\udfe0",
-      headline: "Salvation Army Center of Hope is the women & children shelter.",
-      firstAction: "Call <strong>Salvation Army Center of Hope</strong> at <strong>(704) 348-2560</strong> \u2014 534 Spratt St, Charlotte 28206. Women & children shelter; also a Coordinated Entry access point.",
-      callNumber: "tel:7043482560",
-      callLabel: "Call Center of Hope: (704) 348-2560",
-      what_to_expect: "Salvation Army Center of Hope is both a women & children shelter and a CES Access Point. Crisis Assistance Ministry at 500-A Spratt St provides emergency financial assistance and eviction prevention. Florence Crittenton Services of NC runs a maternity program, Sarah's House (mother/child), and Legacy Hall independent living.",
+      badgeIcon: "🏠",
+      headline: "Families are kept together in the shelter system.",
+      firstAction: "Call or text <strong>211</strong> and say: <em>“I have my kids with me and we need shelter tonight.”</em> Ask for <strong>family emergency shelter</strong> and the <strong>coordinated-entry assessment</strong> for rapid re-housing.",
+      callNumber: "tel:211",
+      callLabel: "Call 211",
+      what_to_expect: "211 routes you to family shelter and the local coordinated-entry system. If you are fleeing domestic violence, use the confidential hotline below instead — DV shelter is separate and won’t list your location.",
       bring: [
         "Photo ID for adults (if available)",
-        "Birth certificates for children (helpful but not always required)",
+        "Birth certificates for children (helpful, not always required)",
         "Documentation of income or benefits (if available)",
-        "Social security cards (if you have them)",
       ],
       resources: [
         {
-          name: "Crisis Assistance Ministry",
-          phone: "(704) 371-3001",
-          tel: "tel:7043713001",
-          note: "500-A Spratt St. Emergency financial assistance, eviction prevention."
+          name: "National Domestic Violence Hotline",
+          phone: "1-800-799-7233",
+          tel: "tel:18007997233",
+          note: "24/7, confidential. Text START to 88788. Connects you to a local confidential DV shelter."
         },
         {
-          name: "Florence Crittenton Services of NC",
-          phone: "(704) 372-4663",
-          tel: "tel:7043724663",
-          note: "Maternity, Sarah's House, Legacy Hall."
-        },
-        {
-          name: "Charlotte Family Housing",
-          phone: "(704) 335-5488",
-          tel: "tel:7043355488",
-          note: "300 Hawthorne Ln, 3rd Fl. Shelter-to-housing for families with children."
+          name: "United Way 211",
+          phone: "211",
+          tel: "tel:211",
+          note: "Family shelter + coordinated entry."
         },
       ],
       confidence: {
-        level: "research",
-        note: "Numbers from cit.mecknc.gov, crisisassistance.org, fcsnc.org, charlottefamilyhousing.org. Last reviewed June 2026.",
-        lastChecked: "June 2026"
+        level: "unverified",
+        note: "AI-researched from public sources — not locally phone-verified. Call 211 to confirm the current local provider. Last researched June 14, 2026.",
+        lastChecked: "June 14, 2026"
       }
     },
 
     result_chronic: {
       label: "Chronic Homelessness Pathway",
       badgeClass: "badge-chronic",
-      badgeIcon: "\ud83d\udd11",
-      headline: "Roof Above is the unified Coordinated Entry & adult shelter system.",
-      firstAction: "Call <strong>Roof Above</strong> at <strong>(704) 284-9665</strong> \u2014 24/7 telephone assessment, the front door to Coordinated Entry for Mecklenburg County. Or walk in to the Day Services Center at 945 N College St (sign-ups M\u2013W 8:30am & 1:30pm).",
-      callNumber: "tel:7042849665",
-      callLabel: "Call Roof Above: (704) 284-9665",
-      what_to_expect: "Roof Above was formed by the 2020 merger of Men's Shelter of Charlotte and Urban Ministry Center. They operate the Day Services Center (945 N College St) and the Tryon Street Campus (1210 N Tryon). Mecklenburg County CSS administers the CoC. Charlotte Family Housing supports families with children moving from shelter to housing.",
+      badgeIcon: "🔑",
+      headline: "The housing list starts with one assessment.",
+      firstAction: "Call or text <strong>211</strong> and say: <em>“I’ve been homeless a long time and I want to get on the housing list.”</em> Ask for the <strong>coordinated-entry assessment</strong> — in this system, permanent supportive housing is reached by being assessed and placed on the community housing-referral list. The assessment is the door; there is no separate number.",
+      callNumber: "tel:211",
+      callLabel: "Call 211",
+      what_to_expect: "A coordinated-entry assessor will ask about your situation and add you to the local housing-referral list. While you wait, ask 211 for tonight’s shelter and a daytime drop-in center.",
       bring: [
         "Photo ID (any form)",
-        "Documentation of health conditions (if available \u2014 not required to be assessed)",
+        "Documentation of health conditions (if available — not required to be assessed)",
         "Any records of prior housing or service history",
       ],
       resources: [
         {
-          name: "Roof Above \u2014 Tryon Street Campus",
-          phone: "(704) 284-9665",
-          tel: "tel:7042849665",
-          note: "1210 N Tryon St. M\u2013F 8am\u20134pm."
+          name: "988 Suicide &amp; Crisis Lifeline",
+          phone: "988",
+          tel: "tel:988",
+          note: "Behavioral-health crisis support + SOAR disability-benefit help tied to housing."
         },
         {
-          name: "Mecklenburg County CSS \u2014 Coordinated Entry",
-          phone: "(704) 284-9665",
-          tel: "tel:7042849665",
-          note: "Same line \u2014 county is lead agency."
-        },
-        {
-          name: "NC 211",
+          name: "United Way 211",
           phone: "211",
           tel: "tel:211",
-          note: "Or 1-888-892-1162. 24/7."
+          note: "Coordinated entry + shelter while you wait."
         },
       ],
-      extra_note: "\ud83d\udccb Qualifying conditions include physical, mental health, or substance use disorders that substantially affect daily functioning. You don't need a formal diagnosis to be assessed.",
       confidence: {
-        level: "research",
-        note: "Numbers from roofabove.org, css.mecknc.gov. Last reviewed June 2026.",
-        lastChecked: "June 2026"
+        level: "unverified",
+        note: "AI-researched from public sources — not locally phone-verified. Call 211 to confirm the current local provider. Last researched June 14, 2026.",
+        lastChecked: "June 14, 2026"
       }
     },
 
     result_adult: {
       label: "Single Adults Pathway",
       badgeClass: "badge-adult",
-      badgeIcon: "\ud83d\udcde",
-      headline: "Roof Above is the primary single-adult shelter system.",
-      firstAction: "Call <strong>Roof Above</strong> at <strong>(704) 284-9665</strong> \u2014 primary single-adult shelter access. Or call <strong>Charlotte Rescue Mission</strong> at <strong>(704) 333-4673</strong> for long-term recovery programs (men ext. 501, women ext. 502).",
-      callNumber: "tel:7042849665",
-      callLabel: "Call Roof Above: (704) 284-9665",
-      what_to_expect: "Roof Above operates the largest adult shelter system in Charlotte. Charlotte Rescue Mission runs long-term recovery programs at 915 W. 1st St (men) and Dove's Nest at 2855 West Blvd (women). Salvation Army Center of Hope is also a CES access point for single women.",
+      badgeIcon: "📞",
+      headline: "Start with tonight’s shelter, then the housing list.",
+      firstAction: "Call or text <strong>211</strong> and say: <em>“I need a shelter bed tonight.”</em> Ask for <strong>tonight’s open beds for single adults</strong>, the nearest <strong>daytime drop-in center</strong> (showers, mail, case management), and a <strong>free meal site</strong>. 211 is multilingual and 24/7.",
+      callNumber: "tel:211",
+      callLabel: "Call 211",
+      what_to_expect: "211 has the current shelter-bed picture for your area, which changes daily. Ask them to also start a coordinated-entry assessment so you’re working toward housing, not just tonight.",
       bring: [
         "Photo ID (helpful but not always required)",
         "Social security card or number (if available)",
@@ -836,30 +812,24 @@
       ],
       resources: [
         {
-          name: "Charlotte Rescue Mission \u2014 Men's Recovery",
-          phone: "(704) 333-4673",
-          tel: "tel:7043334673",
-          note: "Ext. 501. 915 W. 1st St."
-        },
-        {
-          name: "Charlotte Rescue Mission \u2014 Dove's Nest (women)",
-          phone: "(704) 333-4673",
-          tel: "tel:7043334673",
-          note: "Ext. 502. 2855 West Blvd."
-        },
-        {
-          name: "NC 211",
-          phone: "211",
+          name: "Find a free clinic (FQHC)",
+          phone: "Ask 211",
           tel: "tel:211",
-          note: "Or 1-888-892-1162. 24/7."
+          note: "Federally Qualified Health Centers treat everyone regardless of ability to pay."
+        },
+        {
+          name: "988 Suicide &amp; Crisis Lifeline",
+          phone: "988",
+          tel: "tel:988",
+          note: "24/7 mental-health support."
         },
       ],
       confidence: {
-        level: "research",
-        note: "Numbers from roofabove.org, charlotterescuemission.org, cit.mecknc.gov. Last reviewed June 2026.",
-        lastChecked: "June 2026"
+        level: "unverified",
+        note: "AI-researched from public sources — not locally phone-verified. Call 211 to confirm the current local provider. Last researched June 14, 2026.",
+        lastChecked: "June 14, 2026"
       }
-    }
+    },
 
   }; // end PATHWAYS
 

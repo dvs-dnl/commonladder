@@ -468,7 +468,8 @@ html,body{overflow-x:hidden;max-width:100%;}
   <strong>Need help right now?</strong>
   <a href="tel:211">Call 211</a><span class="crisis-bar__sep">·</span>
   <a href="sms:741741?body=HOME">Text HOME to 741741</a><span class="crisis-bar__sep">·</span>
-  <a href="tel:988">988 Suicide &amp; Crisis</a>
+  <a href="tel:988">988 Suicide &amp; Crisis</a><span class="crisis-bar__sep">·</span>
+  <a href="tel:18007997233">DV 1-800-799-7233</a>
 </div>
 <nav class="nav" aria-label="Primary">
   <div class="nav__inner">
@@ -506,6 +507,8 @@ html,body{overflow-x:hidden;max-width:100%;}
   </svg>
   <span>common<span class="cl-home__rung">ladder</span></span>
 </a>
+
+<div role="note" style="background:#ffedd5;border:1px solid #9a3412;color:#6b2710;border-radius:10px;padding:14px 18px;margin:0 auto 18px;max-width:680px;font-size:.9rem;line-height:1.5;"><strong style="color:#9a3412;">AI-researched, not locally verified.</strong> Common Ladder is based in Arizona. We built this guide from public sources but don’t yet verify these listings by phone the way we do our Arizona tools. Use it to learn <em>what to ask for</em>, then <strong>call <a href="tel:211" style="color:#9a3412;">211</a></strong> for the current local provider. Last researched <time datetime="2026-06-14">June 14, 2026</time>. Wrong info? <a href="mailto:corrections.commonladder@gmail.com?subject=Resource%20update:%20St.%20Louis%20County" style="color:#9a3412;">Tell us</a>.</div>
 
 <!-- App shell — all screens rendered by JS into here -->
 <div id="app"></div>
@@ -645,17 +648,17 @@ html,body{overflow-x:hidden;max-width:100%;}
      Keep firstAction to one clear sentence + phone number.
      resources: 3 is ideal; 2 minimum; 4 maximum.
   ═══════════════════════════════════════════════════════════ */
-  var PATHWAYS = {
+    var PATHWAYS = {
 
     result_veterans: {
       label: "Veterans Pathway",
       badgeClass: "badge-veterans",
       badgeIcon: "🎖",
-      headline: "There's a dedicated system built for you.",
-      firstAction: "Call the <strong>National Call Center for Homeless Veterans</strong> at <strong>1-877-424-3838</strong> (24/7). Or call <strong>VA St. Louis HCHV intake</strong> at <strong>(314) 652-4100, ext. 55460</strong> — the VA's homeless veteran care team at Jefferson Barracks &amp; John Cochran.",
-      callNumber: "tel:18774243838",
-      callLabel: "Call VA Homeless: 1-877-424-3838",
-      what_to_expect: "VA St. Louis Health Care System runs HCHV (Health Care for Homeless Veterans) and HUD-VASH for the St. Louis metro. St. Patrick Center is the regional SSVF (Supportive Services for Veteran Families) grantee covering both St. Louis County and St. Louis City — rapid re-housing, prevention, case management. You do not need to be enrolled in VA care to call the National Call Center.",
+      headline: "There's a dedicated system built for veterans.",
+      firstAction: "Call <strong>211</strong> — free, 24/7 — and say: <em>“I’m a veteran and I’m homeless or about to be.”</em> Ask to be connected to the <strong>VA’s Health Care for Homeless Veterans (HCHV)</strong> program and your local <strong>coordinated-entry assessment</strong>. Veterans qualify for both VA housing (HUD-VASH) and the local Continuum of Care at the same time.",
+      callNumber: "tel:211",
+      callLabel: "Call 211",
+      what_to_expect: "211 will route you to the nearest VA homeless-program coordinator and your local CoC. The National Call Center for Homeless Veterans is available 24/7 anywhere in the U.S. if you can’t reach a local office.",
       bring: [
         "DD-214 discharge papers (if you have them — not required to call)",
         "Photo ID (if available)",
@@ -663,28 +666,22 @@ html,body{overflow-x:hidden;max-width:100%;}
       ],
       resources: [
         {
-          name: "VA St. Louis HCHV",
-          phone: "(314) 652-4100 ext. 55460",
-          tel: "tel:3146524100",
-          note: "Jefferson Barracks &amp; John Cochran. VA homeless veteran care team."
+          name: "National Call Center for Homeless Veterans",
+          phone: "1-877-424-3838",
+          tel: "tel:18774243838",
+          note: "24/7. Available everywhere."
         },
         {
-          name: "St. Patrick Center SSVF",
-          phone: "(314) 356-0657",
-          tel: "tel:3143560657",
-          note: "SSVF grantee for St. Louis County, City, and surrounding counties."
-        },
-        {
-          name: "Veterans Crisis Line / 988",
+          name: "Veterans Crisis Line",
           phone: "988",
           tel: "tel:988",
-          note: "Press 1. 24/7 confidential crisis support for any veteran."
+          note: "Press 1 for the VA crisis line."
         },
       ],
       confidence: {
-        level: "research",
-        note: "Numbers from va.gov/st-louis-health-care/health-services/homeless-veteran-care, stpatrickcenter.org/contact, va.gov/homeless/nationalcallcenter. Last reviewed May 2026.",
-        lastChecked: "May 2026"
+        level: "unverified",
+        note: "AI-researched from public sources — not locally phone-verified. Call 211 to confirm the current local provider. Last researched June 14, 2026.",
+        lastChecked: "June 14, 2026"
       }
     },
 
@@ -692,41 +689,34 @@ html,body{overflow-x:hidden;max-width:100%;}
       label: "Youth Pathway",
       badgeClass: "badge-youth",
       badgeIcon: "🌱",
-      headline: "Covenant House Missouri is the 24/7 emergency shelter for youth 16–24.",
-      firstAction: "Call <strong>Covenant House Missouri</strong> at <strong>(314) 533-2241</strong> (24/7) — 2727 N. Kingshighway Blvd., St. Louis. Emergency shelter, transitional housing, and trafficking response for youth ages 16–24. Or call the <strong>National Runaway Safeline</strong> at <strong>1-800-786-2929</strong> (24/7).",
-      callNumber: "tel:3145332241",
-      callLabel: "Call Covenant House MO: (314) 533-2241",
-      what_to_expect: "Covenant House Missouri is the primary unaccompanied-youth shelter for the St. Louis metro, serving both County and City referrals. Epworth runs a drop-in center and 24/7 helpline for youth 11–20 in north St. Louis County (Normandy). Youth In Need covers St. Charles County and takes referrals from west County. The National Runaway Safeline can arrange Home Free bus tickets for youth 12–21.",
+      headline: "If you’re 24 or under, there’s a youth-specific path.",
+      firstAction: "Call or text <strong>211</strong> and say: <em>“I’m 24 or younger and I need a safe place to stay.”</em> Ask for the <strong>youth emergency shelter</strong> and the <strong>runaway &amp; homeless youth (RHY) program</strong> in your area.",
+      callNumber: "tel:211",
+      callLabel: "Call 211",
+      what_to_expect: "211 routes you to the nearest youth shelter or drop-in center. The national backstops below are always available, day or night.",
       bring: [
         "Photo ID (helpful — not required for crisis services)",
         "Anything important you can carry",
-        "Nothing required to call the crisis line",
+        "Nothing is required to call",
       ],
       resources: [
         {
-          name: "Epworth 24/7 Helpline",
-          phone: "1-800-899-5437",
-          tel: "tel:18008995437",
-          note: "Plus drop-in center 7520 Natural Bridge Rd, Normandy. Youth 11–20."
-        },
-        {
-          name: "Youth In Need 24-Hour Help",
-          phone: "(636) 946-5600",
-          tel: "tel:6369465600",
-          note: "St. Charles-based, takes referrals from St. Louis County. Ages 10–18."
+          name: "Safe Place",
+          phone: "Text SAFE + your location to 44357",
+          tel: "sms:44357?body=SAFE",
+          note: "Or walk into any QuikTrip and ask staff to call for you."
         },
         {
           name: "National Runaway Safeline",
           phone: "1-800-786-2929",
           tel: "tel:18007862929",
-          note: "24/7 federal RHY hotline. Call or text. Home Free bus tickets."
+          note: "24/7, free, confidential."
         },
       ],
-      extra_note: "⚠️ Under 18? Covenant House and Epworth both know local rules about unaccompanied minors. They will help.",
       confidence: {
-        level: "research",
-        note: "Numbers from covenanthousemo.org, epworth.org/services/epworth-drop-in-center, youthinneed.org, 1800runaway.org. Last reviewed May 2026.",
-        lastChecked: "May 2026"
+        level: "unverified",
+        note: "AI-researched from public sources — not locally phone-verified. Call 211 to confirm the current local provider. Last researched June 14, 2026.",
+        lastChecked: "June 14, 2026"
       }
     },
 
@@ -734,41 +724,34 @@ html,body{overflow-x:hidden;max-width:100%;}
       label: "Families Pathway",
       badgeClass: "badge-families",
       badgeIcon: "🏠",
-      headline: "211 is the front door for shelter and housing in St. Louis County.",
-      firstAction: "Dial <strong>2-1-1</strong> (or <strong>1-800-427-4626</strong>) — United Way 211 is the St. Louis County CoC's official Coordinated Entry access point. Free, 24/7, multilingual. Ask for shelter or housing placement for a family.",
+      headline: "Families are kept together in the shelter system.",
+      firstAction: "Call or text <strong>211</strong> and say: <em>“I have my kids with me and we need shelter tonight.”</em> Ask for <strong>family emergency shelter</strong> and the <strong>coordinated-entry assessment</strong> for rapid re-housing.",
       callNumber: "tel:211",
-      callLabel: "Call 211 (United Way)",
-      what_to_expect: "St. Louis County's CoC (MO-501) designates 211 as the single front door for anyone trying to access shelter or housing. Salvation Army Family Haven on West Page Ave is a 74-bed transitional family shelter physically located in the County. Our Lady's Inn serves pregnant women and their children. Safe Connections and ALIVE run 24/7 DV crisis lines that route survivors to confidential emergency shelter.",
+      callLabel: "Call 211",
+      what_to_expect: "211 routes you to family shelter and the local coordinated-entry system. If you are fleeing domestic violence, use the confidential hotline below instead — DV shelter is separate and won’t list your location.",
       bring: [
         "Photo ID for adults (if available)",
-        "Birth certificates for children (helpful but not always required)",
+        "Birth certificates for children (helpful, not always required)",
         "Documentation of income or benefits (if available)",
-        "Social security cards (if you have them)",
       ],
       resources: [
         {
-          name: "Salvation Army Family Haven",
-          phone: "(314) 423-7770",
-          tel: "tel:3144237770",
-          note: "10740 W. Page Ave, 63132. 74-bed transitional family shelter — in the County."
+          name: "National Domestic Violence Hotline",
+          phone: "1-800-799-7233",
+          tel: "tel:18007997233",
+          note: "24/7, confidential. Text START to 88788. Connects you to a local confidential DV shelter."
         },
         {
-          name: "Our Lady's Inn (St. Louis)",
-          phone: "(314) 351-4590",
-          tel: "tel:3143514590",
-          note: "Maternity home + shelter for pregnant women and their children, 24/7."
-        },
-        {
-          name: "Safe Connections (DV crisis)",
-          phone: "(314) 531-2003",
-          tel: "tel:3145312003",
-          note: "24/7 DV helpline. Call or text. Regional DV shelter referrals."
+          name: "United Way 211",
+          phone: "211",
+          tel: "tel:211",
+          note: "Family shelter + coordinated entry."
         },
       ],
       confidence: {
-        level: "research",
-        note: "Numbers from stlcountycoc.com/coordinated-entry, salvationarmyusa.org/mo/saint-louis/west-page-avenue, ourladysinn.org/need-help, safeconnections.org. Last reviewed May 2026.",
-        lastChecked: "May 2026"
+        level: "unverified",
+        note: "AI-researched from public sources — not locally phone-verified. Call 211 to confirm the current local provider. Last researched June 14, 2026.",
+        lastChecked: "June 14, 2026"
       }
     },
 
@@ -776,11 +759,11 @@ html,body{overflow-x:hidden;max-width:100%;}
       label: "Chronic Homelessness Pathway",
       badgeClass: "badge-chronic",
       badgeIcon: "🔑",
-      headline: "211 + Behavioral Health Response coordinate PSH and crisis outreach.",
-      firstAction: "Dial <strong>2-1-1</strong> (or <strong>1-800-427-4626</strong>) for Coordinated Entry intake. For mental health or substance use crisis, call <strong>Behavioral Health Response</strong> at <strong>1-800-811-4760</strong> (24/7) — mobile crisis and telehealth across Eastern Missouri.",
+      headline: "The housing list starts with one assessment.",
+      firstAction: "Call or text <strong>211</strong> and say: <em>“I’ve been homeless a long time and I want to get on the housing list.”</em> Ask for the <strong>coordinated-entry assessment</strong> — in this system, permanent supportive housing is reached by being assessed and placed on the community housing-referral list. The assessment is the door; there is no separate number.",
       callNumber: "tel:211",
-      callLabel: "Call 211 (United Way)",
-      what_to_expect: "St. Louis County CoC routes Permanent Supportive Housing referrals through 211 + the County's Homeless Services Program. BHR runs the regional 24/7 behavioral health crisis line — mobile crisis dispatch, telehealth, and outreach. Places for People offers behavioral health, substance-use, and supportive case management (no shelter — refers to 211). Independence Center runs Clubhouse-model supportive housing for adults with serious mental illness.",
+      callLabel: "Call 211",
+      what_to_expect: "A coordinated-entry assessor will ask about your situation and add you to the local housing-referral list. While you wait, ask 211 for tonight’s shelter and a daytime drop-in center.",
       bring: [
         "Photo ID (any form)",
         "Documentation of health conditions (if available — not required to be assessed)",
@@ -788,29 +771,22 @@ html,body{overflow-x:hidden;max-width:100%;}
       ],
       resources: [
         {
-          name: "Behavioral Health Response",
-          phone: "1-800-811-4760",
-          tel: "tel:18008114760",
-          note: "24/7 regional crisis line. Mobile crisis + telehealth. Also dial 988."
+          name: "988 Suicide &amp; Crisis Lifeline",
+          phone: "988",
+          tel: "tel:988",
+          note: "Behavioral-health crisis support + SOAR disability-benefit help tied to housing."
         },
         {
-          name: "Places for People",
-          phone: "(314) 535-5600",
-          tel: "tel:3145355600",
-          note: "1001 Lynch St. Behavioral health + supportive case management."
-        },
-        {
-          name: "Independence Center",
-          phone: "(314) 533-4245",
-          tel: "tel:3145334245",
-          note: "Clubhouse + supported housing for adults with serious mental illness."
+          name: "United Way 211",
+          phone: "211",
+          tel: "tel:211",
+          note: "Coordinated entry + shelter while you wait."
         },
       ],
-      extra_note: "📋 Qualifying conditions include physical, mental health, or substance use disorders that substantially affect daily functioning. You don't need a formal diagnosis to be assessed.",
       confidence: {
-        level: "research",
-        note: "Numbers from stlcountycoc.com/coordinated-entry, stlouiscountymo.gov mental-health-centers page, placesforpeople.org/contact-us, independencecenter.org/our-programs/housing, 988lifeline.org. Last reviewed May 2026.",
-        lastChecked: "May 2026"
+        level: "unverified",
+        note: "AI-researched from public sources — not locally phone-verified. Call 211 to confirm the current local provider. Last researched June 14, 2026.",
+        lastChecked: "June 14, 2026"
       }
     },
 
@@ -818,11 +794,11 @@ html,body{overflow-x:hidden;max-width:100%;}
       label: "Single Adults Pathway",
       badgeClass: "badge-adult",
       badgeIcon: "📞",
-      headline: "Peter &amp; Paul + St. Patrick Center are the main adult intakes.",
-      firstAction: "Call <strong>Peter &amp; Paul Community Services</strong> at <strong>(314) 588-7111</strong> — year-round emergency shelter for single adult men (Soulard / Jugan Shelter). Or walk in to the <strong>St. Patrick Center Welcome Center</strong>, 800 N. Tucker Blvd., at <strong>(314) 802-0700</strong> — intake at 8 AM and 1 PM Mon–Fri.",
-      callNumber: "tel:3145887111",
-      callLabel: "Call Peter & Paul: (314) 588-7111",
-      what_to_expect: "St. Louis County CoC routes single-adult shelter intake through 211 + the Welcome Center model. Peter &amp; Paul runs year-round men's shelter, Positive Directions (HIV/AIDS), and Garfield Place (SMI supportive housing). St. Patrick Center is the metro's largest adult intake / day-services point. Sts. Joachim &amp; Ann Care Service covers western County residents and the St. Charles / Lincoln / Warren tri-county.",
+      headline: "Start with tonight’s shelter, then the housing list.",
+      firstAction: "Call or text <strong>211</strong> and say: <em>“I need a shelter bed tonight.”</em> Ask for <strong>tonight’s open beds for single adults</strong>, the nearest <strong>daytime drop-in center</strong> (showers, mail, case management), and a <strong>free meal site</strong>. 211 is multilingual and 24/7.",
+      callNumber: "tel:211",
+      callLabel: "Call 211",
+      what_to_expect: "211 has the current shelter-bed picture for your area, which changes daily. Ask them to also start a coordinated-entry assessment so you’re working toward housing, not just tonight.",
       bring: [
         "Photo ID (helpful but not always required)",
         "Social security card or number (if available)",
@@ -830,30 +806,24 @@ html,body{overflow-x:hidden;max-width:100%;}
       ],
       resources: [
         {
-          name: "St. Patrick Center Welcome Center",
-          phone: "(314) 802-0700",
-          tel: "tel:3148020700",
-          note: "800 N. Tucker Blvd. Walk-in Mon–Fri 8 AM &amp; 1 PM. Largest adult intake."
-        },
-        {
-          name: "Sts. Joachim &amp; Ann Care Service",
-          phone: "(636) 441-1302",
-          tel: "tel:6364411302",
-          note: "St. Charles-based — covers west County + tri-county region."
-        },
-        {
-          name: "211 (CES intake)",
-          phone: "211",
+          name: "Find a free clinic (FQHC)",
+          phone: "Ask 211",
           tel: "tel:211",
-          note: "Or 1-800-427-4626. Required Coordinated Entry call for shelter."
+          note: "Federally Qualified Health Centers treat everyone regardless of ability to pay."
+        },
+        {
+          name: "988 Suicide &amp; Crisis Lifeline",
+          phone: "988",
+          tel: "tel:988",
+          note: "24/7 mental-health support."
         },
       ],
       confidence: {
-        level: "research",
-        note: "Numbers from ppcsinc.org, stpatrickcenter.org/get-help, jacares.org, stlcountycoc.com/coordinated-entry. Last reviewed May 2026.",
-        lastChecked: "May 2026"
+        level: "unverified",
+        note: "AI-researched from public sources — not locally phone-verified. Call 211 to confirm the current local provider. Last researched June 14, 2026.",
+        lastChecked: "June 14, 2026"
       }
-    }
+    },
 
   }; // end PATHWAYS
 

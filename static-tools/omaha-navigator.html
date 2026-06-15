@@ -472,7 +472,8 @@
   <strong>Need help right now?</strong>
   <a href="tel:211">Call 211</a><span class="crisis-bar__sep">·</span>
   <a href="sms:741741?body=HOME">Text HOME to 741741</a><span class="crisis-bar__sep">·</span>
-  <a href="tel:988">988 Suicide &amp; Crisis</a>
+  <a href="tel:988">988 Suicide &amp; Crisis</a><span class="crisis-bar__sep">·</span>
+  <a href="tel:18007997233">DV 1-800-799-7233</a>
 </div>
 
 <nav class="nav" aria-label="Primary">
@@ -512,6 +513,8 @@
   </svg>
   <span>common<span class="cl-home__rung">ladder</span></span>
 </a>
+
+<div role="note" style="background:#ffedd5;border:1px solid #9a3412;color:#6b2710;border-radius:10px;padding:14px 18px;margin:0 auto 18px;max-width:680px;font-size:.9rem;line-height:1.5;"><strong style="color:#9a3412;">AI-researched, not locally verified.</strong> Common Ladder is based in Arizona. We built this guide from public sources but don’t yet verify these listings by phone the way we do our Arizona tools. Use it to learn <em>what to ask for</em>, then <strong>call <a href="tel:211" style="color:#9a3412;">211</a></strong> for the current local provider. Last researched <time datetime="2026-06-14">June 14, 2026</time>. Wrong info? <a href="mailto:corrections.commonladder@gmail.com?subject=Resource%20update:%20Omaha%20/%20Council%20Bluffs" style="color:#9a3412;">Tell us</a>.</div>
 
 <!-- App shell — all screens rendered by JS into here -->
 <div id="app"></div>
@@ -651,184 +654,157 @@
      Keep firstAction to one clear sentence + phone number.
      resources: 3 is ideal; 2 minimum; 4 maximum.
   ═══════════════════════════════════════════════════════════ */
-  var PATHWAYS = {
+    var PATHWAYS = {
 
     result_veterans: {
       label: "Veterans Pathway",
       badgeClass: "badge-veterans",
-      badgeIcon: "\ud83c\udf96",
-      headline: "There's a dedicated system built for you.",
-      firstAction: "Call <strong>VA Nebraska-Western Iowa Health Care System</strong> at <strong>(402) 346-8800</strong> \u2014 operates the Community Resource & Referral Center (CRRC) for homeless veterans at 825 Dorcas Street Ste 200, Omaha. Or call <strong>Heartland Family Service SSVF</strong> at <strong>(402) 553-3000</strong>.",
-      callNumber: "tel:4023468800",
-      callLabel: "Call VA NWIHCS: (402) 346-8800",
-      what_to_expect: "VA NWIHCS operates the CRRC for one-stop access. Heartland Family Service runs the local SSVF. Moving Veterans Forward at (531) 800-1900 provides furniture and household goods for veterans transitioning into housing.",
+      badgeIcon: "🎖",
+      headline: "There's a dedicated system built for veterans.",
+      firstAction: "Call <strong>211</strong> — free, 24/7 — and say: <em>“I’m a veteran and I’m homeless or about to be.”</em> Ask to be connected to the <strong>VA’s Health Care for Homeless Veterans (HCHV)</strong> program and your local <strong>coordinated-entry assessment</strong>. Veterans qualify for both VA housing (HUD-VASH) and the local Continuum of Care at the same time.",
+      callNumber: "tel:211",
+      callLabel: "Call 211",
+      what_to_expect: "211 will route you to the nearest VA homeless-program coordinator and your local CoC. The National Call Center for Homeless Veterans is available 24/7 anywhere in the U.S. if you can’t reach a local office.",
       bring: [
-        "DD-214 discharge papers (if you have them \u2014 not required to call)",
+        "DD-214 discharge papers (if you have them — not required to call)",
         "Photo ID (if available)",
         "Any VA documentation you have",
       ],
       resources: [
         {
-          name: "Moving Veterans Forward",
-          phone: "(531) 800-1900",
-          tel: "tel:5318001900",
-          note: "Furniture, household goods, moving for veterans into housing."
-        },
-        {
           name: "National Call Center for Homeless Veterans",
           phone: "1-877-424-3838",
           tel: "tel:18774243838",
-          note: "24/7."
+          note: "24/7. Available everywhere."
         },
         {
           name: "Veterans Crisis Line",
           phone: "988",
           tel: "tel:988",
-          note: "Press 1 for VA crisis line."
+          note: "Press 1 for the VA crisis line."
         },
       ],
       confidence: {
-        level: "research",
-        note: "Numbers from va.gov/nebraska-western-iowa-health-care, heartlandfamilyservice.org, mvfne.org. Last reviewed May 2026.",
-        lastChecked: "May 2026"
+        level: "unverified",
+        note: "AI-researched from public sources — not locally phone-verified. Call 211 to confirm the current local provider. Last researched June 14, 2026.",
+        lastChecked: "June 14, 2026"
       }
     },
 
     result_youth: {
       label: "Youth Pathway",
       badgeClass: "badge-youth",
-      badgeIcon: "\ud83c\udf31",
-      headline: "Youth Emergency Services has Omaha's 24/7 Safe Place Crisis Line.",
-      firstAction: "Call the <strong>YES 24/7 Safe Place Crisis Line</strong> at <strong>(402) 578-7233</strong> (YES main: 402-345-5187). Drop-in center: (402) 502-1636. Street outreach, transitional living, and emergency shelter for ages 16\u201324.",
-      callNumber: "tel:4025787233",
-      callLabel: "Call YES Crisis: (402) 578-7233",
-      what_to_expect: "Youth Emergency Services (YES) is Omaha's lead youth provider. Heartland Family Service runs Heartland Housing Beginnings (young adults 18\u201323 formerly in state custody) and Heartland Housing Solutions. Boys Town National Hotline at 1-800-448-3000 is 24/7 nationally; text VOICE to 20121.",
+      badgeIcon: "🌱",
+      headline: "If you’re 24 or under, there’s a youth-specific path.",
+      firstAction: "Call or text <strong>211</strong> and say: <em>“I’m 24 or younger and I need a safe place to stay.”</em> Ask for the <strong>youth emergency shelter</strong> and the <strong>runaway &amp; homeless youth (RHY) program</strong> in your area.",
+      callNumber: "tel:211",
+      callLabel: "Call 211",
+      what_to_expect: "211 routes you to the nearest youth shelter or drop-in center. The national backstops below are always available, day or night.",
       bring: [
-        "Photo ID (helpful \u2014 not required for crisis services)",
+        "Photo ID (helpful — not required for crisis services)",
         "Anything important you can carry",
-        "Nothing required for the 24/7 line",
+        "Nothing is required to call",
       ],
       resources: [
         {
-          name: "Heartland Family Service \u2014 Youth/Housing",
-          phone: "(402) 934-8810",
-          tel: "tel:4029348810",
-          note: "Housing programs. Heartland Housing Beginnings + Solutions."
+          name: "Safe Place",
+          phone: "Text SAFE + your location to 44357",
+          tel: "sms:44357?body=SAFE",
+          note: "Or walk into any QuikTrip and ask staff to call for you."
         },
         {
-          name: "Boys Town National Hotline (24/7)",
-          phone: "1-800-448-3000",
-          tel: "tel:18004483000",
-          note: "Crisis counseling for youth and families."
-        },
-        {
-          name: "211 Nebraska (UW of the Midlands)",
-          phone: "211",
-          tel: "tel:211",
-          note: "Or 1-866-813-1731. 24/7. Text ZIP to 898211."
+          name: "National Runaway Safeline",
+          phone: "1-800-786-2929",
+          tel: "tel:18007862929",
+          note: "24/7, free, confidential."
         },
       ],
-      extra_note: "\u26a0\ufe0f Under 18? YES Safe Place Crisis Line is for you.",
       confidence: {
-        level: "research",
-        note: "Numbers from yesomaha.org, heartlandfamilyservice.org, boystown.org. Last reviewed May 2026.",
-        lastChecked: "May 2026"
+        level: "unverified",
+        note: "AI-researched from public sources — not locally phone-verified. Call 211 to confirm the current local provider. Last researched June 14, 2026.",
+        lastChecked: "June 14, 2026"
       }
     },
 
     result_families: {
       label: "Families Pathway",
       badgeClass: "badge-families",
-      badgeIcon: "\ud83c\udfe0",
-      headline: "Open Door Mission Lydia House is the main family shelter.",
-      firstAction: "Call <strong>Open Door Mission</strong> at <strong>(402) 422-1111</strong> \u2014 Lydia House at 2809 N 20th St E offers emergency shelter for single women, women with children, and intact families. Bed availability: (402) 829-1531.",
-      callNumber: "tel:4024221111",
-      callLabel: "Call Open Door Mission: (402) 422-1111",
-      what_to_expect: "Open Door Mission's Lydia House is the main family/women's shelter. Heartland Family Service runs family shelter, rapid re-housing, financial stability, and case management across Omaha and Council Bluffs. Salvation Army Omaha at (402) 898-7700 provides transitional housing (Renaissance Village), PSH, and emergency assistance.",
+      badgeIcon: "🏠",
+      headline: "Families are kept together in the shelter system.",
+      firstAction: "Call or text <strong>211</strong> and say: <em>“I have my kids with me and we need shelter tonight.”</em> Ask for <strong>family emergency shelter</strong> and the <strong>coordinated-entry assessment</strong> for rapid re-housing.",
+      callNumber: "tel:211",
+      callLabel: "Call 211",
+      what_to_expect: "211 routes you to family shelter and the local coordinated-entry system. If you are fleeing domestic violence, use the confidential hotline below instead — DV shelter is separate and won’t list your location.",
       bring: [
         "Photo ID for adults (if available)",
-        "Birth certificates for children (helpful but not always required)",
+        "Birth certificates for children (helpful, not always required)",
         "Documentation of income or benefits (if available)",
-        "Social security cards (if you have them)",
       ],
       resources: [
         {
-          name: "Heartland Family Service \u2014 Family Programs",
-          phone: "(402) 553-3000",
-          tel: "tel:4025533000",
-          note: "Family shelter, RRH, financial stability."
+          name: "National Domestic Violence Hotline",
+          phone: "1-800-799-7233",
+          tel: "tel:18007997233",
+          note: "24/7, confidential. Text START to 88788. Connects you to a local confidential DV shelter."
         },
         {
-          name: "Salvation Army Omaha",
-          phone: "(402) 898-7700",
-          tel: "tel:4028987700",
-          note: "Renaissance Village, PSH, emergency assistance."
-        },
-        {
-          name: "211 Nebraska",
+          name: "United Way 211",
           phone: "211",
           tel: "tel:211",
-          note: "Or 1-866-813-1731. 24/7."
+          note: "Family shelter + coordinated entry."
         },
       ],
       confidence: {
-        level: "research",
-        note: "Numbers from opendoormission.org, heartlandfamilyservice.org, centralusa.salvationarmy.org. Last reviewed May 2026.",
-        lastChecked: "May 2026"
+        level: "unverified",
+        note: "AI-researched from public sources — not locally phone-verified. Call 211 to confirm the current local provider. Last researched June 14, 2026.",
+        lastChecked: "June 14, 2026"
       }
     },
 
     result_chronic: {
       label: "Chronic Homelessness Pathway",
       badgeClass: "badge-chronic",
-      badgeIcon: "\ud83d\udd11",
-      headline: "MACCH / Threshold CoC is the chronic pathway.",
-      firstAction: "Call <strong>MACCH / Threshold CoC</strong> at <strong>(712) 202-8046</strong> \u2014 CoC backbone for Douglas, Sarpy (NE) and Pottawattamie (IA) counties. Street Outreach: <strong>(402) 957-1747</strong>.",
-      callNumber: "tel:7122028046",
-      callLabel: "Call MACCH: (712) 202-8046",
-      what_to_expect: "MACCH (now branded Threshold CoC) administers the Coordinated Entry System. Siena Francis House is the largest shelter in Nebraska with 24/7/365 emergency shelter for men and women plus the Miracles Treatment Center at 1702 Nicholas St. Together Inc. provides homelessness prevention, rapid re-housing, and the Horizons program with Crisis Engagement Team at (402) 763-7531.",
+      badgeIcon: "🔑",
+      headline: "The housing list starts with one assessment.",
+      firstAction: "Call or text <strong>211</strong> and say: <em>“I’ve been homeless a long time and I want to get on the housing list.”</em> Ask for the <strong>coordinated-entry assessment</strong> — in this system, permanent supportive housing is reached by being assessed and placed on the community housing-referral list. The assessment is the door; there is no separate number.",
+      callNumber: "tel:211",
+      callLabel: "Call 211",
+      what_to_expect: "A coordinated-entry assessor will ask about your situation and add you to the local housing-referral list. While you wait, ask 211 for tonight’s shelter and a daytime drop-in center.",
       bring: [
         "Photo ID (any form)",
-        "Documentation of health conditions (if available \u2014 not required to be assessed)",
+        "Documentation of health conditions (if available — not required to be assessed)",
         "Any records of prior housing or service history",
       ],
       resources: [
         {
-          name: "Siena Francis House",
-          phone: "(402) 341-1821",
-          tel: "tel:4023411821",
-          note: "Largest shelter in NE. 1702 Nicholas St. 24/7/365."
+          name: "988 Suicide &amp; Crisis Lifeline",
+          phone: "988",
+          tel: "tel:988",
+          note: "Behavioral-health crisis support + SOAR disability-benefit help tied to housing."
         },
         {
-          name: "Together Inc. (main)",
-          phone: "(402) 345-8047",
-          tel: "tel:4023458047",
-          note: "1616 Cass St. Prevention, RRH, Horizons."
-        },
-        {
-          name: "211 Nebraska",
+          name: "United Way 211",
           phone: "211",
           tel: "tel:211",
-          note: "Or 1-866-813-1731. 24/7."
+          note: "Coordinated entry + shelter while you wait."
         },
       ],
-      extra_note: "\ud83d\udccb Qualifying conditions include physical, mental health, or substance use disorders that substantially affect daily functioning. You don't need a formal diagnosis to be assessed.",
       confidence: {
-        level: "research",
-        note: "Numbers from macchconnect.org, sienafrancis.org, togetheromaha.org. Last reviewed May 2026.",
-        lastChecked: "May 2026"
+        level: "unverified",
+        note: "AI-researched from public sources — not locally phone-verified. Call 211 to confirm the current local provider. Last researched June 14, 2026.",
+        lastChecked: "June 14, 2026"
       }
     },
 
     result_adult: {
       label: "Single Adults Pathway",
       badgeClass: "badge-adult",
-      badgeIcon: "\ud83d\udcde",
-      headline: "Siena Francis House is the largest single-adult shelter.",
-      firstAction: "Walk in or call <strong>Siena Francis House</strong> at <strong>(402) 341-1821</strong> \u2014 largest shelter in Nebraska, 24/7/365 emergency beds for men and women. 1702 Nicholas St.",
-      callNumber: "tel:4023411821",
-      callLabel: "Call Siena Francis: (402) 341-1821",
-      what_to_expect: "Siena Francis House is the primary single-adult shelter. Open Door Mission Garland Thompson Men's Center at 2705 N 20th St E provides men's emergency shelter (ext. 2100 or main 402-422-1111). Omaha Mayor's Office homeless coordinator: (402) 444-5038. Report encampments: (402) 444-4877.",
+      badgeIcon: "📞",
+      headline: "Start with tonight’s shelter, then the housing list.",
+      firstAction: "Call or text <strong>211</strong> and say: <em>“I need a shelter bed tonight.”</em> Ask for <strong>tonight’s open beds for single adults</strong>, the nearest <strong>daytime drop-in center</strong> (showers, mail, case management), and a <strong>free meal site</strong>. 211 is multilingual and 24/7.",
+      callNumber: "tel:211",
+      callLabel: "Call 211",
+      what_to_expect: "211 has the current shelter-bed picture for your area, which changes daily. Ask them to also start a coordinated-entry assessment so you’re working toward housing, not just tonight.",
       bring: [
         "Photo ID (helpful but not always required)",
         "Social security card or number (if available)",
@@ -836,30 +812,24 @@
       ],
       resources: [
         {
-          name: "Open Door Mission \u2014 Garland Thompson Men's Center",
-          phone: "(402) 829-1500",
-          tel: "tel:4028291500",
-          note: "2705 N 20th St E. Men's emergency shelter."
-        },
-        {
-          name: "Salvation Army Omaha",
-          phone: "(402) 898-7700",
-          tel: "tel:4028987700",
-          note: "Emergency assistance, transitional, PSH."
-        },
-        {
-          name: "211 Nebraska",
-          phone: "211",
+          name: "Find a free clinic (FQHC)",
+          phone: "Ask 211",
           tel: "tel:211",
-          note: "Or 1-866-813-1731. 24/7."
+          note: "Federally Qualified Health Centers treat everyone regardless of ability to pay."
+        },
+        {
+          name: "988 Suicide &amp; Crisis Lifeline",
+          phone: "988",
+          tel: "tel:988",
+          note: "24/7 mental-health support."
         },
       ],
       confidence: {
-        level: "research",
-        note: "Numbers from sienafrancis.org, opendoormission.org, centralusa.salvationarmy.org. Last reviewed May 2026.",
-        lastChecked: "May 2026"
+        level: "unverified",
+        note: "AI-researched from public sources — not locally phone-verified. Call 211 to confirm the current local provider. Last researched June 14, 2026.",
+        lastChecked: "June 14, 2026"
       }
-    }
+    },
 
   }; // end PATHWAYS
 

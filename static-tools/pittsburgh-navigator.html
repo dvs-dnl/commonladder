@@ -472,7 +472,8 @@
   <strong>Need help right now?</strong>
   <a href="tel:211">Call 211</a><span class="crisis-bar__sep">·</span>
   <a href="sms:741741?body=HOME">Text HOME to 741741</a><span class="crisis-bar__sep">·</span>
-  <a href="tel:988">988 Suicide &amp; Crisis</a>
+  <a href="tel:988">988 Suicide &amp; Crisis</a><span class="crisis-bar__sep">·</span>
+  <a href="tel:18007997233">DV 1-800-799-7233</a>
 </div>
 
 <nav class="nav" aria-label="Primary">
@@ -512,6 +513,8 @@
   </svg>
   <span>common<span class="cl-home__rung">ladder</span></span>
 </a>
+
+<div role="note" style="background:#ffedd5;border:1px solid #9a3412;color:#6b2710;border-radius:10px;padding:14px 18px;margin:0 auto 18px;max-width:680px;font-size:.9rem;line-height:1.5;"><strong style="color:#9a3412;">AI-researched, not locally verified.</strong> Common Ladder is based in Arizona. We built this guide from public sources but don’t yet verify these listings by phone the way we do our Arizona tools. Use it to learn <em>what to ask for</em>, then <strong>call <a href="tel:211" style="color:#9a3412;">211</a></strong> for the current local provider. Last researched <time datetime="2026-06-14">June 14, 2026</time>. Wrong info? <a href="mailto:corrections.commonladder@gmail.com?subject=Resource%20update:%20Pittsburgh" style="color:#9a3412;">Tell us</a>.</div>
 
 <!-- App shell — all screens rendered by JS into here -->
 <div id="app"></div>
@@ -651,17 +654,17 @@
      Keep firstAction to one clear sentence + phone number.
      resources: 3 is ideal; 2 minimum; 4 maximum.
   ═══════════════════════════════════════════════════════════ */
-  var PATHWAYS = {
+    var PATHWAYS = {
 
     result_veterans: {
       label: "Veterans Pathway",
       badgeClass: "badge-veterans",
       badgeIcon: "🎖",
-      headline: "Veterans Place is Pittsburgh's veteran drop-in resource center.",
-      firstAction: "Call <strong>Veterans Place of Washington Boulevard</strong> at <strong>(412) 320-5566</strong> — Pittsburgh's only veteran drop-in resource center, regardless of VA eligibility or discharge status.",
-      callNumber: "tel:4123205566",
-      callLabel: "Call Veterans Place: (412) 320-5566",
-      what_to_expect: "Veterans Place runs the regional Veterans Resource Center (drop-in M–F 8am–3pm) plus SSVF-style case management and transitional housing. If you're not eligible for VA care or are in immediate crisis after hours, use the 24/7 National Call Center for Homeless Veterans.",
+      headline: "There's a dedicated system built for veterans.",
+      firstAction: "Call <strong>211</strong> (or text your ZIP to 898-211) — free, 24/7 — and say: <em>“I’m a veteran and I’m homeless or about to be.”</em> Ask to be connected to the <strong>VA’s Health Care for Homeless Veterans (HCHV)</strong> program and your local <strong>coordinated-entry assessment</strong>. Veterans qualify for both VA housing (HUD-VASH) and the local Continuum of Care at the same time.",
+      callNumber: "tel:211",
+      callLabel: "Call 211",
+      what_to_expect: "211 will route you to the nearest VA homeless-program coordinator and your local CoC. The National Call Center for Homeless Veterans is available 24/7 anywhere in the U.S. if you can’t reach a local office.",
       bring: [
         "DD-214 discharge papers (if you have them — not required to call)",
         "Photo ID (if available)",
@@ -669,28 +672,22 @@
       ],
       resources: [
         {
-          name: "Veterans Place (main org line)",
-          phone: "(412) 363-0500",
-          tel: "tel:4123630500",
-          note: "945 Washington Blvd, Pittsburgh, PA 15206."
-        },
-        {
           name: "National Call Center for Homeless Veterans",
           phone: "1-877-424-3838",
           tel: "tel:18774243838",
-          note: "24/7. Routes to VA Pittsburgh HCHV/HUD-VASH coordinators."
+          note: "24/7. Available everywhere."
         },
         {
-          name: "Allegheny Link (CoC Coordinated Entry)",
-          phone: "1-866-730-2368",
-          tel: "tel:18667302368",
-          note: "M–F 8am–5pm live. Also routes veterans into PSH."
+          name: "Veterans Crisis Line",
+          phone: "988",
+          tel: "tel:988",
+          note: "Press 1 for the VA crisis line."
         },
       ],
       confidence: {
-        level: "research",
-        note: "Numbers from veteransplaceusa.org, va.gov/pittsburgh-health-care, alleghenycounty.us. VA Pittsburgh publishes only email for HCHV/HUD-VASH coordinators — the 877 national line is the verified phone route. Last reviewed May 2026.",
-        lastChecked: "May 2026"
+        level: "unverified",
+        note: "AI-researched from public sources — not locally phone-verified. Call 211 to confirm the current local provider. Last researched June 14, 2026.",
+        lastChecked: "June 14, 2026"
       }
     },
 
@@ -698,41 +695,34 @@
       label: "Youth Pathway",
       badgeClass: "badge-youth",
       badgeIcon: "🌱",
-      headline: "Familylinks runs 24/7 emergency youth shelter in Allegheny County.",
-      firstAction: "Call <strong>Familylinks</strong> at <strong>1-866-583-6003</strong> — 24/7 line for emergency youth shelter and homelessness services in Allegheny County. Operates the Downtown Outreach Center & Shelter (DOCS) for ages 15–21.",
-      callNumber: "tel:18665836003",
-      callLabel: "Call Familylinks: 1-866-583-6003",
-      what_to_expect: "Familylinks DOCS provides 24/7 intake for teens and young adults. For older youth aging out of foster care or in unstable housing, Auberle's 412 Youth Zone is a daytime drop-in hub (ages 16–23) downtown. The Allegheny Link routes unaccompanied minors to YHDP-aligned providers.",
+      headline: "If you’re 24 or under, there’s a youth-specific path.",
+      firstAction: "Call or text <strong>211</strong> (or text your ZIP to 898-211) and say: <em>“I’m 24 or younger and I need a safe place to stay.”</em> Ask for the <strong>youth emergency shelter</strong> and the <strong>runaway &amp; homeless youth (RHY) program</strong> in your area.",
+      callNumber: "tel:211",
+      callLabel: "Call 211",
+      what_to_expect: "211 routes you to the nearest youth shelter or drop-in center. The national backstops below are always available, day or night.",
       bring: [
         "Photo ID (helpful — not required for crisis services)",
         "Anything important you can carry",
-        "Nothing required to call the crisis line",
+        "Nothing is required to call",
       ],
       resources: [
         {
-          name: "412 Youth Zone (Auberle)",
-          phone: "(412) 902-4068",
-          tel: "tel:4129024068",
-          note: "304 Wood Street, 6th Floor, Pittsburgh. Drop-in for 16–23."
+          name: "Safe Place",
+          phone: "Text SAFE + your location to 44357",
+          tel: "sms:44357?body=SAFE",
+          note: "Or walk into any QuikTrip and ask staff to call for you."
         },
         {
-          name: "Allegheny Link (CE for under-18 unaccompanied)",
-          phone: "1-866-730-2368",
-          tel: "tel:18667302368",
-          note: "Routes to Youth Homeless Demonstration Program providers."
-        },
-        {
-          name: "PA 211 Southwest",
-          phone: "211",
-          tel: "tel:211",
-          note: "24/7. Text ZIP to 898-211."
+          name: "National Runaway Safeline",
+          phone: "1-800-786-2929",
+          tel: "tel:18007862929",
+          note: "24/7, free, confidential."
         },
       ],
-      extra_note: "⚠️ Under 18? Familylinks DOCS and the Allegheny Link know the rules. They will help.",
       confidence: {
-        level: "research",
-        note: "Numbers from familylinks.org, 412youthzone.org, alleghenycounty.us, southwest.pa211.org. Last reviewed May 2026.",
-        lastChecked: "May 2026"
+        level: "unverified",
+        note: "AI-researched from public sources — not locally phone-verified. Call 211 to confirm the current local provider. Last researched June 14, 2026.",
+        lastChecked: "June 14, 2026"
       }
     },
 
@@ -740,41 +730,34 @@
       label: "Families Pathway",
       badgeClass: "badge-families",
       badgeIcon: "🏠",
-      headline: "The Allegheny Link routes families into shelter placement.",
-      firstAction: "Call the <strong>Allegheny Link</strong> at <strong>1-866-730-2368</strong>, M–F 8am–5pm live (after-hours leaves resource info). The county's Coordinated Entry front door routes families into family-shelter placement.",
-      callNumber: "tel:18667302368",
-      callLabel: "Call Allegheny Link: 1-866-730-2368",
-      what_to_expect: "Allegheny County does not have a single public-facing 'family intake' phone — families are assessed through the Allegheny Link and referred to family shelter providers. Bethlehem Haven serves homeless women (with supportive housing and medical respite); Familylinks Family Treatment Center supports women-only and broader family programs.",
+      headline: "Families are kept together in the shelter system.",
+      firstAction: "Call or text <strong>211</strong> (or text your ZIP to 898-211) and say: <em>“I have my kids with me and we need shelter tonight.”</em> Ask for <strong>family emergency shelter</strong> and the <strong>coordinated-entry assessment</strong> for rapid re-housing.",
+      callNumber: "tel:211",
+      callLabel: "Call 211",
+      what_to_expect: "211 routes you to family shelter and the local coordinated-entry system. If you are fleeing domestic violence, use the confidential hotline below instead — DV shelter is separate and won’t list your location.",
       bring: [
         "Photo ID for adults (if available)",
-        "Birth certificates for children (helpful but not always required)",
+        "Birth certificates for children (helpful, not always required)",
         "Documentation of income or benefits (if available)",
-        "Social security cards (if you have them)",
       ],
       resources: [
         {
-          name: "Bethlehem Haven (women + medical respite)",
-          phone: "(412) 391-1443",
-          tel: "tel:4123911443",
-          note: "905 Watson Street, Pittsburgh. Emergency Shelter ext. 1."
+          name: "National Domestic Violence Hotline",
+          phone: "1-800-799-7233",
+          tel: "tel:18007997233",
+          note: "24/7, confidential. Text START to 88788. Connects you to a local confidential DV shelter."
         },
         {
-          name: "Familylinks Family Treatment Center",
-          phone: "1-866-583-6003",
-          tel: "tel:18665836003",
-          note: "Women-only program; broader family supports."
-        },
-        {
-          name: "Allegheny County DHS (main info)",
-          phone: "(412) 350-4636",
-          tel: "tel:4123504636",
-          note: "Mon–Fri business hours. General DHS routing."
+          name: "United Way 211",
+          phone: "211",
+          tel: "tel:211",
+          note: "Family shelter + coordinated entry."
         },
       ],
       confidence: {
-        level: "research",
-        note: "Numbers from bethlehemhaven.org, familylinks.org, alleghenycounty.us. CAVEAT: Sisters Place (historically a key family provider in Clairton) appears to have closed in April 2025 per third-party reports — not listed here pending verification. Last reviewed May 2026.",
-        lastChecked: "May 2026"
+        level: "unverified",
+        note: "AI-researched from public sources — not locally phone-verified. Call 211 to confirm the current local provider. Last researched June 14, 2026.",
+        lastChecked: "June 14, 2026"
       }
     },
 
@@ -782,11 +765,11 @@
       label: "Chronic Homelessness Pathway",
       badgeClass: "badge-chronic",
       badgeIcon: "🔑",
-      headline: "Allegheny Link is the CoC's universal Coordinated Entry door.",
-      firstAction: "Call the <strong>Allegheny Link</strong> at <strong>1-866-730-2368</strong> — the only path into the CoC's Coordinated Entry assessment, which is required for permanent supportive housing (PSH) and chronic-homelessness prioritization. Walk-in: One Smithfield Street, 2nd Floor.",
-      callNumber: "tel:18667302368",
-      callLabel: "Call Allegheny Link: 1-866-730-2368",
-      what_to_expect: "Allegheny County DHS uses the Allegheny Link as the universal CE access point. A VI-SPDAT/assessment-based prioritization list determines PSH and rapid rehousing referrals across CoC providers. Street outreach teams (Pittsburgh Mercy Operation Safety Net) also feed people into CE.",
+      headline: "The housing list starts with one assessment.",
+      firstAction: "Call or text <strong>211</strong> (or text your ZIP to 898-211) and say: <em>“I’ve been homeless a long time and I want to get on the housing list.”</em> Ask for the <strong>coordinated-entry assessment</strong> — in this system, permanent supportive housing is reached by being assessed and placed on the community housing-referral list. The assessment is the door; there is no separate number.",
+      callNumber: "tel:211",
+      callLabel: "Call 211",
+      what_to_expect: "A coordinated-entry assessor will ask about your situation and add you to the local housing-referral list. While you wait, ask 211 for tonight’s shelter and a daytime drop-in center.",
       bring: [
         "Photo ID (any form)",
         "Documentation of health conditions (if available — not required to be assessed)",
@@ -794,29 +777,22 @@
       ],
       resources: [
         {
-          name: "Allegheny County DHS (main info)",
-          phone: "(412) 350-4636",
-          tel: "tel:4123504636",
-          note: "General DHS routing for homeless services."
+          name: "988 Suicide &amp; Crisis Lifeline",
+          phone: "988",
+          tel: "tel:988",
+          note: "Behavioral-health crisis support + SOAR disability-benefit help tied to housing."
         },
         {
-          name: "Pittsburgh Mercy Operation Safety Net (street outreach)",
-          phone: "(412) 240-7366",
-          tel: "tel:4122407366",
-          note: "Mobile outreach for unsheltered/chronic individuals."
-        },
-        {
-          name: "PA 211 Southwest",
+          name: "United Way 211",
           phone: "211",
           tel: "tel:211",
-          note: "24/7. Text ZIP to 898-211 for additional resources."
+          note: "Coordinated entry + shelter while you wait."
         },
       ],
-      extra_note: "📋 Qualifying conditions include physical, mental health, or substance use disorders that substantially affect daily functioning. You don't need a formal diagnosis to be assessed.",
       confidence: {
-        level: "research",
-        note: "Numbers from alleghenycounty.us, pittsburghmercy.org, southwest.pa211.org. Last reviewed May 2026.",
-        lastChecked: "May 2026"
+        level: "unverified",
+        note: "AI-researched from public sources — not locally phone-verified. Call 211 to confirm the current local provider. Last researched June 14, 2026.",
+        lastChecked: "June 14, 2026"
       }
     },
 
@@ -824,11 +800,11 @@
       label: "Single Adults Pathway",
       badgeClass: "badge-adult",
       badgeIcon: "📞",
-      headline: "Second Avenue Commons is the county's low-barrier flagship shelter.",
-      firstAction: "Call <strong>Second Avenue Commons</strong> at <strong>(412) 775-9001</strong> — low-barrier emergency shelter (accepts active substance use, partners, and pets) at 700 Second Avenue, Pittsburgh. Operated by Pittsburgh Mercy.",
-      callNumber: "tel:4127759001",
-      callLabel: "Call Second Avenue Commons: (412) 775-9001",
-      what_to_expect: "Single adults can come through the Allegheny Link for assessed placement, walk in directly to a low-barrier shelter (Second Avenue Commons is the flagship), or be engaged on the street by Pittsburgh Mercy's Operation Safety Net. Light of Life serves men through a religious-mission model with walk-in roll call. 211 handles non-shelter resource navigation 24/7.",
+      headline: "Start with tonight’s shelter, then the housing list.",
+      firstAction: "Call or text <strong>211</strong> (or text your ZIP to 898-211) and say: <em>“I need a shelter bed tonight.”</em> Ask for <strong>tonight’s open beds for single adults</strong>, the nearest <strong>daytime drop-in center</strong> (showers, mail, case management), and a <strong>free meal site</strong>. 211 is multilingual and 24/7.",
+      callNumber: "tel:211",
+      callLabel: "Call 211",
+      what_to_expect: "211 has the current shelter-bed picture for your area, which changes daily. Ask them to also start a coordinated-entry assessment so you’re working toward housing, not just tonight.",
       bring: [
         "Photo ID (helpful but not always required)",
         "Social security card or number (if available)",
@@ -836,30 +812,24 @@
       ],
       resources: [
         {
-          name: "Light of Life Rescue Mission (men)",
-          phone: "(412) 258-6100",
-          tel: "tel:4122586100",
-          note: "10 E. North Avenue, Pittsburgh, PA 15212."
-        },
-        {
-          name: "Allegheny Link (Coordinated Entry)",
-          phone: "1-866-730-2368",
-          tel: "tel:18667302368",
-          note: "M–F 8am–5pm. CE assessment for shelter + housing."
-        },
-        {
-          name: "PA 211 Southwest",
-          phone: "211",
+          name: "Find a free clinic (FQHC)",
+          phone: "Ask 211",
           tel: "tel:211",
-          note: "24/7. Text ZIP to 898-211."
+          note: "Federally Qualified Health Centers treat everyone regardless of ability to pay."
+        },
+        {
+          name: "988 Suicide &amp; Crisis Lifeline",
+          phone: "988",
+          tel: "tel:988",
+          note: "24/7 mental-health support."
         },
       ],
       confidence: {
-        level: "research",
-        note: "Numbers from pittsburghmercy.org, secondavenuecommons.org, lightoflife.org, alleghenycounty.us, southwest.pa211.org. Last reviewed May 2026.",
-        lastChecked: "May 2026"
+        level: "unverified",
+        note: "AI-researched from public sources — not locally phone-verified. Call 211 to confirm the current local provider. Last researched June 14, 2026.",
+        lastChecked: "June 14, 2026"
       }
-    }
+    },
 
   }; // end PATHWAYS
 

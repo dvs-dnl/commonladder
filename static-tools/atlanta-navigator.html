@@ -472,7 +472,8 @@
   <strong>Need help right now?</strong>
   <a href="tel:211">Call 211</a><span class="crisis-bar__sep">·</span>
   <a href="sms:741741?body=HOME">Text HOME to 741741</a><span class="crisis-bar__sep">·</span>
-  <a href="tel:988">988 Suicide &amp; Crisis</a>
+  <a href="tel:988">988 Suicide &amp; Crisis</a><span class="crisis-bar__sep">·</span>
+  <a href="tel:18007997233">DV 1-800-799-7233</a>
 </div>
 
 <nav class="nav" aria-label="Primary">
@@ -512,6 +513,8 @@
   </svg>
   <span>common<span class="cl-home__rung">ladder</span></span>
 </a>
+
+<div role="note" style="background:#ffedd5;border:1px solid #9a3412;color:#6b2710;border-radius:10px;padding:14px 18px;margin:0 auto 18px;max-width:680px;font-size:.9rem;line-height:1.5;"><strong style="color:#9a3412;">AI-researched, not locally verified.</strong> Common Ladder is based in Arizona. We built this guide from public sources but don’t yet verify these listings by phone the way we do our Arizona tools. Use it to learn <em>what to ask for</em>, then <strong>call <a href="tel:211" style="color:#9a3412;">211</a></strong> for the current local provider. Last researched <time datetime="2026-06-14">June 14, 2026</time>. Wrong info? <a href="mailto:corrections.commonladder@gmail.com?subject=Resource%20update:%20Atlanta" style="color:#9a3412;">Tell us</a>.</div>
 
 <!-- App shell — all screens rendered by JS into here -->
 <div id="app"></div>
@@ -651,184 +654,157 @@
      Keep firstAction to one clear sentence + phone number.
      resources: 3 is ideal; 2 minimum; 4 maximum.
   ═══════════════════════════════════════════════════════════ */
-  var PATHWAYS = {
+    var PATHWAYS = {
 
     result_veterans: {
       label: "Veterans Pathway",
       badgeClass: "badge-veterans",
-      badgeIcon: "\ud83c\udf96",
-      headline: "There's a dedicated system built for you.",
-      firstAction: "Call <strong>HOPE Atlanta SSVF</strong> at <strong>(404) 817-7070</strong> \u2014 primary SSVF/Travelers Aid grantee for metro Atlanta. Or call <strong>Atlanta VA Medical Center</strong> at <strong>(404) 321-6111</strong>, 1670 Clairmont Rd, Decatur \u2014 ask for HCHV/homeless coordinator.",
-      callNumber: "tel:4048177070",
-      callLabel: "Call HOPE Atlanta: (404) 817-7070",
-      what_to_expect: "Joseph Maxwell Cleland Atlanta VAMC operates HUD-VASH and HCHV. HOPE Atlanta (formerly Travelers Aid of Metro Atlanta) is the established SSVF grantee. Veterans Empowerment Organization (VEO) operates transitional and permanent housing plus workforce programs at 381 W Lake Ave NW.",
+      badgeIcon: "🎖",
+      headline: "There's a dedicated system built for veterans.",
+      firstAction: "Call <strong>211</strong> — free, 24/7 — and say: <em>“I’m a veteran and I’m homeless or about to be.”</em> Ask to be connected to the <strong>VA’s Health Care for Homeless Veterans (HCHV)</strong> program and your local <strong>coordinated-entry assessment</strong>. Veterans qualify for both VA housing (HUD-VASH) and the local Continuum of Care at the same time.",
+      callNumber: "tel:211",
+      callLabel: "Call 211",
+      what_to_expect: "211 will route you to the nearest VA homeless-program coordinator and your local CoC. The National Call Center for Homeless Veterans is available 24/7 anywhere in the U.S. if you can’t reach a local office.",
       bring: [
-        "DD-214 discharge papers (if you have them \u2014 not required to call)",
+        "DD-214 discharge papers (if you have them — not required to call)",
         "Photo ID (if available)",
         "Any VA documentation you have",
       ],
       resources: [
-        {
-          name: "Veterans Empowerment Organization (VEO)",
-          phone: "(404) 889-8710",
-          tel: "tel:4048898710",
-          note: "381 W Lake Ave NW. Transitional/permanent housing + workforce."
-        },
-        {
-          name: "Atlanta VA Medical Center",
-          phone: "(404) 321-6111",
-          tel: "tel:4043216111",
-          note: "1670 Clairmont Rd, Decatur."
-        },
         {
           name: "National Call Center for Homeless Veterans",
           phone: "1-877-424-3838",
           tel: "tel:18774243838",
           note: "24/7. Available everywhere."
         },
+        {
+          name: "Veterans Crisis Line",
+          phone: "988",
+          tel: "tel:988",
+          note: "Press 1 for the VA crisis line."
+        },
       ],
       confidence: {
-        level: "research",
-        note: "Numbers from va.gov/atlanta-health-care, hopeatlanta.org, veohero.org. Last reviewed June 2026.",
-        lastChecked: "June 2026"
+        level: "unverified",
+        note: "AI-researched from public sources — not locally phone-verified. Call 211 to confirm the current local provider. Last researched June 14, 2026.",
+        lastChecked: "June 14, 2026"
       }
     },
 
     result_youth: {
       label: "Youth Pathway",
       badgeClass: "badge-youth",
-      badgeIcon: "\ud83c\udf31",
-      headline: "Covenant House Georgia and CHRIS 180 serve Atlanta youth.",
-      firstAction: "Call <strong>Covenant House Georgia Youth Crisis</strong> at <strong>(404) 713-0954</strong> (main: (404) 589-0163) \u2014 1559 Johnson Rd NW. Or call <strong>CHRIS 180</strong> at <strong>1-800-896-4106</strong> \u2014 statewide intake; runs Independence House youth shelter and TLP under the Atlanta CoC.",
-      callNumber: "tel:4047130954",
-      callLabel: "Call Covenant House GA: (404) 713-0954",
-      what_to_expect: "Covenant House Georgia provides shelter and services for youth in Atlanta. CHRIS 180 operates Independence House emergency shelter and transitional living programs. StandUp For Kids Atlanta runs outreach and drop-in at 200 Nelson Ferry Rd, Decatur.",
+      badgeIcon: "🌱",
+      headline: "If you’re 24 or under, there’s a youth-specific path.",
+      firstAction: "Call or text <strong>211</strong> and say: <em>“I’m 24 or younger and I need a safe place to stay.”</em> Ask for the <strong>youth emergency shelter</strong> and the <strong>runaway &amp; homeless youth (RHY) program</strong> in your area.",
+      callNumber: "tel:211",
+      callLabel: "Call 211",
+      what_to_expect: "211 routes you to the nearest youth shelter or drop-in center. The national backstops below are always available, day or night.",
       bring: [
-        "Photo ID (helpful \u2014 not required for crisis services)",
+        "Photo ID (helpful — not required for crisis services)",
         "Anything important you can carry",
-        "Nothing required to call the crisis line",
+        "Nothing is required to call",
       ],
       resources: [
         {
-          name: "Covenant House Georgia (main)",
-          phone: "(404) 589-0163",
-          tel: "tel:4045890163",
-          note: "1559 Johnson Rd NW. Main office line."
+          name: "Safe Place",
+          phone: "Text SAFE + your location to 44357",
+          tel: "sms:44357?body=SAFE",
+          note: "Or walk into any QuikTrip and ask staff to call for you."
         },
         {
-          name: "StandUp For Kids Atlanta",
-          phone: "1-888-365-4543",
-          tel: "tel:18883654543",
-          note: "Outreach + drop-in. 200 Nelson Ferry Rd, Decatur."
-        },
-        {
-          name: "211 Atlanta",
-          phone: "211",
-          tel: "tel:211",
-          note: "Or (404) 614-1000. M\u2013F 8am\u20137pm for personal assistance."
+          name: "National Runaway Safeline",
+          phone: "1-800-786-2929",
+          tel: "tel:18007862929",
+          note: "24/7, free, confidential."
         },
       ],
-      extra_note: "\u26a0\ufe0f Under 18? Covenant House GA and CHRIS 180 know the local rules. They will help.",
       confidence: {
-        level: "research",
-        note: "Numbers from covenanthousega.org, chris180.org, standupforkids.org. Last reviewed June 2026.",
-        lastChecked: "June 2026"
+        level: "unverified",
+        note: "AI-researched from public sources — not locally phone-verified. Call 211 to confirm the current local provider. Last researched June 14, 2026.",
+        lastChecked: "June 14, 2026"
       }
     },
 
     result_families: {
       label: "Families Pathway",
       badgeClass: "badge-families",
-      badgeIcon: "\ud83c\udfe0",
-      headline: "Call Partners for HOME Family CE Hotline.",
-      firstAction: "Call the <strong>Partners for HOME Coordinated Entry (Families) Hotline</strong> at <strong>(404) 687-3500</strong>, M\u2013F 8:30am\u20137pm. Serves City of Atlanta, Fulton, and DeKalb families. Or dial <strong>311</strong>.",
-      callNumber: "tel:4046873500",
-      callLabel: "Call CE Families: (404) 687-3500",
-      what_to_expect: "Partners for HOME is the CoC lead. Atlanta Mission's My Sister's House at (404) 367-2465 provides family services and women & children shelter (921 Howell Mill Rd). Salvation Army Red Shield Services has emergency and transitional shelter for men, women, and families at 469 Marietta St NW. Solomon's Temple Foundation operates a 130-unit residential facility for homeless women + children, up to 6 months.",
+      badgeIcon: "🏠",
+      headline: "Families are kept together in the shelter system.",
+      firstAction: "Call or text <strong>211</strong> and say: <em>“I have my kids with me and we need shelter tonight.”</em> Ask for <strong>family emergency shelter</strong> and the <strong>coordinated-entry assessment</strong> for rapid re-housing.",
+      callNumber: "tel:211",
+      callLabel: "Call 211",
+      what_to_expect: "211 routes you to family shelter and the local coordinated-entry system. If you are fleeing domestic violence, use the confidential hotline below instead — DV shelter is separate and won’t list your location.",
       bring: [
         "Photo ID for adults (if available)",
-        "Birth certificates for children (helpful but not always required)",
+        "Birth certificates for children (helpful, not always required)",
         "Documentation of income or benefits (if available)",
-        "Social security cards (if you have them)",
       ],
       resources: [
         {
-          name: "Atlanta Mission \u2014 My Sister's House",
-          phone: "(404) 367-2465",
-          tel: "tel:4043672465",
-          note: "921 Howell Mill Rd. Women & children/family services."
+          name: "National Domestic Violence Hotline",
+          phone: "1-800-799-7233",
+          tel: "tel:18007997233",
+          note: "24/7, confidential. Text START to 88788. Connects you to a local confidential DV shelter."
         },
         {
-          name: "Salvation Army Metro Atlanta \u2014 Red Shield Services",
-          phone: "(404) 486-2700",
-          tel: "tel:4044862700",
-          note: "469 Marietta St NW. Emergency + transitional shelter for men, women, families."
-        },
-        {
-          name: "Solomon's Temple Foundation",
-          phone: "(404) 762-4872",
-          tel: "tel:4047624872",
-          note: "2836 Springdale Rd SW. 130-unit residential for women + children."
+          name: "United Way 211",
+          phone: "211",
+          tel: "tel:211",
+          note: "Family shelter + coordinated entry."
         },
       ],
       confidence: {
-        level: "research",
-        note: "Numbers from partnersforhome.org, atlantamission.org, salvationarmyusa.org. Last reviewed June 2026.",
-        lastChecked: "June 2026"
+        level: "unverified",
+        note: "AI-researched from public sources — not locally phone-verified. Call 211 to confirm the current local provider. Last researched June 14, 2026.",
+        lastChecked: "June 14, 2026"
       }
     },
 
     result_chronic: {
       label: "Chronic Homelessness Pathway",
       badgeClass: "badge-chronic",
-      badgeIcon: "\ud83d\udd11",
-      headline: "Partners for HOME administers Coordinated Entry through Gateway Center.",
-      firstAction: "Call <strong>Partners for HOME</strong> at <strong>(404) 694-2262</strong>, or dial <strong>211</strong> for general routing. Gateway Center at 275 Pryor St is the physical CES Access Point for adults.",
-      callNumber: "tel:4046942262",
-      callLabel: "Call Partners for HOME: (404) 694-2262",
-      what_to_expect: "Partners for HOME is the lead CoC agency at 818 Pollard Blvd SW. The Gateway Center is the physical CES access point. Atlanta Mission operates the largest adult shelter system in metro Atlanta with Shepherd's Inn (men) and the Garden (men's recovery).",
+      badgeIcon: "🔑",
+      headline: "The housing list starts with one assessment.",
+      firstAction: "Call or text <strong>211</strong> and say: <em>“I’ve been homeless a long time and I want to get on the housing list.”</em> Ask for the <strong>coordinated-entry assessment</strong> — in this system, permanent supportive housing is reached by being assessed and placed on the community housing-referral list. The assessment is the door; there is no separate number.",
+      callNumber: "tel:211",
+      callLabel: "Call 211",
+      what_to_expect: "A coordinated-entry assessor will ask about your situation and add you to the local housing-referral list. While you wait, ask 211 for tonight’s shelter and a daytime drop-in center.",
       bring: [
         "Photo ID (any form)",
-        "Documentation of health conditions (if available \u2014 not required to be assessed)",
+        "Documentation of health conditions (if available — not required to be assessed)",
         "Any records of prior housing or service history",
       ],
       resources: [
         {
-          name: "Atlanta Mission",
-          phone: "(404) 588-4000",
-          tel: "tel:4045884000",
-          note: "Operates Shepherd's Inn (men), The Garden (men's recovery), My Sister's House."
+          name: "988 Suicide &amp; Crisis Lifeline",
+          phone: "988",
+          tel: "tel:988",
+          note: "Behavioral-health crisis support + SOAR disability-benefit help tied to housing."
         },
         {
-          name: "HOPE Atlanta",
-          phone: "(404) 817-7070",
-          tel: "tel:4048177070",
-          note: "Case management, prevention, RRH for individuals, families, veterans, seniors."
-        },
-        {
-          name: "211 Atlanta",
+          name: "United Way 211",
           phone: "211",
           tel: "tel:211",
-          note: "Or (404) 614-1000. Community resource database, shelter beds."
+          note: "Coordinated entry + shelter while you wait."
         },
       ],
-      extra_note: "\ud83d\udccb Qualifying conditions include physical, mental health, or substance use disorders that substantially affect daily functioning. You don't need a formal diagnosis to be assessed.",
       confidence: {
-        level: "research",
-        note: "Numbers from partnersforhome.org, atlantamission.org. Last reviewed June 2026.",
-        lastChecked: "June 2026"
+        level: "unverified",
+        note: "AI-researched from public sources — not locally phone-verified. Call 211 to confirm the current local provider. Last researched June 14, 2026.",
+        lastChecked: "June 14, 2026"
       }
     },
 
     result_adult: {
       label: "Single Adults Pathway",
       badgeClass: "badge-adult",
-      badgeIcon: "\ud83d\udcde",
-      headline: "Atlanta Mission is the largest adult shelter system in metro Atlanta.",
-      firstAction: "Call <strong>Atlanta Mission</strong> at <strong>(404) 588-4000</strong> \u2014 operates Shepherd's Inn (men's emergency shelter, 165 Ivan Allen Blvd NW) and The Garden (men's recovery program) at 2353 Bolton Rd NW.",
-      callNumber: "tel:4045884000",
-      callLabel: "Call Atlanta Mission: (404) 588-4000",
-      what_to_expect: "Atlanta Mission's Shepherd's Inn is the main single-adult men's emergency shelter. Mary Hall Freedom Village provides behavioral health + recovery housing for women in Sandy Springs. HOPE Atlanta runs case management, prevention, and RRH across populations.",
+      badgeIcon: "📞",
+      headline: "Start with tonight’s shelter, then the housing list.",
+      firstAction: "Call or text <strong>211</strong> and say: <em>“I need a shelter bed tonight.”</em> Ask for <strong>tonight’s open beds for single adults</strong>, the nearest <strong>daytime drop-in center</strong> (showers, mail, case management), and a <strong>free meal site</strong>. 211 is multilingual and 24/7.",
+      callNumber: "tel:211",
+      callLabel: "Call 211",
+      what_to_expect: "211 has the current shelter-bed picture for your area, which changes daily. Ask them to also start a coordinated-entry assessment so you’re working toward housing, not just tonight.",
       bring: [
         "Photo ID (helpful but not always required)",
         "Social security card or number (if available)",
@@ -836,30 +812,24 @@
       ],
       resources: [
         {
-          name: "Mary Hall Freedom Village (women)",
-          phone: "(678) 642-5500",
-          tel: "tel:6786425500",
-          note: "Behavioral health + recovery housing. Sandy Springs."
+          name: "Find a free clinic (FQHC)",
+          phone: "Ask 211",
+          tel: "tel:211",
+          note: "Federally Qualified Health Centers treat everyone regardless of ability to pay."
         },
         {
-          name: "HOPE Atlanta",
-          phone: "(404) 817-7070",
-          tel: "tel:4048177070",
-          note: "Case management, prevention, RRH."
-        },
-        {
-          name: "211 Atlanta",
-          phone: "(404) 614-1000",
-          tel: "tel:4046141000",
-          note: "Or dial 211. Text ZIP to 898211."
+          name: "988 Suicide &amp; Crisis Lifeline",
+          phone: "988",
+          tel: "tel:988",
+          note: "24/7 mental-health support."
         },
       ],
       confidence: {
-        level: "research",
-        note: "Numbers from atlantamission.org, maryhallfreedomvillage.org, hopeatlanta.org. Last reviewed June 2026.",
-        lastChecked: "June 2026"
+        level: "unverified",
+        note: "AI-researched from public sources — not locally phone-verified. Call 211 to confirm the current local provider. Last researched June 14, 2026.",
+        lastChecked: "June 14, 2026"
       }
-    }
+    },
 
   }; // end PATHWAYS
 

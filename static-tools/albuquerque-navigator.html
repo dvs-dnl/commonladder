@@ -472,7 +472,8 @@
   <strong>Need help right now?</strong>
   <a href="tel:211">Call 211</a><span class="crisis-bar__sep">·</span>
   <a href="sms:741741?body=HOME">Text HOME to 741741</a><span class="crisis-bar__sep">·</span>
-  <a href="tel:988">988 Suicide &amp; Crisis</a>
+  <a href="tel:988">988 Suicide &amp; Crisis</a><span class="crisis-bar__sep">·</span>
+  <a href="tel:18007997233">DV 1-800-799-7233</a>
 </div>
 
 <nav class="nav" aria-label="Primary">
@@ -512,6 +513,8 @@
   </svg>
   <span>common<span class="cl-home__rung">ladder</span></span>
 </a>
+
+<div role="note" style="background:#ffedd5;border:1px solid #9a3412;color:#6b2710;border-radius:10px;padding:14px 18px;margin:0 auto 18px;max-width:680px;font-size:.9rem;line-height:1.5;"><strong style="color:#9a3412;">AI-researched, not locally verified.</strong> Common Ladder is based in Arizona. We built this guide from public sources but don’t yet verify these listings by phone the way we do our Arizona tools. Use it to learn <em>what to ask for</em>, then <strong>call <a href="tel:211" style="color:#9a3412;">211</a></strong> for the current local provider. Last researched <time datetime="2026-06-14">June 14, 2026</time>. Wrong info? <a href="mailto:corrections.commonladder@gmail.com?subject=Resource%20update:%20Albuquerque" style="color:#9a3412;">Tell us</a>.</div>
 
 <!-- App shell — all screens rendered by JS into here -->
 <div id="app"></div>
@@ -651,29 +654,23 @@
      Keep firstAction to one clear sentence + phone number.
      resources: 3 is ideal; 2 minimum; 4 maximum.
   ═══════════════════════════════════════════════════════════ */
-  var PATHWAYS = {
+    var PATHWAYS = {
 
     result_veterans: {
       label: "Veterans Pathway",
       badgeClass: "badge-veterans",
-      badgeIcon: "\ud83c\udf96",
-      headline: "There's a dedicated system built for you.",
-      firstAction: "Call <strong>New Mexico Veterans Integration Center (NM VIC)</strong> at <strong>(505) 296-0800</strong> \u2014 2701 Mulberry St SE, Albuquerque. Emergency shelter, transitional and permanent supportive housing for homeless veterans. M\u2013F 8am\u20133:30pm. Or call <strong>Raymond G. Murphy VA Medical Center</strong> at <strong>(505) 265-1711</strong>.",
-      callNumber: "tel:5052960800",
-      callLabel: "Call NM VIC: (505) 296-0800",
-      what_to_expect: "Raymond G. Murphy VAMC (1501 San Pedro Dr SE) is the main VA medical center for New Mexico with Homeless Transitional and Supportive Housing programs. NM VIC provides comprehensive emergency-to-permanent housing for veterans. National Call Center for Homeless Veterans is 24/7.",
+      badgeIcon: "🎖",
+      headline: "There's a dedicated system built for veterans.",
+      firstAction: "Call <strong>211</strong> — free, 24/7 — and say: <em>“I’m a veteran and I’m homeless or about to be.”</em> Ask to be connected to the <strong>VA’s Health Care for Homeless Veterans (HCHV)</strong> program and your local <strong>coordinated-entry assessment</strong>. Veterans qualify for both VA housing (HUD-VASH) and the local Continuum of Care at the same time.",
+      callNumber: "tel:211",
+      callLabel: "Call 211",
+      what_to_expect: "211 will route you to the nearest VA homeless-program coordinator and your local CoC. The National Call Center for Homeless Veterans is available 24/7 anywhere in the U.S. if you can’t reach a local office.",
       bring: [
-        "DD-214 discharge papers (if you have them \u2014 not required to call)",
+        "DD-214 discharge papers (if you have them — not required to call)",
         "Photo ID (if available)",
         "Any VA documentation you have",
       ],
       resources: [
-        {
-          name: "Raymond G. Murphy VA Medical Center",
-          phone: "(505) 265-1711",
-          tel: "tel:5052651711",
-          note: "1501 San Pedro Dr SE."
-        },
         {
           name: "National Call Center for Homeless Veterans",
           phone: "1-877-424-3838",
@@ -688,147 +685,126 @@
         },
       ],
       confidence: {
-        level: "research",
-        note: "Numbers from va.gov/new-mexico-health-care, nmvic.org. Last reviewed June 2026.",
-        lastChecked: "June 2026"
+        level: "unverified",
+        note: "AI-researched from public sources — not locally phone-verified. Call 211 to confirm the current local provider. Last researched June 14, 2026.",
+        lastChecked: "June 14, 2026"
       }
     },
 
     result_youth: {
       label: "Youth Pathway",
       badgeClass: "badge-youth",
-      badgeIcon: "\ud83c\udf31",
-      headline: "New Day Youth & Family Services is Albuquerque's lead youth provider.",
-      firstAction: "Call <strong>New Day Safe Home Shelter</strong> at <strong>(505) 938-1060</strong> \u2014 ages 11\u201317 emergency shelter. Admin: (505) 260-9912. Albuquerque's first runaway/youth shelter (founded 1976).",
-      callNumber: "tel:5059381060",
-      callLabel: "Call New Day Safe Home: (505) 938-1060",
-      what_to_expect: "New Day operates Safe Home (emergency shelter for ages 11\u201317), Life Skills Academy, supportive/transitional housing, and The Space drop-in center. They serve ~1,000 youth annually. The City of Albuquerque is developing a forthcoming Gateway Young Adult Housing & Treatment Navigation Center.",
+      badgeIcon: "🌱",
+      headline: "If you’re 24 or under, there’s a youth-specific path.",
+      firstAction: "Call or text <strong>211</strong> and say: <em>“I’m 24 or younger and I need a safe place to stay.”</em> Ask for the <strong>youth emergency shelter</strong> and the <strong>runaway &amp; homeless youth (RHY) program</strong> in your area.",
+      callNumber: "tel:211",
+      callLabel: "Call 211",
+      what_to_expect: "211 routes you to the nearest youth shelter or drop-in center. The national backstops below are always available, day or night.",
       bring: [
-        "Photo ID (helpful \u2014 not required for crisis services)",
+        "Photo ID (helpful — not required for crisis services)",
         "Anything important you can carry",
-        "Nothing required to call the shelter line",
+        "Nothing is required to call",
       ],
       resources: [
         {
-          name: "New Day Youth & Family Services (admin)",
-          phone: "(505) 260-9912",
-          tel: "tel:5052609912",
-          note: "Life Skills Academy, supportive/transitional housing, The Space drop-in."
+          name: "Safe Place",
+          phone: "Text SAFE + your location to 44357",
+          tel: "sms:44357?body=SAFE",
+          note: "Or walk into any QuikTrip and ask staff to call for you."
         },
         {
-          name: "City of Albuquerque 311",
-          phone: "311",
-          tel: "tel:311",
-          note: "Or (505) 768-2000 from outside ABQ. Youth referrals."
-        },
-        {
-          name: "United Way 211 (North Central NM)",
-          phone: "211",
-          tel: "tel:211",
-          note: "Includes Albuquerque/Bernalillo County."
+          name: "National Runaway Safeline",
+          phone: "1-800-786-2929",
+          tel: "tel:18007862929",
+          note: "24/7, free, confidential."
         },
       ],
-      extra_note: "\u26a0\ufe0f Under 18? New Day Safe Home is for you. Crisis line: (505) 938-1060.",
       confidence: {
-        level: "research",
-        note: "Numbers from ndnm.org, cabq.gov. Last reviewed June 2026.",
-        lastChecked: "June 2026"
+        level: "unverified",
+        note: "AI-researched from public sources — not locally phone-verified. Call 211 to confirm the current local provider. Last researched June 14, 2026.",
+        lastChecked: "June 14, 2026"
       }
     },
 
     result_families: {
       label: "Families Pathway",
       badgeClass: "badge-families",
-      badgeIcon: "\ud83c\udfe0",
-      headline: "Joy Junction is the largest emergency shelter in New Mexico.",
-      firstAction: "Call <strong>Joy Junction 24/7 Family Assistance</strong> at <strong>1-800-924-0569</strong>, or main at <strong>(505) 877-6967</strong> \u2014 4500 2nd St SW, Albuquerque. Largest emergency shelter in NM. Serves men, women, children, and intact families.",
-      callNumber: "tel:18009240569",
-      callLabel: "Call Joy Junction: 1-800-924-0569",
-      what_to_expect: "Joy Junction is the largest emergency shelter in New Mexico with 24/7 family assistance. Saranam runs a two-year transitional housing program for homeless families with apartments, adult education, vocational development, life-skills, and childcare. Heading Home provides Rapid Rehousing and PSH including for families.",
+      badgeIcon: "🏠",
+      headline: "Families are kept together in the shelter system.",
+      firstAction: "Call or text <strong>211</strong> and say: <em>“I have my kids with me and we need shelter tonight.”</em> Ask for <strong>family emergency shelter</strong> and the <strong>coordinated-entry assessment</strong> for rapid re-housing.",
+      callNumber: "tel:211",
+      callLabel: "Call 211",
+      what_to_expect: "211 routes you to family shelter and the local coordinated-entry system. If you are fleeing domestic violence, use the confidential hotline below instead — DV shelter is separate and won’t list your location.",
       bring: [
         "Photo ID for adults (if available)",
-        "Birth certificates for children (helpful but not always required)",
+        "Birth certificates for children (helpful, not always required)",
         "Documentation of income or benefits (if available)",
-        "Social security cards (if you have them)",
       ],
       resources: [
         {
-          name: "Saranam (two-year family transitional housing)",
-          phone: "(505) 299-6154",
-          tel: "tel:5052996154",
-          note: "1028 Eubank NE, Ste F. Apartments + education + childcare."
-        },
-        {
-          name: "Heading Home \u2014 Housing Services",
-          phone: "(505) 344-2323",
-          tel: "tel:5053442323",
-          note: "Press 2 for Housing. RRH and PSH."
+          name: "National Domestic Violence Hotline",
+          phone: "1-800-799-7233",
+          tel: "tel:18007997233",
+          note: "24/7, confidential. Text START to 88788. Connects you to a local confidential DV shelter."
         },
         {
           name: "United Way 211",
           phone: "211",
           tel: "tel:211",
-          note: "North Central NM."
+          note: "Family shelter + coordinated entry."
         },
       ],
       confidence: {
-        level: "research",
-        note: "Numbers from joyjunction.org, saranamabq.org, headinghome.org. Last reviewed June 2026.",
-        lastChecked: "June 2026"
+        level: "unverified",
+        note: "AI-researched from public sources — not locally phone-verified. Call 211 to confirm the current local provider. Last researched June 14, 2026.",
+        lastChecked: "June 14, 2026"
       }
     },
 
     result_chronic: {
       label: "Chronic Homelessness Pathway",
       badgeClass: "badge-chronic",
-      badgeIcon: "\ud83d\udd11",
-      headline: "Heading Home and NMCEH administer Coordinated Entry.",
-      firstAction: "Call <strong>Heading Home Coordinated Entry / Outreach</strong> at <strong>(505) 344-2323</strong> (Press 3 for street-level outreach/navigation). Or for rental assistance/housing programs: <strong>(505) 768-4357</strong> (HELP). Email NMCEH: coordinatedentry@nmceh.org.",
-      callNumber: "tel:5053442323",
-      callLabel: "Call Heading Home: (505) 344-2323",
-      what_to_expect: "Heading Home is Albuquerque's primary housing-navigation partner. NM Coalition to End Homelessness (NMCEH) administers the statewide Coordinated Entry System. Albuquerque Health Care for the Homeless (AHCH) \u2014 distinct from Heading Home \u2014 is an FQHC at 1217 1st St NW providing primary care, behavioral health, dental, harm reduction, and Shelter Plus Care PSH.",
+      badgeIcon: "🔑",
+      headline: "The housing list starts with one assessment.",
+      firstAction: "Call or text <strong>211</strong> and say: <em>“I’ve been homeless a long time and I want to get on the housing list.”</em> Ask for the <strong>coordinated-entry assessment</strong> — in this system, permanent supportive housing is reached by being assessed and placed on the community housing-referral list. The assessment is the door; there is no separate number.",
+      callNumber: "tel:211",
+      callLabel: "Call 211",
+      what_to_expect: "A coordinated-entry assessor will ask about your situation and add you to the local housing-referral list. While you wait, ask 211 for tonight’s shelter and a daytime drop-in center.",
       bring: [
         "Photo ID (any form)",
-        "Documentation of health conditions (if available \u2014 not required to be assessed)",
+        "Documentation of health conditions (if available — not required to be assessed)",
         "Any records of prior housing or service history",
       ],
       resources: [
         {
-          name: "Albuquerque Health Care for the Homeless (AHCH)",
-          phone: "(505) 766-5197",
-          tel: "tel:5057665197",
-          note: "1217 1st St NW. FQHC. Distinct from Heading Home."
+          name: "988 Suicide &amp; Crisis Lifeline",
+          phone: "988",
+          tel: "tel:988",
+          note: "Behavioral-health crisis support + SOAR disability-benefit help tied to housing."
         },
         {
-          name: "NMCEH (main, Santa Fe)",
-          phone: "(505) 982-9000",
-          tel: "tel:5059829000",
-          note: "Statewide CES administrator."
-        },
-        {
-          name: "City of Albuquerque 311",
-          phone: "311",
-          tel: "tel:311",
-          note: "Or (505) 768-2000."
+          name: "United Way 211",
+          phone: "211",
+          tel: "tel:211",
+          note: "Coordinated entry + shelter while you wait."
         },
       ],
-      extra_note: "\ud83d\udccb Qualifying conditions include physical, mental health, or substance use disorders that substantially affect daily functioning. You don't need a formal diagnosis to be assessed.",
       confidence: {
-        level: "research",
-        note: "Numbers from headinghome.org, nmceh.org, abqhch.org. Last reviewed June 2026.",
-        lastChecked: "June 2026"
+        level: "unverified",
+        note: "AI-researched from public sources — not locally phone-verified. Call 211 to confirm the current local provider. Last researched June 14, 2026.",
+        lastChecked: "June 14, 2026"
       }
     },
 
     result_adult: {
       label: "Single Adults Pathway",
       badgeClass: "badge-adult",
-      badgeIcon: "\ud83d\udcde",
-      headline: "Gateway West (Westside Emergency Housing) is the low-barrier shelter.",
-      firstAction: "Call <strong>Albuquerque Westside Emergency Housing Center / Gateway West</strong> at <strong>(505) 839-9193</strong> \u2014 operated by Heading Home under City contract at 7440 Jim McDowell Rd NW. Low-barrier shelter for men, women, and children. For shelter transport, Albuquerque Community Safety: (505) 651-5515.",
-      callNumber: "tel:5058399193",
-      callLabel: "Call Gateway West: (505) 839-9193",
-      what_to_expect: "Gateway West is the renamed Westside Emergency Housing Center, operated by Heading Home as part of the City's Gateway System of Care. The City's Gateway Center at Gibson Health Hub (5400 Gibson Blvd SE) has overnight beds with intake at (505) 537-8588. Steelbridge (formerly Albuquerque Rescue Mission) at 2021 2nd St NW operates a Resource Center and Men's New Life Program.",
+      badgeIcon: "📞",
+      headline: "Start with tonight’s shelter, then the housing list.",
+      firstAction: "Call or text <strong>211</strong> and say: <em>“I need a shelter bed tonight.”</em> Ask for <strong>tonight’s open beds for single adults</strong>, the nearest <strong>daytime drop-in center</strong> (showers, mail, case management), and a <strong>free meal site</strong>. 211 is multilingual and 24/7.",
+      callNumber: "tel:211",
+      callLabel: "Call 211",
+      what_to_expect: "211 has the current shelter-bed picture for your area, which changes daily. Ask them to also start a coordinated-entry assessment so you’re working toward housing, not just tonight.",
       bring: [
         "Photo ID (helpful but not always required)",
         "Social security card or number (if available)",
@@ -836,30 +812,24 @@
       ],
       resources: [
         {
-          name: "City of Albuquerque Gateway Center (Gibson)",
-          phone: "(505) 537-8588",
-          tel: "tel:5055378588",
-          note: "5400 Gibson Blvd SE. Intake. ~100 women + 92 men beds. 3 meals/day."
-        },
-        {
-          name: "Steelbridge (formerly ABQ Rescue Mission)",
-          phone: "(505) 346-4673",
-          tel: "tel:5053464673",
-          note: "2021 2nd St NW. Resource Center, Men's New Life Program."
-        },
-        {
-          name: "United Way 211",
-          phone: "211",
+          name: "Find a free clinic (FQHC)",
+          phone: "Ask 211",
           tel: "tel:211",
-          note: "North Central NM. M\u2013F."
+          note: "Federally Qualified Health Centers treat everyone regardless of ability to pay."
+        },
+        {
+          name: "988 Suicide &amp; Crisis Lifeline",
+          phone: "988",
+          tel: "tel:988",
+          note: "24/7 mental-health support."
         },
       ],
       confidence: {
-        level: "research",
-        note: "Numbers from cabq.gov/gateway-system-of-care, headinghome.org, mysteelbridge.org. Last reviewed June 2026.",
-        lastChecked: "June 2026"
+        level: "unverified",
+        note: "AI-researched from public sources — not locally phone-verified. Call 211 to confirm the current local provider. Last researched June 14, 2026.",
+        lastChecked: "June 14, 2026"
       }
-    }
+    },
 
   }; // end PATHWAYS
 

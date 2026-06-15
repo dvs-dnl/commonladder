@@ -472,7 +472,8 @@
   <strong>Need help right now?</strong>
   <a href="tel:211">Call 211</a><span class="crisis-bar__sep">·</span>
   <a href="sms:741741?body=HOME">Text HOME to 741741</a><span class="crisis-bar__sep">·</span>
-  <a href="tel:988">988 Suicide &amp; Crisis</a>
+  <a href="tel:988">988 Suicide &amp; Crisis</a><span class="crisis-bar__sep">·</span>
+  <a href="tel:18007997233">DV 1-800-799-7233</a>
 </div>
 
 <nav class="nav" aria-label="Primary">
@@ -512,6 +513,8 @@
   </svg>
   <span>common<span class="cl-home__rung">ladder</span></span>
 </a>
+
+<div role="note" style="background:#ffedd5;border:1px solid #9a3412;color:#6b2710;border-radius:10px;padding:14px 18px;margin:0 auto 18px;max-width:680px;font-size:.9rem;line-height:1.5;"><strong style="color:#9a3412;">AI-researched, not locally verified.</strong> Common Ladder is based in Arizona. We built this guide from public sources but don’t yet verify these listings by phone the way we do our Arizona tools. Use it to learn <em>what to ask for</em>, then <strong>call <a href="tel:211" style="color:#9a3412;">211</a></strong> for the current local provider. Last researched <time datetime="2026-06-14">June 14, 2026</time>. Wrong info? <a href="mailto:corrections.commonladder@gmail.com?subject=Resource%20update:%20Nassau%20/%20Suffolk%20Counties%20(Long%20Island)" style="color:#9a3412;">Tell us</a>.</div>
 
 <!-- App shell — all screens rendered by JS into here -->
 <div id="app"></div>
@@ -651,185 +654,157 @@
      Keep firstAction to one clear sentence + phone number.
      resources: 3 is ideal; 2 minimum; 4 maximum.
   ═══════════════════════════════════════════════════════════ */
-  var PATHWAYS = {
+    var PATHWAYS = {
 
     result_veterans: {
       label: "Veterans Pathway",
       badgeClass: "badge-veterans",
-      badgeIcon: "\ud83c\udf96",
-      headline: "There's a dedicated system built for you.",
-      firstAction: "Call <strong>Northport VA Medical Center</strong> at <strong>(631) 261-4400</strong> \u2014 79 Middleville Rd, Northport. Ask for homeless veteran services. Or call <strong>United Veterans Beacon House</strong> at <strong>(631) 665-1571</strong>, 1715 Union Blvd, Bay Shore \u2014 transitional and permanent housing for veterans across Long Island.",
-      callNumber: "tel:6316651571",
-      callLabel: "Call UVBH: (631) 665-1571",
-      what_to_expect: "Northport VAMC serves Suffolk and Nassau veterans. United Veterans Beacon House (UVBH) operates the largest veteran housing on Long Island. Salvation Army Northport Veterans Residence provides up to 90 days. Economic Opportunity Council of Suffolk runs SSVF at (631) 289-2601 ext. 128. Mental Health Association of Nassau/LI runs SSVF for Nassau at (631) 471-7242 ext. 2.",
+      badgeIcon: "🎖",
+      headline: "There's a dedicated system built for veterans.",
+      firstAction: "Call <strong>211</strong> — free, 24/7 — and say: <em>“I’m a veteran and I’m homeless or about to be.”</em> Ask to be connected to the <strong>VA’s Health Care for Homeless Veterans (HCHV)</strong> program and your local <strong>coordinated-entry assessment</strong>. Veterans qualify for both VA housing (HUD-VASH) and the local Continuum of Care at the same time.",
+      callNumber: "tel:211",
+      callLabel: "Call 211",
+      what_to_expect: "211 will route you to the nearest VA homeless-program coordinator and your local CoC. The National Call Center for Homeless Veterans is available 24/7 anywhere in the U.S. if you can’t reach a local office.",
       bring: [
-        "DD-214 discharge papers (if you have them \u2014 not required to call)",
+        "DD-214 discharge papers (if you have them — not required to call)",
         "Photo ID (if available)",
         "Any VA documentation you have",
       ],
       resources: [
-        {
-          name: "Nassau County Veterans Service Agency",
-          phone: "(516) 572-6565",
-          tel: "tel:5165726565",
-          note: "County-level veteran benefits/referrals."
-        },
-        {
-          name: "Suffolk County Veterans Service Agency",
-          phone: "(631) 853-8387",
-          tel: "tel:6318538387",
-          note: "853-VETS. Riverhead office: (631) 852-1410."
-        },
         {
           name: "National Call Center for Homeless Veterans",
           phone: "1-877-424-3838",
           tel: "tel:18774243838",
           note: "24/7. Available everywhere."
         },
+        {
+          name: "Veterans Crisis Line",
+          phone: "988",
+          tel: "tel:988",
+          note: "Press 1 for the VA crisis line."
+        },
       ],
       confidence: {
-        level: "research",
-        note: "Numbers from va.gov/northport-health-care, uvbh.org, lihomeless.org. Last reviewed May 2026.",
-        lastChecked: "May 2026"
+        level: "unverified",
+        note: "AI-researched from public sources — not locally phone-verified. Call 211 to confirm the current local provider. Last researched June 14, 2026.",
+        lastChecked: "June 14, 2026"
       }
     },
 
     result_youth: {
       label: "Youth Pathway",
       badgeClass: "badge-youth",
-      badgeIcon: "\ud83c\udf31",
-      headline: "Family Service League and Long Island Crisis Center serve youth.",
-      firstAction: "Call the <strong>Long Island Crisis Center 24/7 Hotline</strong> at <strong>(516) 679-1111</strong> \u2014 Bellmore-based 24/7 crisis line. For Suffolk DV-related youth crisis, the <strong>Suffolk County Coalition Against Domestic Violence 24-hr Hotline</strong>: (631) 666-8833.",
-      callNumber: "tel:5166791111",
-      callLabel: "Call LICC: (516) 679-1111",
-      what_to_expect: "Long Island Crisis Center operates a 24/7 confidential crisis line. Family Service League (FSL) is the lead Suffolk human services agency and runs DASH (the Suffolk diagnostic, assessment & stabilization hub). Suffolk County Coalition Against Domestic Violence (SCCADV) provides 24/7 DV shelter intake including for youth and families.",
+      badgeIcon: "🌱",
+      headline: "If you’re 24 or under, there’s a youth-specific path.",
+      firstAction: "Call or text <strong>211</strong> and say: <em>“I’m 24 or younger and I need a safe place to stay.”</em> Ask for the <strong>youth emergency shelter</strong> and the <strong>runaway &amp; homeless youth (RHY) program</strong> in your area.",
+      callNumber: "tel:211",
+      callLabel: "Call 211",
+      what_to_expect: "211 routes you to the nearest youth shelter or drop-in center. The national backstops below are always available, day or night.",
       bring: [
-        "Photo ID (helpful \u2014 not required for crisis services)",
+        "Photo ID (helpful — not required for crisis services)",
         "Anything important you can carry",
-        "Nothing required for crisis line",
+        "Nothing is required to call",
       ],
       resources: [
         {
-          name: "Family Service League (main)",
-          phone: "(631) 427-3700",
-          tel: "tel:6314273700",
-          note: "Lead Suffolk human services agency. Runs DASH, youth shelter."
+          name: "Safe Place",
+          phone: "Text SAFE + your location to 44357",
+          tel: "sms:44357?body=SAFE",
+          note: "Or walk into any QuikTrip and ask staff to call for you."
         },
         {
-          name: "FSL DASH Mobile Crisis (24/7)",
-          phone: "(631) 952-3333",
-          tel: "tel:6319523333",
-          note: "Suffolk's mobile crisis response."
-        },
-        {
-          name: "SCCADV (DV 24/7)",
-          phone: "(631) 666-8833",
-          tel: "tel:6316668833",
-          note: "Suffolk DV crisis line. Shelter intake for survivors."
+          name: "National Runaway Safeline",
+          phone: "1-800-786-2929",
+          tel: "tel:18007862929",
+          note: "24/7, free, confidential."
         },
       ],
-      extra_note: "\u26a0\ufe0f Under 18? Long Island Crisis Center's 24/7 line is for you. FSL operates youth shelter programs in Suffolk.",
       confidence: {
-        level: "research",
-        note: "Numbers from longislandcrisiscenter.org, fsl-li.org, sccadv.org. Last reviewed May 2026.",
-        lastChecked: "May 2026"
+        level: "unverified",
+        note: "AI-researched from public sources — not locally phone-verified. Call 211 to confirm the current local provider. Last researched June 14, 2026.",
+        lastChecked: "June 14, 2026"
       }
     },
 
     result_families: {
       label: "Families Pathway",
       badgeClass: "badge-families",
-      badgeIcon: "\ud83c\udfe0",
-      headline: "Family shelter on Long Island goes through county DSS.",
-      firstAction: "For Suffolk County: call <strong>Suffolk DSS Temporary Housing Unit</strong> at <strong>(631) 854-9517</strong> (daytime) or <strong>(631) 854-9100</strong> (after-hours/weekends). For Nassau County: call <strong>Nassau DSS Emergency Housing</strong> at <strong>(516) 227-7520</strong> (daytime) or <strong>(516) 573-8626</strong> (after-hours).",
-      callNumber: "tel:6318549517",
-      callLabel: "Suffolk DSS: (631) 854-9517",
-      what_to_expect: "Long Island operates outside the NYC DHS system. Both counties run their own DSS shelter systems \u2014 shelters are contracted with DSS and cannot be accessed directly. Apply in person if possible. Mercy Haven (Islip Terrace) operates temporary and permanent supportive housing. EAC Network (50 Clinton St, Hempstead) provides family stabilization across Long Island.",
+      badgeIcon: "🏠",
+      headline: "Families are kept together in the shelter system.",
+      firstAction: "Call or text <strong>211</strong> and say: <em>“I have my kids with me and we need shelter tonight.”</em> Ask for <strong>family emergency shelter</strong> and the <strong>coordinated-entry assessment</strong> for rapid re-housing.",
+      callNumber: "tel:211",
+      callLabel: "Call 211",
+      what_to_expect: "211 routes you to family shelter and the local coordinated-entry system. If you are fleeing domestic violence, use the confidential hotline below instead — DV shelter is separate and won’t list your location.",
       bring: [
         "Photo ID for adults (if available)",
-        "Birth certificates for children (helpful but not always required)",
+        "Birth certificates for children (helpful, not always required)",
         "Documentation of income or benefits (if available)",
-        "Social security cards (if you have them)",
       ],
       resources: [
         {
-          name: "Mercy Haven (Islip Terrace HQ)",
-          phone: "(631) 277-8300",
-          tel: "tel:6312778300",
-          note: "Temporary & permanent supportive housing, both counties."
+          name: "National Domestic Violence Hotline",
+          phone: "1-800-799-7233",
+          tel: "tel:18007997233",
+          note: "24/7, confidential. Text START to 88788. Connects you to a local confidential DV shelter."
         },
         {
-          name: "EAC Network (Hempstead)",
-          phone: "(516) 539-0150",
-          tel: "tel:5165390150",
-          note: "50 Clinton St. Family stabilization, case management."
-        },
-        {
-          name: "211 Long Island",
+          name: "United Way 211",
           phone: "211",
           tel: "tel:211",
-          note: "Or 1-888-774-7633. 24/7 information & referral."
+          note: "Family shelter + coordinated entry."
         },
       ],
-      extra_note: "\ud83d\udee1\ufe0f NY State has a right to shelter for families with children \u2014 but on Long Island, applications go through Nassau or Suffolk DSS, not NYC DHS.",
       confidence: {
-        level: "research",
-        note: "Numbers from nassaucountyny.gov, suffolkcountyny.gov, mercyhaven.org, eac-network.org, homelesslongisland.org. Last reviewed May 2026.",
-        lastChecked: "May 2026"
+        level: "unverified",
+        note: "AI-researched from public sources — not locally phone-verified. Call 211 to confirm the current local provider. Last researched June 14, 2026.",
+        lastChecked: "June 14, 2026"
       }
     },
 
     result_chronic: {
       label: "Chronic Homelessness Pathway",
       badgeClass: "badge-chronic",
-      badgeIcon: "\ud83d\udd11",
-      headline: "Long Island Coalition for the Homeless administers Coordinated Entry.",
-      firstAction: "Call the <strong>LICH Coordinated Entry Helpline</strong> at <strong>(631) 464-4314 ext. 118</strong> \u2014 the single front door for housing-focused case management and prioritization across Nassau and Suffolk.",
-      callNumber: "tel:6314644314",
-      callLabel: "Call LICH CE: (631) 464-4314 x118",
-      what_to_expect: "LICH (Long Island Coalition for the Homeless) is the CoC lead agency. CE prioritizes the longest-homeless and highest-need. Concern for Independent Living (Medford) is a large PSH provider for chronically homeless with behavioral health needs. Federation of Organizations (West Babylon) operates supportive housing, care coordination, and behavioral health. Suffolk Single Point of Access (SPA) routes OMH-licensed supportive housing.",
+      badgeIcon: "🔑",
+      headline: "The housing list starts with one assessment.",
+      firstAction: "Call or text <strong>211</strong> and say: <em>“I’ve been homeless a long time and I want to get on the housing list.”</em> Ask for the <strong>coordinated-entry assessment</strong> — in this system, permanent supportive housing is reached by being assessed and placed on the community housing-referral list. The assessment is the door; there is no separate number.",
+      callNumber: "tel:211",
+      callLabel: "Call 211",
+      what_to_expect: "A coordinated-entry assessor will ask about your situation and add you to the local housing-referral list. While you wait, ask 211 for tonight’s shelter and a daytime drop-in center.",
       bring: [
         "Photo ID (any form)",
-        "Documentation of health conditions (if available \u2014 not required to be assessed)",
+        "Documentation of health conditions (if available — not required to be assessed)",
         "Any records of prior housing or service history",
       ],
       resources: [
         {
-          name: "Concern for Independent Living (Medford)",
-          phone: "(631) 758-0474",
-          tel: "tel:6317580474",
-          note: "Large PSH provider for chronically homeless with behavioral health needs."
+          name: "988 Suicide &amp; Crisis Lifeline",
+          phone: "988",
+          tel: "tel:988",
+          note: "Behavioral-health crisis support + SOAR disability-benefit help tied to housing."
         },
         {
-          name: "Federation of Organizations (West Babylon)",
-          phone: "(631) 669-5355",
-          tel: "tel:6316695355",
-          note: "Supportive housing, care coordination, behavioral health."
-        },
-        {
-          name: "Suffolk Single Point of Access (SPA)",
-          phone: "(631) 231-3562",
-          tel: "tel:6312313562",
-          note: "Routing for OMH-licensed supportive housing."
+          name: "United Way 211",
+          phone: "211",
+          tel: "tel:211",
+          note: "Coordinated entry + shelter while you wait."
         },
       ],
-      extra_note: "\ud83d\udccb Qualifying conditions include physical, mental health, or substance use disorders that substantially affect daily functioning. You don't need a formal diagnosis to be assessed.",
       confidence: {
-        level: "research",
-        note: "Numbers from addressthehomeless.org, mercyhaven.org Helpful Links, fedoforg.org. Last reviewed May 2026.",
-        lastChecked: "May 2026"
+        level: "unverified",
+        note: "AI-researched from public sources — not locally phone-verified. Call 211 to confirm the current local provider. Last researched June 14, 2026.",
+        lastChecked: "June 14, 2026"
       }
     },
 
     result_adult: {
       label: "Single Adults Pathway",
       badgeClass: "badge-adult",
-      badgeIcon: "\ud83d\udcde",
-      headline: "All shelter access goes through county DSS on Long Island.",
-      firstAction: "For Suffolk: call <strong>Suffolk DSS Temporary Housing</strong> at <strong>(631) 854-9517</strong> (daytime) or <strong>(631) 854-9100</strong> (after-hours). For Nassau: call <strong>Nassau DSS Emergency Housing</strong> at <strong>(516) 573-8626</strong> (after-hours/24/7) or <strong>(516) 227-7520</strong> (daytime).",
-      callNumber: "tel:6318549517",
-      callLabel: "Suffolk DSS: (631) 854-9517",
-      what_to_expect: "Long Island shelter access is gated by DSS in both counties. Direct calls to individual shelters will be redirected. LICH's Coordinated Entry helpline (631-464-4314 x118) is the CoC front door for prioritization. 211 Long Island provides the broader info/referral entry point.",
+      badgeIcon: "📞",
+      headline: "Start with tonight’s shelter, then the housing list.",
+      firstAction: "Call or text <strong>211</strong> and say: <em>“I need a shelter bed tonight.”</em> Ask for <strong>tonight’s open beds for single adults</strong>, the nearest <strong>daytime drop-in center</strong> (showers, mail, case management), and a <strong>free meal site</strong>. 211 is multilingual and 24/7.",
+      callNumber: "tel:211",
+      callLabel: "Call 211",
+      what_to_expect: "211 has the current shelter-bed picture for your area, which changes daily. Ask them to also start a coordinated-entry assessment so you’re working toward housing, not just tonight.",
       bring: [
         "Photo ID (helpful but not always required)",
         "Social security card or number (if available)",
@@ -837,30 +812,24 @@
       ],
       resources: [
         {
-          name: "Nassau DSS \u2014 Emergency Housing (after-hours)",
-          phone: "(516) 573-8626",
-          tel: "tel:5165738626",
-          note: "Nights/weekends/holidays emergency intake."
-        },
-        {
-          name: "Pronto of Long Island (Bay Shore)",
-          phone: "(631) 231-8290",
-          tel: "tel:6312318290",
-          note: "128 Pine Aire Dr. Food/clothing/basic services."
-        },
-        {
-          name: "211 Long Island",
-          phone: "211",
+          name: "Find a free clinic (FQHC)",
+          phone: "Ask 211",
           tel: "tel:211",
-          note: "Or 1-888-774-7633. First call for referrals."
+          note: "Federally Qualified Health Centers treat everyone regardless of ability to pay."
+        },
+        {
+          name: "988 Suicide &amp; Crisis Lifeline",
+          phone: "988",
+          tel: "tel:988",
+          note: "24/7 mental-health support."
         },
       ],
       confidence: {
-        level: "research",
-        note: "DSS-gated shelter access confirmed on both county sites. Last reviewed May 2026.",
-        lastChecked: "May 2026"
+        level: "unverified",
+        note: "AI-researched from public sources — not locally phone-verified. Call 211 to confirm the current local provider. Last researched June 14, 2026.",
+        lastChecked: "June 14, 2026"
       }
-    }
+    },
 
   }; // end PATHWAYS
 

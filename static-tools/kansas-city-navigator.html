@@ -472,7 +472,8 @@
   <strong>Need help right now?</strong>
   <a href="tel:211">Call 211</a><span class="crisis-bar__sep">·</span>
   <a href="sms:741741?body=HOME">Text HOME to 741741</a><span class="crisis-bar__sep">·</span>
-  <a href="tel:988">988 Suicide &amp; Crisis</a>
+  <a href="tel:988">988 Suicide &amp; Crisis</a><span class="crisis-bar__sep">·</span>
+  <a href="tel:18007997233">DV 1-800-799-7233</a>
 </div>
 
 <nav class="nav" aria-label="Primary">
@@ -512,6 +513,8 @@
   </svg>
   <span>common<span class="cl-home__rung">ladder</span></span>
 </a>
+
+<div role="note" style="background:#ffedd5;border:1px solid #9a3412;color:#6b2710;border-radius:10px;padding:14px 18px;margin:0 auto 18px;max-width:680px;font-size:.9rem;line-height:1.5;"><strong style="color:#9a3412;">AI-researched, not locally verified.</strong> Common Ladder is based in Arizona. We built this guide from public sources but don’t yet verify these listings by phone the way we do our Arizona tools. Use it to learn <em>what to ask for</em>, then <strong>call <a href="tel:211" style="color:#9a3412;">211</a></strong> for the current local provider. Last researched <time datetime="2026-06-14">June 14, 2026</time>. Wrong info? <a href="mailto:corrections.commonladder@gmail.com?subject=Resource%20update:%20Kansas%20City%20/%20Jackson%20/%20Wyandotte" style="color:#9a3412;">Tell us</a>.</div>
 
 <!-- App shell — all screens rendered by JS into here -->
 <div id="app"></div>
@@ -651,29 +654,23 @@
      Keep firstAction to one clear sentence + phone number.
      resources: 3 is ideal; 2 minimum; 4 maximum.
   ═══════════════════════════════════════════════════════════ */
-  var PATHWAYS = {
+    var PATHWAYS = {
 
     result_veterans: {
       label: "Veterans Pathway",
       badgeClass: "badge-veterans",
-      badgeIcon: "\ud83c\udf96",
-      headline: "There's a dedicated system built for you.",
-      firstAction: "Call <strong>Veterans Community Project (VCP) Kansas City</strong> at <strong>(816) 599-6503</strong> \u2014 tiny-house village + Veterans Outreach Center for emergency assistance at 8900 Troost Ave. Or call <strong>Kansas City VA Medical Center</strong> at <strong>(816) 861-4700</strong> (4801 Linwood Blvd) for HUD-VASH, HCHV, and Homeless Patient Aligned Care Team.",
-      callNumber: "tel:8165996503",
-      callLabel: "Call VCP: (816) 599-6503",
-      what_to_expect: "VA Kansas City Medical Center operates HUD-VASH and HCHV. Veterans Community Project provides emergency assistance and a tiny-house village. For SSVF, Catholic Charities of KC-St. Joseph runs the program at (816) 659-8263.",
+      badgeIcon: "🎖",
+      headline: "There's a dedicated system built for veterans.",
+      firstAction: "Call <strong>211</strong> — free, 24/7 — and say: <em>“I’m a veteran and I’m homeless or about to be.”</em> Ask to be connected to the <strong>VA’s Health Care for Homeless Veterans (HCHV)</strong> program and your local <strong>coordinated-entry assessment</strong>. Veterans qualify for both VA housing (HUD-VASH) and the local Continuum of Care at the same time.",
+      callNumber: "tel:211",
+      callLabel: "Call 211",
+      what_to_expect: "211 will route you to the nearest VA homeless-program coordinator and your local CoC. The National Call Center for Homeless Veterans is available 24/7 anywhere in the U.S. if you can’t reach a local office.",
       bring: [
-        "DD-214 discharge papers (if you have them \u2014 not required to call)",
+        "DD-214 discharge papers (if you have them — not required to call)",
         "Photo ID (if available)",
         "Any VA documentation you have",
       ],
       resources: [
-        {
-          name: "Catholic Charities of KC-St. Joseph \u2014 SSVF",
-          phone: "(816) 659-8263",
-          tel: "tel:8166598263",
-          note: "Supportive Services for Veteran Families."
-        },
         {
           name: "National Call Center for Homeless Veterans",
           phone: "1-877-424-3838",
@@ -684,151 +681,130 @@
           name: "Veterans Crisis Line",
           phone: "988",
           tel: "tel:988",
-          note: "Press 1 for VA crisis line."
+          note: "Press 1 for the VA crisis line."
         },
       ],
       confidence: {
-        level: "research",
-        note: "Numbers from va.gov/kansas-city-health-care, veteranscommunityproject.org, catholiccharities-kcsj.org. Last reviewed May 2026.",
-        lastChecked: "May 2026"
+        level: "unverified",
+        note: "AI-researched from public sources — not locally phone-verified. Call 211 to confirm the current local provider. Last researched June 14, 2026.",
+        lastChecked: "June 14, 2026"
       }
     },
 
     result_youth: {
       label: "Youth Pathway",
       badgeClass: "badge-youth",
-      badgeIcon: "\ud83c\udf31",
-      headline: "reStart Inc. and Synergy Services run KC's youth shelters.",
-      firstAction: "Call <strong>reStart Youth Hotline</strong> at <strong>(816) 309-9048</strong> \u2014 24/7 youth crisis/shelter line. Only emergency youth shelter in KC urban core (ages 12\u201317). Or call <strong>Synergy Services Youth Crisis Hotline</strong> at <strong>(816) 741-8700</strong> (or toll-free 1-888-233-1639) for Synergy House emergency youth shelter (ages 12\u201318).",
-      callNumber: "tel:8163099048",
-      callLabel: "Call reStart Youth: (816) 309-9048",
-      what_to_expect: "reStart Inc. runs the urban core youth shelter; main intake (816) 472-5664. Synergy House is at 2005 NE Parvin Rd. Sheffield Place at 6604 E 12th St serves homeless mothers and their children.",
+      badgeIcon: "🌱",
+      headline: "If you’re 24 or under, there’s a youth-specific path.",
+      firstAction: "Call or text <strong>211</strong> and say: <em>“I’m 24 or younger and I need a safe place to stay.”</em> Ask for the <strong>youth emergency shelter</strong> and the <strong>runaway &amp; homeless youth (RHY) program</strong> in your area.",
+      callNumber: "tel:211",
+      callLabel: "Call 211",
+      what_to_expect: "211 routes you to the nearest youth shelter or drop-in center. The national backstops below are always available, day or night.",
       bring: [
-        "Photo ID (helpful \u2014 not required for crisis services)",
+        "Photo ID (helpful — not required for crisis services)",
         "Anything important you can carry",
-        "Nothing required for crisis line",
+        "Nothing is required to call",
       ],
       resources: [
         {
-          name: "Synergy Services \u2014 Toll-free",
-          phone: "1-888-233-1639",
-          tel: "tel:18882331639",
-          note: "Synergy House emergency youth shelter (12\u201318). 2005 NE Parvin Rd."
+          name: "Safe Place",
+          phone: "Text SAFE + your location to 44357",
+          tel: "sms:44357?body=SAFE",
+          note: "Or walk into any QuikTrip and ask staff to call for you."
         },
         {
-          name: "reStart Inc. (main)",
-          phone: "(816) 472-5664",
-          tel: "tel:8164725664",
-          note: "918 E 9th St. Youth, family, single-adult, veteran programs."
-        },
-        {
-          name: "Sheffield Place",
-          phone: "(816) 483-9927",
-          tel: "tel:8164839927",
-          note: "Ext. 113. Residential for homeless mothers."
+          name: "National Runaway Safeline",
+          phone: "1-800-786-2929",
+          tel: "tel:18007862929",
+          note: "24/7, free, confidential."
         },
       ],
-      extra_note: "\u26a0\ufe0f Under 18? reStart's 24/7 youth hotline is for you.",
       confidence: {
-        level: "research",
-        note: "Numbers from restartinc.org, synergyservices.org, sheffieldplace.org. Last reviewed May 2026.",
-        lastChecked: "May 2026"
+        level: "unverified",
+        note: "AI-researched from public sources — not locally phone-verified. Call 211 to confirm the current local provider. Last researched June 14, 2026.",
+        lastChecked: "June 14, 2026"
       }
     },
 
     result_families: {
       label: "Families Pathway",
       badgeClass: "badge-families",
-      badgeIcon: "\ud83c\udfe0",
-      headline: "reStart Inc. and City Union Mission serve families.",
-      firstAction: "Call <strong>reStart Inc.</strong> at <strong>(816) 472-5664</strong> \u2014 family services include rapid rehousing and family shelter. Or call <strong>City Union Mission Homeless Hotline</strong> at <strong>(816) 474-4599</strong> for the Family Center at 1310 Wabash Ave.",
-      callNumber: "tel:8164725664",
-      callLabel: "Call reStart: (816) 472-5664",
-      what_to_expect: "reStart operates family-specific programs including rapid rehousing. City Union Mission's Family Center provides shelter for women and women with children. Sheffield Place runs a residential trauma-informed program for homeless mothers and their children.",
+      badgeIcon: "🏠",
+      headline: "Families are kept together in the shelter system.",
+      firstAction: "Call or text <strong>211</strong> and say: <em>“I have my kids with me and we need shelter tonight.”</em> Ask for <strong>family emergency shelter</strong> and the <strong>coordinated-entry assessment</strong> for rapid re-housing.",
+      callNumber: "tel:211",
+      callLabel: "Call 211",
+      what_to_expect: "211 routes you to family shelter and the local coordinated-entry system. If you are fleeing domestic violence, use the confidential hotline below instead — DV shelter is separate and won’t list your location.",
       bring: [
         "Photo ID for adults (if available)",
-        "Birth certificates for children (helpful but not always required)",
+        "Birth certificates for children (helpful, not always required)",
         "Documentation of income or benefits (if available)",
-        "Social security cards (if you have them)",
       ],
       resources: [
         {
-          name: "City Union Mission (general)",
-          phone: "(816) 474-9380",
-          tel: "tel:8164749380",
-          note: "Family Center at 1310 Wabash Ave."
+          name: "National Domestic Violence Hotline",
+          phone: "1-800-799-7233",
+          tel: "tel:18007997233",
+          note: "24/7, confidential. Text START to 88788. Connects you to a local confidential DV shelter."
         },
         {
-          name: "Sheffield Place",
-          phone: "(816) 483-9927",
-          tel: "tel:8164839927",
-          note: "Ext. 113. Residential for homeless mothers + children."
-        },
-        {
-          name: "United Way 211 Greater KC",
+          name: "United Way 211",
           phone: "211",
           tel: "tel:211",
-          note: "Or (816) 474-5112. 24/7."
+          note: "Family shelter + coordinated entry."
         },
       ],
       confidence: {
-        level: "research",
-        note: "Numbers from restartinc.org, cityunionmission.org, sheffieldplace.org. Last reviewed May 2026.",
-        lastChecked: "May 2026"
+        level: "unverified",
+        note: "AI-researched from public sources — not locally phone-verified. Call 211 to confirm the current local provider. Last researched June 14, 2026.",
+        lastChecked: "June 14, 2026"
       }
     },
 
     result_chronic: {
       label: "Chronic Homelessness Pathway",
       badgeClass: "badge-chronic",
-      badgeIcon: "\ud83d\udd11",
-      headline: "211 is the single front door for KC Coordinated Entry.",
-      firstAction: "Call <strong>211</strong> (or <strong>(816) 474-5112</strong>) \u2014 United Way 211 Greater Kansas City. Access point for the GKCCEH Coordinated Entry System. 24/7 with interpretation.",
+      badgeIcon: "🔑",
+      headline: "The housing list starts with one assessment.",
+      firstAction: "Call or text <strong>211</strong> and say: <em>“I’ve been homeless a long time and I want to get on the housing list.”</em> Ask for the <strong>coordinated-entry assessment</strong> — in this system, permanent supportive housing is reached by being assessed and placed on the community housing-referral list. The assessment is the door; there is no separate number.",
       callNumber: "tel:211",
-      callLabel: "Call or dial 211",
-      what_to_expect: "Greater Kansas City Coalition to End Homelessness (GKCCEH) is the lead CoC agency (email: admin@gkcceh.org). 211 is the canonical access point. reStart Inc. operates PSH and rapid rehousing for chronically homeless individuals and families. City Union Mission has long-term recovery and transitional housing. Veterans Community Project's tiny-house village serves chronically homeless veterans.",
+      callLabel: "Call 211",
+      what_to_expect: "A coordinated-entry assessor will ask about your situation and add you to the local housing-referral list. While you wait, ask 211 for tonight’s shelter and a daytime drop-in center.",
       bring: [
         "Photo ID (any form)",
-        "Documentation of health conditions (if available \u2014 not required to be assessed)",
+        "Documentation of health conditions (if available — not required to be assessed)",
         "Any records of prior housing or service history",
       ],
       resources: [
         {
-          name: "reStart Inc.",
-          phone: "(816) 472-5664",
-          tel: "tel:8164725664",
-          note: "PSH, rapid rehousing for chronically homeless."
+          name: "988 Suicide &amp; Crisis Lifeline",
+          phone: "988",
+          tel: "tel:988",
+          note: "Behavioral-health crisis support + SOAR disability-benefit help tied to housing."
         },
         {
-          name: "City Union Mission",
-          phone: "(816) 474-4599",
-          tel: "tel:8164744599",
-          note: "Homeless Hotline. Long-term recovery + transitional housing."
-        },
-        {
-          name: "Veterans Community Project",
-          phone: "(816) 599-6503",
-          tel: "tel:8165996503",
-          note: "Tiny-house village for chronically homeless veterans."
+          name: "United Way 211",
+          phone: "211",
+          tel: "tel:211",
+          note: "Coordinated entry + shelter while you wait."
         },
       ],
-      extra_note: "\ud83d\udccb Qualifying conditions include physical, mental health, or substance use disorders that substantially affect daily functioning. You don't need a formal diagnosis to be assessed.",
       confidence: {
-        level: "research",
-        note: "Numbers from unitedwaygkc.org, restartinc.org, cityunionmission.org, veteranscommunityproject.org. Last reviewed May 2026.",
-        lastChecked: "May 2026"
+        level: "unverified",
+        note: "AI-researched from public sources — not locally phone-verified. Call 211 to confirm the current local provider. Last researched June 14, 2026.",
+        lastChecked: "June 14, 2026"
       }
     },
 
     result_adult: {
       label: "Single Adults Pathway",
       badgeClass: "badge-adult",
-      badgeIcon: "\ud83d\udcde",
-      headline: "City Union Mission Men's Shelter is the primary adult shelter.",
-      firstAction: "Call <strong>City Union Mission Homeless Hotline</strong> at <strong>(816) 474-4599</strong> \u2014 Men's Shelter at 1108 E 10th St. Emergency shelter + recovery programs.",
-      callNumber: "tel:8164744599",
-      callLabel: "Call CUM: (816) 474-4599",
-      what_to_expect: "City Union Mission operates the men's shelter at 1108 E 10th St. Salvation Army Kansas & Western Missouri Division at 3637 Broadway provides supportive housing access via 211/Coordinated Entry. reStart Inc. also runs single-adult shelter, transitional, and PSH programs.",
+      badgeIcon: "📞",
+      headline: "Start with tonight’s shelter, then the housing list.",
+      firstAction: "Call or text <strong>211</strong> and say: <em>“I need a shelter bed tonight.”</em> Ask for <strong>tonight’s open beds for single adults</strong>, the nearest <strong>daytime drop-in center</strong> (showers, mail, case management), and a <strong>free meal site</strong>. 211 is multilingual and 24/7.",
+      callNumber: "tel:211",
+      callLabel: "Call 211",
+      what_to_expect: "211 has the current shelter-bed picture for your area, which changes daily. Ask them to also start a coordinated-entry assessment so you’re working toward housing, not just tonight.",
       bring: [
         "Photo ID (helpful but not always required)",
         "Social security card or number (if available)",
@@ -836,30 +812,24 @@
       ],
       resources: [
         {
-          name: "Salvation Army (Kansas & Western Missouri Division)",
-          phone: "(816) 756-1455",
-          tel: "tel:8167561455",
-          note: "3637 Broadway. Supportive housing via 211/CE."
+          name: "Find a free clinic (FQHC)",
+          phone: "Ask 211",
+          tel: "tel:211",
+          note: "Federally Qualified Health Centers treat everyone regardless of ability to pay."
         },
         {
-          name: "reStart Inc.",
-          phone: "(816) 472-5664",
-          tel: "tel:8164725664",
-          note: "Single-adult shelter, transitional, PSH."
-        },
-        {
-          name: "United Way 211",
-          phone: "(816) 474-5112",
-          tel: "tel:8164745112",
-          note: "Or dial 211. 24/7."
+          name: "988 Suicide &amp; Crisis Lifeline",
+          phone: "988",
+          tel: "tel:988",
+          note: "24/7 mental-health support."
         },
       ],
       confidence: {
-        level: "research",
-        note: "Numbers from cityunionmission.org, salvationarmyusa.org, restartinc.org. Last reviewed May 2026.",
-        lastChecked: "May 2026"
+        level: "unverified",
+        note: "AI-researched from public sources — not locally phone-verified. Call 211 to confirm the current local provider. Last researched June 14, 2026.",
+        lastChecked: "June 14, 2026"
       }
-    }
+    },
 
   }; // end PATHWAYS
 

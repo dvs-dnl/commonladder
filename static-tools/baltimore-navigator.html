@@ -472,7 +472,8 @@
   <strong>Need help right now?</strong>
   <a href="tel:211">Call 211</a><span class="crisis-bar__sep">·</span>
   <a href="sms:741741?body=HOME">Text HOME to 741741</a><span class="crisis-bar__sep">·</span>
-  <a href="tel:988">988 Suicide &amp; Crisis</a>
+  <a href="tel:988">988 Suicide &amp; Crisis</a><span class="crisis-bar__sep">·</span>
+  <a href="tel:18007997233">DV 1-800-799-7233</a>
 </div>
 
 <nav class="nav" aria-label="Primary">
@@ -512,6 +513,8 @@
   </svg>
   <span>common<span class="cl-home__rung">ladder</span></span>
 </a>
+
+<div role="note" style="background:#ffedd5;border:1px solid #9a3412;color:#6b2710;border-radius:10px;padding:14px 18px;margin:0 auto 18px;max-width:680px;font-size:.9rem;line-height:1.5;"><strong style="color:#9a3412;">AI-researched, not locally verified.</strong> Common Ladder is based in Arizona. We built this guide from public sources but don’t yet verify these listings by phone the way we do our Arizona tools. Use it to learn <em>what to ask for</em>, then <strong>call <a href="tel:211" style="color:#9a3412;">211</a></strong> for the current local provider. Last researched <time datetime="2026-06-14">June 14, 2026</time>. Wrong info? <a href="mailto:corrections.commonladder@gmail.com?subject=Resource%20update:%20Baltimore" style="color:#9a3412;">Tell us</a>.</div>
 
 <!-- App shell — all screens rendered by JS into here -->
 <div id="app"></div>
@@ -651,184 +654,157 @@
      Keep firstAction to one clear sentence + phone number.
      resources: 3 is ideal; 2 minimum; 4 maximum.
   ═══════════════════════════════════════════════════════════ */
-  var PATHWAYS = {
+    var PATHWAYS = {
 
     result_veterans: {
       label: "Veterans Pathway",
       badgeClass: "badge-veterans",
-      badgeIcon: "\ud83c\udf96",
-      headline: "There's a dedicated system built for you.",
-      firstAction: "Walk in to the <strong>VA CRRC (Community Resource & Referral Center)</strong> at <strong>209 W. Fayette St</strong>, M\u2013F 8am\u20134:30pm. Or call <strong>(410) 637-1342</strong>. For SSVF, call <strong>Project PLASE</strong> at <strong>(443) 341-2119</strong>.",
-      callNumber: "tel:4106371342",
-      callLabel: "Call VA CRRC: (410) 637-1342",
-      what_to_expect: "VA Maryland Health Care System runs the CRRC walk-in for homeless veterans. Maryland Center for Veterans Education & Training (MCVET) provides residential program at 301 N High St. Project PLASE is the Baltimore SSVF grantee for both city and county. Health Care for the Homeless Baltimore provides clinical care.",
+      badgeIcon: "🎖",
+      headline: "There's a dedicated system built for veterans.",
+      firstAction: "Call <strong>211</strong> — free, 24/7 — and say: <em>“I’m a veteran and I’m homeless or about to be.”</em> Ask to be connected to the <strong>VA’s Health Care for Homeless Veterans (HCHV)</strong> program and your local <strong>coordinated-entry assessment</strong>. Veterans qualify for both VA housing (HUD-VASH) and the local Continuum of Care at the same time.",
+      callNumber: "tel:211",
+      callLabel: "Call 211",
+      what_to_expect: "211 will route you to the nearest VA homeless-program coordinator and your local CoC. The National Call Center for Homeless Veterans is available 24/7 anywhere in the U.S. if you can’t reach a local office.",
       bring: [
-        "DD-214 discharge papers (if you have them \u2014 not required to call)",
+        "DD-214 discharge papers (if you have them — not required to call)",
         "Photo ID (if available)",
         "Any VA documentation you have",
       ],
       resources: [
         {
-          name: "Maryland Center for Veterans Education & Training (MCVET)",
-          phone: "(410) 576-9626",
-          tel: "tel:4105769626",
-          note: "Residential program. 301 N High St."
-        },
-        {
           name: "National Call Center for Homeless Veterans",
           phone: "1-877-424-3838",
           tel: "tel:18774243838",
-          note: "24/7. Routes to local."
+          note: "24/7. Available everywhere."
         },
         {
           name: "Veterans Crisis Line",
           phone: "988",
           tel: "tel:988",
-          note: "Press 1 for VA crisis line."
+          note: "Press 1 for the VA crisis line."
         },
       ],
       confidence: {
-        level: "research",
-        note: "Numbers from va.gov/maryland-health-care, mcvet.org, projectplase.org. Last reviewed June 2026.",
-        lastChecked: "June 2026"
+        level: "unverified",
+        note: "AI-researched from public sources — not locally phone-verified. Call 211 to confirm the current local provider. Last researched June 14, 2026.",
+        lastChecked: "June 14, 2026"
       }
     },
 
     result_youth: {
       label: "Youth Pathway",
       badgeClass: "badge-youth",
-      badgeIcon: "\ud83c\udf31",
-      headline: "Youth Empowered Society is Baltimore's only youth drop-in center.",
-      firstAction: "Visit or call <strong>Youth Empowered Society (YES) Drop-In Center</strong> at <strong>(410) 235-7744</strong> \u2014 Baltimore's only youth-focused drop-in. 1111 Park Ave Suite A.",
-      callNumber: "tel:4102357744",
-      callLabel: "Call YES Drop-In: (410) 235-7744",
-      what_to_expect: "YES Drop-In is the dedicated youth-focused space in Baltimore. Project PLASE operates transitional housing serving young adults 18+. The MOHS Coordinated Access line at (443) 984-9540 can also route youth to age-appropriate services.",
+      badgeIcon: "🌱",
+      headline: "If you’re 24 or under, there’s a youth-specific path.",
+      firstAction: "Call or text <strong>211</strong> and say: <em>“I’m 24 or younger and I need a safe place to stay.”</em> Ask for the <strong>youth emergency shelter</strong> and the <strong>runaway &amp; homeless youth (RHY) program</strong> in your area.",
+      callNumber: "tel:211",
+      callLabel: "Call 211",
+      what_to_expect: "211 routes you to the nearest youth shelter or drop-in center. The national backstops below are always available, day or night.",
       bring: [
-        "Photo ID (helpful \u2014 not required for drop-in)",
+        "Photo ID (helpful — not required for crisis services)",
         "Anything important you can carry",
-        "Nothing required to walk in",
+        "Nothing is required to call",
       ],
       resources: [
         {
-          name: "Project PLASE (intake/referral)",
-          phone: "(410) 467-4121",
-          tel: "tel:4104674121",
-          note: "Programs serving young adults 18+. Transitional housing."
+          name: "Safe Place",
+          phone: "Text SAFE + your location to 44357",
+          tel: "sms:44357?body=SAFE",
+          note: "Or walk into any QuikTrip and ask staff to call for you."
         },
         {
-          name: "Project PLASE (main)",
-          phone: "(410) 837-1400",
-          tel: "tel:4108371400",
-          note: "1814 Maryland Ave."
-        },
-        {
-          name: "211 Maryland",
-          phone: "211",
-          tel: "tel:211",
-          note: "Or (410) 685-0525. 24/7."
+          name: "National Runaway Safeline",
+          phone: "1-800-786-2929",
+          tel: "tel:18007862929",
+          note: "24/7, free, confidential."
         },
       ],
-      extra_note: "\u26a0\ufe0f Under 18? Call 211 or MOHS Coordinated Access. They can route you to age-appropriate services.",
       confidence: {
-        level: "research",
-        note: "Numbers from moed.baltimorecity.gov (YES), projectplase.org. Last reviewed June 2026.",
-        lastChecked: "June 2026"
+        level: "unverified",
+        note: "AI-researched from public sources — not locally phone-verified. Call 211 to confirm the current local provider. Last researched June 14, 2026.",
+        lastChecked: "June 14, 2026"
       }
     },
 
     result_families: {
       label: "Families Pathway",
       badgeClass: "badge-families",
-      badgeIcon: "\ud83c\udfe0",
-      headline: "Call MOHS Coordinated Access for family shelter intake.",
-      firstAction: "Call <strong>MOHS Coordinated Access / Shelter Hotline</strong> at <strong>(443) 984-9540</strong> \u2014 M\u2013F 8:30am\u20134:30pm. Primary CoC entry. For DV crisis, House of Ruth Maryland 24-hour DV Hotline: <strong>(410) 889-7884</strong>.",
-      callNumber: "tel:4439849540",
-      callLabel: "Call MOHS: (443) 984-9540",
-      what_to_expect: "Baltimore City Mayor's Office of Homeless Services (MOHS) operates the Shelter Hotline. Sarah's Hope Family Shelter at 1114 N. Mount St (run by St. Vincent de Paul) provides 24/7 family shelter. AIDS Interfaith Residential Services (AIRS) at 1800 N Charles St offers HIV/AIDS supportive housing for individuals and families.",
+      badgeIcon: "🏠",
+      headline: "Families are kept together in the shelter system.",
+      firstAction: "Call or text <strong>211</strong> and say: <em>“I have my kids with me and we need shelter tonight.”</em> Ask for <strong>family emergency shelter</strong> and the <strong>coordinated-entry assessment</strong> for rapid re-housing.",
+      callNumber: "tel:211",
+      callLabel: "Call 211",
+      what_to_expect: "211 routes you to family shelter and the local coordinated-entry system. If you are fleeing domestic violence, use the confidential hotline below instead — DV shelter is separate and won’t list your location.",
       bring: [
         "Photo ID for adults (if available)",
-        "Birth certificates for children (helpful but not always required)",
+        "Birth certificates for children (helpful, not always required)",
         "Documentation of income or benefits (if available)",
-        "Social security cards (if you have them)",
       ],
       resources: [
         {
-          name: "Sarah's Hope Family Shelter (SVdP)",
-          phone: "(410) 982-0845",
-          tel: "tel:4109820845",
-          note: "1114 N. Mount St. 24/7 family shelter."
+          name: "National Domestic Violence Hotline",
+          phone: "1-800-799-7233",
+          tel: "tel:18007997233",
+          note: "24/7, confidential. Text START to 88788. Connects you to a local confidential DV shelter."
         },
         {
-          name: "AIDS Interfaith Residential Services (AIRS)",
-          phone: "(410) 576-5070",
-          tel: "tel:4105765070",
-          note: "1800 N Charles St. HIV/AIDS supportive housing."
-        },
-        {
-          name: "House of Ruth Maryland (DV 24-hr)",
-          phone: "(410) 889-7884",
-          tel: "tel:4108897884",
-          note: "Statewide IPV services. Spanish-speaking."
+          name: "United Way 211",
+          phone: "211",
+          tel: "tel:211",
+          note: "Family shelter + coordinated entry."
         },
       ],
       confidence: {
-        level: "research",
-        note: "Numbers from homeless.baltimorecity.gov, search.211md.org, hruth.org. Last reviewed June 2026.",
-        lastChecked: "June 2026"
+        level: "unverified",
+        note: "AI-researched from public sources — not locally phone-verified. Call 211 to confirm the current local provider. Last researched June 14, 2026.",
+        lastChecked: "June 14, 2026"
       }
     },
 
     result_chronic: {
       label: "Chronic Homelessness Pathway",
       badgeClass: "badge-chronic",
-      badgeIcon: "\ud83d\udd11",
-      headline: "Baltimore Coordinated Access (MOHS) is the chronic pathway.",
-      firstAction: "Call <strong>MOHS Coordinated Access</strong> at <strong>(443) 984-9540</strong> \u2014 primary CoC entry for chronic/PSH waitlists. M\u2013F 8:30am\u20134:30pm.",
-      callNumber: "tel:4439849540",
-      callLabel: "Call MOHS: (443) 984-9540",
-      what_to_expect: "Baltimore City Mayor's Office of Homeless Services administers The Journey Home CoC. Health Care for the Homeless (HCH) at 421 Fallsway provides medical, behavioral health, SUD treatment, and case management for unhoused/chronically homeless. Helping Up Mission (1029 E Baltimore St) operates long-term recovery + housing. Christopher Place Employment Academy (Catholic Charities) is a residential employment program at 725 Fallsway.",
+      badgeIcon: "🔑",
+      headline: "The housing list starts with one assessment.",
+      firstAction: "Call or text <strong>211</strong> and say: <em>“I’ve been homeless a long time and I want to get on the housing list.”</em> Ask for the <strong>coordinated-entry assessment</strong> — in this system, permanent supportive housing is reached by being assessed and placed on the community housing-referral list. The assessment is the door; there is no separate number.",
+      callNumber: "tel:211",
+      callLabel: "Call 211",
+      what_to_expect: "A coordinated-entry assessor will ask about your situation and add you to the local housing-referral list. While you wait, ask 211 for tonight’s shelter and a daytime drop-in center.",
       bring: [
         "Photo ID (any form)",
-        "Documentation of health conditions (if available \u2014 not required to be assessed)",
+        "Documentation of health conditions (if available — not required to be assessed)",
         "Any records of prior housing or service history",
       ],
       resources: [
         {
-          name: "Health Care for the Homeless Baltimore",
-          phone: "(410) 837-5533",
-          tel: "tel:4108375533",
-          note: "421 Fallsway. FQHC for unhoused/chronically homeless."
+          name: "988 Suicide &amp; Crisis Lifeline",
+          phone: "988",
+          tel: "tel:988",
+          note: "Behavioral-health crisis support + SOAR disability-benefit help tied to housing."
         },
         {
-          name: "Helping Up Mission \u2014 24-hr hotline",
-          phone: "(410) 929-6999",
-          tel: "tel:4109296999",
-          note: "Intake/crisis line."
-        },
-        {
-          name: "Christopher Place Employment Academy",
-          phone: "(443) 986-9000",
-          tel: "tel:4439869000",
-          note: "725 Fallsway. Residential employment program for men."
+          name: "United Way 211",
+          phone: "211",
+          tel: "tel:211",
+          note: "Coordinated entry + shelter while you wait."
         },
       ],
-      extra_note: "\ud83d\udccb Qualifying conditions include physical, mental health, or substance use disorders that substantially affect daily functioning. You don't need a formal diagnosis to be assessed.",
       confidence: {
-        level: "research",
-        note: "Numbers from homeless.baltimorecity.gov, hchmd.org, helpingupmission.org, cc-md.org. Last reviewed June 2026.",
-        lastChecked: "June 2026"
+        level: "unverified",
+        note: "AI-researched from public sources — not locally phone-verified. Call 211 to confirm the current local provider. Last researched June 14, 2026.",
+        lastChecked: "June 14, 2026"
       }
     },
 
     result_adult: {
       label: "Single Adults Pathway",
       badgeClass: "badge-adult",
-      badgeIcon: "\ud83d\udcde",
-      headline: "Helping Up Mission and Baltimore Rescue Mission serve single adults.",
-      firstAction: "Call <strong>Helping Up Mission</strong> at <strong>(410) 675-7500</strong> \u2014 1029 E Baltimore St. Emergency + recovery housing for men and (at separate site) women & children.",
-      callNumber: "tel:4106757500",
-      callLabel: "Call Helping Up: (410) 675-7500",
-      what_to_expect: "Helping Up Mission's men's center is at 1029 E. Baltimore St; women & children at 1216 E. Baltimore St. Baltimore Rescue Mission's Men's Division is at 4 N. Central Ave; Karis Home (women/children) at 1228 E. Baltimore St. Manna House at 435 E. 25th St provides drop-in services, meals, hygiene, and case management.",
+      badgeIcon: "📞",
+      headline: "Start with tonight’s shelter, then the housing list.",
+      firstAction: "Call or text <strong>211</strong> and say: <em>“I need a shelter bed tonight.”</em> Ask for <strong>tonight’s open beds for single adults</strong>, the nearest <strong>daytime drop-in center</strong> (showers, mail, case management), and a <strong>free meal site</strong>. 211 is multilingual and 24/7.",
+      callNumber: "tel:211",
+      callLabel: "Call 211",
+      what_to_expect: "211 has the current shelter-bed picture for your area, which changes daily. Ask them to also start a coordinated-entry assessment so you’re working toward housing, not just tonight.",
       bring: [
         "Photo ID (helpful but not always required)",
         "Social security card or number (if available)",
@@ -836,30 +812,24 @@
       ],
       resources: [
         {
-          name: "Baltimore Rescue Mission \u2014 Men's Division",
-          phone: "(410) 342-2533",
-          tel: "tel:4103422533",
-          note: "4 N. Central Ave."
+          name: "Find a free clinic (FQHC)",
+          phone: "Ask 211",
+          tel: "tel:211",
+          note: "Federally Qualified Health Centers treat everyone regardless of ability to pay."
         },
         {
-          name: "Baltimore Rescue Mission \u2014 Karis Home",
-          phone: "(410) 342-1323",
-          tel: "tel:4103421323",
-          note: "1228 E. Baltimore St. Women/children."
-        },
-        {
-          name: "Manna House",
-          phone: "(410) 889-3001",
-          tel: "tel:4108893001",
-          note: "435 E. 25th St. Drop-in, meals, hygiene, case mgmt."
+          name: "988 Suicide &amp; Crisis Lifeline",
+          phone: "988",
+          tel: "tel:988",
+          note: "24/7 mental-health support."
         },
       ],
       confidence: {
-        level: "research",
-        note: "Numbers from helpingupmission.org, baltimorerescuemission.org, mannahouseinc.org. Last reviewed June 2026.",
-        lastChecked: "June 2026"
+        level: "unverified",
+        note: "AI-researched from public sources — not locally phone-verified. Call 211 to confirm the current local provider. Last researched June 14, 2026.",
+        lastChecked: "June 14, 2026"
       }
-    }
+    },
 
   }; // end PATHWAYS
 

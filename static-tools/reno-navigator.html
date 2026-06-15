@@ -472,7 +472,8 @@
   <strong>Need help right now?</strong>
   <a href="tel:211">Call 211</a><span class="crisis-bar__sep">·</span>
   <a href="sms:741741?body=HOME">Text HOME to 741741</a><span class="crisis-bar__sep">·</span>
-  <a href="tel:988">988 Suicide &amp; Crisis</a>
+  <a href="tel:988">988 Suicide &amp; Crisis</a><span class="crisis-bar__sep">·</span>
+  <a href="tel:18007997233">DV 1-800-799-7233</a>
 </div>
 
 <nav class="nav" aria-label="Primary">
@@ -512,6 +513,8 @@
   </svg>
   <span>common<span class="cl-home__rung">ladder</span></span>
 </a>
+
+<div role="note" style="background:#ffedd5;border:1px solid #9a3412;color:#6b2710;border-radius:10px;padding:14px 18px;margin:0 auto 18px;max-width:680px;font-size:.9rem;line-height:1.5;"><strong style="color:#9a3412;">AI-researched, not locally verified.</strong> Common Ladder is based in Arizona. We built this guide from public sources but don’t yet verify these listings by phone the way we do our Arizona tools. Use it to learn <em>what to ask for</em>, then <strong>call <a href="tel:211" style="color:#9a3412;">211</a></strong> for the current local provider. Last researched <time datetime="2026-06-14">June 14, 2026</time>. Wrong info? <a href="mailto:corrections.commonladder@gmail.com?subject=Resource%20update:%20Reno%20/%20Sparks%20/%20Washoe%20County" style="color:#9a3412;">Tell us</a>.</div>
 
 <!-- App shell — all screens rendered by JS into here -->
 <div id="app"></div>
@@ -651,184 +654,157 @@
      Keep firstAction to one clear sentence + phone number.
      resources: 3 is ideal; 2 minimum; 4 maximum.
   ═══════════════════════════════════════════════════════════ */
-  var PATHWAYS = {
+    var PATHWAYS = {
 
     result_veterans: {
       label: "Veterans Pathway",
       badgeClass: "badge-veterans",
-      badgeIcon: "\ud83c\udf96",
-      headline: "There's a dedicated system built for you.",
-      firstAction: "Call <strong>VA Sierra Nevada Healthcare System</strong> at <strong>(775) 786-7200</strong> \u2014 975 Kirman Ave, Reno. HUD-VASH, HCHV, primary care. Or call the National Call Center for Homeless Veterans 24/7 at <strong>1-877-4AID-VET</strong>.",
-      callNumber: "tel:7757867200",
-      callLabel: "Call VA Sierra Nevada: (775) 786-7200",
-      what_to_expect: "VA Sierra Nevada is the primary VA for the Reno area. Veterans Guest House at 880 Locust St provides free overnight lodging for veterans/families accessing medical care. Reno Vet Center at 5580 Mill St #600 offers readjustment counseling.",
+      badgeIcon: "🎖",
+      headline: "There's a dedicated system built for veterans.",
+      firstAction: "Call <strong>211</strong> (or text your ZIP to 898-211) — free, 24/7 — and say: <em>“I’m a veteran and I’m homeless or about to be.”</em> Ask to be connected to the <strong>VA’s Health Care for Homeless Veterans (HCHV)</strong> program and your local <strong>coordinated-entry assessment</strong>. Veterans qualify for both VA housing (HUD-VASH) and the local Continuum of Care at the same time.",
+      callNumber: "tel:211",
+      callLabel: "Call 211",
+      what_to_expect: "211 will route you to the nearest VA homeless-program coordinator and your local CoC. The National Call Center for Homeless Veterans is available 24/7 anywhere in the U.S. if you can’t reach a local office.",
       bring: [
-        "DD-214 discharge papers (if you have them \u2014 not required to call)",
+        "DD-214 discharge papers (if you have them — not required to call)",
         "Photo ID (if available)",
         "Any VA documentation you have",
       ],
       resources: [
         {
-          name: "Veterans Guest House",
-          phone: "(775) 324-6958",
-          tel: "tel:7753246958",
-          note: "880 Locust St. Free overnight lodging for veterans accessing medical care."
-        },
-        {
-          name: "Reno Vet Center",
-          phone: "(775) 323-1294",
-          tel: "tel:7753231294",
-          note: "5580 Mill St #600. Readjustment counseling."
-        },
-        {
           name: "National Call Center for Homeless Veterans",
           phone: "1-877-424-3838",
           tel: "tel:18774243838",
-          note: "24/7."
+          note: "24/7. Available everywhere."
+        },
+        {
+          name: "Veterans Crisis Line",
+          phone: "988",
+          tel: "tel:988",
+          note: "Press 1 for the VA crisis line."
         },
       ],
       confidence: {
-        level: "research",
-        note: "Numbers from va.gov/sierra-nevada-health-care, veteransguesthouse.org. Last reviewed May 2026.",
-        lastChecked: "May 2026"
+        level: "unverified",
+        note: "AI-researched from public sources — not locally phone-verified. Call 211 to confirm the current local provider. Last researched June 14, 2026.",
+        lastChecked: "June 14, 2026"
       }
     },
 
     result_youth: {
       label: "Youth Pathway",
       badgeClass: "badge-youth",
-      badgeIcon: "\ud83c\udf31",
-      headline: "Eddy House and Children's Cabinet serve Reno youth.",
-      firstAction: "Call <strong>Eddy House</strong> at <strong>(775) 384-1129</strong> \u2014 primary 18\u201324 young adult homeless drop-in + overnight shelter at 888 Willow St. For ages under 18, call <strong>The Children's Cabinet Runaway/Homeless Youth Line</strong> at <strong>1-800-536-4588</strong>.",
-      callNumber: "tel:7753841129",
-      callLabel: "Call Eddy House: (775) 384-1129",
-      what_to_expect: "Eddy House is the main young adult provider (18\u201324). The Children's Cabinet at 1090 S. Rock Blvd is the RHY grantee for ages under 18, providing family preservation and basic needs.",
+      badgeIcon: "🌱",
+      headline: "If you’re 24 or under, there’s a youth-specific path.",
+      firstAction: "Call or text <strong>211</strong> (or text your ZIP to 898-211) and say: <em>“I’m 24 or younger and I need a safe place to stay.”</em> Ask for the <strong>youth emergency shelter</strong> and the <strong>runaway &amp; homeless youth (RHY) program</strong> in your area.",
+      callNumber: "tel:211",
+      callLabel: "Call 211",
+      what_to_expect: "211 routes you to the nearest youth shelter or drop-in center. The national backstops below are always available, day or night.",
       bring: [
-        "Photo ID (helpful \u2014 not required for crisis services)",
+        "Photo ID (helpful — not required for crisis services)",
         "Anything important you can carry",
-        "Nothing required for crisis line",
+        "Nothing is required to call",
       ],
       resources: [
         {
-          name: "The Children's Cabinet (main)",
-          phone: "(775) 856-6200",
-          tel: "tel:7758566200",
-          note: "1090 S. Rock Blvd. Family preservation, basic needs."
+          name: "Safe Place",
+          phone: "Text SAFE + your location to 44357",
+          tel: "sms:44357?body=SAFE",
+          note: "Or walk into any QuikTrip and ask staff to call for you."
         },
         {
-          name: "Nevada 211",
-          phone: "211",
-          tel: "tel:211",
-          note: "Or 1-866-535-5654. Press 6 for homeless. Text ZIP to 898-211."
-        },
-        {
-          name: "Washoe County Cares Campus Resource Center",
-          phone: "(775) 329-4141",
-          tel: "tel:7753294141",
-          note: "600 Line Dr, Reno. Adult assessment hub."
+          name: "National Runaway Safeline",
+          phone: "1-800-786-2929",
+          tel: "tel:18007862929",
+          note: "24/7, free, confidential."
         },
       ],
-      extra_note: "\u26a0\ufe0f Under 18? The Children's Cabinet RHY line is for you.",
       confidence: {
-        level: "research",
-        note: "Numbers from eddyhouse.org, childrenscabinet.org, washoecounty.gov. Last reviewed May 2026.",
-        lastChecked: "May 2026"
+        level: "unverified",
+        note: "AI-researched from public sources — not locally phone-verified. Call 211 to confirm the current local provider. Last researched June 14, 2026.",
+        lastChecked: "June 14, 2026"
       }
     },
 
     result_families: {
       label: "Families Pathway",
       badgeClass: "badge-families",
-      badgeIcon: "\ud83c\udfe0",
-      headline: "Our Place is Washoe County's family and women's shelter.",
-      firstAction: "Call <strong>Our Place</strong> at <strong>(775) 328-2700</strong> \u2014 Washoe County-run family and single women's shelter at 605 S 21st St, Sparks. Family entry door (not Nevada Cares Campus).",
-      callNumber: "tel:7753282700",
-      callLabel: "Call Our Place: (775) 328-2700",
-      what_to_expect: "Our Place is the family-side counterpart to Nevada Cares Campus. Catholic Charities of Northern Nevada \u2014 St. Marguerite Support Services at 500 E. Fourth St provides emergency rental/utility assistance and housing navigation. Family Promise of Reno-Sparks offers family-specific shelter and rehousing.",
+      badgeIcon: "🏠",
+      headline: "Families are kept together in the shelter system.",
+      firstAction: "Call or text <strong>211</strong> (or text your ZIP to 898-211) and say: <em>“I have my kids with me and we need shelter tonight.”</em> Ask for <strong>family emergency shelter</strong> and the <strong>coordinated-entry assessment</strong> for rapid re-housing.",
+      callNumber: "tel:211",
+      callLabel: "Call 211",
+      what_to_expect: "211 routes you to family shelter and the local coordinated-entry system. If you are fleeing domestic violence, use the confidential hotline below instead — DV shelter is separate and won’t list your location.",
       bring: [
         "Photo ID for adults (if available)",
-        "Birth certificates for children (helpful but not always required)",
+        "Birth certificates for children (helpful, not always required)",
         "Documentation of income or benefits (if available)",
-        "Social security cards (if you have them)",
       ],
       resources: [
         {
-          name: "Catholic Charities \u2014 St. Marguerite",
-          phone: "(775) 322-7074",
-          tel: "tel:7753227074",
-          note: "500 E. Fourth St. Rent/utility assistance, housing nav."
+          name: "National Domestic Violence Hotline",
+          phone: "1-800-799-7233",
+          tel: "tel:18007997233",
+          note: "24/7, confidential. Text START to 88788. Connects you to a local confidential DV shelter."
         },
         {
-          name: "Family Promise of Reno-Sparks",
-          phone: "(775) 284-5566",
-          tel: "tel:7752845566",
-          note: "Family-specific shelter + rehousing."
-        },
-        {
-          name: "VOA NCNN \u2014 Family Shelter (315 Record St)",
-          phone: "(775) 329-4145",
-          tel: "tel:7753294145",
-          note: "VOA + Washoe County family emergency shelter."
+          name: "United Way 211",
+          phone: "211",
+          tel: "tel:211",
+          note: "Family shelter + coordinated entry."
         },
       ],
       confidence: {
-        level: "research",
-        note: "Numbers from washoecounty.gov, ccsnn.org, familypromise.org, voa-ncnn.org. Last reviewed May 2026.",
-        lastChecked: "May 2026"
+        level: "unverified",
+        note: "AI-researched from public sources — not locally phone-verified. Call 211 to confirm the current local provider. Last researched June 14, 2026.",
+        lastChecked: "June 14, 2026"
       }
     },
 
     result_chronic: {
       label: "Chronic Homelessness Pathway",
       badgeClass: "badge-chronic",
-      badgeIcon: "\ud83d\udd11",
-      headline: "Washoe County Coordinated Entry is the chronic pathway.",
-      firstAction: "Call <strong>Washoe County Housing & Homeless Services</strong> at <strong>(775) 328-2575</strong> \u2014 manages NV-501 Coordinated Entry. Or call <strong>Nevada Cares Campus Resource Center</strong> at <strong>(775) 329-4141</strong> for primary intake/assessment.",
-      callNumber: "tel:7753282575",
-      callLabel: "Call Washoe HHS: (775) 328-2575",
-      what_to_expect: "Northern Nevada CoC (NNCoC) uses a 'no wrong door' approach with prioritized list. Nevada Cares Campus at 100 Cares Dr is the primary adult shelter (~600 beds), operated by VOA NCNN. VOA NCNN operates ReStart PSH for chronically homeless at (775) 324-2622.",
+      badgeIcon: "🔑",
+      headline: "The housing list starts with one assessment.",
+      firstAction: "Call or text <strong>211</strong> (or text your ZIP to 898-211) and say: <em>“I’ve been homeless a long time and I want to get on the housing list.”</em> Ask for the <strong>coordinated-entry assessment</strong> — in this system, permanent supportive housing is reached by being assessed and placed on the community housing-referral list. The assessment is the door; there is no separate number.",
+      callNumber: "tel:211",
+      callLabel: "Call 211",
+      what_to_expect: "A coordinated-entry assessor will ask about your situation and add you to the local housing-referral list. While you wait, ask 211 for tonight’s shelter and a daytime drop-in center.",
       bring: [
         "Photo ID (any form)",
-        "Documentation of health conditions (if available \u2014 not required to be assessed)",
+        "Documentation of health conditions (if available — not required to be assessed)",
         "Any records of prior housing or service history",
       ],
       resources: [
         {
-          name: "Volunteers of America NCNN (main)",
-          phone: "(775) 322-7143",
-          tel: "tel:7753227143",
-          note: "Cares Campus, ReStart PSH, Sierra Manor."
+          name: "988 Suicide &amp; Crisis Lifeline",
+          phone: "988",
+          tel: "tel:988",
+          note: "Behavioral-health crisis support + SOAR disability-benefit help tied to housing."
         },
         {
-          name: "VOA NCNN \u2014 ReStart (PSH)",
-          phone: "(775) 324-2622",
-          tel: "tel:7753242622",
-          note: "Permanent Supportive Housing for chronically homeless."
-        },
-        {
-          name: "Nevada 211",
+          name: "United Way 211",
           phone: "211",
           tel: "tel:211",
-          note: "Or 1-866-535-5654."
+          note: "Coordinated entry + shelter while you wait."
         },
       ],
-      extra_note: "\ud83d\udccb Qualifying conditions include physical, mental health, or substance use disorders that substantially affect daily functioning. You don't need a formal diagnosis to be assessed.",
       confidence: {
-        level: "research",
-        note: "Numbers from washoecounty.gov, voa-ncnn.org. Last reviewed May 2026.",
-        lastChecked: "May 2026"
+        level: "unverified",
+        note: "AI-researched from public sources — not locally phone-verified. Call 211 to confirm the current local provider. Last researched June 14, 2026.",
+        lastChecked: "June 14, 2026"
       }
     },
 
     result_adult: {
       label: "Single Adults Pathway",
       badgeClass: "badge-adult",
-      badgeIcon: "\ud83d\udcde",
-      headline: "Nevada Cares Campus is the primary adult shelter (~600 beds).",
-      firstAction: "Walk in or call <strong>Nevada Cares Campus</strong> at <strong>(775) 329-4141</strong> \u2014 100 Cares Dr, Reno. Primary adult emergency shelter (~600 beds), operated by VOA NCNN with Washoe County. Opened 2021.",
-      callNumber: "tel:7753294141",
-      callLabel: "Call Cares Campus: (775) 329-4141",
-      what_to_expect: "Nevada Cares Campus is a purpose-built shelter for adults. Reno-Sparks Gospel Mission's Downtown Men's Mission at 355 Record St is 24-hour (775-329-0485); main office at 2115 Timber Way (775-323-0386, M\u2013F 9am\u20132pm). Nevada 211 routes after-hours.",
+      badgeIcon: "📞",
+      headline: "Start with tonight’s shelter, then the housing list.",
+      firstAction: "Call or text <strong>211</strong> (or text your ZIP to 898-211) and say: <em>“I need a shelter bed tonight.”</em> Ask for <strong>tonight’s open beds for single adults</strong>, the nearest <strong>daytime drop-in center</strong> (showers, mail, case management), and a <strong>free meal site</strong>. 211 is multilingual and 24/7.",
+      callNumber: "tel:211",
+      callLabel: "Call 211",
+      what_to_expect: "211 has the current shelter-bed picture for your area, which changes daily. Ask them to also start a coordinated-entry assessment so you’re working toward housing, not just tonight.",
       bring: [
         "Photo ID (helpful but not always required)",
         "Social security card or number (if available)",
@@ -836,30 +812,24 @@
       ],
       resources: [
         {
-          name: "Reno-Sparks Gospel Mission \u2014 Downtown Men's (24-hr)",
-          phone: "(775) 329-0485",
-          tel: "tel:7753290485",
-          note: "355 Record St."
-        },
-        {
-          name: "Reno-Sparks Gospel Mission \u2014 Main",
-          phone: "(775) 323-0386",
-          tel: "tel:7753230386",
-          note: "2115 Timber Way. M\u2013F 9am\u20132pm."
-        },
-        {
-          name: "Nevada 211",
-          phone: "211",
+          name: "Find a free clinic (FQHC)",
+          phone: "Ask 211",
           tel: "tel:211",
-          note: "Or 1-866-535-5654. Press 6 for homeless."
+          note: "Federally Qualified Health Centers treat everyone regardless of ability to pay."
+        },
+        {
+          name: "988 Suicide &amp; Crisis Lifeline",
+          phone: "988",
+          tel: "tel:988",
+          note: "24/7 mental-health support."
         },
       ],
       confidence: {
-        level: "research",
-        note: "Numbers from washoecounty.gov, voa-ncnn.org, rsgm.org. Last reviewed May 2026.",
-        lastChecked: "May 2026"
+        level: "unverified",
+        note: "AI-researched from public sources — not locally phone-verified. Call 211 to confirm the current local provider. Last researched June 14, 2026.",
+        lastChecked: "June 14, 2026"
       }
-    }
+    },
 
   }; // end PATHWAYS
 
