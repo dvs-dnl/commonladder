@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-3YXK0RL6XV"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-3YXK0RL6XV');
+</script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Resource Freshness Reporter — Common Ladder</title>
+  <meta name="description" content="The verification work queue for Common Ladder: when each full-fat resource page was last verified, what's overdue, and a one-tap way to report a wrong listing. For case managers and the Mon/Wed verification engine.">
+  <link rel="canonical" href="https://commonladder.org/static-tools/resource-freshness-reporter.html">
+  <meta name="robots" content="noindex,follow">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="alternate icon" type="image/png" href="/favicon-32.png">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Common Ladder">
+  <meta property="og:title" content="Resource Freshness Reporter — Common Ladder">
+  <meta property="og:description" content="Which resource pages are verified, which are overdue, and how to report a wrong listing.">
+  <meta property="og:url" content="https://commonladder.org/static-tools/resource-freshness-reporter.html">
+  <meta property="og:image" content="https://commonladder.org/images/og-default.png">
+  <style>
+    :root{--blue:#1C3D6E;--amber:#E8911A;--amber-dk:#b36a00;--sage:#4A9E82;--bg:#F8F7F4;
+      --surface:#fff;--border:#e2ddd6;--text:#1c1917;--muted:#6b6560;--radius:10px;--shadow:0 1px 4px rgba(0,0,0,.08);
+      --overdue:#9a3412;--overdue-bg:#ffedd5;--due:#854d0e;--due-bg:#fef9c3;--fresh:#166534;--fresh-bg:#dcfce7;}
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+    body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:var(--bg);color:var(--text);line-height:1.55;}
+    .skip-link{position:absolute;left:-9999px;top:auto}
+    .skip-link:focus{left:8px;top:8px;background:#fff;color:var(--blue);padding:8px 12px;z-index:1000;border-radius:6px}
+    .crisis-bar{background:#7a1f2b;color:#fff;text-align:center;padding:.45rem 1rem;font-size:.9rem}
+    .crisis-bar a{color:#fff;text-decoration:underline}
+    .crisis-bar__sep{margin:0 .5rem;opacity:.6}
+    .nav{background:var(--blue)}
+    .nav__inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;gap:1rem;padding:.6rem 1rem;flex-wrap:wrap}
+    .nav__logo{display:flex;align-items:center;gap:.5rem;color:#fff;text-decoration:none;font-weight:700;font-size:1.15rem}
+    .nav__wordmark span{color:var(--amber)}
+    .nav__toggle{display:none}
+    .nav__links{list-style:none;display:flex;align-items:center;gap:1rem;margin:0 0 0 auto;padding:0;flex-wrap:wrap}
+    .nav__links a{color:#fff;text-decoration:none;font-size:.95rem}
+    .nav__cta{background:var(--amber);color:var(--blue)!important;padding:.4rem .85rem;border-radius:6px;font-weight:600}
+    .nav__cta--ladder{background:transparent;border:1px solid rgba(255,255,255,.55);color:#fff!important}
+    .nav__exit{border:1px solid rgba(255,255,255,.4);padding:.3rem .6rem;border-radius:6px;opacity:.85}
+    .wrap{max-width:1040px;margin:0 auto;padding:28px 18px 80px}
+    .hero h1{font-family:'Manrope',sans-serif;font-size:1.7rem;line-height:1.15;color:var(--blue);margin-bottom:8px}
+    .hero p{color:var(--muted);max-width:70ch}
+    .note{background:#fff;border:1px solid var(--border);border-left:3px solid var(--blue);border-radius:var(--radius);padding:12px 16px;margin:18px 0;font-size:.88rem;color:#44403c}
+    .stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:12px;margin:18px 0}
+    .stat{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:14px 16px;box-shadow:var(--shadow)}
+    .stat .n{font-size:1.6rem;font-weight:800;font-family:'Manrope',sans-serif;line-height:1}
+    .stat .l{font-size:.72rem;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);margin-top:6px}
+    .stat.overdue .n{color:var(--overdue)} .stat.due .n{color:var(--due)} .stat.fresh .n{color:var(--fresh)}
+    .controls{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin:16px 0}
+    .controls input,.controls select{padding:8px 11px;border:1px solid var(--border);border-radius:8px;font-size:.9rem;background:#fff}
+    .controls input{flex:1;min-width:180px}
+    .seg{display:inline-flex;border:1px solid var(--border);border-radius:8px;overflow:hidden}
+    .seg button{border:0;background:#fff;padding:8px 12px;font-size:.85rem;font-weight:600;color:var(--muted);cursor:pointer}
+    .seg button.active{background:var(--blue);color:#fff}
+    table{width:100%;border-collapse:collapse;background:#fff;border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;font-size:.9rem}
+    th,td{text-align:left;padding:11px 13px;border-bottom:1px solid var(--border);vertical-align:top}
+    th{background:#f3efe8;font-size:.72rem;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);cursor:pointer;white-space:nowrap}
+    tr:last-child td{border-bottom:0}
+    td a.page{color:var(--blue);font-weight:600;text-decoration:none}
+    td a.page:hover{text-decoration:underline}
+    .meta{color:var(--muted);font-size:.82rem}
+    .pill{display:inline-block;font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.04em;padding:3px 9px;border-radius:999px;white-space:nowrap}
+    .pill.overdue{background:var(--overdue-bg);color:var(--overdue)}
+    .pill.due{background:var(--due-bg);color:var(--due)}
+    .pill.fresh{background:var(--fresh-bg);color:var(--fresh)}
+    .report{color:var(--amber-dk);font-weight:600;text-decoration:none;font-size:.82rem;white-space:nowrap}
+    .report:hover{text-decoration:underline}
+    .empty{padding:28px;text-align:center;color:var(--muted)}
+    .formcard{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:20px 22px;margin-top:30px;box-shadow:var(--shadow)}
+    .formcard h2{font-family:'Manrope',sans-serif;font-size:1.2rem;color:var(--blue);margin-bottom:6px}
+    .formcard label{display:block;font-size:.85rem;font-weight:600;margin:12px 0 4px}
+    .formcard input,.formcard textarea,.formcard select{width:100%;padding:9px 11px;border:1px solid var(--border);border-radius:8px;font-size:.9rem;font-family:inherit}
+    .formcard textarea{min-height:80px;resize:vertical}
+    .btn{display:inline-block;margin-top:14px;background:var(--amber);color:var(--blue);font-weight:700;border:0;border-radius:8px;padding:11px 20px;font-size:.95rem;cursor:pointer;text-decoration:none}
+    .btn:hover{background:var(--amber-dk);color:#fff}
+    footer{background:var(--blue);color:#cdd6e4;font-size:.85rem;margin-top:40px}
+    footer .fwrap{max-width:1040px;margin:0 auto;padding:22px 18px;line-height:1.6}
+    footer a{color:#fff}
+    @media(max-width:680px){.nav__links{width:100%;margin:8px 0 0}table{font-size:.82rem}th,td{padding:8px 9px}.hide-sm{display:none}}
+  </style>
+</head>
+<body>
+<a href="#main" class="skip-link">Skip to main content</a>
+<div class="crisis-bar" role="region" aria-label="Crisis help">
+  <strong>Need help right now?</strong>
+  <a href="tel:211">Call 211</a><span class="crisis-bar__sep">·</span>
+  <a href="sms:741741?body=HOME">Text HOME to 741741</a><span class="crisis-bar__sep">·</span>
+  <a href="tel:988">988 Suicide &amp; Crisis</a>
+</div>
+<nav class="nav" aria-label="Primary">
+  <div class="nav__inner">
+    <a href="/" class="nav__logo" aria-label="Common Ladder home">
+      <svg width="28" height="28" viewBox="0 0 247 247" fill="none" aria-hidden="true"><g transform="translate(-12.00,-16.00)"> <path fill="#E8911A" fill-rule="evenodd" d="M 254.00,51.00 L 234.00,85.64 L 194.00,85.64 L 174.00,51.00 L 194.00,16.36 L 234.00,16.36 Z M 231.50,51.00 L 222.75,66.16 L 205.25,66.16 L 196.50,51.00 L 205.25,35.84 L 222.75,35.84 Z"/> <path fill="#9FBCBA" fill-rule="evenodd" d="M 148.00,118.00 L 128.00,152.64 L 88.00,152.64 L 68.00,118.00 L 88.00,83.36 L 128.00,83.36 Z M 125.50,118.00 L 116.75,133.16 L 99.25,133.16 L 90.50,118.00 L 99.25,102.84 L 116.75,102.84 Z"/> <path fill="#9FBCBA" fill-rule="evenodd" d="M 259.00,118.00 L 239.00,152.64 L 199.00,152.64 L 179.00,118.00 L 199.00,83.36 L 239.00,83.36 Z M 236.50,118.00 L 227.75,133.16 L 210.25,133.16 L 201.50,118.00 L 210.25,102.84 L 227.75,102.84 Z"/> <path fill="#FFFFFF" fill-opacity="0.94" fill-rule="evenodd" d="M 207.00,164.00 L 187.00,198.64 L 147.00,198.64 L 127.00,164.00 L 147.00,129.36 L 187.00,129.36 Z M 184.50,164.00 L 175.75,179.16 L 158.25,179.16 L 149.50,164.00 L 158.25,148.84 L 175.75,148.84 Z"/> <path fill="#FFFFFF" fill-opacity="0.94" fill-rule="evenodd" d="M 92.00,164.00 L 72.00,198.64 L 32.00,198.64 L 12.00,164.00 L 32.00,129.36 L 72.00,129.36 Z M 69.50,164.00 L 60.75,179.16 L 43.25,179.16 L 34.50,164.00 L 43.25,148.84 L 60.75,148.84 Z"/> <path fill="#FFFFFF" fill-opacity="0.94" fill-rule="evenodd" d="M 161.00,228.00 L 141.00,262.64 L 101.00,262.64 L 81.00,228.00 L 101.00,193.36 L 141.00,193.36 Z M 138.50,228.00 L 129.75,243.16 L 112.25,243.16 L 103.50,228.00 L 112.25,212.84 L 129.75,212.84 Z"/> </g></svg>
+      <span class="nav__wordmark">common<span>ladder</span></span>
+    </a>
+    <button class="nav__toggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="primary-nav" onclick="this.setAttribute('aria-expanded', document.getElementById('primary-nav').classList.toggle('open') ? 'true' : 'false')"><span></span><span></span><span></span></button>
+    <ul class="nav__links" id="primary-nav">
+      <li><a href="/providers.html">For providers</a></li>
+      <li><a href="/learn/">Learn</a></li>
+      <li><a href="/about.html">About</a></li>
+      <li><a href="/find.html" class="nav__cta">Find resources</a></li>
+      <li><a href="/static-tools/my-ladder.html" class="nav__cta nav__cta--ladder">My Ladder</a></li>
+      <li><a href="https://www.weather.gov/" rel="noreferrer" class="nav__exit" onclick="event.preventDefault();window.location.replace('https://www.weather.gov/')">Leave page</a></li>
+    </ul>
+  </div>
+</nav>
+
+<main id="main">
+<div class="wrap">
+  <div class="hero">
+    <h1>Resource Freshness Reporter</h1>
+    <p>The verification work queue for Common Ladder. It tracks every <strong>full-fat resource page</strong> — the ones that still publish specific provider names and phone numbers — and shows how long it's been since each was last verified. For the Mon/Wed verification engine and for case managers who want to know how current a page is before they rely on it.</p>
+  </div>
+
+  <div class="note">
+    <strong>How freshness is scored:</strong> <span class="pill fresh">Fresh</span> = verified within 60 days · <span class="pill due">Due soon</span> = 60–90 days · <span class="pill overdue">Overdue</span> = more than 90 days. Days are counted live from each page's footer verification stamp. The 88 non-AZ navigators are <strong>honest triage stubs</strong> (no per-provider listings) and are intentionally <em>not</em> tracked here — there's nothing to verify on them.
+  </div>
+
+  <div class="stats" id="stats"></div>
+
+  <div class="controls">
+    <input id="search" type="search" placeholder="Search page or jurisdiction…" aria-label="Search">
+    <select id="typeFilter" aria-label="Filter by type"><option value="">All types</option></select>
+    <span class="seg" role="group" aria-label="Status filter">
+      <button data-status="" class="active">All</button>
+      <button data-status="overdue">Overdue</button>
+      <button data-status="due">Due soon</button>
+      <button data-status="fresh">Fresh</button>
+    </span>
+  </div>
+
+  <table>
+    <thead><tr>
+      <th data-sort="title">Page</th>
+      <th data-sort="type" class="hide-sm">Type</th>
+      <th data-sort="juris" class="hide-sm">Jurisdiction</th>
+      <th data-sort="checked">Last verified</th>
+      <th data-sort="days">Age</th>
+      <th data-sort="days">Status</th>
+      <th>Report</th>
+    </tr></thead>
+    <tbody id="rows"></tbody>
+  </table>
+  <div class="empty" id="empty" style="display:none">No pages match these filters.</div>
+
+  <div class="formcard">
+    <h2>Report a wrong or outdated listing</h2>
+    <p class="meta">Found a disconnected number, wrong hours, or a closed provider? Tell us — it goes straight into the verification queue. Nothing you type is stored or sent anywhere until you hit send in your own email app.</p>
+    <label for="r-page">Which page?</label>
+    <select id="r-page"></select>
+    <label for="r-what">What's wrong?</label>
+    <textarea id="r-what" placeholder="e.g. The shelter intake line (602) 555-0100 is disconnected — recording says the number changed."></textarea>
+    <a href="#" id="r-send" class="btn">Compose email →</a>
+  </div>
+</div>
+</main>
+
+<footer>
+  <div class="fwrap">
+    <strong>Common Ladder — Resource Freshness Reporter.</strong>
+    Internal verification queue. Freshness reflects each page's own footer verification stamp.
+    Page last updated <time datetime="2026-06-15">June 15, 2026</time>.<br>
+    Wrong listing? <a href="mailto:corrections.commonladder@gmail.com?subject=Resource%20correction">corrections.commonladder@gmail.com</a> ·
+    <a href="https://commonladder.org">commonladder.org</a>
+  </div>
+</footer>
+
+<script>
+const LEDGER = [
+  {
+    "title": "Maricopa County Homelessness Resource Navigator",
+    "url": "/static-tools/maricopa-navigator.html",
+    "type": "City navigator",
+    "juris": "Maricopa County, AZ",
+    "checked": "2026-06-15"
+  },
+  {
+    "title": "Tucson / Pima County Homelessness Resource Navigator",
+    "url": "/static-tools/tucson-navigator.html",
+    "type": "City navigator",
+    "juris": "Pima County, AZ",
+    "checked": "2026-06-15"
+  },
+  {
+    "title": "Find Help in Flagstaff / Coconino County",
+    "url": "/static-tools/flagstaff-navigator.html",
+    "type": "City navigator",
+    "juris": "Coconino County, AZ",
+    "checked": "2026-06-15"
+  },
+  {
+    "title": "San Joaquin County Homelessness Resource Navigator",
+    "url": "/static-tools/san-joaquin-navigator.html",
+    "type": "City navigator",
+    "juris": "San Joaquin County, CA",
+    "checked": "2026-06-02"
+  },
+  {
+    "title": "Stay-Housed Navigator",
+    "url": "/static-tools/stay-housed-maricopa.html",
+    "type": "Maricopa pilot",
+    "juris": "Maricopa County, AZ",
+    "checked": "2026-05-25"
+  },
+  {
+    "title": "Resource Sequencing Navigator",
+    "url": "/static-tools/resource-sequencing-maricopa.html",
+    "type": "Maricopa pilot",
+    "juris": "Maricopa County, AZ",
+    "checked": "2026-05-26"
+  },
+  {
+    "title": "Cooling Center Locator",
+    "url": "/static-tools/cooling-center-locator.html",
+    "type": "Seasonal tool",
+    "juris": "Arizona",
+    "checked": "2026-06-09"
+  },
+  {
+    "title": "Benefit Screener",
+    "url": "/static-tools/benefit-screener.html",
+    "type": "Eligibility tool",
+    "juris": "National / AZ",
+    "checked": "2026-06-01"
+  },
+  {
+    "title": "Where to Stay Cool in Phoenix: Cooling Centers, Hydration Stations, and Heat Relief",
+    "url": "/blog/cooling-centers-heat-relief-phoenix.html",
+    "type": "Resource guide",
+    "juris": "Maricopa County, AZ",
+    "checked": "2026-06-07"
+  },
+  {
+    "title": "How to Find Emergency Shelter in Phoenix Tonight",
+    "url": "/blog/emergency-shelter-phoenix-tonight.html",
+    "type": "Resource guide",
+    "juris": "Maricopa County, AZ",
+    "checked": "2026-05-23"
+  },
+  {
+    "title": "Emergency Shelter in Sacramento: Where to Go Tonight",
+    "url": "/blog/emergency-shelter-sacramento.html",
+    "type": "Resource guide",
+    "juris": "Sacramento, CA",
+    "checked": "2026-06-02"
+  },
+  {
+    "title": "Free Food and Health Care in Sacramento",
+    "url": "/blog/free-food-health-sacramento.html",
+    "type": "Resource guide",
+    "juris": "Sacramento, CA",
+    "checked": "2026-06-02"
+  },
+  {
+    "title": "Free Health Clinics in Phoenix for People Experiencing Homelessness",
+    "url": "/blog/free-health-clinics-phoenix.html",
+    "type": "Resource guide",
+    "juris": "Maricopa County, AZ",
+    "checked": "2026-05-23"
+  },
+  {
+    "title": "Free Meals and Food Banks in Phoenix: Where to Eat Today",
+    "url": "/blog/free-meals-phoenix.html",
+    "type": "Resource guide",
+    "juris": "Maricopa County, AZ",
+    "checked": "2026-05-23"
+  },
+  {
+    "title": "Homeless Prevention Resources in Phoenix: How to Avoid Losing Your Housing",
+    "url": "/blog/homeless-prevention-phoenix.html",
+    "type": "Resource guide",
+    "juris": "Maricopa County, AZ",
+    "checked": "2026-05-28"
+  },
+  {
+    "title": "Homeless Veteran Services in Phoenix: HUD-VASH, the VA, and How to Get Help",
+    "url": "/blog/homeless-veteran-services-phoenix.html",
+    "type": "Resource guide",
+    "juris": "Maricopa County, AZ",
+    "checked": "2026-05-28"
+  },
+  {
+    "title": "How to Replace a Lost ID in Phoenix When You're Experiencing Homelessness",
+    "url": "/blog/id-recovery-phoenix.html",
+    "type": "Resource guide",
+    "juris": "Maricopa County, AZ",
+    "checked": "2026-05-24"
+  },
+  {
+    "title": "Mental Health and Substance Use Help in Phoenix When You're Unhoused: Where to Go Right Now",
+    "url": "/blog/mental-health-homeless-phoenix.html",
+    "type": "Resource guide",
+    "juris": "Maricopa County, AZ",
+    "checked": "2026-05-28"
+  },
+  {
+    "title": "Where to Shower, Wash Clothes, and Get Clean in Phoenix When You're Homeless",
+    "url": "/blog/showers-hygiene-homeless-phoenix.html",
+    "type": "Resource guide",
+    "juris": "Maricopa County, AZ",
+    "checked": "2026-05-28"
+  },
+  {
+    "title": "Homeless Resources in Stockton & San Joaquin County: Shelter, Food & Housing Help (2026)",
+    "url": "/blog/stockton-san-joaquin-homeless-resources.html",
+    "type": "Resource guide",
+    "juris": "San Joaquin County, CA",
+    "checked": "2026-06-04"
+  },
+  {
+    "title": "Emergency Utility Assistance in Phoenix: Help Paying Your Electric, Gas, and Water Bills",
+    "url": "/blog/utility-assistance-phoenix.html",
+    "type": "Resource guide",
+    "juris": "Maricopa County, AZ",
+    "checked": "2026-05-31"
+  }
+];
+const CORRECTIONS = "corrections.commonladder@gmail.com";
+const PREFS_KEY = "cl_rfr_prefs";
+var prefs = {};
+try { prefs = JSON.parse(localStorage.getItem(PREFS_KEY) || "{}") || {}; } catch(e) { prefs = {}; }
+var state = { q: prefs.q || "", type: prefs.type || "", status: prefs.status || "", sort: prefs.sort || "days", dir: prefs.dir || "desc" };
+
+function daysSince(iso){
+  if(!iso) return null;
+  var d = new Date(iso + "T00:00:00");
+  if(isNaN(d.getTime())) return null;
+  return Math.floor((Date.now() - d.getTime())/86400000);
+}
+function statusOf(days){
+  if(days === null) return "due";
+  if(days > 90) return "overdue";
+  if(days >= 60) return "due";
+  return "fresh";
+}
+function fmt(iso){
+  if(!iso) return "—";
+  var d = new Date(iso + "T00:00:00");
+  return d.toLocaleDateString("en-US",{month:"short",day:"numeric",year:"numeric"});
+}
+function esc(s){ return String(s).replace(/[&<>"]/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c];}); }
+
+// enrich
+LEDGER.forEach(function(r){ r.days = daysSince(r.checked); r.status = statusOf(r.days); });
+
+function savePrefs(){ try{ localStorage.setItem(PREFS_KEY, JSON.stringify(state)); }catch(e){} }
+
+function renderStats(){
+  var o=0,d=0,f=0,oldest=null;
+  LEDGER.forEach(function(r){
+    if(r.status==="overdue")o++; else if(r.status==="due")d++; else f++;
+    if(r.checked && (!oldest || r.checked<oldest)) oldest=r.checked;
+  });
+  document.getElementById("stats").innerHTML =
+    stat(LEDGER.length,"Pages tracked","")+stat(o,"Overdue","overdue")+
+    stat(d,"Due soon","due")+stat(f,"Fresh","fresh")+
+    '<div class="stat"><div class="n" style="font-size:1.05rem;padding-top:6px">'+fmt(oldest)+'</div><div class="l">Oldest stamp</div></div>';
+}
+function stat(n,l,c){ return '<div class="stat '+c+'"><div class="n">'+n+'</div><div class="l">'+l+'</div></div>'; }
+
+function visible(){
+  var q=state.q.toLowerCase();
+  var list=LEDGER.filter(function(r){
+    if(state.type && r.type!==state.type) return false;
+    if(state.status && r.status!==state.status) return false;
+    if(q && (r.title+" "+r.juris+" "+r.type).toLowerCase().indexOf(q)<0) return false;
+    return true;
+  });
+  var k=state.sort, dir=state.dir==="asc"?1:-1;
+  list.sort(function(a,b){
+    var av=a[k], bv=b[k];
+    if(k==="days"){ av=av===null?1e9:av; bv=bv===null?1e9:bv; }
+    if(av<bv) return -1*dir; if(av>bv) return 1*dir; return 0;
+  });
+  return list;
+}
+
+function render(){
+  var list=visible();
+  var tb=document.getElementById("rows"); tb.innerHTML="";
+  document.getElementById("empty").style.display = list.length?"none":"block";
+  list.forEach(function(r){
+    var subj=encodeURIComponent("Resource correction: "+r.title);
+    var body=encodeURIComponent("Page: https://commonladder.org"+r.url+"\nLast verified: "+fmt(r.checked)+"\n\nWhat's wrong:\n");
+    var tr=document.createElement("tr");
+    tr.innerHTML =
+      '<td><a class="page" href="'+r.url+'" target="_blank" rel="noopener">'+esc(r.title)+'</a></td>'+
+      '<td class="hide-sm meta">'+esc(r.type)+'</td>'+
+      '<td class="hide-sm meta">'+esc(r.juris)+'</td>'+
+      '<td class="meta">'+fmt(r.checked)+'</td>'+
+      '<td class="meta">'+(r.days===null?"—":r.days+"d")+'</td>'+
+      '<td><span class="pill '+r.status+'">'+(r.status==="due"?"Due soon":r.status)+'</span></td>'+
+      '<td><a class="report" href="mailto:'+CORRECTIONS+'?subject='+subj+'&body='+body+'">Report</a></td>';
+    tb.appendChild(tr);
+  });
+}
+
+function buildControls(){
+  var types=[...new Set(LEDGER.map(function(r){return r.type;}))].sort();
+  var tf=document.getElementById("typeFilter");
+  types.forEach(function(t){ var o=document.createElement("option"); o.value=t; o.textContent=t; tf.appendChild(o); });
+  tf.value=state.type;
+  document.getElementById("search").value=state.q;
+  // status seg active state
+  document.querySelectorAll(".seg button").forEach(function(b){
+    b.classList.toggle("active", (b.getAttribute("data-status")||"")===state.status);
+  });
+  // report-form page dropdown
+  var rp=document.getElementById("r-page");
+  rp.innerHTML='<option value="">— choose a page —</option>';
+  LEDGER.slice().sort(function(a,b){return a.title<b.title?-1:1;}).forEach(function(r){
+    var o=document.createElement("option"); o.value=r.url; o.textContent=r.title; rp.appendChild(o);
+  });
+}
+
+// events
+document.getElementById("search").addEventListener("input",function(e){ state.q=e.target.value; savePrefs(); render(); });
+document.getElementById("typeFilter").addEventListener("change",function(e){ state.type=e.target.value; savePrefs(); render(); });
+document.querySelectorAll(".seg button").forEach(function(b){
+  b.addEventListener("click",function(){
+    state.status=b.getAttribute("data-status")||"";
+    document.querySelectorAll(".seg button").forEach(function(x){x.classList.remove("active");});
+    b.classList.add("active"); savePrefs(); render();
+  });
+});
+document.querySelectorAll("th[data-sort]").forEach(function(th){
+  th.addEventListener("click",function(){
+    var k=th.getAttribute("data-sort");
+    if(state.sort===k){ state.dir=state.dir==="asc"?"desc":"asc"; } else { state.sort=k; state.dir=k==="days"?"desc":"asc"; }
+    savePrefs(); render();
+  });
+});
+document.getElementById("r-send").addEventListener("click",function(e){
+  e.preventDefault();
+  var rp=document.getElementById("r-page"), url=rp.value, label=rp.options[rp.selectedIndex].text;
+  var what=document.getElementById("r-what").value.trim();
+  var subj=encodeURIComponent("Resource correction: "+(label||"(unspecified page)"));
+  var body=encodeURIComponent((url?"Page: https://commonladder.org"+url+"\n\n":"")+"What's wrong:\n"+what);
+  window.location.href="mailto:"+CORRECTIONS+"?subject="+subj+"&body="+body;
+});
+
+buildControls(); renderStats(); render();
+</script>
+<script data-id="cl-card-click">
+(function(){document.querySelectorAll('.card, .post-card:not(.post-card--linked)').forEach(function(el){
+  if(el.closest('#app'))return; var a=el.querySelector('a[href]'); if(!a)return;
+  el.addEventListener('click',function(e){ if(e.target.tagName==='A'||e.target.closest('a'))return; window.location.href=a.href; });
+});})();
+</script>
+</body>
+</html>
