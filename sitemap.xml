@@ -1198,4 +1198,16 @@
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
+  <url>
+    <loc>https://commonladder.org/static-tools/breathing-grounding-tool.html</loc>
+    <lastmod>2026-06-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://commonladder.org/blog/intro-breathing-grounding-tool.html</loc>
+    <lastmod>2026-06-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
 </urlset>

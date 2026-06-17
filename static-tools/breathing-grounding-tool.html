@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-3YXK0RL6XV"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-3YXK0RL6XV');
+</script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Breathing &amp; Grounding — A Quiet Minute · Common Ladder</title>
+  <meta name="description" content="A free, calm space to slow your breathing or ground yourself: an animated breathing pacer (box breathing and 4-7-8) plus the 5-4-3-2-1 senses exercise. No sound needed, no account, nothing stored or sent. Stop any time.">
+  <link rel="canonical" href="https://commonladder.org/static-tools/breathing-grounding-tool.html">
+  <link rel="stylesheet" href="/style.css">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="alternate icon" type="image/png" href="/favicon-32.png">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Breathing & Grounding — A Quiet Minute",
+    "url": "https://commonladder.org/static-tools/breathing-grounding-tool.html",
+    "applicationCategory": "HealthApplication",
+    "operatingSystem": "Any",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+    "publisher": { "@type": "Organization", "name": "Common Ladder", "url": "https://commonladder.org" },
+    "description": "A free, calm tool to slow your breathing or ground yourself in a hard moment: an animated breathing pacer (box breathing and 4-7-8) and the 5-4-3-2-1 senses grounding exercise. Works with animation only, no audio required, no account, nothing stored or sent anywhere."
+  }
+  </script>
+  <noscript><style>.nav__links{display:flex!important;flex-wrap:wrap!important;}.nav__toggle{display:none!important;}</style></noscript>
+
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Common Ladder">
+  <meta property="og:title" content="Breathing &amp; Grounding — A Quiet Minute · Common Ladder">
+  <meta property="og:description" content="A free, calm space to slow your breathing or ground yourself: an animated breathing pacer plus the 5-4-3-2-1 senses exercise. No sound needed, no account, nothing stored or sent.">
+  <meta property="og:url" content="https://commonladder.org/static-tools/breathing-grounding-tool.html">
+  <meta property="og:image" content="https://commonladder.org/images/og-default.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Breathing &amp; Grounding — A Quiet Minute · Common Ladder">
+  <meta name="twitter:description" content="A free, calm space to slow your breathing or ground yourself: an animated breathing pacer plus the 5-4-3-2-1 senses exercise. No sound needed, no account, nothing stored or sent.">
+  <meta name="twitter:image" content="https://commonladder.org/images/og-default.png">
+
+  <style>
+    .bg-wrap{max-width:680px;margin:0 auto;padding:1.5rem 1.25rem 3rem;}
+    .bg-hero{margin:1rem 0 1.25rem;}
+    .bg-hero h1{font-size:clamp(1.6rem,5vw,2.1rem);color:#1C3D6E;margin:0 0 .5rem;}
+    .bg-hero p{font-size:1.02rem;max-width:58ch;color:#3a3833;}
+    .bg-safety{background:#fdf2f2;border-left:4px solid #c0392b;border-radius:6px;padding:.85rem 1.1rem;margin:1.1rem 0 0;font-size:.93rem;}
+    .bg-perm{background:#eef6f2;border-left:4px solid #4A9E82;border-radius:6px;padding:.85rem 1.1rem;margin:1rem 0 0;font-size:.93rem;}
+    .bg-perm strong{color:#1a5040;}
+
+    /* Mode picker */
+    .bg-modes{display:flex;flex-wrap:wrap;gap:.6rem;margin:1.75rem 0 0;}
+    .bg-mode{flex:1 1 180px;text-align:left;background:#fff;border:1.5px solid #d8d4cd;border-radius:12px;padding:1rem 1.15rem;cursor:pointer;font:inherit;color:#1C3D6E;}
+    .bg-mode:hover{border-color:#1C3D6E;}
+    .bg-mode[aria-pressed="true"]{border-color:#1C3D6E;background:#f0f4f8;box-shadow:inset 0 0 0 1px #1C3D6E;}
+    .bg-mode b{display:block;font-size:1.02rem;margin:0 0 .2rem;}
+    .bg-mode span{display:block;font-size:.85rem;color:#5a5752;font-weight:400;}
+
+    /* Breathing stage */
+    .bg-stage{margin:2rem 0 0;text-align:center;}
+    .bg-circle-area{position:relative;height:300px;display:flex;align-items:center;justify-content:center;}
+    .bg-circle{width:130px;height:130px;border-radius:50%;background:radial-gradient(circle at 50% 40%,#5fa890 0%,#3f8870 70%,#2e6d59 100%);
+      display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:1.05rem;line-height:1.25;text-align:center;padding:1rem;
+      transition:transform .4s ease, background .8s ease;will-change:transform;box-shadow:0 8px 30px rgba(46,109,89,.28);}
+    .bg-ring{position:absolute;width:130px;height:130px;border-radius:50%;border:2px solid rgba(28,61,110,.18);pointer-events:none;}
+    .bg-phaselabel{font-size:1.5rem;color:#1C3D6E;font-weight:700;margin:.25rem 0 .15rem;min-height:1.6em;}
+    .bg-count{font-size:1.05rem;color:#5a5752;min-height:1.4em;}
+    .bg-cyclecount{font-size:.85rem;color:#7a766f;margin-top:.4rem;min-height:1.3em;}
+
+    .bg-controls{display:flex;gap:.6rem;flex-wrap:wrap;justify-content:center;margin:1.5rem 0 0;}
+    .bg-btn{display:inline-block;background:#1C3D6E;color:#fff;font-weight:700;font-size:1rem;padding:.8rem 1.6rem;border-radius:8px;text-decoration:none;border:0;cursor:pointer;font-family:inherit;}
+    .bg-btn:hover{background:#16315a;}
+    .bg-btn--amber{background:#E8911A;}
+    .bg-btn--amber:hover{background:#d07f10;}
+    .bg-btn--ghost{background:#fff;color:#1C3D6E;border:1.5px solid #c8c4bd;}
+    .bg-btn--ghost:hover{border-color:#1C3D6E;background:#f0f4f8;}
+    .bg-btn:focus-visible{outline:2px solid #1C3D6E;outline-offset:2px;}
+
+    .bg-pace{margin:1.5rem 0 0;font-size:.9rem;color:#5a5752;text-align:center;}
+    .bg-pace label{display:inline-flex;align-items:center;gap:.5rem;cursor:pointer;}
+
+    /* 5-4-3-2-1 grounding */
+    .bg-ground{margin:2rem 0 0;}
+    .bg-ground-step{background:#fff;border:1px solid #e0ddd8;border-radius:12px;padding:1.4rem 1.5rem;text-align:center;}
+    .bg-ground-step .bg-sense-num{font-size:2.6rem;font-weight:800;color:#1C3D6E;line-height:1;}
+    .bg-ground-step h3{font-size:1.25rem;color:#1C3D6E;margin:.4rem 0 .3rem;}
+    .bg-ground-step p{font-size:1rem;color:#3a3833;max-width:46ch;margin:0 auto;}
+    .bg-ground-progress{display:flex;justify-content:center;gap:.4rem;margin:1.1rem 0 0;}
+    .bg-dot{width:10px;height:10px;border-radius:50%;background:#d8d4cd;}
+    .bg-dot[data-on="true"]{background:#4A9E82;}
+
+    .bg-static-list{margin:2.5rem 0 0;border-top:1px solid #e8e5e0;padding-top:1.5rem;}
+    .bg-static-list h2{font-size:1.2rem;color:#1C3D6E;margin:0 0 .75rem;}
+    .bg-static-list details{background:#fff;border:1px solid #e0ddd8;border-radius:10px;padding:.4rem 1.1rem;margin:.7rem 0;}
+    .bg-static-list summary{font-weight:700;color:#1C3D6E;cursor:pointer;padding:.6rem 0;font-size:1rem;}
+    .bg-static-list ol{margin:.3rem 0 .8rem;padding-left:1.3rem;font-size:.95rem;}
+    .bg-static-list li{margin:.35rem 0;}
+
+    .bg-more{margin:2rem 0 0;font-size:.97rem;}
+    .bg-verify{margin-top:2rem;padding:1rem 1.25rem;background:#f0f4f8;border-left:3px solid #1C3D6E;border-radius:4px;font-size:.9rem;}
+
+    .breadcrumb{max-width:680px;margin:1.25rem auto 0;padding:0 1.25rem;font-size:.85rem;list-style:none;display:flex;gap:.45rem;flex-wrap:wrap;}
+    .breadcrumb li+li::before{content:"/";margin-right:.45rem;color:#a09c95;}
+    .breadcrumb a{color:#1C3D6E;}
+
+    .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);border:0;}
+
+    @media (prefers-reduced-motion: reduce){
+      .bg-circle{transition:background .8s ease;}
+    }
+  </style>
+</head>
+<body>
+
+<a href="#main" class="skip-link">Skip to main content</a>
+
+<div class="crisis-bar" role="region" aria-label="Crisis help">
+  <strong>Need help right now?</strong>
+  <a href="tel:211">Call 211</a><span class="crisis-bar__sep">·</span>
+  <a href="sms:741741?body=HOME">Text HOME to 741741</a><span class="crisis-bar__sep">·</span>
+  <a href="tel:988">988 Suicide &amp; Crisis</a>
+</div>
+
+<nav class="nav" aria-label="Primary">
+  <div class="nav__inner">
+    <a href="/" class="nav__logo" aria-label="Common Ladder home">
+      <svg width="28" height="28" viewBox="0 0 247 247" fill="none" aria-hidden="true"><g transform="translate(-12.00,-16.00)"> <path fill="#E8911A" fill-opacity="1" fill-rule="evenodd" d="M 254.00,51.00 L 234.00,85.64 L 194.00,85.64 L 174.00,51.00 L 194.00,16.36 L 234.00,16.36 Z M 231.50,51.00 L 222.75,66.16 L 205.25,66.16 L 196.50,51.00 L 205.25,35.84 L 222.75,35.84 Z"/> <path fill="#9FBCBA" fill-opacity="1" fill-rule="evenodd" d="M 148.00,118.00 L 128.00,152.64 L 88.00,152.64 L 68.00,118.00 L 88.00,83.36 L 128.00,83.36 Z M 125.50,118.00 L 116.75,133.16 L 99.25,133.16 L 90.50,118.00 L 99.25,102.84 L 116.75,102.84 Z"/> <path fill="#9FBCBA" fill-opacity="1" fill-rule="evenodd" d="M 259.00,118.00 L 239.00,152.64 L 199.00,152.64 L 179.00,118.00 L 199.00,83.36 L 239.00,83.36 Z M 236.50,118.00 L 227.75,133.16 L 210.25,133.16 L 201.50,118.00 L 210.25,102.84 L 227.75,102.84 Z"/> <path fill="#FFFFFF" fill-opacity="0.94" fill-rule="evenodd" d="M 207.00,164.00 L 187.00,198.64 L 147.00,198.64 L 127.00,164.00 L 147.00,129.36 L 187.00,129.36 Z M 184.50,164.00 L 175.75,179.16 L 158.25,179.16 L 149.50,164.00 L 158.25,148.84 L 175.75,148.84 Z"/> <path fill="#FFFFFF" fill-opacity="0.94" fill-rule="evenodd" d="M 92.00,164.00 L 72.00,198.64 L 32.00,198.64 L 12.00,164.00 L 32.00,129.36 L 72.00,129.36 Z M 69.50,164.00 L 60.75,179.16 L 43.25,179.16 L 34.50,164.00 L 43.25,148.84 L 60.75,148.84 Z"/> <path fill="#FFFFFF" fill-opacity="0.94" fill-rule="evenodd" d="M 161.00,228.00 L 141.00,262.64 L 101.00,262.64 L 81.00,228.00 L 101.00,193.36 L 141.00,193.36 Z M 138.50,228.00 L 129.75,243.16 L 112.25,243.16 L 103.50,228.00 L 112.25,212.84 L 129.75,212.84 Z"/> </g></svg>
+      <span class="nav__wordmark">common<span>ladder</span></span>
+    </a>
+    <button class="nav__toggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="primary-nav" onclick="this.setAttribute('aria-expanded', document.getElementById('primary-nav').classList.toggle('open') ? 'true' : 'false')">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav__links" id="primary-nav">
+      <li><a href="/providers.html">For providers</a></li>
+      <li><a href="/learn/">Learn</a></li>
+      <li><a href="/about.html">About</a></li>
+      <li><a href="/find.html" class="nav__cta">Find resources</a></li>
+      <li><a href="/static-tools/my-ladder.html" class="nav__cta nav__cta--ladder">My Ladder</a></li>
+      <li><a href="https://www.weather.gov/" rel="noreferrer" class="nav__exit" onclick="event.preventDefault();window.location.replace('https://www.weather.gov/')">Leave page</a></li>
+    </ul>
+  </div>
+</nav>
+
+<ol class="breadcrumb" aria-label="Breadcrumb">
+  <li><a href="/">Home</a></li>
+  <li><a href="/static-tools/">Tools</a></li>
+  <li aria-current="page">Breathing &amp; Grounding</li>
+</ol>
+
+<main id="main">
+<div class="bg-wrap">
+
+  <header class="bg-hero">
+    <h1>A Quiet Minute <span style="display:block;font-size:.62em;color:#5a5752;font-weight:600;margin-top:.3rem">Breathing &amp; grounding, whenever you need it</span></h1>
+    <p>A calm, private space to slow your breathing or steady yourself when a moment feels like too much. It works with the picture alone &mdash; <strong>no sound needed</strong> &mdash; and you can stop at any time.</p>
+
+    <div class="bg-perm" role="note">
+      <strong>This is yours, at your pace.</strong> There is no wrong way to do this and nothing to finish. If anything here makes you feel worse, stop and just breathe the way that feels normal to you. Nothing is stored, and nothing is sent anywhere.
+    </div>
+
+    <div class="bg-safety" role="note">
+      <strong>If you&rsquo;re in danger or thinking about harming yourself,</strong> you don&rsquo;t have to handle it alone &mdash; call or text <a href="tel:988"><strong>988</strong></a> (Suicide &amp; Crisis Lifeline), text <strong>HOME</strong> to <a href="sms:741741?body=HOME">741741</a>, or call <a href="tel:911">911</a> for an emergency. This tool is for steadying a hard moment, not a substitute for care.
+    </div>
+  </header>
+
+  <!-- Mode picker -->
+  <div class="bg-modes" role="group" aria-label="Choose an exercise">
+    <button type="button" class="bg-mode" id="mode-box" aria-pressed="true" data-mode="box">
+      <b>Box breathing</b><span>In 4 · hold 4 · out 4 · hold 4. Steady and even.</span>
+    </button>
+    <button type="button" class="bg-mode" id="mode-478" aria-pressed="false" data-mode="478">
+      <b>4-7-8 breathing</b><span>In 4 · hold 7 · out 8. A longer, calming exhale.</span>
+    </button>
+    <button type="button" class="bg-mode" id="mode-ground" aria-pressed="false" data-mode="ground">
+      <b>5-4-3-2-1 grounding</b><span>Notice your senses, one at a time. No breath holds.</span>
+    </button>
+  </div>
+
+  <!-- Breathing stage -->
+  <section id="bg-breathe" class="bg-stage" aria-label="Breathing pacer">
+    <div class="bg-circle-area">
+      <div class="bg-ring" aria-hidden="true"></div>
+      <div class="bg-circle" id="bg-circle" aria-hidden="true">Ready<br>when you are</div>
+    </div>
+    <div class="bg-phaselabel" id="bg-phase" role="status" aria-live="polite">Press start to begin</div>
+    <div class="bg-count" id="bg-counter" aria-hidden="true"></div>
+    <div class="bg-cyclecount" id="bg-cycles"></div>
+
+    <div class="bg-controls">
+      <button type="button" class="bg-btn" id="bg-start">Start</button>
+      <button type="button" class="bg-btn bg-btn--ghost" id="bg-stop" hidden>Stop</button>
+    </div>
+
+    <div class="bg-pace">
+      <label><input type="checkbox" id="bg-reduce"> Slow it down a little (longer, gentler counts)</label>
+    </div>
+    <p class="bg-pace" style="margin-top:.6rem;max-width:50ch;margin-left:auto;margin-right:auto;">You can keep your eyes open and just watch the circle, or close them and follow the words. Breathe through your nose if that&rsquo;s comfortable. If holding your breath feels bad, skip the holds &mdash; just breathe in as the circle grows and out as it shrinks.</p>
+  </section>
+
+  <!-- 5-4-3-2-1 grounding -->
+  <section id="bg-grounding" class="bg-ground" aria-label="5-4-3-2-1 senses grounding" hidden>
+    <div class="bg-ground-step">
+      <div class="bg-sense-num" id="bg-ground-num" aria-hidden="true">5</div>
+      <h3 id="bg-ground-title">Five things you can see</h3>
+      <p id="bg-ground-body">Look around and name five things you can see &mdash; out loud or in your head. A crack in the sidewalk. A color. Your own hands. Take your time with each one.</p>
+      <div class="bg-ground-progress" aria-hidden="true">
+        <span class="bg-dot" data-step="5"></span>
+        <span class="bg-dot" data-step="4"></span>
+        <span class="bg-dot" data-step="3"></span>
+        <span class="bg-dot" data-step="2"></span>
+        <span class="bg-dot" data-step="1"></span>
+      </div>
+    </div>
+    <div class="bg-controls">
+      <button type="button" class="bg-btn bg-btn--ghost" id="bg-ground-back" hidden>Back</button>
+      <button type="button" class="bg-btn bg-btn--amber" id="bg-ground-next">Next sense →</button>
+    </div>
+    <p class="bg-pace" style="margin-top:1rem;max-width:50ch;margin-left:auto;margin-right:auto;">There&rsquo;s no timer. Stay on each sense as long as you like. When you&rsquo;re ready, move on.</p>
+  </section>
+
+  <!-- Plain-text fallback / no-JS and reference -->
+  <section class="bg-static-list" aria-label="The exercises written out">
+    <h2>Prefer to read the steps?</h2>
+    <p style="font-size:.95rem;color:#3a3833;max-width:56ch;">If the animation isn&rsquo;t working, or you&rsquo;d rather just read, here are the same exercises in plain words. You don&rsquo;t need this page open to use them &mdash; they work anywhere, any time.</p>
+
+    <details>
+      <summary>Box breathing (in 4, hold 4, out 4, hold 4)</summary>
+      <ol>
+        <li>Breathe in slowly through your nose for a count of 4.</li>
+        <li>Hold gently for a count of 4.</li>
+        <li>Breathe out slowly through your mouth for a count of 4.</li>
+        <li>Hold for a count of 4.</li>
+        <li>Repeat for as many rounds as you like. If holding feels bad, just breathe in for 4 and out for 4.</li>
+      </ol>
+    </details>
+
+    <details>
+      <summary>4-7-8 breathing (in 4, hold 7, out 8)</summary>
+      <ol>
+        <li>Breathe in quietly through your nose for a count of 4.</li>
+        <li>Hold your breath for a count of 7.</li>
+        <li>Breathe out slowly through your mouth for a count of 8.</li>
+        <li>That&rsquo;s one round. Three or four rounds is plenty. Stop sooner if you feel light-headed.</li>
+      </ol>
+    </details>
+
+    <details>
+      <summary>5-4-3-2-1 grounding (your five senses)</summary>
+      <ol>
+        <li>Name <strong>5 things you can see</strong>.</li>
+        <li>Name <strong>4 things you can feel</strong> (your feet on the ground, the air, fabric).</li>
+        <li>Name <strong>3 things you can hear</strong>.</li>
+        <li>Name <strong>2 things you can smell</strong> (or two smells you like).</li>
+        <li>Name <strong>1 thing you can taste</strong> (or one thing you&rsquo;re grateful for).</li>
+      </ol>
+    </details>
+  </section>
+
+  <div class="bg-more">
+    <p>When you&rsquo;re ready, you don&rsquo;t have to do the next part alone. If stress is tied to housing, money, or a crisis, you can <a href="/find.html">find resources near you</a>, talk to someone free any time at <a href="tel:211">2-1-1</a>, or look at <a href="/help/mental-health-recovery/">mental health &amp; recovery support</a>. To keep track of next steps at your own pace, try <a href="/static-tools/my-ladder.html">My Ladder</a>.</p>
+  </div>
+
+  <div class="bg-verify">
+    <strong>A note on these exercises.</strong> Slow breathing and grounding are simple, well-established ways to calm the body&rsquo;s stress response, and many people find them steadying. They are not medical treatment. For some people &mdash; especially with a history of trauma, panic, or certain heart or breathing conditions &mdash; focusing on the breath can feel worse rather than better. That&rsquo;s normal, and it&rsquo;s okay to stop. If hard moments keep happening, reaching out to <a href="/help/mental-health-recovery/">a counselor or 988</a> is a strong, healthy step.
+  </div>
+
+  <p style="margin-top:1.5rem; color:var(--gray); font-size:.875rem;"><em>Have a suggestion to make this gentler or clearer? <a href="/contact.html">Contact us</a> &mdash; we read every note.</em></p>
+
+</div>
+</main>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer__grid">
+      <div class="footer__brand">
+        <h3>Common Ladder</h3>
+        <p>The civic resource platform connecting people experiencing homelessness with every service in your community.</p>
+      </div>
+      <div>
+        <h4>Find help</h4>
+        <ul>
+          <li><a href="/find.html?cat=shelter">Shelter</a></li>
+          <li><a href="/find.html?cat=food">Food</a></li>
+          <li><a href="/find.html?cat=legal">Legal</a></li>
+          <li><a href="/help/">All categories</a></li>
+          <li><a href="/static-tools/">Local navigators</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>For providers</h4>
+        <ul>
+          <li><a href="/providers.html">Tools &amp; referrals</a></li>
+          <li><a href="/providers.html#case-manager-guide">Case manager guide</a></li>
+          <li><a href="/data-reports.html">Data &amp; reports</a></li>
+          <li><a href="/learn/">Four learning pathways</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>About</h4>
+        <ul>
+          <li><a href="/about.html">Our mission</a></li>
+          <li><a href="/about.html#methodology">Methodology</a></li>
+          <li><a href="/about.html#team">Team</a></li>
+          <li><a href="/brand/visual-guidelines.html">Brand guidelines</a></li>
+          <li><a href="/contact.html">Contact</a></li>
+          <li><a href="/privacy.html">Privacy</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer__transparency">
+      <strong>Transparency:</strong> Common Ladder is an independent civic project. We do not sell user data, run ads, or accept payment from listed resources.
+    </div>
+    <div class="footer__bottom">
+      <span>&copy; 2026 Common Ladder. Free to use, always.</span>
+      <span><time datetime="2026-06-16">Last updated June 16, 2026</time></span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  'use strict';
+
+  var modes = {
+    box: { name: 'Box breathing', phases: [
+      { label: 'Breathe in', kind: 'in', sec: 4 },
+      { label: 'Hold', kind: 'hold', sec: 4 },
+      { label: 'Breathe out', kind: 'out', sec: 4 },
+      { label: 'Hold', kind: 'hold', sec: 4 }
+    ]},
+    p478: { name: '4-7-8 breathing', phases: [
+      { label: 'Breathe in', kind: 'in', sec: 4 },
+      { label: 'Hold', kind: 'hold', sec: 7 },
+      { label: 'Breathe out', kind: 'out', sec: 8 }
+    ]}
+  };
+
+  var circle = document.getElementById('bg-circle');
+  var phaseEl = document.getElementById('bg-phase');
+  var counterEl = document.getElementById('bg-counter');
+  var cyclesEl = document.getElementById('bg-cycles');
+  var startBtn = document.getElementById('bg-start');
+  var stopBtn = document.getElementById('bg-stop');
+  var reduceBox = document.getElementById('bg-reduce');
+  var breatheSection = document.getElementById('bg-breathe');
+  var groundSection = document.getElementById('bg-grounding');
+
+  var modeBtns = Array.prototype.slice.call(document.querySelectorAll('.bg-mode'));
+
+  var current = 'box';        // 'box' | '478' | 'ground'
+  var running = false;
+  var timerId = null;
+  var phaseIdx = 0;
+  var secLeft = 0;
+  var rounds = 0;
+
+  function activeMode(){ return current === '478' ? modes.p478 : modes.box; }
+
+  function setCircle(kind){
+    if (kind === 'in') {
+      circle.style.transform = 'scale(1.55)';
+      circle.style.background = 'radial-gradient(circle at 50% 40%,#6fb8a0 0%,#4a987f 70%,#3f8870 100%)';
+    } else if (kind === 'out') {
+      circle.style.transform = 'scale(1)';
+      circle.style.background = 'radial-gradient(circle at 50% 40%,#5fa890 0%,#3f8870 70%,#2e6d59 100%)';
+    } else { // hold — stay where we are, just shift hue slightly
+      circle.style.background = 'radial-gradient(circle at 50% 40%,#6aa7c4 0%,#3f7fa0 70%,#2e6d8f 100%)';
+    }
+  }
+
+  function applyTransitionSpeed(sec){
+    // Make the grow/shrink take the whole inhale/exhale duration.
+    circle.style.transition = 'transform ' + sec + 's ease-in-out, background .8s ease';
+  }
+
+  function paceFactor(){ return reduceBox && reduceBox.checked ? 1.5 : 1; }
+
+  function announcePhase(p){
+    phaseEl.textContent = p.label;
+    circle.innerHTML = p.label.replace('Breathe ', 'Breathe<br>');
+  }
+
+  function tick(){
+    secLeft -= 1;
+    if (secLeft > 0) {
+      counterEl.textContent = secLeft;
+      return;
+    }
+    // advance phase
+    phaseIdx += 1;
+    var phases = activeMode().phases;
+    if (phaseIdx >= phases.length) {
+      phaseIdx = 0;
+      rounds += 1;
+      cyclesEl.textContent = rounds === 1 ? '1 round complete — keep going as long as you like' : (rounds + ' rounds complete — keep going as long as you like');
+    }
+    startPhase();
+  }
+
+  function startPhase(){
+    var phases = activeMode().phases;
+    var p = phases[phaseIdx];
+    var dur = Math.round(p.sec * paceFactor());
+    secLeft = dur;
+    announcePhase(p);
+    applyTransitionSpeed(p.kind === 'hold' ? 0.4 : dur);
+    setCircle(p.kind);
+    counterEl.textContent = dur;
+  }
+
+  function start(){
+    if (running) return;
+    running = true;
+    rounds = 0;
+    phaseIdx = 0;
+    cyclesEl.textContent = '';
+    startBtn.hidden = true;
+    stopBtn.hidden = false;
+    startPhase();
+    timerId = setInterval(tick, 1000);
+  }
+
+  function stop(){
+    running = false;
+    if (timerId) { clearInterval(timerId); timerId = null; }
+    startBtn.hidden = false;
+    stopBtn.hidden = true;
+    counterEl.textContent = '';
+    phaseEl.textContent = 'Stopped — whenever you want, press start again';
+    circle.style.transition = 'transform .6s ease, background .8s ease';
+    circle.style.transform = 'scale(1)';
+    setCircle('out');
+    circle.innerHTML = 'Ready<br>when you are';
+  }
+
+  startBtn.addEventListener('click', start);
+  stopBtn.addEventListener('click', stop);
+
+  // ---- Mode switching ----
+  function selectMode(mode){
+    current = mode;
+    modeBtns.forEach(function(b){ b.setAttribute('aria-pressed', b.getAttribute('data-mode') === mode ? 'true' : 'false'); });
+    stop();
+    if (mode === 'ground') {
+      breatheSection.hidden = true;
+      groundSection.hidden = false;
+      resetGround();
+    } else {
+      groundSection.hidden = true;
+      breatheSection.hidden = false;
+    }
+    try { localStorage.setItem('cl-breathe-mode', mode); } catch (e) {}
+  }
+
+  modeBtns.forEach(function(b){
+    b.addEventListener('click', function(){ selectMode(b.getAttribute('data-mode')); });
+  });
+
+  // ---- 5-4-3-2-1 grounding ----
+  var groundSteps = [
+    { n: '5', title: 'Five things you can see', body: 'Look around and name five things you can see — out loud or in your head. A crack in the sidewalk. A color. Your own hands. Take your time with each one.' },
+    { n: '4', title: 'Four things you can feel', body: 'Notice four things you can feel: your feet on the ground, the air on your skin, the weight of your bag, the texture of what you are touching.' },
+    { n: '3', title: 'Three things you can hear', body: 'Listen for three sounds. Far away or close. Traffic, a voice, your own breathing. You do not have to like them — just notice them.' },
+    { n: '2', title: 'Two things you can smell', body: 'Find two things you can smell. If you cannot smell anything, name two smells you like — coffee, rain, fresh bread.' },
+    { n: '1', title: 'One thing you can taste, or one good thing', body: 'Notice one thing you can taste — or name one thing you are grateful for, however small. You made it to this minute. That counts.' }
+  ];
+  var gIdx = 0;
+  var gNum = document.getElementById('bg-ground-num');
+  var gTitle = document.getElementById('bg-ground-title');
+  var gBody = document.getElementById('bg-ground-body');
+  var gNext = document.getElementById('bg-ground-next');
+  var gBack = document.getElementById('bg-ground-back');
+  var gDots = Array.prototype.slice.call(document.querySelectorAll('.bg-dot'));
+
+  function renderGround(){
+    var s = groundSteps[gIdx];
+    gNum.textContent = s.n;
+    gTitle.textContent = s.title;
+    gBody.textContent = s.body;
+    gDots.forEach(function(d, i){ d.setAttribute('data-on', i <= gIdx ? 'true' : 'false'); });
+    gBack.hidden = gIdx === 0;
+    gNext.textContent = gIdx >= groundSteps.length - 1 ? 'Done — I feel a bit steadier' : 'Next sense →';
+  }
+
+  function resetGround(){ gIdx = 0; renderGround(); }
+
+  gNext.addEventListener('click', function(){
+    if (gIdx >= groundSteps.length - 1) {
+      gTitle.textContent = 'Well done.';
+      gBody.textContent = 'You walked yourself through all five. You can run it again any time, switch to breathing, or move on when you are ready.';
+      gNum.textContent = '✓';
+      gNext.hidden = true;
+      gBack.hidden = false;
+      gBack.textContent = 'Start over';
+      gDots.forEach(function(d){ d.setAttribute('data-on', 'true'); });
+      return;
+    }
+    gIdx += 1;
+    renderGround();
+  });
+
+  gBack.addEventListener('click', function(){
+    if (gNext.hidden) { gNext.hidden = false; resetGround(); return; }
+    if (gIdx > 0) { gIdx -= 1; renderGround(); }
+  });
+
+  // ---- Restore last-used mode (this device only) ----
+  try {
+    var saved = localStorage.getItem('cl-breathe-mode');
+    if (saved === 'box' || saved === '478' || saved === 'ground') {
+      selectMode(saved);
+    }
+  } catch (e) {}
+})();
+</script>
+</body>
+</html>
