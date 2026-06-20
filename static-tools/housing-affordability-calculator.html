@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-3YXK0RL6XV"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-3YXK0RL6XV');
+</script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Housing Affordability Calculator — Can I Afford This Rent? · Common Ladder</title>
+  <meta name="description" content="A free, plain-language calculator: enter your monthly pay and a rent amount to see what share of your income goes to rent, how much is left for everything else, the rent you can afford, and the income a rent needs. No account, nothing stored or sent.">
+  <link rel="canonical" href="https://commonladder.org/static-tools/housing-affordability-calculator.html">
+  <link rel="stylesheet" href="/style.css">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="alternate icon" type="image/png" href="/favicon-32.png">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Housing Affordability Calculator",
+    "url": "https://commonladder.org/static-tools/housing-affordability-calculator.html",
+    "applicationCategory": "FinanceApplication",
+    "operatingSystem": "Any",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+    "publisher": { "@type": "Organization", "name": "Common Ladder", "url": "https://commonladder.org" },
+    "description": "A free, plain-language housing affordability calculator. Enter monthly pay and a rent amount to see the share of income going to rent (against the 30 percent standard), money left after rent and bills, the rent you can afford, and the income a rent requires. Runs entirely on your device; nothing is stored or sent."
+  }
+  </script>
+  <noscript><style>.nav__links{display:flex!important;flex-wrap:wrap!important;}.nav__toggle{display:none!important;}</style></noscript>
+
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Common Ladder">
+  <meta property="og:title" content="Housing Affordability Calculator — Can I Afford This Rent? · Common Ladder">
+  <meta property="og:description" content="Enter your monthly pay and a rent amount to see what share of your income goes to rent, how much is left, the rent you can afford, and the income a rent needs. Free, private, no account.">
+  <meta property="og:url" content="https://commonladder.org/static-tools/housing-affordability-calculator.html">
+  <meta property="og:image" content="https://commonladder.org/images/og-default.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Housing Affordability Calculator — Can I Afford This Rent? · Common Ladder">
+  <meta name="twitter:description" content="Enter your monthly pay and a rent amount to see what share of your income goes to rent, how much is left, the rent you can afford, and the income a rent needs. Free, private, no account.">
+  <meta name="twitter:image" content="https://commonladder.org/images/og-default.png">
+
+  <style>
+    .hac-wrap{max-width:680px;margin:0 auto;padding:1.5rem 1.25rem 3rem;}
+    .hac-hero{margin:1rem 0 1.25rem;}
+    .hac-hero h1{font-size:clamp(1.6rem,5vw,2.1rem);color:#1C3D6E;margin:0 0 .5rem;}
+    .hac-hero h1 span{display:block;font-size:.6em;color:#5a5752;font-weight:600;margin-top:.3rem;}
+    .hac-hero p{font-size:1.02rem;max-width:60ch;color:#3a3833;}
+    .hac-perm{background:#eef6f2;border-left:4px solid #4A9E82;border-radius:6px;padding:.85rem 1.1rem;margin:1.1rem 0 0;font-size:.93rem;}
+    .hac-perm strong{color:#1a5040;}
+
+    .hac-form{background:#fff;border:1px solid #e0ddd8;border-radius:14px;padding:1.4rem 1.4rem 1.5rem;margin:1.75rem 0 0;}
+    .hac-field{margin:0 0 1.25rem;}
+    .hac-field:last-child{margin-bottom:0;}
+    .hac-field label{display:block;font-weight:700;color:#1C3D6E;font-size:1rem;margin:0 0 .2rem;}
+    .hac-field .hac-help{display:block;font-size:.85rem;color:#5a5752;font-weight:400;margin:0 0 .5rem;}
+    .hac-money{position:relative;max-width:260px;}
+    .hac-money span{position:absolute;left:.85rem;top:50%;transform:translateY(-50%);color:#5a5752;font-size:1.1rem;font-weight:600;}
+    .hac-money input{width:100%;font:inherit;font-size:1.15rem;padding:.7rem .8rem .7rem 1.9rem;border:1.5px solid #c8c4bd;border-radius:8px;color:#1C3D6E;}
+    .hac-money input:focus-visible{outline:2px solid #1C3D6E;outline-offset:1px;border-color:#1C3D6E;}
+
+    .hac-period{display:flex;gap:.5rem;flex-wrap:wrap;margin:.55rem 0 0;}
+    .hac-chip{font:inherit;font-size:.85rem;background:#fff;border:1.5px solid #d8d4cd;border-radius:999px;padding:.35rem .85rem;color:#1C3D6E;cursor:pointer;}
+    .hac-chip[aria-pressed="true"]{background:#1C3D6E;color:#fff;border-color:#1C3D6E;}
+    .hac-chip:focus-visible{outline:2px solid #1C3D6E;outline-offset:2px;}
+
+    .hac-controls{display:flex;gap:.6rem;flex-wrap:wrap;margin:1.4rem 0 0;}
+    .hac-btn{display:inline-block;background:#1C3D6E;color:#fff;font-weight:700;font-size:1rem;padding:.8rem 1.6rem;border-radius:8px;text-decoration:none;border:0;cursor:pointer;font-family:inherit;}
+    .hac-btn:hover{background:#16315a;}
+    .hac-btn--ghost{background:#fff;color:#1C3D6E;border:1.5px solid #c8c4bd;}
+    .hac-btn--ghost:hover{border-color:#1C3D6E;background:#f0f4f8;}
+    .hac-btn:focus-visible{outline:2px solid #1C3D6E;outline-offset:2px;}
+
+    .hac-results{margin:1.75rem 0 0;}
+    .hac-results[hidden]{display:none;}
+
+    .hac-verdict{border-radius:14px;padding:1.3rem 1.4rem;border:1px solid;}
+    .hac-verdict h2{font-size:1.25rem;margin:0 0 .35rem;}
+    .hac-verdict p{font-size:.97rem;margin:.3rem 0 0;}
+    .hac-verdict .hac-pct{font-size:2.4rem;font-weight:800;line-height:1;display:block;margin:0 0 .4rem;}
+    .hac-v-good{background:#eef6f2;border-color:#bfe0d2;}
+    .hac-v-good h2,.hac-v-good .hac-pct{color:#1a5040;}
+    .hac-v-warn{background:#fbf3e6;border-color:#e6cfa3;}
+    .hac-v-warn h2,.hac-v-warn .hac-pct{color:#8a5a00;}
+    .hac-v-high{background:#fdf2f2;border-color:#e6bdbd;}
+    .hac-v-high h2,.hac-v-high .hac-pct{color:#b3261e;}
+
+    .hac-bar{height:16px;border-radius:8px;background:#e8e5e0;overflow:hidden;margin:1rem 0 .35rem;position:relative;}
+    .hac-bar i{display:block;height:100%;border-radius:8px;background:#1a5040;transition:width .5s ease;}
+    .hac-bar--warn i{background:#b36a00;}
+    .hac-bar--high i{background:#b3261e;}
+    .hac-bar-note{font-size:.8rem;color:#5a5752;margin:0;}
+
+    .hac-grid{display:grid;grid-template-columns:1fr;gap:.9rem;margin:1.2rem 0 0;}
+    @media(min-width:560px){.hac-grid{grid-template-columns:1fr 1fr;}}
+    .hac-stat{background:#fff;border:1px solid #e0ddd8;border-radius:12px;padding:1.05rem 1.2rem;}
+    .hac-stat .hac-stat-label{font-size:.85rem;color:#5a5752;margin:0 0 .25rem;}
+    .hac-stat .hac-stat-num{font-size:1.6rem;font-weight:800;color:#1C3D6E;line-height:1.05;}
+    .hac-stat .hac-stat-sub{font-size:.82rem;color:#5a5752;margin:.3rem 0 0;}
+    .hac-stat--neg .hac-stat-num{color:#b3261e;}
+
+    .hac-next{margin:1.5rem 0 0;background:#f0f4f8;border-left:4px solid #1C3D6E;border-radius:6px;padding:1rem 1.25rem;font-size:.95rem;}
+    .hac-next h3{color:#1C3D6E;font-size:1.05rem;margin:0 0 .4rem;}
+    .hac-next ul{margin:.4rem 0 0;padding-left:1.2rem;}
+    .hac-next li{margin:.35rem 0;}
+
+    .hac-how{margin:2.5rem 0 0;border-top:1px solid #e8e5e0;padding-top:1.5rem;}
+    .hac-how h2{font-size:1.2rem;color:#1C3D6E;margin:0 0 .75rem;}
+    .hac-how details{background:#fff;border:1px solid #e0ddd8;border-radius:10px;padding:.4rem 1.1rem;margin:.7rem 0;}
+    .hac-how summary{font-weight:700;color:#1C3D6E;cursor:pointer;padding:.6rem 0;font-size:1rem;}
+    .hac-how p{font-size:.95rem;color:#3a3833;margin:.3rem 0 .8rem;}
+
+    .hac-verify{margin-top:2rem;padding:1rem 1.25rem;background:#f0f4f8;border-left:3px solid #1C3D6E;border-radius:4px;font-size:.9rem;}
+
+    .breadcrumb{max-width:680px;margin:1.25rem auto 0;padding:0 1.25rem;font-size:.85rem;list-style:none;display:flex;gap:.45rem;flex-wrap:wrap;}
+    .breadcrumb li+li::before{content:"/";margin-right:.45rem;color:#a09c95;}
+    .breadcrumb a{color:#1C3D6E;}
+
+    .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);border:0;}
+  </style>
+</head>
+<body>
+
+<a href="#main" class="skip-link">Skip to main content</a>
+
+<div class="crisis-bar" role="region" aria-label="Crisis help">
+  <strong>Need help right now?</strong>
+  <a href="tel:211">Call 211</a><span class="crisis-bar__sep">·</span>
+  <a href="sms:741741?body=HOME">Text HOME to 741741</a><span class="crisis-bar__sep">·</span>
+  <a href="tel:988">988 Suicide &amp; Crisis</a>
+</div>
+
+<nav class="nav" aria-label="Primary">
+  <div class="nav__inner">
+    <a href="/" class="nav__logo" aria-label="Common Ladder home">
+      <svg width="28" height="28" viewBox="0 0 247 247" fill="none" aria-hidden="true"><g transform="translate(-12.00,-16.00)"> <path fill="#E8911A" fill-opacity="1" fill-rule="evenodd" d="M 254.00,51.00 L 234.00,85.64 L 194.00,85.64 L 174.00,51.00 L 194.00,16.36 L 234.00,16.36 Z M 231.50,51.00 L 222.75,66.16 L 205.25,66.16 L 196.50,51.00 L 205.25,35.84 L 222.75,35.84 Z"/> <path fill="#9FBCBA" fill-opacity="1" fill-rule="evenodd" d="M 148.00,118.00 L 128.00,152.64 L 88.00,152.64 L 68.00,118.00 L 88.00,83.36 L 128.00,83.36 Z M 125.50,118.00 L 116.75,133.16 L 99.25,133.16 L 90.50,118.00 L 99.25,102.84 L 116.75,102.84 Z"/> <path fill="#9FBCBA" fill-opacity="1" fill-rule="evenodd" d="M 259.00,118.00 L 239.00,152.64 L 199.00,152.64 L 179.00,118.00 L 199.00,83.36 L 239.00,83.36 Z M 236.50,118.00 L 227.75,133.16 L 210.25,133.16 L 201.50,118.00 L 210.25,102.84 L 227.75,102.84 Z"/> <path fill="#FFFFFF" fill-opacity="0.94" fill-rule="evenodd" d="M 207.00,164.00 L 187.00,198.64 L 147.00,198.64 L 127.00,164.00 L 147.00,129.36 L 187.00,129.36 Z M 184.50,164.00 L 175.75,179.16 L 158.25,179.16 L 149.50,164.00 L 158.25,148.84 L 175.75,148.84 Z"/> <path fill="#FFFFFF" fill-opacity="0.94" fill-rule="evenodd" d="M 92.00,164.00 L 72.00,198.64 L 32.00,198.64 L 12.00,164.00 L 32.00,129.36 L 72.00,129.36 Z M 69.50,164.00 L 60.75,179.16 L 43.25,179.16 L 34.50,164.00 L 43.25,148.84 L 60.75,148.84 Z"/> <path fill="#FFFFFF" fill-opacity="0.94" fill-rule="evenodd" d="M 161.00,228.00 L 141.00,262.64 L 101.00,262.64 L 81.00,228.00 L 101.00,193.36 L 141.00,193.36 Z M 138.50,228.00 L 129.75,243.16 L 112.25,243.16 L 103.50,228.00 L 112.25,212.84 L 129.75,212.84 Z"/> </g></svg>
+      <span class="nav__wordmark">common<span>ladder</span></span>
+    </a>
+    <button class="nav__toggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="primary-nav" onclick="this.setAttribute('aria-expanded', document.getElementById('primary-nav').classList.toggle('open') ? 'true' : 'false')">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav__links" id="primary-nav">
+      <li><a href="/providers.html">For providers</a></li>
+      <li><a href="/learn/">Learn</a></li>
+      <li><a href="/about.html">About</a></li>
+      <li><a href="/find.html" class="nav__cta">Find resources</a></li>
+      <li><a href="/static-tools/my-ladder.html" class="nav__cta nav__cta--ladder">My Ladder</a></li>
+      <li><a href="https://www.weather.gov/" rel="noreferrer" class="nav__exit" onclick="event.preventDefault();window.location.replace('https://www.weather.gov/')">Leave page</a></li>
+    </ul>
+  </div>
+</nav>
+
+<ol class="breadcrumb" aria-label="Breadcrumb">
+  <li><a href="/">Home</a></li>
+  <li><a href="/static-tools/">Tools</a></li>
+  <li aria-current="page">Housing Affordability Calculator</li>
+</ol>
+
+<main id="main">
+<div class="hac-wrap">
+
+  <header class="hac-hero">
+    <h1>Can I Afford This Rent? <span>A quick, private way to check the numbers</span></h1>
+    <p>Enter your monthly pay and a rent amount. This page shows what share of your income the rent would take, how much money is left for everything else, the rent you could afford, and the income a rent needs. There are no right or wrong answers here &mdash; just the math, laid out plainly.</p>
+
+    <div class="hac-perm" role="note">
+      <strong>Everything stays on your device.</strong> Nothing you type is sent anywhere or saved to any account. You can clear it any time, and the page works fine if you only fill in part of it.
+    </div>
+  </header>
+
+  <form class="hac-form" id="hac-form" novalidate>
+    <div class="hac-field">
+      <label for="hac-income">Your pay</label>
+      <span class="hac-help">How much money you actually bring in. Use take-home (after taxes) if that is what you know &mdash; you can switch below.</span>
+      <div class="hac-money">
+        <span aria-hidden="true">$</span>
+        <input type="text" inputmode="decimal" id="hac-income" name="income" placeholder="0" autocomplete="off" aria-describedby="hac-income-period">
+      </div>
+      <div class="hac-period" id="hac-income-period" role="group" aria-label="How often you are paid">
+        <button type="button" class="hac-chip" data-period="month" aria-pressed="true">per month</button>
+        <button type="button" class="hac-chip" data-period="biweekly" aria-pressed="false">every 2 weeks</button>
+        <button type="button" class="hac-chip" data-period="week" aria-pressed="false">per week</button>
+        <button type="button" class="hac-chip" data-period="hour" aria-pressed="false">per hour</button>
+      </div>
+      <div class="hac-period" id="hac-paytype" role="group" aria-label="Is this take-home or before-tax pay" style="margin-top:.75rem;">
+        <button type="button" class="hac-chip" data-paytype="net" aria-pressed="true">take-home (after taxes)</button>
+        <button type="button" class="hac-chip" data-paytype="gross" aria-pressed="false">before taxes</button>
+      </div>
+      <div class="hac-money" id="hac-hours-wrap" hidden style="margin-top:.7rem;">
+        <span aria-hidden="true" style="font-size:.95rem;">hrs/wk</span>
+        <input type="text" inputmode="decimal" id="hac-hours" name="hours" placeholder="40" autocomplete="off" aria-label="Hours you work per week" style="padding-left:4rem;">
+      </div>
+    </div>
+
+    <div class="hac-field">
+      <label for="hac-rent">Monthly rent you are considering</label>
+      <span class="hac-help">The full rent for the place. If utilities are included in the rent, great &mdash; if not, add them in the next box.</span>
+      <div class="hac-money">
+        <span aria-hidden="true">$</span>
+        <input type="text" inputmode="decimal" id="hac-rent" name="rent" placeholder="0" autocomplete="off">
+      </div>
+    </div>
+
+    <div class="hac-field">
+      <label for="hac-expenses">Other must-pay costs each month <span style="font-weight:400;color:#5a5752;">(optional)</span></label>
+      <span class="hac-help">Things you have to pay no matter what: utilities not in the rent, phone, transportation, food, childcare, debt payments. A rough total is fine.</span>
+      <div class="hac-money">
+        <span aria-hidden="true">$</span>
+        <input type="text" inputmode="decimal" id="hac-expenses" name="expenses" placeholder="0" autocomplete="off">
+      </div>
+    </div>
+
+    <div class="hac-controls">
+      <button type="submit" class="hac-btn" id="hac-calc">Show me the numbers</button>
+      <button type="button" class="hac-btn hac-btn--ghost" id="hac-clear">Clear</button>
+    </div>
+  </form>
+
+  <section class="hac-results" id="hac-results" hidden aria-live="polite">
+
+    <div class="hac-verdict" id="hac-verdict">
+      <span class="hac-pct" id="hac-pct">0%</span>
+      <h2 id="hac-verdict-title">of your pay would go to rent</h2>
+      <p id="hac-verdict-body"></p>
+      <div class="hac-bar" id="hac-bar"><i id="hac-bar-fill" style="width:0%"></i></div>
+      <p class="hac-bar-note">The widely used standard is that rent (plus utilities) should stay at or below <strong>30%</strong> of income. Above 30% is called &ldquo;cost-burdened&rdquo;; above 50% is &ldquo;severely cost-burdened.&rdquo;</p>
+    </div>
+
+    <div class="hac-grid">
+      <div class="hac-stat" id="hac-stat-left">
+        <p class="hac-stat-label">Left after rent <span id="hac-left-haswhat"></span></p>
+        <div class="hac-stat-num" id="hac-left-num">$0</div>
+        <p class="hac-stat-sub" id="hac-left-sub">for food, transportation, and everything else.</p>
+      </div>
+      <div class="hac-stat">
+        <p class="hac-stat-label">Rent you could afford (30% of pay)</p>
+        <div class="hac-stat-num" id="hac-afford-num">$0</div>
+        <p class="hac-stat-sub">per month, by the 30% standard.</p>
+      </div>
+      <div class="hac-stat">
+        <p class="hac-stat-label">Income this rent needs (30% rule)</p>
+        <div class="hac-stat-num" id="hac-need-num">$0</div>
+        <p class="hac-stat-sub">per month to keep this rent at 30%.</p>
+      </div>
+      <div class="hac-stat">
+        <p class="hac-stat-label">Gap to that income</p>
+        <div class="hac-stat-num" id="hac-gap-num">$0</div>
+        <p class="hac-stat-sub" id="hac-gap-sub">more per month would get you there.</p>
+      </div>
+    </div>
+
+    <div class="hac-next" id="hac-next" hidden>
+      <h3 id="hac-next-title">If this rent is a stretch, you have options</h3>
+      <p id="hac-next-lead">Plenty of people pay more than 30% because rents are high where they live. That does not mean you did anything wrong &mdash; and there may be help to close the gap.</p>
+      <ul>
+        <li><strong>Rent &amp; utility help:</strong> The <a href="/static-tools/stay-housed-maricopa.html">Stay-Housed Navigator</a> (Maricopa County) matches your situation to rent and utility assistance. Anywhere in the U.S., call <a href="tel:211">2-1-1</a> for local rental assistance and community action agencies.</li>
+        <li><strong>Benefits you may qualify for:</strong> The <a href="/static-tools/benefit-screener.html">Benefit Screener</a> checks SNAP, cash assistance, utility help, and more in a few questions &mdash; income that frees up money for rent.</li>
+        <li><strong>Lower bills:</strong> See <a href="/blog/utility-assistance-phoenix.html">emergency utility assistance</a> for help with electric, gas, and water.</li>
+        <li><strong>Build a plan:</strong> Save these numbers and next steps in <a href="/static-tools/my-ladder.html">My Ladder</a>, or <a href="/find.html">find resources near you</a>.</li>
+      </ul>
+    </div>
+
+  </section>
+
+  <section class="hac-how" aria-label="How this works">
+    <h2>How the numbers work</h2>
+
+    <details>
+      <summary>Where does the 30% rule come from?</summary>
+      <p>For decades, U.S. housing programs have treated housing as &ldquo;affordable&rdquo; when rent plus basic utilities stay at or below 30% of a household&rsquo;s income. Pay more than 30% and you are counted as &ldquo;cost-burdened&rdquo;; more than 50% is &ldquo;severely cost-burdened.&rdquo; It is a rough guide, not a law &mdash; but it is the same yardstick most agencies, landlords, and assistance programs use.</p>
+    </details>
+
+    <details>
+      <summary>Take-home pay vs. before-tax pay &mdash; which should I use?</summary>
+      <p>The official 30% standard is measured against gross (before-tax) income, so the &ldquo;rent you could afford&rdquo; line is most accurate with before-tax pay. But many people only know their take-home amount, and for day-to-day budgeting take-home is the honest number &mdash; it is the money you actually have. Use the toggle to tell the page which one you entered. If you use take-home, the calculator is a little more cautious, which is usually safer.</p>
+    </details>
+
+    <details>
+      <summary>What does &ldquo;left after rent&rdquo; mean?</summary>
+      <p>It is your monthly pay, minus the rent, minus any other must-pay costs you entered. That is the money left for food, transportation, medicine, and everything the 30% rule does not see. Two homes at the same rent can feel very different depending on what is left &mdash; which is why this number sits right next to the percentage.</p>
+    </details>
+
+    <details>
+      <summary>Is anything saved or shared?</summary>
+      <p>No. The math runs entirely in your browser. Your entries are kept only on this device so the page remembers them if you come back, and the <strong>Clear</strong> button wipes them instantly. Nothing is ever sent to Common Ladder or anyone else.</p>
+    </details>
+  </section>
+
+  <div class="hac-verify">
+    <strong>A note on what this tells you.</strong> This is a budgeting guide, not financial advice and not a promise from any landlord or program. Affordability depends on your whole picture &mdash; debts, family size, where you live, and what counts as a must-pay cost. If the numbers are tight, that is common and it is not a failure. Free help is a phone call away at <a href="tel:211">2-1-1</a>, and you can <a href="/find.html">find resources near you</a> any time.
+  </div>
+
+  <p style="margin-top:1.5rem; color:var(--gray); font-size:.875rem;"><em>Have a suggestion to make this clearer? <a href="/contact.html">Contact us</a> &mdash; we read every note.</em></p>
+
+</div>
+</main>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer__grid">
+      <div class="footer__brand">
+        <h3>Common Ladder</h3>
+        <p>The civic resource platform connecting people experiencing homelessness with every service in your community.</p>
+      </div>
+      <div>
+        <h4>Find help</h4>
+        <ul>
+          <li><a href="/find.html?cat=shelter">Shelter</a></li>
+          <li><a href="/find.html?cat=food">Food</a></li>
+          <li><a href="/find.html?cat=legal">Legal</a></li>
+          <li><a href="/help/">All categories</a></li>
+          <li><a href="/static-tools/">Local navigators</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>For providers</h4>
+        <ul>
+          <li><a href="/providers.html">Tools &amp; referrals</a></li>
+          <li><a href="/providers.html#case-manager-guide">Case manager guide</a></li>
+          <li><a href="/data-reports.html">Data &amp; reports</a></li>
+          <li><a href="/learn/">Four learning pathways</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>About</h4>
+        <ul>
+          <li><a href="/about.html">Our mission</a></li>
+          <li><a href="/about.html#methodology">Methodology</a></li>
+          <li><a href="/about.html#team">Team</a></li>
+          <li><a href="/brand/visual-guidelines.html">Brand guidelines</a></li>
+          <li><a href="/contact.html">Contact</a></li>
+          <li><a href="/privacy.html">Privacy</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer__transparency">
+      <strong>Transparency:</strong> Common Ladder is an independent civic project. We do not sell user data, run ads, or accept payment from listed resources.
+    </div>
+    <div class="footer__bottom">
+      <span>&copy; 2026 Common Ladder. Free to use, always.</span>
+      <span><time datetime="2026-06-19">Last updated June 19, 2026</time></span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  "use strict";
+
+  var STORE = "cl-hac-v1";
+
+  var incomeEl = document.getElementById("hac-income");
+  var hoursEl = document.getElementById("hac-hours");
+  var hoursWrap = document.getElementById("hac-hours-wrap");
+  var rentEl = document.getElementById("hac-rent");
+  var expEl = document.getElementById("hac-expenses");
+  var form = document.getElementById("hac-form");
+  var clearBtn = document.getElementById("hac-clear");
+
+  var results = document.getElementById("hac-results");
+  var pctEl = document.getElementById("hac-pct");
+  var verdict = document.getElementById("hac-verdict");
+  var vTitle = document.getElementById("hac-verdict-title");
+  var vBody = document.getElementById("hac-verdict-body");
+  var bar = document.getElementById("hac-bar");
+  var barFill = document.getElementById("hac-bar-fill");
+
+  var leftNum = document.getElementById("hac-left-num");
+  var leftSub = document.getElementById("hac-left-sub");
+  var leftHasWhat = document.getElementById("hac-left-haswhat");
+  var leftStat = document.getElementById("hac-stat-left");
+  var affordNum = document.getElementById("hac-afford-num");
+  var needNum = document.getElementById("hac-need-num");
+  var gapNum = document.getElementById("hac-gap-num");
+  var gapSub = document.getElementById("hac-gap-sub");
+  var nextBox = document.getElementById("hac-next");
+
+  var periodBtns = Array.prototype.slice.call(document.querySelectorAll("#hac-income-period .hac-chip"));
+  var payTypeBtns = Array.prototype.slice.call(document.querySelectorAll("#hac-paytype .hac-chip"));
+
+  var period = "month";
+  var payType = "net";
+
+  function num(el){
+    if(!el) return 0;
+    var v = parseFloat(String(el.value).replace(/[^0-9.]/g, ""));
+    return (isNaN(v) || v < 0) ? 0 : v;
+  }
+
+  function money(n){
+    return "$" + Math.round(n).toLocaleString("en-US");
+  }
+
+  function monthlyIncome(){
+    var raw = num(incomeEl);
+    if(period === "month") return raw;
+    if(period === "biweekly") return raw * 26 / 12;
+    if(period === "week") return raw * 52 / 12;
+    if(period === "hour") return raw * num(hoursEl) * 52 / 12;
+    return raw;
+  }
+
+  function setPeriod(p){
+    period = p;
+    periodBtns.forEach(function(b){ b.setAttribute("aria-pressed", b.getAttribute("data-period") === p ? "true" : "false"); });
+    hoursWrap.hidden = (p !== "hour");
+  }
+
+  function setPayType(t){
+    payType = t;
+    payTypeBtns.forEach(function(b){ b.setAttribute("aria-pressed", b.getAttribute("data-paytype") === t ? "true" : "false"); });
+  }
+
+  periodBtns.forEach(function(b){
+    b.addEventListener("click", function(){ setPeriod(b.getAttribute("data-period")); save(); });
+  });
+  payTypeBtns.forEach(function(b){
+    b.addEventListener("click", function(){ setPayType(b.getAttribute("data-paytype")); save(); });
+  });
+
+  function save(){
+    try {
+      localStorage.setItem(STORE, JSON.stringify({
+        income: incomeEl.value, hours: hoursEl.value, rent: rentEl.value,
+        exp: expEl.value, period: period, payType: payType
+      }));
+    } catch(e){}
+  }
+
+  function restore(){
+    try {
+      var raw = localStorage.getItem(STORE);
+      if(!raw) return;
+      var d = JSON.parse(raw);
+      if(d.income) incomeEl.value = d.income;
+      if(d.hours) hoursEl.value = d.hours;
+      if(d.rent) rentEl.value = d.rent;
+      if(d.exp) expEl.value = d.exp;
+      if(d.period) setPeriod(d.period);
+      if(d.payType) setPayType(d.payType);
+      if(d.income && d.rent) calc();
+    } catch(e){}
+  }
+
+  function setBarClass(cls){
+    verdict.className = "hac-verdict " + cls;
+    bar.className = "hac-bar" + (cls === "hac-v-warn" ? " hac-bar--warn" : cls === "hac-v-high" ? " hac-bar--high" : "");
+  }
+
+  function calc(){
+    var income = monthlyIncome();
+    var rent = num(rentEl);
+    var exp = num(expEl);
+
+    if(income <= 0 || rent <= 0){
+      results.hidden = false;
+      setBarClass("");
+      pctEl.textContent = "--";
+      vTitle.textContent = "Add your pay and a rent amount";
+      vBody.textContent = "Fill in at least your monthly pay and the rent you are looking at, and the numbers will appear here.";
+      barFill.style.width = "0%";
+      nextBox.hidden = true;
+      leftNum.textContent = "$0";
+      affordNum.textContent = "$0";
+      needNum.textContent = "$0";
+      gapNum.textContent = "$0";
+      results.scrollIntoView({behavior:"smooth", block:"nearest"});
+      return;
+    }
+
+    var pct = (rent / income) * 100;
+    var pctRounded = Math.round(pct);
+    var afford = income * 0.30;
+    var need = rent / 0.30;
+    var gap = Math.max(0, need - income);
+    var left = income - rent - exp;
+
+    pctEl.textContent = pctRounded + "%";
+    barFill.style.width = Math.min(100, pct) + "%";
+
+    var note = (payType === "net")
+      ? " Note: you entered take-home pay, so this share looks a bit higher than the official rule, which uses before-tax income."
+      : "";
+
+    if(pct <= 30){
+      setBarClass("hac-v-good");
+      vTitle.textContent = "of your pay would go to rent";
+      vBody.textContent = "That is at or below the 30% standard, which counts as affordable. There should be room left for your other needs." + note;
+      nextBox.hidden = true;
+    } else if(pct <= 50){
+      setBarClass("hac-v-warn");
+      vTitle.textContent = "of your pay would go to rent";
+      vBody.textContent = "That is above the 30% standard, which is called cost-burdened. It can work, but it leaves less for everything else &mdash; worth a close look at the budget below." + note;
+      nextBox.hidden = false;
+    } else {
+      setBarClass("hac-v-high");
+      vTitle.textContent = "of your pay would go to rent";
+      vBody.textContent = "That is more than half your pay, which is called severely cost-burdened. This is hard to sustain, and there may be help to close the gap." + note;
+      nextBox.hidden = false;
+    }
+
+    leftHasWhat.textContent = exp > 0 ? "and bills" : "";
+    if(left < 0){
+      leftStat.classList.add("hac-stat--neg");
+      leftNum.textContent = "-" + money(Math.abs(left));
+      leftSub.textContent = "Your rent and bills add up to more than your pay this way.";
+    } else {
+      leftStat.classList.remove("hac-stat--neg");
+      leftNum.textContent = money(left);
+      leftSub.textContent = exp > 0 ? "for food, transportation, and everything else." : "for bills, food, and everything else.";
+    }
+
+    affordNum.textContent = money(afford);
+    needNum.textContent = money(need);
+
+    if(gap <= 0){
+      gapNum.textContent = money(0);
+      gapSub.textContent = "Your income already covers this rent at the 30% level.";
+    } else {
+      gapNum.textContent = "+" + money(gap);
+      gapSub.textContent = "more per month would put this rent at 30% of your pay.";
+    }
+
+    results.hidden = false;
+    results.scrollIntoView({behavior:"smooth", block:"nearest"});
+  }
+
+  form.addEventListener("submit", function(e){
+    e.preventDefault();
+    calc();
+    save();
+  });
+
+  [incomeEl, hoursEl, rentEl, expEl].forEach(function(el){
+    el.addEventListener("input", save);
+  });
+
+  clearBtn.addEventListener("click", function(){
+    incomeEl.value = "";
+    hoursEl.value = "";
+    rentEl.value = "";
+    expEl.value = "";
+    setPeriod("month");
+    setPayType("net");
+    results.hidden = true;
+    try { localStorage.removeItem(STORE); } catch(e){}
+    incomeEl.focus();
+  });
+
+  restore();
+})();
+</script>
+</body>
+</html>
