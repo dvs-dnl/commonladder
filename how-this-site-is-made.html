@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-3YXK0RL6XV"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-3YXK0RL6XV');
+</script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>How This Site Is Made — Common Ladder</title>
+  <meta name="description" content="An honest account of how Common Ladder is built: AI-assisted research with human-set standards, what is phone-verified versus AI-researched, why our dates are real, how we handle your privacy, and how to report an error.">
+  <link rel="canonical" href="https://commonladder.org/how-this-site-is-made.html">
+  <link rel="stylesheet" href="/style.css">
+  <link rel="stylesheet" href="/print.css" media="print">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "AboutPage",
+    "name": "How This Site Is Made",
+    "url": "https://commonladder.org/how-this-site-is-made.html",
+    "description": "An honest account of how Common Ladder is built: AI-assisted research with human-set standards, what is phone-verified versus AI-researched, why our dates are real, how we handle your privacy, and how to report an error.",
+    "publisher": { "@type": "Organization", "name": "Common Ladder", "url": "https://commonladder.org" }
+  }
+  </script>
+  <noscript><style>.nav__links{display:flex!important;flex-wrap:wrap!important;}.nav__toggle{display:none!important;}</style></noscript>
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="alternate icon" type="image/png" href="/favicon-32.png">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Common Ladder">
+  <meta property="og:title" content="How This Site Is Made — Common Ladder">
+  <meta property="og:description" content="An honest account of how Common Ladder is built: AI-assisted research with human-set standards, what is verified versus AI-researched, why our dates are real, and how we handle your privacy.">
+  <meta property="og:url" content="https://commonladder.org/how-this-site-is-made.html">
+  <meta property="og:image" content="https://commonladder.org/images/og-default.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="How This Site Is Made — Common Ladder">
+  <meta name="twitter:description" content="An honest account of how Common Ladder is built: what is verified versus AI-researched, why our dates are real, and how we handle your privacy.">
+  <meta name="twitter:image" content="https://commonladder.org/images/og-default.png">
+
+  <style>
+    .tp-wrap{max-width:760px;margin:0 auto;padding:0 1.25rem;}
+    .tp-tldr{background:#f0f4f8;border-left:4px solid #1C3D6E;border-radius:8px;padding:1.1rem 1.3rem;margin:1.5rem 0 0;}
+    .tp-tldr h2{font-size:1.05rem;color:#1C3D6E;margin:0 0 .5rem;}
+    .tp-tldr p{margin:.3rem 0 0;font-size:.97rem;color:#3a3833;}
+    .tp-sec{margin:2.4rem 0 0;}
+    .tp-sec h2{font-size:1.3rem;color:#1C3D6E;margin:0 0 .6rem;}
+    .tp-sec h3{font-size:1.05rem;color:#1C3D6E;margin:1.2rem 0 .3rem;}
+    .tp-sec p{font-size:1rem;color:#3a3833;line-height:1.6;margin:.6rem 0 0;}
+    .tp-sec ul{margin:.6rem 0 0;padding-left:1.25rem;}
+    .tp-sec li{margin:.4rem 0;font-size:1rem;color:#3a3833;line-height:1.55;}
+    .tp-tier{background:#fff;border:1px solid #e0ddd8;border-radius:10px;padding:1rem 1.2rem;margin:.8rem 0 0;}
+    .tp-tier b{color:#1C3D6E;}
+    .tp-badge{display:inline-block;font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.05em;padding:.15rem .5rem;border-radius:999px;margin-right:.4rem;vertical-align:middle;}
+    .tp-badge--verified{background:#eef6f2;color:#1a5040;border:1px solid #bfe0d2;}
+    .tp-badge--research{background:#f0f4f8;color:#1C3D6E;border:1px solid #c3d3e6;}
+    .tp-report{background:#eef6f2;border-left:4px solid #4A9E82;border-radius:8px;padding:1.1rem 1.3rem;margin:2.4rem 0 0;}
+    .tp-report h2{color:#1a5040;font-size:1.15rem;margin:0 0 .4rem;}
+    .tp-report p{margin:.4rem 0 0;font-size:1rem;color:#3a3833;}
+  </style>
+</head>
+<body>
+
+
+<a href="#main" class="skip-link">Skip to main content</a>
+
+<div class="crisis-bar" role="region" aria-label="Crisis help">
+  <strong>Need help right now?</strong>
+  <a href="tel:211">Call 211</a><span class="crisis-bar__sep">·</span>
+  <a href="sms:741741?body=HOME">Text HOME to 741741</a><span class="crisis-bar__sep">·</span>
+  <a href="tel:988">988 Suicide &amp; Crisis</a>
+</div>
+<nav class="nav" aria-label="Primary">
+  <div class="nav__inner">
+    <a href="/" class="nav__logo" aria-label="Common Ladder home">
+      <svg width="28" height="28" viewBox="0 0 247 247" fill="none" aria-hidden="true"><g transform="translate(-12.00,-16.00)"> <path fill="#E8911A" fill-opacity="1" fill-rule="evenodd" d="M 254.00,51.00 L 234.00,85.64 L 194.00,85.64 L 174.00,51.00 L 194.00,16.36 L 234.00,16.36 Z M 231.50,51.00 L 222.75,66.16 L 205.25,66.16 L 196.50,51.00 L 205.25,35.84 L 222.75,35.84 Z"/> <path fill="#9FBCBA" fill-opacity="1" fill-rule="evenodd" d="M 148.00,118.00 L 128.00,152.64 L 88.00,152.64 L 68.00,118.00 L 88.00,83.36 L 128.00,83.36 Z M 125.50,118.00 L 116.75,133.16 L 99.25,133.16 L 90.50,118.00 L 99.25,102.84 L 116.75,102.84 Z"/> <path fill="#9FBCBA" fill-opacity="1" fill-rule="evenodd" d="M 259.00,118.00 L 239.00,152.64 L 199.00,152.64 L 179.00,118.00 L 199.00,83.36 L 239.00,83.36 Z M 236.50,118.00 L 227.75,133.16 L 210.25,133.16 L 201.50,118.00 L 210.25,102.84 L 227.75,102.84 Z"/> <path fill="#FFFFFF" fill-opacity="0.94" fill-rule="evenodd" d="M 207.00,164.00 L 187.00,198.64 L 147.00,198.64 L 127.00,164.00 L 147.00,129.36 L 187.00,129.36 Z M 184.50,164.00 L 175.75,179.16 L 158.25,179.16 L 149.50,164.00 L 158.25,148.84 L 175.75,148.84 Z"/> <path fill="#FFFFFF" fill-opacity="0.94" fill-rule="evenodd" d="M 92.00,164.00 L 72.00,198.64 L 32.00,198.64 L 12.00,164.00 L 32.00,129.36 L 72.00,129.36 Z M 69.50,164.00 L 60.75,179.16 L 43.25,179.16 L 34.50,164.00 L 43.25,148.84 L 60.75,148.84 Z"/> <path fill="#FFFFFF" fill-opacity="0.94" fill-rule="evenodd" d="M 161.00,228.00 L 141.00,262.64 L 101.00,262.64 L 81.00,228.00 L 101.00,193.36 L 141.00,193.36 Z M 138.50,228.00 L 129.75,243.16 L 112.25,243.16 L 103.50,228.00 L 112.25,212.84 L 129.75,212.84 Z"/> </g></svg>
+      <span class="nav__wordmark">common<span>ladder</span></span>
+    </a>
+    <button class="nav__toggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="primary-nav" onclick="this.setAttribute('aria-expanded', document.getElementById('primary-nav').classList.toggle('open') ? 'true' : 'false')">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav__links" id="primary-nav">
+      <li><a href="/providers.html">For providers</a></li>
+      <li><a href="/learn/">Learn</a></li>
+      <li><a href="/about.html">About</a></li>
+      <li><a href="/find.html" class="nav__cta">Find resources</a></li>
+      <li><a href="/static-tools/my-ladder.html" class="nav__cta nav__cta--ladder">My Ladder</a></li>
+      <li><a href="https://www.weather.gov/" rel="noreferrer" class="nav__exit" onclick="event.preventDefault();window.location.replace('https://www.weather.gov/')">Leave page</a></li>
+    </ul>
+  </div>
+</nav>
+
+<ol class="breadcrumb" aria-label="Breadcrumb" style="max-width:760px;margin:1.25rem auto 0;padding:0 1.25rem;font-size:.85rem;list-style:none;display:flex;gap:.45rem;flex-wrap:wrap;">
+  <li><a href="/">Home</a></li>
+  <li><a href="/about.html">About</a></li>
+  <li aria-current="page">How this site is made</li>
+</ol>
+
+<main id="main">
+
+<section class="hero" style="padding: clamp(2rem,6vw,3.5rem) 0 0;">
+  <div class="container" style="max-width:760px">
+    <span class="eyebrow">Transparency</span>
+    <h1>How this site is made</h1>
+    <p>Most resource sites do not tell you how they are built or how fresh their information is. We think you deserve to know &mdash; especially when the stakes are housing, benefits, and safety. Here is the honest account.</p>
+  </div>
+</section>
+
+<div class="tp-wrap">
+
+  <div class="tp-tldr">
+    <h2>The short version</h2>
+    <p>Common Ladder is researched with the help of AI and built to human-set standards. Some pages are <strong>checked by phone against the provider</strong>; others are clearly labeled <strong>AI-researched and not locally verified</strong> and route you to 2-1-1 to confirm. Our dates are real &mdash; never backdated or faked. We collect no personal information and store nothing about you on our servers. Before you travel anywhere or rely on a number, a quick call to confirm is always the safe move. When something is wrong, <a href="/contact.html">tell us</a> and we fix it.</p>
+  </div>
+
+  <section class="tp-sec">
+    <h2>AI-assisted research, human-set standards</h2>
+    <p>We are a small, independent civic project, not a large staff. To cover a lot of ground, we use AI tools to research programs, draft plain-language explanations, and keep pages consistent. That is a real part of how the site is made, and we would rather say so plainly than hide it.</p>
+    <p>What AI does <em>not</em> do here is decide what counts as good enough. Every page passes an automated quality gate before it can go live &mdash; it checks that crisis numbers are present, links work, the accessibility basics hold, and nothing broken ships. The standards behind that gate, and the editorial rules below, are set by a person, not a model.</p>
+  </section>
+
+  <section class="tp-sec">
+    <h2>What is verified, and what is not</h2>
+    <p>This is the most important thing to understand about the site, so we label it honestly rather than implying everything is equally checked:</p>
+
+    <div class="tp-tier">
+      <p style="margin:0"><span class="tp-badge tp-badge--verified">Phone-verified</span> <b>Our Arizona core.</b> The Maricopa, Tucson, and Flagstaff navigators, the San Joaquin navigator, the Maricopa pilot tools, and our Phoenix resource guides carry real provider listings that we re-check by phone against the provider&rsquo;s own website on a regular rotation. Each shows the date it was last reviewed.</p>
+    </div>
+
+    <div class="tp-tier">
+      <p style="margin:0"><span class="tp-badge tp-badge--research">AI-researched</span> <b>Other cities are honest triage stubs.</b> For roughly 88 cities outside Arizona, we do <em>not</em> publish unverified phone lists, because we cannot keep them current. Those navigators keep the useful part &mdash; the questions that help you figure out what to ask for and in what order &mdash; and then route you to your local <a href="tel:211">2-1-1</a> and to national help lines that never go out of date. They carry a clear &ldquo;AI-researched, not locally verified &mdash; confirm by phone&rdquo; banner.</p>
+    </div>
+
+    <p>We made this choice on purpose. Platforms that publish thousands of scraped, never-rechecked listings tend to send people to dead phone numbers and closed offices. We would rather give you a smaller set of things we actually stand behind, plus an honest map to the rest.</p>
+  </section>
+
+  <section class="tp-sec">
+    <h2>Our dates are real</h2>
+    <p>Every page is dated the day it actually shipped. We do not backdate posts to look established, we do not future-date them, and we do not invent a publishing calendar. If a page&rsquo;s &ldquo;last updated&rdquo; date is old, that is real information too &mdash; and on our resource pages, an automatic notice appears when a page has not been re-checked recently, telling you to call 2-1-1 to confirm. The site is built to admit when it might be stale rather than to hide it.</p>
+  </section>
+
+  <section class="tp-sec">
+    <h2>Your privacy</h2>
+    <ul>
+      <li><strong>No account, ever.</strong> You never sign up, log in, or give us your name to use anything here.</li>
+      <li><strong>No personal information collected.</strong> Our tools &mdash; the benefit screener, My Ladder, the affordability calculator &mdash; do their work in your browser. Anything you type stays on your own device.</li>
+      <li><strong>You can clear it yourself.</strong> Tools that remember your entries (so you can come back to them) keep that data only on your device, and give you a button to erase it. We never wipe it without you asking.</li>
+      <li><strong>Export stays in your hands.</strong> When you save or share a plan, it goes out through your own email or printer &mdash; it does not pass through us.</li>
+      <li><strong>Basic, aggregate analytics.</strong> We use Google Analytics to count visits in aggregate so we know which pages help people. We do not sell or share that data, and we are working to move to a privacy-first, cookieless alternative.</li>
+    </ul>
+  </section>
+
+  <section class="tp-sec">
+    <h2>No ads, no data sales, independent</h2>
+    <p>Common Ladder is an independent civic project. We do not run ads, we do not sell user data, and we do not accept payment from any resource or program to be listed or ranked. Listings are here because we judged them useful, full stop. The site is free to use and intended to stay that way.</p>
+  </section>
+
+  <section class="tp-sec">
+    <h2>What this site is not</h2>
+    <ul>
+      <li><strong>Not a chatbot.</strong> Every page is written ahead of time, dated, and human-reviewable. Nothing here improvises an answer to you in real time, because a wrong improvised answer about benefits or shelter can do real harm.</li>
+      <li><strong>Not legal, medical, or financial advice.</strong> Our tools explain options and surface information; they do not replace a lawyer, doctor, caseworker, or eligibility worker. For a benefit, the agency makes the final determination.</li>
+      <li><strong>Not a guarantee of a bed, a slot, or a dollar.</strong> Programs change, fill up, and have their own rules. Always confirm by phone before you rely on or travel to anything.</li>
+    </ul>
+  </section>
+
+  <div class="tp-report">
+    <h2>Found something wrong? Please tell us.</h2>
+    <p>A wrong phone number or an out-of-date hour is the kind of thing we most want to hear about &mdash; you are the best check we have. <a href="/contact.html">Contact us</a> with the page and what is wrong, and we will verify and fix it. Every correction makes the site better for the next person.</p>
+  </div>
+
+  <p style="margin:2.4rem 0 0;font-size:1rem;color:#3a3833;line-height:1.6;">Want the bigger picture of who we are and why? Read <a href="/about.html">our mission</a>. Need help right now? Start at <a href="/find.html">Find resources</a> or call <a href="tel:211">2-1-1</a>, free and 24/7.</p>
+
+  <p style="margin-top:2rem; color:var(--gray); font-size:.875rem;"><em>Questions about how we work that this page did not answer? <a href="/contact.html">Ask us</a> &mdash; we will add the answer here.</em></p>
+
+</div>
+</main>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer__grid">
+      <div class="footer__brand">
+        <h3>Common Ladder</h3>
+        <p>The civic resource platform connecting people experiencing homelessness with every service in your community.</p>
+      </div>
+      <div>
+        <h4>Find help</h4>
+        <ul>
+          <li><a href="/find.html?cat=shelter">Shelter</a></li>
+          <li><a href="/find.html?cat=food">Food</a></li>
+          <li><a href="/find.html?cat=legal">Legal</a></li>
+          <li><a href="/help/">All categories</a></li>
+          <li><a href="/static-tools/">Local navigators</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>For providers</h4>
+        <ul>
+          <li><a href="/providers.html">Tools &amp; referrals</a></li>
+          <li><a href="/providers.html#case-manager-guide">Case manager guide</a></li>
+          <li><a href="/data-reports.html">Data &amp; reports</a></li>
+          <li><a href="/learn/">Four learning pathways</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>About</h4>
+        <ul>
+          <li><a href="/about.html">Our mission</a></li>
+          <li><a href="/how-this-site-is-made.html">How this site is made</a></li>
+          <li><a href="/brand/visual-guidelines.html">Brand guidelines</a></li>
+          <li><a href="/contact.html">Contact</a></li>
+          <li><a href="/privacy.html">Privacy</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer__transparency">
+      <strong>Transparency:</strong> Common Ladder is an independent civic project. We do not sell user data, run ads, or accept payment from listed resources. <a href="/how-this-site-is-made.html" style="color:inherit;text-decoration:underline;">How this site is made</a>.
+    </div>
+    <div class="footer__bottom">
+      <span>&copy; 2026 Common Ladder. Free to use, always.</span>
+      <span><time datetime="2026-06-19">Last updated June 19, 2026</time></span>
+    </div>
+  </div>
+</footer>
+
+<script data-id="cl-card-click">
+(function(){
+  document.querySelectorAll('.card, .post-card:not(.post-card--linked)').forEach(function(el){
+    var a = el.querySelector('a[href]');
+    if(!a) return;
+    el.addEventListener('click', function(e){
+      if(e.target.tagName==='A'||e.target.closest('a')) return;
+      window.location.href = a.href;
+    });
+  });
+})();
+</script>
+</body>
+</html>

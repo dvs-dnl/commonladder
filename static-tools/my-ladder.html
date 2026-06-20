@@ -209,6 +209,10 @@
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
         Email this Ladder
       </button>
+      <button class="print-btn" onclick="clMlClearData()" aria-label="Permanently clear your saved Ladder from this device" style="border-color:#b3261e;color:#b3261e;">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/><line x1="10" y1="11" x2="10" y2="17"/><line x1="14" y1="11" x2="14" y2="17"/><path d="M9 6V4a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2"/></svg>
+        Clear my data
+      </button>
     </div>
   </div>
 
@@ -997,6 +1001,15 @@ function emailLadder() {
   document.body.appendChild(a);
   a.click();
   document.body.removeChild(a);
+}
+
+// Clear-data control (fresh-eyes R11): user-triggered, confirm-gated, never auto-wipe.
+// Wipes the My Ladder plan from this device only. Storage key matches my-ladder-questionnaire.js.
+function clMlClearData() {
+  var ok = window.confirm("This permanently erases your saved Ladder from this device, including your answers and notes. This cannot be undone. Clear it now?");
+  if (!ok) return;
+  try { localStorage.removeItem("commonladder.plan.v1"); } catch (e) {}
+  window.location.reload();
 }
 </script>
 </body>
