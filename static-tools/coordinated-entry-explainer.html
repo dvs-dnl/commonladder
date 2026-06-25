@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-3YXK0RL6XV"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-3YXK0RL6XV');
+</script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Coordinated Entry, Explained — How the Housing Waitlist Really Works · Common Ladder</title>
+  <meta name="description" content="A plain-language walkthrough of coordinated entry: what the assessment is, what it means to be 'prioritized' instead of first-come-first-served, where to start in your area, and what to do if you have been waiting a long time. No account, nothing stored.">
+  <link rel="canonical" href="https://commonladder.org/static-tools/coordinated-entry-explainer.html">
+  <link rel="stylesheet" href="/style.css">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="alternate icon" type="image/png" href="/favicon-32.png">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Coordinated Entry Explainer",
+    "url": "https://commonladder.org/static-tools/coordinated-entry-explainer.html",
+    "applicationCategory": "ReferenceApplication",
+    "operatingSystem": "Any",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+    "publisher": { "@type": "Organization", "name": "Common Ladder", "url": "https://commonladder.org" },
+    "description": "A plain-language interactive explainer for coordinated entry, the system most U.S. communities use to assess and prioritize people for housing help. Explains the assessment, what prioritization means, how to start, and what to do during a long wait. Runs entirely on your device; nothing is stored or sent."
+  }
+  </script>
+  <noscript><style>.nav__links{display:flex!important;flex-wrap:wrap!important;}.nav__toggle{display:none!important;}</style></noscript>
+
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Common Ladder">
+  <meta property="og:title" content="Coordinated Entry, Explained — How the Housing Waitlist Really Works · Common Ladder">
+  <meta property="og:description" content="What the assessment is, what 'prioritized' really means, where to start, and what to do if you have been waiting a long time. Plain language, free, nothing stored.">
+  <meta property="og:url" content="https://commonladder.org/static-tools/coordinated-entry-explainer.html">
+  <meta property="og:image" content="https://commonladder.org/images/og-default.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Coordinated Entry, Explained · Common Ladder">
+  <meta name="twitter:description" content="What the assessment is, what 'prioritized' really means, where to start, and what to do if you have been waiting a long time. Plain language, free, nothing stored.">
+  <meta name="twitter:image" content="https://commonladder.org/images/og-default.png">
+
+  <style>
+    .cee-wrap{max-width:720px;margin:0 auto;padding:1.5rem 1.25rem 3rem;}
+    .cee-hero{margin:1rem 0 1.25rem;}
+    .cee-hero h1{font-size:clamp(1.6rem,5vw,2.1rem);color:#1C3D6E;margin:0 0 .5rem;}
+    .cee-hero h1 span{display:block;font-size:.58em;color:#5a5752;font-weight:600;margin-top:.3rem;}
+    .cee-hero p{font-size:1.02rem;max-width:62ch;color:#3a3833;}
+    .cee-perm{background:#eef6f2;border-left:4px solid #4A9E82;border-radius:6px;padding:.85rem 1.1rem;margin:1.1rem 0 0;font-size:.93rem;}
+    .cee-perm strong{color:#1a5040;}
+
+    .cee-panel{background:#fff;border:1px solid #e0ddd8;border-radius:14px;padding:1.4rem 1.4rem 1.5rem;margin:1.75rem 0 0;}
+    .cee-q{margin:0 0 1.4rem;}
+    .cee-q:last-child{margin-bottom:0;}
+    .cee-q > legend, .cee-q > .cee-label{display:block;font-weight:700;color:#1C3D6E;font-size:1.04rem;margin:0 0 .15rem;padding:0;}
+    .cee-q .cee-help{display:block;font-size:.86rem;color:#5a5752;font-weight:400;margin:0 0 .65rem;}
+    .cee-q fieldset{border:0;padding:0;margin:0;}
+
+    .cee-chips{display:flex;gap:.55rem;flex-wrap:wrap;}
+    .cee-chip{font:inherit;font-size:.92rem;background:#fff;border:1.5px solid #c8c4bd;border-radius:999px;padding:.5rem 1rem;color:#1C3D6E;cursor:pointer;line-height:1.2;}
+    .cee-chip:hover{border-color:#1C3D6E;background:#f0f4f8;}
+    .cee-chip[aria-pressed="true"]{background:#1C3D6E;color:#fff;border-color:#1C3D6E;}
+    .cee-chip:focus-visible{outline:2px solid #1C3D6E;outline-offset:2px;}
+
+    .cee-controls{display:flex;gap:.6rem;flex-wrap:wrap;margin:1.5rem 0 0;}
+    .cee-btn{display:inline-block;background:#1C3D6E;color:#fff;font-weight:700;font-size:1rem;padding:.8rem 1.6rem;border-radius:8px;text-decoration:none;border:0;cursor:pointer;font-family:inherit;}
+    .cee-btn:hover{background:#16315a;}
+    .cee-btn--ghost{background:#fff;color:#1C3D6E;border:1.5px solid #c8c4bd;}
+    .cee-btn--ghost:hover{border-color:#1C3D6E;background:#f0f4f8;}
+    .cee-btn:focus-visible{outline:2px solid #1C3D6E;outline-offset:2px;}
+
+    .cee-results{margin:1.75rem 0 0;}
+    .cee-results[hidden]{display:none;}
+
+    .cee-start{border-radius:14px;padding:1.3rem 1.4rem;border:1px solid #bcd0ea;background:#eef3fb;}
+    .cee-start h2{font-size:1.2rem;color:#1C3D6E;margin:0 0 .5rem;}
+    .cee-start p{font-size:.97rem;margin:.4rem 0 0;color:#27384f;}
+    .cee-start .cee-call{display:block;margin:.85rem 0 0;}
+    .cee-start .cee-call a{font-weight:800;font-size:1.15rem;color:#1C3D6E;text-decoration:none;border-bottom:2px solid #4A9E82;}
+    .cee-start .cee-addr{font-size:.88rem;color:#5a5752;margin:.25rem 0 0;}
+
+    .cee-steps{counter-reset:cee;list-style:none;margin:1.4rem 0 0;padding:0;}
+    .cee-steps li{position:relative;padding:0 0 0 2.6rem;margin:0 0 1.25rem;}
+    .cee-steps li:last-child{margin-bottom:0;}
+    .cee-steps li::before{counter-increment:cee;content:counter(cee);position:absolute;left:0;top:0;width:1.8rem;height:1.8rem;background:#1C3D6E;color:#fff;border-radius:50%;font-weight:800;font-size:.95rem;display:flex;align-items:center;justify-content:center;}
+    .cee-steps h3{font-size:1.05rem;color:#1C3D6E;margin:.1rem 0 .3rem;}
+    .cee-steps p{font-size:.95rem;color:#3a3833;margin:.25rem 0 0;}
+
+    .cee-flag{margin:1.5rem 0 0;background:#fbf3e6;border-left:4px solid #b36a00;border-radius:6px;padding:1rem 1.25rem;font-size:.95rem;}
+    .cee-flag h3{color:#8a5a00;font-size:1.05rem;margin:0 0 .4rem;}
+    .cee-flag ul{margin:.4rem 0 0;padding-left:1.2rem;}
+    .cee-flag li{margin:.35rem 0;}
+
+    .cee-next{margin:1.5rem 0 0;background:#f0f4f8;border-left:4px solid #1C3D6E;border-radius:6px;padding:1rem 1.25rem;font-size:.95rem;}
+    .cee-next h3{color:#1C3D6E;font-size:1.05rem;margin:0 0 .4rem;}
+    .cee-next ul{margin:.4rem 0 0;padding-left:1.2rem;}
+    .cee-next li{margin:.35rem 0;}
+
+    .cee-how{margin:2.5rem 0 0;border-top:1px solid #e8e5e0;padding-top:1.5rem;}
+    .cee-how h2{font-size:1.25rem;color:#1C3D6E;margin:0 0 .75rem;}
+    .cee-how details{background:#fff;border:1px solid #e0ddd8;border-radius:10px;padding:.4rem 1.1rem;margin:.7rem 0;}
+    .cee-how summary{font-weight:700;color:#1C3D6E;cursor:pointer;padding:.6rem 0;font-size:1rem;}
+    .cee-how summary:focus-visible{outline:2px solid #1C3D6E;outline-offset:2px;}
+    .cee-how p{font-size:.95rem;color:#3a3833;margin:.3rem 0 .8rem;}
+    .cee-how p:first-of-type{margin-top:.2rem;}
+
+    .cee-verify{margin-top:2rem;padding:1rem 1.25rem;background:#f0f4f8;border-left:3px solid #1C3D6E;border-radius:4px;font-size:.9rem;}
+
+    .breadcrumb{max-width:720px;margin:1.25rem auto 0;padding:0 1.25rem;font-size:.85rem;list-style:none;display:flex;gap:.45rem;flex-wrap:wrap;}
+    .breadcrumb li+li::before{content:"/";margin-right:.45rem;color:#a09c95;}
+    .breadcrumb a{color:#1C3D6E;}
+
+    .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);border:0;}
+  </style>
+</head>
+<body>
+
+<a href="#main" class="skip-link">Skip to main content</a>
+
+<div class="crisis-bar" role="region" aria-label="Crisis help">
+  <strong>Need help right now?</strong>
+  <a href="tel:211">Call 211</a><span class="crisis-bar__sep">·</span>
+  <a href="sms:741741?body=HOME">Text HOME to 741741</a><span class="crisis-bar__sep">·</span>
+  <a href="tel:988">988 Suicide &amp; Crisis</a>
+</div>
+
+<nav class="nav" aria-label="Primary">
+  <div class="nav__inner">
+    <a href="/" class="nav__logo" aria-label="Common Ladder home">
+      <svg width="28" height="28" viewBox="0 0 247 247" fill="none" aria-hidden="true"><g transform="translate(-12.00,-16.00)"> <path fill="#E8911A" fill-opacity="1" fill-rule="evenodd" d="M 254.00,51.00 L 234.00,85.64 L 194.00,85.64 L 174.00,51.00 L 194.00,16.36 L 234.00,16.36 Z M 231.50,51.00 L 222.75,66.16 L 205.25,66.16 L 196.50,51.00 L 205.25,35.84 L 222.75,35.84 Z"/> <path fill="#9FBCBA" fill-opacity="1" fill-rule="evenodd" d="M 148.00,118.00 L 128.00,152.64 L 88.00,152.64 L 68.00,118.00 L 88.00,83.36 L 128.00,83.36 Z M 125.50,118.00 L 116.75,133.16 L 99.25,133.16 L 90.50,118.00 L 99.25,102.84 L 116.75,102.84 Z"/> <path fill="#9FBCBA" fill-opacity="1" fill-rule="evenodd" d="M 259.00,118.00 L 239.00,152.64 L 199.00,152.64 L 179.00,118.00 L 199.00,83.36 L 239.00,83.36 Z M 236.50,118.00 L 227.75,133.16 L 210.25,133.16 L 201.50,118.00 L 210.25,102.84 L 227.75,102.84 Z"/> <path fill="#FFFFFF" fill-opacity="0.94" fill-rule="evenodd" d="M 207.00,164.00 L 187.00,198.64 L 147.00,198.64 L 127.00,164.00 L 147.00,129.36 L 187.00,129.36 Z M 184.50,164.00 L 175.75,179.16 L 158.25,179.16 L 149.50,164.00 L 158.25,148.84 L 175.75,148.84 Z"/> <path fill="#FFFFFF" fill-opacity="0.94" fill-rule="evenodd" d="M 92.00,164.00 L 72.00,198.64 L 32.00,198.64 L 12.00,164.00 L 32.00,129.36 L 72.00,129.36 Z M 69.50,164.00 L 60.75,179.16 L 43.25,179.16 L 34.50,164.00 L 43.25,148.84 L 60.75,148.84 Z"/> <path fill="#FFFFFF" fill-opacity="0.94" fill-rule="evenodd" d="M 161.00,228.00 L 141.00,262.64 L 101.00,262.64 L 81.00,228.00 L 101.00,193.36 L 141.00,193.36 Z M 138.50,228.00 L 129.75,243.16 L 112.25,243.16 L 103.50,228.00 L 112.25,212.84 L 129.75,212.84 Z"/> </g></svg>
+      <span class="nav__wordmark">common<span>ladder</span></span>
+    </a>
+    <button class="nav__toggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="primary-nav" onclick="this.setAttribute('aria-expanded', document.getElementById('primary-nav').classList.toggle('open') ? 'true' : 'false')">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav__links" id="primary-nav">
+      <li><a href="/providers.html">For providers</a></li>
+      <li><a href="/learn/">Learn</a></li>
+      <li><a href="/about.html">About</a></li>
+      <li><a href="/find.html" class="nav__cta">Find resources</a></li>
+      <li><a href="/static-tools/my-ladder.html" class="nav__cta nav__cta--ladder">My Ladder</a></li>
+      <li><a href="https://www.weather.gov/" rel="noreferrer" class="nav__exit" onclick="event.preventDefault();window.location.replace('https://www.weather.gov/')">Leave page</a></li>
+    </ul>
+  </div>
+</nav>
+
+<ol class="breadcrumb" aria-label="Breadcrumb">
+  <li><a href="/">Home</a></li>
+  <li><a href="/static-tools/">Tools</a></li>
+  <li aria-current="page">Coordinated Entry Explainer</li>
+</ol>
+
+<main id="main">
+<div class="cee-wrap">
+
+  <header class="cee-hero">
+    <h1>Coordinated Entry, Explained <span>How the housing waitlist really works &mdash; and how to get on it</span></h1>
+    <p>In most parts of the country, you do not apply to shelters and housing programs one by one. You go through <strong>coordinated entry</strong> &mdash; one front door that assesses your situation and matches you to help. It can feel like a black box, especially when the wait is long. This page lays it out plainly, then points you to the right place to start. Pick what fits your situation below; you can change it any time.</p>
+
+    <div class="cee-perm" role="note">
+      <strong>Nothing here is stored or sent anywhere.</strong> Your choices stay on this device only so the page remembers them if you come back. You are not signing up for anything, and no one will see what you pick.
+    </div>
+  </header>
+
+  <form class="cee-panel" id="cee-form" novalidate>
+    <div class="cee-q">
+      <fieldset>
+        <legend>Who is looking for housing help?</legend>
+        <span class="cee-help">Coordinated entry usually has a different front door depending on the household.</span>
+        <div class="cee-chips" id="cee-who" role="group" aria-label="Who is looking for help">
+          <button type="button" class="cee-chip" data-who="single" aria-pressed="false">A single adult (just me)</button>
+          <button type="button" class="cee-chip" data-who="family" aria-pressed="false">A family with children</button>
+          <button type="button" class="cee-chip" data-who="youth" aria-pressed="false">Youth on my own (under 25)</button>
+          <button type="button" class="cee-chip" data-who="veteran" aria-pressed="false">A veteran</button>
+          <button type="button" class="cee-chip" data-who="dv" aria-pressed="false">Fleeing abuse or violence</button>
+        </div>
+      </fieldset>
+    </div>
+
+    <div class="cee-q">
+      <fieldset>
+        <legend>Where are you?</legend>
+        <span class="cee-help">We can give exact phone numbers for the Phoenix metro. Anywhere else, we point you to your local front door.</span>
+        <div class="cee-chips" id="cee-where" role="group" aria-label="Where are you">
+          <button type="button" class="cee-chip" data-where="maricopa" aria-pressed="false">Maricopa County / Phoenix, AZ</button>
+          <button type="button" class="cee-chip" data-where="other" aria-pressed="false">Somewhere else in the U.S.</button>
+        </div>
+      </fieldset>
+    </div>
+
+    <div class="cee-controls">
+      <button type="submit" class="cee-btn" id="cee-go">Show me how to start</button>
+      <button type="button" class="cee-btn cee-btn--ghost" id="cee-clear">Reset</button>
+    </div>
+  </form>
+
+  <section class="cee-results" id="cee-results" hidden aria-live="polite">
+
+    <div class="cee-start" id="cee-start">
+      <h2 id="cee-start-title">Where to start</h2>
+      <p id="cee-start-body"></p>
+      <div class="cee-call" id="cee-call" hidden>
+        <a id="cee-call-link" href="tel:211">Call 2-1-1</a>
+        <p class="cee-addr" id="cee-call-addr"></p>
+      </div>
+      <p id="cee-start-extra" style="margin-top:.85rem;"></p>
+    </div>
+
+    <ol class="cee-steps">
+      <li>
+        <h3>You reach an access point</h3>
+        <p>An access point is any door into the system &mdash; a phone line, an outreach worker, a shelter, or a walk-in center. Because of the &ldquo;no wrong door&rdquo; rule, you should get the same standardized intake no matter which one you use. You do not have to find the &ldquo;right&rdquo; office.</p>
+      </li>
+      <li>
+        <h3>You do a short assessment</h3>
+        <p>A worker asks questions about your housing history, health, safety, and what you are going through. It is used to gauge how urgent and how complex your situation is. Answer honestly &mdash; the assessment is how the system understands your need, and downplaying things can lower your priority.</p>
+      </li>
+      <li>
+        <h3>You go on the community list</h3>
+        <p>Your information goes onto a shared, by-name list for the whole region, not a separate waitlist at each program. This is the part people do not realize: one assessment can put you in line for many different programs at once.</p>
+      </li>
+      <li>
+        <h3>You are matched when an opening fits</h3>
+        <p>When a housing slot opens up, the community pulls from the list by <strong>priority</strong>, not by who signed up first (more on that below). If you match the program&rsquo;s eligibility, you get a referral and an offer.</p>
+      </li>
+    </ol>
+
+    <div class="cee-flag" id="cee-flag" hidden>
+      <h3>If you have been waiting a long time</h3>
+      <p>A long wait is painful and common &mdash; there are far more people on most lists than there are openings. Waiting does not mean you were forgotten or rejected. A few things genuinely help:</p>
+      <ul>
+        <li><strong>Stay reachable.</strong> The most common reason people fall off a list is that the team could not reach them when a slot opened. Give a backup contact (a friend, a relative, a case manager, a shelter), and check in.</li>
+        <li><strong>Ask to be re-assessed if things got worse.</strong> If your health, safety, or situation has changed, that can change your priority. You can ask for an updated assessment.</li>
+        <li><strong>Ask where you stand and who your point of contact is.</strong> You are allowed to ask how the list works locally and how to keep your information current.</li>
+        <li><strong>Keep meeting other needs while you wait.</strong> Coordinated entry is one track; food, ID, health care, and income help run in parallel and do not have to wait.</li>
+      </ul>
+    </div>
+
+    <div class="cee-next">
+      <h3>While you go through the process</h3>
+      <ul>
+        <li><strong>Income you may be missing:</strong> the <a href="/static-tools/benefit-screener.html">Benefit Screener</a> checks SNAP, cash assistance, and more in a few questions.</li>
+        <li><strong>Replace lost ID early:</strong> many programs ask for it, and it takes time &mdash; the <a href="/static-tools/id-recovery-wizard.html">ID Recovery Wizard</a> maps the order to get documents back.</li>
+        <li><strong>Untangle the order of steps:</strong> the <a href="/static-tools/resource-sequencing-maricopa.html">Resource Sequencing Navigator</a> (Maricopa) shows which step unlocks the next.</li>
+        <li><strong>Keep it all in one place:</strong> save your contacts, dates, and next steps in <a href="/static-tools/my-ladder.html">My Ladder</a>, or <a href="/find.html">find resources near you</a>.</li>
+      </ul>
+    </div>
+
+  </section>
+
+  <section class="cee-how" aria-label="How coordinated entry works">
+    <h2>Common questions</h2>
+
+    <details>
+      <summary>What is coordinated entry, really?</summary>
+      <p>Coordinated entry (sometimes called the coordinated entry system, CES, or coordinated assessment) is a process every HUD-funded region &mdash; called a Continuum of Care &mdash; is required to run. Instead of every shelter and housing program keeping its own waitlist, the community uses one standardized way to assess people and match them to the openings that exist. The goals are to make access fairer, reduce the number of separate lines you have to stand in, and send the most limited resources to the people in the most danger.</p>
+    </details>
+
+    <details>
+      <summary>Why is it &ldquo;prioritized&rdquo; instead of first-come-first-served?</summary>
+      <p>This is the part that surprises people most. Coordinated entry is deliberately <em>not</em> a first-come-first-served line. The rule is that, as much as possible, people with the most severe needs and the highest vulnerability are matched to housing before people with less severe needs &mdash; even if the second group has been waiting longer. So someone brand new to the list can be matched ahead of someone who has waited months. It is not random and it is not about who pushes hardest; it is an attempt to get scarce housing to whoever is most at risk of harm or death without it.</p>
+    </details>
+
+    <details>
+      <summary>What is the assessment &mdash; is it the VI-SPDAT?</summary>
+      <p>For years, many communities used a questionnaire called the VI-SPDAT to score vulnerability. Its own developer asked communities to stop using it (support ended in 2022) after research found it could score people of color lower than white people with similar needs, building bias into who got housed. Many regions have since switched to other tools that try to be more equitable and trauma-informed; others still use a version of it. A fair question to ask your local provider is simply: &ldquo;What assessment do you use, and how does it decide priority?&rdquo; You have every right to ask.</p>
+    </details>
+
+    <details>
+      <summary>Does a high score guarantee housing?</summary>
+      <p>No. The assessment sets your <em>priority</em> on the list; it does not create a unit out of thin air. In most communities there are far more people who qualify than there are openings, so even a high priority can mean a wait. That is a problem with how much housing exists, not a sign you did something wrong. It is also why it is worth working other resources &mdash; income, benefits, family or diversion options &mdash; at the same time.</p>
+    </details>
+
+    <details>
+      <summary>What if I am fleeing domestic violence?</summary>
+      <p>Survivors usually have a separate, confidential path into coordinated entry, so that sensitive information is protected and you are not listed in a shared database in a way that could put you at risk. You can go through a domestic-violence provider rather than a general access point. If you are in immediate danger, call 911; otherwise the National Domestic Violence Hotline is at <a href="tel:18007997233">1-800-799-7233</a> and can connect you to local help.</p>
+    </details>
+
+    <details>
+      <summary>Is anything saved on this page?</summary>
+      <p>No personal information is collected here. The only thing this page remembers is which two buttons you tapped, kept on your own device so it can show you the same guidance if you return. The <strong>Reset</strong> button clears it instantly. The real assessment happens in person or by phone with a provider &mdash; this page just explains what to expect.</p>
+    </details>
+  </section>
+
+  <div class="cee-verify">
+    <strong>A note on what this is.</strong> This is a plain-language explainer, not an application and not legal advice. Coordinated entry rules, access points, and phone numbers vary by community and change over time. Before you go somewhere, it is worth a quick call to confirm hours and process &mdash; <a href="tel:211">2-1-1</a> can help anywhere in the U.S., and you can <a href="/find.html">find resources near you</a> any time.
+  </div>
+
+  <p style="margin-top:1.5rem; color:var(--gray); font-size:.875rem;"><em>See something out of date? <a href="/contact.html">Contact us</a> &mdash; we read every note.</em></p>
+
+</div>
+</main>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer__grid">
+      <div class="footer__brand">
+        <h3>Common Ladder</h3>
+        <p>The civic resource platform connecting people experiencing homelessness with every service in your community.</p>
+      </div>
+      <div>
+        <h4>Find help</h4>
+        <ul>
+          <li><a href="/find.html?cat=shelter">Shelter</a></li>
+          <li><a href="/find.html?cat=food">Food</a></li>
+          <li><a href="/find.html?cat=legal">Legal</a></li>
+          <li><a href="/help/">All categories</a></li>
+          <li><a href="/static-tools/">Local navigators</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>For providers</h4>
+        <ul>
+          <li><a href="/providers.html">Tools &amp; referrals</a></li>
+          <li><a href="/providers.html#case-manager-guide">Case manager guide</a></li>
+          <li><a href="/data-reports.html">Data &amp; reports</a></li>
+          <li><a href="/learn/">Four learning pathways</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>About</h4>
+        <ul>
+          <li><a href="/about.html">Our mission</a></li>
+          <li><a href="/about.html#methodology">Methodology</a></li>
+          <li><a href="/about.html#team">Team</a></li>
+          <li><a href="/brand/visual-guidelines.html">Brand guidelines</a></li>
+          <li><a href="/contact.html">Contact</a></li>
+          <li><a href="/privacy.html">Privacy</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer__transparency">
+      <strong>Transparency:</strong> Common Ladder is an independent civic project. We do not sell user data, run ads, or accept payment from listed resources.
+    </div>
+    <div class="footer__bottom">
+      <span>&copy; 2026 Common Ladder. Free to use, always.</span>
+      <span><time datetime="2026-06-23">Last updated June 23, 2026</time></span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  "use strict";
+
+  var STORE = "cl-cee-v1";
+
+  var form = document.getElementById("cee-form");
+  var clearBtn = document.getElementById("cee-clear");
+  var results = document.getElementById("cee-results");
+
+  var startTitle = document.getElementById("cee-start-title");
+  var startBody = document.getElementById("cee-start-body");
+  var startExtra = document.getElementById("cee-start-extra");
+  var callWrap = document.getElementById("cee-call");
+  var callLink = document.getElementById("cee-call-link");
+  var callAddr = document.getElementById("cee-call-addr");
+  var flag = document.getElementById("cee-flag");
+
+  var whoBtns = Array.prototype.slice.call(document.querySelectorAll("#cee-who .cee-chip"));
+  var whereBtns = Array.prototype.slice.call(document.querySelectorAll("#cee-where .cee-chip"));
+
+  var who = "";
+  var where = "";
+
+  function setWho(v){
+    who = v;
+    whoBtns.forEach(function(b){ b.setAttribute("aria-pressed", b.getAttribute("data-who") === v ? "true" : "false"); });
+  }
+  function setWhere(v){
+    where = v;
+    whereBtns.forEach(function(b){ b.setAttribute("aria-pressed", b.getAttribute("data-where") === v ? "true" : "false"); });
+  }
+
+  whoBtns.forEach(function(b){
+    b.addEventListener("click", function(){ setWho(b.getAttribute("data-who")); save(); });
+  });
+  whereBtns.forEach(function(b){
+    b.addEventListener("click", function(){ setWhere(b.getAttribute("data-where")); save(); });
+  });
+
+  function save(){
+    try { localStorage.setItem(STORE, JSON.stringify({ who: who, where: where })); } catch(e){}
+  }
+
+  function setCall(number, label, addr){
+    if(!number){ callWrap.hidden = true; return; }
+    callWrap.hidden = false;
+    callLink.setAttribute("href", "tel:" + number.replace(/[^0-9]/g, ""));
+    callLink.textContent = label;
+    callAddr.textContent = addr || "";
+  }
+
+  // Maricopa County access points (verify before you go; see note on page)
+  var MARICOPA = {
+    single:  { tel: "602-229-5155", label: "Call the Brian Garcia Welcome Center: 602-229-5155", addr: "206 S. 12th Ave, Phoenix · open 24/7 · single adults", extra: "This is the main front door for single adults in the Phoenix area. They handle the assessment and can connect you to shelter, housing navigation, medical and behavioral health care, and more." },
+    family:  { tel: "602-595-8700", label: "Call the Family Housing Hub: 602-595-8700", addr: "3307 E. Van Buren St, Phoenix · families with children", extra: "The Family Housing Hub is the single point of entry for families with children in Maricopa County. Call before going — they will walk you through what happens next." },
+    youth:   { tel: "211", label: "Call 2-1-1 and ask for youth coordinated entry", addr: "Maricopa County · ages under 25 on their own", extra: "Young people on their own often have youth-specific access points and providers. 2-1-1 (or 877-211-8661) can route you to the right one. The Brian Garcia Welcome Center at 602-229-5155 can also point you in the right direction." },
+    veteran: { tel: "1-877-424-3838", label: "Call the VA homeless line: 1-877-424-3838", addr: "Maricopa County · veterans · open 24/7", extra: "Veterans usually have a dedicated path with extra programs (like SSVF and HUD-VASH). The national homeless-veteran line is open 24/7; in Phoenix the Brian Garcia Welcome Center (602-229-5155) can also connect you to veteran navigation, and 2-1-1 can route you locally." },
+    dv:      { tel: "480-890-3039", label: "Call SAFEDVS: 480-890-3039 (or 844-723-3387)", addr: "Maricopa County · confidential DV path", extra: "Survivors have a separate, confidential way into coordinated entry. If you are in immediate danger call 911. The National Domestic Violence Hotline (1-800-799-7233) is available 24/7." }
+  };
+
+  var GENERIC = {
+    single:  "As a single adult, start by calling 2-1-1 (or 877-211-8661) and asking for your area’s coordinated entry access point for single adults. An outreach worker, day center, or shelter can also do the intake — remember the “no wrong door” rule.",
+    family:  "Families with children almost always have a dedicated intake line or family hub. Call 2-1-1 and ask specifically for the family coordinated entry access point in your community.",
+    youth:   "If you are under 25 and on your own, ask 2-1-1 for youth-specific coordinated entry or a youth provider near you — many communities have one, and the questions and programs are different for young people.",
+    veteran: "Veterans have a dedicated track. Call the national homeless-veteran line at 1-877-424-3838 (24/7), or ask 2-1-1 for veteran coordinated entry and SSVF providers in your area.",
+    dv:      "If you are fleeing abuse, you can enter through a domestic-violence provider on a confidential path rather than a general access point. The National Domestic Violence Hotline (1-800-799-7233) can connect you locally. If you are in immediate danger, call 911."
+  };
+
+  function render(){
+    if(!who || !where){
+      results.hidden = false;
+      startTitle.textContent = "Pick both options above";
+      startBody.textContent = "Choose who is looking for help and where you are, then tap “Show me how to start” — the steps below apply to everyone either way.";
+      setCall("", "", "");
+      startExtra.textContent = "";
+      flag.hidden = true;
+      results.scrollIntoView({ behavior: "smooth", block: "nearest" });
+      return;
+    }
+
+    startTitle.textContent = "Where to start";
+    flag.hidden = false;
+
+    if(where === "maricopa"){
+      var m = MARICOPA[who];
+      startBody.textContent = "Based on what you picked, here is your front door in the Phoenix metro:";
+      setCall(m.tel, m.label, m.addr);
+      startExtra.textContent = m.extra;
+    } else {
+      startBody.textContent = "Coordinated entry runs in every community, but the exact access point is local. Here is how to find yours:";
+      setCall("211", "Call 2-1-1 (or 877-211-8661)", "Free, 24/7, connects to local services anywhere in the U.S.");
+      startExtra.textContent = GENERIC[who];
+    }
+
+    results.hidden = false;
+    results.scrollIntoView({ behavior: "smooth", block: "nearest" });
+  }
+
+  form.addEventListener("submit", function(e){
+    e.preventDefault();
+    render();
+    save();
+  });
+
+  clearBtn.addEventListener("click", function(){
+    setWho("");
+    setWhere("");
+    results.hidden = true;
+    try { localStorage.removeItem(STORE); } catch(e){}
+    whoBtns[0].focus();
+  });
+
+  function restore(){
+    try {
+      var raw = localStorage.getItem(STORE);
+      if(!raw) return;
+      var d = JSON.parse(raw);
+      if(d.who) setWho(d.who);
+      if(d.where) setWhere(d.where);
+      if(d.who && d.where) render();
+    } catch(e){}
+  }
+
+  restore();
+})();
+</script>
+</body>
+</html>
