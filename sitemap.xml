@@ -1119,6 +1119,14 @@
     <lastmod>2026-06-07</lastmod>
   </url>
   <url>
+    <loc>https://commonladder.org/learn/evidence/intervention-matching/</loc>
+    <lastmod>2026-06-26</lastmod>
+  </url>
+  <url>
+    <loc>https://commonladder.org/learn/evidence/structural-root-causes/</loc>
+    <lastmod>2026-06-26</lastmod>
+  </url>
+  <url>
     <loc>https://commonladder.org/learn/society/</loc>
     <lastmod>2026-06-07</lastmod>
   </url>
@@ -1243,6 +1251,12 @@
   <url>
     <loc>https://commonladder.org/blog/intro-coordinated-entry-explainer.html</loc>
     <lastmod>2026-06-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://commonladder.org/blog/housing-market-drives-homelessness-evidence.html</loc>
+    <lastmod>2026-06-25</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>

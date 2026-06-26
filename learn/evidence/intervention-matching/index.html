@@ -1,0 +1,822 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-3YXK0RL6XV"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-3YXK0RL6XV');
+</script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Intervention Matching: Which Interventions Work for Whom — Common Ladder</title>
+  <meta name="description" content="Homelessness interventions are assigned by availability, not evidence. A matching framework for program designers, CoC leadership, and Medicaid agencies — which intervention fits which population, and under what conditions.">
+  <link rel="canonical" href="https://commonladder.org/learn/evidence/intervention-matching/">
+  <link rel="stylesheet" href="/style.css">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Intervention Matching: Which Interventions Work for Whom">
+  <meta property="og:description" content="Homelessness interventions are assigned by availability, not evidence. A matching framework for program designers, CoC leadership, and Medicaid agencies.">
+  <meta property="og:url" content="https://commonladder.org/learn/evidence/intervention-matching/">
+  <meta property="og:site_name" content="Common Ladder">
+  <meta property="article:published_time" content="2026-06-26">
+  <meta property="article:section" content="Evidence &amp; policy">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Intervention Matching Framework: Which Interventions Work for Whom",
+    "description": "Homelessness interventions are assigned by availability, not evidence. A matching framework for program designers, CoC leadership, and Medicaid agencies.",
+    "author": { "@type": "Organization", "name": "Common Ladder" },
+    "publisher": { "@type": "Organization", "name": "Common Ladder", "url": "https://commonladder.org" },
+    "datePublished": "2026-06-26",
+    "dateModified": "2026-06-26",
+    "mainEntityOfPage": "https://commonladder.org/learn/evidence/intervention-matching/"
+  }
+  </script>
+
+  <style>
+    .breadcrumb {
+      font-size: .8rem;
+      color: var(--gray);
+      margin-bottom: 1.5rem;
+    }
+    .breadcrumb a {
+      color: var(--gray);
+      text-decoration: none;
+    }
+    .breadcrumb a:hover {
+      color: var(--amber);
+      text-decoration: underline;
+    }
+    .breadcrumb span[aria-hidden] {
+      margin: 0 .4em;
+    }
+    .article h2 {
+      margin-top: 2.5rem;
+    }
+    .article h3 {
+      margin-top: 1.75rem;
+      font-size: 1.15rem;
+      color: var(--blue);
+    }
+    .article h4 {
+      margin-top: 1.4rem;
+      margin-bottom: .4rem;
+      font-size: 1rem;
+      color: var(--blue);
+    }
+    .callout-box {
+      background: var(--light);
+      border-left: 4px solid var(--amber);
+      border-radius: 0 8px 8px 0;
+      padding: 1.5rem 1.75rem;
+      margin: 2rem 0;
+    }
+    .callout-box > strong:first-child {
+      display: block;
+      color: var(--blue);
+      margin-bottom: .75rem;
+      font-size: 1.05rem;
+    }
+    .callout-box p {
+      margin: 0 0 .9rem;
+      font-size: .95rem;
+      line-height: 1.6;
+    }
+    .callout-box p:last-child {
+      margin-bottom: 0;
+    }
+    .callout-box p strong {
+      color: var(--blue);
+    }
+    .callout-box ul, .callout-box ol {
+      margin: .5rem 0 .9rem 1.2rem;
+      font-size: .95rem;
+      line-height: 1.6;
+    }
+    .callout-box ul li, .callout-box ol li {
+      margin-bottom: .35rem;
+    }
+    .data-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 1.5rem 0;
+      font-size: .88rem;
+      background: white;
+      border: 1px solid #e8e4dc;
+      border-radius: 8px;
+      overflow: hidden;
+    }
+    .data-table th,
+    .data-table td {
+      padding: .7rem .85rem;
+      text-align: left;
+      border-bottom: 1px solid #efece6;
+      vertical-align: top;
+    }
+    .data-table thead th {
+      background: var(--light);
+      color: var(--blue);
+      font-weight: 700;
+      font-size: .82rem;
+      text-transform: uppercase;
+      letter-spacing: .03em;
+    }
+    .data-table tbody tr:last-child td {
+      border-bottom: none;
+    }
+    .data-table tbody tr.total-row td {
+      background: #fbf8f2;
+      font-weight: 700;
+      color: var(--blue);
+    }
+    .data-table caption {
+      caption-side: top;
+      text-align: left;
+      font-size: .8rem;
+      color: var(--gray);
+      font-style: italic;
+      padding-bottom: .5rem;
+    }
+    .table-wrap {
+      overflow-x: auto;
+      margin: 1.5rem 0;
+    }
+    .table-wrap .data-table {
+      margin: 0;
+      min-width: 520px;
+    }
+    .glossary {
+      margin: 1.75rem 0;
+    }
+    .glossary dt {
+      font-weight: 700;
+      color: var(--blue);
+      margin-top: 1.1rem;
+    }
+    .glossary dt:first-child {
+      margin-top: 0;
+    }
+    .glossary dd {
+      margin: .3rem 0 0;
+      color: var(--gray);
+      line-height: 1.55;
+      font-size: .92rem;
+    }
+    sup.fn-ref {
+      font-size: .7em;
+      vertical-align: super;
+      line-height: 0;
+      margin-left: 1px;
+    }
+    sup.fn-ref a {
+      color: var(--amber);
+      text-decoration: none;
+      font-weight: 700;
+    }
+    sup.fn-ref a:hover {
+      text-decoration: underline;
+    }
+    .evidence-index {
+      margin-top: 1.5rem;
+    }
+    .evidence-index .data-table {
+      font-size: .82rem;
+    }
+    .evidence-index .status {
+      font-weight: 700;
+      font-size: .72rem;
+      text-transform: uppercase;
+      letter-spacing: .04em;
+      white-space: nowrap;
+    }
+    .evidence-index .status.canonical { color: #1C3D6E; }
+    .evidence-index .status.provisional { color: #B07309; }
+    .evidence-index .status.mixed { color: #6C4E1E; }
+    .evidence-index .fn-id {
+      font-family: 'SFMono-Regular', Menlo, Consolas, monospace;
+      font-size: .8rem;
+      color: var(--amber);
+      font-weight: 700;
+      white-space: nowrap;
+    }
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: .4rem;
+      font-size: .875rem;
+      font-weight: 600;
+      color: var(--amber);
+      text-decoration: none;
+      margin-top: 2.5rem;
+    }
+    .back-link:hover { text-decoration: underline; }
+    .article ul, .article ol {
+      margin: 1rem 0 1.25rem;
+      padding-left: 1.4rem;
+    }
+    .article ul li, .article ol li {
+      margin-bottom: .4rem;
+      line-height: 1.6;
+    }
+    .section-divider {
+      margin: 2.5rem 0;
+      border: none;
+      border-top: 1px solid #e0ddd8;
+    }
+    .lede {
+      font-size: 1.15rem;
+      line-height: 1.55;
+      color: var(--blue);
+      margin: 1.25rem 0 1.75rem;
+    }
+  </style>
+  <noscript><style>.nav__links{display:flex!important;flex-wrap:wrap!important;}.nav__toggle{display:none!important;}</style></noscript>
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="alternate icon" type="image/png" href="/favicon-32.png">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+  <meta property="og:image" content="https://commonladder.org/images/og-default.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Intervention Matching: Which Interventions Work for Whom — Common Ladder">
+  <meta name="twitter:description" content="Homelessness interventions are assigned by availability, not evidence. A matching framework for program designers, CoC leadership, and Medicaid agencies.">
+  <meta name="twitter:image" content="https://commonladder.org/images/og-default.png">
+</head>
+<body>
+
+
+<a href="#main" class="skip-link">Skip to main content</a>
+
+<div class="crisis-bar" role="region" aria-label="Crisis help">
+  <strong>Need help right now?</strong>
+  <a href="tel:211">Call 211</a><span class="crisis-bar__sep">·</span>
+  <a href="sms:741741?body=HOME">Text HOME to 741741</a><span class="crisis-bar__sep">·</span>
+  <a href="tel:988">988 Suicide &amp; Crisis</a>
+</div>
+<nav class="nav" aria-label="Primary">
+  <div class="nav__inner">
+    <a href="/" class="nav__logo" aria-label="Common Ladder home">
+      <svg width="28" height="28" viewBox="0 0 247 247" fill="none" aria-hidden="true"><g transform="translate(-12.00,-16.00)"> <path fill="#E8911A" fill-opacity="1" fill-rule="evenodd" d="M 254.00,51.00 L 234.00,85.64 L 194.00,85.64 L 174.00,51.00 L 194.00,16.36 L 234.00,16.36 Z M 231.50,51.00 L 222.75,66.16 L 205.25,66.16 L 196.50,51.00 L 205.25,35.84 L 222.75,35.84 Z"/> <path fill="#9FBCBA" fill-opacity="1" fill-rule="evenodd" d="M 148.00,118.00 L 128.00,152.64 L 88.00,152.64 L 68.00,118.00 L 88.00,83.36 L 128.00,83.36 Z M 125.50,118.00 L 116.75,133.16 L 99.25,133.16 L 90.50,118.00 L 99.25,102.84 L 116.75,102.84 Z"/> <path fill="#9FBCBA" fill-opacity="1" fill-rule="evenodd" d="M 259.00,118.00 L 239.00,152.64 L 199.00,152.64 L 179.00,118.00 L 199.00,83.36 L 239.00,83.36 Z M 236.50,118.00 L 227.75,133.16 L 210.25,133.16 L 201.50,118.00 L 210.25,102.84 L 227.75,102.84 Z"/> <path fill="#FFFFFF" fill-opacity="0.94" fill-rule="evenodd" d="M 207.00,164.00 L 187.00,198.64 L 147.00,198.64 L 127.00,164.00 L 147.00,129.36 L 187.00,129.36 Z M 184.50,164.00 L 175.75,179.16 L 158.25,179.16 L 149.50,164.00 L 158.25,148.84 L 175.75,148.84 Z"/> <path fill="#FFFFFF" fill-opacity="0.94" fill-rule="evenodd" d="M 92.00,164.00 L 72.00,198.64 L 32.00,198.64 L 12.00,164.00 L 32.00,129.36 L 72.00,129.36 Z M 69.50,164.00 L 60.75,179.16 L 43.25,179.16 L 34.50,164.00 L 43.25,148.84 L 60.75,148.84 Z"/> <path fill="#FFFFFF" fill-opacity="0.94" fill-rule="evenodd" d="M 161.00,228.00 L 141.00,262.64 L 101.00,262.64 L 81.00,228.00 L 101.00,193.36 L 141.00,193.36 Z M 138.50,228.00 L 129.75,243.16 L 112.25,243.16 L 103.50,228.00 L 112.25,212.84 L 129.75,212.84 Z"/> </g></svg>
+      <span class="nav__wordmark">common<span>ladder</span></span>
+    </a>
+    <button class="nav__toggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="primary-nav" onclick="this.setAttribute('aria-expanded', document.getElementById('primary-nav').classList.toggle('open') ? 'true' : 'false')">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav__links" id="primary-nav">
+            <li><a href="/providers.html">For providers</a></li>
+      <li><a href="/learn/">Learn</a></li>
+      <li><a href="/about.html">About</a></li>
+      <li><a href="/find.html" class="nav__cta">Find resources</a></li>
+      <li><a href="/static-tools/my-ladder.html" class="nav__cta nav__cta--ladder">My Ladder</a></li>
+      <li><a href="https://www.weather.gov/" rel="noreferrer" class="nav__exit" onclick="event.preventDefault();window.location.replace('https://www.weather.gov/')">Leave page</a></li>
+    </ul>
+  </div>
+</nav>
+
+<main id="main" class="article">
+
+  <nav aria-label="Breadcrumb" class="breadcrumb">
+    <a href="/">Home</a>
+    <span aria-hidden="true">›</span>
+    <a href="/learn/">Learn</a>
+    <span aria-hidden="true">›</span>
+    <a href="/learn/evidence/">Evidence &amp; policy</a>
+    <span aria-hidden="true">›</span>
+    <span aria-current="page">Intervention Matching</span>
+  </nav>
+
+  <span class="eyebrow">Evidence &amp; policy · Framework</span>
+  <h1>Intervention Matching Framework: Which Interventions Work for Whom — and Under What Conditions</h1>
+  <p class="meta">By Common Ladder · June 26, 2026 · 40 min read</p>
+
+  <p class="lede">A companion to the Common Ladder Core Framework on ending homelessness. Written for program designers, CoC leadership, and Medicaid agency staff responsible for deciding which interventions get funded, implemented, and measured.</p>
+
+  <hr class="section-divider">
+
+  <h2>Thesis</h2>
+  <p>The interventions that end homelessness are known. The populations they work for are known. The conditions under which they succeed and fail are largely known. The persistent failure of American homelessness systems is not a knowledge problem — it is a matching problem: interventions are assigned by availability, not by evidence. This document is the matching framework.</p>
+
+  <hr class="section-divider">
+
+  <h2>Executive Summary</h2>
+
+  <div class="callout-box">
+    <strong>Read this if you read nothing else.</strong>
+    <p><strong>The matching problem.</strong> Every major intervention in the homelessness system — Permanent Supportive Housing, Rapid Rehousing, Housing Choice Vouchers, Emergency Rental Assistance, diversion — has a population it works for and a population it systematically fails. The evidence on this is substantial and consistent. The failure pattern in most American CoCs is not that effective interventions don't exist; it is that available interventions are routinely assigned to people they don't fit, producing predictable returns-to-homelessness, wasted resources, and deepened chronicity.</p>
+    <p><strong>The two dimensions that drive matching.</strong> Every household presenting to the homeless system has two characteristics that determine the right intervention: their <em>service acuity</em> (the intensity of behavioral health, medical, and practical support they need to sustain housing) and their <em>income stability</em> (whether their income, with or without subsidy, can sustain housing costs over time). These two axes create four quadrants. Each quadrant has a primary intervention fit. Most matching failures occur when systems ignore one of these dimensions — treating acuity without income analysis, or analyzing income without acuity.</p>
+    <p><strong>What the evidence says, by population.</strong></p>
+    <ul>
+      <li><em>Chronically homeless adults</em> need Permanent Supportive Housing — Housing First, permanent subsidy, and voluntary services. Rapid Rehousing produces return-to-homelessness rates of 30–45% for this population. There is no higher-acuity substitution that the evidence supports.<sup class="fn-ref"><a href="#fn-f2">[f2]</a></sup><sup class="fn-ref"><a href="#fn-f7">[f7]</a></sup></li>
+      <li><em>Non-chronic adults with lower acuity and sufficient income</em> respond to Rapid Rehousing when matched to programs at evidence-based intensity levels. Without income sufficient to sustain market-rate housing after assistance ends, RRH produces the subsidy-cliff failure.<sup class="fn-ref"><a href="#fn-f7">[f7]</a></sup></li>
+      <li><em>Families with children</em> have the clearest intervention evidence in the field: the Family Options RCT found Housing Choice Vouchers produce superior housing stability and better child outcomes than shelter, transitional housing, or rapid rehousing. The evidence says vouchers — and the system gives most families something else.<sup class="fn-ref"><a href="#fn-f8">[f8]</a></sup></li>
+      <li><em>Youth and young adults</em> are undercounted by a factor of approximately 100x in federal Point-in-Time methodology, which means planning based on PIT data chronically underinvests in this population. Youth-specific rapid rehousing and host home programs show promise; the evidence base is thinner than for adult interventions and requires corresponding epistemic humility.<sup class="fn-ref"><a href="#fn-f11">[f11]</a></sup></li>
+      <li><em>Veterans</em> achieved a 55% national reduction in homelessness from 2009 to 2024 through a combination of dedicated subsidy (HUD-VASH), integrated services (VA), and real-time by-name data. The veterans model is the strongest proof of concept for functional zero, and its transferable lessons are specific: dedicated subsidy pools, integrated service accountability, and real-time individual tracking — not political will, which was context-specific.<sup class="fn-ref"><a href="#fn-f10">[f10]</a></sup></li>
+      <li><em>Households at imminent risk of homelessness</em> are the highest-return investment in the system. Targeted emergency financial assistance reduces shelter entry by 73–81 percent in randomized trial evidence, at a Marginal Value of Public Funds of 2.47. The targeting methodology that makes these effect sizes possible — statistical risk models, not worker judgment or self-selection — is itself the intervention's most transferable component.<sup class="fn-ref"><a href="#fn-f22">[f22]</a></sup><sup class="fn-ref"><a href="#fn-f23">[f23]</a></sup></li>
+    </ul>
+    <p><strong>The conditions that determine whether an intervention works.</strong> No intervention performs in isolation. Rapid Rehousing requires housing market conditions loose enough for lease-up; it underperforms in markets with vacancy rates below 3–4 percent without dedicated landlord engagement. Permanent Supportive Housing requires a services infrastructure that most PSH developments are chronically underfunded to maintain. Prevention requires risk-targeting methodology; without it, the large effect sizes don't hold. Every intervention has preconditions. Systems that implement the intervention but not its preconditions should expect the evidence not to replicate.</p>
+    <p><strong>What Medicaid agencies can and cannot pay for.</strong> Medicaid is an increasingly significant service financing tool — covering mental health treatment, substance use treatment including medications for opioid use disorder, case management, and peer support in most states; and, in states with approved waivers, covering housing navigation and transition services. Medicaid cannot pay for rent or direct housing subsidies. Agencies that have not explored waiver authorities available under 1115 and 1915(i) are leaving significant service financing capacity on the table.<sup class="fn-ref"><a href="#fn-f15">[f15]</a></sup></p>
+    <p><strong>The equity dimension.</strong> Black Americans are overrepresented in homelessness by a factor of approximately 2.8 times their share of the general population (36.6 percent of people experiencing homelessness vs. 13 percent of the general population). This disparity is structural in origin. Matching frameworks that do not account for racial equity in assessment, prioritization, and outcome tracking will reproduce and deepen that structural disparity through the operational choices of the system itself.<sup class="fn-ref"><a href="#fn-f9">[f9]</a></sup></p>
+    <p><strong>The ask.</strong> Program designers should run their current program portfolio against the matching matrix in Part IV and identify where their highest-return redesign opportunity lies — not where resources are most available, but where the mismatch between intervention fit and current client population is most predictable. CoC leadership should institutionalize acuity-to-intervention matching as a standing coordinated entry quality metric, tracked monthly not annually. Medicaid agencies with unexplored 1115 waiver authority should conduct a gap analysis between what Medicaid could fund for this population and what it currently funds.</p>
+  </div>
+
+  <hr class="section-divider">
+
+  <h2>Part I — The Matching Problem</h2>
+
+  <h3>1.1 Why This Is the Highest-Leverage Question</h3>
+  <p>There is a persistent belief in the homelessness field that the problem is resources. More beds. More vouchers. More PSH. More everything. Resources are genuinely insufficient — the gap between what the system needs and what it receives is documented and significant. But it is not the only gap, and in many communities it is not the primary gap.</p>
+
+  <p>A system that has adequate resources but applies them to the wrong populations at the wrong moments will still fail. It will produce high rates of return-to-homelessness. It will burn through RRH slots with high-acuity clients who need PSH. It will fill PSH units with people who could have been stabilized with short-term rental assistance. It will turn family shelter into long-term housing because vouchers were never pursued. Each of these is a documented failure mode in American homelessness systems, and each has its root in the same place: intervention-population mismatch.<sup class="fn-ref"><a href="#fn-p1">[p1]</a></sup></p>
+
+  <p>The evidence on what each major intervention does and does not accomplish is more rigorous now than it has ever been. The Family Options Study — a multi-site randomized controlled trial of 2,282 families — produces an unambiguous verdict on what families need.<sup class="fn-ref"><a href="#fn-f8">[f8]</a></sup> The Housing First RCT literature — now spanning five countries, five North American cities, and nearly three decades — produces an equally unambiguous verdict on what the chronically homeless need.<sup class="fn-ref"><a href="#fn-f2">[f2]</a></sup><sup class="fn-ref"><a href="#fn-f6">[f6]</a></sup> The prevention literature has, in the last decade, reached the level of peer-reviewed causal identification that allows for confident cost-effectiveness claims.<sup class="fn-ref"><a href="#fn-f22">[f22]</a></sup><sup class="fn-ref"><a href="#fn-f23">[f23]</a></sup> What remains is applying this evidence to actual program mix and actual populations.</p>
+
+  <p>The matching problem is not primarily about provider incompetence or funder ignorance. It is a structural problem: systems assign available resources, not optimal resources. When the PSH waitlist is full, the chronically homeless person in front of the intake worker gets whatever is available — which is often RRH. When vouchers are insufficient, the family with children gets shelter, then transitional housing, then more shelter. When prevention funding is minimal, the household two weeks from eviction who would benefit from $1,000 in rental arrears is instead processed through emergency shelter intake at a cost twenty times higher. Availability drives placement. The evidence says something different should.</p>
+
+  <h3>1.2 The Two Dimensions That Drive Matching</h3>
+  <p>Every household presenting to the homeless system can be characterized on two dimensions that determine their intervention fit:</p>
+
+  <p><strong>Dimension 1 — Service Acuity:</strong> The intensity of behavioral health, medical, and practical support the household needs to sustain housing. Acuity is driven by the presence and severity of serious mental illness (SMI), substance use disorder (SUD), dual diagnosis, physical disability, cognitive impairment, and trauma history. Low-acuity households can sustain housing with minimal professional support. High-acuity households cannot sustain housing without substantial, ongoing professional support — regardless of the quality of the housing itself.</p>
+
+  <p><strong>Dimension 2 — Income Stability:</strong> Whether the household's current or achievable income, with or without subsidy, can sustain housing costs over a defined time period. Income analysis asks: can this household, at their current or near-term expected income, pay market-rate rent once time-limited assistance ends? If not, does their income support housing with a permanent subsidy? Income stability is not just current income — it is income trajectory, income growth potential, and the structural relationship between local rent levels and the income distribution of the population being served.</p>
+
+  <p>These two dimensions create four quadrants:</p>
+
+  <div class="table-wrap">
+    <table class="data-table">
+      <thead>
+        <tr><th></th><th>Lower Acuity</th><th>Higher Acuity</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><strong>Income-Stable</strong></td><td>Rapid Rehousing or Diversion — short-term assistance to resolve crisis, then independent</td><td>Intensive Case Management–backed RRH or Housing First with ICM — subsidy plus services, with intensity matched to need</td></tr>
+        <tr><td><strong>Income-Unstable</strong></td><td>Housing Choice Vouchers — permanent subsidy; RRH if income growth is realistic and planned</td><td>Permanent Supportive Housing — permanent subsidy plus permanent voluntary services; no time-limited alternative produces comparable outcomes</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p>Every intervention that underperforms its evidence base does so because it is being applied to the wrong quadrant. This is not theoretical. It is visible in the returns-to-homelessness data of any CoC that tracks clients long enough to see where they go after program exit.<sup class="fn-ref"><a href="#fn-p7">[p7]</a></sup></p>
+
+  <h3>1.3 The Common Mismatches</h3>
+  <p>The following mismatches are the most frequently documented and most consequential in the American homelessness system:</p>
+
+  <h4>Mismatch 1 — High-acuity individuals in Rapid Rehousing.</h4>
+  <p>When PSH is unavailable and a chronically homeless or high-acuity individual is placed in RRH, the return-to-homelessness rate at 12 months reaches 30–45 percent.<sup class="fn-ref"><a href="#fn-f7">[f7]</a></sup> The intervention fails predictably because the preconditions for RRH success — income growth potential, capacity to sustain independent tenancy — are absent. The result is wasted RRH resources, a return episode counted against system metrics, and a person who is now deeper in the system and closer to chronic homelessness than before.</p>
+
+  <h4>Mismatch 2 — Families cycled through shelter and transitional housing without vouchers.</h4>
+  <p>The Family Options RCT found that housing vouchers outperform shelter, transitional housing, and rapid rehousing on both housing stability and children's outcomes.<sup class="fn-ref"><a href="#fn-f8">[f8]</a></sup> In most communities, the bottleneck is voucher scarcity — not evidence. When vouchers are unavailable, families receive inferior interventions, often cycling between shelter and housing for years. The cumulative harm to children — educational disruption, behavioral health consequences — is well-documented and produces costs that extend far beyond the immediate homelessness episode.</p>
+
+  <h4>Mismatch 3 — Prevention resources without targeting methodology.</h4>
+  <p>The causal evidence on targeted emergency financial assistance is clear: a 76–81 percent reduction in shelter entry at 6 months, with a Marginal Value of Public Funds of 2.47.<sup class="fn-ref"><a href="#fn-f22">[f22]</a></sup><sup class="fn-ref"><a href="#fn-f23">[f23]</a></sup> These effect sizes are not replicable if the assistance reaches self-selected or intake-worker-selected populations instead of statistically identified highest-risk households. Prevention programs that allocate based on walk-in applicants or intake worker judgment consistently reach lower-risk households, diluting the effect size and the ROI.</p>
+
+  <h4>Mismatch 4 — Shelter as default for youth.</h4>
+  <p>Point-in-Time counts capture 35,000–45,000 unaccompanied youth on a given night. Survey methodology from the Voices of Youth Count estimates approximately 700,000 youth experience literal homelessness annually — with 4.2 million experiencing some form of homelessness including couch-surfing.<sup class="fn-ref"><a href="#fn-f11">[f11]</a></sup> The ratio between PIT counts and survey estimates approaches 1:100. Systems that allocate youth resources based on PIT data are systematically underinvesting in this population. Additionally, placing youth in adult congregate shelter — the available default in most communities — produces documented harm: elevated risk of theft, assault, sexual exploitation, and disengagement from service systems.</p>
+
+  <h4>Mismatch 5 — PSH without adequate services.</h4>
+  <p>Permanent Supportive Housing is the most evidence-dense intervention in the homelessness field. The evidence was generated in programs with adequate case management, mental health, and primary care services embedded or closely linked to the housing.<sup class="fn-ref"><a href="#fn-f2">[f2]</a></sup> PSH developments that are capitalized and subsidized but not adequately staffed for services — which describes a significant portion of the national PSH stock — are not delivering the model that the evidence evaluated. They are delivering subsidized housing with inadequate support, which produces worse outcomes than the literature would predict and reinforces skepticism about Housing First in communities that have only seen underfunded versions of it.<sup class="fn-ref"><a href="#fn-f17">[f17]</a></sup></p>
+
+  <hr class="section-divider">
+
+  <h2>Part II — The Population Architecture</h2>
+
+  <h3>2.1 Chronically Homeless Adults</h3>
+  <p><strong>Who they are:</strong> Adults who have been homeless for 12 months or more, or who have had four or more episodes totaling 12 months in three years, and who have a qualifying disabling condition — serious mental illness, substance use disorder, physical disability, or chronic health condition. Approximately 152,600 individuals met this definition in January 2024, representing roughly 20 percent of all people experiencing homelessness.<sup class="fn-ref"><a href="#fn-f1">[f1]</a></sup></p>
+
+  <p>This population is predominantly male (approximately 70–75 percent of unsheltered adults), disproportionately Black and Indigenous, and heavily concentrated in the dual-diagnosis group — co-occurring serious mental illness and substance use disorder. The dual-diagnosis population is the most medically complex, and the most systematically underserved by a behavioral health system built in silos.</p>
+
+  <p><strong>What they need:</strong> Permanent Supportive Housing. Not Rapid Rehousing, not transitional housing, not longer shelter stays. The At Home/Chez Soi RCT — the largest Housing First trial ever conducted, 2,148 participants in five cities — found that participants assigned to Housing First with Assertive Community Treatment spent 73 percent of follow-up time stably housed, compared to 32 percent in treatment-as-usual. At seven-year follow-up, the housing stability advantage persisted.<sup class="fn-ref"><a href="#fn-f2">[f2]</a></sup> No other intervention produces comparable outcomes for this population. The reason is structural: this population requires permanent subsidy (income is too low and too unstable to sustain market-rate rent), and it requires permanent access to voluntary services (behavioral health needs do not resolve on a treatment timeline that is compatible with any time-limited model).</p>
+
+  <p><strong>What the evidence does not say:</strong> Housing First reliably produces housing stability. It does not reliably produce mental health improvement or sobriety.<sup class="fn-ref"><a href="#fn-f3">[f3]</a></sup> This matters for program design and for funder expectation-setting. PSH programs that are evaluated on clinical recovery outcomes will fail at their stated purpose. Programs evaluated on housing stability will succeed at theirs. Setting the correct outcome expectation is not a caveat — it is the precondition for accurate evaluation.</p>
+
+  <p><strong>Cost structure:</strong> New PSH construction runs $300,000–$700,000+ per unit in most major markets. Operating costs run $15,000–$30,000 per unit per year (subsidy plus services). Against this, the evidence on cost offsets: Culhane's 2002 New York City study (n=4,679) found 95 percent of annual PSH costs offset within two years through reductions in shelter, hospital, mental health, and corrections spending.<sup class="fn-ref"><a href="#fn-f4">[f4]</a></sup> Those savings do not accrue to the housing budget, however — they accrue to Medicaid, OMH, corrections, and the shelter system. The structural funding misalignment between where costs are incurred and where savings appear is the primary financial barrier to PSH at scale.<sup class="fn-ref"><a href="#fn-f17">[f17]</a></sup></p>
+
+  <p><strong>The racial equity dimension:</strong> The chronic homeless population is disproportionately Black. Acuity assessment tools — including VI-SPDAT — have documented racial bias in scoring that can result in Black individuals being assigned lower acuity scores than their actual service needs warrant, producing under-prioritization for PSH. Audit of coordinated entry prioritization by race/ethnicity is not optional for a system that takes the equity evidence seriously.<sup class="fn-ref"><a href="#fn-f9">[f9]</a></sup></p>
+
+  <h3>2.2 Non-Chronic Adults (Episodic and Transitional)</h3>
+  <p><strong>Who they are:</strong> Adults who are homeless but do not meet the HUD chronic definition — because their episode is shorter than 12 months, or because they do not have a qualifying disabling condition, or because they are sheltered. This is the largest and most heterogeneous segment in the system: approximately 300,000–350,000 individuals on the January 2024 PIT night, spanning a wide range of acuity and income stability.<sup class="fn-ref"><a href="#fn-f1">[f1]</a></sup></p>
+
+  <p>The heterogeneity of this segment is itself the design problem. "Non-chronic sheltered adult" is not a homogeneous group with one appropriate intervention. It includes first-episode adults with income and a resolvable crisis. It includes cyclically homeless individuals who are functionally chronic but haven't crossed the threshold. It includes people with moderate behavioral health needs who are currently episodic but trending toward chronicity if not resolved.</p>
+
+  <p><strong>What they need:</strong> Acuity-matched Rapid Rehousing for the lower end of the segment; ICM-supported RRH or PSH-equivalent for the higher end. The critical design question is whether the assessment process genuinely distinguishes these groups, or whether "non-chronic" is used as a synonym for "assign to whatever RRH slot is available."</p>
+
+  <p>RRH produces good outcomes — 70–85 percent exit to permanent housing within the program period — for the lower-acuity, income-stable portion of this segment.<sup class="fn-ref"><a href="#fn-f7">[f7]</a></sup> Returns-to-homelessness at 12 months (20–35 percent) and at 24 months (30–45 percent) for mismatched populations are the signal that the matching failed, not that RRH is ineffective. Systems that track returns and attribute them to specific program types can identify where mismatch is occurring. Systems that only track exits cannot.</p>
+
+  <p><strong>The subsidy cliff:</strong> RRH ends. When it ends, the household must sustain housing independently at market-rate rent. In markets where 30 percent of income at the prevailing wage is insufficient for market rent — which describes most U.S. markets above the 30 percent AMI threshold — the subsidy cliff is a structural feature, not a program failure.<sup class="fn-ref"><a href="#fn-f16">[f16]</a></sup> RRH produces lasting exits only when income growth is a realistic component of the plan — and income growth requires employment support, benefits connection, or income stabilization to be a genuine part of the intervention, not an afterthought.</p>
+
+  <h3>2.3 Families with Children</h3>
+  <p><strong>Who they are:</strong> Households with at least one adult and at least one child under 18. Approximately 73,400 families with children (representing approximately 260,000 people) were homeless on the January 2024 PIT night — a 39 percent increase from 2023 and the fastest-growing segment in the system.<sup class="fn-ref"><a href="#fn-f1">[f1]</a></sup> Children under 18 increased 33 percent year-over-year.</p>
+
+  <p>Families are disproportionately headed by single mothers, disproportionately Black and Hispanic, and more likely to have income than the chronic adult population. They enter homelessness primarily through eviction and doubled-up housing collapse — not through the behavioral health pathways that drive chronic adult homelessness.</p>
+
+  <p><strong>What they need:</strong> The evidence is unambiguous. The Family Options Study — the only large-scale RCT of interventions for homeless families, 2,282 families across 12 communities — found housing vouchers produce superior outcomes on housing stability, family functioning, and children's behavioral and educational well-being compared to shelter, transitional housing, and rapid rehousing.<sup class="fn-ref"><a href="#fn-f8">[f8]</a></sup> The voucher advantage on children's outcomes is particularly important: children whose families received vouchers showed measurable improvements in behavioral health and educational stability that other intervention arms did not produce.</p>
+
+  <p>The gap between what the evidence says families need and what they receive is fundamentally a voucher supply problem. National HCV waitlists are measured in years in most markets. This is a policy failure, not a program design question — the program design question is settled by the RCT.</p>
+
+  <p><strong>The McKinney-Vento gap:</strong> School-identified homeless children (under McKinney-Vento) outnumber CoC-served homeless children by a ratio that varies by community but nationally reflects a massive undercount in PIT methodology. Doubled-up households — families living with relatives or friends in overcrowded, unstable arrangements — are not counted in PIT data and receive no CoC-funded housing intervention. This is the invisible end of family homelessness: numerically large, structurally at risk, and entirely outside the current system's field of view.</p>
+
+  <h3>2.4 Youth and Transition-Age Youth (TAY)</h3>
+  <p><strong>Who they are:</strong> Young people ages 13–25 experiencing homelessness. PIT counts find 35,000–45,000 on any given night. The Voices of Youth Count survey methodology estimated approximately 700,000 experiencing literal homelessness annually, and 4.2 million experiencing some form of homelessness including couch-surfing — a ratio to PIT counts approaching 1:100.<sup class="fn-ref"><a href="#fn-f11">[f11]</a></sup></p>
+
+  <p>The reason for the gap is structural: youth actively avoid shelters. Adult congregate environments are unsafe for this population — theft, assault, and sexual exploitation are documented. Youth distrusting of institutional systems will couch-surf, engage in survival sex, or sleep unsheltered rather than enter an adult shelter environment. PIT methodology counts what can be found in shelters and in known outdoor locations. It does not count what actively hides.</p>
+
+  <p>LGBTQ+ youth are substantially overrepresented — estimated at 20–40 percent of homeless youth while representing approximately 9.5 percent of the general youth population. Family rejection based on sexual orientation or gender identity is the primary proximate cause for most LGBTQ+ homeless youth; this is a family rupture story with a housing consequence, not primarily a housing affordability story.<sup class="fn-ref"><a href="#fn-f19">[f19]</a></sup> Programs that are not explicitly LGBTQ+-affirming in every operational dimension — staff training, facility design, intake practices, organizational culture — will not retain this population, which means they are not serving their highest-risk clients equitably.</p>
+
+  <p><strong>What they need:</strong> Youth-specific Rapid Rehousing adapted for youth social networks and developmental context; host home programs that leverage community relationships rather than institutional settings; transitional housing with life skills integration for system-involved youth (foster care alumni, juvenile justice exits). Adult congregate shelter should not be the default for any youth who can be diverted to a youth-appropriate environment.</p>
+
+  <p>The evidence base for youth-specific interventions is thinner than for adult interventions — no large-scale RCT comparable to Family Options exists for youth programs.<sup class="fn-ref"><a href="#fn-f11">[f11]</a></sup> This means program designers operating in this segment must hold their conclusions with more uncertainty than the PSH or RRH literature permits, and should build rigorous outcome measurement into program design rather than assuming the evidence base is settled.</p>
+
+  <h3>2.5 Veterans</h3>
+  <p><strong>Who they are:</strong> Individuals who served in the military. Approximately 32,800 veterans were homeless on the January 2024 PIT night — the only major subpopulation to decline year-over-year, falling 7.6 percent while overall homelessness rose 18 percent.<sup class="fn-ref"><a href="#fn-f1">[f1]</a></sup> The 55 percent reduction in veteran homelessness from 2009 to 2024 is the largest sustained reduction of any population segment in the federal record.<sup class="fn-ref"><a href="#fn-f10">[f10]</a></sup></p>
+
+  <p><strong>Why veterans are different — and what is transferable:</strong> The veteran homelessness reduction resulted from a specific set of structural investments: dedicated subsidy (HUD-VASH — 50,000+ active vouchers), integrated services (VA case management and healthcare, explicitly designed to accompany the voucher), real-time by-name data systems deployed at scale, and sustained political accountability to specific communities pursuing functional zero. Twelve or more communities have achieved functional zero for veteran homelessness.</p>
+
+  <p>The transferable components from the veterans model are specific: dedicated subsidy pools that don't compete with general CoC resources; a single integrated system responsible for both housing subsidy and services; real-time individual tracking by name; and a functional zero target applied to individual named people, not to aggregate reduction goals. The non-transferable component is bipartisan political salience — veteran homelessness has a constituency that general homelessness does not, and the resources that accompanied that salience are not available to other populations through the same mechanism.</p>
+
+  <h3>2.6 At-Risk Households</h3>
+  <p><strong>Who they are:</strong> Households that are not currently homeless but face imminent risk of losing housing — typically within 14 days under HUD ESG program definitions. This population is not counted in PIT data and receives no CoC mainstream funding in most communities. Their scale is estimated by proxy: COVID-era Emergency Rental Assistance made 12.3 million payments totaling $46 billion, and eviction filing rates have returned to or exceeded pre-pandemic levels in most markets.<sup class="fn-ref"><a href="#fn-f13">[f13]</a></sup></p>
+
+  <p><strong>What they need:</strong> The evidence on this population is among the strongest in the homelessness field, and among the most consistently under-applied. Two independent, peer-reviewed causal-identification studies have now established the intervention effect:</p>
+
+  <ul>
+    <li><strong>Evans, Sullivan &amp; Wallskog 2016 (Science, n=4,448, natural experiment):</strong> Targeted emergency financial assistance reduced shelter entry by 76 percent at 6 months. Average grant: ~$800–$1,000. Cost per shelter entry prevented: ~$10,500, against an average family shelter spell cost of $15,000–$40,000+.<sup class="fn-ref"><a href="#fn-f23">[f23]</a></sup></li>
+    <li><strong>Phillips &amp; Sullivan 2025 (Review of Economics and Statistics, RCT n≈500):</strong> 81 percent reduction in homelessness at 6 months; 73 percent at 12 months. Marginal Value of Public Funds: 2.47 — each public dollar spent returns $2.47 in social benefit.<sup class="fn-ref"><a href="#fn-f22">[f22]</a></sup><sup class="fn-ref"><a href="#fn-f23">[f23]</a></sup></li>
+  </ul>
+
+  <p>Both studies document their effect sizes in populations that were statistically identified as genuinely imminent-risk. The targeting methodology is not separable from the effect. Programs that allocate prevention resources through walk-in applications, intake worker judgment, or broad income eligibility screens will reach lower-risk populations and produce smaller effects — not because the intervention doesn't work, but because the intervention is reaching the wrong households.</p>
+
+  <p><strong>The structural case for prevention investment:</strong> Prevention is the highest-ROI investment available to the homelessness system. It is also the most consistently underfunded relative to that ROI, for a structural reason: prevented homelessness is invisible. It does not appear in shelter counts, PIT data, or SPM metrics. Systems and funders that track beds filled and people served cannot easily demonstrate prevention impact, and political and funder attention follows visible crisis rather than invisible success. The Evans and Phillips causal evidence is the strongest available counterargument — two peer-reviewed studies, independent causal designs, convergent effect sizes, and favorable cost-per-outcome estimates.</p>
+
+  <hr class="section-divider">
+
+  <h2>Part III — The Intervention Architecture</h2>
+
+  <h3>3.1 Prevention and Risk Targeting</h3>
+  <p><strong>Intervention:</strong> Emergency Rental Assistance (ERA) combined with statistical risk-targeting methodology.</p>
+  <p><strong>Evidence status:</strong> CANONICAL for targeted ERA (F-22, F-23). The combination of causal identification (Evans 2016 quasi-experiment; Phillips &amp; Sullivan 2025 RCT) and the targeting methodology evidence (Shinn &amp; Greer 2013 AJPH, n=11,105; Von Wachter et al. 2021 LA County) constitutes the strongest prevention evidence in the field.</p>
+  <p><strong>What it requires to work:</strong></p>
+  <ul>
+    <li>Administrative data infrastructure: HMIS cross-referenced with at least one of welfare, child welfare, justice, or health system records</li>
+    <li>Statistical risk model trained on local data (one-time development investment; periodic retraining)</li>
+    <li>Prevention fund sufficient to serve the top-identified risk decile</li>
+    <li>Income analysis at intake: for households in structurally unaffordable housing, ERA resolves the acute crisis but will not prevent recurrence without income intervention</li>
+  </ul>
+  <p><strong>Where it fails:</strong></p>
+  <ul>
+    <li>When targeting is absent and allocation defaults to self-selection or worker judgment — the populations most likely to present are not the populations at highest shelter-entry risk</li>
+    <li>When ERA resolves arrears but underlying rent-to-income ratio remains above 50 percent without income growth — recurrence within 6–12 months is predictable</li>
+    <li>When prevention criteria are too narrow (ESG's 14-day window excludes households 30–60 days from crisis who would benefit from earlier intervention)</li>
+  </ul>
+  <p><strong>Medicaid applicability:</strong> Limited. Emergency cash assistance is not a Medicaid-fundable service. The clinical components of prevention case management — risk assessment linked to behavioral health screening, benefits enrollment support, connection to SUD or mental health services — may be billable as care coordination in states with applicable Medicaid benefit design.</p>
+
+  <h3>3.2 Housing-Focused Diversion</h3>
+  <p><strong>Intervention:</strong> Problem-solving at the point of system entry — before shelter assignment — to identify whether a household has viable housing options through their own network that can be supported with skilled facilitation and modest financial assistance.</p>
+  <p><strong>Evidence status:</strong> PROVISIONAL (F-18). The strongest study is the Building Changes/Clarus Research evaluation of Washington State diversion programs (2023, n=13,876 families): 49 percent found safe housing quickly, median time to housing 37 days, average cost per family housed $1,668. A first randomized controlled trial (University of Notre Dame/J-PAL, launched 2024) is in progress.</p>
+  <p><strong>What it requires to work:</strong></p>
+  <ul>
+    <li>Skilled diversion specialists — problem-solving conversations that identify network options are not scriptable and cannot be replaced by intake processing</li>
+    <li>Financial resources for small-scale assistance when needed: typically $0–$2,000 per household (one-third of Building Changes families resolved their crisis without any financial assistance)</li>
+    <li>Organizational commitment to genuine diversion — not as a gatekeeping function that keeps shelter counts low, but as a first-resort option for every new system entrant</li>
+    <li>Safety protocols: active domestic violence situations, unsafe proposed housing options, and households with no viable network must route to shelter without being pressured into diversion</li>
+  </ul>
+  <p><strong>Where it fails:</strong></p>
+  <ul>
+    <li>Households with no viable network options — diversion cannot create a network that does not exist</li>
+    <li>Active domestic violence situations, where returning to family or social network is a safety risk</li>
+    <li>Households with acute behavioral health needs that require more than problem-solving and modest assistance</li>
+  </ul>
+  <p><strong>Cost efficiency:</strong> At $500–$1,700 per household diverted (Building Changes data), diversion is the most cost-efficient intervention available at the system entry point. Communities that have not implemented structured diversion at CE intake and have implemented everything else are leaving the highest-ROI entry-point intervention on the table.</p>
+
+  <h3>3.3 Rapid Rehousing</h3>
+  <p><strong>Intervention:</strong> Short- to medium-term rental assistance (typically 3–24 months) with housing navigation and case management, designed to move households quickly into market-rate housing and stabilize before assistance ends.</p>
+  <p><strong>Evidence status:</strong> PROVISIONAL (F-7). Strong evidence of exits to permanent housing (70–85 percent within program period); weaker evidence — and significant returns-to-homelessness — for higher-acuity and income-insufficient populations.</p>
+  <p><strong>What it requires to work:</strong></p>
+  <ul>
+    <li>Income at or approaching housing affordability — the household must be able to sustain market-rate rent once assistance ends (or have a clear income growth trajectory)</li>
+    <li>Housing market conditions with vacancy rates sufficient to permit lease-up within a reasonable search period (below 3–4 percent vacancy, lease-up failure rates increase substantially)</li>
+    <li>Service intensity matched to acuity — RRH with monthly check-ins performs differently from RRH with bi-weekly community-based ICM</li>
+    <li>Landlord engagement in tight markets — without deliberate landlord relationship-building, lease-up failure rates of 30–50 percent are documented<sup class="fn-ref"><a href="#fn-f20">[f20]</a></sup></li>
+  </ul>
+  <p><strong>Where it fails:</strong></p>
+  <ul>
+    <li>High-acuity households (chronic or functional-chronic) — return-to-homelessness rates of 30–45 percent at 12 months<sup class="fn-ref"><a href="#fn-f7">[f7]</a></sup></li>
+    <li>Income-insufficient households — the subsidy cliff produces returns when income cannot sustain market rent<sup class="fn-ref"><a href="#fn-f16">[f16]</a></sup></li>
+    <li>Tight rental markets without landlord engagement — vouchers and subsidies have no value if no landlord will accept them</li>
+    <li>As a default for high-acuity clients because PSH is unavailable — availability-driven placement is the most common mechanism for this mismatch</li>
+  </ul>
+  <p><strong>Medicaid applicability:</strong> The service components of RRH — case management, behavioral health linkage, peer support in states with billing codes, care coordination — are potentially Medicaid-billable in most states. The rental assistance itself is not.</p>
+
+  <h3>3.4 Housing Choice Vouchers</h3>
+  <p><strong>Intervention:</strong> Permanent, income-based rental subsidy. Tenant pays 30 percent of income; voucher covers the balance up to Fair Market Rent. Portable — usable in private market units.</p>
+  <p><strong>Evidence status:</strong> CANONICAL for families (F-8). The Family Options RCT produced unambiguous findings: vouchers outperform all alternatives on housing stability and produce the only measurable improvements in children's outcomes across all intervention arms.</p>
+  <p><strong>What it requires to work:</strong></p>
+  <ul>
+    <li>Voucher availability — national waitlists are measured in years; this is the primary binding constraint on voucher effectiveness</li>
+    <li>Fair Market Rent calibration — FMR caps must be close enough to actual market rents to enable lease-up; in high-cost markets, FMR caps that are 20–30 percent below actual rents produce de facto lease-up failure</li>
+    <li>Landlord acceptance — 30–50 percent of voucher holders in tight markets fail to lease up, primarily due to landlord reluctance; landlord engagement programs are a precondition for full voucher effectiveness, not an add-on<sup class="fn-ref"><a href="#fn-f20">[f20]</a></sup></li>
+  </ul>
+  <p><strong>Where it fails:</strong></p>
+  <ul>
+    <li>When unavailable — the evidence on what vouchers do is excellent; the supply is grossly inadequate</li>
+    <li>When FMR caps are too low for the local market</li>
+    <li>When households with high behavioral health needs receive vouchers without linked services — the voucher provides housing access but not the supportive component that the highest-acuity population requires; this is the equivalent of underserved PSH at lower cost</li>
+  </ul>
+
+  <h3>3.5 Permanent Supportive Housing</h3>
+  <p><strong>Intervention:</strong> Permanent subsidized housing (no time limit on tenancy or assistance) combined with voluntary, on-site or linked wraparound services. Housing is explicitly not contingent on sobriety or treatment participation.</p>
+  <p><strong>Evidence status:</strong> CANONICAL across multiple dimensions (F-2, F-3, F-4, F-5, F-6). The At Home/Chez Soi trial (2,148 participants, five cities), the Pathways to Housing program evaluations, the Culhane cost-offset study, and multiple systematic reviews covering decades of evidence converge on the same conclusion: PSH produces dramatically better housing stability for chronically homeless adults than any alternative approach.</p>
+  <p><strong>What it requires to work:</strong></p>
+  <ul>
+    <li>Adequate services funding — the evidence was generated in programs with substantive, ongoing case management, mental health, and primary care services. A PSH building without adequate services is subsidized housing with inadequate support, not PSH.<sup class="fn-ref"><a href="#fn-f17">[f17]</a></sup></li>
+    <li>Housing First fidelity — sobriety requirements, treatment participation mandates, or other conditional tenancy arrangements are incompatible with the evidence-based model and consistently reduce housing attainment</li>
+    <li>Capital pipeline — new PSH construction takes 3–7 years from decision to occupancy; communities that do not maintain an active development pipeline are always behind demand</li>
+    <li>Services infrastructure — ACT (Assertive Community Treatment) or intensive case management for the highest-acuity residents; step-down options for residents who stabilize</li>
+  </ul>
+  <p><strong>Where it fails:</strong></p>
+  <ul>
+    <li>When services are chronically underfunded — the most common failure mode in the national PSH stock</li>
+    <li>When housing-first fidelity is eroded through rules that functionally replicate sobriety requirements (selective lease enforcement, broadly interpreted "drug use on premises" clauses)</li>
+    <li>When used for lower-acuity populations who could be served with RRH — overcost and unnecessary for households that do not need permanent subsidy and intensive services</li>
+  </ul>
+  <p><strong>Development pathway options:</strong> New construction is the costliest and slowest pathway but produces the largest and most purpose-built supply. Acquisition-rehabilitation of existing structures is faster (1–3 years) and often less expensive per unit in markets where existing stock is available. Scattered-site PSH — placing voucher holders in market-rate units with services linked rather than on-site — is fastest (can begin in months) but requires strong landlord relationships, effective navigation, and disciplined services linkage at distance.</p>
+  <p><strong>Medicaid as services financing:</strong> The services component of PSH — case management, mental health treatment, SUD treatment including MOUD, peer support, care coordination — is fundable through Medicaid in most states. PSH operators who have not developed Medicaid billing capacity are leaving the most substantial service financing tool on the table and making their programs more dependent on CoC service grants than necessary.<sup class="fn-ref"><a href="#fn-f15">[f15]</a></sup></p>
+
+  <hr class="section-divider">
+
+  <h2>Part IV — The Matching Matrix</h2>
+
+  <h3>4.1 Primary Intervention by Population and Acuity</h3>
+  <p>The following matrix represents the evidence-based primary intervention for each major population and acuity level. Secondary interventions are listed where the primary is unavailable or where the evidence supports a stepped approach.</p>
+
+  <div class="table-wrap">
+    <table class="data-table">
+      <thead>
+        <tr><th>Population</th><th>Acuity</th><th>Income</th><th>Primary Intervention</th><th>Secondary</th><th>Evidence</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Chronically homeless adults</td><td>High</td><td>Unstable / insufficient</td><td>Permanent Supportive Housing (Housing First + ACT/ICM)</td><td>None that replicates outcomes</td><td>CANONICAL <sup class="fn-ref"><a href="#fn-f2">[f2]</a></sup></td></tr>
+        <tr><td>Non-chronic adults — lower acuity</td><td>Low–Moderate</td><td>Stable or stabilizable</td><td>Rapid Rehousing + income support</td><td>Diversion if viable network</td><td>PROVISIONAL <sup class="fn-ref"><a href="#fn-f7">[f7]</a></sup></td></tr>
+        <tr><td>Non-chronic adults — moderate-high acuity</td><td>Moderate–High</td><td>Unstable</td><td>ICM-backed RRH; PSH for highest acuity</td><td>Standard RRH (higher recidivism risk)</td><td>Mixed</td></tr>
+        <tr><td>Families with children</td><td>Low–Moderate</td><td>Present but insufficient for market rent</td><td>Housing Choice Vouchers (permanent subsidy)</td><td>RRH if income sufficient to sustain</td><td>CANONICAL <sup class="fn-ref"><a href="#fn-f8">[f8]</a></sup></td></tr>
+        <tr><td>Youth and TAY</td><td>Variable</td><td>Low (entry-level)</td><td>Youth-specific RRH; host homes; diversion to network</td><td>TH with life skills for system-involved</td><td>PROVISIONAL <sup class="fn-ref"><a href="#fn-f11">[f11]</a></sup></td></tr>
+        <tr><td>Veterans</td><td>Variable</td><td>Varies</td><td>HUD-VASH (high acuity); SSVF (lower acuity, rapid rehousing)</td><td>General PSH when veteran-specific unavailable</td><td>PROVISIONAL <sup class="fn-ref"><a href="#fn-f10">[f10]</a></sup></td></tr>
+        <tr><td>At-risk households</td><td>Low</td><td>Shock-disrupted but otherwise stable</td><td>Targeted ERA; eviction prevention with legal aid</td><td>Diversion if at system door</td><td>CANONICAL <sup class="fn-ref"><a href="#fn-f22">[f22]</a></sup><sup class="fn-ref"><a href="#fn-f23">[f23]</a></sup></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3>4.2 Conditions Analysis — When Each Intervention Succeeds vs. Fails</h3>
+
+  <div class="table-wrap">
+    <table class="data-table">
+      <thead>
+        <tr><th>Intervention</th><th>Conditions for Success</th><th>Predictable Failure Conditions</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><strong>Targeted Prevention</strong></td><td>Statistical risk model; adequate prevention fund; income support for households in chronic unaffordability</td><td>Self-selection allocation; no targeting; arrears-only without income stabilization</td></tr>
+        <tr><td><strong>Diversion</strong></td><td>Skilled specialists; flexible small funds; viable network for household; safety protocols; genuine first-resort commitment</td><td>No viable network; DV situation; used as gatekeeping; scripted rather than skilled</td></tr>
+        <tr><td><strong>Rapid Rehousing</strong></td><td>Income stable or stabilizable; market vacancy rate &gt;3–4%; service intensity matched to acuity; landlord access</td><td>High acuity; income insufficient for market rent; tight market without landlord engagement; default placement for high-acuity</td></tr>
+        <tr><td><strong>Housing Choice Vouchers</strong></td><td>Voucher available; FMR close to market; landlord acceptance; services linked for high-acuity households</td><td>Voucher unavailable (most common); FMR below market; no landlord engagement; high-acuity household without services</td></tr>
+        <tr><td><strong>PSH</strong></td><td>Adequate services funding; housing-first fidelity; active development pipeline; ACT/ICM for highest acuity</td><td>Services underfunded; sobriety requirements (formal or de facto); used for lower-acuity (overcost); capital without operating plan</td></tr>
+        <tr><td><strong>Youth-Specific Interventions</strong></td><td>Youth-specific settings; affirming environments for LGBTQ+; peer-supported; relationship-centered; planning based on survey not PIT data</td><td>Adult congregate shelter as default; PIT-based planning; non-affirming environments; generic adult programming</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3>4.3 Intervention Sequencing at System Entry</h3>
+  <p>Not every household needs to progress through all intervention types. The evidence supports a specific sequence that should be applied consistently at coordinated entry:</p>
+  <ol>
+    <li><strong>Prevention</strong> — before the household enters the system. Has this household already been reached by a prevention program? If at-risk status was identified early enough, was prevention offered?</li>
+    <li><strong>Diversion</strong> — at first contact with the system. For every household presenting for the first time, a diversion conversation should precede shelter assignment. Is there a viable housing option in the household's network? Can it be made safe with modest assistance or skilled facilitation?</li>
+    <li><strong>Acuity and income assessment</strong> — before any intervention referral. Who is this household? What is their service intensity need? What is their income trajectory? The assessment drives the referral; availability should not.</li>
+    <li><strong>Matched intervention</strong> — based on assessment results, not based on what's available. If the matched intervention is unavailable (PSH waitlist, voucher waitlist), the household goes on the priority list for that intervention while receiving the best available temporary alternative — not a permanent reassignment to an intervention that doesn't fit.</li>
+    <li><strong>Services planning</strong> — concurrent with housing placement. What services does this household need to sustain the housing? Who is providing them? At what intensity? With what funding?</li>
+    <li><strong>Returns monitoring</strong> — beginning at 6 months post-exit, continuing through 24 months. Returns are the primary quality signal for whether matching worked. Systems that don't track returns cannot detect mismatches.</li>
+  </ol>
+
+  <hr class="section-divider">
+
+  <h2>Part V — The Service Layer</h2>
+
+  <h3>5.1 Services Are Not Optional for High-Acuity Populations</h3>
+  <p>The evidence that PSH produces dramatic housing stability improvements over treatment-as-usual comes from studies of Housing First with ACT (Assertive Community Treatment) for high-need participants and Housing First with ICM (Intensive Case Management) for moderate-need participants.<sup class="fn-ref"><a href="#fn-f2">[f2]</a></sup> The "supportive" component of Permanent Supportive Housing is not decorative. It is the mechanism through which housing stability is maintained for people whose behavioral health needs would otherwise produce housing failure.</p>
+  <p>A PSH building without adequate services is not PSH. It is subsidized housing with inadequate support — and its outcomes will reflect that gap. The persistent gap between what the evidence evaluates and what the national PSH stock delivers is primarily a services-funding problem, not a program-design problem.</p>
+
+  <h3>5.2 Service Intensity Continuum</h3>
+  <p>The appropriate service model is not a single decision — it is a matching problem within a matching problem:</p>
+
+  <div class="table-wrap">
+    <table class="data-table">
+      <thead>
+        <tr><th>Intensity Level</th><th>Model</th><th>Target Population</th><th>Caseload Benchmark</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Minimal</td><td>Housing Navigation</td><td>At-risk, diversion clients, lower-acuity RRH</td><td>20–35 per navigator</td></tr>
+        <tr><td>Low</td><td>Standard Case Management</td><td>Stable PSH residents, moderate-need RRH</td><td>25–40 per CM</td></tr>
+        <tr><td>Moderate</td><td>Intensive Case Management (ICM)</td><td>Newly housed, moderate-high acuity</td><td>15–25 per CM</td></tr>
+        <tr><td>High</td><td>Critical Time Intervention (CTI)</td><td>System transitions: jail, hospital, shelter exit</td><td>15–20 during transition phase</td></tr>
+        <tr><td>High</td><td>Assertive Community Treatment (ACT)</td><td>Highest acuity: SMI + SUD, frequent crisis</td><td>8–12 per team slot</td></tr>
+        <tr><td>High (Modified)</td><td>Flexible ACT (FACT)</td><td>Moderate-to-high acuity PSH residents</td><td>12–20 per team slot</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p>Caseloads above these benchmarks are not a staffing inefficiency — they are a quality-degradation signal. A case manager carrying 55 clients is delivering something qualitatively different from what the evidence evaluated, regardless of how the program is described in a grant application.</p>
+
+  <h3>5.3 High-Risk Transition Moments</h3>
+  <p>The highest-risk period in any housing journey is the transition moment — the period between institutional exit (jail, hospital, inpatient treatment, aging out of foster care) and stable housing, when natural supports are absent and professional supports have not yet been established. Critical Time Intervention (CTI) is the evidence-based model specifically designed for these transitions: maximum intensity in the first three months, deliberate transfer of support to natural network in months four through six, consolidation in months seven through nine.<sup class="fn-ref"><a href="#fn-sbp">[sbp]</a></sup></p>
+  <p>CTI is not widely implemented in the homelessness system despite its evidence base, its time-limited cost profile, and its applicability to the highest-risk transition moments the system encounters. Organizations operating discharge-to-homelessness pipelines from hospitals, jails, and inpatient treatment programs without a CTI-equivalent transition model are allowing the highest-risk moment to pass without the highest-intensity response.</p>
+
+  <h3>5.4 Behavioral Health Integration</h3>
+  <p>The dual-diagnosis population — co-occurring serious mental illness and substance use disorder — is the most medically complex subgroup in the chronic adult segment, and the population most systematically underserved by a behavioral health system built in silos. Mental health systems and substance use treatment systems bill separately, have different licensing requirements, and frequently hold incompatible treatment philosophies.</p>
+  <p>Integrated dual diagnosis treatment — addressing both conditions simultaneously by the same team, using a shared framework — is the SAMHSA-endorsed approach and the evidence-based standard of care for this population. The evidence specifically includes the requirement that it not demand sobriety as a precondition for engagement. A treatment model that excludes the actively using portion of a dual-diagnosis population from services is not serving the population the evidence evaluated — it is serving the portion that doesn't need the intensive model as much.</p>
+  <p>Medications for Opioid Use Disorder (MOUD) — buprenorphine, methadone, naltrexone — are FDA-approved treatments with strong evidence for reducing opioid use, overdose mortality, and healthcare utilization in opioid use disorder. PSH programs that do not facilitate, or that prohibit, access to MOUD are operating below the evidence-based standard of care for residents with OUD, regardless of their Housing First stance on other substances.</p>
+
+  <hr class="section-divider">
+
+  <h2>Part VI — Structural Conditions That Determine Outcomes</h2>
+
+  <h3>6.1 Housing Market Context</h3>
+  <p>No intervention operates independently of the housing market. Three market conditions are particularly consequential:</p>
+  <p><strong>Vacancy rate:</strong> RRH and HCV programs require that units exist at an accessible price point and that landlords are willing to accept program participants. Below approximately 3–4 percent vacancy rate, lease-up failure rates for RRH and vouchers increase substantially. Programs in very tight markets need dedicated landlord engagement infrastructure — not as an enhancement, but as a precondition for the primary intervention to function.</p>
+  <p><strong>Rent-to-income ratio:</strong> The affordability threshold relationship between homelessness and rent has been established by a series of studies using natural experiments and geographic variation.<sup class="fn-ref"><a href="#fn-f16">[f16]</a></sup> Markets where rents exceed approximately 32 percent of median income see disproportionate homelessness. Markets above this threshold have structural features — not program features — that produce continuous inflow into the homeless system regardless of how well-designed the response system is. This is important for realistic expectation-setting: a well-designed system in a 5 percent vacancy, 50 percent rent-to-income market will not produce the outcomes that the same system produces in a 7 percent vacancy, 28 percent rent-to-income market.</p>
+  <p><strong>Development cost and timeline:</strong> New PSH construction in high-cost markets runs $500,000–$700,000+ per unit. Development timelines of 3–7 years mean communities that do not have active, pre-approved development pipelines are always years behind their chronically homeless population's needs. Interim solutions — hotel-to-PSH conversion, scattered-site vouchers, modular construction — are necessary bridges, not permanent alternatives.</p>
+
+  <h3>6.2 Cross-Agency Funding Misalignment</h3>
+  <p>The most structurally important finding in the PSH cost-effectiveness literature is not that PSH saves money — it is <em>where</em> the savings appear.<sup class="fn-ref"><a href="#fn-f17">[f17]</a></sup> The cost offsets from PSH placement accrue to Medicaid (reduced inpatient and ED use), corrections (reduced incarceration), and shelter (reduced shelter nights). These are different budget lines from the capital and operating subsidies that fund PSH development. No current federal funding mechanism systematically routes those savings back into housing investment.</p>
+  <p>This is not a program design failure — it is a funding architecture failure. Communities that want to make the cross-system cost-offset case to funders must do the cross-agency cost analysis explicitly: track the same high-utilizing individuals through their Medicaid, corrections, and shelter records before and after PSH placement, and present the full cross-budget picture to the agencies whose budgets benefit. The data is available. Most communities have never assembled it.</p>
+
+  <h3>6.3 Racial Equity as a System Design Requirement</h3>
+  <p>Racial disparities in homelessness are structural in origin and appear throughout the system — in rates of entry, in assessment scores, in time to housing, in intervention fit, and in returns-to-homelessness.<sup class="fn-ref"><a href="#fn-f9">[f9]</a></sup> Program design that does not actively account for racial equity at each of these points will reproduce structural disadvantage through operational choices.</p>
+  <p>Specific points of intervention for equity:</p>
+  <ul>
+    <li><strong>Assessment tool validation:</strong> VI-SPDAT and successor tools should be locally validated for racial bias before use in prioritization. Disparate scoring produces disparate prioritization outcomes.</li>
+    <li><strong>Landlord screening criteria:</strong> Criminal history and credit screening criteria fall disproportionately on Black and Hispanic households; policies that remove or mitigate these criteria for program participants have equity impact independent of landlord engagement.</li>
+    <li><strong>Outcome tracking:</strong> All SPM metrics — time to housing, returns, exits — should be routinely disaggregated by race and ethnicity. A system that does not know its racial equity performance cannot improve it.</li>
+    <li><strong>Outreach design:</strong> Unsheltered populations of color are more likely to be missed by outreach that relies on known shelter-seeking patterns. Street outreach that reaches encampments, doubled-up households, and non-traditional sleeping locations is necessary to build a demographically complete by-name list.</li>
+  </ul>
+
+  <hr class="section-divider">
+
+  <h2>Part VII — Asks by Audience</h2>
+
+  <h3>For Program Designers</h3>
+  <p>The primary ask is a portfolio review: run your current program mix against the matching matrix in Part IV. For each program type in your organization's portfolio, ask:</p>
+  <ul>
+    <li>What population segment is this program actually serving (not the intended population — the actual enrollment)?</li>
+    <li>What is the acuity distribution of that population?</li>
+    <li>What is the income distribution?</li>
+    <li>Does the intervention match the quadrant?</li>
+    <li>What is the returns-to-homelessness rate at 12 and 24 months?</li>
+  </ul>
+  <p>If you do not have returns data, getting it is the prerequisite for any matching analysis. Programs that track only exits are measuring the easier half of the outcome. Returns are the quality signal.</p>
+  <p>The second ask is a service intensity audit: for each housing program, what is the actual staff-to-client ratio, and how does it compare to the evidence-based benchmark for that program type? Programs operating above the failure caseload threshold (ACT: &gt;15 per slot; ICM: &gt;30; standard CM: &gt;50; navigation: &gt;50) are delivering degraded service quality regardless of how the program is described in grant documentation.</p>
+  <p>The third ask is a Medicaid billing assessment: for each service component your programs deliver, what is the billing status? Case management, mental health services, SUD treatment, peer support, and care coordination are Medicaid-billable in most states. Organizations that have not built Medicaid billing capacity are subsidizing the public sector's service delivery obligation from grant revenues that should be used elsewhere.</p>
+
+  <h3>For CoC Leadership</h3>
+  <p>The primary ask is acuity-to-intervention matching as a standing coordinated entry metric. Not an annual audit — a monthly tracking number. What percentage of clients in the last 30 days were placed in the matched intervention for their acuity level? What percentage were placed in a mismatched intervention — and what was the mismatch type (high acuity in RRH; families without vouchers; youth in adult congregate shelter)?</p>
+  <p>The second ask is returns attribution by program type and intervention. SPM 2 (returns to homelessness) is reported as a community aggregate. Disaggregate it by program type and by population segment. The returns-to-homelessness signal tells you where the mismatches are occurring — not at the level of program quality, but at the level of intervention fit.</p>
+  <p>The third ask is a racial equity dashboard: every core metric — time to housing, intervention type, returns, exits — disaggregated by race and ethnicity and reviewed monthly by CoC leadership. A CoC that is not tracking its racial equity performance has no way to know whether its operational choices are reproducing the structural disparities that produced the population it serves.</p>
+  <p>The fourth ask is a by-name list for the prevention-eligible population. The at-risk population is invisible to the CoC system by design — PIT counts do not capture them and ESG eligibility criteria are narrow. A proactive effort to identify the highest-risk pre-homeless households through cross-system data partnerships (eviction court data, utility shutoff data, public hospital discharge data) is the operational foundation for a prevention strategy with the effect sizes the evidence describes.</p>
+
+  <h3>For Medicaid Agencies</h3>
+  <p>The primary ask is a waiver authority gap analysis. What housing-related services could Medicaid fund in this state under current CMS guidance — and what is it currently funding? CMS has issued significant guidance in 2021 and 2023 expanding its interpretation of Medicaid's ability to fund housing navigation, tenancy supports, and post-institutionalization housing services. Most states have not fully acted on these authorities. The gap between what is fundable and what is funded is the starting point for a Medicaid contribution to homelessness services that most state agencies have not fully explored.<sup class="fn-ref"><a href="#fn-f15">[f15]</a></sup></p>
+  <p>The second ask is a high-utilizer cohort analysis. Medicaid claims data for high-cost beneficiaries — the top 5–10 percent of beneficiaries by cost — typically includes a substantial proportion who are currently experiencing homelessness or who have experienced homelessness within the past 12 months. The cross-agency cost-offset evidence from PSH and from targeted prevention suggests these are the individuals whose housing intervention would produce the largest Medicaid cost reductions. Medicaid agencies that have not run this analysis do not know the scale of the opportunity.</p>
+  <p>The third ask is MOUD access in housing programs. Medications for Opioid Use Disorder are Medicaid-covered services in all states. Programs serving people with OUD that have not established prescribing pathways — through on-site medical staff, telehealth buprenorphine partnerships, or warm referrals to waivered prescribers — are not delivering the standard of care for their highest-risk residents. Medicaid agencies can support this through provider training, billing guidance, and technical assistance to programs that lack billing capacity.</p>
+
+  <hr class="section-divider">
+
+  <h2>Evidence Index</h2>
+
+  <p>This index maps each intervention and claim in the document to its evidence rating and primary source. The Common Ladder homelessness knowledge base is the authoritative source; where this document and the knowledge base diverge, the knowledge base is correct.</p>
+
+  <h3>Interventions Referenced</h3>
+  <div class="evidence-index">
+    <div class="table-wrap">
+      <table class="data-table">
+        <thead>
+          <tr><th>Intervention</th><th>Rating</th><th>Key Finding(s)</th><th>Primary Study / Source</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Permanent Supportive Housing (Housing First)</td><td><span class="status canonical">Canonical</span></td><td>F-2, F-3, F-4, F-5, F-6</td><td>At Home/Chez Soi RCT; Culhane 2002; multiple systematic reviews</td></tr>
+          <tr><td>Housing Choice Vouchers (families)</td><td><span class="status canonical">Canonical</span></td><td>F-8</td><td>HUD Family Options Study RCT, 12 communities, n=2,282</td></tr>
+          <tr><td>Emergency Rental Assistance (targeted)</td><td><span class="status canonical">Canonical</span></td><td>F-23</td><td>Evans, Sullivan &amp; Wallskog 2016 (Science); Phillips &amp; Sullivan 2025 (RESTUD)</td></tr>
+          <tr><td>Prevention Targeting (risk models)</td><td><span class="status canonical">Canonical</span></td><td>F-22</td><td>Shinn &amp; Greer 2013 (AJPH); Von Wachter et al. 2021 (LA County PTT)</td></tr>
+          <tr><td>Eviction Moratoria</td><td><span class="status canonical">Canonical</span></td><td>F-13</td><td>Leifheit et al. 2025 (JAMA Network Open)</td></tr>
+          <tr><td>Rapid Rehousing</td><td><span class="status provisional">Provisional</span></td><td>F-7</td><td>Multiple program evaluations; national RRH cohort studies</td></tr>
+          <tr><td>Housing-Focused Diversion</td><td><span class="status provisional">Provisional</span></td><td>F-18</td><td>Building Changes/Clarus 2023, n=13,876</td></tr>
+          <tr><td>Veterans Programs (HUD-VASH, SSVF)</td><td><span class="status provisional">Provisional</span></td><td>F-10</td><td>National AHAR data; community-level functional-zero reports</td></tr>
+          <tr><td>Youth-Specific Interventions</td><td><span class="status provisional">Provisional</span></td><td>F-11, F-19</td><td>Chapin Hall VoYC; Trevor Project 2022; Tubertini et al. 2025</td></tr>
+          <tr><td>Landlord Engagement Programs</td><td><span class="status provisional">Provisional</span></td><td>F-20</td><td>Tsai &amp; Solis 2024 (HUD Cityscape, 46 programs); no RCTs</td></tr>
+          <tr><td>Critical Time Intervention</td><td><span class="status provisional">Provisional</span></td><td>CTI</td><td>Susser et al. 1997; Herman et al. 2011; Springer 2022 systematic review</td></tr>
+          <tr><td>Assertive Community Treatment (ACT)</td><td><span class="status mixed">Canonical (in PSH context)</span></td><td>F-2</td><td>At Home/Chez Soi HF-ACT arm; multiple ACT RCTs</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <h3>Footnotes</h3>
+  <div class="evidence-index">
+    <div class="table-wrap">
+      <table class="data-table">
+        <thead>
+          <tr><th>Ref</th><th>Source &amp; Note</th><th>Status</th></tr>
+        </thead>
+        <tbody>
+          <tr id="fn-f1"><td><span class="fn-id">[f1]</span></td><td>2024 HUD Annual Homeless Assessment Report (AHAR); Point-in-Time count, January 2024.</td><td><span class="status canonical">Canonical</span></td></tr>
+          <tr id="fn-f2"><td><span class="fn-id">[f2]</span></td><td>At Home/Chez Soi trial: Goering et al. 2014, Psychiatric Services; Stergiopoulos et al. 2021, Journal of Urban Health (7-year follow-up).</td><td><span class="status canonical">Canonical</span></td></tr>
+          <tr id="fn-f3"><td><span class="fn-id">[f3]</span></td><td>PSH mental health and sobriety outcomes: Tsemberis et al. 2004; multiple replications. Housing stability is the reliable outcome; clinical recovery is not.</td><td><span class="status canonical">Canonical</span></td></tr>
+          <tr id="fn-f4"><td><span class="fn-id">[f4]</span></td><td>Culhane, Metraux &amp; Hadley 2002, New York City PSH cohort, n=4,679. 95% cost offset within 2 years across shelter, hospital, mental health, corrections.</td><td><span class="status canonical">Canonical</span></td></tr>
+          <tr id="fn-f6"><td><span class="fn-id">[f6]</span></td><td>Systematic review of Housing First studies: Aubry et al. 2020; multiple reviews.</td><td><span class="status canonical">Canonical</span></td></tr>
+          <tr id="fn-f7"><td><span class="fn-id">[f7]</span></td><td>RRH returns-to-homelessness: national program cohort data; HUD AHAR analysis by intervention type. Longitudinal data is program-reported rather than RCT.</td><td><span class="status provisional">Provisional</span></td></tr>
+          <tr id="fn-f8"><td><span class="fn-id">[f8]</span></td><td>HUD Family Options Study: Gubits et al. 2016 and 2018 follow-up. n=2,282 families, 12 communities; randomized design.</td><td><span class="status canonical">Canonical</span></td></tr>
+          <tr id="fn-f9"><td><span class="fn-id">[f9]</span></td><td>Racial disparities in homelessness: 2024 AHAR demographic data. 36.6% of homeless population is Black; 13% of general population is Black.</td><td><span class="status canonical">Canonical</span></td></tr>
+          <tr id="fn-f10"><td><span class="fn-id">[f10]</span></td><td>Veterans homelessness reduction 2009–2024: HUD AHAR series; functional zero community reports. Community-level outcomes largely vendor-reported; independent replication pending.</td><td><span class="status provisional">Provisional</span></td></tr>
+          <tr id="fn-f11"><td><span class="fn-id">[f11]</span></td><td>Youth homelessness: Chapin Hall Voices of Youth Count 2017–2020 survey, 22 counties. 2024 AHAR for PIT update. VoYC data dated; no large-scale RCT for youth interventions.</td><td><span class="status provisional">Provisional</span></td></tr>
+          <tr id="fn-f13"><td><span class="fn-id">[f13]</span></td><td>COVID eviction moratoria and ERA: Leifheit et al. 2025 JAMA Network Open; COVID-era ERA program data.</td><td><span class="status canonical">Canonical</span></td></tr>
+          <tr id="fn-f15"><td><span class="fn-id">[f15]</span></td><td>Medicaid housing-related services: CMS guidance 2021, 2023; CalAIM initiative. CalAIM rigorous evaluation pending 2027.</td><td><span class="status provisional">Provisional</span></td></tr>
+          <tr id="fn-f16"><td><span class="fn-id">[f16]</span></td><td>Housing affordability threshold and homelessness: Quigley &amp; Raphael 2001; O'Flaherty 1995; Glynn, Byrne &amp; Culhane 2021; multiple replications.</td><td><span class="status canonical">Canonical</span></td></tr>
+          <tr id="fn-f17"><td><span class="fn-id">[f17]</span></td><td>Cross-budget cost offset misalignment: Culhane 2002; Pitt, Donovan &amp; Culhane 2001; policy analysis.</td><td><span class="status canonical">Canonical</span></td></tr>
+          <tr id="fn-f18"><td><span class="fn-id">[f18]</span></td><td>Diversion evidence: Building Changes/Clarus Research 2023, n=13,876 families, Washington State. Large n but no RCT yet; Notre Dame/J-PAL RCT in progress.</td><td><span class="status provisional">Provisional</span></td></tr>
+          <tr id="fn-f19"><td><span class="fn-id">[f19]</span></td><td>LGBTQ+ youth homelessness: Chapin Hall VoYC 2017; Trevor Project 2022, n≈35,000; Tubertini et al. 2025 systematic review.</td><td><span class="status provisional">Provisional</span></td></tr>
+          <tr id="fn-f20"><td><span class="fn-id">[f20]</span></td><td>Landlord engagement programs: Tsai &amp; Solis 2024, HUD Cityscape, 46-program national scan. No RCTs.</td><td><span class="status provisional">Provisional</span></td></tr>
+          <tr id="fn-f22"><td><span class="fn-id">[f22]</span></td><td>Prevention targeting: Shinn &amp; Greer 2013 (AJPH, n=11,105, c-statistic &gt;0.75); Von Wachter et al. 2021 (LA County PTT, top decile = 5x general risk).</td><td><span class="status canonical">Canonical</span></td></tr>
+          <tr id="fn-f23"><td><span class="fn-id">[f23]</span></td><td>Emergency financial assistance: Evans, Sullivan &amp; Wallskog 2016 (Science, n=4,448, 76% reduction); Phillips &amp; Sullivan 2025 (Review of Economics and Statistics, RCT n≈500, 81% reduction, MVPF 2.47).</td><td><span class="status canonical">Canonical</span></td></tr>
+          <tr id="fn-p1"><td><span class="fn-id">[p1]</span></td><td>Acuity-to-intervention matching principle: practice consensus supported across findings F-2, F-7, F-8.</td><td><span class="status canonical">Canonical</span></td></tr>
+          <tr id="fn-p7"><td><span class="fn-id">[p7]</span></td><td>Returns-to-homelessness as key efficiency metric: HUD System Performance Measure 2; field practice consensus.</td><td><span class="status provisional">Provisional</span></td></tr>
+          <tr id="fn-sbp"><td><span class="fn-id">[sbp]</span></td><td>Critical Time Intervention: Susser et al. 1997; Herman et al. 2011, Psychiatric Services 62(7); Springer 2022 systematic review; SAMHSA EBP Resource Center.</td><td><span class="status canonical">Canonical</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <p style="margin-top:2rem"><a href="/learn/evidence/structural-root-causes/" style="color:var(--blue);font-weight:600">Read next: Structural Root Causes — Why Homelessness Persists as a Systems Problem &rarr;</a></p>
+
+  <a href="/learn/evidence/" class="back-link">← Back to Evidence &amp; policy</a>
+
+</main>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer__grid">
+      <div class="footer__brand">
+        <h3>Common Ladder</h3>
+        <p>The civic resource platform connecting people experiencing homelessness with every service in your community.</p>
+      </div>
+      <div>
+        <h4>Find help</h4>
+        <ul>
+          <li><a href="/find.html?cat=shelter">Shelter</a></li>
+          <li><a href="/find.html?cat=food">Food</a></li>
+          <li><a href="/find.html?cat=legal">Legal</a></li>
+          <li><a href="/help/">All categories</a></li>
+          <li><a href="/static-tools/">Local navigators</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>For providers</h4>
+        <ul>
+          <li><a href="/providers.html">Tools &amp; referrals</a></li>
+          <li><a href="/providers.html#case-manager-guide">Case manager guide</a></li>
+          <li><a href="/data-reports.html">Data &amp; reports</a></li>
+          <li><a href="/learn/">Four learning pathways</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>About</h4>
+        <ul>
+          <li><a href="/about.html">Our mission</a></li>
+          <li><a href="/about.html#methodology">Methodology</a></li>
+          <li><a href="/about.html#team">Team</a></li>
+          <li><a href="/brand/visual-guidelines.html">Brand guidelines</a></li>
+          <li><a href="/contact.html">Contact</a></li>
+          <li><a href="/privacy.html">Privacy</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer__transparency">
+      <strong>Transparency:</strong> Common Ladder is an independent civic project. We do not sell user data, run ads, or accept payment from listed resources.
+    </div>
+    <div class="footer__bottom">
+      <span>&copy; 2026 Common Ladder. Free to use, always.</span>
+      <span><time datetime="2026-06-26">Last updated June 26, 2026</time></span>
+    </div>
+  </div>
+</footer>
+
+<script data-id="cl-card-click">
+(function(){
+  document.querySelectorAll('.card, .post-card:not(.post-card--linked)').forEach(function(el){
+    var a = el.querySelector('a[href]');
+    if(!a) return;
+    el.addEventListener('click', function(e){
+      if(e.target.tagName==='A'||e.target.closest('a')) return;
+      window.location.href = a.href;
+    });
+  });
+})();
+</script>
+</body>
+</html>
