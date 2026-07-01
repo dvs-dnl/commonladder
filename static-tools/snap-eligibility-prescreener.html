@@ -1,0 +1,758 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-3YXK0RL6XV"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-3YXK0RL6XV');
+</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SNAP Pre-Screener — See If You May Qualify for Food Benefits · Common Ladder</title>
+<meta name="description" content="A quick, private pre-screener for SNAP food benefits in Arizona. Answer 4 questions to see whether you likely qualify and the fastest way to apply. No account, no personal information stored.">
+<link rel="canonical" href="https://commonladder.org/static-tools/snap-eligibility-prescreener.html">
+<link rel="stylesheet" href="../style.css">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="alternate icon" type="image/png" href="/favicon-32.png">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<noscript><style>.nav__links{display:flex!important;flex-wrap:wrap!important;}.nav__toggle{display:none!important;}</style></noscript>
+<style>
+/* ── Screener shell ───────────────────────────────────────────────── */
+.screener-wrap {
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 0 var(--gap) 4rem;
+}
+.screener-intro {
+  text-align: center;
+  padding: 2.5rem 0 2rem;
+}
+.screener-intro h1 {
+  font-size: clamp(1.6rem, 4vw, 2.2rem);
+  margin-bottom: .75rem;
+}
+.screener-intro p {
+  color: var(--gray);
+  font-size: .95rem;
+  margin-bottom: .4rem;
+}
+.screener-trust {
+  display: flex;
+  justify-content: center;
+  gap: 1.25rem;
+  flex-wrap: wrap;
+  margin-top: 1rem;
+  font-size: .8rem;
+  color: var(--gray);
+}
+.screener-trust span::before { content: "✓ "; color: var(--sage); }
+
+/* ── Progress ────────────────────────────────────────────────────── */
+.progress-wrap { margin-bottom: 2rem; }
+.progress-label {
+  display: flex;
+  justify-content: space-between;
+  font-size: .78rem;
+  color: var(--gray);
+  margin-bottom: .4rem;
+}
+.progress-bar {
+  height: 6px;
+  background: var(--light);
+  border-radius: 3px;
+  overflow: hidden;
+}
+.progress-fill {
+  height: 100%;
+  background: var(--blue);
+  border-radius: 3px;
+  transition: width .3s ease;
+}
+
+/* ── Question card ───────────────────────────────────────────────── */
+.q-card {
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: var(--shadow);
+  padding: 2rem 1.75rem;
+  display: none;
+}
+.q-card.active { display: block; }
+.q-card h2 {
+  font-size: 1.2rem;
+  color: var(--blue);
+  margin-bottom: .5rem;
+  line-height: 1.3;
+}
+.q-card .q-note {
+  font-size: .85rem;
+  color: var(--gray);
+  margin-bottom: 1.5rem;
+  line-height: 1.5;
+}
+
+/* ── Choice buttons ──────────────────────────────────────────────── */
+.choices { display: flex; flex-direction: column; gap: .6rem; }
+.choice-btn {
+  display: flex;
+  align-items: center;
+  gap: .75rem;
+  padding: .85rem 1rem;
+  border: 2px solid #e5e7eb;
+  border-radius: 8px;
+  background: #fff;
+  color: var(--dark);
+  font-family: inherit;
+  font-size: .95rem;
+  cursor: pointer;
+  text-align: left;
+  transition: border-color .15s, background .15s;
+  min-height: 52px;
+}
+.choice-btn:hover { border-color: var(--blue); background: #f0f4fb; }
+.choice-btn.selected { border-color: var(--blue); background: #e8eef8; }
+.choice-btn .choice-icon { font-size: 1.2rem; flex-shrink: 0; width: 28px; text-align: center; }
+.choice-btn.skip-btn { border-style: dashed; color: var(--gray); font-size: .88rem; }
+.choice-btn.skip-btn:hover { border-color: var(--gray); background: var(--light); color: var(--dark); }
+
+/* ── Household size grid ─────────────────────────────────────────── */
+.size-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: .6rem; }
+.size-btn {
+  border: 2px solid #e5e7eb;
+  border-radius: 8px;
+  background: #fff;
+  color: var(--dark);
+  font-family: inherit;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  padding: .9rem 0;
+  min-height: 56px;
+  transition: border-color .15s, background .15s;
+}
+.size-btn:hover { border-color: var(--blue); background: #f0f4fb; }
+.size-btn.selected { border-color: var(--blue); background: #e8eef8; }
+
+/* ── Income input ────────────────────────────────────────────────── */
+.income-field { position: relative; margin-bottom: .75rem; }
+.income-field .dollar {
+  position: absolute; left: 1rem; top: 50%; transform: translateY(-50%);
+  color: var(--gray); font-size: 1.1rem;
+}
+.income-input {
+  width: 100%;
+  padding: .85rem 1rem .85rem 2rem;
+  border: 2px solid #e5e7eb;
+  border-radius: 8px;
+  font-family: inherit;
+  font-size: 1.1rem;
+  color: var(--dark);
+  transition: border-color .15s;
+  box-sizing: border-box;
+}
+.income-input:focus { outline: none; border-color: var(--blue); }
+.income-hint { font-size: .82rem; color: var(--gray); margin-top: .5rem; }
+
+/* ── Nav buttons ─────────────────────────────────────────────────── */
+.q-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 1.5rem;
+  gap: 1rem;
+}
+.btn-back {
+  background: none;
+  border: none;
+  color: var(--gray);
+  font-family: inherit;
+  font-size: .9rem;
+  cursor: pointer;
+  padding: .5rem 0;
+}
+.btn-back:hover { color: var(--blue); }
+.btn-next {
+  background: var(--blue);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: .75rem 1.5rem;
+  font-family: inherit;
+  font-size: .95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background .15s;
+  min-height: 48px;
+}
+.btn-next:hover { background: #162f54; }
+.btn-next:disabled { background: #9ca3af; cursor: not-allowed; }
+
+/* ── Results ────────────────────────────────────────────────────── */
+#results { display: none; }
+.results-header {
+  text-align: center;
+  padding: 2rem 0 1.5rem;
+}
+.results-header h2 {
+  font-size: clamp(1.4rem, 3.5vw, 2rem);
+  color: var(--blue);
+  margin-bottom: .5rem;
+}
+.results-header p { color: var(--gray); font-size: .95rem; }
+
+/* Verdict banner */
+.verdict {
+  border-radius: 12px;
+  padding: 1.5rem 1.5rem;
+  margin-bottom: 1.5rem;
+  border: 2px solid;
+}
+.verdict h3 { font-size: 1.25rem; margin-bottom: .4rem; }
+.verdict p { font-size: .92rem; line-height: 1.55; margin: 0; }
+.verdict.yes    { background: #e6f5f0; border-color: var(--sage); }
+.verdict.yes h3 { color: #2f6d5a; }
+.verdict.maybe    { background: #fbf1e0; border-color: #b36a00; }
+.verdict.maybe h3 { color: #b36a00; }
+.verdict.info    { background: #eaf0fa; border-color: var(--blue); }
+.verdict.info h3 { color: var(--blue); }
+
+/* Estimate box */
+.estimate {
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: var(--shadow);
+  padding: 1.25rem 1.25rem;
+  margin-bottom: 1.5rem;
+}
+.estimate h4 { color: var(--blue); font-size: .8rem; text-transform: uppercase; letter-spacing: .04em; margin-bottom: .75rem; }
+.estimate .est-row { display: flex; justify-content: space-between; gap: 1rem; padding: .45rem 0; border-bottom: 1px solid #f0f0ee; font-size: .9rem; }
+.estimate .est-row:last-child { border-bottom: none; }
+.estimate .est-row span:last-child { font-weight: 600; color: var(--blue); text-align: right; }
+
+/* Apply block */
+.apply-block {
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: var(--shadow);
+  border-left: 4px solid var(--amber);
+  padding: 1.25rem 1.25rem;
+  margin-bottom: 1.5rem;
+}
+.apply-block h4 { color: var(--blue); font-size: 1rem; margin-bottom: .6rem; }
+.apply-block p { font-size: .9rem; line-height: 1.6; color: var(--dark); margin-bottom: .75rem; }
+.apply-block ul { margin: 0 0 .75rem 1.1rem; padding: 0; }
+.apply-block li { font-size: .9rem; line-height: 1.55; margin-bottom: .35rem; color: var(--dark); }
+.apply-block strong { color: var(--blue); }
+.apply-btn {
+  display: inline-block;
+  background: var(--blue);
+  color: #fff;
+  border-radius: 6px;
+  padding: .6rem 1.1rem;
+  font-size: .88rem;
+  font-weight: 600;
+  text-decoration: none;
+  margin-top: .5rem;
+  margin-right: .5rem;
+  margin-bottom: .25rem;
+  transition: background .15s;
+}
+.apply-btn:hover { background: #162f54; text-decoration: none; }
+.apply-btn.secondary { background: #fff; color: var(--blue); border: 2px solid var(--blue); }
+.apply-btn.secondary:hover { background: #e8eef8; }
+
+.results-footer {
+  background: var(--light);
+  border-radius: 10px;
+  padding: 1.5rem;
+  margin-top: 1rem;
+  text-align: center;
+}
+.results-footer h3 { color: var(--blue); margin-bottom: .5rem; font-size: 1rem; }
+.results-footer p { font-size: .88rem; color: var(--gray); margin-bottom: 1rem; }
+
+.restart-btn {
+  background: none;
+  border: 2px solid var(--blue);
+  color: var(--blue);
+  border-radius: 8px;
+  padding: .6rem 1.25rem;
+  font-family: inherit;
+  font-size: .9rem;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background .15s;
+}
+.restart-btn:hover { background: #e8eef8; }
+
+/* ── Breadcrumb ──────────────────────────────────────────────────── */
+.breadcrumb { background: var(--light); padding: .65rem 0; border-bottom: 1px solid #dde3ec; font-size: .82rem; }
+.breadcrumb ol { display: flex; flex-wrap: wrap; gap: .25rem .35rem; list-style: none; max-width: var(--max); margin: 0 auto; padding: 0 var(--gap); align-items: center; }
+.breadcrumb li+li::before { content: "›"; color: var(--gray); margin-right: .35rem; }
+.breadcrumb a { color: var(--blue); }
+.breadcrumb [aria-current] { color: var(--gray); }
+
+@media (max-width: 480px) {
+  .q-card { padding: 1.5rem 1.1rem; }
+  .size-grid { grid-template-columns: repeat(4, 1fr); }
+}
+</style>
+
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Common Ladder">
+  <meta property="og:title" content="SNAP Pre-Screener — See If You May Qualify for Food Benefits · Common Ladder">
+  <meta property="og:description" content="A quick, private pre-screener for SNAP food benefits in Arizona. Answer 4 questions to see whether you likely qualify and the fastest way to apply.">
+  <meta property="og:url" content="https://commonladder.org/static-tools/snap-eligibility-prescreener.html">
+  <meta property="og:image" content="https://commonladder.org/images/og-default.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="SNAP Pre-Screener — See If You May Qualify for Food Benefits · Common Ladder">
+  <meta name="twitter:description" content="A quick, private pre-screener for SNAP food benefits in Arizona. Answer 4 questions to see whether you likely qualify and the fastest way to apply.">
+  <meta name="twitter:image" content="https://commonladder.org/images/og-default.png">
+</head>
+<body>
+
+<a href="#main" class="skip-link">Skip to main content</a>
+
+<div class="crisis-bar" role="region" aria-label="Crisis help">
+  <strong>Need help right now?</strong>
+  <a href="tel:211">Call 211</a><span class="crisis-bar__sep">·</span>
+  <a href="sms:741741?body=HOME">Text HOME to 741741</a><span class="crisis-bar__sep">·</span>
+  <a href="tel:988">988 Suicide &amp; Crisis</a>
+</div>
+
+<nav class="nav" aria-label="Primary">
+  <div class="nav__inner">
+    <a href="/" class="nav__logo" aria-label="Common Ladder home">
+      <svg width="28" height="28" viewBox="0 0 247 247" fill="none" aria-hidden="true"><g transform="translate(-12.00,-16.00)"> <path fill="#E8911A" fill-opacity="1" fill-rule="evenodd" d="M 254.00,51.00 L 234.00,85.64 L 194.00,85.64 L 174.00,51.00 L 194.00,16.36 L 234.00,16.36 Z M 231.50,51.00 L 222.75,66.16 L 205.25,66.16 L 196.50,51.00 L 205.25,35.84 L 222.75,35.84 Z"/> <path fill="#9FBCBA" fill-opacity="1" fill-rule="evenodd" d="M 148.00,118.00 L 128.00,152.64 L 88.00,152.64 L 68.00,118.00 L 88.00,83.36 L 128.00,83.36 Z M 125.50,118.00 L 116.75,133.16 L 99.25,133.16 L 90.50,118.00 L 99.25,102.84 L 116.75,102.84 Z"/> <path fill="#9FBCBA" fill-opacity="1" fill-rule="evenodd" d="M 259.00,118.00 L 239.00,152.64 L 199.00,152.64 L 179.00,118.00 L 199.00,83.36 L 239.00,83.36 Z M 236.50,118.00 L 227.75,133.16 L 210.25,133.16 L 201.50,118.00 L 210.25,102.84 L 227.75,102.84 Z"/> <path fill="#FFFFFF" fill-opacity="0.94" fill-rule="evenodd" d="M 207.00,164.00 L 187.00,198.64 L 147.00,198.64 L 127.00,164.00 L 147.00,129.36 L 187.00,129.36 Z M 184.50,164.00 L 175.75,179.16 L 158.25,179.16 L 149.50,164.00 L 158.25,148.84 L 175.75,148.84 Z"/> <path fill="#FFFFFF" fill-opacity="0.94" fill-rule="evenodd" d="M 92.00,164.00 L 72.00,198.64 L 32.00,198.64 L 12.00,164.00 L 32.00,129.36 L 72.00,129.36 Z M 69.50,164.00 L 60.75,179.16 L 43.25,179.16 L 34.50,164.00 L 43.25,148.84 L 60.75,148.84 Z"/> <path fill="#FFFFFF" fill-opacity="0.94" fill-rule="evenodd" d="M 161.00,228.00 L 141.00,262.64 L 101.00,262.64 L 81.00,228.00 L 101.00,193.36 L 141.00,193.36 Z M 138.50,228.00 L 129.75,243.16 L 112.25,243.16 L 103.50,228.00 L 112.25,212.84 L 129.75,212.84 Z"/> </g></svg>
+      <span class="nav__wordmark">common<span>ladder</span></span>
+    </a>
+    <button class="nav__toggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="primary-nav" onclick="this.setAttribute('aria-expanded', document.getElementById('primary-nav').classList.toggle('open') ? 'true' : 'false')">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav__links" id="primary-nav">
+            <li><a href="/providers.html">For providers</a></li>
+      <li><a href="/learn/">Learn</a></li>
+      <li><a href="/about.html">About</a></li>
+      <li><a href="/find.html" class="nav__cta">Find resources</a></li>
+      <li><a href="/static-tools/my-ladder.html" class="nav__cta nav__cta--ladder">My Ladder</a></li>
+      <li><a href="https://www.weather.gov/" rel="noreferrer" class="nav__exit" onclick="event.preventDefault();window.location.replace('https://www.weather.gov/')">Leave page</a></li>
+    </ul>
+  </div>
+</nav>
+
+<nav class="breadcrumb" aria-label="Breadcrumb">
+  <ol>
+    <li><a href="/">Home</a></li>
+    <li><a href="/static-tools/">Tools</a></li>
+    <li aria-current="page">SNAP Pre-Screener</li>
+  </ol>
+</nav>
+
+<main id="main">
+<div class="screener-wrap">
+
+  <!-- Intro -->
+  <div class="screener-intro">
+    <h1>Do you qualify for SNAP food benefits?</h1>
+    <p>Four quick questions. About 1 minute. No account required.</p>
+    <p>Answer what you can — nothing is required, and nothing you type leaves your device.</p>
+    <div class="screener-trust">
+      <span>Your answers stay on your device</span>
+      <span>No signup required</span>
+      <span>Free to use</span>
+    </div>
+    <p class="q-note" style="margin-top:.75rem;">This is a pre-screening tool, not an application or an eligibility decision — only Arizona DES can decide. Dollar figures are the federal FY 2026 limits (in effect Oct 1, 2025–Sep 30, 2026) and change every year. When in doubt, applying is free — apply anyway or call 211.</p>
+  </div>
+
+  <!-- Progress -->
+  <div class="progress-wrap" id="progress-wrap" style="display:none">
+    <div class="progress-label">
+      <span id="progress-text">Step 1 of 4</span>
+      <span id="progress-pct">25%</span>
+    </div>
+    <div class="progress-bar"><div class="progress-fill" id="progress-fill" style="width:25%"></div></div>
+  </div>
+
+  <!-- Q1: State -->
+  <div class="q-card active" id="q1" data-q="1">
+    <h2>Do you live in Arizona?</h2>
+    <p class="q-note">SNAP is a federal program, but each state sets some of its own rules and income limits. This tool uses Arizona's limits. If you're elsewhere, we'll point you to your state.</p>
+    <div class="choices">
+      <button class="choice-btn" data-val="az" onclick="select(this,'q1')">
+        <span class="choice-icon">🌵</span> Yes, I live in Arizona
+      </button>
+      <button class="choice-btn" data-val="other" onclick="select(this,'q1')">
+        <span class="choice-icon">🗺️</span> No — I live in another state
+      </button>
+    </div>
+    <div class="q-nav">
+      <span></span>
+      <button class="btn-next" onclick="next('q1','q2')" id="next-q1" disabled>Next →</button>
+    </div>
+  </div>
+
+  <!-- Q2: Household size -->
+  <div class="q-card" id="q2" data-q="2">
+    <h2>How many people are in your household?</h2>
+    <p class="q-note">Count everyone who lives with you <strong>and</strong> buys and cooks food together — including yourself and any children. Roommates who buy their own food don't count.</p>
+    <div class="size-grid" id="size-grid">
+      <button class="size-btn" data-val="1" onclick="selectSize(this,1)">1</button>
+      <button class="size-btn" data-val="2" onclick="selectSize(this,2)">2</button>
+      <button class="size-btn" data-val="3" onclick="selectSize(this,3)">3</button>
+      <button class="size-btn" data-val="4" onclick="selectSize(this,4)">4</button>
+      <button class="size-btn" data-val="5" onclick="selectSize(this,5)">5</button>
+      <button class="size-btn" data-val="6" onclick="selectSize(this,6)">6</button>
+      <button class="size-btn" data-val="7" onclick="selectSize(this,7)">7</button>
+      <button class="size-btn" data-val="8" onclick="selectSize(this,8)">8+</button>
+    </div>
+    <div class="q-nav">
+      <button class="btn-back" onclick="back('q2','q1')">← Back</button>
+      <button class="btn-next" onclick="next('q2','q3')" id="next-q2" disabled>Next →</button>
+    </div>
+  </div>
+
+  <!-- Q3: Categorical / special household -->
+  <div class="q-card" id="q3" data-q="3">
+    <h2>Does anyone in your household…</h2>
+    <p class="q-note">Select all that apply. Any of these can help you qualify — or skip the income test entirely. If none apply, choose "None of these."</p>
+    <div class="choices">
+      <button class="choice-btn multi" data-val="categorical" onclick="multiSelect(this,'q3')">
+        <span class="choice-icon">✅</span> Already gets SSI, TANF / Cash Assistance, or another cash-aid program
+      </button>
+      <button class="choice-btn multi" data-val="elderly_disabled" onclick="multiSelect(this,'q3')">
+        <span class="choice-icon">🧓</span> Is age 60 or older, or has a disability
+      </button>
+      <button class="choice-btn multi" data-val="none" onclick="multiSelect(this,'q3')">
+        <span class="choice-icon">—</span> None of these
+      </button>
+    </div>
+    <div class="q-nav">
+      <button class="btn-back" onclick="back('q3','q2')">← Back</button>
+      <button class="btn-next" onclick="next('q3','q4')" id="next-q3" disabled>Next →</button>
+    </div>
+  </div>
+
+  <!-- Q4: Income -->
+  <div class="q-card" id="q4" data-q="4">
+    <h2>Roughly, how much does your household earn before taxes each month?</h2>
+    <p class="q-note">Add up everyone's income before anything is taken out: wages, self-employment, unemployment, child support, Social Security, disability. A rough number is fine. If you have no income right now, enter 0.</p>
+    <div class="income-field">
+      <span class="dollar">$</span>
+      <input type="text" id="income-input" class="income-input" placeholder="e.g. 1200" inputmode="numeric" autocomplete="off" aria-label="Monthly household income before taxes" oninput="onIncomeInput()">
+    </div>
+    <p class="income-hint">Total monthly income, before deductions · a rough estimate is fine</p>
+    <div class="choices" style="margin-top:.75rem;">
+      <button class="choice-btn skip-btn" data-val="zero" onclick="setIncomeZero()">
+        <span class="choice-icon">$</span> We have no income right now
+      </button>
+    </div>
+    <div class="q-nav">
+      <button class="btn-back" onclick="back('q4','q3')">← Back</button>
+      <button class="btn-next" onclick="showResults()" id="next-q4" disabled>See my result →</button>
+    </div>
+  </div>
+
+  <!-- Results -->
+  <div id="results">
+    <div class="results-header">
+      <h2>Your SNAP pre-screening result</h2>
+      <p id="results-intro">Based on what you told us.</p>
+    </div>
+    <div id="verdict-slot"></div>
+    <div id="estimate-slot"></div>
+    <div id="apply-slot"></div>
+    <div class="results-footer">
+      <p class="q-note" id="results-disclaimer">Pre-screening estimate only — not an eligibility decision. Figures are the federal FY 2026 limits (Oct 1, 2025–Sep 30, 2026) and change each October. Deductions for rent, utilities, dependent care, and medical costs can change the outcome. Only Arizona DES can determine eligibility. Confirm before relying on this.</p>
+      <h3>Want a person to help?</h3>
+      <p>Call <strong>211</strong> — Arizona's free helpline can walk you through the SNAP application and check other benefits at the same time.</p>
+      <a href="tel:211" class="apply-btn">Call 2-1-1 free</a>
+      <a href="https://211arizona.org" target="_blank" rel="noopener" class="apply-btn secondary">211arizona.org →</a>
+      <br><br>
+      <button class="restart-btn" onclick="restart()">Start over</button>
+    </div>
+  </div>
+
+</div><!-- .screener-wrap -->
+</main>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer__grid">
+      <div class="footer__brand">
+        <h3>Common Ladder</h3>
+        <p>The civic resource platform connecting people experiencing homelessness with every service in your community.</p>
+      </div>
+      <div>
+        <h4>Find help</h4>
+        <ul>
+          <li><a href="/find.html?cat=shelter">Shelter</a></li>
+          <li><a href="/find.html?cat=food">Food</a></li>
+          <li><a href="/find.html?cat=legal">Legal</a></li>
+          <li><a href="/help/">All categories</a></li>
+          <li><a href="/static-tools/my-ladder.html">My Ladder planner</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>For providers</h4>
+        <ul>
+          <li><a href="/providers.html">Tools &amp; referrals</a></li>
+          <li><a href="/providers.html#case-manager-guide">Case manager guide</a></li>
+          <li><a href="/data-reports.html">Data &amp; reports</a></li>
+          <li><a href="/learn/">Four learning pathways</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>About</h4>
+        <ul>
+          <li><a href="/about.html">Our mission</a></li>
+          <li><a href="/about.html#methodology">Methodology</a></li>
+          <li><a href="/about.html#team">Team</a></li>
+          <li><a href="/brand/visual-guidelines.html">Brand guidelines</a></li>
+          <li><a href="/contact.html">Contact</a></li>
+          <li><a href="/privacy.html">Privacy</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer__transparency">
+      <strong>Transparency:</strong> Common Ladder is an independent civic project. We do not sell user data, run ads, or accept payment from listed resources.
+    </div>
+    <div class="footer__bottom">
+      <span>&copy; 2026 Common Ladder. Free to use, always.</span>
+      <span><time datetime="2026-06-30">Last updated June 30, 2026</time></span>
+    </div>
+  </div>
+</footer>
+
+<script>
+// ── FY 2026 SNAP figures (effective Oct 1, 2025 – Sep 30, 2026) ──────────────
+// Arizona gross income test = 185% of the federal poverty level (Broad-Based
+// Categorical Eligibility). Net income test = 100% FPL. Max allotment = federal.
+// Sources: USDA FNS FY2026 COLA; Arizona DES Nutrition Assistance (des.az.gov/na).
+var GROSS_185 = { 1:2412, 2:3261, 3:4108, 4:4956, 5:5805, 6:6652, 7:7499, 8:8346 };
+var NET_100   = { 1:1305, 2:1763, 3:2221, 4:2680, 5:3138, 6:3596, 7:4054, 8:4512 };
+var MAX_BEN   = { 1:298,  2:546,  3:785,  4:994,  5:1181, 6:1419, 7:1567, 8:1792 };
+var ADD_GROSS = 847, ADD_NET = 458, ADD_BEN = 224; // per person beyond 8
+
+function grossLimit(n){ return n <= 8 ? GROSS_185[n] : GROSS_185[8] + (n-8)*ADD_GROSS; }
+function netLimit(n){ return n <= 8 ? NET_100[n]  : NET_100[8]  + (n-8)*ADD_NET; }
+function maxBenefit(n){ return n <= 8 ? MAX_BEN[n] : MAX_BEN[8]  + (n-8)*ADD_BEN; }
+function money(x){ return '$' + x.toLocaleString('en-US'); }
+
+// ── State ────────────────────────────────────────────────────────────────────
+var answers = { q1: null, size: null, income: null };
+var multiAnswers = { q3: [] };
+var STEPS = ['q1','q2','q3','q4'];
+var TOTAL = STEPS.length;
+
+// ── Selection helpers ────────────────────────────────────────────────────────
+function select(btn, qId) {
+  var card = document.getElementById(qId);
+  card.querySelectorAll('.choice-btn:not(.multi)').forEach(function(b){ b.classList.remove('selected'); });
+  btn.classList.add('selected');
+  answers[qId] = btn.dataset.val;
+  document.getElementById('next-' + qId).disabled = false;
+}
+
+function selectSize(btn, n) {
+  document.querySelectorAll('#size-grid .size-btn').forEach(function(b){ b.classList.remove('selected'); });
+  btn.classList.add('selected');
+  answers.size = n;
+  document.getElementById('next-q2').disabled = false;
+}
+
+function multiSelect(btn, qId) {
+  var val = btn.dataset.val;
+  if (val === 'none') {
+    document.getElementById(qId).querySelectorAll('.choice-btn.multi').forEach(function(b){ b.classList.remove('selected'); });
+    multiAnswers[qId] = ['none'];
+    btn.classList.add('selected');
+  } else {
+    multiAnswers[qId] = multiAnswers[qId].filter(function(v){ return v !== 'none'; });
+    document.getElementById(qId).querySelector('[data-val="none"]').classList.remove('selected');
+    if (btn.classList.contains('selected')) {
+      btn.classList.remove('selected');
+      multiAnswers[qId] = multiAnswers[qId].filter(function(v){ return v !== val; });
+    } else {
+      btn.classList.add('selected');
+      multiAnswers[qId].push(val);
+    }
+  }
+  document.getElementById('next-' + qId).disabled = multiAnswers[qId].length === 0;
+}
+
+function onIncomeInput() {
+  var el = document.getElementById('income-input');
+  el.value = el.value.replace(/[^0-9]/g, '');
+  document.querySelector('#q4 .skip-btn').classList.remove('selected');
+  document.getElementById('next-q4').disabled = el.value === '';
+}
+
+function setIncomeZero() {
+  var el = document.getElementById('income-input');
+  el.value = '0';
+  document.querySelector('#q4 .skip-btn').classList.add('selected');
+  document.getElementById('next-q4').disabled = false;
+}
+
+// ── Navigation ───────────────────────────────────────────────────────────────
+function stepIndex(qId){ return STEPS.indexOf(qId); }
+
+function next(fromId, toId) {
+  document.getElementById(fromId).classList.remove('active');
+  document.getElementById(toId).classList.add('active');
+  updateProgress(stepIndex(toId));
+  window.scrollTo({ top: document.getElementById('progress-wrap').offsetTop - 20, behavior: 'smooth' });
+}
+function back(fromId, toId) {
+  document.getElementById(fromId).classList.remove('active');
+  document.getElementById(toId).classList.add('active');
+  updateProgress(stepIndex(toId));
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+function updateProgress(idx) {
+  var pct = Math.round(((idx + 1) / TOTAL) * 100);
+  document.getElementById('progress-wrap').style.display = 'block';
+  document.getElementById('progress-text').textContent = 'Step ' + (idx + 1) + ' of ' + TOTAL;
+  document.getElementById('progress-pct').textContent = pct + '%';
+  document.getElementById('progress-fill').style.width = pct + '%';
+}
+
+function restart() {
+  answers = { q1: null, size: null, income: null };
+  multiAnswers = { q3: [] };
+  document.querySelectorAll('.choice-btn, .size-btn').forEach(function(b){ b.classList.remove('selected'); });
+  document.querySelectorAll('.btn-next').forEach(function(b){ b.disabled = true; });
+  document.getElementById('income-input').value = '';
+  document.getElementById('results').style.display = 'none';
+  ['q2','q3','q4'].forEach(function(id){ document.getElementById(id).classList.remove('active'); });
+  document.getElementById('q1').classList.add('active');
+  document.getElementById('progress-wrap').style.display = 'none';
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+// ── Result logic ─────────────────────────────────────────────────────────────
+function showResults() {
+  document.getElementById('q4').classList.remove('active');
+  document.getElementById('progress-wrap').style.display = 'none';
+
+  var inAZ        = answers.q1 === 'az';
+  var size        = answers.size || 1;
+  var flags       = multiAnswers.q3 || [];
+  var categorical = flags.indexOf('categorical') > -1;
+  var elderlyDis  = flags.indexOf('elderly_disabled') > -1;
+  var incomeRaw   = document.getElementById('income-input').value;
+  var income      = incomeRaw === '' ? null : parseInt(incomeRaw, 10);
+
+  var verdictSlot  = document.getElementById('verdict-slot');
+  var estimateSlot = document.getElementById('estimate-slot');
+  var applySlot    = document.getElementById('apply-slot');
+  var sizeLabel    = size >= 8 ? '8 or more' : String(size);
+
+  // Non-Arizona path: don't apply AZ limits as a decision.
+  if (!inAZ) {
+    document.getElementById('results-intro').textContent = 'SNAP is run by every state — here is how to check yours.';
+    verdictSlot.innerHTML =
+      '<div class="verdict info"><h3>SNAP exists in every state</h3>' +
+      '<p>Income limits and how you apply vary from state to state, so we can\'t give you an Arizona-based answer. The good news: the program is the same everywhere, and applying is always free.</p></div>';
+    estimateSlot.innerHTML = '';
+    applySlot.innerHTML =
+      '<div class="apply-block"><h4>Find your state\'s SNAP program</h4>' +
+      '<p>Use the official USDA state directory to find your state\'s application site and phone number:</p>' +
+      '<a href="https://www.fns.usda.gov/snap/state-directory" target="_blank" rel="noopener noreferrer" class="apply-btn">USDA state SNAP directory →</a>' +
+      '<a href="tel:211" class="apply-btn secondary">Call 211 for local help</a>' +
+      '<p style="margin-top:.75rem;">Dialing <strong>211</strong> from any US phone connects you to a local helpline that can point you to food benefits and food pantries in your area today.</p></div>';
+    finishRender('non_az', size, income);
+    return;
+  }
+
+  document.getElementById('results-intro').textContent = 'For a household of ' + sizeLabel + ' in Arizona.';
+
+  var gLimit = grossLimit(size);
+  var nLimit = netLimit(size);
+  var maxB   = maxBenefit(size);
+
+  // Estimate box (shown for all AZ results)
+  estimateSlot.innerHTML =
+    '<div class="estimate"><h4>Arizona SNAP limits — household of ' + sizeLabel + ' (FY 2026)</h4>' +
+    '<div class="est-row"><span>Gross monthly income limit (185% of poverty)</span><span>' + money(gLimit) + '/mo</span></div>' +
+    '<div class="est-row"><span>Net income limit, after deductions (100% of poverty)</span><span>' + money(nLimit) + '/mo</span></div>' +
+    '<div class="est-row"><span>Largest possible monthly benefit</span><span>up to ' + money(maxB) + '/mo</span></div>' +
+    (income !== null ? '<div class="est-row"><span>The income you entered</span><span>' + money(income) + '/mo</span></div>' : '') +
+    '</div>';
+
+  var verdict, verdictClass, verdictTitle;
+
+  if (categorical) {
+    verdictClass = 'yes';
+    verdictTitle = 'You very likely already qualify';
+    verdict = 'Because someone in your household gets SSI, Cash Assistance (TANF), or similar aid, your household is usually <strong>categorically eligible</strong> for SNAP — which can skip the income tests. Apply and you should be approved quickly.';
+  } else if (elderlyDis) {
+    verdictClass = 'yes';
+    verdictTitle = 'You likely qualify — worth applying';
+    verdict = 'Arizona households with a member who is 60+ or has a disability <strong>skip the gross income test entirely</strong> — only the net income test (after deductions like rent, utilities, and medical costs) applies. Those deductions are often large, so apply even if your income looks high on paper.';
+  } else if (income === null) {
+    verdictClass = 'info';
+    verdictTitle = 'Add your income to see an estimate';
+    verdict = 'Without an income figure we can\'t estimate a result — but for a household of ' + sizeLabel + ', gross income under <strong>' + money(gLimit) + '/month</strong> generally passes Arizona\'s first test. Applying is free, so when you\'re close, apply anyway.';
+  } else if (income <= nLimit) {
+    verdictClass = 'yes';
+    verdictTitle = 'You very likely qualify';
+    verdict = 'Your income is at or below the <strong>net</strong> limit for your household size, so you pass both of Arizona\'s income tests before any deductions are even counted. This is a strong sign you\'ll be approved. Apply as soon as you can.';
+  } else if (income <= gLimit) {
+    verdictClass = 'yes';
+    verdictTitle = 'You likely qualify';
+    verdict = 'Your income is under Arizona\'s <strong>gross</strong> limit of ' + money(gLimit) + '/month, so you pass the first test. Deductions for rent, utilities, and dependent care then lower your "countable" income for the final amount — many households in your range are approved. Apply and let DES do the full calculation.';
+  } else {
+    verdictClass = 'maybe';
+    verdictTitle = 'Possibly — it\'s close, so apply anyway';
+    verdict = 'The income you entered is above Arizona\'s gross limit of ' + money(gLimit) + '/month for a household of ' + sizeLabel + '. You may still qualify: deductions for high rent, utilities, or dependent care can bring your countable income down, and self-employment income counts differently. Applying is free and only takes the amount DES actually calculates — when you\'re near the line, it\'s worth applying.';
+  }
+
+  verdictSlot.innerHTML = '<div class="verdict ' + verdictClass + '"><h3>' + verdictTitle + '</h3><p>' + verdict + '</p></div>';
+
+  // Apply block (Arizona)
+  applySlot.innerHTML =
+    '<div class="apply-block"><h4>How to apply in Arizona</h4>' +
+    '<p>You can apply for SNAP (called <strong>Nutrition Assistance</strong> in Arizona) in one sitting — the same form also covers AHCCCS health coverage and Cash Assistance.</p>' +
+    '<ul>' +
+      '<li><strong>Online, fastest:</strong> <a href="https://www.healthearizonaplus.gov" target="_blank" rel="noopener noreferrer">healthearizonaplus.gov</a>, open 24/7.</li>' +
+      '<li><strong>By phone:</strong> DES at <a href="tel:18554327587">1-855-432-7587</a> (Mon–Fri, 7:30am–5pm).</li>' +
+      '<li><strong>No permanent address?</strong> You can still apply — use a shelter, a friend\'s, or a service-provider address.</li>' +
+      '<li><strong>Little or no money right now?</strong> Ask about <strong>expedited SNAP</strong> — if your household has under $150 in monthly income and under $100 on hand, benefits can arrive within 7 days.</li>' +
+    '</ul>' +
+    '<p>Handy to have: photo ID, Social Security numbers for household members, recent pay stubs, and your rent and utility amounts (they can raise your benefit). Missing something? Apply anyway — you can turn documents in afterward.</p>' +
+    '<a href="https://www.healthearizonaplus.gov" target="_blank" rel="noopener noreferrer" class="apply-btn">Apply on Health-e-Arizona Plus →</a>' +
+    '<a href="tel:18554327587" class="apply-btn secondary">Call DES 1-855-432-7587</a>' +
+    '</div>';
+
+  finishRender(verdictClass, size, income);
+}
+
+function finishRender(kind, size, income) {
+  var resultEl = document.getElementById('results');
+  resultEl.style.display = 'block';
+  window.scrollTo({ top: resultEl.offsetTop - 20, behavior: 'smooth' });
+  try { gtag('event', 'snap_prescreen_complete', { verdict: kind, household_size: size, has_income: income !== null }); } catch(e){}
+}
+
+// Reset if browser restores page from back/forward cache (bfcache)
+window.addEventListener('pageshow', function(e){ if (e.persisted) restart(); });
+</script>
+
+<script data-id="cl-card-click">
+(function(){
+  document.querySelectorAll('.card, .post-card:not(.post-card--linked)').forEach(function(el){
+    var a = el.querySelector('a[href]');
+    if(!a) return;
+    el.addEventListener('click', function(e){
+      if(e.target.tagName==='A'||e.target.closest('a')) return;
+      window.location.href = a.href;
+    });
+  });
+})();
+</script>
+</body>
+</html>
