@@ -1,0 +1,1051 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- Common Ladder navigator template. See NAVIGATOR_HOWTO.md for setup steps. Do NOT paste real HTML tags into this comment - it will break the document. -->
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-3YXK0RL6XV"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-3YXK0RL6XV');
+</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Baton Rouge Homelessness Resource Navigator — Common Ladder</title>
+<meta name="description" content="Find shelter, food, health care, and housing programs in Baton Rouge and East Baton Rouge Parish. Answer a few questions to get resources matched to your situation. Free, no signup.">
+<link rel="canonical" href="https://commonladder.org/static-tools/baton-rouge-navigator.html">
+<style>
+  /* ── Reset & Base ── */
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    /* Navigator palette — slightly different from main site for tool readability */
+    --bg:        #FAF7F2;
+    --primary:   #1A5276;
+    --accent:    #2E86AB;
+    --text:      #1C2B33;
+    --green:     #27AE60;
+    --green-dark:#1E8449;
+    --muted:     #6B7C85;
+    --border:    #D5D0C8;
+    --card-bg:   #FFFFFF;
+    --shadow:    0 2px 12px rgba(26,82,118,0.10);
+
+    /* Common Ladder brand — used for home badge only */
+    --cl-blue:   #1C3D6E;
+    --cl-amber:  #E8911A;
+  }
+
+  html { font-size: 18px; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    line-height: 1.6;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  /* ── Layout shell ── */
+  #app {
+    width: 100%;
+    max-width: 640px;
+    padding: 24px 20px 60px;
+    flex: 1;
+  }
+
+  /* ── County badge (top of app, always visible) ── */
+  .county-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: var(--primary);
+    color: #fff;
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    padding: 4px 10px;
+    border-radius: 100px;
+    margin-bottom: 28px;
+  }
+  .county-badge svg { flex-shrink: 0; } #app /* ── Question card ── */
+  .card{
+    background: var(--card-bg);
+    border-radius: 16px;
+    padding: 32px 28px;
+    box-shadow: var(--shadow);
+    margin-bottom: 16px;
+  }
+
+  .q-label {
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 14px;
+  }
+
+  .q-text {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--primary);
+    line-height: 1.35;
+    margin-bottom: 8px;
+  }
+
+  .q-sub {
+    font-size: 0.88rem;
+    color: var(--muted);
+    margin-bottom: 28px;
+  }
+
+  /* ── Buttons ── */
+  .btn-row {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+  } #app .btn{
+    flex: 1;
+    min-width: 120px;
+    padding: 14px 20px;
+    border: none;
+    border-radius: 10px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.15s, transform 0.1s;
+  } #app .btn:active{ transform: scale(0.98); }
+
+  .btn-yes  { background: var(--primary); color: #fff; }
+  .btn-yes:hover  { background: #154360; }
+  .btn-no   { background: #EBF5FB; color: var(--primary); }
+  .btn-no:hover   { background: #D6EAF8; }
+
+  .btn-primary {
+    display: inline-block;
+    background: var(--green);
+    color: #fff;
+    padding: 16px 28px;
+    border-radius: 10px;
+    font-size: 1.05rem;
+    font-weight: 700;
+    text-decoration: none;
+    text-align: center;
+    margin-top: 8px;
+    transition: background 0.15s;
+  }
+  .btn-primary:hover { background: var(--green-dark); }
+
+  /* Save-to-My-Ladder secondary CTA on the result step */
+  .btn-save-ladder {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    width: 100%;
+    background: var(--cl-amber);
+    color: #fff;
+    border: none;
+    padding: 14px 22px;
+    border-radius: 10px;
+    font-size: 0.98rem;
+    font-weight: 700;
+    text-decoration: none;
+    text-align: center;
+    margin-top: 10px;
+    cursor: pointer;
+    transition: opacity 0.15s;
+    font-family: inherit;
+  }
+  .btn-save-ladder:hover { opacity: 0.9; }
+  .btn-save-ladder__sub {
+    display: block;
+    text-align: center;
+    font-size: 0.78rem;
+    color: var(--muted);
+    margin-top: 6px;
+  }
+
+  .btn-restart {
+    background: none;
+    border: 1.5px solid var(--border);
+    color: var(--muted);
+    font-size: 0.85rem;
+    padding: 8px 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    margin-top: 12px;
+    transition: border-color 0.15s;
+  }
+  .btn-restart:hover { border-color: var(--primary); color: var(--primary); }
+
+  /* ── Progress bar ── */
+  .progress-wrap {
+    margin-bottom: 20px;
+  }
+  .progress-bar {
+    height: 4px;
+    background: var(--border);
+    border-radius: 2px;
+    overflow: hidden;
+  }
+  .progress-fill {
+    height: 100%;
+    background: var(--accent);
+    border-radius: 2px;
+    transition: width 0.35s ease;
+  }
+  .progress-label {
+    font-size: 0.72rem;
+    color: var(--muted);
+    margin-top: 5px;
+  }
+
+  /* ── Result card ── */
+  .result-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 4px 12px;
+    border-radius: 100px;
+    font-size: 0.78rem;
+    font-weight: 700;
+    margin-bottom: 18px;
+  }
+  .badge-veterans { background: #D5E8D4; color: #27AE60; }
+  .badge-youth    { background: #D5E8D4; color: #27AE60; }
+  .badge-families { background: #DAE8FC; color: #1A5276; }
+  .badge-chronic  { background: #FFF2CC; color: #856404; }
+  .badge-adult    { background: #E8DAEF; color: #6C3483; }
+
+  .result-headline {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--primary);
+    line-height: 1.35;
+    margin-bottom: 20px;
+  }
+
+  .first-action {
+    background: #EBF5FB;
+    border-left: 4px solid var(--accent);
+    border-radius: 0 10px 10px 0;
+    padding: 16px 18px;
+    font-size: 0.95rem;
+    margin-bottom: 20px;
+  } #app .section-head{
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin: 22px 0 10px;
+  }
+
+  .what-to-expect {
+    font-size: 0.93rem;
+    color: var(--text);
+    line-height: 1.6;
+    margin-bottom: 4px;
+  }
+
+  /* ── Bring list ── */
+  .bring-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  .bring-list li {
+    display: flex;
+    gap: 8px;
+    font-size: 0.9rem;
+    padding: 5px 0;
+    border-bottom: 1px solid var(--border);
+    color: var(--text);
+  }
+  .bring-list li:last-child { border-bottom: none; }
+  .bring-list li::before { content: "✓"; color: var(--green); font-weight: 700; flex-shrink: 0; }
+
+  /* ── Resource cards ── */
+  .resource-card {
+    border: 1.5px solid var(--border);
+    border-radius: 10px;
+    padding: 14px 16px;
+    margin-bottom: 10px;
+  }
+  .resource-card__name {
+    font-weight: 700;
+    font-size: 0.95rem;
+    color: var(--primary);
+    margin-bottom: 2px;
+  }
+  .resource-card__phone {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--green-dark);
+    text-decoration: none;
+    display: inline-block;
+    margin-bottom: 3px;
+  }
+  .resource-card__note {
+    font-size: 0.82rem;
+    color: var(--muted);
+  }
+
+  /* ── Extra note ── */
+  .extra-note {
+    background: #FFFDE7;
+    border: 1px solid #FDD835;
+    border-radius: 8px;
+    padding: 12px 14px;
+    font-size: 0.88rem;
+    color: #5D4037;
+    margin-top: 16px;
+  }
+
+  /* ── Confidence badge ── */
+  .conf-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    padding: 3px 10px;
+    border-radius: 100px;
+    margin-top: 20px;
+    cursor: help;
+    position: relative;
+  }
+  .conf-verified   { background: #D5E8D4; color: #27AE60; }
+  .conf-research   { background: #DAE8FC; color: #1A5276; }
+  .conf-unverified { background: #FFE6CC; color: #D6760C; }
+  .conf-tooltip {
+    display: none;
+    position: absolute;
+    bottom: calc(100% + 8px);
+    left: 50%;
+    transform: translateX(-50%);
+    background: #1C2B33;
+    color: #fff;
+    font-size: 0.75rem;
+    font-weight: 400;
+    line-height: 1.5;
+    padding: 10px 14px;
+    border-radius: 8px;
+    width: 260px;
+    z-index: 10;
+    pointer-events: none;
+  }
+  .conf-tooltip::after {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    border: 6px solid transparent;
+    border-top-color: #1C2B33;
+  }
+  .conf-badge:hover .conf-tooltip,
+  .conf-badge.open  .conf-tooltip { display: block; }
+
+  /* ── Welcome screen ── */
+  .welcome-title {
+    font-size: 1.6rem;
+    font-weight: 800;
+    color: var(--primary);
+    line-height: 1.25;
+    margin-bottom: 12px;
+  }
+  .welcome-sub {
+    font-size: 1rem;
+    color: var(--muted);
+    margin-bottom: 28px;
+  }
+  .welcome-start {
+    background: var(--primary);
+    color: #fff;
+    border: none;
+    border-radius: 12px;
+    padding: 18px 32px;
+    font-size: 1.05rem;
+    font-weight: 700;
+    cursor: pointer;
+    width: 100%;
+    transition: background 0.15s;
+  }
+  .welcome-start:hover { background: #154360; }
+
+  /* ── Footer ── */
+  footer {
+    text-align: center;
+    padding: 20px 20px 32px;
+    font-size: 0.8rem;
+    color: var(--muted);
+    line-height: 1.8;
+    max-width: 640px;
+    width: 100%;
+  }
+  footer a { color: var(--muted); }
+  footer a:hover { color: var(--primary); }
+  .footer-divider { margin: 0 8px; opacity: 0.5; }
+
+  /* ── Common Ladder home badge (fixed top-right) ── */
+  .cl-home {
+    position: fixed;
+    top: 14px;
+    right: 16px;
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    background: var(--cl-blue);
+    color: #fff;
+    text-decoration: none;
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.01em;
+    padding: 7px 13px 7px 9px;
+    border-radius: 100px;
+    box-shadow: 0 2px 10px rgba(28,61,110,0.25);
+    z-index: 999;
+    transition: background 0.15s;
+  }
+  .cl-home:hover { background: #163260; }
+  .cl-home__rung { color: var(--cl-amber); }
+  @media (min-width: 721px) { .cl-home { display: none; } }
+
+  /* ── Print styles ── */
+  @media print {
+    .btn-restart, .progress-wrap, footer .share-note { display: none; }
+    .cl-home { display: none; }
+  }
+
+  /* ── Mobile ── */
+  @media (max-width: 480px) {
+    html { font-size: 16px; } #app .card{ padding: 24px 18px; }
+    .cl-home span { display: none; } /* icon only on small screens */
+    .cl-home { padding: 8px 10px; }
+    .conf-tooltip { width: 200px; left: 0; transform: none; }
+    .conf-tooltip::after { left: 24px; transform: none; }
+  }
+
+  /* ── cl-css-isolation-2026-06-11: the global shell loads /style.css AFTER this
+     block, and its listing-page rules (.card padding:0/flex/pointer/child margins,
+     .btn, .section-head) were overriding the wizard styles above. Selectors above
+     are #app-prefixed to win the cascade; these rules neutralize global-only
+     properties the wizard never declared. ── */
+  #app .card { cursor: default; display: block; }
+  #app .card:hover { transform: none; }
+  #app .card > h3, #app .card > p, #app .card > a, #app .card > .btn { margin-left: 0; margin-right: 0; }
+  #app .card > *:last-child { margin-bottom: 0; }
+  #app .card p { color: var(--text); font-size: inherit; }
+  #app .btn { font-family: inherit; }
+  #app .section-head { text-align: left; }
+</style>
+  <link rel="stylesheet" href="/style.css">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="alternate icon" type="image/png" href="/favicon-32.png">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Common Ladder">
+  <meta property="og:title" content="Baton Rouge Homelessness Resource Navigator — Common Ladder">
+  <meta property="og:description" content="Find shelter, food, health care, and housing programs in Baton Rouge and East Baton Rouge Parish. Answer a few questions to get resources matched to your situation. Free, no signup.">
+  <meta property="og:url" content="https://commonladder.org/static-tools/baton-rouge-navigator.html">
+  <meta property="og:image" content="https://commonladder.org/images/og-default.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Baton Rouge Homelessness Resource Navigator — Common Ladder">
+  <meta name="twitter:description" content="Find shelter, food, health care, and housing programs in Baton Rouge and East Baton Rouge Parish. Answer a few questions to get resources matched to your situation. Free, no signup.">
+  <meta name="twitter:image" content="https://commonladder.org/images/og-default.png">
+</head>
+<body>
+<h1 style="position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0;">Baton Rouge Homelessness Resource Navigator</h1>
+
+<a href="#main" class="skip-link">Skip to main content</a>
+
+<div class="crisis-bar" role="region" aria-label="Crisis help">
+  <strong>Need help right now?</strong>
+  <a href="tel:211">Call 211</a><span class="crisis-bar__sep">·</span>
+  <a href="sms:741741?body=HOME">Text HOME to 741741</a><span class="crisis-bar__sep">·</span>
+  <a href="tel:988">988 Suicide &amp; Crisis</a><span class="crisis-bar__sep">·</span>
+  <a href="tel:18007997233">DV 1-800-799-7233</a>
+</div>
+
+<nav class="nav" aria-label="Primary">
+  <div class="nav__inner">
+    <a href="/" class="nav__logo" aria-label="Common Ladder home">
+      <svg width="28" height="28" viewBox="0 0 247 247" fill="none" aria-hidden="true"><g transform="translate(-12.00,-16.00)"> <path fill="#E8911A" fill-opacity="1" fill-rule="evenodd" d="M 254.00,51.00 L 234.00,85.64 L 194.00,85.64 L 174.00,51.00 L 194.00,16.36 L 234.00,16.36 Z M 231.50,51.00 L 222.75,66.16 L 205.25,66.16 L 196.50,51.00 L 205.25,35.84 L 222.75,35.84 Z"/> <path fill="#9FBCBA" fill-opacity="1" fill-rule="evenodd" d="M 148.00,118.00 L 128.00,152.64 L 88.00,152.64 L 68.00,118.00 L 88.00,83.36 L 128.00,83.36 Z M 125.50,118.00 L 116.75,133.16 L 99.25,133.16 L 90.50,118.00 L 99.25,102.84 L 116.75,102.84 Z"/> <path fill="#9FBCBA" fill-opacity="1" fill-rule="evenodd" d="M 259.00,118.00 L 239.00,152.64 L 199.00,152.64 L 179.00,118.00 L 199.00,83.36 L 239.00,83.36 Z M 236.50,118.00 L 227.75,133.16 L 210.25,133.16 L 201.50,118.00 L 210.25,102.84 L 227.75,102.84 Z"/> <path fill="#FFFFFF" fill-opacity="0.94" fill-rule="evenodd" d="M 207.00,164.00 L 187.00,198.64 L 147.00,198.64 L 127.00,164.00 L 147.00,129.36 L 187.00,129.36 Z M 184.50,164.00 L 175.75,179.16 L 158.25,179.16 L 149.50,164.00 L 158.25,148.84 L 175.75,148.84 Z"/> <path fill="#FFFFFF" fill-opacity="0.94" fill-rule="evenodd" d="M 92.00,164.00 L 72.00,198.64 L 32.00,198.64 L 12.00,164.00 L 32.00,129.36 L 72.00,129.36 Z M 69.50,164.00 L 60.75,179.16 L 43.25,179.16 L 34.50,164.00 L 43.25,148.84 L 60.75,148.84 Z"/> <path fill="#FFFFFF" fill-opacity="0.94" fill-rule="evenodd" d="M 161.00,228.00 L 141.00,262.64 L 101.00,262.64 L 81.00,228.00 L 101.00,193.36 L 141.00,193.36 Z M 138.50,228.00 L 129.75,243.16 L 112.25,243.16 L 103.50,228.00 L 112.25,212.84 L 129.75,212.84 Z"/> </g></svg>
+      <span class="nav__wordmark">common<span>ladder</span></span>
+    </a>
+    <button class="nav__toggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="primary-nav" onclick="this.setAttribute('aria-expanded', document.getElementById('primary-nav').classList.toggle('open') ? 'true' : 'false')">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav__links" id="primary-nav">
+            <li><a href="/providers.html">For providers</a></li>
+      <li><a href="/learn/">Learn</a></li>
+      <li><a href="/about.html">About</a></li>
+      <li><a href="/find.html" class="nav__cta">Find resources</a></li>
+      <li><a href="/static-tools/my-ladder.html" class="nav__cta nav__cta--ladder">My Ladder</a></li>
+      <li><a href="https://www.weather.gov/" rel="noreferrer" class="nav__exit" onclick="event.preventDefault();window.location.replace('https://www.weather.gov/')">Leave page</a></li>
+    </ul>
+  </div>
+</nav>
+
+<main id="main">
+
+
+
+
+
+<!-- Common Ladder home badge — always present, fixed top-right -->
+<a href="https://commonladder.org" class="cl-home" aria-label="Return to Common Ladder home">
+  <svg width="18" height="18" viewBox="0 0 28 28" fill="none" aria-hidden="true">
+    <rect x="4" y="2" width="3" height="24" rx="1.5" fill="white" opacity=".9"/>
+    <rect x="21" y="2" width="3" height="24" rx="1.5" fill="white" opacity=".9"/>
+    <rect x="4" y="7" width="20" height="3" rx="1.5" fill="#E8911A"/>
+    <rect x="4" y="14" width="20" height="3" rx="1.5" fill="#E8911A"/>
+    <rect x="4" y="21" width="20" height="3" rx="1.5" fill="#E8911A"/>
+  </svg>
+  <span>common<span class="cl-home__rung">ladder</span></span>
+</a>
+
+<div role="note" style="background:#ffedd5;border:1px solid #9a3412;color:#6b2710;border-radius:10px;padding:14px 18px;margin:0 auto 18px;max-width:680px;font-size:.9rem;line-height:1.5;"><strong style="color:#9a3412;">AI-researched, not locally verified.</strong> Common Ladder is based in Arizona. We built this guide from public sources but don’t yet verify these listings by phone the way we do our Arizona tools. Use it to learn <em>what to ask for</em>, then <strong>call <a href="tel:211" style="color:#9a3412;">211</a></strong> for the current local provider. Last researched <time datetime="2026-07-08">July 8, 2026</time>. Wrong info? <a href="mailto:corrections.commonladder@gmail.com?subject=Resource%20update:%20Baton%20Rouge" style="color:#9a3412;">Tell us</a>.</div>
+
+<!-- App shell — all screens rendered by JS into here -->
+<div id="app"></div>
+
+<!-- Footer — update CoC ID and location text -->
+<a href="/resources.html" class="quick-help" aria-label="Find help now"><svg class="icon" viewBox="0 0 16 16" aria-hidden="true" style="margin-right:.35em;vertical-align:-.15em"><path d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z" fill="currentColor"/></svg> Find help now</a>
+
+</main>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer__grid">
+      <div class="footer__brand">
+        <h3>Common Ladder</h3>
+        <p>The civic resource platform connecting people experiencing homelessness with every service in your community.</p>
+      </div>
+      <div>
+        <h4>Find help</h4>
+        <ul>
+          <li><a href="/find.html?cat=shelter">Shelter</a></li>
+          <li><a href="/find.html?cat=food">Food</a></li>
+          <li><a href="/find.html?cat=legal">Legal</a></li>
+          <li><a href="/help/">All categories</a></li>
+          <li><a href="/static-tools/">Local navigators</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>For providers</h4>
+        <ul>
+          <li><a href="/providers.html">Tools &amp; referrals</a></li>
+          <li><a href="/providers.html#case-manager-guide">Case manager guide</a></li>
+          <li><a href="/data-reports.html">Data &amp; reports</a></li>
+          <li><a href="/learn/">Four learning pathways</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>About</h4>
+        <ul>
+          <li><a href="/about.html">Our mission</a></li>
+          <li><a href="/about.html#methodology">Methodology</a></li>
+          <li><a href="/about.html#team">Team</a></li>
+          <li><a href="/brand/visual-guidelines.html">Brand guidelines</a></li>
+          <li><a href="/contact.html">Contact</a></li>
+          <li><a href="/privacy.html">Privacy</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer__transparency">
+      <strong>Transparency:</strong> Common Ladder is an independent civic project. We do not sell user data, run ads, or accept payment from listed resources.
+    </div>
+    <div class="footer__bottom">
+      <span>&copy; 2026 Common Ladder. Free to use, always.</span>
+      <span><time datetime="2026-07-08">Last updated July 8, 2026</time></span> <span>&middot; Wrong number? <a href="mailto:corrections.commonladder@gmail.com?subject=Correction:%20/static-tools/baton-rouge-navigator.html">Report an error</a></span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  /* ═══════════════════════════════════════════════════════════
+     STATE
+  ═══════════════════════════════════════════════════════════ */
+  var state = {
+    step: 'welcome',   // welcome | q1 | q2 | q3 | q4 | result_*
+    pathway: null
+  };
+
+  /* ═══════════════════════════════════════════════════════════
+     QUESTIONS
+     Standard across all navigators — do not change the flow.
+     Only change label text if local terminology differs.
+  ═══════════════════════════════════════════════════════════ */
+  var QUESTIONS = [
+    {
+      id: 'q1',
+      text: 'Are you a U.S. military veteran?',
+      sub: 'This includes any branch of the armed forces.',
+      next_yes: 'result_veterans',
+      next_no: 'q2'
+    },
+    {
+      id: 'q2',
+      text: 'Are you 24 years old or younger?',
+      sub: 'Youth-specific programs are available for people 24 and under.',
+      yes_label: 'Yes, 24 or younger',
+      no_label: 'No, 25 or older',
+      next_yes: 'result_youth',
+      next_no: 'q3'
+    },
+    {
+      id: 'q3',
+      text: 'Do you have children with you right now?',
+      sub: 'This includes any minors in your care.',
+      next_yes: 'result_families',
+      next_no: 'q4'
+    },
+    {
+      id: 'q4',
+      text: 'Have you been without stable housing for more than a year — or off and on for years — AND do you have a health condition that makes it harder to work or take care of yourself?',
+      sub: 'This includes physical conditions, mental health conditions, or substance use.',
+      next_yes: 'result_chronic',
+      next_no: 'result_adult'
+    }
+  ];
+
+  var Q_INDEX = { q1: 0, q2: 1, q3: 2, q4: 3 };
+
+  /* ═══════════════════════════════════════════════════════════
+     CONFIDENCE TIERS
+     Apply to every pathway. Be honest about what's verified.
+     level: 'verified' | 'research' | 'unverified'
+  ═══════════════════════════════════════════════════════════ */
+  var CONFIDENCE_META = {
+    verified: {
+      icon: '✓',
+      label: 'Verified',
+      cssClass: 'conf-verified',
+      tooltip: 'Confirmed directly with the CoC or provider. Phone numbers and intake processes have been tested.'
+    },
+    research: {
+      icon: '◐',
+      label: 'Research-based',
+      cssClass: 'conf-research',
+      tooltip: 'Gathered from official agency websites and public records. Likely accurate but may have changed — call ahead to confirm.'
+    },
+    unverified: {
+      icon: '?',
+      label: 'Unverified',
+      cssClass: 'conf-unverified',
+      tooltip: 'Based on general knowledge. Not checked against primary sources. Call ahead before relying on this information.'
+    }
+  };
+
+  /* ═══════════════════════════════════════════════════════════
+     PATHWAY DATA
+     All markers below are filled with verified Baton Rouge data.
+     Each pathway needs: firstAction + callNumber + resources.
+     Keep firstAction to one clear sentence + phone number.
+     resources: 3 is ideal; 2 minimum; 4 maximum.
+  ═══════════════════════════════════════════════════════════ */
+    var PATHWAYS = {
+
+    result_veterans: {
+      label: "Veterans Pathway",
+      badgeClass: "badge-veterans",
+      badgeIcon: "\U0001F396",
+      headline: "There's a dedicated system built for veterans.",
+      firstAction: "Call <strong>211</strong> — free, 24/7 — and say: <em>“I’m a veteran and I’m homeless or about to be.”</em> Ask to be connected to the <strong>VA’s Health Care for Homeless Veterans (HCHV)</strong> program, to <strong>SSVF</strong> (Supportive Services for Veteran Families — run locally by Volunteers of America), and to your local <strong>coordinated-entry assessment</strong>. Veterans can qualify for VA housing (HUD-VASH) and the Louisiana Balance of State Continuum of Care at the same time.",
+      callNumber: "tel:211",
+      callLabel: "Call 211",
+      what_to_expect: "211 will route you to the nearest VA homeless-program coordinator and the Baton Rouge SSVF provider. The National Call Center for Homeless Veterans is available 24/7 anywhere in the U.S. if you can’t reach a local office.",
+      bring: [
+        "DD-214 discharge papers (if you have them — not required to call)",
+        "Photo ID (if available)",
+        "Any VA documentation you have",
+      ],
+      resources: [
+        {
+          name: "National Call Center for Homeless Veterans",
+          phone: "1-877-424-3838",
+          tel: "tel:18774243838",
+          note: "24/7. Available everywhere."
+        },
+        {
+          name: "Veterans Crisis Line",
+          phone: "988",
+          tel: "tel:988",
+          note: "Press 1 for the VA crisis line."
+        },
+      ],
+      confidence: {
+        level: "research",
+        note: "SSVF/VA routing gathered from public VA and Volunteers of America sources; national numbers verified. Call 211 to confirm the current local SSVF provider. Last researched July 8, 2026.",
+        lastChecked: "July 2026"
+      }
+    },
+
+    result_youth: {
+      label: "Youth Pathway",
+      badgeClass: "badge-youth",
+      badgeIcon: "\U0001F331",
+      headline: "If you’re 24 or under, there’s a youth-specific path.",
+      firstAction: "Call or text <strong>211</strong> and say: <em>“I’m 24 or younger and I need a safe place to stay.”</em> Ask for the <strong>youth emergency shelter</strong> and the <strong>runaway &amp; homeless youth (RHY) program</strong> serving East Baton Rouge Parish.",
+      callNumber: "tel:211",
+      callLabel: "Call 211",
+      what_to_expect: "211 routes you to the nearest youth shelter or drop-in center. The national backstops below are always available, day or night.",
+      bring: [
+        "Photo ID (helpful — not required for crisis services)",
+        "Anything important you can carry",
+        "Nothing is required to call",
+      ],
+      resources: [
+        {
+          name: "National Runaway Safeline",
+          phone: "1-800-786-2929",
+          tel: "tel:18007862929",
+          note: "24/7, free, confidential."
+        },
+        {
+          name: "National Safe Place",
+          phone: "Text SAFE + your location to 44357",
+          tel: "sms:44357?body=SAFE",
+          note: "Connects you to the nearest Safe Place site."
+        },
+      ],
+      confidence: {
+        level: "unverified",
+        note: "AI-researched from public sources — not locally phone-verified. Call 211 to confirm the current youth provider in Baton Rouge. Last researched July 8, 2026.",
+        lastChecked: "July 2026"
+      }
+    },
+
+    result_families: {
+      label: "Families Pathway",
+      badgeClass: "badge-families",
+      badgeIcon: "\U0001F3E0",
+      headline: "Families are kept together in the shelter system.",
+      firstAction: "Call or text <strong>211</strong> and say: <em>“I have my kids with me and we need shelter tonight.”</em> Ask for <strong>family emergency shelter</strong> and the <strong>coordinated-entry assessment</strong>. In Baton Rouge, St. Vincent de Paul’s <strong>Bishop Ott Sweet Dreams Shelter</strong> serves women and children.",
+      callNumber: "tel:211",
+      callLabel: "Call 211",
+      what_to_expect: "211 routes you to family shelter and the Baton Rouge coordinated-entry line. If you are fleeing domestic violence, use the confidential hotline below instead — DV shelter is separate and won’t list your location.",
+      bring: [
+        "Photo ID for adults (if available)",
+        "Birth certificates for children (helpful, not always required)",
+        "Documentation of income or benefits (if available)",
+      ],
+      resources: [
+        {
+          name: "Coordinated Entry — Baton Rouge Region (LA Balance of State CoC)",
+          phone: "225-389-3002",
+          tel: "tel:12253893002",
+          note: "Access point for housing and shelter placement."
+        },
+        {
+          name: "National Domestic Violence Hotline",
+          phone: "1-800-799-7233",
+          tel: "tel:18007997233",
+          note: "24/7, confidential. Text START to 88788. Connects you to a local confidential DV shelter."
+        },
+      ],
+      confidence: {
+        level: "research",
+        note: "Coordinated-entry number gathered from laboscoc.org and the Capital Area Alliance for the Homeless; DV Hotline verified national. Call ahead to confirm. Last researched July 8, 2026.",
+        lastChecked: "July 2026"
+      }
+    },
+
+    result_chronic: {
+      label: "Chronic Homelessness Pathway",
+      badgeClass: "badge-chronic",
+      badgeIcon: "\U0001F511",
+      headline: "The housing list starts with one assessment.",
+      firstAction: "Call the <strong>Baton Rouge coordinated-entry line at 225-389-3002</strong> (or dial <strong>211</strong>) and say: <em>“I’ve been homeless a long time and I want to get on the housing list.”</em> Ask for the <strong>coordinated-entry assessment</strong> — in the Louisiana Balance of State system, permanent supportive housing is reached by being assessed and placed on the community housing-referral list. The assessment is the door.",
+      callNumber: "tel:12253893002",
+      callLabel: "Call Coordinated Entry (225-389-3002)",
+      what_to_expect: "A coordinated-entry assessor will ask about your situation and add you to the Baton Rouge housing-referral list. While you wait, the Capital Area Alliance for the Homeless One Stop Day Center offers daytime services, and 211 can find tonight’s shelter.",
+      bring: [
+        "Photo ID (any form)",
+        "Documentation of health conditions (if available — not required to be assessed)",
+        "Any records of prior housing or service history",
+      ],
+      resources: [
+        {
+          name: "Capital Area Alliance for the Homeless — One Stop Day Center",
+          phone: "225-388-5800",
+          tel: "tel:12253885800",
+          note: "Daytime services, mail, referrals, case management."
+        },
+        {
+          name: "988 Suicide &amp; Crisis Lifeline",
+          phone: "988",
+          tel: "tel:988",
+          note: "Behavioral-health crisis support + SOAR disability-benefit help tied to housing."
+        },
+      ],
+      confidence: {
+        level: "research",
+        note: "Coordinated-entry and day-center numbers gathered from laboscoc.org and the Capital Area Alliance for the Homeless. Call ahead to confirm hours. Last researched July 8, 2026.",
+        lastChecked: "July 2026"
+      }
+    },
+
+    result_adult: {
+      label: "Single Adults Pathway",
+      badgeClass: "badge-adult",
+      badgeIcon: "\U0001F4DE",
+      headline: "Start with tonight’s shelter, then the housing list.",
+      firstAction: "Call or text <strong>211</strong> and say: <em>“I need a shelter bed tonight.”</em> In Baton Rouge, <strong>St. Vincent de Paul’s Bishop Ott Men’s Shelter</strong> takes walk-in intake at <strong>1623 Convention St, Monday–Friday 8:00 a.m.–4:00 p.m.</strong>, first-come, first-served. Also ask 211 for the nearest <strong>daytime drop-in center</strong> and a <strong>free meal site</strong>.",
+      callNumber: "tel:211",
+      callLabel: "Call 211",
+      what_to_expect: "211 has the current shelter-bed picture, which changes daily. Ask them to also start a coordinated-entry assessment (225-389-3002) so you’re working toward housing, not just tonight.",
+      bring: [
+        "Photo ID (helpful but not always required)",
+        "Social security card or number (if available)",
+        "Any documentation of income or benefits",
+      ],
+      resources: [
+        {
+          name: "St. Vincent de Paul Baton Rouge (Bishop Ott Shelters)",
+          phone: "225-383-7343",
+          tel: "tel:12253837343",
+          note: "Men’s shelter + Sweet Dreams (women & children). Walk-in intake at 1623 Convention St, M–F 8a–4p."
+        },
+        {
+          name: "Capital Area Alliance for the Homeless — One Stop Day Center",
+          phone: "225-388-5800",
+          tel: "tel:12253885800",
+          note: "Daytime services and referrals."
+        },
+        {
+          name: "Coordinated Entry — Baton Rouge Region",
+          phone: "225-389-3002",
+          tel: "tel:12253893002",
+          note: "Get on the housing-referral list."
+        },
+      ],
+      confidence: {
+        level: "research",
+        note: "Shelter, day-center, and coordinated-entry numbers gathered from svdpbr.net, laboscoc.org, and the Capital Area Alliance for the Homeless. Call ahead — intake hours can change. Last researched July 8, 2026.",
+        lastChecked: "July 2026"
+      }
+    },
+
+  }; // end PATHWAYS
+
+  /* ═══════════════════════════════════════════════════════════
+     RENDER ENGINE — do not modify below this line
+     unless fixing a structural bug.
+  ═══════════════════════════════════════════════════════════ */
+  function render() {
+    var app = document.getElementById('app');
+    var html = '';
+
+    // County badge always shown at top
+    html += '<div class="county-badge">';
+    html += '<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>';
+    // Baton Rouge / East Baton Rouge Parish, LA — Louisiana Balance of State CoC (LA-500)
+    html += 'Baton Rouge / East Baton Rouge Parish, LA &mdash; LA-500</div>';
+
+    if (state.step === 'welcome') {
+      html += renderWelcome();
+    } else if (state.step.startsWith('result_')) {
+      html += renderResult(state.step);
+    } else {
+      html += renderQuestion(state.step);
+    }
+
+    app.innerHTML = html;
+  }
+
+  function renderWelcome() {
+    return '<div class="card">' +
+      '<div class="welcome-title">Find the right help.<br>Answer 4 quick questions.</div>' +
+      '<div class="welcome-sub">We\'ll match you to the services and programs most likely to help — based on your situation, not a generic list.</div>' +
+      '<button class="welcome-start" onclick="goTo(\'q1\')">Get started &rarr;</button>' +
+      '</div>' +
+      '<div style="font-size:0.8rem; color:var(--muted); text-align:center; margin-top:12px;">No personal information collected. Free to use.</div>';
+  }
+
+  function renderQuestion(qid) {
+    var q = QUESTIONS[Q_INDEX[qid]];
+    var stepNum = Q_INDEX[qid] + 1;
+    var pct = Math.round((stepNum / QUESTIONS.length) * 100);
+    var html = '';
+
+    html += '<div class="progress-wrap">' +
+      '<div class="progress-bar"><div class="progress-fill" style="width:' + pct + '%"></div></div>' +
+      '<div class="progress-label">Question ' + stepNum + ' of ' + QUESTIONS.length + '</div>' +
+      '</div>';
+
+    html += '<div class="card">' +
+      '<div class="q-label">Question ' + stepNum + '</div>' +
+      '<div class="q-text">' + q.text + '</div>' +
+      '<div class="q-sub">' + q.sub + '</div>' +
+      '<div class="btn-row">' +
+      '<button class="btn btn-yes" onclick="answer(true)">' + (q.yes_label || 'Yes') + '</button>' +
+      '<button class="btn btn-no"  onclick="answer(false)">' + (q.no_label  || 'No')  + '</button>' +
+      '</div>' +
+      '</div>';
+
+    if (Q_INDEX[qid] > 0) {
+      html += '<button class="btn-restart" onclick="history.back()">← Back</button>';
+    }
+
+    return html;
+  }
+
+  function renderConfidenceBadge(conf) {
+    var meta = CONFIDENCE_META[conf.level];
+    return '<span class="conf-badge ' + meta.cssClass + '" onclick="this.classList.toggle(\'open\')" tabindex="0" role="button" aria-label="Information confidence: ' + meta.label + '">' +
+      meta.icon + ' ' + meta.label +
+      ' &mdash; Last checked: ' + conf.lastChecked +
+      '<span class="conf-tooltip">' + meta.tooltip + (conf.note ? '<br><br>' + conf.note : '') + '</span>' +
+      '</span>';
+  }
+
+  // Build a base64 payload that adds this pathway to My Ladder when opened.
+  function buildLadderUrl(p) {
+    try {
+      var stripTags = function(s){ return String(s||'').replace(/<[^>]+>/g,'').replace(/\s+/g,' ').trim(); };
+      var phoneFromTel = (p.callNumber||'').replace(/^tel:/,'').replace(/[^\d+\-()\s]/g,'');
+      var data = {
+        cat: 'shelter',
+        name: p.label + ' — ' + stripTags(p.callLabel),
+        phone: phoneFromTel,
+        address: '',
+        notes: 'First step: ' + stripTags(p.firstAction) + ' · What to expect: ' + stripTags(p.what_to_expect),
+        followups: (p.bring||[]).map(function(b){ return { text: stripTags(b) }; })
+                   .concat((p.resources||[]).slice(0,3).map(function(r){
+                     return { text: 'Contact: ' + stripTags(r.name) + (r.phone ? ' — ' + r.phone : '') };
+                   })),
+        source: (document.title||'').split(' — ')[0]
+      };
+      var encoded = btoa(unescape(encodeURIComponent(JSON.stringify(data))));
+      return 'https://my.commonladder.org/?add=' + encoded;
+    } catch(e) {
+      return 'https://my.commonladder.org/';
+    }
+  }
+
+  function renderResult(rid) {
+    var p = PATHWAYS[rid];
+    var html = '';
+
+    html += '<div class="card">';
+    html += '<span class="result-badge ' + p.badgeClass + '">' + p.badgeIcon + ' ' + p.label + '</span>';
+    html += '<div class="result-headline">' + p.headline + '</div>';
+
+    // First action block
+    html += '<div class="first-action">' + p.firstAction + '</div>';
+    html += '<a href="' + p.callNumber + '" class="btn-primary">' + p.callLabel + '</a>';
+
+    // Save-to-My-Ladder CTA — lets users carry their pathway, first step, and bring list into their personal plan.
+    var ladderUrl = buildLadderUrl(p);
+    html += '<a href="' + ladderUrl + '" target="_blank" rel="noopener" class="btn-save-ladder">📋 Save this plan to My Ladder</a>';
+    html += '<div class="btn-save-ladder__sub">Track calls, schedule visits, add notes — your data stays on your device.</div>';
+
+    // What to expect
+    html += '<div class="section-head">What to expect</div>';
+    html += '<div class="what-to-expect">' + p.what_to_expect + '</div>';
+
+    // What to bring
+    html += '<div class="section-head">What to bring</div>';
+    html += '<ul class="bring-list">';
+    p.bring.forEach(function(item) { html += '<li>' + item + '</li>'; });
+    html += '</ul>';
+
+    // Additional resources
+    html += '<div class="section-head">Additional resources</div>';
+    p.resources.forEach(function(r) {
+      html += '<div class="resource-card">';
+      html += '<div class="resource-card__name">' + r.name + '</div>';
+      html += '<a href="' + r.tel + '" class="resource-card__phone">' + r.phone + '</a>';
+      if (r.note) html += '<div class="resource-card__note">' + r.note + '</div>';
+      html += '</div>';
+    });
+
+    // Extra note (optional)
+    if (p.extra_note) {
+      html += '<div class="extra-note">' + p.extra_note + '</div>';
+    }
+
+    // Confidence badge
+    html += renderConfidenceBadge(p.confidence);
+
+    html += '</div>'; // end card
+
+    // Restart
+    html += '<button class="btn-restart" onclick="goTo(\'welcome\')">← Start over</button>';
+
+    return html;
+  }
+
+  function goTo(step) {
+    state.step = step;
+    render();
+    window.scrollTo(0, 0);
+  }
+
+  function answer(isYes) {
+    var q = QUESTIONS[Q_INDEX[state.step]];
+    var next = isYes ? q.next_yes : q.next_no;
+    if (next.startsWith('result_')) {
+      state.pathway = next;
+    }
+    goTo(next);
+  }
+
+  // Tooltip close on outside click
+  document.addEventListener('click', function(e) {
+    if (!e.target.closest('.conf-badge')) {
+      document.querySelectorAll('.conf-badge.open').forEach(function(el) {
+        el.classList.remove('open');
+      });
+    }
+  });
+
+  // Initial render
+  render();
+</script>
+<script data-id="cl-card-click">
+(function(){
+  document.querySelectorAll('.card, .post-card:not(.post-card--linked)').forEach(function(el){
+    if(el.closest('#app')) return; /* wizard cards are not link cards */
+    var a = el.querySelector('a[href]');
+    if(!a) return;
+    el.addEventListener('click', function(e){
+      if(e.target.tagName==='A'||e.target.closest('a')) return;
+      window.location.href = a.href;
+    });
+  });
+})();
+</script>
+<script>
+/* cl-freshness-guard: if the footer verification stamp is older than 60 days,
+   show a "call 211 to confirm" notice at the top of the page content. */
+(function () {
+  var t = document.querySelector('footer time[datetime]') || document.querySelector('time[datetime]');
+  if (!t) return;
+  var d = new Date(t.getAttribute('datetime') + 'T00:00:00');
+  if (isNaN(d.getTime())) return;
+  var days = (Date.now() - d.getTime()) / 86400000;
+  if (days <= 60) return;
+  var note = document.createElement('div');
+  note.setAttribute('role', 'note');
+  note.style.cssText = 'background:#fdf3e3;border:1px solid #b36a00;color:#333;padding:10px 14px;border-radius:8px;margin:14px auto;max-width:760px;font-size:.95rem;line-height:1.45;';
+  note.innerHTML = 'Phone numbers and hours on this page were last verified <strong>' +
+    t.textContent.replace(/Last updated\s*/i, '') +
+    '</strong> and may have changed. <a href="tel:211">Call 211</a> to confirm before you go.';
+  var host = document.getElementById('main') || document.body;
+  host.insertBefore(note, host.firstChild);
+})();
+</script>
+</body>
+</html>
