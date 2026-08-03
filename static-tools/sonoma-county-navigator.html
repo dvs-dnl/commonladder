@@ -1,0 +1,1073 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- Common Ladder navigator template. See NAVIGATOR_HOWTO.md for setup steps. Do NOT paste real HTML tags into this comment - it will break the document. -->
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-3YXK0RL6XV"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-3YXK0RL6XV');
+</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sonoma County Homelessness Resource Navigator — Common Ladder</title>
+<meta name="description" content="Find shelter, food, health care, and housing programs in Sonoma County, California — Santa Rosa, Petaluma, Rohnert Park, Healdsburg, Guerneville and Sonoma Valley. Answer four questions to get resources matched to your situation.">
+<link rel="canonical" href="https://commonladder.org/static-tools/sonoma-county-navigator.html">
+<style>
+  /* ── Reset & Base ── */
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    /* Navigator palette — slightly different from main site for tool readability */
+    --bg:        #FAF7F2;
+    --primary:   #1A5276;
+    --accent:    #2E86AB;
+    --text:      #1C2B33;
+    --green:     #27AE60;
+    --green-dark:#1E8449;
+    --muted:     #6B7C85;
+    --border:    #D5D0C8;
+    --card-bg:   #FFFFFF;
+    --shadow:    0 2px 12px rgba(26,82,118,0.10);
+
+    /* Common Ladder brand — used for home badge only */
+    --cl-blue:   #1C3D6E;
+    --cl-amber:  #E8911A;
+  }
+
+  html { font-size: 18px; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    line-height: 1.6;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  /* ── Layout shell ── */
+  #app {
+    width: 100%;
+    max-width: 640px;
+    padding: 24px 20px 60px;
+    flex: 1;
+  }
+
+  /* ── County badge (top of app, always visible) ── */
+  .county-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: var(--primary);
+    color: #fff;
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    padding: 4px 10px;
+    border-radius: 100px;
+    margin-bottom: 28px;
+  }
+  .county-badge svg { flex-shrink: 0; } #app /* ── Question card ── */
+  .card{
+    background: var(--card-bg);
+    border-radius: 16px;
+    padding: 32px 28px;
+    box-shadow: var(--shadow);
+    margin-bottom: 16px;
+  }
+
+  .q-label {
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 14px;
+  }
+
+  .q-text {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--primary);
+    line-height: 1.35;
+    margin-bottom: 8px;
+  }
+
+  .q-sub {
+    font-size: 0.88rem;
+    color: var(--muted);
+    margin-bottom: 28px;
+  }
+
+  /* ── Buttons ── */
+  .btn-row {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+  } #app .btn{
+    flex: 1;
+    min-width: 120px;
+    padding: 14px 20px;
+    border: none;
+    border-radius: 10px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.15s, transform 0.1s;
+  } #app .btn:active{ transform: scale(0.98); }
+
+  .btn-yes  { background: var(--primary); color: #fff; }
+  .btn-yes:hover  { background: #154360; }
+  .btn-no   { background: #EBF5FB; color: var(--primary); }
+  .btn-no:hover   { background: #D6EAF8; }
+
+  .btn-primary {
+    display: inline-block;
+    background: var(--green);
+    color: #fff;
+    padding: 16px 28px;
+    border-radius: 10px;
+    font-size: 1.05rem;
+    font-weight: 700;
+    text-decoration: none;
+    text-align: center;
+    margin-top: 8px;
+    transition: background 0.15s;
+  }
+  .btn-primary:hover { background: var(--green-dark); }
+
+  /* Save-to-My-Ladder secondary CTA on the result step */
+  .btn-save-ladder {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    width: 100%;
+    background: var(--cl-amber);
+    color: #fff;
+    border: none;
+    padding: 14px 22px;
+    border-radius: 10px;
+    font-size: 0.98rem;
+    font-weight: 700;
+    text-decoration: none;
+    text-align: center;
+    margin-top: 10px;
+    cursor: pointer;
+    transition: opacity 0.15s;
+    font-family: inherit;
+  }
+  .btn-save-ladder:hover { opacity: 0.9; }
+  .btn-save-ladder__sub {
+    display: block;
+    text-align: center;
+    font-size: 0.78rem;
+    color: var(--muted);
+    margin-top: 6px;
+  }
+
+  .btn-restart {
+    background: none;
+    border: 1.5px solid var(--border);
+    color: var(--muted);
+    font-size: 0.85rem;
+    padding: 8px 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    margin-top: 12px;
+    transition: border-color 0.15s;
+  }
+  .btn-restart:hover { border-color: var(--primary); color: var(--primary); }
+
+  /* ── Progress bar ── */
+  .progress-wrap {
+    margin-bottom: 20px;
+  }
+  .progress-bar {
+    height: 4px;
+    background: var(--border);
+    border-radius: 2px;
+    overflow: hidden;
+  }
+  .progress-fill {
+    height: 100%;
+    background: var(--accent);
+    border-radius: 2px;
+    transition: width 0.35s ease;
+  }
+  .progress-label {
+    font-size: 0.72rem;
+    color: var(--muted);
+    margin-top: 5px;
+  }
+
+  /* ── Result card ── */
+  .result-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 4px 12px;
+    border-radius: 100px;
+    font-size: 0.78rem;
+    font-weight: 700;
+    margin-bottom: 18px;
+  }
+  .badge-veterans { background: #D5E8D4; color: #27AE60; }
+  .badge-youth    { background: #D5E8D4; color: #27AE60; }
+  .badge-families { background: #DAE8FC; color: #1A5276; }
+  .badge-chronic  { background: #FFF2CC; color: #856404; }
+  .badge-adult    { background: #E8DAEF; color: #6C3483; }
+
+  .result-headline {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--primary);
+    line-height: 1.35;
+    margin-bottom: 20px;
+  }
+
+  .first-action {
+    background: #EBF5FB;
+    border-left: 4px solid var(--accent);
+    border-radius: 0 10px 10px 0;
+    padding: 16px 18px;
+    font-size: 0.95rem;
+    margin-bottom: 20px;
+  } #app .section-head{
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin: 22px 0 10px;
+  }
+
+  .what-to-expect {
+    font-size: 0.93rem;
+    color: var(--text);
+    line-height: 1.6;
+    margin-bottom: 4px;
+  }
+
+  /* ── Bring list ── */
+  .bring-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  .bring-list li {
+    display: flex;
+    gap: 8px;
+    font-size: 0.9rem;
+    padding: 5px 0;
+    border-bottom: 1px solid var(--border);
+    color: var(--text);
+  }
+  .bring-list li:last-child { border-bottom: none; }
+  .bring-list li::before { content: "✓"; color: var(--green); font-weight: 700; flex-shrink: 0; }
+
+  /* ── Resource cards ── */
+  .resource-card {
+    border: 1.5px solid var(--border);
+    border-radius: 10px;
+    padding: 14px 16px;
+    margin-bottom: 10px;
+  }
+  .resource-card__name {
+    font-weight: 700;
+    font-size: 0.95rem;
+    color: var(--primary);
+    margin-bottom: 2px;
+  }
+  .resource-card__phone {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--green-dark);
+    text-decoration: none;
+    display: inline-block;
+    margin-bottom: 3px;
+  }
+  .resource-card__note {
+    font-size: 0.82rem;
+    color: var(--muted);
+  }
+
+  /* ── Extra note ── */
+  .extra-note {
+    background: #FFFDE7;
+    border: 1px solid #FDD835;
+    border-radius: 8px;
+    padding: 12px 14px;
+    font-size: 0.88rem;
+    color: #5D4037;
+    margin-top: 16px;
+  }
+
+  /* ── Confidence badge ── */
+  .conf-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    padding: 3px 10px;
+    border-radius: 100px;
+    margin-top: 20px;
+    cursor: help;
+    position: relative;
+  }
+  .conf-verified   { background: #D5E8D4; color: #27AE60; }
+  .conf-research   { background: #DAE8FC; color: #1A5276; }
+  .conf-unverified { background: #FFE6CC; color: #D6760C; }
+  .conf-tooltip {
+    display: none;
+    position: absolute;
+    bottom: calc(100% + 8px);
+    left: 50%;
+    transform: translateX(-50%);
+    background: #1C2B33;
+    color: #fff;
+    font-size: 0.75rem;
+    font-weight: 400;
+    line-height: 1.5;
+    padding: 10px 14px;
+    border-radius: 8px;
+    width: 260px;
+    z-index: 10;
+    pointer-events: none;
+  }
+  .conf-tooltip::after {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    border: 6px solid transparent;
+    border-top-color: #1C2B33;
+  }
+  .conf-badge:hover .conf-tooltip,
+  .conf-badge.open  .conf-tooltip { display: block; }
+
+  /* ── Welcome screen ── */
+  .welcome-title {
+    font-size: 1.6rem;
+    font-weight: 800;
+    color: var(--primary);
+    line-height: 1.25;
+    margin-bottom: 12px;
+  }
+  .welcome-sub {
+    font-size: 1rem;
+    color: var(--muted);
+    margin-bottom: 28px;
+  }
+  .welcome-start {
+    background: var(--primary);
+    color: #fff;
+    border: none;
+    border-radius: 12px;
+    padding: 18px 32px;
+    font-size: 1.05rem;
+    font-weight: 700;
+    cursor: pointer;
+    width: 100%;
+    transition: background 0.15s;
+  }
+  .welcome-start:hover { background: #154360; }
+
+  /* ── Footer ── */
+  footer {
+    text-align: center;
+    padding: 20px 20px 32px;
+    font-size: 0.8rem;
+    color: var(--muted);
+    line-height: 1.8;
+    max-width: 640px;
+    width: 100%;
+  }
+  footer a { color: var(--muted); }
+  footer a:hover { color: var(--primary); }
+  .footer-divider { margin: 0 8px; opacity: 0.5; }
+
+  /* ── Common Ladder home badge (fixed top-right) ── */
+  .cl-home {
+    position: fixed;
+    top: 14px;
+    right: 16px;
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    background: var(--cl-blue);
+    color: #fff;
+    text-decoration: none;
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.01em;
+    padding: 7px 13px 7px 9px;
+    border-radius: 100px;
+    box-shadow: 0 2px 10px rgba(28,61,110,0.25);
+    z-index: 999;
+    transition: background 0.15s;
+  }
+  .cl-home:hover { background: #163260; }
+  .cl-home__rung { color: var(--cl-amber); }
+  @media (min-width: 721px) { .cl-home { display: none; } }
+
+  /* ── Print styles ── */
+  @media print {
+    .btn-restart, .progress-wrap, footer .share-note { display: none; }
+    .cl-home { display: none; }
+  }
+
+  /* ── Mobile ── */
+  @media (max-width: 480px) {
+    html { font-size: 16px; } #app .card{ padding: 24px 18px; }
+    .cl-home span { display: none; } /* icon only on small screens */
+    .cl-home { padding: 8px 10px; }
+    .conf-tooltip { width: 200px; left: 0; transform: none; }
+    .conf-tooltip::after { left: 24px; transform: none; }
+  }
+
+  /* ── cl-css-isolation-2026-06-11: the global shell loads /style.css AFTER this
+     block, and its listing-page rules (.card padding:0/flex/pointer/child margins,
+     .btn, .section-head) were overriding the wizard styles above. Selectors above
+     are #app-prefixed to win the cascade; these rules neutralize global-only
+     properties the wizard never declared. ── */
+  #app .card { cursor: default; display: block; }
+  #app .card:hover { transform: none; }
+  #app .card > h3, #app .card > p, #app .card > a, #app .card > .btn { margin-left: 0; margin-right: 0; }
+  #app .card > *:last-child { margin-bottom: 0; }
+  #app .card p { color: var(--text); font-size: inherit; }
+  #app .btn { font-family: inherit; }
+  #app .section-head { text-align: left; }
+</style>
+  <link rel="stylesheet" href="/style.css">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="alternate icon" type="image/png" href="/favicon-32.png">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+</head>
+<body>
+
+<a href="#main" class="skip-link">Skip to main content</a>
+
+<div class="crisis-bar" role="region" aria-label="Crisis help">
+  <strong>Need help right now?</strong>
+  <a href="tel:211">Call 211</a><span class="crisis-bar__sep">·</span>
+  <a href="sms:741741?body=HOME">Text HOME to 741741</a><span class="crisis-bar__sep">·</span>
+  <a href="tel:988">988 Suicide &amp; Crisis</a>
+</div>
+
+<nav class="nav" aria-label="Primary">
+  <div class="nav__inner">
+    <a href="/" class="nav__logo" aria-label="Common Ladder home">
+      <svg width="28" height="28" viewBox="0 0 247 247" fill="none" aria-hidden="true"><g transform="translate(-12.00,-16.00)"> <path fill="#E8911A" fill-opacity="1" fill-rule="evenodd" d="M 254.00,51.00 L 234.00,85.64 L 194.00,85.64 L 174.00,51.00 L 194.00,16.36 L 234.00,16.36 Z M 231.50,51.00 L 222.75,66.16 L 205.25,66.16 L 196.50,51.00 L 205.25,35.84 L 222.75,35.84 Z"/> <path fill="#9FBCBA" fill-opacity="1" fill-rule="evenodd" d="M 148.00,118.00 L 128.00,152.64 L 88.00,152.64 L 68.00,118.00 L 88.00,83.36 L 128.00,83.36 Z M 125.50,118.00 L 116.75,133.16 L 99.25,133.16 L 90.50,118.00 L 99.25,102.84 L 116.75,102.84 Z"/> <path fill="#9FBCBA" fill-opacity="1" fill-rule="evenodd" d="M 259.00,118.00 L 239.00,152.64 L 199.00,152.64 L 179.00,118.00 L 199.00,83.36 L 239.00,83.36 Z M 236.50,118.00 L 227.75,133.16 L 210.25,133.16 L 201.50,118.00 L 210.25,102.84 L 227.75,102.84 Z"/> <path fill="#FFFFFF" fill-opacity="0.94" fill-rule="evenodd" d="M 207.00,164.00 L 187.00,198.64 L 147.00,198.64 L 127.00,164.00 L 147.00,129.36 L 187.00,129.36 Z M 184.50,164.00 L 175.75,179.16 L 158.25,179.16 L 149.50,164.00 L 158.25,148.84 L 175.75,148.84 Z"/> <path fill="#FFFFFF" fill-opacity="0.94" fill-rule="evenodd" d="M 92.00,164.00 L 72.00,198.64 L 32.00,198.64 L 12.00,164.00 L 32.00,129.36 L 72.00,129.36 Z M 69.50,164.00 L 60.75,179.16 L 43.25,179.16 L 34.50,164.00 L 43.25,148.84 L 60.75,148.84 Z"/> <path fill="#FFFFFF" fill-opacity="0.94" fill-rule="evenodd" d="M 161.00,228.00 L 141.00,262.64 L 101.00,262.64 L 81.00,228.00 L 101.00,193.36 L 141.00,193.36 Z M 138.50,228.00 L 129.75,243.16 L 112.25,243.16 L 103.50,228.00 L 112.25,212.84 L 129.75,212.84 Z"/> </g></svg>
+      <span class="nav__wordmark">common<span>ladder</span></span>
+    </a>
+    <button class="nav__toggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="primary-nav" onclick="this.setAttribute('aria-expanded', document.getElementById('primary-nav').classList.toggle('open') ? 'true' : 'false')">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav__links" id="primary-nav">
+            <li><a href="/providers.html">For providers</a></li>
+      <li><a href="/learn/">Learn</a></li>
+      <li><a href="/about.html">About</a></li>
+      <li><a href="/find.html" class="nav__cta">Find resources</a></li>
+      <li><a href="/static-tools/my-ladder.html" class="nav__cta nav__cta--ladder">My Ladder</a></li>
+      <li><a href="https://www.weather.gov/" rel="noreferrer" class="nav__exit" onclick="event.preventDefault();window.location.replace('https://www.weather.gov/')">Leave page</a></li>
+    </ul>
+  </div>
+</nav>
+
+<main id="main">
+
+
+
+
+
+<!-- Common Ladder home badge — always present, fixed top-right -->
+<a href="https://commonladder.org" class="cl-home" aria-label="Return to Common Ladder home">
+  <svg width="18" height="18" viewBox="0 0 28 28" fill="none" aria-hidden="true">
+    <rect x="4" y="2" width="3" height="24" rx="1.5" fill="white" opacity=".9"/>
+    <rect x="21" y="2" width="3" height="24" rx="1.5" fill="white" opacity=".9"/>
+    <rect x="4" y="7" width="20" height="3" rx="1.5" fill="#E8911A"/>
+    <rect x="4" y="14" width="20" height="3" rx="1.5" fill="#E8911A"/>
+    <rect x="4" y="21" width="20" height="3" rx="1.5" fill="#E8911A"/>
+  </svg>
+  <span>common<span class="cl-home__rung">ladder</span></span>
+</a>
+
+<!-- App shell — all screens rendered by JS into here -->
+<div id="app"></div>
+
+<!-- Footer — update CoC ID and location text -->
+<a href="/resources.html" class="quick-help" aria-label="Find help now"><svg class="icon" viewBox="0 0 16 16" aria-hidden="true" style="margin-right:.35em;vertical-align:-.15em"><path d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z" fill="currentColor"/></svg> Find help now</a>
+
+</main>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer__grid">
+      <div class="footer__brand">
+        <h3>Common Ladder</h3>
+        <p>The civic resource platform connecting people experiencing homelessness with every service in your community.</p>
+      </div>
+      <div>
+        <h4>Find help</h4>
+        <ul>
+          <li><a href="/find.html?cat=shelter">Shelter</a></li>
+          <li><a href="/find.html?cat=food">Food</a></li>
+          <li><a href="/find.html?cat=legal">Legal</a></li>
+          <li><a href="/help/">All categories</a></li>
+          <li><a href="/static-tools/">Local navigators</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>For providers</h4>
+        <ul>
+          <li><a href="/providers.html">Tools &amp; referrals</a></li>
+          <li><a href="/providers.html#case-manager-guide">Case manager guide</a></li>
+          <li><a href="/data-reports.html">Data &amp; reports</a></li>
+          <li><a href="/learn/">Four learning pathways</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>About</h4>
+        <ul>
+          <li><a href="/about.html">Our mission</a></li>
+          <li><a href="/about.html#methodology">Methodology</a></li>
+          <li><a href="/about.html#team">Team</a></li>
+          <li><a href="/brand/visual-guidelines.html">Brand guidelines</a></li>
+          <li><a href="/contact.html">Contact</a></li>
+          <li><a href="/privacy.html">Privacy</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer__transparency">
+      <strong>Transparency:</strong> Common Ladder is an independent civic project. We do not sell user data, run ads, or accept payment from listed resources.
+    </div>
+    <div class="footer__bottom">
+      <span>&copy; 2026 Common Ladder. Free to use, always.</span>
+      <span><time datetime="2026-08-03">Last updated August 3, 2026</time></span> <span>&middot; Sonoma County CoC (CA-504) &mdash; Santa Rosa, Petaluma &amp; Sonoma County, California. Is this information out of date? <a href="mailto:corrections.commonladder@gmail.com?subject=Correction:%20/static-tools/sonoma-county-navigator.html">Report an error</a></span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  /* ═══════════════════════════════════════════════════════════
+     STATE
+  ═══════════════════════════════════════════════════════════ */
+  var state = {
+    step: 'welcome',   // welcome | q1 | q2 | q3 | q4 | result_*
+    pathway: null
+  };
+
+  /* ═══════════════════════════════════════════════════════════
+     QUESTIONS
+     Standard across all navigators — do not change the flow.
+     Only change label text if local terminology differs.
+  ═══════════════════════════════════════════════════════════ */
+  var QUESTIONS = [
+    {
+      id: 'q1',
+      text: 'Are you a U.S. military veteran?',
+      sub: 'This includes any branch of the armed forces.',
+      next_yes: 'result_veterans',
+      next_no: 'q2'
+    },
+    {
+      id: 'q2',
+      text: 'Are you 24 years old or younger?',
+      sub: 'Youth-specific programs are available for people 24 and under.',
+      yes_label: 'Yes, 24 or younger',
+      no_label: 'No, 25 or older',
+      next_yes: 'result_youth',
+      next_no: 'q3'
+    },
+    {
+      id: 'q3',
+      text: 'Do you have children with you right now?',
+      sub: 'This includes any minors in your care.',
+      next_yes: 'result_families',
+      next_no: 'q4'
+    },
+    {
+      id: 'q4',
+      text: 'Have you been without stable housing for more than a year — or off and on for years — AND do you have a health condition that makes it harder to work or take care of yourself?',
+      sub: 'This includes physical conditions, mental health conditions, or substance use.',
+      next_yes: 'result_chronic',
+      next_no: 'result_adult'
+    }
+  ];
+
+  var Q_INDEX = { q1: 0, q2: 1, q3: 2, q4: 3 };
+
+  /* ═══════════════════════════════════════════════════════════
+     CONFIDENCE TIERS
+     Apply to every pathway. Be honest about what's verified.
+     level: 'verified' | 'research' | 'unverified'
+  ═══════════════════════════════════════════════════════════ */
+  var CONFIDENCE_META = {
+    verified: {
+      icon: '✓',
+      label: 'Verified',
+      cssClass: 'conf-verified',
+      tooltip: 'Confirmed directly with the CoC or provider. Phone numbers and intake processes have been tested.'
+    },
+    research: {
+      icon: '◐',
+      label: 'Research-based',
+      cssClass: 'conf-research',
+      tooltip: 'Gathered from official agency websites and public records. Likely accurate but may have changed — call ahead to confirm.'
+    },
+    unverified: {
+      icon: '?',
+      label: 'Unverified',
+      cssClass: 'conf-unverified',
+      tooltip: 'Based on general knowledge. Not checked against primary sources. Call ahead before relying on this information.'
+    }
+  };
+
+  /* ═══════════════════════════════════════════════════════════
+     PATHWAY DATA
+     Sonoma County, CA — CoC CA-504.
+     Each pathway: firstAction + callNumber + resources.
+  ═══════════════════════════════════════════════════════════ */
+  var PATHWAYS = {
+
+    result_veterans: {
+      label: 'Veterans Pathway',
+      badgeClass: 'badge-veterans',
+      badgeIcon: '🎖',
+      headline: 'There\'s a dedicated system built for you.',
+      firstAction: 'Call the National Call Center for Homeless Veterans right now: <strong>1-877-4AID-VET (1-877-424-3838)</strong>. Available 24/7. You do NOT need your DD-214 to call. Locally, <strong>Nation\'s Finest</strong> at 444 10th Street, Suite 102 in Santa Rosa is the veteran access point for Sonoma County\'s Coordinated Entry System — call <strong>(833) 468-9676</strong>, Monday–Friday 8am–5pm.',
+      callNumber: 'tel:18774243838',
+      callLabel: 'Call 1-877-4AID-VET',
+      what_to_expect: 'Sonoma County runs a separate veteran-specific front door. Nation\'s Finest is both the SSVF provider (Supportive Services for Veteran Families — rapid rehousing, prevention, and emergency financial help) and the designated veteran Coordinated Entry access point, so one call can start both processes. They also operate <strong>Hearn House</strong> in Santa Rosa, a veterans-only emergency shelter; beds are prioritized by vulnerability and you must be VA medically eligible to enter, so ask about eligibility when you call the Housing Coordinator at (707) 548-3247. HUD-VASH vouchers for Sonoma County are administered through the San Francisco VA Health Care System — the North and South Santa Rosa VA Clinics are your local point of contact. If Hearn House is full, you can still apply for general shelter through the Caritas Center Drop-In (see the single-adult resources) while you wait.',
+      bring: [
+        'DD-214 discharge papers (if you have them — not required to call)',
+        'Photo ID (if available)',
+        'Any VA documentation, VA card, or claim numbers you have',
+        'Hearn House requires VA medical eligibility — ask Nation\'s Finest to help you confirm yours'
+      ],
+      resources: [
+        {
+          name: 'Nation\'s Finest — Santa Rosa (SSVF + veteran Coordinated Entry access point)',
+          phone: '(833) 468-9676',
+          tel: 'tel:18334689676',
+          note: '444 10th Street, Suite 102, Santa Rosa. Mon–Fri 8am–5pm. For Hearn House veterans shelter, ask for the Housing Coordinator or call (707) 548-3247.'
+        },
+        {
+          name: 'Santa Rosa VA Clinics (San Francisco VA Health Care System)',
+          phone: '(707) 569-2300',
+          tel: 'tel:17075692300',
+          note: 'North clinic: 3841 Brickway Blvd. South clinic: 2285 Challenger Way. Ask for the Homeless Veterans Program and HUD-VASH.'
+        },
+        {
+          name: 'Sonoma County Veterans Service Office',
+          phone: '(707) 565-5960',
+          tel: 'tel:17075655960',
+          note: 'County office that helps veterans file for VA benefits, compensation, and pensions. Call to confirm current hours.'
+        },
+        {
+          name: 'National Call Center for Homeless Veterans',
+          phone: '1-877-424-3838',
+          tel: 'tel:18774243838',
+          note: 'Available 24/7. Can connect you to programs anywhere in the country.'
+        }
+      ],
+      confidence: {
+        level: 'research',
+        note: 'Sourced from the Sonoma County Department of Health Services Homelessness Services "Get Help" page, the county\'s published Emergency Shelter Intake Information sheet, VA.gov, and Nation\'s Finest. Phone numbers have not been individually dialed and confirmed. The Veterans Service Office number should be re-checked before relying on it.',
+        lastChecked: 'August 2026'
+      }
+    },
+
+    result_youth: {
+      label: 'Youth Pathway',
+      badgeClass: 'badge-youth',
+      badgeIcon: '🌱',
+      headline: 'You have access to youth-specific services here.',
+      firstAction: 'Call <strong>SAY (Social Advocates for Youth)</strong> on their 24-hour emergency hotline at <strong>(888) 729-0012</strong> — they run Sonoma County\'s youth shelters and can tell you tonight what is open to you.',
+      callNumber: 'tel:18887290012',
+      callLabel: 'Call SAY 24-hour hotline: (888) 729-0012',
+      what_to_expect: 'Sonoma County splits youth services by age. If you are <strong>12–17</strong>, the Coffee House Teen Shelter at 1243 Ripley Street in Santa Rosa is open 24 hours a day, 364 days a year, and accepts walk-ins before 9pm — short-term shelter, food, counseling, and family reunification if you want it. If you are <strong>18–24</strong>, SAY\'s Tamayo Village offers short-term emergency shelter for young adults and former foster youth, with case management, job and education support, and counseling referrals on site. <strong>TLC Children and Family Services</strong> at 821 Mendocino Avenue is the Coordinated Entry access point specifically for transition-age youth 18–24 (including young parents) — drop in Thursdays 1–3pm or call for an appointment. You do not need to have an adult with you to call any of these numbers, and drop-in services generally do not require paperwork up front. Se habla español at SAY.',
+      bring: [
+        'Photo ID if you have one — not required to call or use a drop-in center',
+        'Nothing is required to call the 24-hour hotline',
+        'If you are 18–24 and were in foster care, mention it — it opens additional programs',
+        'If you are under 18, staff can talk with you about your options before contacting anyone'
+      ],
+      resources: [
+        {
+          name: 'Coffee House Teen Shelter (SAY) — ages 12–17',
+          phone: '(707) 546-3432',
+          tel: 'tel:17075463432',
+          note: '1243 Ripley St, Santa Rosa. Open 24 hours, 364 days a year. Walk-ins accepted before 9pm.'
+        },
+        {
+          name: 'SAY Tamayo Village — ages 18–24',
+          phone: '(707) 528-7500',
+          tel: 'tel:17075287500',
+          note: '1700 Tamayo Village, Santa Rosa. Short-term emergency shelter for young adults and former foster youth, with case management and employment services on site.'
+        },
+        {
+          name: 'TLC Children and Family Services — Coordinated Entry for youth 18–24',
+          phone: '(707) 480-9541',
+          tel: 'tel:17074809541',
+          note: '821 Mendocino Ave, Santa Rosa. Drop in Thursdays 1–3pm or call for an appointment. Serves transition-age youth, including youth with children.'
+        },
+        {
+          name: 'VOICES Sonoma County — ages 16–24',
+          phone: '(707) 579-4327',
+          tel: 'tel:17075794327',
+          note: '714 Mendocino Ave, Santa Rosa. Youth-led center for current and former foster youth — housing navigation, benefits, education, and peer support.'
+        }
+      ],
+      confidence: {
+        level: 'research',
+        note: 'Sourced from the Sonoma County Homelessness Services Coordinated Entry access point list (updated April 2026), SAY (saysc.org), and the Homeless Action! Sonoma County youth shelter directory. Hours and walk-in policies change — call the 24-hour hotline first.',
+        lastChecked: 'August 2026'
+      }
+    },
+
+    result_families: {
+      label: 'Families Pathway',
+      badgeClass: 'badge-families',
+      badgeIcon: '👨‍👩‍👧',
+      headline: 'Families with children get a dedicated intake line here.',
+      firstAction: 'Call the <strong>Catholic Charities Family Support Center</strong> in Santa Rosa at <strong>(707) 542-5426</strong> — applications are accepted <strong>24 hours a day, 7 days a week</strong>, and staff add you to the waitlist on that first call. Do not wait for business hours.',
+      callNumber: 'tel:17075425426',
+      callLabel: 'Call Family Support Center: (707) 542-5426',
+      what_to_expect: 'The Catholic Charities Family Center serves families with children and expectant parents in the third trimester of pregnancy. Because applications are taken 24/7 by phone, calling immediately is what secures your place — placement is first come, first served from the waitlist. When your name comes up, staff will call or email you and schedule an intake appointment (Monday–Friday 8:30am–7:00pm, or weekends 9:00am–3:00pm by prior arrangement). If they cannot reach you after three attempts, you go to the bottom of the list, so check in regularly by calling (707) 542-5426 — and if you do not have a phone, tell them where you are staying so the HOST outreach team can find you. In south county, COTS runs a separate family shelter in Petaluma. Shelter capacity for families in Sonoma County is limited, so apply at more than one place at the same time. Separately: if your children are in school, the federal <strong>McKinney-Vento Act</strong> guarantees them the right to stay enrolled at their original school, get transportation there, and enroll immediately without proof of address — ask for your district\'s homeless liaison.',
+      bring: [
+        'Photo ID for adults, if you have it',
+        'Birth certificates or any documents for your children (helpful, not required to apply)',
+        'A phone number or an address where outreach can find you — this matters more than paperwork',
+        'Proof of pregnancy if you are in your third trimester and applying on that basis'
+      ],
+      resources: [
+        {
+          name: 'COTS Kids Family Shelter — Petaluma',
+          phone: '(707) 765-6530 ext. 1053',
+          tel: 'tel:17077656530',
+          note: 'Call extension 1053 for a phone screening and to join the waiting list. Families with children only. Limited capacity.'
+        },
+        {
+          name: 'The Rose (Redwood Gospel Mission) — women and women with children',
+          phone: '(707) 573-0490',
+          tel: 'tel:17075730490',
+          note: 'Apply at 101 6th St, Santa Rosa — Mon–Fri 11am, Sat–Sun 1pm. 30-day program. Twice-daily Bible study required; zero tolerance for drugs and alcohol.'
+        },
+        {
+          name: 'YWCA Sonoma County — 24/7 domestic violence hotline',
+          phone: '(707) 546-1234',
+          tel: 'tel:17075461234',
+          note: 'If you are fleeing domestic violence, call this line instead. The YWCA Safe House is at a confidential location and takes families with children.'
+        },
+        {
+          name: '211 Sonoma County (United Way of the Wine Country)',
+          phone: 'Call or text 211',
+          tel: 'tel:211',
+          note: 'Text your ZIP code to 898211, or call (707) 565-2108 / 1-800-325-9604. Food, diapers, utility help, and current shelter openings.'
+        }
+      ],
+      confidence: {
+        level: 'research',
+        note: 'Sourced from the Sonoma County Emergency Shelter Intake Information sheet published by the Department of Health Services and from 211sonoma.org. Note: the county PDF prints the COTS Kids Family Shelter number as (707) 756-6530, which appears to be a typo for the COTS main line (707) 765-6530 — verify before relying on the extension.',
+        lastChecked: 'August 2026'
+      }
+    },
+
+    result_chronic: {
+      label: 'Long-Term / Disability Pathway',
+      badgeClass: 'badge-chronic',
+      badgeIcon: '🏠',
+      headline: 'You may qualify for permanent supportive housing.',
+      firstAction: 'Get a <strong>Coordinated Entry assessment</strong>. The easiest walk-in is the <strong>Caritas Center Drop-In</strong> at 301 6th Street (corner of Morgan and 6th), Santa Rosa — Tuesdays and Wednesdays 1pm–4pm — or call <strong>(707) 308-4684</strong>. Say clearly that you want a <strong>Coordinated Entry assessment</strong>, not just a shelter application.',
+      callNumber: 'tel:17073084684',
+      callLabel: 'Call Caritas Drop-In: (707) 308-4684',
+      what_to_expect: 'Sonoma County\'s Coordinated Entry System is operated by <strong>HomeFirst</strong> and uses a Housing First model that prioritizes people with the longest histories of homelessness and the highest vulnerability for permanent supportive housing. Coordinated Entry is not an emergency response system — being assessed does not get you a bed tonight, and the county says so plainly. Treat it as the parallel track: apply for emergency shelter <em>and</em> get assessed on the same day if you can. There are access points across the county, and several are geographically restricted, so use the one for where you actually are: Petaluma (COTS Mary Isaak Center), Healdsburg and north county (Reach for Home, Corazón Healdsburg), Guerneville and west county (West County Health Center), Rohnert Park (HOST), Sonoma Valley and south county (HomeFirst outreach), Sebastopol (West County Community Services). Assessment covers your housing history and disabling conditions — physical health, mental health, and substance use all count toward chronic homeless status, and being honest about them raises your priority rather than lowering it. Ask for a copy of your assessment and the name of the person who did it.',
+      bring: [
+        'Photo ID and Social Security number, if you have them',
+        'Any documentation of a disability — SSI/SSDI letters, medical records, a doctor\'s note',
+        'Anything showing how long you have been homeless — shelter stays, outreach contacts, prior case managers',
+        'A way to be reached: a phone number, an email, or the name of an outreach worker who sees you regularly'
+      ],
+      resources: [
+        {
+          name: 'HomeFirst — Sonoma County Coordinated Entry System operator',
+          phone: '(866) 542-4308',
+          tel: 'tel:18665424308',
+          note: 'Runs Coordinated Entry countywide and matches people to permanent supportive housing. You can also email ce@homefirstscc.org. For Petaluma or Sonoma Valley outreach teams, call (707) 277-1407.'
+        },
+        {
+          name: 'Caritas Center Drop-In (Catholic Charities) — Coordinated Entry access point',
+          phone: '(707) 308-4684',
+          tel: 'tel:17073084684',
+          note: '301 6th St, Santa Rosa. Drop in Tue–Wed 1pm–4pm for Coordinated Entry. This is also where you apply for Sam Jones Hall shelter.'
+        },
+        {
+          name: 'Individual and Family Support Network — Coordinated Entry access point',
+          phone: '(707) 546-7907 ext. 101',
+          tel: 'tel:17075467907',
+          note: 'Drop in Wednesdays 1pm–4pm, or call for an appointment.'
+        },
+        {
+          name: 'Reach for Home — north county interim housing for chronically homeless adults',
+          phone: '(707) 433-6161',
+          tel: 'tel:17074336161',
+          note: 'Apply in person at 70 Healdsburg Ave, Healdsburg, Mon–Fri 9:00am–4:30pm. Sites in Healdsburg, Cloverdale, and Windsor. Serves Windsor up to Cloverdale. Pets considered.'
+        }
+      ],
+      confidence: {
+        level: 'research',
+        note: 'Sourced from the Sonoma County Coordinated Entry access point flyer (updated April 2026), the county Homelessness Services "Get Help" page, and the Emergency Shelter Intake Information sheet. Note: county documents print two different numbers for Reach for Home — (707) 433-6161 on the Get Help page and (707) 443-6161 on the shelter intake PDF. The Get Help number is used here and should be confirmed.',
+        lastChecked: 'August 2026'
+      }
+    },
+
+    result_adult: {
+      label: 'Single Adults Pathway',
+      badgeClass: 'badge-adult',
+      badgeIcon: '📞',
+      headline: 'Here\'s where to go for emergency shelter and housing help.',
+      firstAction: 'Apply in person at the <strong>Caritas Center Drop-In, 301 6th Street, Santa Rosa</strong> (corner of Morgan and 6th) for a bed at <strong>Sam Jones Hall</strong> — the county\'s largest shelter, 213 year-round beds for single adults. Applications are taken Mon–Wed and Fri 6:00am–5:30pm, Thu 6:00am–12:00pm, and Sat 8:00am–4:00pm. Questions: <strong>(707) 308-4684</strong>.',
+      callNumber: 'tel:17073084684',
+      callLabel: 'Call Caritas Drop-In: (707) 308-4684',
+      what_to_expect: 'Sam Jones Hall applications must be made in person — you cannot get on the list by phone. Beds are first come, first served from a waitlist. When your name comes up, staff will call you; if you have no phone, they work with the HOST outreach team to find you. Staff make three attempts, and if they cannot reach you, you move to the bottom of the list — so check your status regularly by calling (707) 308-4684 or coming back to the Drop-In. While you wait, apply at more than one shelter: Sonoma County shelters each run their own intake, and being on several lists is normal and expected. Which shelters you can use depends heavily on where you are — several are restricted to residents of a specific city or region. Sonoma County has no single 24/7 shelter hotline, so 211 is your fallback for real-time availability and for everything shelters do not cover — food, showers, transport, benefits, and warming centers during cold weather.',
+      bring: [
+        'Photo ID (helpful but not required to apply at the Drop-In)',
+        'Social Security card or number, if available',
+        'Any documentation of income or benefits',
+        'A phone number if you have one — or be ready to tell staff where you sleep so outreach can find you'
+      ],
+      resources: [
+        {
+          name: 'Catholic Charities Caritas Center Drop-In / Sam Jones Hall — Santa Rosa',
+          phone: '(707) 308-4684',
+          tel: 'tel:17073084684',
+          note: '301 6th St, Santa Rosa. In-person applications only. 213 year-round beds for single adults. Also the main Coordinated Entry walk-in, Tue–Wed 1pm–4pm.'
+        },
+        {
+          name: 'COTS Mary Isaak Center — Petaluma',
+          phone: '(707) 765-6530',
+          tel: 'tel:17077656530',
+          note: '900 Hopper St, Petaluma. Adults only. Applications accepted at mealtimes, 11:30am–12:30pm and 5:00pm–6:00pm, every day. Check waitlist status at ext. 1041.'
+        },
+        {
+          name: 'Redwood Gospel Mission Men\'s Program — Santa Rosa',
+          phone: '(707) 542-4817',
+          tel: 'tel:17075424817',
+          note: 'Apply at 101 6th St, Santa Rosa — Mon–Fri 11am, Sat–Sun 1pm. 30-day program. Twice-daily Bible study required; zero tolerance for drugs and alcohol.'
+        },
+        {
+          name: '211 Sonoma County (United Way of the Wine Country)',
+          phone: 'Call or text 211',
+          tel: 'tel:211',
+          note: 'Text your ZIP code to 898211, or call (707) 565-2108 / 1-800-325-9604. Real-time availability, food, warming centers, and connection to local services.'
+        }
+      ],
+      extra_note: '<strong>Outside Santa Rosa and Petaluma?</strong> Several Sonoma County shelters serve one community only. Guerneville and west county: request a referral in person at West County Community Services, 16390 Main St, Mon–Fri 9am–4pm — do not go to the shelter directly. Rohnert Park: contact the Rohnert Park HOST team at (707) 800-2133 for a Labath Landing referral. Sonoma Valley: visit the Home and Safe site at 18820 Highway 12, Boyes Hot Springs, Mon–Sat 10am–5pm or Sun 5–6:30pm, or call (707) 991-0453. Healdsburg, Windsor, and Cloverdale: Reach for Home, (707) 433-6161. <strong>Fleeing domestic violence?</strong> Call the YWCA 24/7 hotline at (707) 546-1234 or Verity\'s 24/7 line at (707) 545-7273 rather than going through general shelter intake.',
+      confidence: {
+        level: 'research',
+        note: 'Sourced from the Sonoma County Emergency Shelter Intake Information sheet and the Homelessness Services "Get Help" page published by the Sonoma County Department of Health Services, plus 211sonoma.org. Shelter hours and intake windows change seasonally — confirm by phone before traveling.',
+        lastChecked: 'August 2026'
+      }
+    }
+
+  }; // end PATHWAYS
+
+  /* ═══════════════════════════════════════════════════════════
+     RENDER ENGINE — do not modify below this line
+     unless fixing a structural bug.
+  ═══════════════════════════════════════════════════════════ */
+  function render() {
+    var app = document.getElementById('app');
+    var html = '';
+
+    // County badge always shown at top
+    html += '<div class="county-badge">';
+    html += '<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>';
+    html += 'Sonoma County, CA &mdash; CA-504</div>';
+
+    if (state.step === 'welcome') {
+      html += renderWelcome();
+    } else if (state.step.startsWith('result_')) {
+      html += renderResult(state.step);
+    } else {
+      html += renderQuestion(state.step);
+    }
+
+    app.innerHTML = html;
+  }
+
+  function renderWelcome() {
+    return '<div class="card">' +
+      '<div class="welcome-title">Find the right help.<br>Answer 4 quick questions.</div>' +
+      '<div class="welcome-sub">We\'ll match you to the services and programs most likely to help — based on your situation, not a generic list.</div>' +
+      '<button class="welcome-start" onclick="goTo(\'q1\')">Get started &rarr;</button>' +
+      '</div>' +
+      '<div style="font-size:0.8rem; color:var(--muted); text-align:center; margin-top:12px;">No personal information collected. Free to use.</div>';
+  }
+
+  function renderQuestion(qid) {
+    var q = QUESTIONS[Q_INDEX[qid]];
+    var stepNum = Q_INDEX[qid] + 1;
+    var pct = Math.round((stepNum / QUESTIONS.length) * 100);
+    var html = '';
+
+    html += '<div class="progress-wrap">' +
+      '<div class="progress-bar"><div class="progress-fill" style="width:' + pct + '%"></div></div>' +
+      '<div class="progress-label">Question ' + stepNum + ' of ' + QUESTIONS.length + '</div>' +
+      '</div>';
+
+    html += '<div class="card">' +
+      '<div class="q-label">Question ' + stepNum + '</div>' +
+      '<div class="q-text">' + q.text + '</div>' +
+      '<div class="q-sub">' + q.sub + '</div>' +
+      '<div class="btn-row">' +
+      '<button class="btn btn-yes" onclick="answer(true)">' + (q.yes_label || 'Yes') + '</button>' +
+      '<button class="btn btn-no"  onclick="answer(false)">' + (q.no_label  || 'No')  + '</button>' +
+      '</div>' +
+      '</div>';
+
+    if (Q_INDEX[qid] > 0) {
+      html += '<button class="btn-restart" onclick="history.back()">← Back</button>';
+    }
+
+    return html;
+  }
+
+  function renderConfidenceBadge(conf) {
+    var meta = CONFIDENCE_META[conf.level];
+    return '<span class="conf-badge ' + meta.cssClass + '" onclick="this.classList.toggle(\'open\')" tabindex="0" role="button" aria-label="Information confidence: ' + meta.label + '">' +
+      meta.icon + ' ' + meta.label +
+      ' &mdash; Last checked: ' + conf.lastChecked +
+      '<span class="conf-tooltip">' + meta.tooltip + (conf.note ? '<br><br>' + conf.note : '') + '</span>' +
+      '</span>';
+  }
+
+  // Build a base64 payload that adds this pathway to My Ladder when opened.
+  function buildLadderUrl(p) {
+    try {
+      var stripTags = function(s){ return String(s||'').replace(/<[^>]+>/g,'').replace(/\s+/g,' ').trim(); };
+      var phoneFromTel = (p.callNumber||'').replace(/^tel:/,'').replace(/[^\d+\-()\s]/g,'');
+      var data = {
+        cat: 'shelter',
+        name: p.label + ' — ' + stripTags(p.callLabel),
+        phone: phoneFromTel,
+        address: '',
+        notes: 'First step: ' + stripTags(p.firstAction) + ' · What to expect: ' + stripTags(p.what_to_expect),
+        followups: (p.bring||[]).map(function(b){ return { text: stripTags(b) }; })
+                   .concat((p.resources||[]).slice(0,3).map(function(r){
+                     return { text: 'Contact: ' + stripTags(r.name) + (r.phone ? ' — ' + r.phone : '') };
+                   })),
+        source: (document.title||'').split(' — ')[0]
+      };
+      var encoded = btoa(unescape(encodeURIComponent(JSON.stringify(data))));
+      return 'https://my.commonladder.org/?add=' + encoded;
+    } catch(e) {
+      return 'https://my.commonladder.org/';
+    }
+  }
+
+  function renderResult(rid) {
+    var p = PATHWAYS[rid];
+    var html = '';
+
+    html += '<div class="card">';
+    html += '<span class="result-badge ' + p.badgeClass + '">' + p.badgeIcon + ' ' + p.label + '</span>';
+    html += '<div class="result-headline">' + p.headline + '</div>';
+
+    // First action block
+    html += '<div class="first-action">' + p.firstAction + '</div>';
+    html += '<a href="' + p.callNumber + '" class="btn-primary">' + p.callLabel + '</a>';
+
+    // Save-to-My-Ladder CTA — lets users carry their pathway, first step, and bring list into their personal plan.
+    var ladderUrl = buildLadderUrl(p);
+    html += '<a href="' + ladderUrl + '" target="_blank" rel="noopener" class="btn-save-ladder">📋 Save this plan to My Ladder</a>';
+    html += '<div class="btn-save-ladder__sub">Track calls, schedule visits, add notes — your data stays on your device.</div>';
+
+    // What to expect
+    html += '<div class="section-head">What to expect</div>';
+    html += '<div class="what-to-expect">' + p.what_to_expect + '</div>';
+
+    // What to bring
+    html += '<div class="section-head">What to bring</div>';
+    html += '<ul class="bring-list">';
+    p.bring.forEach(function(item) { html += '<li>' + item + '</li>'; });
+    html += '</ul>';
+
+    // Additional resources
+    html += '<div class="section-head">Additional resources</div>';
+    p.resources.forEach(function(r) {
+      html += '<div class="resource-card">';
+      html += '<div class="resource-card__name">' + r.name + '</div>';
+      html += '<a href="' + r.tel + '" class="resource-card__phone">' + r.phone + '</a>';
+      if (r.note) html += '<div class="resource-card__note">' + r.note + '</div>';
+      html += '</div>';
+    });
+
+    // Extra note (optional)
+    if (p.extra_note) {
+      html += '<div class="extra-note">' + p.extra_note + '</div>';
+    }
+
+    // Confidence badge
+    html += renderConfidenceBadge(p.confidence);
+
+    html += '</div>'; // end card
+
+    // Restart
+    html += '<button class="btn-restart" onclick="goTo(\'welcome\')">← Start over</button>';
+
+    return html;
+  }
+
+  function goTo(step) {
+    state.step = step;
+    render();
+    window.scrollTo(0, 0);
+  }
+
+  function answer(isYes) {
+    var q = QUESTIONS[Q_INDEX[state.step]];
+    var next = isYes ? q.next_yes : q.next_no;
+    if (next.startsWith('result_')) {
+      state.pathway = next;
+    }
+    goTo(next);
+  }
+
+  // Tooltip close on outside click
+  document.addEventListener('click', function(e) {
+    if (!e.target.closest('.conf-badge')) {
+      document.querySelectorAll('.conf-badge.open').forEach(function(el) {
+        el.classList.remove('open');
+      });
+    }
+  });
+
+  // Initial render
+  render();
+</script>
+<script data-id="cl-card-click">
+(function(){
+  document.querySelectorAll('.card, .post-card:not(.post-card--linked)').forEach(function(el){
+    if(el.closest('#app')) return; /* wizard cards are not link cards */
+    var a = el.querySelector('a[href]');
+    if(!a) return;
+    el.addEventListener('click', function(e){
+      if(e.target.tagName==='A'||e.target.closest('a')) return;
+      window.location.href = a.href;
+    });
+  });
+})();
+</script>
+</body>
+</html>
