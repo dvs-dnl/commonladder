@@ -263,6 +263,7 @@
         <div id="r1-id-block">
           <h4>Get your identity documents</h4>
           <p>Without ID you can't open a bank account, apply for housing, or access most services. Here's how to get it even when you have nothing:</p>
+          <p id="r1-id-missing" style="display:none;border-left:4px solid #E8911A;background:#FFF8EE;padding:.6rem .85rem;border-radius:0 6px 6px 0;color:#1A1A2E"></p>
           <div class="steps-box">
             <ol>
               <li><strong>Birth certificate</strong> — $20 from AZ Dept of Health. If you can't pay, ask your shelter or case manager for a fee voucher.</li>
@@ -589,24 +590,9 @@ function buildResults() {
     document.getElementById('crisis-banner').classList.add('visible');
   }
 
-  var currentRung = 0;
-  if (answers.housing === 'crisis') {
-    currentRung = 0;
-  } else if (answers.housing === 'shelter') {
-    currentRung = 1;
-  } else if (answers.housing === 'transitional' || answers.housing === 'atrisk') {
-    currentRung = 2;
-  } else if (answers.housing === 'housed') {
-    if (answers.docs !== 'full') {
-      currentRung = 1;
-    } else if (answers.income === 'none' || answers.income === 'benefits') {
-      currentRung = 3;
-    } else if (answers.income === 'parttime') {
-      currentRung = 4;
-    } else {
-      currentRung = 5;
-    }
-  }
+  // Single source of truth — the same function the questionnaire uses to
+  // stamp plan.currentRung. Reads multi-select answers (income, docs) safely.
+  var currentRung = window.MyLadder.computeCurrentRung(answers);
 
   for (var i = 0; i <= 5; i++) {
     var el = document.getElementById('rung-' + i);
@@ -638,8 +624,23 @@ function buildResults() {
   if (answers.family === 'pregnant') {
     document.getElementById('r0-pregnant-tip').style.display = 'flex';
   }
-  if (answers.docs === 'full') {
+  // docs is multi-select: hide the "replace your ID" block only when they hold
+  // all three core documents. Otherwise narrow the block to what's missing.
+  var hasDoc = function (v) { return window.MyLadder.has(answers, 'docs', v); };
+  if (hasDoc('id') && hasDoc('ssn') && hasDoc('birth')) {
     document.getElementById('r1-id-block').style.display = 'none';
+  } else {
+    var missing = [
+      !hasDoc('id') ? 'a state ID or driver&rsquo;s license' : null,
+      !hasDoc('ssn') ? 'your Social Security card' : null,
+      !hasDoc('birth') ? 'your birth certificate' : null
+    ].filter(Boolean);
+    var $missing = document.getElementById('r1-id-missing');
+    if ($missing && missing.length) {
+      $missing.innerHTML = 'Based on your answers, you still need: <strong>' +
+        missing.join(', ').replace(/, ([^,]*)$/, ' and $1') + '</strong>.';
+      $missing.style.display = 'block';
+    }
   }
   if (answers.housing === 'shelter' || answers.housing === 'crisis') {
     document.getElementById('r2-shelter-path').style.display = 'block';
@@ -647,14 +648,18 @@ function buildResults() {
   if (answers.housing === 'atrisk') {
     document.getElementById('r2-atrisk-path').style.display = 'block';
   }
-  if (answers.insurance === 'insured') {
+  // insurance values come from the schema: medicaid | private | va | none
+  if (answers.insurance && answers.insurance !== 'none') {
     document.getElementById('r3-insured').style.display = 'block';
   } else {
     document.getElementById('r3-uninsured').style.display = 'block';
   }
-  if (answers.employment === 'notready') {
+  // The employment question is skipped entirely when someone said "I have a
+  // job" on the income question, so treat that as the working case here.
+  var working = window.MyLadder.has(answers, 'income', 'job') || answers.employment === 'employed';
+  if (answers.employment === 'unable') {
     document.getElementById('r5-employment-block').style.display = 'none';
-  } else if (answers.employment === 'working') {
+  } else if (working) {
     document.getElementById('r5-employment-heading').textContent = 'Employment — moving up';
     document.getElementById('r5-employment-list').innerHTML =
       '<li>Arizona@Work offers skills assessments and training subsidies for people already employed — ask about "incumbent worker" programs</li>' +
@@ -662,6 +667,10 @@ function buildResults() {
       '<li>Track hours carefully near benefits thresholds — ask your case manager about cliff planning before accepting more hours</li>';
   } else if (answers.employment === 'seeking') {
     document.getElementById('r5-employment-heading').textContent = 'Employment — actively looking';
+  } else if (answers.employment === 'training') {
+    document.getElementById('r5-employment-heading').textContent = 'Employment — training and certification';
+  } else if (answers.employment === 'student') {
+    document.getElementById('r5-employment-heading').textContent = 'Employment — working around school';
   }
   if (answers.transport === 'car') {
     document.getElementById('r5-car-tip').style.display = 'flex';
@@ -913,14 +922,12 @@ function emailLadder() {
   var nl = '\n';
   var sep = '----------------------------------------' + nl;
 
-  // Map raw answer values back to the human-readable label from QUESTIONS.
+  // Map raw answer values back to human-readable labels. Multi-select answers
+  // (income, docs) come back as several labels, joined on one line.
+  var QUESTIONS = window.MyLadder.QUESTIONS;
   function answerLabel(qid) {
-    var v = answers[qid];
-    if (!v) return null;
-    var q = QUESTIONS.find(function(x){ return x.id === qid; });
-    if (!q) return v;
-    var opt = q.options.find(function(o){ return o.value === v; });
-    return opt ? opt.label : v;
+    var labels = window.MyLadder.labelsFor(qid, answers);
+    return labels.length ? labels.join('; ') : null;
   }
 
   // Header
@@ -931,7 +938,7 @@ function emailLadder() {
 
   // Their answers (skip empties; show the question text + chosen label so the
   // recipient understands the starting context).
-  var answeredAny = QUESTIONS.some(function(q){ return answers[q.id]; });
+  var answeredAny = QUESTIONS.some(function(q){ return answerLabel(q.id); });
   if (answeredAny) {
     body += 'BASED ON YOUR ANSWERS' + nl + sep;
     QUESTIONS.forEach(function(q){

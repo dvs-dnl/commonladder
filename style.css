@@ -982,6 +982,13 @@ textarea:focus-visible {
   line-height: 1.3;
   margin-bottom: 1.25rem;
 }
+/* "Select all that apply" note, shown only on multi-select questions. */
+.ml-q-hint {
+  font-size: .85rem;
+  color: var(--gray);
+  margin: -.85rem 0 1rem;
+}
+.ml-q-hint[hidden] { display: none; }
 .ml-q-options {
   display: flex;
   flex-direction: column;
@@ -1017,6 +1024,39 @@ textarea:focus-visible {
   flex-shrink: 0;
   width: 1.75rem;
   text-align: center;
+}
+/* Multi-select rows carry a checkbox so it's obvious more than one answer is
+   allowed — single-select rows keep their original look. */
+.ml-q-btn--multi { gap: .55rem; }
+.ml-q-check {
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+  border: 2px solid #C6CFDD;
+  border-radius: 5px;
+  background: #fff;
+  position: relative;
+  transition: border-color .15s, background .15s;
+}
+.ml-q-btn--multi:hover .ml-q-check { border-color: var(--blue); }
+.ml-q-btn--multi.selected .ml-q-check {
+  border-color: var(--amber);
+  background: var(--amber);
+}
+.ml-q-btn--multi.selected .ml-q-check::after {
+  content: "";
+  position: absolute;
+  left: 5px;
+  top: 1px;
+  width: 5px;
+  height: 10px;
+  border: solid #fff;
+  border-width: 0 2.5px 2.5px 0;
+  transform: rotate(45deg);
+}
+.ml-q-btn:focus-visible {
+  outline: 3px solid var(--amber);
+  outline-offset: 2px;
 }
 .ml-q-nav {
   display: flex;
@@ -1168,32 +1208,185 @@ textarea:focus-visible {
 }
 .hero-embed__myladder:hover { background: #c97a14; text-decoration: none; }
 .hero-embed__myladder svg { width: 12px; height: 12px; }
-.hero-embed__learn {
-  background: rgba(255,255,255,.1);
-  border: 2px solid rgba(255,255,255,.22);
-  border-radius: 14px;
-  padding: 1.4rem 1rem;
-  text-align: center;
-  text-decoration: none;
+/* ── Hero "Learn about homelessness" module — myth vs. fact flip card ──
+   Replaces the old static .hero-embed__learn tile. Entirely CSS: a hidden
+   checkbox drives the flip (so it works on hover, click/tap, and keyboard
+   with JS disabled) and three hidden radios choose which myth is on stage.
+   Copy for the three cards is lifted from the pathway intros on /learn/. */
+/* The questionnaire card next to this one is tall; centering keeps the
+   module optically balanced instead of stretching one sentence over 700px. */
+.myth { position: relative; display: flex; flex-direction: column; gap: .5rem; align-self: center; width: 100%; }
+.myth__head { display: flex; align-items: center; gap: .5rem; padding: 0 .15rem; }
+.myth__head svg { width: 19px; height: 19px; flex: none; }
+.myth__head h2 {
+  font-family: 'Manrope', system-ui, sans-serif;
+  font-size: .94rem;
+  font-weight: 800;
   color: #fff;
+  margin: 0;
+  letter-spacing: -.01em;
+}
+.myth__stage { position: relative; flex: 0 0 auto; height: 262px; perspective: 1100px; }
+
+.myth > input[name="cl-myth"] { position: absolute; opacity: 0; pointer-events: none; }
+
+/* Only the selected myth is visible AND in the accessibility tree — the
+   visibility flip is what keeps screen readers from reading all three. */
+.myth__card {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity .25s, visibility 0s .25s;
+}
+#cl-myth-1:checked ~ .myth__stage .myth__card[data-myth="1"],
+#cl-myth-2:checked ~ .myth__stage .myth__card[data-myth="2"],
+#cl-myth-3:checked ~ .myth__stage .myth__card[data-myth="3"] {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transition: opacity .25s, visibility 0s 0s;
+}
+
+/* Full-bleed while face-up; shrinks once flipped so the CTA underneath is a
+   single tap, while the top of the card still flips back. */
+.myth__toggle {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  z-index: 3;
+  margin: 0;
+  opacity: 0;
+  cursor: pointer;
+}
+.myth__toggle:checked { height: 58%; }
+.myth__inner {
+  position: absolute;
+  inset: 0;
+  transform-style: preserve-3d;
+  transition: transform .5s cubic-bezier(.4,.2,.2,1);
+}
+.myth__card:hover .myth__inner,
+.myth__toggle:checked ~ .myth__inner,
+.myth__toggle:focus-visible ~ .myth__inner { transform: rotateY(180deg); }
+.myth__toggle:focus-visible ~ .myth__inner .myth__face {
+  outline: 3px solid var(--amber);
+  outline-offset: 2px;
+}
+.myth__face {
+  position: absolute;
+  inset: 0;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  border: 2px solid rgba(255,255,255,.22);
+  background: rgba(255,255,255,.10);
+  border-radius: 14px;
+  padding: .9rem 1rem;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  transition: background .18s, border-color .18s, transform .15s;
+  transition: visibility 0s 0s;
 }
-.hero-embed__learn:hover {
-  background: rgba(255,255,255,.18);
-  border-color: rgba(255,255,255,.55);
-  transform: translateY(-2px);
-  text-decoration: none;
+.myth__face--back {
+  transform: rotateY(180deg);
+  background: rgba(255,255,255,.16);
+  border-color: rgba(255,255,255,.42);
+  visibility: hidden;
+}
+/* Swap which face is exposed to assistive tech, halfway through the flip. */
+.myth__card:hover .myth__face--front,
+.myth__toggle:checked ~ .myth__inner .myth__face--front,
+.myth__toggle:focus-visible ~ .myth__inner .myth__face--front {
+  visibility: hidden;
+  transition: visibility 0s .25s;
+}
+.myth__card:hover .myth__face--back,
+.myth__toggle:checked ~ .myth__inner .myth__face--back,
+.myth__toggle:focus-visible ~ .myth__inner .myth__face--back {
+  visibility: visible;
+  transition: visibility 0s .25s;
+}
+.myth__kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: .3rem;
+  font: 700 .64rem 'Inter', sans-serif;
+  letter-spacing: .09em;
+  text-transform: uppercase;
+  color: #9FBCBA;              /* light sage — 5.3:1 on the navy hero */
+  margin-bottom: .45rem;
+}
+.myth__kicker svg { width: 12px; height: 12px; }
+.myth__q {
+  font: 800 .95rem/1.3 'Manrope', system-ui, sans-serif;
   color: #fff;
+  margin: 0;
 }
-.hero-embed__learn-icon { font-size: 2.25rem; margin-bottom: .5rem; line-height: 1; }
-.hero-embed__learn-label { font-size: 1.05rem; font-weight: 800; margin-bottom: .35rem; }
-.hero-embed__learn-sub { font-size: .82rem; opacity: .8; line-height: 1.4; }
+.myth__a { font-size: .78rem; line-height: 1.45; opacity: .92; margin: 0; }
+.myth__a b { color: #fff; }
+.myth__prompt {
+  margin-top: auto;
+  font-size: .68rem;
+  opacity: .72;
+  display: flex;
+  align-items: center;
+  gap: .3rem;
+}
+.myth__prompt svg { width: 11px; height: 11px; }
+.myth__link {
+  position: relative;
+  z-index: 5;
+  margin-top: auto;
+  align-self: flex-start;
+  display: inline-flex;
+  align-items: center;
+  gap: .3rem;
+  background: var(--amber);
+  color: var(--dark);
+  font: 700 .72rem 'Inter', sans-serif;
+  padding: .45rem .7rem;
+  border-radius: var(--radius);
+  text-decoration: none;
+}
+.myth__link:hover { background: #FFA733; text-decoration: none; color: var(--dark); }
+.myth__link:focus-visible { outline: 3px solid #fff; outline-offset: 2px; }
+.myth__pips { display: flex; gap: .35rem; align-items: center; justify-content: center; }
+.myth__pip {
+  width: 32px;
+  height: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.myth__pip::before {
+  content: "";
+  display: block;
+  width: 26px;
+  height: 5px;
+  border-radius: 3px;
+  background: rgba(255,255,255,.28);
+  transition: background .18s;
+}
+.myth__pip:hover::before { background: rgba(255,255,255,.55); }
+#cl-myth-1:checked ~ .myth__pips label[for="cl-myth-1"]::before,
+#cl-myth-2:checked ~ .myth__pips label[for="cl-myth-2"]::before,
+#cl-myth-3:checked ~ .myth__pips label[for="cl-myth-3"]::before { background: var(--amber); }
+#cl-myth-1:focus-visible ~ .myth__pips label[for="cl-myth-1"],
+#cl-myth-2:focus-visible ~ .myth__pips label[for="cl-myth-2"],
+#cl-myth-3:focus-visible ~ .myth__pips label[for="cl-myth-3"] {
+  outline: 3px solid var(--amber);
+  outline-offset: 1px;
+}
 
 @media (max-width: 720px) {
   .hero-embed {
     grid-template-columns: 1fr;
   }
+  .myth__stage { height: 232px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .myth__inner { transition: none; }
+  .myth__card { transition: none; }
 }
