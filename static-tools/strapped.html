@@ -1,0 +1,1565 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-3YXK0RL6XV"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-3YXK0RL6XV');
+</script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Strapped — Thirty Days in the System · A Homelessness Simulation · Common Ladder</title>
+  <meta name="description" content="A turn-based simulation of navigating the homelessness system. Built for funders, policymakers, students and volunteers. Draw your situation, spend your days, and find out why the paperwork loop is the real barrier.">
+  <link rel="canonical" href="https://commonladder.org/static-tools/strapped.html">
+  <link rel="stylesheet" href="/style.css">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="alternate icon" type="image/png" href="/favicon-32.png">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Strapped — Thirty Days in the System",
+    "url": "https://commonladder.org/static-tools/strapped.html",
+    "applicationCategory": "EducationalApplication",
+    "operatingSystem": "Any",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+    "publisher": { "@type": "Organization", "name": "Common Ladder", "url": "https://commonladder.org" },
+    "description": "A turn-based educational simulation of the homelessness services system, designed for funders, policymakers, students and volunteers. The player draws a strength, a barrier and a life circumstance, then spends thirty days of limited time and money trying to satisfy the prerequisites the system requires. Runs entirely on your device; nothing is stored or sent."
+  }
+  </script>
+  <noscript><style>.nav__links{display:flex!important;flex-wrap:wrap!important;}.nav__toggle{display:none!important;}</style></noscript>
+
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Common Ladder">
+  <meta property="og:title" content="Strapped — Thirty Days in the System · Common Ladder">
+  <meta property="og:description" content="A simulation of navigating the homelessness system. Draw your situation, spend your days, and find out why the paperwork loop is the real barrier.">
+  <meta property="og:url" content="https://commonladder.org/static-tools/strapped.html">
+  <meta property="og:image" content="https://commonladder.org/images/og-default.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Strapped — Thirty Days in the System · Common Ladder">
+  <meta name="twitter:description" content="A simulation of navigating the homelessness system, for people who fund, run or study it.">
+  <meta name="twitter:image" content="https://commonladder.org/images/og-default.png">
+
+  <style>
+    .sx-wrap{max-width:760px;margin:0 auto;padding:1.5rem 1.25rem 3rem;}
+    .sx-hero{margin:1rem 0 1.25rem;}
+    /* blue fill, not sage: white on #4A9E82 is 2.95:1 and fails AA at this size */
+    .sx-eyebrow{display:inline-block;font-size:.74rem;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:#fff;background:#1C3D6E;border-radius:999px;padding:.28rem .7rem;margin:0 0 .7rem;}
+    .sx-hero h1{font-size:clamp(1.75rem,6vw,2.4rem);color:#1C3D6E;margin:0 0 .45rem;line-height:1.12;}
+    .sx-hero h1 span{display:block;font-size:.5em;color:#5a5752;font-weight:600;margin-top:.42rem;letter-spacing:.01em;}
+    .sx-hero p{font-size:1.02rem;max-width:64ch;color:#3a3833;}
+
+    .sx-note{border-radius:8px;padding:.9rem 1.1rem;margin:1.1rem 0 0;font-size:.93rem;line-height:1.55;}
+    .sx-note--sage{background:#eef6f2;border-left:4px solid #4A9E82;}
+    .sx-note--sage strong{color:#1a5040;}
+    .sx-note--amber{background:#fbf3e6;border-left:4px solid #b36a00;}
+    .sx-note--amber strong{color:#8a5a00;}
+    .sx-note--blue{background:#eef2f8;border-left:4px solid #1C3D6E;}
+    .sx-note--blue strong{color:#1C3D6E;}
+
+    .sx-panel{background:#fff;border:1px solid #e0ddd8;border-radius:14px;padding:1.35rem 1.25rem 1.5rem;margin:1.5rem 0 0;}
+    .sx-panel h2{font-size:1.2rem;color:#1C3D6E;margin:0 0 .55rem;}
+    .sx-panel h3{font-size:1.02rem;color:#1C3D6E;margin:1.2rem 0 .4rem;}
+
+    .sx-btn{display:inline-block;background:#1C3D6E;color:#fff;font-weight:700;font-size:1rem;padding:.8rem 1.5rem;border-radius:8px;text-decoration:none;border:0;cursor:pointer;font-family:inherit;line-height:1.25;}
+    .sx-btn:hover{background:#16325a;}
+    .sx-btn:focus-visible{outline:3px solid #b36a00;outline-offset:2px;}
+    .sx-btn--amber{background:#E8911A;color:#1A1A2E;}
+    .sx-btn--amber:hover{background:#d07f0d;}
+    .sx-btn--ghost{background:#fff;color:#1C3D6E;border:1.5px solid #c8c4bd;font-weight:600;}
+    .sx-btn--ghost:hover{background:#f0f4f8;border-color:#1C3D6E;}
+    .sx-btn[disabled]{opacity:.45;cursor:not-allowed;}
+    .sx-controls{display:flex;gap:.6rem;flex-wrap:wrap;margin:1.3rem 0 0;}
+
+    /* setup cards */
+    .sx-draw{display:grid;gap:.85rem;margin:1.1rem 0 0;}
+    @media(min-width:640px){.sx-draw{grid-template-columns:repeat(3,1fr);}}
+    .sx-card{background:#fff;border:1px solid #e0ddd8;border-top:4px solid #1C3D6E;border-radius:10px;padding:.95rem 1rem 1.05rem;box-shadow:0 2px 12px rgba(28,61,110,.10);}
+    .sx-card--amber{border-top-color:#E8911A;}
+    .sx-card--sage{border-top-color:#4A9E82;}
+    .sx-card__kind{font-size:.7rem;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:#6B7280;margin:0 0 .35rem;}
+    .sx-card__title{font-size:.99rem;font-weight:700;color:#1C3D6E;margin:0 0 .35rem;line-height:1.35;}
+    .sx-card__body{font-size:.87rem;color:#4a4842;margin:0;line-height:1.5;}
+
+    /* status */
+    .sx-status{position:sticky;top:0;z-index:20;background:#1C3D6E;color:#fff;border-radius:10px;padding:.7rem .85rem;margin:0 0 1rem;}
+    .sx-status__day{display:flex;justify-content:space-between;align-items:baseline;gap:.75rem;margin:0 0 .55rem;}
+    .sx-status__day strong{font-size:1.05rem;}
+    .sx-status__seed{font-size:.72rem;opacity:.85;font-variant-numeric:tabular-nums;}
+    .sx-meters{display:grid;grid-template-columns:repeat(2,1fr);gap:.35rem .8rem;}
+    @media(min-width:520px){.sx-meters{grid-template-columns:repeat(4,1fr);}}
+    .sx-meter{font-size:.79rem;line-height:1.35;}
+    .sx-meter b{display:block;font-size:.66rem;text-transform:uppercase;letter-spacing:.07em;opacity:.88;font-weight:600;}
+    .sx-ap{display:inline-flex;gap:.2rem;vertical-align:middle;}
+    .sx-ap i{width:.62rem;height:.62rem;border-radius:50%;background:rgba(255,255,255,.28);display:inline-block;}
+    .sx-ap i.on{background:#E8911A;}
+
+    .sx-event{background:#fbf3e6;border:1px solid #ecd9b4;border-left:4px solid #b36a00;border-radius:10px;padding:.9rem 1.05rem;margin:0 0 1.1rem;}
+    .sx-event__kind{font-size:.7rem;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:#8a5a00;margin:0 0 .3rem;}
+    .sx-event__title{font-size:1rem;font-weight:700;color:#1C3D6E;margin:0 0 .3rem;}
+    .sx-event__body{font-size:.9rem;color:#4a4842;margin:0;line-height:1.55;}
+    .sx-event--good{background:#eef6f2;border-color:#c9e5da;border-left-color:#4A9E82;}
+    .sx-event--good .sx-event__kind{color:#1a5040;}
+
+    .sx-actions{display:grid;gap:.6rem;margin:0 0 1.2rem;}
+    @media(min-width:600px){.sx-actions{grid-template-columns:repeat(2,1fr);}}
+    .sx-act{text-align:left;background:#fff;border:1.5px solid #c8c4bd;border-radius:10px;padding:.72rem .85rem;font-family:inherit;cursor:pointer;display:block;width:100%;}
+    .sx-act:hover:not([disabled]){border-color:#1C3D6E;background:#f0f4f8;}
+    .sx-act:focus-visible{outline:3px solid #b36a00;outline-offset:2px;}
+    .sx-act[disabled]{cursor:not-allowed;background:#f6f5f3;border-color:#e0ddd8;}
+    .sx-act__top{display:flex;justify-content:space-between;gap:.6rem;align-items:baseline;}
+    .sx-act__name{font-size:.95rem;font-weight:700;color:#1C3D6E;line-height:1.3;}
+    .sx-act[disabled] .sx-act__name{color:#6B7280;}
+    .sx-act__cost{font-size:.72rem;font-weight:700;color:#6B7280;white-space:nowrap;text-transform:uppercase;letter-spacing:.05em;}
+    .sx-act__desc{font-size:.82rem;color:#5a5752;margin:.25rem 0 0;line-height:1.45;}
+    .sx-act__block{font-size:.8rem;color:#8a5a00;margin:.3rem 0 0;line-height:1.45;font-weight:600;}
+    /* hint = you have already learned this the hard way; the trip is still allowed */
+    .sx-act__hint{font-size:.8rem;color:#1C3D6E;margin:.3rem 0 0;line-height:1.45;font-weight:600;}
+    .sx-act__hint::before{content:"You know this now: ";font-weight:700;}
+
+    /* ---- tier ladder ---- */
+    .sx-tier{margin:0 0 1.4rem;}
+    .sx-tier__head{display:flex;align-items:baseline;gap:.55rem;flex-wrap:wrap;margin:0 0 .6rem;padding:0 0 .4rem;border-bottom:2px solid #e0ddd8;}
+    .sx-tier__n{font-size:.68rem;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:#fff;background:#1C3D6E;border-radius:4px;padding:.16rem .42rem;flex:0 0 auto;}
+    .sx-tier__name{font-size:1rem;font-weight:700;color:#1C3D6E;}
+    .sx-tier__note{font-size:.79rem;color:#6B7280;flex:1 1 100%;line-height:1.45;}
+    .sx-tier--locked .sx-tier__head{border-bottom-color:#ecd9b4;}
+    .sx-tier--locked .sx-tier__n{background:#8a5a00;}
+    .sx-tier--locked .sx-tier__name{color:#8a5a00;}
+    .sx-tier--locked .sx-tier__note{color:#8a5a00;font-weight:600;}
+
+    .sx-reqs{display:flex;flex-wrap:wrap;gap:.3rem;margin:.45rem 0 0;}
+    .sx-req{font-size:.72rem;padding:.2rem .52rem;border-radius:999px;border:1px solid;line-height:1.35;font-weight:600;}
+    .sx-req--ok{background:#eef6f2;border-color:#c9e5da;color:#1a5040;}
+    .sx-req--no{background:#fdf6ea;border-color:#ecd9b4;color:#8a5a00;}
+    .sx-req--ok::before{content:"✓ ";}
+    .sx-req--no::before{content:"✗ ";}
+
+    /* ---- in-flight strip ---- */
+    .sx-flight{background:#eef2f8;border:1px solid #d3ddeb;border-radius:10px;padding:.7rem .9rem;margin:0 0 1.1rem;}
+    .sx-flight h4{margin:0 0 .35rem;font-size:.7rem;text-transform:uppercase;letter-spacing:.08em;color:#1C3D6E;}
+    .sx-flight ul{list-style:none;margin:0;padding:0;}
+    .sx-flight li{font-size:.83rem;color:#3a3833;padding:.15rem 0;line-height:1.45;}
+    .sx-flight li b{color:#1C3D6E;}
+
+    /* ---- end of day summary ---- */
+    .sx-sum__day{font-size:.75rem;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:#6B7280;margin:0 0 .3rem;}
+    .sx-sum h2{font-size:1.3rem;color:#1C3D6E;margin:0 0 .9rem;}
+    .sx-deltas{display:grid;grid-template-columns:repeat(2,1fr);gap:.5rem;margin:0 0 1rem;}
+    @media(min-width:520px){.sx-deltas{grid-template-columns:repeat(4,1fr);}}
+    .sx-delta{background:#fff;border:1px solid #e0ddd8;border-radius:8px;padding:.55rem .7rem;font-size:.9rem;font-weight:700;color:#1C3D6E;}
+    .sx-delta b{display:block;font-size:.65rem;text-transform:uppercase;letter-spacing:.07em;color:#6B7280;font-weight:600;margin:0 0 .12rem;}
+    .sx-delta .up{color:#1a5040;}
+    .sx-delta .down{color:#8a5a00;}
+    .sx-gains{list-style:none;margin:0 0 1rem;padding:0;}
+    .sx-gains li{font-size:.9rem;line-height:1.55;padding:.4rem .75rem;border-radius:8px;margin:0 0 .4rem;}
+    .sx-gains li.g{background:#eef6f2;border-left:3px solid #4A9E82;color:#1a5040;}
+    .sx-gains li.b{background:#fbf3e6;border-left:3px solid #b36a00;color:#8a5a00;}
+    .sx-gains li.n{background:#f6f5f3;border-left:3px solid #c8c4bd;color:#5a5752;}
+    .sx-compound{background:#1C3D6E;color:#fff;border-radius:10px;padding:.85rem 1rem;margin:0 0 1rem;font-size:.89rem;line-height:1.55;}
+    .sx-compound b{display:block;font-size:.7rem;text-transform:uppercase;letter-spacing:.08em;opacity:.85;margin:0 0 .25rem;}
+
+    .sx-log{border:1px solid #e0ddd8;border-radius:10px;background:#fdfcfa;padding:.85rem 1rem;max-height:15rem;overflow-y:auto;}
+    .sx-log h3{margin:0 0 .5rem;font-size:.8rem;text-transform:uppercase;letter-spacing:.08em;color:#6B7280;}
+    .sx-log ul{list-style:none;margin:0;padding:0;}
+    .sx-log li{font-size:.86rem;color:#3a3833;padding:.32rem 0;border-bottom:1px solid #f0eee9;line-height:1.5;}
+    .sx-log li:last-child{border-bottom:0;}
+    .sx-log li b{color:#1C3D6E;}
+    .sx-log li.loop b{color:#8a5a00;}
+
+    /* debrief */
+    .sx-outcome{background:#1C3D6E;color:#fff;border-radius:14px;padding:1.4rem 1.3rem;margin:0 0 1.3rem;}
+    .sx-outcome h2{color:#fff;font-size:1.35rem;margin:0 0 .5rem;}
+    .sx-outcome p{margin:0 0 .6rem;font-size:.97rem;line-height:1.6;opacity:.95;}
+    .sx-outcome p:last-child{margin-bottom:0;}
+
+    .sx-scores{display:grid;gap:.5rem;margin:0 0 1.3rem;}
+    @media(min-width:560px){.sx-scores{grid-template-columns:repeat(2,1fr);}}
+    .sx-score{display:flex;gap:.6rem;align-items:flex-start;background:#fff;border:1px solid #e0ddd8;border-radius:8px;padding:.6rem .8rem;font-size:.88rem;line-height:1.45;}
+    .sx-score__mark{font-weight:700;flex:0 0 auto;}
+    .sx-score--yes .sx-score__mark{color:#1a5040;}
+    .sx-score--no .sx-score__mark{color:#8a5a00;}
+    .sx-score--no{background:#fdfcfa;color:#5a5752;}
+
+    .sx-fact{border-left:4px solid #4A9E82;background:#eef6f2;border-radius:8px;padding:.85rem 1.05rem;margin:.75rem 0 0;font-size:.9rem;line-height:1.6;}
+    .sx-fact b{color:#1a5040;display:block;margin:0 0 .2rem;font-size:.95rem;}
+
+    .sx-next{display:grid;gap:.6rem;margin:.8rem 0 0;}
+    @media(min-width:560px){.sx-next{grid-template-columns:repeat(2,1fr);}}
+    .sx-next a{display:block;background:#fff;border:1px solid #e0ddd8;border-top:4px solid #4A9E82;border-radius:10px;padding:.8rem .9rem;text-decoration:none;box-shadow:0 2px 12px rgba(28,61,110,.08);}
+    .sx-next a:hover{transform:translateY(-2px);}
+    .sx-next strong{display:block;color:#1C3D6E;font-size:.95rem;margin:0 0 .2rem;}
+    .sx-next span{display:block;color:#5a5752;font-size:.82rem;line-height:1.45;}
+
+    .sx-seedbox{display:flex;gap:.5rem;flex-wrap:wrap;align-items:center;margin:1rem 0 0;font-size:.86rem;color:#5a5752;}
+    .sx-seedbox input{font:inherit;font-size:.88rem;padding:.45rem .6rem;border:1.5px solid #c8c4bd;border-radius:6px;width:8.5rem;font-variant-numeric:tabular-nums;}
+    .sx-seedbox input:focus-visible{outline:2px solid #1C3D6E;outline-offset:1px;border-color:#1C3D6E;}
+
+    .sx-hidden{display:none;}
+    .sx-vh{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;}
+
+    @media(prefers-reduced-motion:reduce){.sx-next a:hover{transform:none;}}
+  </style>
+</head>
+<body>
+
+<a href="#main" class="skip-link">Skip to main content</a>
+
+<div class="crisis-bar" role="region" aria-label="Crisis help">
+  <strong>Need help right now?</strong>
+  <a href="tel:211">Call 211</a><span class="crisis-bar__sep">·</span>
+  <a href="sms:741741?body=HOME">Text HOME to 741741</a><span class="crisis-bar__sep">·</span>
+  <a href="tel:988">988 Suicide &amp; Crisis</a>
+</div>
+
+<nav class="nav" aria-label="Primary">
+  <div class="nav__inner">
+    <a href="/" class="nav__logo" aria-label="Common Ladder home">
+      <svg width="28" height="28" viewBox="0 0 247 247" fill="none" aria-hidden="true"><g transform="translate(-12.00,-16.00)"> <path fill="#E8911A" fill-opacity="1" fill-rule="evenodd" d="M 254.00,51.00 L 234.00,85.64 L 194.00,85.64 L 174.00,51.00 L 194.00,16.36 L 234.00,16.36 Z M 231.50,51.00 L 222.75,66.16 L 205.25,66.16 L 196.50,51.00 L 205.25,35.84 L 222.75,35.84 Z"/> <path fill="#9FBCBA" fill-opacity="1" fill-rule="evenodd" d="M 148.00,118.00 L 128.00,152.64 L 88.00,152.64 L 68.00,118.00 L 88.00,83.36 L 128.00,83.36 Z M 125.50,118.00 L 116.75,133.16 L 99.25,133.16 L 90.50,118.00 L 99.25,102.84 L 116.75,102.84 Z"/> <path fill="#9FBCBA" fill-opacity="1" fill-rule="evenodd" d="M 259.00,118.00 L 239.00,152.64 L 199.00,152.64 L 179.00,118.00 L 199.00,83.36 L 239.00,83.36 Z M 236.50,118.00 L 227.75,133.16 L 210.25,133.16 L 201.50,118.00 L 210.25,102.84 L 227.75,102.84 Z"/> <path fill="#FFFFFF" fill-opacity="0.94" fill-rule="evenodd" d="M 207.00,164.00 L 187.00,198.64 L 147.00,198.64 L 127.00,164.00 L 147.00,129.36 L 187.00,129.36 Z M 184.50,164.00 L 175.75,179.16 L 158.25,179.16 L 149.50,164.00 L 158.25,148.84 L 175.75,148.84 Z"/> <path fill="#FFFFFF" fill-opacity="0.94" fill-rule="evenodd" d="M 92.00,164.00 L 72.00,198.64 L 32.00,198.64 L 12.00,164.00 L 32.00,129.36 L 72.00,129.36 Z M 69.50,164.00 L 60.75,179.16 L 43.25,179.16 L 34.50,164.00 L 43.25,148.84 L 60.75,148.84 Z"/> <path fill="#FFFFFF" fill-opacity="0.94" fill-rule="evenodd" d="M 161.00,228.00 L 141.00,262.64 L 101.00,262.64 L 81.00,228.00 L 101.00,193.36 L 141.00,193.36 Z M 138.50,228.00 L 129.75,243.16 L 112.25,243.16 L 103.50,228.00 L 112.25,212.84 L 129.75,212.84 Z"/> </g></svg>
+      <span class="nav__wordmark">common<span>ladder</span></span>
+    </a>
+    <button class="nav__toggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="primary-nav" onclick="this.setAttribute('aria-expanded', document.getElementById('primary-nav').classList.toggle('open') ? 'true' : 'false')">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav__links" id="primary-nav">
+      <li><a href="/providers.html">For providers</a></li>
+      <li><a href="/learn/">Learn</a></li>
+      <li><a href="/about.html">About</a></li>
+      <li><a href="/find.html" class="nav__cta">Find resources</a></li>
+      <li><a href="/static-tools/my-ladder.html" class="nav__cta nav__cta--ladder">My Ladder</a></li>
+      <li><a href="https://www.weather.gov/" rel="noreferrer" class="nav__exit" onclick="event.preventDefault();window.location.replace('https://www.weather.gov/')">Leave page</a></li>
+    </ul>
+  </div>
+</nav>
+
+<ol class="breadcrumb" aria-label="Breadcrumb">
+  <li><a href="/">Home</a></li>
+  <li><a href="/static-tools/">Tools</a></li>
+  <li aria-current="page">Strapped</li>
+</ol>
+
+<main id="main">
+<div class="sx-wrap">
+
+  <header class="sx-hero">
+    <span class="sx-eyebrow">Simulation · Learn</span>
+    <h1>Strapped<span>Thirty days in the system</span></h1>
+    <p>You get three cards: something you have going for you, something in your way, and the life you are actually living. Then you get thirty days, three things you can do each day, and a system that wants documents you cannot get without other documents.</p>
+
+    <div id="sx-hero-notes">
+      <div class="sx-note sx-note--blue">
+        <strong>This is a teaching tool, not a service.</strong> It was built for funders, policymakers, students, volunteers and new staff — people who need to understand why the system produces the outcomes it does. If you are looking for actual help, skip this page and <a href="/find.html">find resources</a> or call <a href="tel:211">2-1-1</a>.
+      </div>
+
+      <div class="sx-note sx-note--amber">
+        <strong>Before you play, one thing.</strong> There is no timer on this page and nothing is stored. The scarcity you will feel is time and money, not urgency — take as long as you want on any day. Some situations in this simulation cannot reach a good outcome in thirty days. That is not a bug, and the debrief at the end will tell you which one you drew.
+      </div>
+    </div>
+  </header>
+
+  <!-- ============ INTRO ============ -->
+  <section class="sx-panel" id="sx-intro" aria-labelledby="sx-intro-h">
+    <h2 id="sx-intro-h">How it works</h2>
+    <p style="font-size:.94rem;color:#3a3833;line-height:1.6;margin:0 0 .8rem;">Each day you have <strong>three actions</strong>. Almost everything costs one or two of them, plus bus fare, plus energy you may not have. Offices are open when you are working. Phone calls need battery. Paperwork needs other paperwork.</p>
+    <p style="font-size:.94rem;color:#3a3833;line-height:1.6;margin:0 0 .8rem;">You are not trying to get housed in thirty days — almost nobody does, and a simulation that let you would be lying to you. You are trying to make the specific kinds of progress that actually matter: get identity documents, get onto the coordinated entry list, hold onto income, stay connected, stay alive through a Phoenix summer.</p>
+    <p style="font-size:.94rem;color:#3a3833;line-height:1.6;margin:0;">Providers here are composites, not real organisations. The <em>system</em> is the real part.</p>
+
+    <div class="sx-seedbox">
+      <label for="sx-seed-in">Seed (optional — same seed, same thirty days):</label>
+      <input type="text" id="sx-seed-in" inputmode="numeric" placeholder="e.g. 4471" autocomplete="off">
+    </div>
+
+    <div class="sx-controls">
+      <button type="button" class="sx-btn" id="sx-start">Draw my three cards</button>
+    </div>
+  </section>
+
+  <!-- ============ SETUP ============ -->
+  <section class="sx-panel sx-hidden" id="sx-setup" aria-labelledby="sx-setup-h" tabindex="-1">
+    <h2 id="sx-setup-h">This is who you are for the next thirty days</h2>
+    <p style="font-size:.92rem;color:#5a5752;margin:0;">None of these are things you chose. All of them change what the system will let you do.</p>
+    <div class="sx-draw" id="sx-draw"></div>
+    <div class="sx-note sx-note--sage" id="sx-setup-state"></div>
+    <div class="sx-controls">
+      <button type="button" class="sx-btn" id="sx-begin">Start day 1</button>
+      <button type="button" class="sx-btn sx-btn--ghost" id="sx-redraw">Draw again</button>
+    </div>
+  </section>
+
+  <!-- ============ GAME ============ -->
+  <section class="sx-hidden" id="sx-game" aria-labelledby="sx-game-h" tabindex="-1">
+    <h2 class="sx-vh" id="sx-game-h">Your thirty days</h2>
+
+    <div class="sx-status" id="sx-status">
+      <div class="sx-status__day">
+        <strong id="sx-day">Day 1 of 30</strong>
+        <span class="sx-status__seed" id="sx-seed-show"></span>
+      </div>
+      <div class="sx-meters" id="sx-meters"></div>
+    </div>
+
+    <div class="sx-event" id="sx-event" role="status">
+      <p class="sx-event__kind" id="sx-event-kind">Today</p>
+      <p class="sx-event__title" id="sx-event-title"></p>
+      <p class="sx-event__body" id="sx-event-body"></p>
+    </div>
+
+    <div class="sx-flight sx-hidden" id="sx-flight">
+      <h4>Cooking in the background</h4>
+      <ul id="sx-flight-list"></ul>
+    </div>
+
+    <h3 style="font-size:.8rem;text-transform:uppercase;letter-spacing:.08em;color:#6B7280;margin:0 0 .6rem;">What will you do today?</h3>
+    <div id="sx-ladder"></div>
+
+    <div class="sx-controls" style="margin-top:0;margin-bottom:1.3rem;">
+      <button type="button" class="sx-btn sx-btn--amber" id="sx-endday">End the day</button>
+      <button type="button" class="sx-btn sx-btn--ghost" id="sx-quit">Stop and see the debrief</button>
+    </div>
+
+    <div class="sx-log">
+      <h3>What happened</h3>
+      <ul id="sx-log" aria-live="polite"></ul>
+    </div>
+  </section>
+
+  <!-- ============ END OF DAY ============ -->
+  <section class="sx-panel sx-hidden sx-sum" id="sx-summary" aria-labelledby="sx-sum-h" tabindex="-1">
+    <p class="sx-sum__day" id="sx-sum-day">End of day</p>
+    <h2 id="sx-sum-h">How the day went</h2>
+    <div class="sx-deltas" id="sx-sum-deltas"></div>
+    <ul class="sx-gains" id="sx-sum-gains"></ul>
+    <div id="sx-sum-compound"></div>
+    <div class="sx-flight sx-hidden" id="sx-sum-flight" style="margin-bottom:0;">
+      <h4>Still cooking</h4>
+      <ul id="sx-sum-flight-list"></ul>
+    </div>
+    <div class="sx-controls">
+      <button type="button" class="sx-btn" id="sx-nextday">Begin day 2</button>
+      <button type="button" class="sx-btn sx-btn--ghost" id="sx-quit2">Stop and see the debrief</button>
+    </div>
+  </section>
+
+  <!-- ============ DEBRIEF ============ -->
+  <section class="sx-hidden" id="sx-debrief" aria-labelledby="sx-debrief-h" tabindex="-1">
+    <div class="sx-outcome" id="sx-outcome">
+      <h2 id="sx-debrief-h">Day 30</h2>
+      <div id="sx-outcome-body"></div>
+    </div>
+
+    <h3 style="font-size:.8rem;text-transform:uppercase;letter-spacing:.08em;color:#6B7280;margin:0 0 .6rem;">Where you got to</h3>
+    <div class="sx-scores" id="sx-scores"></div>
+
+    <div class="sx-panel" style="margin-top:0;">
+      <h2>What the simulation was actually showing you</h2>
+      <div id="sx-facts"></div>
+
+      <h3>The tools that exist because of this</h3>
+      <p style="font-size:.9rem;color:#5a5752;margin:0 0 .3rem;line-height:1.55;">Every loop you hit in this game is something Common Ladder built a real tool to shorten.</p>
+      <div class="sx-next">
+        <a href="/static-tools/resource-sequencing-maricopa.html"><strong>Resource Sequencing Navigator</strong><span>The order to do things in, so you stop hitting the prerequisite loop. Maricopa County.</span></a>
+        <a href="/static-tools/id-recovery-wizard.html"><strong>ID Recovery Wizard</strong><span>Which document to chase first, given what you already have.</span></a>
+        <a href="/static-tools/coordinated-entry-explainer.html"><strong>Coordinated Entry Explainer</strong><span>What the assessment is, what it isn't, and what happens after.</span></a>
+        <a href="/static-tools/cooling-center-locator.html"><strong>Cooling Center Locator</strong><span>Phoenix heat season. The part of this game that kills people.</span></a>
+      </div>
+    </div>
+
+    <div class="sx-controls">
+      <button type="button" class="sx-btn" id="sx-again">Play a different situation</button>
+      <button type="button" class="sx-btn sx-btn--ghost" id="sx-replay">Replay this exact seed</button>
+    </div>
+
+    <div class="sx-note sx-note--blue" style="margin-top:1.3rem;">
+      <strong>Share this run.</strong> Every run has a seed. Send someone <span id="sx-share-url" style="word-break:break-all;font-weight:600;"></span> and they get the same thirty days you just had.
+    </div>
+  </section>
+
+  <div class="sx-note sx-note--sage" style="margin-top:1.75rem;" id="sx-buildnote">
+    <strong>How this was built.</strong> The prerequisite chains, the document requirements and the time costs are modelled on how the system actually works in Maricopa County. Individual providers are composites. Nothing here is advice, and no number in this simulation should be quoted as a statistic — the sourced version of these claims lives in <a href="/learn/">our learning pathways</a>. Built with, and open to correction from, people who have been through it: <a href="/contact.html">tell us what we got wrong</a>.
+  </div>
+
+</div>
+</main>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer__grid">
+      <div class="footer__brand">
+        <h3>Common Ladder</h3>
+        <p>The civic resource platform connecting people experiencing homelessness with every service in your community.</p>
+      </div>
+      <div>
+        <h4>Find help</h4>
+        <ul>
+          <li><a href="/find.html?cat=shelter">Shelter</a></li>
+          <li><a href="/find.html?cat=food">Food</a></li>
+          <li><a href="/find.html?cat=legal">Legal</a></li>
+          <li><a href="/help/">All categories</a></li>
+          <li><a href="/static-tools/">Local navigators</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>For providers</h4>
+        <ul>
+          <li><a href="/providers.html">Tools &amp; referrals</a></li>
+          <li><a href="/providers.html#case-manager-guide">Case manager guide</a></li>
+          <li><a href="/data-reports.html">Data &amp; reports</a></li>
+          <li><a href="/learn/">Four learning pathways</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>About</h4>
+        <ul>
+          <li><a href="/about.html">Our mission</a></li>
+          <li><a href="/about.html#methodology">Methodology</a></li>
+          <li><a href="/about.html#team">Team</a></li>
+          <li><a href="/brand/visual-guidelines.html">Brand guidelines</a></li>
+          <li><a href="/contact.html">Contact</a></li>
+          <li><a href="/privacy.html">Privacy</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer__transparency">
+      <strong>Transparency:</strong> Common Ladder is an independent civic project. We do not sell user data, run ads, or accept payment from listed resources.
+    </div>
+    <div class="footer__bottom">
+      <span>&copy; 2026 Common Ladder. Free to use, always.</span>
+      <span><time datetime="2026-08-12">Last updated August 12, 2026</time></span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  "use strict";
+
+  /* ---------- seeded RNG ---------- */
+  function mulberry32(a){
+    return function(){
+      a |= 0; a = a + 0x6D2B79F5 | 0;
+      var t = Math.imul(a ^ a >>> 15, 1 | a);
+      t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t;
+      return ((t ^ t >>> 14) >>> 0) / 4294967296;
+    };
+  }
+  var rnd = Math.random;
+  function chance(p){ return rnd() < p; }
+  function pick(arr){ return arr[Math.floor(rnd() * arr.length)]; }
+  function pickIdx(arr){ return Math.floor(rnd() * arr.length); }
+
+  /* ---------- content: the three decks ---------- */
+
+  var STRENGTHS = [
+    { id:"phone",   t:"You have a working phone, and you know where to charge it",
+      b:"Prepaid, 4.5 GB. It is the only reason anyone can reach you, which means keeping it charged is a job.",
+      apply:function(s){ s.battery = 100; s.tags.goodPhone = true; } },
+    { id:"shower",  t:"Someone in Mesa lets you shower on Sundays",
+      b:"No questions asked, and she does not tell her husband. It is two hours each way on the bus.",
+      apply:function(s){ s.tags.shower = true; } },
+    { id:"bc",      t:"Your birth certificate is still in a ziplock in your bag",
+      b:"You have kept it dry through two monsoons. It is the single most valuable thing you own.",
+      apply:function(s){ s.docs.birth = true; } },
+    { id:"paper",   t:"You are good at paperwork",
+      b:"You did intake forms at a job once. You know to ask for a copy of everything and to write down who you spoke to.",
+      apply:function(s){ s.tags.paperwork = true; } },
+    { id:"cm",      t:"A case manager from last year still picks up when you call",
+      b:"She is not supposed to — you aged out of her program. She does it anyway, once in a while.",
+      apply:function(s){ s.tags.caseManager = 1; } },
+    { id:"bike",    t:"You have a bike, and a lock that works",
+      b:"Twelve miles a day in the heat, but you never wait for a bus and you never pay a fare.",
+      apply:function(s){ s.tags.bike = true; } }
+  ];
+
+  var BARRIERS = [
+    { id:"noid",    t:"No photo ID — it was in the bag that got taken",
+      b:"Along with your Social Security card and the phone charger. You reported it. Nothing came of that.",
+      apply:function(s){ s.docs.id = false; s.docs.birth = false; s.docs.ss = false; } },
+    { id:"warrant", t:"An old failure-to-appear warrant, from a citation you could not pay",
+      b:"It is for a $180 fine that is now $700. Some programs run a check at intake. You never know which ones.",
+      apply:function(s){ s.tags.warrant = true; } },
+    { id:"dog",     t:"You have a dog, and you are not giving him up",
+      b:"Nearly every shelter bed in the county is closed to you because of it. You have already done that maths.",
+      apply:function(s){ s.tags.dog = true; } },
+    { id:"crowds",  t:"You cannot be in crowds — not since the thing you do not talk about",
+      b:"The big campus downtown is where everything is. You have walked up to the gate twice and turned around.",
+      apply:function(s){ s.tags.crowds = true; } },
+    { id:"utility", t:"There is a $340 utility debt in your name",
+      b:"From the last apartment. Any housing programme that requires utilities in your name stops here until it is paid.",
+      apply:function(s){ s.tags.utilityDebt = 340; } },
+    { id:"evict",   t:"There is an eviction judgment against you from 2023",
+      b:"It will be on tenant screening reports until 2030. Landlords who take vouchers still run those reports.",
+      apply:function(s){ s.tags.eviction = true; } }
+  ];
+
+  var CIRCUMSTANCES = [
+    { id:"reentry", t:"You were released eleven days ago",
+      b:"Your conditions of release require a verified address. You do not have one. Your next check-in is day 14.",
+      apply:function(s){ s.tags.reentry = 14; } },
+    { id:"working", t:"You work 32 hours a week at $16.50 and it is not enough",
+      b:"Warehouse, 6am to 2:30pm. Every public office in the county is open exactly when you are at work.",
+      apply:function(s){ s.employed = true; s.wage = 16.5; s.cash = 61; s.tags.shiftLock = true; } },
+    { id:"ssi",     t:"You are eight months into an SSI claim. Denied once. Appealing.",
+      b:"The paperwork follows you. So does the possibility that one envelope changes everything.",
+      apply:function(s){ s.tags.ssi = true; } },
+    { id:"kid",     t:"Your daughter is seven and she is with you",
+      b:"She has not missed a day of school, and you have decided she is not going to. Everything routes differently now.",
+      apply:function(s){ s.tags.kid = true; s.apMax = 2; } },
+    { id:"older",   t:"You are 61 and your knees are finished",
+      b:"You can do one long walk a day, or two short ones. Not both. Some programmes open up at 62.",
+      apply:function(s){ s.tags.older = true; } },
+    { id:"first",   t:"This is your first week and you do not know the words yet",
+      b:"Nobody explained coordinated entry, or what an ROI is, or why everyone keeps saying 'the Campus'.",
+      apply:function(s){ s.tags.newbie = 6; } },
+    { id:"fleeing", t:"You left a dangerous situation and cannot use the regular shelter list",
+      b:"Your location has to stay confidential, which rules out the front door everyone else uses.",
+      apply:function(s){ s.tags.dv = true; } }
+  ];
+
+  /* ---------- daily events ---------- */
+  var EVENTS = [
+    { id:"heat", w:5, kind:"Weather", t:"Excessive heat warning — 114 today",
+      b:"Being outside between 10am and 6pm is not uncomfortable, it is dangerous. Everything costs more today.",
+      run:function(s){ s.reserves -= 14; s.today.heat = true; } },
+    { id:"sweep", w:2, kind:"Enforcement", t:"They cleared the lot before sunrise",
+      b:"You had twenty minutes to take what you could carry.",
+      run:function(s){
+        s.reserves -= 12;
+        if(chance(0.35) && (s.docs.birth || s.docs.ss || s.docs.id)){
+          var lost = s.docs.id ? "id" : (s.docs.birth ? "birth" : "ss");
+          s.docs[lost] = false;
+          s.today.lostDoc = lost;
+        }
+        if(chance(0.4)) s.battery = Math.max(0, s.battery - 40);
+      } },
+    { id:"battery", w:3, kind:"Setback", t:"Your phone was at 4% when you woke up",
+      b:"You did not find an outlet yesterday, and it does not hold a charge like it used to.",
+      run:function(s){ s.battery = Math.min(s.battery, 8); } },
+    { id:"missed", w:3, kind:"Setback", t:"A voicemail from a number you do not recognise",
+      b:"It was left yesterday at 2:14pm. It says to call back within 24 hours or the referral closes.",
+      run:function(s){ s.today.callback = true; } },
+    { id:"fare", w:2, kind:"Setback", t:"Fare inspection on the light rail",
+      b:"You did not have a valid pass. It is a citation, not an arrest, but now there is paperwork with your name on it.",
+      run:function(s){ s.cash = Math.max(0, s.cash - 4); s.tags.citation = (s.tags.citation||0)+1; } },
+    { id:"food", w:3, kind:"Good day", good:true, t:"Someone handed you a bag from the back of a van",
+      b:"Two sandwiches, a bottle of water and a pair of socks. The socks are the good part.",
+      run:function(s){ s.reserves += 10; s.fed = true; } },
+    { id:"mail", w:2, kind:"Good day", good:true, t:"There was mail waiting for you at the day centre",
+      b:"An envelope you have been checking for every week.",
+      run:function(s){ s.today.mailGood = true; } },
+    { id:"quiet", w:6, kind:"Today", t:"Nothing in particular happened",
+      b:"You slept badly, the sun came up, and the day started the way the last one ended.",
+      run:function(s){ } },
+    { id:"line", w:3, kind:"Setback", t:"The line was already around the building at 5am",
+      b:"They stopped taking people at nine. You were forty back.",
+      run:function(s){ s.today.longLine = true; } },
+    { id:"sick", w:2, kind:"Setback", t:"You have not kept food down since yesterday",
+      b:"You cannot afford to lose a day, which is a sentence people say right before they lose a day.",
+      run:function(s){ s.reserves -= 18; s.today.sick = true; } },
+    { id:"kind", w:2, kind:"Good day", good:true, t:"The woman at the front desk remembered your name",
+      b:"She looked something up she did not have to look up.",
+      run:function(s){ s.reserves += 8; s.today.advocate = true; } },
+    { id:"monsoon", w:2, kind:"Weather", t:"Monsoon came through around four in the morning",
+      b:"Everything you own is wet, including the papers.",
+      run:function(s){ s.reserves -= 10; if(chance(0.2) && s.docs.birth){ s.docs.birth = false; s.today.lostDoc = "birth"; } } }
+  ];
+
+  /* ---------- state ---------- */
+  var S = null;
+  var el = {};
+  ["sx-intro","sx-setup","sx-game","sx-summary","sx-debrief","sx-draw","sx-setup-state","sx-day","sx-seed-show",
+   "sx-meters","sx-event","sx-event-kind","sx-event-title","sx-event-body","sx-actions","sx-log",
+   "sx-outcome-body","sx-scores","sx-facts","sx-share-url","sx-seed-in"].forEach(function(id){
+    el[id] = document.getElementById(id);
+  });
+
+  function newGame(seed){
+    rnd = mulberry32(seed);
+    S = {
+      seed: seed, day: 1, maxDay: 30,
+      apMax: 3, ap: 3,
+      cash: 8, battery: 35, reserves: 70,
+      docs: { id:false, birth:false, ss:false },
+      employed: false, wage: 0,
+      mailAddress: false, agencyLetter: false, affidavit: false, voucher: false,
+      onCEList: false, ceScore: 0, learned: {},
+      sheltered: false, shelterNights: 0,
+      bcOrdered: 0, bcArrives: 0, bcOrderedOn: 0,
+      referrals: 0, contacts: 0,
+      fed: true, loopHits: 0, loopLog: {},
+      /* compounding */
+      standing: {}, openCase: false, snap: false,
+      housed: false, appliedHousing: false,
+      inflight: [], gains: [], discovered: {},
+      dayStart: { cash:0, reserves:0, battery:0 },
+      lockedTiersToday: 0, lockedDays: 0,
+      tags: {}, cards: [], log: [], today: {},
+      ended: false, endReason: ""
+    };
+    var st = STRENGTHS[pickIdx(STRENGTHS)];
+    var ba = BARRIERS[pickIdx(BARRIERS)];
+    var ci = CIRCUMSTANCES[pickIdx(CIRCUMSTANCES)];
+    S.cards = [st, ba, ci];
+    st.apply(S); ba.apply(S); ci.apply(S);
+    if(!S.tags.goodPhone && chance(0.25)){ S.tags.noPhone = true; S.battery = 0; }
+    S.ap = S.apMax;
+  }
+
+  /* ---------- helpers ---------- */
+  function log(msg, cls){
+    S.log.unshift({ d:S.day, m:msg, c:cls||"" });
+    renderLog();
+  }
+  function loop(key, msg){
+    S.loopHits++;
+    S.loopLog[key] = (S.loopLog[key]||0) + 1;
+    S.learned[key] = true;   /* you only have to be sent away once to learn it */
+    log("<b>Blocked.</b> " + msg, "loop");
+  }
+  function fare(){
+    if(S.tags.bike) return 0;
+    return 2;
+  }
+  function payFare(){
+    var f = fare();
+    if(f === 0) return true;
+    if(S.cash >= f){ S.cash -= f; return true; }
+    return true; /* you walk instead */
+  }
+  function travelCost(){
+    var c = 6;
+    if(S.tags.bike) c = 9;
+    if(S.tags.older) c += 6;
+    if(S.today.heat) c += 8;
+    return c;
+  }
+
+  /* ---------- actions ---------- */
+  var ACTIONS = [
+    {
+      id:"campus", name:"Go to the Campus", ap:2,
+      desc:function(){ return "The big service hub downtown. Intake, meals, mail, the assessment. Everything is there, which is the problem."; },
+      block:function(s){
+        if(s.tags.dv) return "The regular front door is not safe for you. Your pathway is the confidential one — use the hotline referral instead.";
+        return null;
+      },
+      run:function(s){
+        payFare(); s.reserves -= travelCost();
+        if(s.tags.crowds){
+          if(chance(0.55)){
+            s.reserves -= 10;
+            log("You got to the gate. There were maybe two hundred people in the courtyard. You stood there for a while and then you walked back to the bus.");
+            return;
+          }
+          s.reserves -= 12;
+          log("You made yourself go in. You were shaking by the time you got to the desk, but you got to the desk.");
+        }
+        if(s.today.longLine && chance(0.6)){
+          log("You waited four hours. They stopped taking people twelve places ahead of you.");
+          return;
+        }
+        s.contacts++;
+        s.standing.campus = (s.standing.campus||0) + 1;
+        if(!s.agencyLetter){
+          s.agencyLetter = true; s.discovered.letter = true;
+          s.gains.push(["g","An agency letter — the residency proof the ID office wants. This is the key to rung 2."]);
+          log("<b>You got an agency letter.</b> A caseworker signed a letter confirming you are receiving services here. This is the piece of paper that unlocks the ID office.");
+        } else if(!s.sheltered && !s.tags.dog){
+          /* standing compounds: the more they know you, the likelier a bed */
+          var odds = (s.tags.warrant ? 0.12 : 0.22) + Math.min(0.25, (s.standing.campus||0) * 0.06);
+          if(chance(odds)){
+            s.sheltered = true;
+            s.gains.push(["g","A shelter bed. Your reserves now recover overnight instead of draining."]);
+            log("<b>A bed opened up.</b> Thirty days, renewable if you keep the rules. You will sleep indoors tonight.");
+          } else if(s.tags.warrant && chance(0.3)){
+            log("They ran a check at intake. The warrant came up. They were apologetic about it, which did not change the outcome.");
+          } else {
+            log("No beds. They put you on the list for tomorrow, the same as yesterday.");
+          }
+        } else if(s.tags.dog){
+          log("You asked again about the dog. The answer was the same as the last time you asked.");
+        } else {
+          s.reserves += 6; s.fed = true;
+          log("You ate, filled your bottle, and sat in air conditioning for an hour.");
+        }
+      }
+    },
+    {
+      id:"daycenter", name:"Day resource centre", ap:1,
+      desc:function(){ return "Showers, outlets, a mailing address, and someone who will actually sit down with you."; },
+      block:function(s){ return null; },
+      run:function(s){
+        payFare(); s.reserves -= Math.floor(travelCost()*0.6);
+        s.battery = Math.min(100, s.battery + 55);
+        s.fed = true; s.reserves += 12;
+        s.contacts++;
+        s.standing.dc = (s.standing.dc||0) + 1;
+        /* Basic services are always there. The caseworker is not — day centres are
+           oversubscribed, and the paperwork unlocks all run through a person who has
+           a caseload. This is what makes rung 1 take real time to climb. */
+        var cwFree = (s.day >= (s.cwCooldown||0)) && chance(s.today.advocate ? 0.9 : 0.55);
+        if(!cwFree && s.mailAddress){
+          log("You showered, charged, and ate. The caseworker's door had a sign-up sheet on it and the sheet was full by seven in the morning.");
+          return;
+        }
+        if(cwFree) s.cwCooldown = s.day + 3;
+        if(!s.mailAddress){
+          s.mailAddress = true;
+          s.gains.push(["g","You have a mailing address. Rung 2 just became reachable."]);
+          log("<b>You now have a mailing address.</b> General delivery through the centre. Anything the county sends you can actually arrive somewhere.");
+        } else if(!s.affidavit){
+          s.affidavit = true; s.discovered.affidavit = true;
+          s.gains.push(["g","A caseworker signed a homeless-verification affidavit. It stands in for a photo ID at several counters."]);
+          log("<b>A caseworker signed a homeless-verification affidavit for you.</b> Some offices will take this instead of a photo ID. Most people never find out this exists.");
+        } else if(!s.voucher){
+          s.voucher = true; s.discovered.voucher = true;
+          s.gains.push(["g","A document-fee voucher. It covers the ID fee or the birth certificate fee."]);
+          log("<b>She found you a document-fee voucher.</b> It covers the ID fee and the birth certificate fee. It has been sitting in a drawer the whole time — you had to know to ask, and nobody tells you to ask.");
+        /* an open case is a mid-game reward, not a day-4 freebie: caseworkers have
+           caseloads, and they open cases for people who are already countable */
+        } else if(!s.openCase && s.standing.dc >= 3 && (s.onCEList || s.docs.id)){
+          s.openCase = true;
+          s.gains.push(["g","You have an open case. She makes calls on your behalf now — that is one extra action, every remaining day."]);
+          log("<b>You have an open case.</b> She knows your name, your situation and your paperwork, and you are far enough into the system for her to carry a file on you. From here she does some of the chasing.");
+        } else if(!s.openCase && s.standing.dc >= 3){
+          log("She would open a case for you, but she cannot yet — you are not on any list and you have no ID, so there is nothing for her to attach a file to. Come back when you are countable.");
+        } else {
+          log("Shower, charge, and a sandwich. Your phone is at " + Math.round(s.battery) + "%.");
+        }
+      }
+    },
+    {
+      id:"mvd", name:"Apply for a state ID", ap:2,
+      desc:function(){ return "The MVD office. $12, plus proof of who you are and proof that you live in Arizona."; },
+      block:function(s){
+        if(s.docs.id) return "You already have a photo ID.";
+        return null;
+      },
+      hint:function(s){
+        if(!s.learned.identity && !s.learned.residency) return null;
+        var need = [];
+        if(!(s.docs.birth || s.docs.ss)) need.push("a birth certificate or Social Security card");
+        if(!(s.agencyLetter || s.mailAddress)) need.push("proof you live in Arizona");
+        if(s.cash < 12 && !s.voucher) need.push("$12 or a fee voucher");
+        return need.length ? "they will send you away without " + need.join(", and ") + "." : "you have everything they need. Go.";
+      },
+      run:function(s){
+        payFare(); s.reserves -= travelCost();
+        var haveIdentity = s.docs.birth || s.docs.ss;
+        var haveResidency = s.agencyLetter || s.mailAddress;
+        if(!haveIdentity){
+          loop("identity", "The ID office needs a birth certificate or a Social Security card to prove who you are. You need a photo ID to order either one.");
+          return;
+        }
+        if(!haveResidency){
+          loop("residency", "The ID office needs proof you live in Arizona. Every document they accept goes to an address. You do not have one.");
+          return;
+        }
+        if(s.cash < 12 && !s.voucher){
+          log("You had the documents. You did not have the $12, and nobody at the counter mentioned that a fee voucher exists.");
+          return;
+        }
+        if(s.voucher){ s.voucher = false; log("The voucher covered the fee."); } else { s.cash -= 12; }
+        s.docs.id = true; s.idOnDay = s.day;
+        s.gains.push(["g","A state ID on day " + s.day + ". Rungs 3 and 4 just opened — and every day left is a day you can use them."]);
+        log("<b>You have a state ID.</b> It took you " + s.day + " days and it is the key to almost everything else.");
+      }
+    },
+    {
+      id:"vital", name:"Order a birth certificate", ap:2,
+      desc:function(){ return "Vital records. $20 and a two-week wait, and it has to be mailed somewhere."; },
+      block:function(s){
+        if(s.docs.birth) return "You already have your birth certificate.";
+        if(s.bcOrdered) return "Already ordered — it should arrive around day " + s.bcArrives + ", at your mailing address.";
+        return null;
+      },
+      hint:function(s){
+        if(!s.learned.vital && !s.learned.mail) return null;
+        var need = [];
+        if(!s.docs.id && !s.affidavit) need.push("a photo ID, or an agency affidavit instead of one");
+        if(!s.mailAddress) need.push("an address they can post it to");
+        if(s.cash < 20 && !s.voucher) need.push("$20 or a fee voucher");
+        return need.length ? "they will send you away without " + need.join(", and ") + "." : "you have everything they need.";
+      },
+      run:function(s){
+        payFare(); s.reserves -= travelCost();
+        if(!s.docs.id && !s.affidavit){
+          loop("vital", "Vital records needs a photo ID to release your birth certificate. The ID office needs your birth certificate. This is the loop.");
+          return;
+        }
+        if(!s.mailAddress){
+          loop("mail", "They will mail it. They will not hand it to you. You have nowhere for it to be mailed to.");
+          return;
+        }
+        if(s.cash < 20 && !s.voucher){
+          log("You had the affidavit and the address. You did not have the $20. The clerk was sympathetic and that was the whole extent of it.");
+          return;
+        }
+        if(s.voucher){ s.voucher = false; log("The voucher covered the $20."); } else { s.cash -= 20; }
+        s.bcOrdered = 1; s.bcOrderedOn = s.day;
+        s.bcArrives = s.day + 12 + Math.floor(rnd()*6);
+        s.inflight.push({ label:"Birth certificate in the post", day:s.bcArrives, kind:"bc" });
+        s.gains.push(["n","Birth certificate ordered. Now you wait, and waiting is free — do other things while it cooks."]);
+        log("<b>Ordered.</b> It will be mailed to the day centre. They said two weeks. It is usually more.");
+      }
+    },
+    {
+      id:"call211", name:"Call 2-1-1", ap:1,
+      desc:function(){ return "The statewide referral line. Free, and it works from any phone, if you have a phone."; },
+      block:function(s){
+        if(s.tags.noPhone) return "You do not have a phone. You would need to use one at the day centre or the library.";
+        if(s.battery < 12) return "Your phone is at " + Math.round(s.battery) + "%. This call would not survive the hold queue.";
+        return null;
+      },
+      run:function(s){
+        s.battery -= 22;
+        if(s.today.longLine && chance(0.4)){
+          log("Forty minutes of hold music, then the call dropped.");
+          return;
+        }
+        s.referrals++;
+        log("You got through. Three referrals, two of which you already knew about. You wrote down the third.");
+      }
+    },
+    {
+      id:"followup", name:"Chase a referral", ap:1,
+      desc:function(){ return "Call the programme back, or show up. Either way it is mostly waiting."; },
+      block:function(s){
+        if(s.referrals < 1 && !s.today.callback) return "You do not have a live referral to chase yet. Try 2-1-1 or the Campus.";
+        if(s.tags.noPhone && s.battery < 12) return "No phone, no call.";
+        return null;
+      },
+      run:function(s){
+        s.battery = Math.max(0, s.battery - 15);
+        if(s.today.callback){
+          s.today.callback = false;
+          if(chance(0.5)){
+            s.referrals++; s.contacts++;
+            log("<b>You caught them.</b> The referral is still open. They put you down for an intake appointment.");
+          } else {
+            log("You called back within the window. The extension rang out. You left a message on a machine that said the mailbox was full.");
+          }
+          return;
+        }
+        var p = 0.35 + (s.tags.paperwork ? 0.15 : 0) + (s.today.advocate ? 0.2 : 0);
+        if(chance(p)){
+          s.contacts++;
+          if(!s.onCEList && s.contacts >= 2){
+            s.onCEList = true; s.ceScore = 6 + Math.floor(rnd()*6);
+            log("<b>They did your coordinated entry assessment over the phone.</b> Score " + s.ceScore + ". You are in the queue.");
+          } else {
+            s.referrals++;
+            log("Someone picked up who knew what they were talking about. That is roughly a one-in-three event.");
+          }
+        } else {
+          log("Voicemail. Again. The outgoing message still has last year's hours on it.");
+        }
+      }
+    },
+    {
+      id:"work", name:"Work your shift", ap:2,
+      desc:function(){ return "6am to 2:30pm. It pays, and it takes the part of the day when offices are open."; },
+      block:function(s){
+        if(!s.employed) return "You are not currently working.";
+        return null;
+      },
+      run:function(s){
+        var pay = Math.round(s.wage * 8);
+        s.cash += pay; s.reserves -= (s.today.heat ? 20 : 12); s.fed = true;
+        log("Eight hours. $" + pay + " after nothing, because there is no after-nothing — you get paid Friday and today is a day you did not spend on paperwork.");
+      }
+    },
+    {
+      id:"look", name:"Look for work", ap:2,
+      desc:function(){ return "Applications, mostly online now, mostly requiring an ID and an address to hire you."; },
+      block:function(s){
+        if(s.employed) return "You already have a job.";
+        return null;
+      },
+      hint:function(s){
+        if(!s.learned.work) return null;
+        return s.docs.id ? "you have the ID they need for the I-9." : "nobody can legally hire you until you have a photo ID.";
+      },
+      run:function(s){
+        s.reserves -= 10;
+        if(!s.docs.id){
+          loop("work", "Two places would have taken you today. Both need a photo ID for the I-9 before you can start.");
+          return;
+        }
+        if(chance(0.3)){
+          s.employed = true; s.wage = 15 + rnd()*3;
+          log("<b>You got hired.</b> Day labour to start, but it is a paycheque and a reference.");
+        } else {
+          log("Four applications. Two of them asked for a permanent address on the first screen.");
+        }
+      }
+    },
+    {
+      id:"daylabour", name:"Stand for day labour", ap:2,
+      desc:function(){ return "Cash at the end of the shift, no ID asked for, no guarantee anyone picks you up."; },
+      block:function(s){
+        if(s.employed) return "You are already working.";
+        if(s.tags.older) return "The work on offer is loading and demolition. Your knees will not do it.";
+        return null;
+      },
+      run:function(s){
+        s.reserves -= (s.today.heat ? 24 : 16);
+        if(chance(0.35)){
+          log("You stood on the corner from 5am and nobody stopped. You lost the day and got nothing for it.");
+          return;
+        }
+        var pay = 45 + Math.floor(rnd()*35);
+        s.cash += pay; s.fed = true;
+        log("<b>You got picked up.</b> $" + pay + " cash at the end of it. No paperwork, no taxes, and no record that you worked — which will matter later when someone asks you for proof of income.");
+      }
+    },
+    {
+      id:"benefits", name:"Apply for benefits", ap:2,
+      desc:function(){ return "SNAP and medical. There is an expedited track if you have almost no income."; },
+      block:function(s){
+        if(s.tags.benefits) return "Your application is already in.";
+        return null;
+      },
+      hint:function(s){
+        if(!s.learned.benefits) return null;
+        if(!s.docs.id && !s.affidavit) return "they want identity verification. An agency affidavit works, if you have one and if you ask.";
+        return "you can complete this now.";
+      },
+      run:function(s){
+        payFare(); s.reserves -= travelCost();
+        if(!s.docs.id && !s.affidavit){
+          loop("benefits", "They need to verify your identity. There is a way to do this without a photo ID, but the person at the front desk did not know it and you did not know to ask.");
+          return;
+        }
+        s.tags.benefits = true;
+        s.inflight.push({ label:"Benefits decision (expedited)", day:s.day + 7, kind:"snap" });
+        s.gains.push(["n","Benefits application in. A decision is due in about a week."]);
+        log("<b>Application submitted.</b> They said seven days for the expedited decision. The interview will be by phone, at a number you have to keep charged.");
+      }
+    },
+    {
+      id:"rest", name:"Rest somewhere cool", ap:1,
+      desc:function(){ return "The library, a mall, a bus. Not sleep — just not being in the sun."; },
+      block:function(s){ return null; },
+      run:function(s){
+        s.reserves += (s.today.heat ? 18 : 14);
+        log("Three hours in the library. Nobody asked you to leave.");
+      }
+    },
+    {
+      id:"charge", name:"Find an outlet and eat", ap:1,
+      desc:function(){ return "The single most load-bearing hour of the day."; },
+      block:function(s){
+        if(s.tags.noPhone) return "You do not have a phone to charge. You could still eat.";
+        return null;
+      },
+      run:function(s){
+        s.battery = Math.min(100, s.battery + 45); s.fed = true; s.reserves += 6;
+        log("Phone at " + Math.round(s.battery) + "%, and a hot meal. Both of those are wins.");
+      }
+    },
+    {
+      id:"ce", name:"Do the coordinated entry assessment", ap:1,
+      desc:function(){ return "The county's triage questionnaire. It decides your place in the queue."; },
+      block:function(s){
+        if(s.onCEList) return "You are already assessed and on the list (score " + s.ceScore + ").";
+        return null;
+      },
+      run:function(s){
+        s.onCEList = true; s.ceScore = 6 + Math.floor(rnd()*6);
+        s.reserves -= 6;
+        s.gains.push(["g","You are on the coordinated entry list, score " + s.ceScore + ". This is a queue position, not a housing offer — but nothing above this rung is reachable without it."]);
+        log("<b>Assessed.</b> Forty minutes of questions, several of which you would not ask a stranger. Score " + s.ceScore + ".");
+      }
+    },
+    {
+      id:"housing", name:"Apply to a housing programme", ap:2,
+      desc:function(){ return "The top of the ladder. Rapid rehousing, or a voucher, or a supportive unit."; },
+      block:function(s){
+        if(s.housed) return "You have a housing placement.";
+        if(s.appliedHousing) return "Your application is in. There is nothing further you can do but wait, which is the hardest part.";
+        return null;
+      },
+      run:function(s){
+        payFare(); s.reserves -= travelCost();
+        s.appliedHousing = true;
+        if(s.tags.eviction && chance(0.75)){
+          s.gains.push(["b","The 2023 eviction judgment came up on the screening report. You met every published requirement and were declined anyway."]);
+          log("<b>Declined at screening.</b> Not by the programme — by the landlord the programme referred you to. That distinction matters to them and not at all to you.");
+          return;
+        }
+        if(chance(0.18)){
+          s.housed = true;
+          s.gains.push(["g","You have a rapid rehousing slot. This is genuinely rare in thirty days and you should not read it as typical."]);
+          log("<b>You got a slot.</b> Rapid rehousing, time limited, with a rent portion that steps up. It is a door, and it is open.");
+        } else {
+          s.inflight.push({ label:"Housing application under review", day:S.day + 40, kind:"housing" });
+          s.gains.push(["n","Application accepted and queued. The published wait is measured in months, and the honest one in years."]);
+          log("Application accepted. They were kind and clear: you are on the list, the list is long, and nobody can tell you a date.");
+        }
+      }
+    },
+    {
+      id:"checkin", name:"Report for your check-in", ap:1,
+      desc:function(){ return "Required. Missing it is not an option with consequences — it is the consequence."; },
+      block:function(s){
+        if(!s.tags.reentry) return "You do not have a check-in requirement.";
+        if(s.tags.checkedIn) return "You have already reported this cycle.";
+        return null;
+      },
+      run:function(s){
+        payFare(); s.reserves -= travelCost();
+        s.tags.checkedIn = true;
+        if(s.sheltered || s.mailAddress){
+          log("<b>You reported, and you had an address to give them.</b> That is the whole reason this went fine.");
+        } else {
+          log("You reported. You still could not give them a verified address. It was noted. It is always noted.");
+          s.tags.reentryFlag = (s.tags.reentryFlag||0) + 1;
+        }
+      }
+    }
+  ];
+
+  /* ---------- the ladder: tiers and their entry requirements ----------
+     The tier structure is visible from day 1 on purpose. The lesson for this
+     audience is not "you got tricked", it is "look how many rungs there are
+     and how few of them you can reach". Requirements are shown as chips and
+     DO gate the action, so no action is ever a blind waste of a turn. */
+
+  var TIERS = [
+    { n:0, name:"Get through today",  note:"Always open to you. Costs you the day, and gets you no closer to anything." },
+    { n:1, name:"Get a foothold",     note:"An address, and someone willing to put your name on a piece of paper. Everything above this rung depends on it." },
+    { n:2, name:"Get your documents", note:"The rung the whole system is built on — and the one it is hardest to stand on, because each document is gated by another document." },
+    { n:3, name:"Get standing",       note:"Being counted: on the list, in the system, verified as a person with a claim." },
+    { n:4, name:"Ways out",           note:"Income and housing. Everything here needs everything below it." }
+  ];
+
+  var ACT_META = {
+    rest:      { tier:0 },
+    charge:    { tier:0 },
+    daylabour: { tier:0 },
+
+    daycenter: { tier:1 },
+    campus:    { tier:1 },
+    call211:   { tier:1 },
+
+    vital: { tier:2, reqs:function(s){ return [
+      { t: s.discovered.affidavit ? "A photo ID — or the agency affidavit" : "A photo ID", ok: s.docs.id || s.affidavit },
+      { t: "An address they can post it to", ok: s.mailAddress },
+      { t: s.discovered.voucher ? "$20 — or your fee voucher" : "$20", ok: s.cash >= 20 || s.voucher }
+    ]; } },
+    mvd: { tier:2, reqs:function(s){ return [
+      { t: "A birth certificate or Social Security card", ok: s.docs.birth || s.docs.ss },
+      { t: s.discovered.letter ? "Proof of Arizona residency — the agency letter counts" : "Proof you live in Arizona", ok: s.agencyLetter || s.mailAddress },
+      { t: s.discovered.voucher ? "$12 — or your fee voucher" : "$12", ok: s.cash >= 12 || s.voucher }
+    ]; } },
+
+    ce:       { tier:3, reqs:function(s){ return [
+      { t: "Contact with an agency that can assess you", ok: s.contacts >= 1 }
+    ]; } },
+    benefits: { tier:3, reqs:function(s){ return [
+      { t: s.discovered.affidavit ? "Identity verification — ID or the agency affidavit" : "Identity verification", ok: s.docs.id || s.affidavit }
+    ]; } },
+    followup: { tier:3 },
+    checkin:  { tier:3 },
+
+    look:    { tier:4, reqs:function(s){ return [
+      { t: "A photo ID for the I-9", ok: s.docs.id }
+    ]; } },
+    work:    { tier:4 },
+    housing: { tier:4, reqs:function(s){ return [
+      { t: "On the coordinated entry list", ok: s.onCEList },
+      { t: "A photo ID", ok: s.docs.id },
+      { t: "Income, or approved benefits", ok: s.employed || s.snap }
+    ]; } }
+  };
+
+  function reqsFor(a){
+    var m = ACT_META[a.id];
+    return (m && m.reqs) ? m.reqs(S) : [];
+  }
+  function reqsMet(a){
+    return reqsFor(a).every(function(r){ return r.ok; });
+  }
+  function tierOf(a){ var m = ACT_META[a.id]; return m ? m.tier : 0; }
+
+  /* ---------- rendering ---------- */
+  var reduceMotion = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  function scrollTop(){
+    window.scrollTo({ top:0, behavior: reduceMotion ? "auto" : "smooth" });
+  }
+
+  var heroNotes = document.getElementById("sx-hero-notes");
+  var buildNote = document.getElementById("sx-buildnote");
+
+  function show(id){
+    ["sx-intro","sx-setup","sx-game","sx-summary","sx-debrief"].forEach(function(k){
+      el[k].classList.toggle("sx-hidden", k !== id);
+    });
+    /* the framing copy has done its job once play starts — get it out of the way */
+    var playing = (id === "sx-game" || id === "sx-summary");
+    heroNotes.classList.toggle("sx-hidden", playing);
+    buildNote.classList.toggle("sx-hidden", playing);
+    if(el[id].hasAttribute("tabindex")) el[id].focus();
+  }
+
+  function renderDraw(){
+    var kinds = ["Strength","In your way","Your life right now"];
+    var cls = ["sx-card--sage","sx-card--amber",""];
+    el["sx-draw"].innerHTML = S.cards.map(function(c,i){
+      return '<div class="sx-card '+cls[i]+'">'
+        + '<p class="sx-card__kind">'+kinds[i]+'</p>'
+        + '<p class="sx-card__title">'+c.t+'</p>'
+        + '<p class="sx-card__body">'+c.b+'</p></div>';
+    }).join("");
+
+    var bits = [];
+    bits.push("<strong>Where you are starting.</strong> ");
+    bits.push("$" + S.cash + " in your pocket. ");
+    bits.push(S.tags.noPhone ? "No phone. " : "Phone at " + S.battery + "%. ");
+    var have = [];
+    if(S.docs.id) have.push("state ID");
+    if(S.docs.birth) have.push("birth certificate");
+    if(S.docs.ss) have.push("Social Security card");
+    bits.push(have.length ? "You have: " + have.join(", ") + ". " : "No identity documents at all. ");
+    bits.push(S.apMax + " actions a day.");
+    el["sx-setup-state"].innerHTML = bits.join("");
+  }
+
+  function renderStatus(){
+    el["sx-day"].textContent = "Day " + S.day + " of " + S.maxDay;
+    el["sx-seed-show"].textContent = "seed " + S.seed;
+    var aps = "";
+    for(var i=0;i<S.apMax;i++) aps += '<i class="'+(i < S.ap ? "on" : "")+'"></i>';
+    var docs = [];
+    if(S.docs.id) docs.push("ID");
+    if(S.docs.birth) docs.push("BC");
+    if(S.docs.ss) docs.push("SS");
+    /* the compounding you have banked, always on screen */
+    var carry = [];
+    if(S.openCase) carry.push("open case");
+    if(S.snap) carry.push("benefits");
+    if(S.employed) carry.push("wages");
+    if(S.sheltered) carry.push("a bed");
+    if(S.onCEList) carry.push("on the list");
+    /* Reserves drives whether you lose an action tomorrow, so it must be visible. */
+    var r = Math.round(S.reserves);
+    var rWord = r >= 60 ? "steady" : (r >= 40 ? "wearing down" : (r >= 25 ? "running low" : "empty"));
+    el["sx-meters"].innerHTML =
+      '<div class="sx-meter"><b>Actions left</b><span class="sx-ap">'+aps+'</span></div>'
+      + '<div class="sx-meter"><b>Reserves</b>'+rWord+(r < 25 ? " — costs you an action" : "")+'</div>'
+      + '<div class="sx-meter"><b>Cash</b>$'+Math.max(0,Math.round(S.cash))+'</div>'
+      + '<div class="sx-meter"><b>Phone</b>'+(S.tags.noPhone ? "none" : Math.max(0,Math.round(S.battery))+"%")+'</div>'
+      + '<div class="sx-meter"><b>Documents</b>'+(docs.length?docs.join(" · "):"none")+'</div>'
+      + '<div class="sx-meter"><b>Carrying</b>'+(carry.length?carry.join(" · "):"nothing yet")+'</div>';
+  }
+
+  function renderEvent(){
+    var e = S.today.event;
+    el["sx-event"].className = "sx-event" + (e.good ? " sx-event--good" : "");
+    el["sx-event-kind"].textContent = e.kind;
+    el["sx-event-title"].textContent = e.t;
+    var body = e.b;
+    if(S.today.lostDoc){
+      body += " " + (S.today.lostDoc === "birth" ? "Your birth certificate was in it." : "Your papers were in it.");
+    }
+    el["sx-event-body"].textContent = body;
+  }
+
+  function renderLadder(){
+    var host = document.getElementById("sx-ladder");
+    host.innerHTML = "";
+    S.lockedTiersToday = 0;
+
+    TIERS.forEach(function(tier){
+      var acts = ACTIONS.filter(function(a){ return tierOf(a) === tier.n; });
+      /* an action the situation makes irrelevant (no job to go to) is not shown at all */
+      var live = acts.filter(function(a){
+        var bl = a.block(S);
+        return !(bl && /already|not currently|do not have a check-in|not applicable/i.test(bl)) || reqsMet(a);
+      });
+      if(!live.length) live = acts;
+
+      var anyOpen = live.some(function(a){ return !a.block(S) && reqsMet(a); });
+      if(!anyOpen && tier.n > 0) S.lockedTiersToday++;
+
+      var wrap = document.createElement("div");
+      wrap.className = "sx-tier" + (anyOpen ? "" : " sx-tier--locked");
+
+      var head = '<div class="sx-tier__head">'
+        + '<span class="sx-tier__n">Rung '+tier.n+'</span>'
+        + '<span class="sx-tier__name">'+tier.name+'</span>'
+        + '<span class="sx-tier__note">'+(anyOpen ? tier.note : "Locked — you can see this rung. You cannot reach it yet.")+'</span>'
+        + '</div>';
+
+      var grid = '<div class="sx-actions">';
+      live.forEach(function(a){
+        var blocked = a.block(S);
+        var reqs = reqsFor(a);
+        var met = reqsMet(a);
+        var noAp = S.ap < a.ap;
+        var dis = !!blocked || !met || noAp;
+
+        var html = '<span class="sx-act__top"><span class="sx-act__name">'+a.name+'</span>'
+          + '<span class="sx-act__cost">'+a.ap+' action'+(a.ap>1?"s":"")+'</span></span>'
+          + '<p class="sx-act__desc">'+a.desc()+'</p>';
+
+        if(reqs.length){
+          html += '<div class="sx-reqs">' + reqs.map(function(r){
+            return '<span class="sx-req '+(r.ok?"sx-req--ok":"sx-req--no")+'">'+r.t+'</span>';
+          }).join("") + '</div>';
+        }
+        if(blocked) html += '<p class="sx-act__block">'+blocked+'</p>';
+        else if(!met) html += '<p class="sx-act__block">You would be turned away. The requirements above are not met.</p>';
+        else if(noAp) html += '<p class="sx-act__block">Not enough actions left today.</p>';
+
+        var b = document.createElement("button");
+        b.type = "button"; b.className = "sx-act"; b.disabled = dis; b.innerHTML = html;
+        if(!dis) b.addEventListener("click", function(){ doAction(a); });
+        grid += "<!--slot-->";
+        wrap._pending = wrap._pending || [];
+        wrap._pending.push(b);
+      });
+      grid += "</div>";
+      wrap.innerHTML = head + grid;
+      var gridEl = wrap.querySelector(".sx-actions");
+      (wrap._pending||[]).forEach(function(b){ gridEl.appendChild(b); });
+      host.appendChild(wrap);
+    });
+  }
+
+  function renderFlight(){
+    var box = document.getElementById("sx-flight");
+    var list = document.getElementById("sx-flight-list");
+    if(!S.inflight.length){ box.classList.add("sx-hidden"); return; }
+    box.classList.remove("sx-hidden");
+    list.innerHTML = S.inflight.map(function(f){
+      var days = f.day - S.day;
+      return '<li><b>'+f.label+'</b> — '+(days <= 0 ? "due any day now" : "about "+days+" day"+(days===1?"":"s")+" away")+'</li>';
+    }).join("");
+  }
+
+  function renderLog(){
+    el["sx-log"].innerHTML = S.log.slice(0,40).map(function(l){
+      return '<li class="'+l.c+'"><b>Day '+l.d+'.</b> '+l.m+'</li>';
+    }).join("");
+  }
+
+  function renderAll(){ renderStatus(); renderEvent(); renderFlight(); renderLadder(); renderLog(); }
+
+  /* ---------- turn loop ---------- */
+  function weightedEvent(){
+    var total = 0, i;
+    for(i=0;i<EVENTS.length;i++) total += EVENTS[i].w;
+    var r = rnd() * total;
+    for(i=0;i<EVENTS.length;i++){ r -= EVENTS[i].w; if(r <= 0) return EVENTS[i]; }
+    return EVENTS[EVENTS.length-1];
+  }
+
+  /* action points are recomputed daily so compounding gains show up as more time */
+  function computeAp(){
+    var ap = 3;
+    if(S.tags.kid) ap -= 1;
+    if(S.openCase) ap += 1;          /* a caseworker who knows you does legwork you would have done */
+    if(S.reserves < 25) ap -= 1;     /* running on nothing costs you a slot */
+    return Math.max(1, ap);
+  }
+
+  function startDay(){
+    S.today = {};
+    S.gains = [];
+    S.dayStart = { cash:S.cash, reserves:S.reserves, battery:S.battery };
+    var e = weightedEvent();
+    S.today.event = e;
+    e.run(S);
+    if(S.today.lostDoc){
+      log("<b>You lost your " + (S.today.lostDoc === "birth" ? "birth certificate" : "papers") + ".</b> Everything that depended on it now depends on getting it again.", "loop");
+      S.gains.push(["b","You lost a document you had already paid for and waited on."]);
+    }
+    if(S.tags.reentry && S.day === S.tags.reentry) S.tags.checkedIn = false;
+    if(S.tags.shower && S.day % 7 === 0){ S.reserves += 15; }
+    if(S.tags.newbie > 0) S.tags.newbie--;
+
+    /* recurring income — the whole point of getting to rung 4 early */
+    if(S.snap){ S.fed = true; }
+    if(S.employed && S.day % 7 === 0){
+      var wk = Math.round(S.wage * 32);
+      S.cash += wk;
+      S.gains.push(["g","Payday: $" + wk + ". Every week you stay employed, this repeats."]);
+    }
+
+    S.apMax = computeAp();
+    S.ap = S.apMax;
+    renderAll();
+  }
+
+  function doAction(a){
+    if(S.ap < a.ap || !reqsMet(a) || a.block(S)) return;
+    S.ap -= a.ap;
+    if(S.tags.newbie > 0 && chance(0.4)){
+      log("You went to the wrong building. By the time you found the right one it was closed.");
+      S.reserves -= 5;
+      renderAll();
+      return;
+    }
+    a.run(S);
+    S.reserves = Math.max(0, Math.min(100, S.reserves));
+    /* NEVER auto-advance the day — you always see the result of what you just did */
+    renderAll();
+  }
+
+  function resolveInflight(){
+    S.inflight = S.inflight.filter(function(f){
+      if(S.day < f.day) return true;
+      if(f.kind === "bc"){
+        if(!S.mailAddress){ f.day = S.day + 3; return true; }
+        S.docs.birth = true; S.bcOrdered = 0;
+        S.gains.push(["g","Your birth certificate arrived. Rung 2 is now standable."]);
+        log("<b>Your birth certificate arrived at the day centre.</b> " + (S.day - S.bcOrderedOn) + " days after you ordered it.");
+        return false;
+      }
+      if(f.kind === "snap"){
+        S.snap = true;
+        S.gains.push(["g","Benefits approved. From now on you eat without spending an action on it — that is one action back, every remaining day."]);
+        log("<b>Benefits approved.</b> The card arrives at the day centre. This frees up an action every single day from here on.");
+        return false;
+      }
+      if(f.kind === "housing") return true;  /* the wait outlives the game, on purpose */
+      return false;
+    });
+  }
+
+  function endDay(){
+    if(!S.fed) { S.reserves -= 10; S.gains.push(["b","You did not eat today."]); }
+    if(S.sheltered) S.reserves += 8; else S.reserves -= 4;
+    if(!S.tags.goodPhone) S.battery = Math.max(0, S.battery - 8);
+    S.fed = false;
+    S.reserves = Math.max(0, Math.min(100, S.reserves));
+
+    resolveInflight();
+
+    if(S.tags.reentry && S.day === S.tags.reentry && !S.tags.checkedIn){
+      S.tags.missedCheckin = true;
+      S.gains.push(["b","You missed a required check-in because you had no address to give."]);
+      log("<b>You missed your check-in.</b> There is no version of this that does not make everything harder.", "loop");
+    }
+    if(S.tags.reentry && S.day === S.tags.reentry) S.tags.reentry = S.day + 14;
+
+    S.lockedDays += (S.lockedTiersToday >= 3 ? 1 : 0);
+
+    if(S.day >= S.maxDay){ finish("thirty"); return; }
+    showSummary();
+  }
+
+  function showSummary(){
+    var d = S.dayStart;
+    function delta(label, now, then, unit){
+      var diff = Math.round(now - then);
+      var cls = diff > 0 ? "up" : (diff < 0 ? "down" : "");
+      var sign = diff > 0 ? "+" : "";
+      return '<div class="sx-delta"><b>'+label+'</b><span class="'+cls+'">'+(diff===0?"no change":sign+diff+unit)+'</span></div>';
+    }
+    document.getElementById("sx-sum-day").textContent = "End of day " + S.day;
+    document.getElementById("sx-sum-deltas").innerHTML =
+        delta("Cash", S.cash, d.cash, "")
+      + delta("Reserves", S.reserves, d.reserves, "")
+      + delta("Phone", S.battery, d.battery, "%")
+      + '<div class="sx-delta"><b>Rungs open</b>'+(5 - S.lockedTiersToday)+' of 5</div>';
+
+    var gains = S.gains.length ? S.gains : [["n","Nothing changed today. Days like this are most of them."]];
+    document.getElementById("sx-sum-gains").innerHTML = gains.map(function(g){
+      return '<li class="'+g[0]+'">'+g[1]+'</li>';
+    }).join("");
+
+    /* make the compounding legible: what your standing earns you every day now */
+    var comp = [];
+    if(S.openCase) comp.push("a caseworker who knows your name, worth one extra action every day");
+    if(S.snap) comp.push("approved benefits, which feed you without costing an action");
+    if(S.employed) comp.push("a wage that pays out every seventh day");
+    if(S.sheltered) comp.push("a bed, which is why your reserves recover overnight instead of draining");
+    var box = document.getElementById("sx-sum-compound");
+    if(comp.length){
+      box.innerHTML = '<div class="sx-compound"><b>What you are now carrying forward</b>You have ' + comp.join("; ") + '. None of this was available to you on day 1, and all of it pays out again tomorrow.</div>';
+    } else {
+      box.innerHTML = '<div class="sx-compound"><b>What you are carrying forward</b>Nothing yet. Every day so far has cost you a day and returned you a day. The rungs that change that are 1 and 2.</div>';
+    }
+
+    var fb = document.getElementById("sx-sum-flight");
+    var fl = document.getElementById("sx-sum-flight-list");
+    if(S.inflight.length){
+      fb.classList.remove("sx-hidden");
+      fl.innerHTML = S.inflight.map(function(f){
+        var days = f.day - S.day;
+        return '<li><b>'+f.label+'</b> — '+(days <= 0 ? "due any day now" : "about "+days+" day"+(days===1?"":"s")+" away")+'</li>';
+      }).join("");
+    } else { fb.classList.add("sx-hidden"); }
+
+    document.getElementById("sx-nextday").textContent = "Begin day " + (S.day + 1);
+    show("sx-summary");
+    scrollTop();
+  }
+
+  function beginNextDay(){
+    S.day++;
+    show("sx-game");
+    startDay();
+    scrollTop();
+  }
+
+  /* ---------- debrief ---------- */
+  function finish(reason){
+    S.ended = true; S.endReason = reason;
+    var wins = [
+      { k: S.docs.id, y:"You got a state ID.", n:"You did not get a state ID." },
+      { k: S.onCEList, y:"You are on the coordinated entry list (score " + S.ceScore + ").", n:"You never completed a coordinated entry assessment." },
+      { k: S.sheltered, y:"You have a shelter bed.", n:"You are still sleeping outside." },
+      { k: S.employed, y:"You have income.", n:"You have no income." },
+      { k: !S.tags.noPhone && S.battery > 10, y:"You are still reachable by phone.", n:"Nobody can reach you." },
+      { k: S.mailAddress, y:"You have an address mail can go to.", n:"You have nowhere to receive mail." },
+      { k: S.docs.birth || S.docs.ss, y:"You are holding identity documents.", n:"You hold no identity documents." },
+      { k: S.reserves > 30, y:"You are holding up, more or less.", n:"You are running on nothing." },
+      { k: S.snap || S.employed, y:"You have something recurring coming in.", n:"Nothing recurring is coming in." },
+      { k: S.openCase, y:"You have an open case and someone who knows it.", n:"No caseworker knows your name." }
+    ];
+    var score = wins.filter(function(w){ return w.k; }).length;
+
+    /* How far up the ladder you actually stood. A flat checklist rewards touching
+       every service once; this rewards climbing, which is what the game is about. */
+    var rung = 0;
+    if(S.contacts > 0 || S.mailAddress) rung = 1;
+    if(S.docs.id) rung = 2;
+    if(rung >= 2 && S.onCEList) rung = 3;
+    if(rung >= 3 && (S.employed || S.snap || S.housed)) rung = 4;
+    S.rungReached = rung;
+    var RUNG_TEXT = [
+      "You never got off the ground. Thirty days of staying alive, which took all thirty days.",
+      "You got a foothold — an address, a contact, a name someone recognises. Everything above it stayed locked.",
+      "You cleared the documents rung. This is the hardest one and most people do not clear it in a month.",
+      "You got counted: documents and a place in the queue. The queue is where you now wait.",
+      "You reached the top rung the month allows — documents, a queue position, and something recurring coming in."
+    ];
+
+    el["sx-scores"].innerHTML = wins.map(function(w){
+      return '<div class="sx-score '+(w.k?"sx-score--yes":"sx-score--no")+'">'
+        + '<span class="sx-score__mark">'+(w.k?"✓":"—")+'</span><span>'+(w.k?w.y:w.n)+'</span></div>';
+    }).join("");
+
+    var head = "Day 30. You reached rung " + rung + " of 4.";
+    var body = [ RUNG_TEXT[rung] ];
+    if(rung <= 1){
+      body.push("Read the list below and notice how little of it is about your choices. You ran out of the two things the system silently assumes you have: unbroken time in the middle of a weekday, and a document you can only obtain by presenting another document.");
+    } else if(rung === 4 || S.housed){
+      body.push("Sit with what the top of this ladder is. It is not a home. It is paperwork, a place in a queue, and a small recurring amount of money. A month is not enough time to be housed, and any simulation that let you would be lying to you.");
+    }
+
+    if(S.lockedDays > 0){
+      body.push("<strong>On " + S.lockedDays + " of your " + S.day + " days, three or more rungs of the ladder were visible and unreachable.</strong> Not because you did nothing — because the prerequisites for them were held by an office you had not reached yet. That is what a sequencing failure costs, measured in days.");
+    }
+    if(S.docs.id && S.idOnDay){
+      var left = S.maxDay - S.idOnDay;
+      body.push("You got your ID on <strong>day " + S.idOnDay + "</strong>, which left " + left + " day" + (left===1?"":"s") + " to actually use it. Everything on rungs 3 and 4 pays out per day — so the date you cleared rung 2 set the ceiling on everything above it. Getting there a week earlier is worth more than any single action you took afterwards.");
+    } else {
+      body.push("You never cleared rung 2. Everything above it — benefits, work, the housing list — stayed visible and locked for the whole month, which is the single most common shape a month like this takes.");
+    }
+    if(S.openCase){
+      body.push("You got to an open case, which was quietly the highest-value thing that happened: it returned an action to you every remaining day. Compounding in this system is mostly about who knows your name.");
+    }
+    if(S.appliedHousing && !S.housed){
+      body.push("You met every published requirement for a housing programme and the answer was a queue. This is the honest top of the ladder — eligibility and availability are different things, and only one of them is in your control.");
+    }
+    if(S.tags.missedCheckin){
+      body.push("You missed a required check-in because you could not produce an address. That is the single most common way people in reentry end up back inside — not reoffending, paperwork.");
+    }
+    if(S.tags.dog && !S.sheltered){
+      body.push("You were never offered a bed you could actually take. Pet-accepting shelter capacity in most counties is a rounding error, and the alternative asked of people is to give up the animal.");
+    }
+    if(S.tags.crowds && !S.sheltered){
+      body.push("Every route in this simulation ran through one large congregate facility. For people who cannot tolerate that environment, a system with one front door has no front door.");
+    }
+    if(S.tags.dv){
+      body.push("Your pathway was the confidential one throughout. In real life that means a separate hotline, separate intake, and addresses that are never published — the National Domestic Violence Hotline is 1-800-799-7233.");
+    }
+    if(S.tags.shiftLock){
+      body.push("You were employed the entire time. Every county office you needed was open 8am to 5pm, Monday to Friday — the exact hours you were being paid to be somewhere else.");
+    }
+
+    el["sx-outcome-body"].innerHTML = body.map(function(p){ return "<p>"+p+"</p>"; }).join("");
+    document.getElementById("sx-debrief-h").textContent = head;
+
+    var facts = [];
+    facts.push({ t:"The loop is real, and it has a key",
+      b:"Arizona's ID office needs proof of identity and proof of Arizona residency. Vital records generally needs a photo ID to release a birth certificate. On paper that is a closed circle. The way out is a letter or affidavit from a shelter or social service agency, which the ID office will accept as residency proof — which is why the first useful action in this game is almost always walking into an agency and asking for a letter, not going to the MVD." });
+    facts.push({ t:"Coordinated entry is a queue, not a door",
+      b:"Completing an assessment puts you on a prioritised list. It is not an offer of housing and it does not start a clock. People routinely describe being assessed as 'getting help' and then hear nothing for months, because the list is long and the units are few." });
+    facts.push({ t:"The scarce resource is weekday daytime",
+      b:"Nearly every step in this simulation costs a block of a weekday. That is the same block of time a job occupies. A system that requires many weekday visits is a system that quietly penalises employment." });
+    facts.push({ t:"Connectivity sits underneath everything",
+      b:"Referrals, benefit interviews, callbacks and housing offers all arrive by phone. A dead battery is not an inconvenience in this system — it is the mechanism by which people fall off lists they had already earned a place on." });
+    if(S.loopLog.identity || S.loopLog.vital){
+      facts.push({ t:"You personally hit the document loop",
+        b:"You went to at least one office that could not serve you until another office had. This is the exact problem the Resource Sequencing Navigator below was built to solve — it tells you the order, so the trip is not wasted." });
+    }
+    el["sx-facts"].innerHTML = facts.map(function(f){
+      return '<div class="sx-fact"><b>'+f.t+'</b>'+f.b+'</div>';
+    }).join("");
+
+    var url = location.origin + location.pathname + "?seed=" + S.seed;
+    el["sx-share-url"].textContent = url;
+
+    if(window.gtag) gtag("event","strapped_run_complete",{ seed:S.seed, rung:rung, score:score, locked_days:S.lockedDays });
+
+    show("sx-debrief");
+    scrollTop();
+  }
+
+  /* ---------- wiring ---------- */
+  function readSeed(){
+    var v = (el["sx-seed-in"].value || "").replace(/[^0-9]/g,"");
+    if(v) return parseInt(v,10) % 100000;
+    return Math.floor(Math.random()*90000)+1000;
+  }
+
+  document.getElementById("sx-start").addEventListener("click", function(){
+    newGame(readSeed());
+    renderDraw();
+    show("sx-setup");
+  });
+  document.getElementById("sx-redraw").addEventListener("click", function(){
+    newGame(Math.floor(Math.random()*90000)+1000);
+    renderDraw();
+  });
+  document.getElementById("sx-begin").addEventListener("click", function(){
+    show("sx-game");
+    startDay();
+    scrollTop();
+  });
+  document.getElementById("sx-endday").addEventListener("click", function(){ endDay(); });
+  document.getElementById("sx-nextday").addEventListener("click", function(){ beginNextDay(); });
+  document.getElementById("sx-quit").addEventListener("click", function(){ finish("early"); });
+  document.getElementById("sx-quit2").addEventListener("click", function(){ finish("early"); });
+  document.getElementById("sx-again").addEventListener("click", function(){
+    el["sx-seed-in"].value = "";
+    show("sx-intro");
+    scrollTop();
+  });
+  document.getElementById("sx-replay").addEventListener("click", function(){
+    var seed = S.seed;
+    newGame(seed);
+    renderDraw();
+    show("sx-setup");
+    scrollTop();
+  });
+
+  /* deep link ?seed= */
+  (function(){
+    var m = location.search.match(/[?&]seed=(\d+)/);
+    if(m){ el["sx-seed-in"].value = m[1]; }
+  })();
+
+})();
+</script>
+</body>
+</html>

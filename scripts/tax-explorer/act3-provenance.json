@@ -1,0 +1,889 @@
+{
+ "_": "Act 3 card provenance. Built by build-act2-data.js from learn/tax-explorer/data/. Not shipped inside index.html; rendered by learn/tax-explorer/methodology.html.",
+ "cards": {
+  "obbba_baseline": {
+   "evidence": "strong (official CBO score of enacted law)",
+   "evidencePath": "obbba_baseline.evidence_strength",
+   "figures": [
+    {
+     "label": "Added to the deficit",
+     "file": "scenarios",
+     "path": "obbba_baseline.deficit_effect.value",
+     "unit": "usd_billions",
+     "value": 3400,
+     "period": "2025-2034",
+     "url": "https://www.cbo.gov/publication/61570",
+     "scorer": "CBO",
+     "quote": "CBO estimates that Public Law 119-21 will result in a net increase in the unified budget deficit totaling $3.4 trillion over the 2025-2034 period",
+     "baseline": "post-obbba (this IS the OBBBA score)"
+    },
+    {
+     "label": "Lowest decile, share of resources lost",
+     "file": "scenarios",
+     "path": "obbba_baseline.distribution.verified.bottom_decile_pct",
+     "unit": "percent",
+     "value": 3.9,
+     "period": "AVERAGE over 2026-2034",
+     "url": "https://www.cbo.gov/system/files/2025-06/61387-Distributional-Effects.pdf",
+     "scorer": "CBO",
+     "quote": "Resources for households in the lowest decile of the income distribution would decrease by about $1,600 per year (in 2025 dollars)…That amounts to 3.9 percent of their income"
+    },
+    {
+     "label": "Lowest decile, dollars a year",
+     "file": "scenarios",
+     "path": "obbba_baseline.distribution.verified.bottom_decile_dollars",
+     "unit": "usd_2025",
+     "value": -1600,
+     "period": "AVERAGE over 2026-2034",
+     "url": "https://www.cbo.gov/system/files/2025-06/61387-Distributional-Effects.pdf",
+     "scorer": "CBO"
+    },
+    {
+     "label": "Highest decile, share of resources gained",
+     "file": "scenarios",
+     "path": "obbba_baseline.distribution.verified.top_decile_pct",
+     "unit": "percent",
+     "value": 2.3,
+     "period": "AVERAGE over 2026-2034",
+     "url": "https://www.cbo.gov/system/files/2025-06/61387-Distributional-Effects.pdf",
+     "scorer": "CBO",
+     "quote": "Resources would increase, on average, over the projection period by about $12,000 for households in the highest decile, amounting to 2.3 percent of their projected income."
+    },
+    {
+     "label": "Highest decile, dollars a year",
+     "file": "scenarios",
+     "path": "obbba_baseline.distribution.verified.top_decile_dollars",
+     "unit": "usd_2025",
+     "value": 12000,
+     "period": "AVERAGE over 2026-2034",
+     "url": "https://www.cbo.gov/system/files/2025-06/61387-Distributional-Effects.pdf",
+     "scorer": "CBO"
+    }
+   ]
+  },
+  "close_the_loopholes": {
+   "evidence": "moderate",
+   "evidencePath": "close_the_loopholes.evidence_strength",
+   "figures": [
+    {
+     "label": "Tax gains at death",
+     "file": "expenditures",
+     "path": "conv_scores.tax_gains_at_death.value",
+     "unit": "usd_billions",
+     "value": 536.1,
+     "period": "FY2025-2034",
+     "url": "https://www.cbo.gov/budget-options/60943",
+     "scorer": "CBO Budget Option 51 (Dec 2024)",
+     "baseline": "pre-obbba"
+    },
+    {
+     "label": "Tax carried interest as ordinary income",
+     "file": "expenditures",
+     "path": "avoidance_mechanics.carried_interest.yale_2026.value",
+     "unit": "usd_billions",
+     "value": 87.7,
+     "period": "10 years (2026 vintage)",
+     "url": "https://budgetlab.yale.edu/research/refining-revenue-estimates-taxing-carried-interest",
+     "scorer": "Yale Budget Lab (May 2026)",
+     "baseline": "post-obbba"
+    },
+    {
+     "label": "Repeal the 199A pass-through deduction",
+     "file": "expenditures",
+     "path": "conv_scores.repeal_199a.value",
+     "unit": "usd_billions",
+     "value": 835.7,
+     "period": "2027-2036",
+     "url": "https://taxfoundation.org/tax-reform-guide/option/eliminate-the-section-199a-pass-through-deduction/",
+     "scorer": "Tax Foundation 2026 Options Guide",
+     "baseline": "post-obbba"
+    },
+    {
+     "label": "Limit or eliminate itemized deductions — CBO’s range, low end",
+     "file": "expenditures",
+     "path": "conv_scores.eliminate_itemized_deductions.value_range.0",
+     "unit": "usd_billions",
+     "value": 736,
+     "period": "FY2025-2034",
+     "url": "https://www.cbo.gov/system/files/2024-12/60557-budget-options.pdf",
+     "scorer": "CBO Budget Option 49 (Dec 2024)",
+     "baseline": "pre-obbba",
+     "note": "It is a RANGE across alternatives, not a point estimate. $3,424B is the most aggressive alternative. The dossier's $3.7T overstates even the top of the range. Per-alternative breakdown for the current window did not extract; the prior vintage (2023-2032) gives: eliminate all $2,507.4B; eliminate SALT $1,143.2B; limit benefit to 15% of value $1,356.0B; limit to 4% of AGI $541.4B — DO NOT MIX VINTAGES."
+    },
+    {
+     "label": "Limit or eliminate itemized deductions — CBO’s range, high end",
+     "file": "expenditures",
+     "path": "conv_scores.eliminate_itemized_deductions.value_range.1",
+     "unit": "usd_billions",
+     "value": 3424,
+     "period": "FY2025-2034",
+     "url": "https://www.cbo.gov/system/files/2024-12/60557-budget-options.pdf",
+     "scorer": "CBO Budget Option 49 (Dec 2024)",
+     "quote": "Option 49. Eliminate or Limit Itemized Deductions | 736 to 3,424",
+     "baseline": "pre-obbba"
+    },
+    {
+     "label": "Revenue lost to the IRS cuts already made",
+     "file": "expenditures",
+     "path": "enforcement.yale_total_revenue_loss.value",
+     "unit": "usd_billions",
+     "value": 860,
+     "period": "2026-2035",
+     "url": "https://budgetlab.yale.edu/research/weakened-irs-has-substantial-consequences",
+     "scorer": "Yale Budget Lab (Apr 2026)",
+     "baseline": "post-obbba"
+    }
+   ]
+  },
+  "seventy_percent_top_rate": {
+   "evidence": "contested",
+   "evidencePath": "seventy_percent_top_rate.evidence_strength",
+   "figures": [
+    {
+     "label": "Tax Foundation, ordinary income only, conventional",
+     "file": "scenarios",
+     "path": "seventy_percent_top_rate.estimates.0.value",
+     "unit": "usd_billions",
+     "value": 291.7,
+     "period": "2019-2028",
+     "url": "https://taxfoundation.org/blog/70-tax-proposal/",
+     "scorer": "Tax Foundation",
+     "baseline": "pre-obbba"
+    },
+    {
+     "label": "Tax Foundation, ordinary income only, dynamic",
+     "file": "scenarios",
+     "path": "seventy_percent_top_rate.estimates.1.value",
+     "unit": "usd_billions",
+     "value": 189.1,
+     "period": "2019-2028",
+     "url": "https://taxfoundation.org/blog/70-tax-proposal/",
+     "scorer": "Tax Foundation",
+     "baseline": "pre-obbba"
+    },
+    {
+     "label": "Tax Foundation, INCLUDING capital gains, conventional",
+     "file": "scenarios",
+     "path": "seventy_percent_top_rate.estimates.2.value",
+     "unit": "usd_billions",
+     "value": 51.4,
+     "period": "2019-2028",
+     "url": "https://taxfoundation.org/blog/70-tax-proposal/",
+     "scorer": "Tax Foundation",
+     "baseline": "pre-obbba"
+    },
+    {
+     "label": "Tax Foundation, INCLUDING capital gains, dynamic",
+     "file": "scenarios",
+     "path": "seventy_percent_top_rate.estimates.3.value",
+     "unit": "usd_billions",
+     "value": -63.5,
+     "period": "2019-2028",
+     "url": "https://taxfoundation.org/blog/70-tax-proposal/",
+     "scorer": "Tax Foundation",
+     "baseline": "pre-obbba"
+    },
+    {
+     "label": "Penn Wharton, static",
+     "file": "scenarios",
+     "path": "seventy_percent_top_rate.estimates.4.value",
+     "unit": "usd_billions",
+     "value": 382.3,
+     "period": "2020-2029",
+     "url": "https://budgetmodel.wharton.upenn.edu/p/2019-01-22-how-a-top-marginal-rate-of-70-would-affect-business-entity-choice/",
+     "scorer": "Penn Wharton Budget Model",
+     "baseline": "pre-obbba"
+    },
+    {
+     "label": "Penn Wharton, business income shifting, full deferral",
+     "file": "scenarios",
+     "path": "seventy_percent_top_rate.estimates.7.value",
+     "unit": "usd_billions",
+     "value": 163.8,
+     "period": "2020-2029",
+     "url": "https://budgetmodel.wharton.upenn.edu/p/2019-01-22-how-a-top-marginal-rate-of-70-would-affect-business-entity-choice/",
+     "scorer": "Penn Wharton Budget Model",
+     "baseline": "pre-obbba"
+    }
+   ]
+  },
+  "wealth_tax": {
+   "evidence": "contested",
+   "evidencePath": "wealth_tax.evidence_strength",
+   "figures": [
+    {
+     "label": "Saez & Zucman, 2% above $50M plus 1% above $1B",
+     "file": "scenarios",
+     "path": "wealth_tax.warren.estimates.0.value",
+     "unit": "usd_billions",
+     "value": 2750,
+     "period": "2019-2028",
+     "url": "https://www.warren.senate.gov/wp-content/uploads/media/doc/saez-zucman-wealthtax.pdf",
+     "scorer": "Saez & Zucman (Jan 2019)",
+     "quote": "the tax would raise around $2.75 trillion over the ten-year budget window 2019-2028 ... about 75,000 American households (less than 0.1%)"
+    },
+    {
+     "label": "Penn Wharton, conventional, matched 2023-2032 window",
+     "file": "scenarios",
+     "path": "wealth_tax.warren.estimates.1.conventional_2023_2032",
+     "unit": "usd_billions",
+     "value": 2700,
+     "period": "2023-2032",
+     "url": "https://budgetmodel.wharton.upenn.edu/issues/2021/3/15/budgetary-effects-of-senator-warren-wealth-tax",
+     "scorer": "Penn Wharton Budget Model (Mar 2021)"
+    },
+    {
+     "label": "Penn Wharton, conventional, standard 2022-2031 window",
+     "file": "scenarios",
+     "path": "wealth_tax.warren.estimates.1.conventional_2022_2031",
+     "unit": "usd_billions",
+     "value": 2100,
+     "period": "2022-2031",
+     "url": "https://budgetmodel.wharton.upenn.edu/issues/2021/3/15/budgetary-effects-of-senator-warren-wealth-tax",
+     "scorer": "Penn Wharton Budget Model (Mar 2021)",
+     "quote": "2.1 trillion over the standard 10-year budget window (2022-2031)"
+    },
+    {
+     "label": "Summers & Sarin, annual, low end",
+     "file": "scenarios",
+     "path": "wealth_tax.warren.estimates.2.annual_range.0",
+     "unit": "usd_billions_per_year",
+     "value": 25,
+     "period": "per year, no ten-year total published",
+     "url": "https://www.washingtonpost.com/opinions/2019/06/28/be-very-skeptical-about-how-much-revenue-elizabeth-warrens-wealth-tax-could-generate/",
+     "scorer": "Summers & Sarin (Jun 2019)",
+     "quote": "$25 billion is a rough back-of-the-envelope number"
+    },
+    {
+     "label": "Summers & Sarin, annual, high end",
+     "file": "scenarios",
+     "path": "wealth_tax.warren.estimates.2.annual_range.1",
+     "unit": "usd_billions_per_year",
+     "value": 75,
+     "period": "per year, no ten-year total published",
+     "url": "https://www.washingtonpost.com/opinions/2019/06/28/be-very-skeptical-about-how-much-revenue-elizabeth-warrens-wealth-tax-could-generate/",
+     "scorer": "Summers & Sarin (Jun 2019)",
+     "quote": "We would be surprised if the $25-billion-a-year figure we suggest was not a significant underestimate."
+    },
+    {
+     "label": "Norway, wealth-tax revenue in 2022",
+     "file": "scenarios",
+     "path": "wealth_tax.international_track_record.norway.revenue.2022",
+     "unit": "billion_kroner",
+     "value": 27,
+     "period": "2022",
+     "url": "https://www.canadianaffairs.news/2025/10/24/norways-wealth-tax-drove-out-the-rich-without-breaking-the-bank/",
+     "scorer": "AFP wire report off Norwegian government figures"
+    },
+    {
+     "label": "Norway, wealth-tax revenue in 2025 (estimated)",
+     "file": "scenarios",
+     "path": "wealth_tax.international_track_record.norway.revenue.2025",
+     "unit": "billion_kroner",
+     "value": 34,
+     "period": "2025 (estimated)",
+     "url": "https://www.canadianaffairs.news/2025/10/24/norways-wealth-tax-drove-out-the-rich-without-breaking-the-bank/",
+     "scorer": "AFP wire report off Norwegian government figures"
+    },
+    {
+     "label": "Norway, multimillionaires and billionaires who left for Switzerland",
+     "file": "scenarios",
+     "path": "wealth_tax.international_track_record.norway.emigration.value",
+     "unit": "count",
+     "value": 300,
+     "period": "by 2024",
+     "url": "https://www.canadianaffairs.news/2025/10/24/norways-wealth-tax-drove-out-the-rich-without-breaking-the-bank/",
+     "scorer": "AFP wire report"
+    },
+    {
+     "label": "Switzerland, wealth-tax revenue",
+     "file": "scenarios",
+     "path": "wealth_tax.international_track_record.switzerland.value",
+     "unit": "percent_of_gdp",
+     "value": 1,
+     "period": "as reported 2019",
+     "url": "https://www.politifact.com/factchecks/2019/may/10/joel-griffith/some-countries-ditched-wealth-taxes-what-might-mea",
+     "scorer": "OECD via PolitiFact",
+     "quote": "Switzerland reaps far more than other nations, taking in revenues equal to 1% of GDP."
+    }
+   ]
+  },
+  "flat_tax": {
+   "evidence": "strong scoring, stale baseline",
+   "evidencePath": "flat_tax.evidence_strength",
+   "figures": [
+    {
+     "label": "Ten-year revenue effect of the Cruz plan",
+     "file": "scenarios",
+     "path": "flat_tax.revenue.value",
+     "unit": "usd_billions",
+     "value": -8600,
+     "period": "2016-2026",
+     "url": "https://www.urban.org/sites/default/files/publication/77811/2000612-an-analysis-of-ted-cruzs-tax-plan.pdf",
+     "scorer": "Tax Policy Center (Feb 2016)",
+     "quote": "It would cut taxes by an average of about $6,100, or about 8.5 percent of after-tax income. On average, households at all income levels would receive tax cuts, but the highest-income households would receive the largest cuts, both in dollars and as a percentage of income.",
+     "baseline": "pre-tcja AND pre-obbba (DOUBLY STALE)"
+    },
+    {
+     "label": "Lowest quintile, change in after-tax income",
+     "file": "scenarios",
+     "path": "flat_tax.distribution.table.0.pct_change_after_tax_income",
+     "unit": "percent",
+     "value": 0.4,
+     "period": "calendar year 2017 (a single-year snapshot, NOT the 10-year window)",
+     "url": "https://www.urban.org/sites/default/files/publication/77811/2000612-an-analysis-of-ted-cruzs-tax-plan.pdf",
+     "scorer": "Tax Policy Center"
+    },
+    {
+     "label": "Middle quintile, change in after-tax income",
+     "file": "scenarios",
+     "path": "flat_tax.distribution.table.2.pct_change_after_tax_income",
+     "unit": "percent",
+     "value": 3.2,
+     "period": "calendar year 2017 (a single-year snapshot, NOT the 10-year window)",
+     "url": "https://www.urban.org/sites/default/files/publication/77811/2000612-an-analysis-of-ted-cruzs-tax-plan.pdf",
+     "scorer": "Tax Policy Center"
+    },
+    {
+     "label": "Top 1 percent, change in after-tax income",
+     "file": "scenarios",
+     "path": "flat_tax.distribution.table.5.pct_change_after_tax_income",
+     "unit": "percent",
+     "value": 26,
+     "period": "calendar year 2017 (a single-year snapshot, NOT the 10-year window)",
+     "url": "https://www.urban.org/sites/default/files/publication/77811/2000612-an-analysis-of-ted-cruzs-tax-plan.pdf",
+     "scorer": "Tax Policy Center"
+    },
+    {
+     "label": "Top 0.1 percent, change in after-tax income",
+     "file": "scenarios",
+     "path": "flat_tax.distribution.table.6.pct_change_after_tax_income",
+     "unit": "percent",
+     "value": 29,
+     "period": "calendar year 2017 (a single-year snapshot, NOT the 10-year window)",
+     "url": "https://www.urban.org/sites/default/files/publication/77811/2000612-an-analysis-of-ted-cruzs-tax-plan.pdf",
+     "scorer": "Tax Policy Center"
+    }
+   ]
+  },
+  "fairtax": {
+   "evidence": "moderate (rate analyses are robust; distributional detail is thin and dated)",
+   "evidencePath": "fairtax.evidence_strength",
+   "figures": [
+    {
+     "label": "Legislated rate, tax-inclusive framing",
+     "file": "scenarios",
+     "path": "fairtax.rate_framing.tax_inclusive",
+     "unit": "percent",
+     "value": 23,
+     "period": "H.R. 25 as introduced",
+     "url": "https://www.brookings.edu/articles/proposed-fairtax-rate-would-add-trillions-to-deficits-over-10-years/",
+     "scorer": "the bill text"
+    },
+    {
+     "label": "The same rate, tax-exclusive framing",
+     "file": "scenarios",
+     "path": "fairtax.rate_framing.tax_exclusive",
+     "unit": "percent",
+     "value": 30,
+     "period": "H.R. 25 as introduced",
+     "url": "https://www.brookings.edu/articles/proposed-fairtax-rate-would-add-trillions-to-deficits-over-10-years/",
+     "scorer": "the bill text"
+    },
+    {
+     "label": "Revenue-neutral rate, tax-inclusive",
+     "file": "scenarios",
+     "path": "fairtax.revenue_neutral_rate.gale_pomerleau.1.inclusive",
+     "unit": "percent",
+     "value": 34.1,
+     "period": "as scored",
+     "url": "https://www.brookings.edu/articles/proposed-fairtax-rate-would-add-trillions-to-deficits-over-10-years/",
+     "scorer": "Gale / Pomerleau"
+    },
+    {
+     "label": "Revenue-neutral rate, tax-exclusive",
+     "file": "scenarios",
+     "path": "fairtax.revenue_neutral_rate.gale_pomerleau.1.exclusive",
+     "unit": "percent",
+     "value": 51.7,
+     "period": "as scored",
+     "url": "https://www.brookings.edu/articles/proposed-fairtax-rate-would-add-trillions-to-deficits-over-10-years/",
+     "scorer": "Gale / Pomerleau"
+    },
+    {
+     "label": "Share of the federal tax burden borne by the bottom 80%, today",
+     "file": "scenarios",
+     "path": "fairtax.distribution.table.0.share_of_federal_income_taxes_current",
+     "unit": "percent",
+     "value": 15.8,
+     "period": "as scored",
+     "url": "https://www.brookings.edu/articles/proposed-fairtax-rate-would-add-trillions-to-deficits-over-10-years/",
+     "scorer": "as recorded in scenarios.json"
+    },
+    {
+     "label": "Share of the federal tax burden borne by the bottom 80% under the FairTax",
+     "file": "scenarios",
+     "path": "fairtax.distribution.table.0.share_of_federal_sales_taxes_nrst",
+     "unit": "percent",
+     "value": 34.9,
+     "period": "as scored",
+     "url": "https://www.brookings.edu/articles/proposed-fairtax-rate-would-add-trillions-to-deficits-over-10-years/",
+     "scorer": "as recorded in scenarios.json"
+    }
+   ]
+  },
+  "fund_the_irs": {
+   "evidence": "strong on direction, contested on magnitude",
+   "evidencePath": "fund_the_irs.evidence_strength",
+   "figures": [
+    {
+     "label": "Return per dollar spent auditing above the 90th percentile",
+     "file": "expenditures",
+     "path": "enforcement.audit_roi.value",
+     "unit": "ratio",
+     "value": 12,
+     "period": "TY2010-2014 audits, published 2023",
+     "url": "https://www.nber.org/papers/w31376",
+     "scorer": "Boning, Hendren, Sprung-Keyser & Stuart"
+    },
+    {
+     "label": "Revenue lost to the IRS cuts already made",
+     "file": "expenditures",
+     "path": "enforcement.yale_total_revenue_loss.value",
+     "unit": "usd_billions",
+     "value": 860,
+     "period": "2026-2035",
+     "url": "https://budgetlab.yale.edu/research/weakened-irs-has-substantial-consequences",
+     "scorer": "Yale Budget Lab (Apr 2026)",
+     "baseline": "post-obbba"
+    },
+    {
+     "label": "Revenue lost to a $20 billion rescission",
+     "file": "expenditures",
+     "path": "enforcement.cbo_rescission.revenue_loss",
+     "unit": "usd_billions",
+     "value": 44,
+     "period": "2024-2034",
+     "url": "https://www.cbo.gov/publication/59972",
+     "scorer": "CBO (Feb 2024)",
+     "baseline": "pre-obbba"
+    },
+    {
+     "label": "Gross tax gap",
+     "file": "expenditures",
+     "path": "tax_gap.gross.value",
+     "unit": "usd_billions",
+     "value": 696,
+     "period": "TY2022",
+     "url": "https://www.irs.gov/pub/irs-pdf/p5869.pdf",
+     "scorer": "IRS Publication 5869 (Oct 2024)",
+     "quote": "Gross Tax Gap: $696 billion"
+    }
+   ]
+  },
+  "scrap_the_payroll_cap": {
+   "evidence": "strong (mechanical)",
+   "evidencePath": "scrap_the_payroll_cap.evidence_strength",
+   "figures": [
+    {
+     "label": "CBO: apply the tax to earnings above $250,000",
+     "file": "scenarios",
+     "path": "scrap_the_payroll_cap.cbo_options.alternatives.1.value",
+     "unit": "usd_billions",
+     "value": 1426.8,
+     "period": "2025-2034",
+     "url": "https://www.cbo.gov/budget-options/60955",
+     "scorer": "CBO Budget Option 60955 (Dec 2024)",
+     "baseline": "pre-obbba"
+    },
+    {
+     "label": "CBO: raise the taxable share of earnings to 90 percent",
+     "file": "scenarios",
+     "path": "scrap_the_payroll_cap.cbo_options.alternatives.0.value",
+     "unit": "usd_billions",
+     "value": 727.6,
+     "period": "2025-2034",
+     "url": "https://www.cbo.gov/budget-options/60955",
+     "scorer": "CBO Budget Option 60955 (Dec 2024)",
+     "baseline": "pre-obbba"
+    },
+    {
+     "label": "SSA E2.1 — no benefit credit: share of the 75-year shortfall closed",
+     "file": "scenarios",
+     "path": "scrap_the_payroll_cap.ssa_solvency.provisions.0.pct_of_deficit_closed",
+     "unit": "percent",
+     "value": 67,
+     "period": "2025 Trustees Report basis, 75-year long-range period",
+     "url": "https://www.ssa.gov/oact/solvency/provisions_tr2025/summary.pdf",
+     "scorer": "SSA Office of the Chief Actuary"
+    },
+    {
+     "label": "SSA E2.2 — with benefit credit: share of the 75-year shortfall closed",
+     "file": "scenarios",
+     "path": "scrap_the_payroll_cap.ssa_solvency.provisions.1.pct_of_deficit_closed",
+     "unit": "percent",
+     "value": 48,
+     "period": "2025 Trustees Report basis, 75-year long-range period",
+     "url": "https://www.ssa.gov/oact/solvency/provisions_tr2025/summary.pdf",
+     "scorer": "SSA Office of the Chief Actuary"
+    },
+    {
+     "label": "The 2026 taxable maximum",
+     "file": "scenarios",
+     "path": "scrap_the_payroll_cap.current_cap.2026",
+     "unit": "usd",
+     "value": 184500,
+     "period": "2026",
+     "url": "https://www.ssa.gov/oact/cola/cbb.html",
+     "scorer": "SSA Office of the Chief Actuary",
+     "quote": "2026 | $184,500"
+    }
+   ]
+  },
+  "restore_2021_ctc": {
+   "evidence": "strong on the poverty effect, contested on employment",
+   "evidencePath": "restore_2021_ctc.evidence_strength",
+   "figures": [
+    {
+     "label": "What JCT scored the one-year expansion at",
+     "file": "scenarios",
+     "path": "restore_2021_ctc.cost.value",
+     "unit": "usd_billions",
+     "value": 109.5,
+     "period": "FY2021-2031 (a one-year policy; essentially all of the cost lands in FY2021-2022)",
+     "url": "https://www.americanactionforum.org/insight/the-advanceable-child-tax-credit-in-the-american-rescue-plan-act/",
+     "scorer": "JCT, via the American Action Forum",
+     "quote": "the Joint Committee on Taxation estimated that these expansions and modifications to the CTC will cost $109.5 billion over the next decade.",
+     "baseline": "pre-obbba"
+    },
+    {
+     "label": "Child poverty (SPM) in 2020, before the expansion",
+     "file": "scenarios",
+     "path": "restore_2021_ctc.child_poverty_series.points.0.value",
+     "unit": "percent",
+     "value": 9.7,
+     "period": "2020",
+     "url": "https://www.census.gov/library/stories/2022/09/record-drop-in-child-poverty.html",
+     "scorer": "U.S. Census Bureau",
+     "quote": "Child poverty, calculated by the Supplemental Poverty Measure (SPM), fell to its lowest recorded level in 2021, declining 46% from 9.7% in 2020 to 5.2% in 2021"
+    },
+    {
+     "label": "Child poverty (SPM) in 2021, with the expansion",
+     "file": "scenarios",
+     "path": "restore_2021_ctc.child_poverty_series.points.1.value",
+     "unit": "percent",
+     "value": 5.2,
+     "period": "2021",
+     "url": "https://www.census.gov/library/stories/2024/10/child-supplemental-poverty-measure.html",
+     "scorer": "U.S. Census Bureau",
+     "quote": "the national child SPM rate was its lowest ever at 5.2%"
+    },
+    {
+     "label": "Child poverty (SPM) in 2022, after it lapsed",
+     "file": "scenarios",
+     "path": "restore_2021_ctc.child_poverty_series.points.2.value",
+     "unit": "percent",
+     "value": 12.4,
+     "period": "2022",
+     "url": "https://www.census.gov/library/stories/2024/10/child-supplemental-poverty-measure.html",
+     "scorer": "U.S. Census Bureau",
+     "quote": "The rate increased to 12.4% in 2022"
+    },
+    {
+     "label": "Child poverty (SPM) in 2023",
+     "file": "scenarios",
+     "path": "restore_2021_ctc.child_poverty_series.points.3.value",
+     "unit": "percent",
+     "value": 13.7,
+     "period": "2023",
+     "url": "https://www.census.gov/library/stories/2024/10/child-supplemental-poverty-measure.html",
+     "scorer": "U.S. Census Bureau",
+     "quote": "and 13.7% in 2023"
+    },
+    {
+     "label": "Child poverty (SPM) in 2024",
+     "file": "scenarios",
+     "path": "restore_2021_ctc.child_poverty_series.points.4.value",
+     "unit": "percent",
+     "value": 13.4,
+     "period": "2024",
+     "url": "https://itep.org/child-poverty-remains-unacceptably-child-tax-credit-changes/",
+     "scorer": "ITEP (secondary)",
+     "quote": "13.4 percent of children living in poverty"
+    },
+    {
+     "label": "The credit today",
+     "file": "scenarios",
+     "path": "restore_2021_ctc.current_law.amount.value",
+     "unit": "usd",
+     "value": 2200,
+     "period": "TY2026",
+     "url": "https://www.irs.gov/pub/irs-drop/rp-25-32.pdf",
+     "scorer": "IRS Revenue Procedure 2025-32",
+     "quote": "the maximum amount of the credit allowed under § 24(a) is $2,200"
+    },
+    {
+     "label": "How much of it a family with no tax liability can actually receive",
+     "file": "scenarios",
+     "path": "restore_2021_ctc.current_law.refundable.value",
+     "unit": "usd",
+     "value": 1700,
+     "period": "TY2026",
+     "url": "https://www.irs.gov/pub/irs-drop/rp-25-32.pdf",
+     "scorer": "IRS Revenue Procedure 2025-32",
+     "quote": "the amount used in § 24(d)(1)(A) to determine the amount of the credit under § 24 that may be refundable is $1,700"
+    },
+    {
+     "label": "Corinth, Meyer, Stadnicki & Wu: predicted fall in employment",
+     "file": "scenarios",
+     "path": "restore_2021_ctc.employment_dispute.predicted.value",
+     "unit": "millions_of_workers",
+     "value": 1.5,
+     "period": "a permanent child allowance",
+     "url": "https://www.aei.org/articles/the-child-tax-credit-labor-supply-and-poverty/",
+     "scorer": "Corinth, Meyer, Stadnicki & Wu (simulation)",
+     "quote": "By eliminating the strong work incentives in the previous CTC, we estimate that the proposal would reduce employment by approximately 1.5 million workers, which would diminish the proposal's effect on child poverty and eliminate its effect on deep child poverty altogether."
+    }
+   ]
+  },
+  "housing_vouchers": {
+   "evidence": "strong",
+   "evidencePath": "housing_vouchers.evidence_strength",
+   "figures": [
+    {
+     "label": "Extra annual cost of serving everyone eligible",
+     "file": "scenarios",
+     "path": "housing_vouchers.cost.value",
+     "unit": "usd_billions",
+     "value": 118,
+     "period": "2022 (simulated)",
+     "url": "https://www.urban.org/sites/default/files/2023-08/How%20Much%20Could%20Full%20Funding%20and%20Use%20of%20Housing%20Choice%20Vouchers%20Reduce%20Poverty.pdf",
+     "scorer": "Urban Institute (Aug 2023)",
+     "quote": "We estimate that providing subsidies to all who are eligible would increase the total amount of subsidies paid by $118 billion, to a total of $168 billion."
+    },
+    {
+     "label": "People moved above the poverty line",
+     "file": "scenarios",
+     "path": "housing_vouchers.poverty_effect.people_lifted.value",
+     "unit": "millions_of_people",
+     "value": 6.4,
+     "period": "2022 (simulated)",
+     "url": "https://www.urban.org/sites/default/files/2023-08/How%20Much%20Could%20Full%20Funding%20and%20Use%20of%20Housing%20Choice%20Vouchers%20Reduce%20Poverty.pdf",
+     "scorer": "Urban Institute (Aug 2023)",
+     "quote": "The reduction in the rate from 14.7 percent to 12.8 percent amounts to 6.4 million people moving from below poverty to above poverty because of the increased resources from housing subsidies."
+    },
+    {
+     "label": "Poverty rate now",
+     "file": "scenarios",
+     "path": "housing_vouchers.poverty_effect.spm_rate_before.value",
+     "unit": "percent",
+     "value": 14.7,
+     "period": "2022 (simulated)",
+     "url": "https://www.urban.org/sites/default/files/2023-08/How%20Much%20Could%20Full%20Funding%20and%20Use%20of%20Housing%20Choice%20Vouchers%20Reduce%20Poverty.pdf",
+     "scorer": "Urban Institute (Aug 2023)",
+     "quote": "We estimate that at current levels of housing assistance, 14.7 percent of the population is below the SPM poverty level"
+    },
+    {
+     "label": "Poverty rate with vouchers for all who qualify",
+     "file": "scenarios",
+     "path": "housing_vouchers.poverty_effect.spm_rate_after.value",
+     "unit": "percent",
+     "value": 12.8,
+     "period": "2022 (simulated)",
+     "url": "https://www.urban.org/sites/default/files/2023-08/How%20Much%20Could%20Full%20Funding%20and%20Use%20of%20Housing%20Choice%20Vouchers%20Reduce%20Poverty.pdf",
+     "scorer": "Urban Institute (Aug 2023)",
+     "quote": "the poverty rate would fall to 12.8 percent with full funding and use of housing vouchers"
+    },
+    {
+     "label": "Share of eligible households served today",
+     "file": "scenarios",
+     "path": "housing_vouchers.coverage_gap.share_served.value",
+     "unit": "percent",
+     "value": 25,
+     "period": "2022 (simulated)",
+     "url": "https://www.urban.org/sites/default/files/2023-08/How%20Much%20Could%20Full%20Funding%20and%20Use%20of%20Housing%20Choice%20Vouchers%20Reduce%20Poverty.pdf",
+     "scorer": "Urban Institute (Aug 2023)",
+     "quote": "We estimate that about 25 percent of households eligible for housing assistance currently receive it."
+    },
+    {
+     "label": "Households assisted today",
+     "file": "scenarios",
+     "path": "housing_vouchers.coverage_gap.households.current",
+     "unit": "millions_of_households",
+     "value": 4.4,
+     "period": "2022 (simulated)",
+     "url": "https://www.urban.org/sites/default/files/2023-08/How%20Much%20Could%20Full%20Funding%20and%20Use%20of%20Housing%20Choice%20Vouchers%20Reduce%20Poverty.pdf",
+     "scorer": "Urban Institute (Aug 2023)",
+     "quote": "About 4.4 million households currently receive housing assistance and we estimate that this would increase by 13.2 million to a total of 17.6 million with full funding and use of housing vouchers."
+    },
+    {
+     "label": "Households assisted if everyone eligible were served",
+     "file": "scenarios",
+     "path": "housing_vouchers.coverage_gap.households.total",
+     "unit": "millions_of_households",
+     "value": 17.6,
+     "period": "2022 (simulated)",
+     "url": "https://www.urban.org/sites/default/files/2023-08/How%20Much%20Could%20Full%20Funding%20and%20Use%20of%20Housing%20Choice%20Vouchers%20Reduce%20Poverty.pdf",
+     "scorer": "Urban Institute (Aug 2023)",
+     "quote": "About 4.4 million households currently receive housing assistance and we estimate that this would increase by 13.2 million to a total of 17.6 million with full funding and use of housing vouchers."
+    },
+    {
+     "label": "Families offered a long-term subsidy who used a shelter, months 21-32",
+     "file": "scenarios",
+     "path": "housing_vouchers.causal_evidence.rates.long_term_rent_subsidy",
+     "unit": "percent",
+     "value": 4.4,
+     "period": "37 months after random assignment",
+     "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6168747",
+     "scorer": "Gubits et al., JPAM 2018 (randomised trial)",
+     "quote": "The offer of a long-term rent subsidy reduced use of emergency shelters in months 21 to 32 after random assignment by more than three-quarters"
+    },
+    {
+     "label": "Families offered usual care who used a shelter, months 21-32",
+     "file": "scenarios",
+     "path": "housing_vouchers.causal_evidence.rates.usual_care",
+     "unit": "percent",
+     "value": 18.8,
+     "period": "37 months after random assignment",
+     "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6168747",
+     "scorer": "Gubits et al., JPAM 2018 (randomised trial)",
+     "quote": "The offer of a long-term rent subsidy reduced use of emergency shelters in months 21 to 32 after random assignment by more than three-quarters"
+    }
+   ]
+  },
+  "carbon_tax_and_dividend": {
+   "evidence": "strong on incidence, weak on political durability",
+   "evidencePath": "carbon_tax_and_dividend.evidence_strength",
+   "figures": [
+    {
+     "label": "Opening rate",
+     "file": "scenarios",
+     "path": "carbon_tax_and_dividend.structure.opening_rate",
+     "unit": "usd_per_metric_ton_co2e",
+     "value": 49,
+     "period": "2019 in Treasury’s modelled schedule",
+     "url": "https://home.treasury.gov/system/files/131/WP-115.pdf",
+     "scorer": "U.S. Treasury Office of Tax Analysis, WP-115",
+     "quote": "a carbon tax that started at $49 per metric ton of carbon dioxide equivalent (mt CO2-e) in 2019 and increased to $70 in 2028"
+    },
+    {
+     "label": "Rate by 2028",
+     "file": "scenarios",
+     "path": "carbon_tax_and_dividend.structure.rate_2028",
+     "unit": "usd_per_metric_ton_co2e",
+     "value": 70,
+     "period": "2028 in Treasury’s modelled schedule",
+     "url": "https://home.treasury.gov/system/files/131/WP-115.pdf",
+     "scorer": "U.S. Treasury Office of Tax Analysis, WP-115",
+     "quote": "a carbon tax that started at $49 per metric ton of carbon dioxide equivalent (mt CO2-e) in 2019 and increased to $70 in 2028"
+    },
+    {
+     "label": "Gross revenue",
+     "file": "scenarios",
+     "path": "carbon_tax_and_dividend.gross_revenue.value",
+     "unit": "usd_billions",
+     "value": 2962,
+     "period": "2019-2028",
+     "url": "https://home.treasury.gov/system/files/131/WP-115.pdf",
+     "scorer": "U.S. Treasury Office of Tax Analysis, WP-115",
+     "quote": "$2,962 billion",
+     "baseline": "pre-obbba"
+    },
+    {
+     "label": "Poorest decile, change in after-tax income WITH the rebate",
+     "file": "scenarios",
+     "path": "carbon_tax_and_dividend.incidence.with_rebate.poorest_decile",
+     "unit": "percent",
+     "value": 9,
+     "period": "as modelled, WP-115",
+     "url": "https://home.treasury.gov/system/files/131/WP-115.pdf",
+     "scorer": "U.S. Treasury Office of Tax Analysis, WP-115",
+     "quote": "The TDM estimates that the poorest decile would experience almost a 9 percent increase in average after-tax income compared to a 1 percent decrease in average after-tax income for the top income decile."
+    },
+    {
+     "label": "Top decile, change in after-tax income WITH the rebate",
+     "file": "scenarios",
+     "path": "carbon_tax_and_dividend.incidence.with_rebate.top_decile",
+     "unit": "percent",
+     "value": -1,
+     "period": "as modelled, WP-115",
+     "url": "https://home.treasury.gov/system/files/131/WP-115.pdf",
+     "scorer": "U.S. Treasury Office of Tax Analysis, WP-115",
+     "quote": "The TDM estimates that the poorest decile would experience almost a 9 percent increase in average after-tax income compared to a 1 percent decrease in average after-tax income for the top income decile."
+    },
+    {
+     "label": "Lowest decile, change in after-tax income from the tax ALONE",
+     "file": "scenarios",
+     "path": "carbon_tax_and_dividend.incidence.tax_alone_no_rebate.lowest_decile",
+     "unit": "percent",
+     "value": -0.8,
+     "period": "as modelled, WP-115",
+     "url": "https://home.treasury.gov/system/files/131/WP-115.pdf",
+     "scorer": "U.S. Treasury Office of Tax Analysis, WP-115",
+     "quote": "The lowest income decile is estimated to have a 0.8 percent decrease in after-tax income because of the carbon tax and the magnitude of this percentage change in after-tax income rises with income through the 9th decile."
+    }
+   ]
+  },
+  "tra86_model": {
+   "evidence": "strong on what happened, contested as a template",
+   "evidencePath": "tra86_model.evidence_strength",
+   "figures": [
+    {
+     "label": "Top individual rate before",
+     "file": "scenarios",
+     "path": "tra86_model.rates.individual_top.from",
+     "unit": "percent",
+     "value": 50,
+     "period": "1986",
+     "url": "https://www.crfb.org/blogs/1986-tax-reform-act-turns-27",
+     "scorer": "CRFB",
+     "quote": "reducing the top individual rate from 50 to 28 percent"
+    },
+    {
+     "label": "Top individual rate after",
+     "file": "scenarios",
+     "path": "tra86_model.rates.individual_top.to",
+     "unit": "percent",
+     "value": 28,
+     "period": "1988",
+     "url": "https://www.crfb.org/blogs/1986-tax-reform-act-turns-27",
+     "scorer": "CRFB",
+     "quote": "reducing the top individual rate from 50 to 28 percent"
+    },
+    {
+     "label": "Top corporate rate before",
+     "file": "scenarios",
+     "path": "tra86_model.rates.corporate_top.from",
+     "unit": "percent",
+     "value": 46,
+     "period": "1979-1986",
+     "url": "https://www.crfb.org/blogs/1986-tax-reform-act-turns-27",
+     "scorer": "CRFB",
+     "quote": "the top corporate rate from 46 to 34 percent"
+    },
+    {
+     "label": "Top corporate rate after",
+     "file": "scenarios",
+     "path": "tra86_model.rates.corporate_top.to",
+     "unit": "percent",
+     "value": 34,
+     "period": "1988-1992",
+     "url": "https://www.crfb.org/blogs/1986-tax-reform-act-turns-27",
+     "scorer": "CRFB",
+     "quote": "the top corporate rate from 46 to 34 percent"
+    },
+    {
+     "label": "Size of the swap: individuals cut, corporations raised",
+     "file": "scenarios",
+     "path": "tra86_model.revenue_neutrality.value",
+     "unit": "usd_billions",
+     "value": 120,
+     "period": "five years from enactment",
+     "url": "https://www.crfb.org/blogs/1986-tax-reform-act-turns-27",
+     "scorer": "CRFB",
+     "quote": "Overall, the Act was revenue-neutral, with the individual tax system receiving a $120 billion tax cut over five years and the corporate side getting a $120 billion tax increase"
+    }
+   ]
+  }
+ }
+}

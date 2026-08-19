@@ -1,0 +1,225 @@
+  <span class="tier">Tier 1 · Plain framing</span>
+
+  <h2 id="sandbox">Act 2 — you hold the pen</h2>
+  <p>Everything above is history. This part is yours. Move the rates, close the loopholes, fund the tax collector, swap the whole system out for a flat tax — and watch four things at once: how much revenue changes, <strong>who pays it</strong>, what it plausibly does to the economy, and, in plain language, <em>why</em>.</p>
+  <p>Every number below traces to a government agency, a peer-reviewed paper or a named research shop — the same standard as Act 1. Where nobody has published a figure, the space stays empty. And the assumptions are yours to move: the dials at the bottom of the panel are not a settings menu, and moving them will change your answer.</p>
+
+  <div class="tx-flag"><strong>What this is not.</strong> It is not a tax calculator and it will not tell you your own tax bill. It models federal aggregates: quintiles, not households; ten-year totals, not year-by-year paths; ranges, not points. Where nothing defensible exists, it shows a blank.</div>
+
+  <div class="tx-sandbox">
+    <form class="tx-levers" id="tx-levers" aria-label="Policy levers">
+      <h3>Your policy</h3>
+
+      <fieldset>
+        <legend>Rates</legend>
+
+        <div class="tx-lever">
+          <label for="tx-topRate">Top marginal income tax rate <span class="tx-lever-now">· current law 37%</span></label>
+          <input type="range" id="tx-topRate" min="10" max="90" step="0.5" value="37">
+          <div><span class="tx-val" id="tx-topRate-val">37.0%</span></div>
+        </div>
+
+        <div class="tx-lever">
+          <label for="tx-topRateThreshold">…applied to</label>
+          <select id="tx-topRateThreshold">
+            <option value="current" selected>everyone already in the top bracket (above $693,750 joint in the TY2023 tax data; $768,700 under 2026 law)</option>
+            <option value="500k">filers with income above $500,000</option>
+            <option value="1m">filers with income above $1 million</option>
+            <option value="2m">filers with income above $2 million</option>
+            <option value="5m">filers with income above $5 million</option>
+            <option value="10m">filers with income above $10 million</option>
+          </select>
+        </div>
+
+        <div class="tx-lever">
+          <label for="tx-capGainsRate">Top capital-gains rate, statutory <span class="tx-lever-now">· current law 20%</span></label>
+          <input type="range" id="tx-capGainsRate" min="0" max="56" step="0.5" value="20">
+          <div><span class="tx-val" id="tx-capGainsRate-val">20.0%</span> <span class="tx-lever-now">= 23.8% all-in, once the 3.8% net investment income tax is counted</span></div>
+        </div>
+        <label class="tx-check"><input type="checkbox" id="tx-taxGainsAtDeath">
+          <span><strong>Also tax gains at death.</strong> The single most important switch on this page — it changes the elasticity regime, not just the rate.</span></label>
+
+        <div class="tx-lever">
+          <label for="tx-corporateRate">Corporate income tax rate <span class="tx-lever-now">· current law 21%</span></label>
+          <input type="range" id="tx-corporateRate" min="10" max="40" step="1" value="21">
+          <div><span class="tx-val" id="tx-corporateRate-val">21%</span></div>
+        </div>
+
+        <div class="tx-lever">
+          <span class="tx-lever-title">Social Security payroll cap <span class="tx-lever-now">· $184,500 in 2026</span></span>
+          <div class="tx-radio-row" role="radiogroup" aria-label="Payroll cap">
+            <label><input type="radio" name="tx-payrollCap" value="current" checked> Leave the cap where it is</label>
+            <label><input type="radio" name="tx-payrollCap" value="raise90pct"> Raise the taxable share of earnings to 90%</label>
+            <label><input type="radio" name="tx-payrollCap" value="donut250k"> Also tax earnings above $250,000 <span class="tx-lever-now">(CBO's scored version)</span></label>
+            <label><input type="radio" name="tx-payrollCap" value="eliminate"> Scrap the cap entirely</label>
+          </div>
+          <label class="tx-check" id="tx-benefitCredit-wrap" hidden><input type="checkbox" id="tx-payrollBenefitCredit" checked>
+            <span>Credit the new earnings toward benefits. <strong>This one choice moves the answer from 67% of the Social Security shortfall closed to 48%</strong>, and almost nobody says which they mean.</span></label>
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>Close a tax break</legend>
+        <p class="tx-lever-now" style="margin:.1rem 0 .5rem;">Each one shows a published conventional score. They do not add up cleanly — see note 14.</p>
+
+        <div class="tx-lever">
+          <label for="tx-stepUp">Stepped-up basis at death</label>
+          <select id="tx-stepUp">
+            <option value="current" selected>Leave it (heirs inherit assets with the gain erased)</option>
+            <option value="carryover">Carryover basis — heirs inherit the original cost</option>
+            <option value="atDeath">Tax the accrued gain in the final return</option>
+          </select>
+        </div>
+
+        <label class="tx-check"><input type="checkbox" id="tx-lp-s199a"> <span>Repeal the Section 199A pass-through deduction</span></label>
+
+        <div class="tx-lever">
+          <label for="tx-lp-health">Cap the employer health-coverage exclusion</label>
+          <select id="tx-lp-health">
+            <option value="none" selected>Leave it uncapped</option>
+            <option value="p75">Cap at the 75th percentile of premiums (income + payroll)</option>
+            <option value="p50">Cap at the 50th percentile (income + payroll)</option>
+            <option value="p50inc">Cap at the 50th percentile (income tax only)</option>
+          </select>
+        </div>
+
+        <label class="tx-check"><input type="checkbox" id="tx-lp-carriedInterest"> <span>Tax carried interest as ordinary income</span></label>
+        <label class="tx-check"><input type="checkbox" id="tx-lp-mortgage"> <span>Repeal the mortgage interest deduction</span></label>
+        <label class="tx-check"><input type="checkbox" id="tx-lp-salt"> <span>Eliminate the state and local tax deduction <span class="tx-chip tx-chip--stale">scored pre-2025 law</span></span></label>
+        <label class="tx-check"><input type="checkbox" id="tx-lp-muniPA"> <span>End the exemption for new private-activity bonds <span class="tx-chip">private-activity only</span></span></label>
+        <label class="tx-check"><input type="checkbox" id="tx-lp-cryptoWash"> <span>Apply the wash-sale rule to digital assets <span class="tx-chip tx-chip--stale">scored pre-2025 law</span></span></label>
+      </fieldset>
+
+      <fieldset>
+        <legend>Enforcement</legend>
+        <div class="tx-lever">
+          <label for="tx-enforcement">IRS enforcement capacity <span class="tx-lever-now">· 0 = the law as it stands after the cuts already made</span></label>
+          <input type="range" id="tx-enforcement" min="-100" max="100" step="10" value="0">
+          <div><span class="tx-val" id="tx-enforcement-val">no change</span></div>
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>Swap the system</legend>
+        <div class="tx-radio-row" role="radiogroup" aria-label="Tax system">
+          <label><input type="radio" name="tx-system" value="current" checked> Keep the current system</label>
+          <label><input type="radio" name="tx-system" value="flat"> Flat tax on taxable income</label>
+          <label><input type="radio" name="tx-system" value="fairtax"> FairTax national sales tax (H.R. 25)</label>
+          <label><input type="radio" name="tx-system" value="vat5"> Add a 5% value-added tax</label>
+          <label><input type="radio" name="tx-system" value="wealth"> Add a wealth tax (Warren design)</label>
+          <label><input type="radio" name="tx-system" value="ftt"> Add a 0.1% financial transactions tax <span class="tx-chip tx-chip--stale">scored pre-2025 law</span></label>
+        </div>
+        <div class="tx-lever" id="tx-flatRate-wrap" hidden>
+          <label for="tx-flatRate">Flat rate</label>
+          <input type="range" id="tx-flatRate" min="5" max="35" step="0.5" value="17">
+          <div><span class="tx-val" id="tx-flatRate-val">17.0%</span></div>
+        </div>
+        <div class="tx-lever" id="tx-vatBase-wrap" hidden>
+          <label for="tx-vatBase">VAT base</label>
+          <select id="tx-vatBase">
+            <option value="broad" selected>Broad base</option>
+            <option value="narrow">Narrower base (exempts food, health care, new housing, college)</option>
+          </select>
+        </div>
+        <div class="tx-lever" id="tx-wealthScorer-wrap" hidden>
+          <label for="tx-wealthScorer">Whose estimate?</label>
+          <select id="tx-wealthScorer">
+            <option value="saez_zucman" selected>Saez &amp; Zucman (2019)</option>
+            <option value="pwbm">Penn Wharton Budget Model (2021)</option>
+            <option value="summers_sarin">Summers &amp; Sarin (2019), converted to a ten-year total</option>
+          </select>
+        </div>
+        <div class="tx-lever" id="tx-fairtax-wrap" hidden>
+          <label for="tx-fairtaxAssumption">Deficit impact at the legislated 23% rate</label>
+          <select id="tx-fairtaxAssumption">
+            <option value="low" selected>Lower end — no evasion, no base erosion</option>
+            <option value="high">Higher end — with evasion and base erosion</option>
+          </select>
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>The dials — where honest people disagree</legend>
+
+        <div class="tx-lever">
+          <label for="tx-eti">How much do high earners respond to rates? <span class="tx-lever-now">(elasticity of taxable income)</span></label>
+          <select id="tx-eti">
+            <option value="0.12">0.12 — the low end of the published range</option>
+            <option value="0.25" selected>0.25 — the mid-range estimate</option>
+            <option value="0.40">0.40 — the high end of the published range</option>
+            <option value="0.57">0.57 — Diamond &amp; Saez, on today's narrow base</option>
+          </select>
+        </div>
+        <label class="tx-check"><input type="checkbox" id="tx-holdEtiFixed">
+          <span>Hold it fixed even when I broaden the base <span class="tx-lever-now">(the sources say this is wrong — the tool will tell you why)</span></span></label>
+
+        <div class="tx-lever">
+          <label for="tx-corpLaborShare">Share of the corporate tax borne by workers <span class="tx-lever-now">· Treasury 18% · JCT and CBO 25% · Tax Foundation 70%+</span></label>
+          <input type="range" id="tx-corpLaborShare" min="18" max="70" step="1" value="25">
+          <div><span class="tx-val" id="tx-corpLaborShare-val">25%</span></div>
+        </div>
+
+        <div class="tx-lever">
+          <span class="tx-lever-title">Economic conditions <span class="tx-lever-now">· contested — both citations shown</span></span>
+          <div class="tx-radio-row" role="radiogroup" aria-label="Multiplier regime">
+            <label><input type="radio" name="tx-multiplierRegime" value="normal" checked> Normal times</label>
+            <label><input type="radio" name="tx-multiplierRegime" value="recession"> Recession / slack</label>
+          </div>
+        </div>
+
+        <div class="tx-lever">
+          <label for="tx-lens">Whose macro model? <span class="tx-lever-now">(this is the one that made four shops score the same 2017 bill four different ways)</span></label>
+          <select id="tx-lens">
+            <option value="cbo">CBO-style — deficits crowd out private investment</option>
+            <option value="consensus" selected>Consensus — the average across published models</option>
+            <option value="taxfoundation">Tax Foundation-style — full capital adjustment</option>
+          </select>
+        </div>
+
+        <label class="tx-check"><input type="checkbox" id="tx-directToTransfers">
+          <span>Spend whatever this raises on transfers to households</span></label>
+
+        <button type="button" class="tx-reset" id="tx-reset">Reset to current law</button>
+      </fieldset>
+    </form>
+
+    <div class="tx-outputs">
+      <p id="tx-status" class="tx-sr" role="status" aria-live="polite"></p>
+      <div class="tx-out" id="tx-out-revenue" role="region" aria-label="Revenue effect"></div>
+      <div class="tx-out" id="tx-out-class" role="region" aria-label="Effect by income group"></div>
+      <div class="tx-out" id="tx-out-gdp" role="region" aria-label="Estimated effect on the economy"></div>
+      <div class="tx-out" id="tx-out-poverty" role="region" aria-label="If the revenue funded transfers"></div>
+      <div id="tx-out-why" role="region" aria-label="Why you got that answer"></div>
+    </div>
+  </div>
+
+  <span class="tier tier--3">Tier 3 · Implications</span>
+
+  <h2 id="notes-act2">Six caveats to the sandbox</h2>
+  <p>Act 1 has nine of these. Building a model adds six more, because a model can mislead in ways a chart cannot.</p>
+  <ol class="tx-notes-list" style="list-style:none;padding:0;">
+<li class="tx-note" id="note-10">
+  <span class="tx-note__num" aria-hidden="true">10</span><h3>A published score already contains the behaviour</h3>
+  <p>When you close a loophole above, the figure that appears is a <em>conventional score</em> from CBO, JCT, CRS, the Tax Foundation or the Yale Budget Lab. Conventional does not mean "before people react" — it means before economy-wide growth effects. The scorer has already assumed taxpayers shift, time and restructure their income. So this tool does not apply a second behavioural haircut on top; that would be counting the same response twice. The two rate sliders are different: those are computed here from raw IRS return data, so the behavioural layer is applied once, by us, and shown as its own bar.</p>
+</li>
+<li class="tx-note" id="note-11">
+  <span class="tx-note__num" aria-hidden="true">11</span><h3>Ten-year totals here are not uprated for growth</h3>
+  <p>Where the engine computes a figure from IRS data, it does so on tax year 2023 returns and multiplies by ten. It does not project income growth across the window, which real scorekeepers do. That makes every self-computed number on this page <em>conservative</em> — smaller than a properly uprated score of the same policy. It is one reason a lever here can land below a published estimate of the same idea; when that happens, the panel says so.</p>
+</li>
+<li class="tx-note" id="note-12">
+  <span class="tx-note__num" aria-hidden="true">12</span><h3>Most published scores predate the law you are living under</h3>
+  <p>The One Big Beautiful Bill Act became law in July 2025 and made the 2017 individual rates permanent. Almost every option score in circulation — including most of CBO's — was written in December 2024, assuming those rates would expire. Those scores are stale in <em>direction</em>, not just size: against a permanent-rates baseline, most revenue-raisers would score higher. Every pre-scored lever here carries a "pre-OBBBA baseline" or "post-OBBBA baseline" label. Only three sources in this project's dataset are post-OBBBA. Read the label before you read the number.</p>
+</li>
+<li class="tx-note" id="note-13">
+  <span class="tx-note__num" aria-hidden="true">13</span><h3>The class chart shows the shape, not a year-matched ledger</h3>
+  <p>Revenue is computed on IRS tax returns for 2023, ranked by adjusted gross income. The income groups are CBO's, for 2022, ranked by household income before transfers and taxes and adjusted for household size. Those are two different populations sorted two different ways, and mapping one onto the other — which this tool does, using CBO's own published group boundaries — is an approximation, not an identity. Read the chart for direction and relative magnitude between groups. Do not read the third decimal place.</p>
+</li>
+<li class="tx-note" id="note-14">
+  <span class="tx-note__num" aria-hidden="true">14</span><h3>Tax breaks do not add up</h3>
+  <p>Turn on three loopholes and the tool adds their three scores together, because that is the only arithmetic the published figures support. It is also wrong, and knowably so: each was scored on its own, against a world where the other two still existed. Close the pass-through deduction and some of that income reappears elsewhere; cap the health exclusion and wages rise, which changes what every other provision is worth. Interaction effects run in both directions and no published estimate in this dataset quantifies them. Treat a multi-lever total as an order of magnitude, not a sum.</p>
+</li>
+<li class="tx-note" id="note-15">
+  <span class="tx-note__num" aria-hidden="true">15</span><h3>Growth effects are shown, and deliberately kept out of the revenue figure</h3>
+  <p>The GDP band is real output from the model. It is never added back into the revenue number, and that is a structural decision rather than a modelling detail: it is what makes it impossible for any combination of settings on this page to show a tax cut financing itself. The evidence supports the choice. Verified growth feedback in this project's data runs from about −5% to +32% of a change's static cost — real, occasionally negative, and nowhere near 100%. CRFB's arithmetic explains why 100% is out of reach: because taxes capture only a fraction of income and some spending grows with income, "a policy would need to produce $5 to $6 of economic activity for every $1 of cost to be self-financing." No major U.S. tax cut has ever come close.</p>
+</li>
+  </ol>

@@ -1,0 +1,479 @@
+{
+  "_meta": {
+    "id": "expenditures",
+    "title": "Tax expenditures, repeal scores, distributional shares, avoidance, and the tax gap",
+    "built": "2026-08-17",
+    "phase": "0",
+    "convention": "[STATIC] = JCT-style tax expenditure estimate, no behavioral response, EXPLICITLY NOT a repeal estimate. [CONV] = conventional revenue score of actually changing the provision, including micro-behavioral response. Every toggle in Act 2 must show the [CONV] number as the result and the [STATIC] number as 'on-paper size'.",
+    "modeling_caveat": "TAX EXPENDITURES DO NOT SUM. Interaction effects make the total of individual line items meaningless. JCT says so itself. The tool must never let a user add up toggles and present the sum as a revenue estimate without a visible warning."
+  },
+
+  "anchor_fact": {
+    "total_fy2026": {
+      "value": 2300, "unit": "usd_billions", "period": "FY2026", "basis": "static", "status": "verified", "tier": "secondary",
+      "source": "CRFB, quoting JCT JCX-45-25",
+      "url": "https://www.crfb.org/blogs/jct-projects-tax-expenditures-will-be-23t-2026",
+      "published": "2026-02-09",
+      "quote": "individual and corporate tax expenditures will equal $2.3 trillion in Fiscal Year (FY) 2026 – up from $2.2 trillion in 2025",
+      "primary": "JCT, Estimates of Federal Tax Expenditures for Fiscal Years 2025-2029 (JCX-45-25), published 2025-12-03, https://www.jct.gov/publications/2025/jcx-45-25/"
+    },
+    "total_fy2025_2029": {
+      "value": 11700, "unit": "usd_billions", "period": "FY2025-2029", "basis": "static", "status": "verified", "tier": "secondary",
+      "quote": "$11.7 trillion over the five-year period from 2025 through 2029"
+    },
+    "comparison_gate": "The tool's headline comparison — tax expenditures exceed ALL discretionary spending — must clear $1,873B (FY2025 discretionary outlays, see baseline-fy2025.json). It DOES clear: $2,300B vs $1,873B. But state both figures and both periods, because they are different years (FY2026 expenditures vs FY2025 outlays)."
+  },
+
+  "static_expenditures": {
+    "_sourcing_note": "All FY2026 line items are SECONDARY (CRFB or Novogradac quoting JCX-45-25). The JCT PDF converts only through Part I and the head of Table 1 with this session's tooling. See blocked.json.",
+    "retirement_savings": {
+      "value": 355, "unit": "usd_billions", "period": "FY2026", "basis": "static", "status": "verified", "tier": "secondary",
+      "source": "CRFB quoting JCX-45-25", "url": "https://www.crfb.org/blogs/jct-projects-tax-expenditures-will-be-23t-2026",
+      "quote": "Exclusion for Retirement Savings and Pension Contributions | $355 billion",
+      "note": "Could not confirm from the primary whether JCT reports DC/DB/IRA as separate rows that CRFB summed. Treat '$355B combined' as CRFB's aggregation.",
+      "conv_repeal": {"value": null, "status": "not_applicable", "note": "No clean repeal score exists — this is mostly DEFERRAL, not forgiveness. A toggle that shows $355B as recoverable revenue would be wrong."}
+    },
+    "preferential_capital_gains_dividends": {
+      "value": 252, "unit": "usd_billions", "period": "FY2026", "basis": "static", "status": "verified", "tier": "secondary",
+      "quote": "Lower Rates for Dividends and Long-Term Capital Gains | $252 billion"
+    },
+    "employer_health_exclusion_income": {
+      "value": 240, "unit": "usd_billions", "period": "FY2026", "basis": "static", "status": "verified", "tier": "secondary",
+      "quote": "Exclusion for Employer-Sponsored Health Insurance | $240 billion"
+    },
+    "employer_health_exclusion_payroll": {
+      "value": null, "status": "unsourced",
+      "dossier_claimed": "~$120-150B",
+      "verdict": "STRUCTURALLY UNAVAILABLE FROM JCT — and this is a definitional finding, not a retrieval failure.",
+      "source": "JCT, JCX-45-25", "url": "https://www.jct.gov/getattachment/8c830c45-1680-4f7e-a649-2a0106f6b6e3/x-45-25.pdf", "tier": "primary",
+      "quote": "Thus, for example, the income tax exclusion for employer-paid health insurance is included, but the Federal Insurance Contributions Act (\"FICA\") tax exclusion for employer-paid health insurance is not treated as a tax expenditure in this report.",
+      "note": "JCT EXCLUDES the payroll side from the tax expenditure concept entirely. Any payroll-side figure must come from Treasury OTA or CBO and be labeled as such, and it must NEVER be added to a JCT total. The closest verified proxy for the payroll-side magnitude is CBO's own option, where alternatives limiting 'income and payroll' versus 'only the income tax exclusion' differ by roughly $268B/10yr — see conv_scores.employer_health_exclusion_cap."
+    },
+    "stepped_up_basis": {
+      "value": 73, "unit": "usd_billions", "period": "FY2026", "basis": "static", "status": "verified", "tier": "secondary",
+      "quote": "\"Stepped-Up Basis\" for Capital Gains at Death | $73 billion"
+    },
+    "section_199a": {
+      "value": 76, "unit": "usd_billions", "period": "FY2026", "basis": "static", "status": "verified", "tier": "secondary",
+      "quote": "Pass-Through Business Income Deduction | $76 billion",
+      "note": "JCX-45-25 is post-OBBBA (Dec 2025), so this reflects 199A made permanent by P.L. 119-21."
+    },
+    "charitable_deduction": {
+      "value": 78, "unit": "usd_billions", "period": "FY2026", "basis": "static", "status": "verified", "tier": "secondary",
+      "quote": "Charitable Contributions Deduction | $78 billion"
+    },
+    "salt_deduction": {
+      "value": 60, "unit": "usd_billions", "period": "FY2026", "basis": "static", "status": "verified", "tier": "secondary",
+      "quote": "State and Local Tax Deduction | $60 billion",
+      "note": "Reflects the OBBBA-raised SALT cap: $40k to 2029, phase-down above $500k, reverts to $10k in 2030. The PTET workaround survived OBBBA and must be closed too for a SALT toggle to mean anything."
+    },
+    "mortgage_interest": {
+      "value": 261.1, "unit": "usd_billions", "period": "FY2025-2029", "basis": "static", "status": "verified", "tier": "secondary",
+      "annual_average": 52.2,
+      "source": "Novogradac quoting JCX-45-25",
+      "url": "https://www.novoco.com/notes-from-novogradac/jct-estimates-of-federal-tax-expenditures-2025-2029-whats-at-stake-for-housing-community-development-clean-energy",
+      "published": "2025-12-18",
+      "quote": "$261.1 billion over 2025 to 2029",
+      "note": "This is a FIVE-YEAR TOTAL, not an FY2026 line. Present it as the five-year total or as an explicit average; do not present $52B as a JCT-published annual figure."
+    },
+    "opportunity_zones": {
+      "value": 7.8, "unit": "usd_billions", "period": "FY2025-2029", "basis": "static", "status": "verified", "tier": "secondary",
+      "source": "Novogradac quoting JCX-45-25",
+      "url": "https://www.novoco.com/notes-from-novogradac/jct-estimates-of-federal-tax-expenditures-2025-2029-whats-at-stake-for-housing-community-development-clean-energy",
+      "quote": "$7.8 billion",
+      "note": "Five-year total. Novogradac flags the SIGN FLIP — 'positive projection, compared to negative amounts in prior windows' — because deferred OZ gains come due in this window. OBBBA made OZs PERMANENT with rolling 10-year designations from 2027, so the long-run cost grows beyond this figure."
+    },
+    "municipal_bond_interest": {
+      "value": null, "status": "blocked",
+      "dossier_claimed": "~$30-40B/yr",
+      "note": "MUST NOT SHIP. JCX-45-25 Table 1 would not extract and no secondary quoting the public-purpose bond line was found. The only verified tax-exempt bond figures are narrow HOUSING categories, which are NOT the muni line: rental housing bonds $9.0B and owner-occupied housing bonds $5.5B, both FY2025-2029 (Novogradac). Do not substitute those."
+    },
+    "like_kind_exchanges_1031": {
+      "value": null, "status": "blocked",
+      "dossier_claimed": "~$9-10B/yr",
+      "note": "MUST NOT SHIP. Not extractable from JCX-45-25; no secondary found. Treasury's FY2025 tax expenditure volume carries the provision ('Deferral of capital gains from like-kind exchanges') but its tables would not convert. Note for the why-panel: 1031 is DEFERRAL, not forgiveness — unless the asset is held to death, at which point step-up erases the gain. That step-up interaction is the real story and it is sourced."
+    }
+  },
+
+  "conv_scores": {
+    "_baseline_warning": "EVERY CBO OPTION BELOW IS FROM THE DECEMBER 2024 VOLUME AND ASSUMES THE TCJA INDIVIDUAL PROVISIONS EXPIRE AFTER 2025 — WHICH THEY DID NOT. P.L. 119-21 made them permanent in July 2025. These scores are stale in direction and magnitude; most revenue-raisers would score HIGHER against a permanent-TCJA baseline. Every one must carry a visible 'pre-OBBBA baseline' caveat. Only the CRS mortgage figure is post-OBBBA.",
+
+    "tax_gains_at_death": {
+      "value": 536.1, "unit": "usd_billions", "window": "FY2025-2034", "basis": "conventional", "baseline": "pre-obbba",
+      "status": "corrected", "dossier_claimed": 570, "tier": "primary",
+      "option_name": "Change the Taxation of Assets Transferred at Death (Option 51), alternative: Include accrued capital gains in the last income tax return of decedents",
+      "url": "https://www.cbo.gov/budget-options/60943", "published": "2024-12-12",
+      "quote": "Include accrued capital gains in the last income tax return of decedents — 10-year total (2025–2034): -$536.1 billion",
+      "five_year_subtotal": 205.3
+    },
+    "carryover_basis_only": {
+      "value": 196.9, "unit": "usd_billions", "window": "FY2025-2034", "basis": "conventional", "baseline": "pre-obbba",
+      "status": "corrected", "dossier_claimed": 230, "tier": "primary",
+      "option_name": "Change the Taxation of Assets Transferred at Death (Option 51), alternative: Enact carryover basis for assets held until death",
+      "url": "https://www.cbo.gov/budget-options/60943", "published": "2024-12-12",
+      "quote": "Option 51. Change the Taxation of Assets Transferred at Death | 197 to 536",
+      "five_year_subtotal": 53.7,
+      "teaching_point": "THE TWO-VARIANT CONTRAST IS THE LESSON: repealing step-up WITHOUT taxing gains at death raises only $197B, because heirs simply keep deferring. Taxing at death raises $536B. Same 'loophole,' 2.7x difference, entirely from whether the escape hatch closes. This is the clearest single illustration of why [STATIC] size and [CONV] revenue diverge."
+    },
+    "employer_health_exclusion_cap": {
+      "status": "corrected", "dossier_claimed": "$630B-$1.2T", "baseline": "pre-obbba", "tier": "primary",
+      "option_name": "Reduce Tax Subsidies for Employment-Based Health Benefits (Option 56)",
+      "url": "https://www.cbo.gov/budget-options/60953", "published": "2024-12-12",
+      "window": "FY2025-2034",
+      "alternatives": [
+        {"alt": "Limit income AND payroll tax exclusion to the 75th percentile of premiums ($12,700 individual / $31,300 family in 2028)", "value": 521},
+        {"alt": "Limit income AND payroll tax exclusion to the 50th percentile of premiums ($10,000 individual / $24,400 family in 2028)", "value": 965},
+        {"alt": "Limit ONLY the income tax exclusion to the 50th percentile", "value": 697}
+      ],
+      "verified_range": [521, 965],
+      "quote": "Option 56. Reduce Tax Subsidies for Employment-Based Health Benefits | 521 to 965",
+      "payroll_side_implication": "The 50th-percentile alternatives differ by $268B ($965B with payroll vs $697B income-only), which is the best available proxy for the payroll-side magnitude JCT declines to publish."
+    },
+    "repeal_199a": {
+      "value": 835.7, "dynamic": 505.9, "unit": "usd_billions", "window": "2027-2036", "basis": "conventional", "baseline": "post-obbba",
+      "status": "corrected", "dossier_claimed": "~$700B (unsourced)", "tier": "primary",
+      "source": "Tax Foundation 2026 Options Guide, Eliminate the Section 199A Pass-Through Deduction",
+      "url": "https://taxfoundation.org/tax-reform-guide/option/eliminate-the-section-199a-pass-through-deduction/",
+      "quote": "Conventional primary deficit change (10-Yr): -$835.7B; Dynamic primary deficit change (10-Yr): -$505.9B",
+      "note": "NEGATIVE deficit change = revenue RAISED. THIS IS ONE OF ONLY THREE POST-OBBBA SCORES IN THE DATASET and it is explicitly on a permanent-199A baseline ('the One Big Beautiful Bill Act extended it permanently'). NO CBO OPTION FOR 199A EXISTS — the December 2024 volume contains none; the dossier's ~$700B was unsourced and probably conflated the cost of EXTENDING 199A, a different quantity in the opposite direction. Tax Foundation leans right and its dynamic scores are the profession's most optimistic; show both its numbers, label the lean.",
+      "alternative_partial": {
+        "value_range": [45.5, 177.6], "window": "FY2026-2035",
+        "source": "Penn Wharton Budget Model, Eliminating Excess Benefits from Section 199A",
+        "url": "https://budgetmodel.wharton.upenn.edu/p/2025-01-27-eliminating-excess-benefits-from-the-section-199a/",
+        "published": "2025-01-27",
+        "quote": "options to remove the excess benefit while maintaining the 20 percent tax benefit could raise between $46B and $178B over the 10-year budget window",
+        "note": "This is LIMITING, not repealing — a different policy. Do not present it as a repeal score."
+      }
+    },
+    "eliminate_itemized_deductions": {
+      "value_range": [736, 3424], "unit": "usd_billions", "window": "FY2025-2034", "basis": "conventional", "baseline": "pre-obbba",
+      "status": "corrected", "dossier_claimed": "~$3.7T", "tier": "primary",
+      "option_name": "Eliminate or Limit Itemized Deductions (Option 49)",
+      "url": "https://www.cbo.gov/system/files/2024-12/60557-budget-options.pdf", "published": "2024-12",
+      "quote": "Option 49. Eliminate or Limit Itemized Deductions | 736 to 3,424",
+      "note": "It is a RANGE across alternatives, not a point estimate. $3,424B is the most aggressive alternative. The dossier's $3.7T overstates even the top of the range. Per-alternative breakdown for the current window did not extract; the prior vintage (2023-2032) gives: eliminate all $2,507.4B; eliminate SALT $1,143.2B; limit benefit to 15% of value $1,356.0B; limit to 4% of AGI $541.4B — DO NOT MIX VINTAGES."
+    },
+    "repeal_mortgage_interest_deduction": {
+      "value": 495, "unit": "usd_billions", "window": "FY2026-2035", "basis": "conventional", "baseline": "post-obbba",
+      "status": "corrected", "dossier_claimed": "~$300B+", "tier": "primary",
+      "source": "CRS In Focus IF13190, Reforms to the Mortgage Interest Deduction with Revenue Estimates",
+      "url": "https://www.everycrsreport.com/reports/IF13190.html", "published": "2026-03-23",
+      "quote": "Repeal MID — $495 billion",
+      "partial_reforms": [{"reform": "MID limited to $10K of interest", "value": 368}, {"reform": "limited to $20K", "value": 240}, {"reform": "10% nonrefundable credit", "value": 65}],
+      "note": "NO CBO OPTION EXISTS for the MID. This CRS estimate uses the Yale Budget Lab Tax-Simulator Model and CRS explicitly disclaims official status: the estimates 'are not considered official for revenue \"scoring\" purposes.' Official scores would come from JCT. POST-OBBBA and the most current figure in this section."
+    },
+    "muni_bonds_new_issues": {
+      "value": 43.1, "unit": "usd_billions", "window": "FY2025-2034", "basis": "conventional", "baseline": "pre-obbba",
+      "status": "corrected", "dossier_claimed": "~$100-120B", "tier": "primary",
+      "option_name": "Eliminate the Tax Exemption for New Qualified PRIVATE ACTIVITY Bonds (Option 52)",
+      "url": "https://www.cbo.gov/budget-options/60944", "published": "2024-12-12",
+      "quote": "Option 52. Eliminate the Tax Exemption for New Qualified Private Activity Bonds | 43",
+      "note": "SCOPE CORRECTION, not just a magnitude one: this covers PRIVATE ACTIVITY bonds only, a subset. CBO's volume contains NO option taxing new public-purpose municipal bonds. Publishing $100-120B against a CBO citation would be a misattribution. If the tool wants a muni toggle it must either use $43.1B and say 'private activity bonds only', or drop the toggle."
+    },
+    "capital_gains_plus_2pts": {
+      "value": 103, "unit": "usd_billions", "window": "FY2025-2034", "basis": "conventional", "baseline": "pre-obbba",
+      "status": "verified", "tier": "primary",
+      "option_name": "Raise the Tax Rates on Long-Term Capital Gains and Qualified Dividends by 2 Percentage Points (Option 47)",
+      "url": "https://www.cbo.gov/system/files/2024-12/60557-budget-options.pdf", "published": "2024-12",
+      "quote": "Option 47. Raise the Tax Rates on Long-Term Capital Gains and Qualified Dividends by 2 Percentage Points | 103",
+      "critical_note": "NOT LINEARLY SCALABLE. Realization elasticity means 4pp does not raise $206B. If the tool's capital gains slider extrapolates linearly from this figure it is wrong, and it will be wrong in the direction that flatters rate increases. Use the elasticity model, not multiplication."
+    },
+    "top_rate_increases": {
+      "cbo": {
+        "option_name": "Increase Individual Income Tax Rates on Ordinary Income", "baseline": "pre-obbba", "window": "FY2025-2034",
+        "url": "https://www.cbo.gov/budget-options/60937", "tier": "primary",
+        "alternatives": [
+          {"alt": "all tax rates on ordinary income increase by 1 percentage point", "value": 1185.3},
+          {"alt": "tax rates on ordinary income in the TOP FOUR BRACKETS increase by 2 percentage points", "value": 569.5}
+        ],
+        "note": "NOTE THE SCOPE: this is the top FOUR brackets, not the top bracket alone. There is no published top-bracket-only +2pp estimate from any shop."
+      },
+      "tax_foundation_2026": {
+        "baseline": "post-obbba", "window": "2026-2035", "tier": "primary",
+        "url": "https://taxfoundation.org/blog/trump-millionaire-tax-raising-top-income-tax-rate/",
+        "alternatives": [
+          {"alt": "Raise top rate to 39.6% with pre-TCJA design ($546,750 single / $615,100 joint)", "conventional": 409.0, "dynamic": 187.5},
+          {"alt": "Create a 40% bracket at $1 million taxable income", "conventional": 274.8, "dynamic": 114.9},
+          {"alt": "Create a 39.6% bracket at $2.5 million ($5 million joint)", "conventional": 67.3, "dynamic": 18.4}
+        ],
+        "note": "The conventional-vs-dynamic gap is ~54% on the 39.6% option. A static engine will land near the conventional figure — that is expected and should be said in the why-panel, not hidden."
+      }
+    }
+  },
+
+  "distributional_shares": {
+    "_definition_warning": "CBO ranks households by MARKET INCOME PLUS SOCIAL INSURANCE BENEFITS and sorts into quintiles. These are NOT AGI percentiles and NOT dollar income bands. The three are not interchangeable and conflating them is the single most common error in this literature — the dossier made exactly that error on 199A.",
+    "_source": "CBO, The Distribution of Major Tax Expenditures in 2019",
+    "_url": "https://www.cbo.gov/publication/57585",
+    "_published": "2021-10",
+    "_tier": "primary",
+    "_year": "2019",
+
+    "preferential_capital_gains_rates": {
+      "top_1pct": 75, "highest_quintile": 95, "expenditure_size": 140, "status": "verified",
+      "quote": "Net preferential rates on capital gains and dividends ($140 billion) — Highest quintile: 95% of benefits; Top 1%: 75% of benefits",
+      "alternative_estimate": {"top_1pct": 62, "source": "Tax Policy Center, 2015 data", "url": "https://taxpolicycenter.org/taxvox/who-benefits-tax-expenditures", "quote": "The top 1 percent receives over 62 percent of the benefits from preferential rates on capital gains and dividends"},
+      "note": "Cite CBO for 75%, not TPC."
+    },
+    "retirement_savings": {
+      "highest_quintile": 60, "descriptor": "more than", "lowest_two_quintiles": 5, "descriptor_low": "less than",
+      "expenditure_size": 276, "status": "verified",
+      "quote": "Exclusion for Pensions and Retirement Savings ($276 billion) — Highest quintile: more than 60 percent of the benefits; Lowest two quintiles combined: less than 5 percent"
+    },
+    "mortgage_interest": {
+      "highest_quintile": 84, "top_1pct": 25, "expenditure_size": 28, "status": "corrected", "dossier_claimed": "~80% top quintile",
+      "quote": "Mortgage Interest Deduction ($28 billion) — Highest quintile: 84% of benefits; Top 1%: 25% of benefits",
+      "note": "SMALL-BASE WARNING: the 2019 tax expenditure was only $28B because TCJA's larger standard deduction collapsed itemization. That is far below the current-law JCT figure of $261.1B over FY2025-29 (~$52B/yr). DO NOT pair the 84% share with the $52B figure without noting the different years and different law."
+    },
+    "charitable_deduction": {
+      "highest_quintile": 93, "top_1pct": 63, "expenditure_size": 43, "status": "verified",
+      "quote": "Charitable Contribution Deduction ($43 billion) — Highest quintile: 93% of benefits; Top 1%: 63% of benefits",
+      "note": "The MOST concentrated of the major individual tax expenditures in CBO's table."
+    },
+    "employer_health_exclusion": {
+      "highest_quintile": 44, "fourth_quintile": 29, "middle_quintile": 16, "bottom_two_combined": 11,
+      "expenditure_size": 280, "status": "verified",
+      "quote": "Exclusion for Employment-Based Health Insurance ($280 billion) — Highest quintile (income tax): 44%; Fourth quintile: 29%; Middle quintile: 16%; Bottom two combined: 11%",
+      "note": "THE COUNTEREXAMPLE, AND IT MUST SHIP. The health exclusion is by far the least top-skewed of the large tax expenditures. Any 'tax breaks go to the rich' framing that lumps it in with capital gains and charitable is inaccurate. This is the single best datum for surviving a skeptical conservative reader (gameplan §10.4) — the tool includes it voluntarily, and it cuts against the easy story."
+    },
+    "section_199a": {
+      "status": "corrected",
+      "dossier_claimed": "~61% to top 1%, source JCX-32-18",
+      "verdict": "THE MOST IMPORTANT CORRECTION IN THE DATASET. Three separate problems with the dossier claim.",
+      "problems": [
+        "JCX-32R-18 uses INCOME-CLASS DOLLAR BANDS, and '$1,000,000 and over' is NOT the top 1% — the top 1% AGI threshold ($675,602 in TY2023) sits well below $1M. The two are not interchangeable.",
+        "The arithmetic share for the $1M+ band is 44.3% ($17.8B of $40.2B), not 61%.",
+        "The document is 2018-vintage, predating both the actual operation of 199A and OBBBA's permanent extension."
+      ],
+      "jcx_32r_18": {
+        "value_1m_plus": 17.8, "total": 40.2, "share_pct": 44.3, "period": "2018", "tier": "primary",
+        "url": "https://www.novoco.com/documents102261/x-32r-18.pdf", "published": "2018-04-24",
+        "quote": "$1,000,000 and over | 0.2 | -$17.8 ... Total, All Taxpayers | 17.4 | -$40.2"
+      },
+      "use_this_instead": {
+        "value": 87, "descriptor": "approximately", "group": "top AGI decile (AGI >= $174,000)", "period": "TY2022", "tier": "primary",
+        "source": "JCT, Data Related to Deductions Claimed Under Code Section 199A (December 2024, transmitted June 2025)",
+        "url": "https://www.warren.senate.gov/imo/media/doc/jct_report_on_199a.pdf",
+        "quote": "Those in the top decile, taxpayers with AGIs of at least $174,000, account for approximately 87 percent of all tax liability reductions under section 199A.",
+        "labeling_requirement": "Label the group as 'top decile, AGI at least $174,000' — NOT 'top 1%'."
+      }
+    }
+  },
+
+  "avoidance_mechanics": {
+    "buy_borrow_die": {
+      "description": "Hold appreciating assets (unrealized gains untaxed), borrow against them (loans are not income), die (step-up erases the gain).",
+      "closing_levers": ["Tax gains at death: $536.1B/10yr (CBO Option 51)", "Billionaire minimum income tax: $502.6B (Treasury Green Book FY2025)"],
+      "source": "Bipartisan Policy Center explainer",
+      "url": "https://bipartisanpolicy.org/explainer/paying-the-2025-tax-bill-step-up-in-basis-and-securities-backed-lines-of-credit/",
+      "status": "mechanism_described_in_dossier_not_reverified"
+    },
+    "carried_interest": {
+      "status": "corrected",
+      "dossier_claimed": "JCT scored the 2025 Carried Interest Fairness Act at $15.6B/10yr",
+      "verdict": "THE $15.6B IS A 2015 SCORE OF THE 2015 BILL, NOT A 2025 SCORE. TCJA's three-year holding-period rule intervened in 2017, changing the baseline. Dating this figure to 2025 is an error.",
+      "jct_2015": {"value": 15.6, "unit": "usd_billions", "window": "~2016-2025", "baseline": "pre-tcja",
+                   "source": "Sen. Baldwin's office quoting JCT", "url": "https://www.baldwin.senate.gov/news/press-releases/baldwin-levin-bill-to-close-carried-interest-loophole-would-raise-more-than-15-billion",
+                   "published": "2015-09-17", "tier": "secondary",
+                   "quote": "$15.6 billion in revenue"},
+      "yale_2026": {"value": 87.7, "old_method": 47.5, "broadest": 100, "unit": "usd_billions", "window": "10 years", "baseline": "post-obbba",
+                    "source": "The Budget Lab at Yale, Refining Revenue Estimates: Taxing Carried Interest",
+                    "url": "https://budgetlab.yale.edu/research/refining-revenue-estimates-taxing-carried-interest",
+                    "published": "2026-05-04", "tier": "primary",
+                    "quote": "revenue of $87.7 billion over 10 years",
+                    "quote_broad": "could raise $100 billion over ten years"},
+      "the_honest_disagreement": "DO NOT pair $15.6B (JCT 2015) against $87.7B (Yale 2026) as a shop disagreement — different bills, different decades, different baselines. The genuine, apples-to-apples disagreement is $47.5B vs $87.7B: SAME shop, SAME proposal, old methodology vs new. That methodological delta IS the story. Yale is one of only three post-OBBBA sources in this dataset.",
+      "jct_reference_point": "The Budget Lab notes JCT scored TCJA's three-year holding period at 'just over $1 billion over ten years.'",
+      "framing": "Symbolically enormous, fiscally small-to-medium. Narrow versions leak via holding-period gaming. OBBBA did not touch it."
+    },
+    "mega_roth": {
+      "thiel_case": {"initial": 1700, "share_price": 0.001, "year_initial": 1999, "value_2019": 5000000000,
+                     "source": "ProPublica, Lord of the Roths",
+                     "url": "https://www.propublica.org/article/lord-of-the-roths-how-tech-mogul-peter-thiel-turned-a-retirement-account-for-the-middle-class-into-a-5-billion-dollar-tax-free-piggy-bank",
+                     "status": "dossier_claim_not_reverified"},
+      "jct_count": {"value": 28000, "descriptor": "more than", "unit": "taxpayers", "period": "TY2019", "status": "corrected",
+                    "dossier_claimed": "~28,000 IRAs >$5M, JCT 2021",
+                    "source": "Senate Finance Committee release of JCT data",
+                    "url": "https://www.finance.senate.gov/chairmans-news/wyden-neal-release-new-data-showing-explosion-in-use-of-mega-ira-accounts-by-wealthy",
+                    "published": "2021-07-28", "tier": "primary",
+                    "quote": "more than 28,000 taxpayers had aggregate IRA account balances of $5 million or more",
+                    "also": "497 taxpayers have aggregate IRA account balances of $25 million or more, averaging more than $150 million each",
+                    "corrections": ["It counts TAXPAYERS with AGGREGATE balances across all their IRAs, not individual IRA accounts", "The TAX YEAR is 2019; 2021 is the release year"]}
+    },
+    "crypto_wash_sales": {
+      "value": 16.8, "unit": "usd_billions", "window": "10 years", "period": "2021 vintage", "baseline": "pre-obbba",
+      "status": "verified", "tier": "secondary",
+      "source": "Tax Policy Center Briefing Book citing JCT",
+      "url": "https://taxpolicycenter.org/briefing-book/how-cryptocurrency-taxed", "published": "2024-01",
+      "quote": "the proposed wash-sale restrictions would raise $16.8 billion over a decade",
+      "still_open": {"value": true, "as_of": "2026-05", "quote": "crypto and other such digital assets are exempt, hence why many consider it a 'loophole'",
+                     "url": "https://gordonlaw.com/learn/crypto-wash-sale-rule-in-2026-is-the-loophole-finally-closed/",
+                     "note": "Pending vehicle is the Digital Asset PARITY Act. A CNBC headline of 2026-07-28 corroborates the loophole remained open into late July 2026. Source is a law-firm blog — acceptable for a binary status question, NOT for a number."},
+      "possible_supersession": "A 2026 secondary source references a $24 billion figure, implying a newer score exists. UNRESOLVED — do not use $24B without a source."
+    },
+    "profit_shifting": {
+      "global": {"value": 1000, "unit": "usd_billions", "period": "2022", "status": "verified", "tier": "primary",
+                 "source": "EU Tax Observatory, Global Tax Evasion Report 2024",
+                 "url": "https://taxobservatory.world//www-site/uploads/2023/10/global_tax_evasion_report_24.pdf",
+                 "quote": "$1 trillion in profits booked in tax havens ... 35% of all the profits booked by multinational companies outside of their headquarter country ... The equivalent of nearly 10% of corporate tax revenue collected globally.",
+                 "note": "This 2022-data figure SUPERSEDES the older Torslov-Wier-Zucman numbers and is the one to cite."},
+      "us_federal_loss": {"value": null, "status": "unsourced", "dossier_claimed": "~$60B/yr",
+                          "note": "MUST NOT SHIP AS A DOLLAR FIGURE. TWZ report the US loss as a PERCENTAGE — 17% of corporate tax revenue in 2016, up from 14% in 2015 (https://missingprofits.world/wp-content/uploads/2019/09/TWZUpdate.pdf). A '$152 billion' value appearing alongside is ambiguous between shifted profits and revenue lost, which are very different quantities. Use the percentage, or the verified US-specific findings: 'U.S. multinationals are responsible for about 40% of global profit shifting' and shift 'about 60% of their foreign profits' vs a 40% global average."}
+    },
+    "itep_corporate_effective_rates": {
+      "companies": 342, "rate": 14.1, "period": "2018-2022", "zero_tax_all_five_years": 23, "zero_tax_at_least_one_year": 109,
+      "status": "verified", "tier": "primary",
+      "source": "ITEP, Corporate Tax Avoidance in the First Five Years of the Trump Tax Law",
+      "url": "https://itep.org/corporate-tax-avoidance-trump-tax-law/", "published": "2024-02-29",
+      "quote": "342 companies included in this study paid an average effective income tax rate of just 14.1 percent",
+      "quote_2": "Twenty-three corporations paid zero federal tax over the five-year period despite being profitable in every single year",
+      "caveats": ["ITEP's wording is 'zero federal tax', not '0% or less' — use ITEP's phrasing",
+                  "ITEP is an advocacy shop, not a government scorekeeper — label it",
+                  "Effective rates are computed from FINANCIAL-STATEMENT current federal tax, which is not the same as cash taxes paid or IRS-measured liability"]
+    },
+    "camt": {
+      "scored": {"value": 222.2, "unit": "usd_billions", "window": "FY2023-FY2031", "status": "corrected",
+                 "dossier_claimed": "$222B/10yr",
+                 "source": "CRS R47328, The 15% Corporate Alternative Minimum Tax (reporting JCT's score)",
+                 "url": "https://www.everycrsreport.com/reports/R47328.html", "published": "2023-01-19", "tier": "primary",
+                 "quote": "The Joint Committee on Taxation (JCT) estimates that the CAMT will generate additional revenues of $222.2 billion from FY2023 through FY2031.",
+                 "note": "NINE-YEAR WINDOW, not ten. Calling it '$222B/10yr' understates the implied annual rate."},
+      "realized": {"value": null, "status": "verified_negative",
+                   "finding": "NO REALIZED CAMT COLLECTIONS DATA HAS BEEN PUBLISHED as of August 2026 — not by IRS SOI, not by Treasury, not by CBO. This absence is itself a finding worth shipping.",
+                   "why": "SOI corporate complete-report lag (TY2023 corporate data with CAMT detail not yet released). Treasury/IRS also issued CAMT relief guidance in Sept 2025 and Feb 2026, which will further depress realized amounts relative to the original score.",
+                   "supporting": "IRS page 'Small corporate taxpayers who reported corporate alternative minimum tax for tax year 2023' (updated 2026-06-27) publishes guidance only, no dollar figures: 'Some small corporate taxpayers reported CAMT for tax year 2023 when they may not be subject to the tax.'",
+                   "historical_comparator": "Brookings (2024-11-13) on the OLD, repealed AMT: 'the old CAMT raised a net total of $26.08 billion in revenue from 1987 to 2017 after accounting for AMT credits, with $13.19 billion of that amount collected in the decade before the AMT was repealed.'",
+                   "how_to_present": "Say plainly: 'scored at $222.2B over FY2023-2031; no realized collections data exists as of August 2026.' That honesty is more valuable than a number."}
+    },
+    "buyback_excise": {
+      "scored": {"value": 74, "unit": "usd_billions", "window": "FY2022-FY2031", "status": "verified", "tier": "primary",
+                 "source": "CRS R47397, The 1% Excise Tax on Stock Repurchases (reporting JCT's score)",
+                 "url": "https://www.everycrsreport.com/reports/R47397.html", "published": "2023-02-15",
+                 "quote": "$74 billion over the FY2022-FY2031 period"},
+      "realized": {"value": 8.5, "unit": "usd_billions", "period": "FY2025", "status": "needs_human_confirmation", "tier": "primary",
+                   "source": "CBO, Federal Excise Tax Revenues, Figure 2",
+                   "url": "https://www.cbo.gov/publication/61945", "published": "2026-08-03",
+                   "quote": "Tobacco tax: $9.5 billion / Tax on corporate stock repurchases: $8.5 billion / Alcohol tax: $8.1 billion / Other excise taxes: $6.5 billion",
+                   "confidence_caveat": "CONFIRM BEFORE PUBLISHING. A second fetch of the same PDF surfaced a coincidentally identical figure in a different context — 'That reclassification increased excise tax revenues (and reduced individual income tax receipts) by $8.5 billion in 2024' — which refers to a one-time fuel-tax refund reclassification, not buybacks. Figure 2's category listing is internally consistent (trust funds ~$74B + general fund ~$32B = $106B total), which supports $8.5B, but the duplicate raises extraction risk. Confirm against Figure 2 or https://www.cbo.gov/system/files/2026-08/61945-excise-tax-data.xlsx.",
+                   "note": "No FY2024 buyback figure was found. 2025 final regulations narrowed the base."},
+      "value_of_this_pairing": "Buybacks are the ONE case in this dataset where a scored figure can be checked against a realized one. Scored ~$7.4B/yr average; realized $8.5B in FY2025. That is a rare and genuinely useful honesty exhibit — most scores are never checked."
+    }
+  },
+
+  "tax_gap": {
+    "_source": "IRS Publication 5869 (Rev. 10-2024), Tax Gap Projections for Tax Year 2022",
+    "_url": "https://www.irs.gov/pub/irs-pdf/p5869.pdf",
+    "_landing": "https://www.irs.gov/statistics/irs-the-tax-gap",
+    "_published": "2024-10", "_tier": "primary", "_period": "TY2022",
+    "gross": {"value": 696, "unit": "usd_billions", "status": "verified", "quote": "Gross Tax Gap: $696 billion"},
+    "net": {"value": 606, "unit": "usd_billions", "status": "verified", "quote": "Net Tax Gap: $606 billion"},
+    "voluntary_compliance_rate": {"value": 85.0, "unit": "percent", "status": "verified", "quote": "Voluntary Compliance Rate: 85.0%"},
+    "net_compliance_rate": {"value": 86.9, "unit": "percent", "status": "verified", "quote": "Net Compliance Rate: 86.9%"},
+    "is_current": {"value": true, "status": "verified",
+                   "quote": "Fall of calendar year 2025—new tax gap estimates and projections (delayed)",
+                   "note": "The scheduled Fall 2025 update is explicitly marked DELAYED and had not appeared as of the page's 2026-04-14 update. TY2022 remains current."},
+    "composition": {
+      "nonfiling": {"value": 63, "pct_of_gross": 9},
+      "underreporting": {"value": 539, "pct_of_gross": 77},
+      "underpayment": {"value": 94, "pct_of_gross": 14},
+      "quote": "Nonfiling: $63 billion (9% of gross) / Underreporting: $539 billion (77% of gross) / Underpayment: $94 billion (14% of gross)",
+      "individual_income_underreporting": {"value": 381, "pct_of_gross": 55}
+    },
+    "visibility_ladder": {
+      "_note": "THE MOST TEACHABLE TABLE IN THE ENTIRE DATASET. Noncompliance is almost entirely a function of whether a third party reports the income — not of who is honest.",
+      "quote": "Items Subject to Substantial Information Reporting and Withholding $9 1% 2% | Items Subject to Substantial Information Reporting $22 3% 6% | Items Subject to Some Information Reporting $71 10% 19% | Items Subject to Little or No Information Reporting $179 26% 47%",
+      "rows": [
+        {"visibility": "Substantial info reporting AND withholding (wages)", "gap_billions": 9, "pct_of_gross": 1, "pct_of_individual_underreporting": 2, "misreporting_rate_pct": 1},
+        {"visibility": "Substantial info reporting, no withholding", "gap_billions": 22, "pct_of_gross": 3, "pct_of_individual_underreporting": 6, "misreporting_rate_pct": 6},
+        {"visibility": "Some info reporting", "gap_billions": 71, "pct_of_gross": 10, "pct_of_individual_underreporting": 19},
+        {"visibility": "Little or no info reporting (self-employment, pass-through)", "gap_billions": 179, "pct_of_gross": 26, "pct_of_individual_underreporting": 47, "misreporting_rate_pct": 55}
+      ],
+      "misreporting_quote": "misreporting of income amounts subject to substantial information reporting and withholding is 1 percent of income. For amounts subject to substantial information reporting but not withholding, it is 6 percent; and for income amounts subject to little or no information reporting, such as nonfarm sole proprietor income, it is 55 percent.",
+      "nonfarm_proprietor": {"value": 117, "pct_of_gross": 17, "pct_of_individual_underreporting": 31,
+                            "quote": "$117 billion in underreporting, comprising 17% of the gross tax gap and 31% of individual income tax underreporting"}
+    },
+    "top_1pct_share": {
+      "value": null, "status": "unsourced",
+      "dossier_claimed": "top 1% = ~28% of unreported income and ~36% of unpaid tax, source NBER w28542",
+      "verdict": "MISATTRIBUTED — MUST NOT SHIP. Those figures are affirmatively NOT in NBER w28542. A targeted search of the abstract, introduction and conclusion for '36 percent' / '28 percent' returned no matches.",
+      "what_w28542_actually_says": {
+        "url": "https://www.nber.org/papers/w28542",
+        "authors": "Guyton, Langetieg, Reck, Risch, Zucman", "published": "2021-03, revised 2023-12",
+        "quote_abstract": "Accounting for sophisticated evasion increases unreported income of the top 1% of the income distribution in 2006–2013 by 50% and increases the top 1% fiscal income share by about 1 percentage point.",
+        "quote_body": "we estimate that under-reported income as a fraction of true income (i.e., income that should legally be reported on tax returns) rises from about 10% in the bottom 90% of the income distribution to 16% in the top 1%.",
+        "note": "These are INCREASES TO ESTIMATES and an evasion RATE — different in kind from a share of the total."
+      },
+      "use_this_instead": {
+        "value": 160, "descriptor": "more than", "unit": "usd_billions", "period": "annual, TY2019 base", "tier": "primary",
+        "source": "Treasury (Natasha Sarin), The Case for a Robust Attack on the Tax Gap",
+        "url": "https://home.treasury.gov/news/featured-stories/the-case-for-a-robust-attack-on-the-tax-gap", "published": "2021-09-07",
+        "quote": "more than $160 billion lost annually is from taxes that top 1 percent choose not to pay",
+        "underlying": "DeBacker et al., Tax Noncompliance and Measures of Income Inequality, Tax Notes Federal, 2020-02-17 — NOT Guyton et al.",
+        "note": "The widely-circulated '28% / $163B' pairing traces to press coverage of this Treasury piece. If the tool uses a top-1% figure, cite Treasury/DeBacker and the TY2019 vintage, and use the DOLLAR figure — the exact percentage could not be verified."
+      }
+    }
+  },
+
+  "enforcement": {
+    "audit_roi": {
+      "value": 12, "descriptor": "more than", "group": "above the 90th income percentile", "below_median": 5,
+      "unit": "revenue per dollar of audit cost", "status": "verified", "tier": "primary",
+      "source": "Boning, Hendren, Sprung-Keyser & Stuart, NBER Working Paper 31376; published Quarterly Journal of Economics 140(1), pp. 63-",
+      "url": "https://www.nber.org/papers/w31376", "published": "2023-06",
+      "quote": "We estimate the returns to IRS audits of taxpayers across the income distribution. We find an additional $1 spent auditing taxpayers above the 90th income percentile yields more than $12 in revenue, while audits of below-median income taxpayers yield $5.",
+      "ratio_definition": "The $12 comprises direct audit revenue PLUS specific deterrence (changed reporting by the audited taxpayer in subsequent years): 'specific deterrence effect produces at least three times more revenue than the initial audit' and 'deterrence effects are relatively consistent across the income distribution.' It does NOT include general deterrence across the broader population.",
+      "note": "The dossier attributed this to the wrong paper number. It is w31376. Also note the ROI is contested and falls as funding scales — a caveat the tool must carry per the dossier's own instruction."
+    },
+    "revenue_per_audit_hour": {
+      "high_income": 4900, "high_income_threshold": 5000000, "moderate_income": 650, "moderate_income_level": 200000,
+      "unit": "usd", "status": "verified", "tier": "secondary",
+      "source": "The Budget Lab at Yale, A Weakened IRS Has Substantial Consequences",
+      "url": "https://budgetlab.yale.edu/research/weakened-irs-has-substantial-consequences", "published": "2026-04-10",
+      "quote": "an extra hour spent auditing a taxpayer earning over $5 million generated roughly $4,900 in recommended additional tax—compared to $650 for audits of taxpayers earning around $200,000.",
+      "caveat": "This is RECOMMENDED additional tax, not COLLECTED tax. The two differ materially at high incomes because of appeals and collectibility. Say so.",
+      "underlying": "Budget Lab attributes it to NBER w26475, which was not fetched directly."
+    },
+    "cbo_rescission": {
+      "revenue_loss": 44, "deficit_increase": 24, "rescission_size": 20, "unit": "usd_billions", "window": "2024-2034",
+      "status": "corrected", "dossier_claimed": "$44-46B", "tier": "primary",
+      "source": "CBO, How Changes in Funding for the IRS Affect Revenues",
+      "url": "https://www.cbo.gov/publication/59972", "published": "2024-02-29",
+      "quote": "A $20 billion rescission would reduce revenues by $44 billion and increase the cumulative deficit by $24 billion",
+      "note": "CARRY BOTH NUMBERS OR THE $44B WILL READ AS A DEFICIT EFFECT, WHICH IT IS NOT — the $24B is the net after the $20B of avoided outlays. The '$46B' end of the dossier's range could not be verified from any source; drop it."
+    },
+    "yale_total_revenue_loss": {
+      "value": 860, "descriptor": "just over", "unit": "usd_billions", "window": "2026-2035", "status": "corrected",
+      "dossier_claimed": "~$861B", "tier": "secondary",
+      "components": {"staffing_reductions": 597.8, "budget_cut": 262.8},
+      "source": "The Budget Lab at Yale", "url": "https://budgetlab.yale.edu/research/weakened-irs-has-substantial-consequences", "published": "2026-04-10",
+      "quote": "Together these reductions total just over $860 billion over the 2026-2035 budget window.",
+      "note": "Use 'just over $860 billion'. The precise $861B is not stated in the text; the components sum to $860.6B."
+    },
+    "workforce": {
+      "staff_lost": 27636, "revenue_agents_lost": 3600, "descriptor_agents": "more than", "pct_of_auditors": 31,
+      "period": "by end of 2025", "status": "verified", "tier": "secondary",
+      "source": "The Budget Lab at Yale, citing the National Taxpayer Advocate's annual report to Congress",
+      "url": "https://budgetlab.yale.edu/research/weakened-irs-has-substantial-consequences", "published": "2026-04-10",
+      "quote": "By the end of 2025, the total reduction in staffing amounted to 27,636 employees",
+      "quote_2": "the IRS had lost more than 3,600 revenue agents, representing roughly 31 percent of the agency's entire auditing staff.",
+      "note": "The underlying NTA report was not fetched; the citation chain is verified only as far as Budget Lab."
+    },
+    "why_this_is_a_first_class_lever": "Funding the IRS is one of the only levers in the tool where $1 in reliably returns more than $1 out. It is also the only near-free-lunch item, which is exactly why it needs the contested-ROI caveat attached — a tool that presents one free lunch without a caveat has undermined its own credibility on everything else."
+  },
+
+  "framing": {
+    "submerged_state": {
+      "value": 60, "unit": "percent", "program": "home mortgage interest deduction", "status": "corrected",
+      "dossier_claimed": "~57-60%",
+      "source": "Pacific Standard reporting Suzanne Mettler's survey results (The Submerged State, 2011)",
+      "url": "https://psmag.com/economics/probing-the-depths-of-the-submerged-state-28031/", "published": "2011-02-08", "tier": "secondary",
+      "quote": "60 percent of individuals claiming the home mortgage interest deduction",
+      "survey": "Cornell Survey Research Institute, Social and Governmental Issues and Participation, nationwide survey of 1,400 Americans. Book is 2011; fieldwork was 2008.",
+      "other_programs": {"student_loans": 53, "child_and_dependent_care_credit": 52},
+      "striking_companion": "From the same survey: 44 percent of Social Security recipients, 40 percent of people receiving veterans' benefits, and 40 percent of Medicare recipients ALSO denied using a government program.",
+      "cornell_pooled_phrasing": "Cornell's own release states it more loosely: 'Almost half of people who received such submerged state benefits ... reported that they had not used a government social program.'",
+      "note": "Use 60% for the MID specifically. Do NOT use 57% — no source supports it. Attribute to Mettler's survey via Pacific Standard, and give the fieldwork year."
+    },
+    "why_it_matters": "Tax expenditures are spending programs run through the tax code, invisible to their own beneficiaries. That invisibility is why they are politically indestructible — and it is the strongest argument for a tool that makes them visible."
+  }
+}

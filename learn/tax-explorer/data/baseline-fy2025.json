@@ -1,0 +1,257 @@
+{
+  "_meta": {
+    "id": "baseline-fy2025",
+    "title": "Current-law federal fiscal baseline, FY2025",
+    "built": "2026-08-17",
+    "phase": "0",
+    "note": "This is the tool's 'you are here'. FY2025 is the latest complete fiscal year. Use OMB AP-8 line items for composition (they itemize and sum exactly); use CBO for totals and ratios."
+  },
+
+  "receipts": {
+    "_note": "OMB's seven-line taxonomy is the only published set that itemizes AND sums exactly. CBO's five-bucket presentation collapses excise + estate/gift + miscellaneous into one 'Other Receipts' line of $183B. The dossier's '~$379B other receipts' figure was an error: it double-counted customs duties as both its own line and part of 'other'. Resolved.",
+
+    "individual_income_tax": {
+      "value": 2656.0, "unit": "usd_billions", "period": "FY2025", "basis": "actual", "status": "verified",
+      "source": "OMB, FY2027 Budget Analytical Perspectives, Ch. 8 Governmental Receipts, Table 08-1",
+      "url": "https://www.whitehouse.gov/wp-content/uploads/2026/04/ap_8_receipts_fy2027.pdf",
+      "published": "2026-04", "tier": "primary",
+      "quote": "Individual income taxes 2,656.0",
+      "corroborating": {
+        "source": "CBO, Monthly Budget Review: Fiscal Year 2025 final",
+        "url": "https://www.cbo.gov/system/files/2025-11/61307-MBR-FY25-final.pdf",
+        "quote": "Individual Income Taxes | 2,176 | 2,426 | 2,656 | 9.5"
+      }
+    },
+
+    "payroll_social_insurance": {
+      "value": 1748.3, "unit": "usd_billions", "period": "FY2025", "basis": "actual", "status": "verified",
+      "source": "OMB, FY2027 Analytical Perspectives Table 08-1",
+      "url": "https://www.whitehouse.gov/wp-content/uploads/2026/04/ap_8_receipts_fy2027.pdf",
+      "published": "2026-04", "tier": "primary",
+      "quote": "Social insurance and retirement receipts 1,748.3",
+      "note": "Payroll tax is the largest federal tax for most households. See history-series.json > payroll for the rate/cap series."
+    },
+
+    "corporate_income_tax": {
+      "value": 452.1, "unit": "usd_billions", "period": "FY2025", "basis": "actual", "status": "verified",
+      "source": "OMB, FY2027 Analytical Perspectives Table 08-1",
+      "url": "https://www.whitehouse.gov/wp-content/uploads/2026/04/ap_8_receipts_fy2027.pdf",
+      "published": "2026-04", "tier": "primary",
+      "quote": "Corporation income taxes 452.1",
+      "note": "CBO's MBR shows corporate receipts FELL 14.7% from FY2024 ($530B) to FY2025 ($452B)."
+    },
+
+    "customs_duties": {
+      "value": 194.9, "unit": "usd_billions", "period": "FY2025", "basis": "actual", "status": "verified",
+      "source": "OMB, FY2027 Analytical Perspectives Table 08-1",
+      "url": "https://www.whitehouse.gov/wp-content/uploads/2026/04/ap_8_receipts_fy2027.pdf",
+      "published": "2026-04", "tier": "primary",
+      "quote": "Customs duties 194.9",
+      "note": "Up 153% year over year per CBO ('Customs Duties (including tariffs) | 80 | 77 | 195 | 153.0'). This is the tariff story and it is a genuinely new feature of the FY2025 baseline — worth an Act 1 annotation."
+    },
+
+    "excise_taxes": {
+      "value": 105.9, "unit": "usd_billions", "period": "FY2025", "basis": "actual", "status": "corrected",
+      "dossier_claimed": "~100",
+      "source": "OMB, FY2027 Analytical Perspectives Table 08-1",
+      "url": "https://www.whitehouse.gov/wp-content/uploads/2026/04/ap_8_receipts_fy2027.pdf",
+      "published": "2026-04", "tier": "primary",
+      "quote": "Excise taxes 105.9",
+      "corroborating": {
+        "source": "CBO, The Accuracy of CBO's Budget Projections for Fiscal Year 2025",
+        "url": "https://www.cbo.gov/publication/62022",
+        "note": "reports FY2025 actual excise taxes of $106 billion"
+      }
+    },
+
+    "estate_and_gift_taxes": {
+      "value": 29.5, "unit": "usd_billions", "period": "FY2025", "basis": "actual", "status": "corrected",
+      "dossier_claimed": "~30-35",
+      "source": "OMB, FY2027 Analytical Perspectives Table 08-1",
+      "url": "https://www.whitehouse.gov/wp-content/uploads/2026/04/ap_8_receipts_fy2027.pdf",
+      "published": "2026-04", "tier": "primary",
+      "quote": "Estate and gift taxes 29.5",
+      "note": "Fell 7% from FY2024 (~$31.7B) per CBO. Against roughly $3T/yr of wealth transfers. This is 0.56% of federal receipts — the framing number for the estate-tax era card."
+    },
+
+    "miscellaneous_receipts": {
+      "value": 49.7, "unit": "usd_billions", "period": "FY2025", "basis": "actual", "status": "verified",
+      "source": "OMB, FY2027 Analytical Perspectives Table 08-1",
+      "url": "https://www.whitehouse.gov/wp-content/uploads/2026/04/ap_8_receipts_fy2027.pdf",
+      "published": "2026-04", "tier": "primary",
+      "quote": "Miscellaneous receipts 49.7",
+      "note": "Federal Reserve remittances sit inside this line and are not separately published. Do NOT derive the Fed component from CBO's 'increased by $2 billion (or 75 percent)' — that is arithmetic on a rounded delta. See blocked.json."
+    },
+
+    "total": {
+      "value": 5236.4, "unit": "usd_billions", "period": "FY2025", "basis": "actual", "status": "verified",
+      "source": "OMB, FY2027 Analytical Perspectives Table 08-1",
+      "url": "https://www.whitehouse.gov/wp-content/uploads/2026/04/ap_8_receipts_fy2027.pdf",
+      "published": "2026-04", "tier": "primary",
+      "quote": "Total, receipts 5,236.4",
+      "note": "CBO prints $5,235B; the $1.4B gap is a receipts-taxonomy difference between the two agencies, not an error in either. Components above sum to 5,236.4 exactly."
+    },
+
+    "total_pct_gdp": {
+      "value": 17.2, "unit": "percent_of_gdp", "period": "FY2025", "basis": "actual", "status": "corrected",
+      "dossier_claimed": "17.3",
+      "source": "CBO, The Budget and Economic Outlook: 2026 to 2036, Table 1-1",
+      "url": "https://www.cbo.gov/system/files/2026-02/61882-Outlook-2026.pdf",
+      "published": "2026-02", "tier": "primary",
+      "quote": "Total 5,235 ... 17.2",
+      "note": "SUPERSESSION: CBO's Nov 2025 final MBR says 17.3% and OMB's April 2026 AP-8 still prints 17.3%. Both used a pre-revision GDP. BEA's revised FY2025 GDP of $30,362B puts it at 17.2%. Ship 17.2% and footnote that earlier CBO releases show 17.3%, or a reader checking the MBR will think the tool is wrong."
+    }
+  },
+
+  "outlays": {
+    "total": {
+      "value": 7010, "unit": "usd_billions", "period": "FY2025", "basis": "actual", "status": "verified",
+      "source": "CBO, Monthly Budget Review: Fiscal Year 2025 final",
+      "url": "https://www.cbo.gov/system/files/2025-11/61307-MBR-FY25-final.pdf",
+      "published": "2025-11-10", "tier": "primary",
+      "quote": "Outlays in fiscal year 2025 were $7.0 trillion"
+    },
+    "total_pct_gdp": {
+      "value": 23.1, "unit": "percent_of_gdp", "period": "FY2025", "basis": "actual", "status": "verified",
+      "source": "CBO, The Budget and Economic Outlook: 2026 to 2036, Table 1-1",
+      "url": "https://www.cbo.gov/system/files/2026-02/61882-Outlook-2026.pdf",
+      "published": "2026-02", "tier": "primary",
+      "quote": "Total 7,010 ... 23.1"
+    },
+    "discretionary_defense": {
+      "value": 893, "unit": "usd_billions", "period": "FY2025", "basis": "actual", "status": "corrected",
+      "dossier_claimed": "~850",
+      "source": "CBO, Discretionary Spending in Fiscal Year 2025: An Infographic",
+      "url": "https://www.cbo.gov/system/files/2026-03/61952-discretionary.pdf",
+      "published": "2026-03", "tier": "primary",
+      "quote": "$893",
+      "note": "OUTLAYS, not budget authority. 2.9% of GDP."
+    },
+    "discretionary_nondefense": {
+      "value": 980, "unit": "usd_billions", "period": "FY2025", "basis": "actual", "status": "corrected",
+      "dossier_claimed": "~950",
+      "source": "CBO, Discretionary Spending in Fiscal Year 2025: An Infographic",
+      "url": "https://www.cbo.gov/system/files/2026-03/61952-discretionary.pdf",
+      "published": "2026-03", "tier": "primary",
+      "quote": "$980",
+      "note": "OUTLAYS. 3.3% of GDP."
+    },
+    "discretionary_total": {
+      "value": 1873, "unit": "usd_billions", "period": "FY2025", "basis": "actual", "status": "verified",
+      "source": "CBO, Discretionary Spending in Fiscal Year 2025",
+      "url": "https://www.cbo.gov/publication/61952",
+      "published": "2026-03", "tier": "primary",
+      "quote": "Discretionary outlays by the federal government totaled $1.9 trillion in 2025. Outlays for nondefense programs accounted for more than half of that total.",
+      "note": "ANCHOR-FACT GATE: the tool's claim that tax expenditures exceed all discretionary spending must clear $1,873B, not the ~$1,800B the dossier's inputs implied. It still clears — JCT's FY2026 tax expenditure total is $2,300B — but by $427B, not $500B. State the comparison with both figures and both periods (FY2026 expenditures vs FY2025 outlays), since they are different years."
+    }
+  },
+
+  "deficit": {
+    "value": 1775, "unit": "usd_billions", "period": "FY2025", "basis": "actual", "status": "verified",
+    "source": "CBO, Monthly Budget Review: Fiscal Year 2025 final",
+    "url": "https://www.cbo.gov/system/files/2025-11/61307-MBR-FY25-final.pdf",
+    "published": "2025-11-10", "tier": "primary",
+    "quote": "The federal budget deficit totaled $1.8 trillion—a decrease of $41 billion (or 2 percent) from the shortfall recorded in the previous year.",
+    "pct_gdp": {
+      "value": 5.8, "unit": "percent_of_gdp", "period": "FY2025", "basis": "actual", "status": "corrected",
+      "dossier_claimed": "5.9",
+      "source": "CBO, The Budget and Economic Outlook: 2026 to 2036, Table 1-1",
+      "url": "https://www.cbo.gov/system/files/2026-02/61882-Outlook-2026.pdf",
+      "published": "2026-02", "tier": "primary",
+      "quote": "-1,775 ... -5.8",
+      "note": "Same GDP-revision supersession as receipts. The Nov 2025 MBR says 5.9%."
+    }
+  },
+
+  "gdp": {
+    "fy2025_nominal": {
+      "value": 30362, "unit": "usd_billions", "period": "FY2025", "basis": "actual", "status": "verified",
+      "source": "CBO, The Budget and Economic Outlook: 2026 to 2036, Table 1-1",
+      "url": "https://www.cbo.gov/system/files/2026-02/61882-Outlook-2026.pdf",
+      "published": "2026-02", "tier": "primary",
+      "quote": "GDP ... 30,362",
+      "note": "Use this, not the dossier's back-solved ~$30.26T. Check: 5,235 / 30,362 = 17.24%, matching CBO's printed 17.2%."
+    },
+    "cy2025_nominal": {
+      "value": 30762.099, "unit": "usd_billions", "period": "2025", "basis": "actual", "status": "verified",
+      "source": "BEA NIPA via FRED series GDPA",
+      "url": "https://fred.stlouisfed.org/series/GDPA",
+      "published": "2026-04-09", "tier": "secondary",
+      "quote": "2025: 30,762.099"
+    },
+    "latest_quarterly_nominal": {
+      "value": 32475.210, "unit": "usd_billions", "period": "2026Q2", "basis": "actual", "status": "verified",
+      "source": "BEA NIPA via FRED series GDP (advance estimate)",
+      "url": "https://fred.stlouisfed.org/series/GDP",
+      "published": "2026-07-30", "tier": "secondary",
+      "quote": "Q2 2026: 32,475.210",
+      "note": "SAAR. Advance estimate; the second estimate is due later in August 2026 and will revise it. Label as 'advance estimate, July 30, 2026' anywhere it is shown."
+    },
+    "cbo_2026_projected": {
+      "value": 31902, "unit": "usd_billions", "period": "2026", "basis": "projection", "status": "verified",
+      "source": "CBO, The Budget and Economic Outlook: 2026 to 2036",
+      "url": "https://www.cbo.gov/system/files/2026-02/61882-Outlook-2026.pdf",
+      "published": "2026-02", "tier": "primary",
+      "quote": "31,902",
+      "note": "Use this as the denominator for 'one point of GDP is worth $X' framing. See derived.point_of_gdp."
+    },
+    "latest_real_growth": {
+      "value": 1.5, "unit": "percent", "period": "2026Q2", "basis": "actual", "status": "verified",
+      "source": "BEA, Gross Domestic Product, 2nd Quarter 2026 (Advance Estimate), BEA 26-35",
+      "url": "https://www.bea.gov/news/2026/gdp-advance-estimate-2nd-quarter-2026",
+      "published": "2026-07-30", "tier": "primary",
+      "quote": "Real gross domestic product (GDP) increased at an annual rate of 1.5 percent in the second quarter of 2026",
+      "note": "Q1 2026 was 2.1 percent. Current-dollar GDP rose at a 7.9 percent SAAR."
+    }
+  },
+
+  "gdp_composition": {
+    "_period": "2026Q2",
+    "_note": "All levels are BEA via FRED, same vintage (Q2 2026 advance, released 2026-07-30). Shares are arithmetic on the verified levels. Identity check: 22,078.176 + 5,719.908 - 869.026 + 5,546.153 = 32,475.211 vs printed GDP 32,475.210 (0.001 rounding). These are Q2 2026, NOT FY2025 — do not put them on the same axis as the budget figures without saying so.",
+    "consumption_c": {
+      "value": 22078.176, "share_pct": 68.0, "unit": "usd_billions", "period": "2026Q2", "basis": "actual", "status": "verified",
+      "source": "BEA via FRED series PCEC", "url": "https://fred.stlouisfed.org/series/PCEC",
+      "published": "2026-07-30", "tier": "secondary", "quote": "Personal Consumption Expenditures ... Q2 2026: 22,078.176"
+    },
+    "investment_i": {
+      "value": 5719.908, "share_pct": 17.6, "unit": "usd_billions", "period": "2026Q2", "basis": "actual", "status": "verified",
+      "source": "BEA via FRED series GPDI", "url": "https://fred.stlouisfed.org/series/GPDI",
+      "published": "2026-07-30", "tier": "secondary", "quote": "Gross Private Domestic Investment ... Q2 2026: 5,719.908"
+    },
+    "government_g": {
+      "value": 5546.153, "share_pct": 17.1, "unit": "usd_billions", "period": "2026Q2", "basis": "actual", "status": "verified",
+      "source": "BEA via FRED series GCE", "url": "https://fred.stlouisfed.org/series/GCE",
+      "published": "2026-07-30", "tier": "secondary", "quote": "Government Consumption Expenditures and Gross Investment ... Q2 2026: 5,546.153"
+    },
+    "net_exports_nx": {
+      "value": -869.026, "share_pct": -2.7, "unit": "usd_billions", "period": "2026Q2", "basis": "actual", "status": "verified",
+      "source": "BEA via FRED series NETEXP", "url": "https://fred.stlouisfed.org/series/NETEXP",
+      "published": "2026-07-30", "tier": "secondary", "quote": "Net Exports of Goods and Services ... Q2 2026: -869.026"
+    },
+    "federal_purchases": {
+      "value": 1988.449, "share_pct": 6.1, "unit": "usd_billions", "period": "2026Q2", "basis": "actual", "status": "verified",
+      "source": "BEA via FRED series FGCE", "url": "https://fred.stlouisfed.org/series/FGCE",
+      "published": "2026-07-30", "tier": "secondary",
+      "quote": "Federal Consumption Expenditures and Gross Investment ... Q2 2026: 1,988.449",
+      "note": "TEACHING POINT, and a strong one: total federal OUTLAYS are 23.1% of GDP, but federal PURCHASES — goods and services the government actually buys, the 'G' in GDP — are 6.1%. The ~17-point gap is transfers, grants to states, and interest: money that moves without the federal government buying anything, so it shows up in GDP as C or I or state/local G. Note the two figures are different bases (FY2025 budget vs Q2 2026 NIPA) and different accounting concepts; do not subtract them on screen."
+    }
+  },
+
+  "derived": {
+    "point_of_gdp": {
+      "value": 319, "unit": "usd_billions", "period": "2026", "basis": "estimate", "status": "corrected",
+      "dossier_claimed": "~290",
+      "derivation": "CBO projected 2026 GDP of $31,902B x 1%",
+      "source": "CBO, The Budget and Economic Outlook: 2026 to 2036",
+      "url": "https://www.cbo.gov/system/files/2026-02/61882-Outlook-2026.pdf",
+      "published": "2026-02", "tier": "primary",
+      "note": "The dossier's $290B corresponds to a ~$29T GDP, a 2024-vintage figure. Express as 'about $320 billion' rather than $319B — the underlying GDP is a projection and false precision is unwarranted. ARITHMETIC IS OURS, the GDP level is CBO's; label it as a derivation in the methodology page."
+    }
+  },
+
+  "vintage_warnings": [
+    "Two live percent-of-GDP vintages exist for FY2025. Nov 2025 final MBR: receipts 17.3%, deficit 5.9%. Feb/Mar 2026 CBO: 17.2%, 5.8%. Dollar figures are identical across all releases; only the GDP denominator moved. Publish the 2026 vintage, footnote the 2025 one.",
+    "CBO's September 2025 MBR (published Oct 8, 2025) is STALE: outlays $7,035B, deficit $1,809B, individual income tax $2,665B, payroll $1,730B. Use only the Nov 10, 2025 final.",
+    "GDP composition is Q2 2026; the budget data is FY2025. Never present them as one time series."
+  ]
+}

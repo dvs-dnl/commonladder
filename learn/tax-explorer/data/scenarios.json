@@ -1,0 +1,1132 @@
+{
+  "_meta": {
+    "id": "scenarios",
+    "title": "Act 3 preset scenario cards — verified scores",
+    "built": "2026-08-17",
+    "phase": "0",
+    "card_shape": "what changes -> what happens (revenue, by-class, GDP band) -> why -> evidence strength badge -> what critics say -> sources",
+    "hard_rule": "Where two shops disagree, show BOTH with attribution. NEVER average them. That honesty is the tool's stated purpose (dossier §D6.3).",
+    "baseline_warning": "Almost every score here is PRE-OBBBA. Only three sources in the whole dataset are post-OBBBA: Tax Foundation's 2026 Options Guide, Yale Budget Lab's carried-interest re-estimate (May 2026), and CRS IF13190 (March 2026). Every card must carry its baseline label.",
+    "phase_3_note": "Phase 3 (2026-08-18) added four verified cards — housing_vouchers, restore_2021_ctc, close_the_loopholes, tra86_model — and cleared five items from not_verified_this_phase. Every figure added carries a URL fetched that session, a verbatim quote, a period and a publication date, per the Phase 2 precedent."
+  },
+  "obbba_baseline": {
+    "card": "You are here — what current law already does",
+    "deficit_effect": {
+      "value": 3400,
+      "unit": "usd_billions",
+      "window": "2025-2034",
+      "status": "verified",
+      "tier": "primary",
+      "source": "CBO, Estimated Budgetary Effects of Public Law 119-21, Relative to CBO's January 2025 Baseline",
+      "url": "https://www.cbo.gov/publication/61570",
+      "published": "2025-07-21",
+      "quote": "CBO estimates that Public Law 119-21 will result in a net increase in the unified budget deficit totaling $3.4 trillion over the 2025-2034 period",
+      "note": "This is the FINAL ENACTED score, not the earlier House-passed estimate. Excludes debt-service costs, which CBO scores separately."
+    },
+    "distribution": {
+      "status": "corrected",
+      "dossier_claimed": "bottom decile -3.1% of income, top decile +2.7%, by 2034",
+      "verified": {
+        "bottom_decile_dollars": -1600,
+        "bottom_decile_pct": 3.9,
+        "top_decile_dollars": 12000,
+        "top_decile_pct": 2.3,
+        "period": "AVERAGE over 2026-2034",
+        "dollars_basis": "2025 dollars"
+      },
+      "source": "CBO, Distributional Effects of H.R. 1, the One Big Beautiful Bill Act",
+      "url": "https://www.cbo.gov/system/files/2025-06/61387-Distributional-Effects.pdf",
+      "published": "2025-06-12",
+      "tier": "primary",
+      "quote": "Resources for households in the lowest decile of the income distribution would decrease by about $1,600 per year (in 2025 dollars)…That amounts to 3.9 percent of their income",
+      "quote_2": "Resources would increase, on average, over the projection period by about $12,000 for households in the highest decile, amounting to 2.3 percent of their projected income.",
+      "quote_3": "Those estimates reflect the average distributional effects over the 2026–2034 period.",
+      "corrections": [
+        "Bottom-decile loss is 3.9%, NOT 3.1%",
+        "Top-decile gain is 2.3%, NOT 2.7%",
+        "These are PERIOD AVERAGES, not 'by 2034'. CBO explicitly declines annual figures: 'The distributional effects would vary throughout that period as different components of the legislation were phased in and out.'",
+        "This scores H.R. 1 AS IT STOOD IN JUNE 2025, not the enacted P.L. 119-21. The enacted text differs."
+      ],
+      "definitional_note": "Group is DECILE of the income distribution. The measure is HOUSEHOLD RESOURCES (income plus in-kind transfers, net of taxes), not income alone — and the bottom-decile loss is driven substantially by Medicaid and SNAP changes, NOT tax provisions. A tool that presents this as a purely tax-side result would be wrong."
+    },
+    "evidence_strength": "strong (official CBO score of enacted law)"
+  },
+  "scrap_the_payroll_cap": {
+    "card": "Scrap the Social Security payroll cap",
+    "evidence_strength": "strong (mechanical)",
+    "current_cap": {
+      "2025": 176100,
+      "2026": 184500,
+      "source": "SSA OCACT",
+      "url": "https://www.ssa.gov/oact/cola/cbb.html",
+      "tier": "primary",
+      "quote_2026": "2026 | $184,500"
+    },
+    "cbo_options": {
+      "status": "corrected",
+      "dossier_claimed": "'>$400,000 donut hole' at ~$1.2-1.4T/10yr",
+      "verdict": "CBO's option uses a $250,000 THRESHOLD, NOT $400,000. Do not describe CBO's number as scoring the $400k donut hole.",
+      "option_name": "Increase the Maximum Taxable Earnings That Are Subject to Social Security Payroll Taxes (Option 60955)",
+      "url": "https://www.cbo.gov/budget-options/60955",
+      "published": "2024-12-12",
+      "window": "2025-2034",
+      "baseline": "pre-obbba",
+      "tier": "primary",
+      "alternatives": [
+        {
+          "alt": "Raise the taxable share of earnings to 90 percent",
+          "value": 727.6
+        },
+        {
+          "alt": "Apply the tax to earnings above $250,000 (donut hole)",
+          "value": 1426.8
+        }
+      ],
+      "note": "Net of an income-tax offset: 'an offset to reflect reduced income and payroll taxes has been applied to the estimates.' CBO publishes NO full-elimination dollar figure in this option — use SSA OCACT for that, expressed in percent of payroll."
+    },
+    "ssa_solvency": {
+      "status": "verified",
+      "tier": "primary",
+      "basis": "2025 Trustees Report basis, 75-year long-range period",
+      "source": "SSA Office of the Chief Actuary, provisions summary",
+      "url": "https://www.ssa.gov/oact/solvency/provisions_tr2025/summary.pdf",
+      "provisions": [
+        {
+          "id": "E2.1",
+          "description": "Eliminate the taxable maximum from 2026, apply the full 12.4% rate to all earnings. NO benefit credit for earnings above the current-law maximum.",
+          "pct_of_payroll": 2.55,
+          "pct_of_deficit_closed": 67
+        },
+        {
+          "id": "E2.2",
+          "description": "Same, but WITH benefit credit for earnings above the current-law maximum.",
+          "pct_of_payroll": 1.85,
+          "pct_of_deficit_closed": 48
+        },
+        {
+          "id": "E2.13",
+          "description": "12.4% on earnings above $400,000 from 2027, tax all earnings once the cap exceeds $400,000, WITH benefit credit.",
+          "pct_of_payroll": 2.21,
+          "pct_of_deficit_closed": 58
+        },
+        {
+          "id": "E2.17",
+          "description": "12.4% on earnings above $400,000 from 2026, tax all earnings once the cap exceeds $400,000, NO benefit credit.",
+          "pct_of_payroll": 2.31,
+          "pct_of_deficit_closed": 60
+        },
+        {
+          "id": "E2.18",
+          "description": "Variant of the $400,000 donut hole.",
+          "pct_of_payroll": 2.19,
+          "pct_of_deficit_closed": 57
+        }
+      ],
+      "the_load_bearing_finding": "THE 'HALF TO TWO-THIRDS' RANGE IS NOT UNCERTAINTY — IT IS A POLICY CHOICE. Crediting the new earnings toward benefits drops the shortfall closed from 67% (E2.1) to 48% (E2.2). The tool MUST state which variant it means. This is a perfect why-panel: the same headline policy produces two very different answers depending on one design decision nobody talks about.",
+      "vintage_note": "The provisions index page currently reads 'We are working on updating the provisions to a 2026 Trustees Report basis, and this category is not yet available.' All figures are 2025 TR basis.",
+      "correct_source_for_400k": "SSA OCACT E2.13/E2.17/E2.18 — NOT CBO. All three land in the 57-60% band."
+    },
+    "who_pays": "Top ~6% of earners. Polls above 70% support (dossier claim, not re-verified this phase)."
+  },
+  "flat_tax": {
+    "card": "Switch to a flat tax",
+    "evidence_strength": "strong scoring, stale baseline",
+    "revenue": {
+      "value": -8600,
+      "unit": "usd_billions",
+      "window": "2016-2026",
+      "baseline": "pre-tcja AND pre-obbba (DOUBLY STALE)",
+      "status": "verified",
+      "tier": "primary",
+      "source": "Tax Policy Center (Urban-Brookings), An Analysis of Ted Cruz's Tax Plan",
+      "url": "https://www.urban.org/sites/default/files/publication/77811/2000612-an-analysis-of-ted-cruzs-tax-plan.pdf",
+      "published": "2016-02-16",
+      "quote": "It would cut taxes by an average of about $6,100, or about 8.5 percent of after-tax income. On average, households at all income levels would receive tax cuts, but the highest-income households would receive the largest cuts, both in dollars and as a percentage of income.",
+      "note": "The Cruz plan paired a 10% individual flat tax with a 16% subtraction-method business flat tax — a VAT in substance. The score is for the PACKAGE, not a pure flat tax. Say so."
+    },
+    "distribution": {
+      "period": "calendar year 2017 (a single-year snapshot, NOT the 10-year window)",
+      "group_definition": "EXPANDED CASH INCOME PERCENTILE. Quintiles and the top 1%/0.1% OVERLAP — the top quintile row contains the top 1% and top 0.1% rows.",
+      "status": "verified",
+      "tier": "primary",
+      "table": [
+        {
+          "group": "Lowest quintile",
+          "pct_change_after_tax_income": 0.4
+        },
+        {
+          "group": "Second quintile",
+          "pct_change_after_tax_income": 1.9
+        },
+        {
+          "group": "Middle quintile",
+          "pct_change_after_tax_income": 3.2
+        },
+        {
+          "group": "Fourth quintile",
+          "pct_change_after_tax_income": 4.9
+        },
+        {
+          "group": "Top quintile",
+          "pct_change_after_tax_income": 13.7
+        },
+        {
+          "group": "Top 1 percent",
+          "pct_change_after_tax_income": 26
+        },
+        {
+          "group": "Top 0.1 percent",
+          "pct_change_after_tax_income": 29
+        }
+      ],
+      "note": "The dossier's '~1-3% for the middle' slightly understates it — the middle quintile gains 3.2%. Precise statement: the middle quintile gains 3.2% while the top 0.1% gains 29.0%, roughly a 9-to-1 ratio."
+    },
+    "constant_finding": "Revenue-neutral flat taxes shift burden from capital owners to wage earners. This is gameplan §9 test 5: a 17% flat tax must show a large revenue loss AND a regressive class chart."
+  },
+  "fairtax": {
+    "card": "Replace the income tax with a national sales tax (FairTax, H.R. 25)",
+    "evidence_strength": "moderate (rate analyses are robust; distributional detail is thin and dated)",
+    "rate_framing": {
+      "tax_inclusive": 23,
+      "tax_exclusive": 30,
+      "status": "verified",
+      "tier": "primary",
+      "source": "Brookings, Gale & Pomerleau, Proposed FairTax rate would add trillions to deficits over 10 years",
+      "url": "https://www.brookings.edu/articles/proposed-fairtax-rate-would-add-trillions-to-deficits-over-10-years/",
+      "published": "2023-03-01",
+      "quote": "The bill's cited rate of 23% is 'tax-inclusive,' meaning the tax is 23% of the total after-tax price. This corresponds to a 30% 'tax-exclusive' rate, or the markup at the cash register.",
+      "note": "The H.R. 25 bill text itself could not be fetched (congress.gov is robots-disallowed). The arithmetic is not in dispute."
+    },
+    "revenue_neutral_rate": {
+      "status": "corrected",
+      "dossier_claimed": "~31% inclusive / 44%+ exclusive",
+      "verdict": "The claimed figures match NO row in Gale/Pomerleau. And the correction makes the FairTax look WORSE, not better — so it strengthens the point rather than weakening it.",
+      "gale_pomerleau": [
+        {
+          "scenario": "minimum (no evasion, no base erosion)",
+          "inclusive": 28,
+          "exclusive": 39,
+          "quote": "The FairTax would require a tax-inclusive rate of about 28% over the next decade, corresponding to a 39% tax-exclusive rate."
+        },
+        {
+          "scenario": "with 17% evasion and avoidance",
+          "inclusive": 34.1,
+          "exclusive": 51.7,
+          "quote": "34.1%, or a 51.7% markup at the cash register."
+        },
+        {
+          "scenario": "with base erosion from exemptions",
+          "inclusive": 46.1,
+          "exclusive": 85.5,
+          "quote": "The required deficit-neutral rate rises to 46.1% (tax inclusive), or an 85.5% tax exclusive rate."
+        }
+      ],
+      "recommended": "Use the 34.1% / 51.7% evasion-adjusted row.",
+      "deficit_impact_at_23pct": "roughly $9.9T to $27.7T over ten years depending on assumptions",
+      "advisory_panel_2005": {
+        "exclusive_range": [
+          34,
+          89
+        ],
+        "status": "corrected",
+        "tier": "secondary",
+        "source": "Tax Policy Center Briefing Book summarizing the President's Advisory Panel, Simple, Fair, and Pro-Growth",
+        "url": "https://taxpolicycenter.org/briefing-book/what-would-tax-rate-be-under-national-retail-sales-tax",
+        "published": "2024-01",
+        "quote": "the required tax-exclusive rate to be between 34 and 89 percent",
+        "note": "DO NOT collapse the Panel into a single number. The 34-89% range IS the finding. Also: 'Households' total sales tax rate would be significantly higher than the federal rates indicated above, after existing state sales tax were added.'"
+      }
+    },
+    "distribution": {
+      "status": "verified_at_quintile_level_only",
+      "tier": "secondary",
+      "source": "Tax Policy Center Briefing Book summarizing the President's Advisory Panel",
+      "url": "https://taxpolicycenter.org/briefing-book/who-bears-burden-national-retail-sales-tax",
+      "published": "2024-01",
+      "modeled_at_rate": 22,
+      "dollars_basis": "2006 dollars",
+      "group_definition": "PERCENTILE OF EARNERS (bottom 80% / top 20%)",
+      "table": [
+        {
+          "group": "Lower 80%",
+          "share_of_federal_income_taxes_current": 15.8,
+          "share_of_federal_sales_taxes_nrst": 34.9
+        },
+        {
+          "group": "Top 20%",
+          "share_of_federal_income_taxes_current": 84.2,
+          "share_of_federal_sales_taxes_nrst": 65.1
+        }
+      ],
+      "headline": "The bottom 80%'s share of the federal tax burden MORE THAN DOUBLES, 15.8% to 34.9%. Lower-80% burdens rise by roughly $250 billion annually (2006 dollars).",
+      "unverified_subclaim": "The 'top 1% pays much less' claim is NOT VERIFIED at the 1% level — the Panel table is cut at the top QUINTILE, and 1% is not 20%. Do not report a top-1% figure from this source. No ITEP 2023 FairTax distributional analysis could be located.",
+      "steelman": "TPC's own note, which the tool should carry: 'The burden of a sales tax is more proportional to income when measured as a share of income over a lifetime.' That is the strongest defense of the FairTax and it belongs on the card."
+    }
+  },
+  "add_a_vat": {
+    "card": "Add a 5% value-added tax",
+    "evidence_strength": "strong (mechanical CBO score)",
+    "status": "corrected",
+    "option_name": "Impose a 5 Percent Value-Added Tax (Option 60961)",
+    "url": "https://www.cbo.gov/budget-options/60961",
+    "published": "2024-12-12",
+    "window": "2025-2034",
+    "baseline": "pre-obbba",
+    "tier": "primary",
+    "alternatives": [
+      {
+        "alt": "Broad base",
+        "value": 3380,
+        "dossier_claimed": 3500,
+        "base_note": "Broad base excludes financial services, education, government services, and existing housing."
+      },
+      {
+        "alt": "Narrower base",
+        "value": 2180,
+        "dossier_claimed": 2300,
+        "base_note": "Narrow base additionally excludes new residential housing, food purchased for home consumption, health care, and postsecondary education."
+      }
+    ],
+    "quote": "Apply a 5 percent VAT to a broad base -3,380 ... Apply a 5 percent VAT to a narrower base -2,180",
+    "oecd_context": {
+      "oecd_average_tax_to_gdp": {
+        "value": 33.9,
+        "period": "2023",
+        "status": "verified",
+        "tier": "secondary",
+        "url": "https://www.statsandgraphs.com/p/tax-to-gdp-ratios-in-oecd-countries",
+        "quote": "The average tax-to-GDP ratio across OECD member countries remained stable at 33.9% in 2023",
+        "note": "This is an UNWEIGHTED average across members. TPC's weighted average of 34% for 2021 is a different quantity — not interchangeable."
+      },
+      "us_tax_to_gdp": {
+        "value": null,
+        "status": "blocked",
+        "dossier_claimed": 25.2,
+        "note": "MUST NOT SHIP 25.2%. Every OECD country-note PDF carrying the US line is robots-disallowed, and OECD HTML pages return navigation chrome only. The nearest verified US figure is on a different definition and vintage: TPC reports 27% of GDP for 2021, all levels of government (https://taxpolicycenter.org/briefing-book/how-do-us-taxes-compare-internationally). Either use the TPC 2021 figure with its definition stated, or drop the international comparison."
+      },
+      "us_is_only_oecd_country_without_a_vat": "dossier claim, not re-verified this phase"
+    }
+  },
+  "wealth_tax": {
+    "card": "Tax wealth, not just income",
+    "evidence_strength": "contested",
+    "warren": {
+      "structure": "2% above $50M plus an additional 1% (3% total) above $1B",
+      "structure_warning": "RATE STRUCTURE MATTERS AND VERSIONS DIFFER. The 2019 Saez-Zucman letter scores 2%/+1%; the 2021 Ultra-Millionaire Tax Act used a 3% surtax structure; the 2019 campaign version went to 6%. Which version is cited changes the number materially — always name the version.",
+      "estimates": [
+        {
+          "shop": "Saez & Zucman",
+          "value": 2750,
+          "window": "2019-2028",
+          "households": 75000,
+          "tier": "primary",
+          "url": "https://www.warren.senate.gov/wp-content/uploads/media/doc/saez-zucman-wealthtax.pdf",
+          "published": "2019-01-18",
+          "quote": "the tax would raise around $2.75 trillion over the ten-year budget window 2019-2028 ... about 75,000 American households (less than 0.1%)"
+        },
+        {
+          "shop": "Penn Wharton Budget Model",
+          "conventional_2022_2031": 2100,
+          "conventional_with_irs_enforcement": 2400,
+          "conventional_2023_2032": 2700,
+          "dynamic_2022_2031": 2000,
+          "dynamic_2023_2032": 2300,
+          "tier": "primary",
+          "url": "https://budgetmodel.wharton.upenn.edu/issues/2021/3/15/budgetary-effects-of-senator-warren-wealth-tax",
+          "published": "2021-03-15",
+          "quote": "2.1 trillion over the standard 10-year budget window (2022-2031)",
+          "status": "corrected",
+          "dossier_claimed": "~$1.4-2.7T",
+          "important": "THE DOSSIER MISREAD THIS BADLY. PWBM's range is $2.0T-$2.7T; the claimed $1.4T low end appears nowhere. And on the MATCHED 2023-2032 window PWBM is within ~$30 BILLION of Saez-Zucman. PWBM and Saez-Zucman SUBSTANTIALLY AGREE on conventional scoring. Do NOT present PWBM as the skeptical counterweight — that role belongs to Summers-Sarin."
+        },
+        {
+          "shop": "Summers & Sarin",
+          "annual_range": [
+            25,
+            75
+          ],
+          "unit": "usd_billions_per_year",
+          "tier": "primary",
+          "url": "https://www.washingtonpost.com/opinions/2019/06/28/be-very-skeptical-about-how-much-revenue-elizabeth-warrens-wealth-tax-could-generate/",
+          "status": "corrected",
+          "dossier_claimed": "~$1.1T over 10 years",
+          "quote": "$25 billion is a rough back-of-the-envelope number",
+          "quote_2": "We would be surprised if the $25-billion-a-year figure we suggest was not a significant underestimate.",
+          "verdict": "NO $1.1T FIGURE EXISTS in any Summers-Sarin source. Their published estimate is $25-75B PER YEAR with an explicit disclaimer that it is not a point estimate. Naively decadalized that is ~$250B-$750B — well below $1.1T. Either report their ANNUAL range with the caveat that they declined to give a 10-year total, or drop the figure. DO NOT PUBLISH $1.1T."
+        }
+      ],
+      "the_real_disagreement": "The honest framing is not 'shops disagree by 2.5x.' It is: Saez-Zucman and Penn Wharton agree closely on conventional scoring (~$2.1-2.75T), while Summers and Sarin argue the whole exercise is unreliable and offer a back-of-envelope figure an order of magnitude lower, explicitly disclaimed. That is a disagreement about METHOD CONFIDENCE, not about a parameter — and it should be presented that way."
+    },
+    "sanders": {
+      "structure": "1-8% above $32M",
+      "value": 4350,
+      "window": "2019-2028",
+      "households": 180000,
+      "status": "corrected",
+      "dossier_claimed": "~75,000 households (that figure belongs to the WARREN plan)",
+      "tier": "primary",
+      "url": "https://gabriel-zucman.eu/files/saez-zucman-wealthtax-sanders.pdf",
+      "published": "2019-09-22",
+      "quote": "the tax would raise around $4.35 trillion over the ten-year budget window 2019-2028 ... about 180,000 American households (about the top 0.1%)"
+    },
+    "biden_billionaire_minimum": {
+      "value": 502.6,
+      "window": "FY2025-2034",
+      "structure": "25% minimum income tax on taxpayers with net wealth above $100 million",
+      "baseline": "pre-obbba — PROPOSAL IS DEAD as of P.L. 119-21",
+      "status": "verified",
+      "tier": "secondary",
+      "url": "https://www.pwc.com/us/en/services/tax/library/biden-fy2025-budget-calls-again-for-corporate-and-individual-tax-increases.html",
+      "quote": "$502.6 billion over 10 years",
+      "note": "The Green Book PDF fetched and confirms the proposal text ('A new 25-percent minimum income tax would be imposed on extremely wealthy taxpayers') but the revenue table did not render — hence the secondary label on the dollar figure. Contested on valuation, liquidity, and Moore v. US constitutionality."
+    },
+    "wyden_mark_to_market": {
+      "value": 557,
+      "window": "2022-2031",
+      "baseline": "pre-obbba",
+      "status": "verified",
+      "tier": "secondary",
+      "url": "https://www.finance.senate.gov/chairmans-news/wyden-statement-on-billionaires-income-tax-score",
+      "published": "2021-11-05",
+      "quote": "$557 billion in revenue over 10 years",
+      "taxpayer_count": {
+        "value": null,
+        "status": "unsourced",
+        "dossier_claimed": "~700 taxpayers",
+        "note": "Neither Senate Finance release quantifies the covered population. The '700-odd billionaires' phrasing comes from an ADVOCACY QUOTE (Frank Clemente, Americans for Tax Fairness), not an official estimate. The releases state only that it 'would apply to taxpayers with more than $1 billion in assets or more than $100 million in income for three consecutive years.' Do not ship the count."
+      }
+    },
+    "international_track_record": {
+      "oecd_country_count": {
+        "value": null,
+        "status": "blocked",
+        "dossier_claimed": "12 countries in 1990 down to 3-4 by 2018",
+        "note": "MUST NOT SHIP. The OECD 2018 study PDF is robots-disallowed and its HTML chapter pages return navigation chrome only. The one adjacent verifiable figure is PolitiFact citing OECD: '13 countries collected revenues from net wealth taxes in 1996' (or 14 when measured as a percentage of GDP) — a different year AND a different denominator. Do not publish '12 in 1990 → 3-4 in 2018' on this evidence."
+      },
+      "switzerland": {
+        "value": 1,
+        "unit": "percent_of_gdp",
+        "status": "verified",
+        "tier": "secondary",
+        "url": "https://www.politifact.com/factchecks/2019/may/10/joel-griffith/some-countries-ditched-wealth-taxes-what-might-mea",
+        "quote": "Switzerland reaps far more than other nations, taking in revenues equal to 1% of GDP.",
+        "note": "The strong counterexample to 'wealth taxes always fail.'"
+      },
+      "norway": {
+        "status": "verified",
+        "tier": "secondary",
+        "rate_before": 0.85,
+        "rate_after": 1.1,
+        "rate_change_year": 2022,
+        "emigration": {
+          "value": 300,
+          "descriptor": "some",
+          "period": "by 2024",
+          "destination": "Switzerland"
+        },
+        "revenue": {
+          "2022": 27,
+          "2025": 34,
+          "unit": "billion_kroner",
+          "basis_2025": "estimated"
+        },
+        "url": "https://www.canadianaffairs.news/2025/10/24/norways-wealth-tax-drove-out-the-rich-without-breaking-the-bank/",
+        "published": "2025-10-24",
+        "source": "Agence France-Presse wire story",
+        "quotes": [
+          "In 2022, Norway hiked its wealth tax rate from 0.85 per cent to 1.1 per cent.",
+          "By 2024, some 300 multimillionaires and billionaires had moved from Norway to Switzerland",
+          "The country will take in an estimated 34 billion kroner in 2025, up from 27 billion in revenues in 2022"
+        ],
+        "critical_framing": "THE EMIGRATION HAPPENED AND REVENUE STILL WENT UP. Presenting the emigration without the revenue trajectory would be a one-sided read of this source — and presenting the revenue without the emigration would be one-sided the other way. Ship both.",
+        "sourcing_caveat": "AFP cites no underlying academic study; this is wire reporting off Norwegian government figures, not a peer-reviewed estimate. Treat as ILLUSTRATIVE, not as a score."
+      }
+    }
+  },
+  "seventy_percent_top_rate": {
+    "card": "Tax the ultra-wealthy: a 70% rate above $10 million",
+    "evidence_strength": "contested",
+    "status": "corrected",
+    "dossier_error": "The dossier attributed a '$189B-$720B (TPC)' range to the Tax Policy Center. THE $189B END IS TAX FOUNDATION, NOT TPC. TPC's own TaxVox piece on the proposal (Gleckman, 2019-01-08) contains NO REVENUE ESTIMATES AT ALL. The ~$700B end is a Washington Post figure, not a modeled score by either shop.",
+    "group_definition": "DOLLAR BAND — taxable income above $10 million. NOT a percentile.",
+    "baseline": "pre-obbba",
+    "estimates": [
+      {
+        "shop": "Tax Foundation",
+        "scenario": "Ordinary income only, conventional",
+        "value": 291.7,
+        "window": "2019-2028",
+        "tier": "primary",
+        "url": "https://taxfoundation.org/blog/70-tax-proposal/"
+      },
+      {
+        "shop": "Tax Foundation",
+        "scenario": "Ordinary income only, dynamic",
+        "value": 189.1,
+        "window": "2019-2028"
+      },
+      {
+        "shop": "Tax Foundation",
+        "scenario": "INCLUDING capital gains, conventional",
+        "value": 51.4,
+        "window": "2019-2028"
+      },
+      {
+        "shop": "Tax Foundation",
+        "scenario": "INCLUDING capital gains, dynamic",
+        "value": -63.5,
+        "window": "2019-2028"
+      },
+      {
+        "shop": "Penn Wharton Budget Model",
+        "scenario": "Static, no behavioral response",
+        "value": 382.3,
+        "window": "2020-2029",
+        "tier": "primary",
+        "url": "https://budgetmodel.wharton.upenn.edu/p/2019-01-22-how-a-top-marginal-rate-of-70-would-affect-business-entity-choice/"
+      },
+      {
+        "shop": "Penn Wharton Budget Model",
+        "scenario": "Aggregate elasticity",
+        "value": 353.1,
+        "window": "2020-2029"
+      },
+      {
+        "shop": "Penn Wharton Budget Model",
+        "scenario": "Business income shifting, full payout",
+        "value": 247.5,
+        "window": "2020-2029"
+      },
+      {
+        "shop": "Penn Wharton Budget Model",
+        "scenario": "Business income shifting, full deferral",
+        "value": 163.8,
+        "window": "2020-2029"
+      },
+      {
+        "shop": "Washington Post (cited by Tax Foundation)",
+        "scenario": "not specified",
+        "value": 700,
+        "descriptor": "a little more than",
+        "window": "a decade",
+        "tier": "secondary"
+      }
+    ],
+    "two_things_drive_the_spread": [
+      "WHETHER THE 70% RATE APPLIES TO CAPITAL GAINS. Including gains flips Tax Foundation's dynamic score NEGATIVE (-$63.5B), because realizations collapse. This is the single most instructive number on the card.",
+      "WHETHER PASS-THROUGH OWNERS REINCORPORATE AS C CORPORATIONS. PWBM finds a 73.8% net pass-through rate vs 39.8% for C corps — 'the largest tax wedge in recent U.S. history.'"
+    ],
+    "the_teaching_pair": "Gameplan §4 Act 3 item 2 calls for showing 70%-alone versus 70%-paired-with-capital-gains as a deliberate contrast. The data now supports that precisely: $291.7B conventional standing alone, versus $51.4B conventional / -$63.5B dynamic once gains are included. Most top-0.05% income is capital gains, which an ordinary-rate lever does not touch — that is the realization doctrine in one comparison.",
+    "diamond_saez_backing": "See parameters.json > revenue_maximizing_top_rate. Note the 73% figure is COMBINED federal+state+payroll+sales, not a federal bracket."
+  },
+  "buffett_rule": {
+    "card": "A 30% minimum rate above $1 million (the Buffett Rule)",
+    "value": 46.7,
+    "annual_average": 4.7,
+    "unit": "usd_billions",
+    "window": "10 years from FY2012",
+    "baseline": "pre-tcja AND pre-obbba (DOUBLY STALE)",
+    "status": "verified",
+    "tier": "secondary",
+    "source": "PolitiFact quoting JCT's score of the Paying a Fair Share Act of 2012",
+    "url": "https://www.politifact.com/factchecks/2012/apr/23/rob-portman/rob-portman-says-buffett-rule-would-raise-just-eno/",
+    "published": "2012-04-23",
+    "quote": "$46.7 billion in additional revenue over 10 years, or $4.7 billion per year on average",
+    "evidence_strength": "moderate (mechanically simple, small yield)",
+    "baseline_note": "THE BASELINE CHOICE IS LOAD-BEARING HERE: JCT scored it against CURRENT LAW, which assumed the Bush tax cuts would expire. Against a current-policy baseline the score is far larger. A card showing $46.7B without that caveat teaches the wrong lesson."
+  },
+  "financial_transaction_tax": {
+    "card": "A 0.1% tax on financial transactions",
+    "value": 777,
+    "unit": "usd_billions",
+    "window": "2019-2028",
+    "baseline": "pre-obbba",
+    "status": "verified",
+    "tier": "primary",
+    "source": "CBO, Impose a Tax on Financial Transactions",
+    "url": "https://www.cbo.gov/budget-options/54823",
+    "published": "2018-12-13",
+    "quote": "increase revenues by $777 billion from 2019 through 2028",
+    "structure": "0.1 percent of the value of the security for stocks and bonds; 0.1 percent of all payments actually made for derivatives",
+    "evidence_strength": "moderate / contested",
+    "vintage_warning": "SEVERELY STALE. This is a 2018 option on a 2019-2028 window, and CBO DROPPED THE FTT from its December 2024 options volume — there is no current-window equivalent. Market volumes have changed substantially since 2018. Do not present $777B as a live 2025-2034 estimate. If the card ships, it must say the number is seven years old and no longer maintained by CBO.",
+    "critics": "Sweden's 1984-91 FTT drove trading volume offshore and is the standard counterexample. Partial pass-through to 401(k) holders makes the incidence less cleanly progressive than it looks."
+  },
+  "carbon_tax_and_dividend": {
+    "card": "A carbon tax with a per-person dividend",
+    "evidence_strength": "strong on incidence, weak on political durability",
+    "status": "corrected",
+    "structure": {
+      "opening_rate": 49,
+      "rate_2028": 70,
+      "unit": "usd_per_metric_ton_co2e",
+      "escalating": true,
+      "dossier_claimed": "$43-50/ton",
+      "note": "The rate ESCALATES to $70 by 2028. Describing it as '$43-50/ton' captures only the opening year."
+    },
+    "gross_revenue": {
+      "value": 2962,
+      "unit": "usd_billions",
+      "window": "2019-2028",
+      "status": "corrected",
+      "dossier_claimed": 1900,
+      "note": "$2.96T, not $1.9T — a 56% understatement in the dossier."
+    },
+    "source": "U.S. Treasury Office of Tax Analysis Working Paper 115, Methodology for Analyzing a Carbon Tax (Horowitz, Cronin, Hawkins, Konda, Yuskavage)",
+    "url": "https://home.treasury.gov/system/files/131/WP-115.pdf",
+    "published": "2017-01",
+    "tier": "primary",
+    "baseline": "pre-obbba",
+    "quotes": [
+      "a carbon tax that started at $49 per metric ton of carbon dioxide equivalent (mt CO2-e) in 2019 and increased to $70 in 2028",
+      "$2,962 billion"
+    ],
+    "incidence": {
+      "with_rebate": {
+        "poorest_decile": 9,
+        "descriptor_poorest": "almost",
+        "top_decile": -1,
+        "unit": "percent_change_after_tax_income",
+        "quote": "The TDM estimates that the poorest decile would experience almost a 9 percent increase in average after-tax income compared to a 1 percent decrease in average after-tax income for the top income decile."
+      },
+      "tax_alone_no_rebate": {
+        "lowest_decile": -0.8,
+        "ninth_decile": -1.8,
+        "quote": "The lowest income decile is estimated to have a 0.8 percent decrease in after-tax income because of the carbon tax and the magnitude of this percentage change in after-tax income rises with income through the 9th decile."
+      },
+      "regressivity_reversal": {
+        "quote": "The top 5 percent is estimated to have a smaller decrease in after-tax income than all but the bottom 3 deciles.",
+        "note": "SURFACE THIS. The carbon tax ALONE bears less proportionally on the top 5% than on deciles 4 through 9 — because the very rich save a larger share of income. It is a genuine complication and the tool is better for showing it."
+      },
+      "unverified": {
+        "dossier_claimed": "bottom quintile nets +4-5%; bottom 60-70% come out ahead",
+        "status": "partial",
+        "note": "The bottom-DECILE figure (+9%) is verified and is LARGER than the dossier's bottom-quintile claim — but decile is not quintile, and Table 6 did not extract row by row, so neither the bottom-quintile number nor the breakeven decile can be stated. The 'bottom 60-70% come out ahead' claim is NOT VERIFIED. Ship only the verified decile endpoints until Table 6 is read."
+      }
+    },
+    "the_lesson": "A regressive tax plus a progressive rebate makes the bottom better off. DESIGN BEATS INSTRUMENT. That is the most transferable idea on any scenario card.",
+    "critics": "Canada repealed its carbon levy in 2025 — political durability is the weak point, not the economics."
+  },
+  "carried_interest": {
+    "card": "Close the carried interest loophole",
+    "see": "expenditures.json > avoidance_mechanics.carried_interest",
+    "summary": "Yale Budget Lab (May 2026, POST-OBBBA): $87.7B/10yr for the Wyden-Whitehouse-King proposal under new methodology, versus $47.5B under older methods; ~$100B for the broadest version. The JCT $15.6B figure is a 2015 score of the 2015 bill and must not be dated to 2025.",
+    "evidence_strength": "moderate",
+    "framing": "Symbolically enormous, fiscally small-to-medium. The honest disagreement to show is $47.5B vs $87.7B — same shop, same proposal, old vs new method."
+  },
+  "fund_the_irs": {
+    "card": "Fund the IRS",
+    "see": "expenditures.json > enforcement",
+    "summary": "Boning et al.: >$12 per $1 for audits above the 90th percentile. CBO: a $20B rescission loses $44B in revenue and raises the deficit $24B. Yale Budget Lab: just over $860B in lost revenue 2026-2035 from the cuts already made.",
+    "evidence_strength": "strong on direction, contested on magnitude",
+    "mandatory_caveat": "This is the only near-free-lunch lever in the tool. That is exactly why the contested-ROI caveat must be attached — ROI falls as funding scales, and Boning's $12 excludes general deterrence. A tool that presents one free lunch without a caveat has undermined its credibility on everything else."
+  },
+  "restore_pre_tcja_rates": {
+    "card": "Restore pre-TCJA rates",
+    "status": "MOOT",
+    "reason": "OBBBA made the TCJA individual provisions PERMANENT in July 2025. There is no longer an 'extension' to score. Any framing of this as a live cost question is out of date.",
+    "historical_figure": {
+      "value": 2600,
+      "unit": "usd_billions",
+      "window": "2024-2033",
+      "scope": "individual income and estate tax provisions only",
+      "status": "corrected",
+      "dossier_claimed": "~$3.3T",
+      "tier": "secondary",
+      "source": "CRFB citing CBO and JCT",
+      "url": "https://www.crfb.org/blogs/tax-cut-extensions-cost-over-33-trillion",
+      "published": "2023-08-14",
+      "quote": "The majority of this expense comes from the $2.6 trillion cost for extending the TCJA's individual income and estate tax provisions that mostly expire at the end of calendar year 2025.",
+      "note": "CRFB's $3.3T headline covers ALL TCJA extensions, not just the individual provisions. The individual+estate subset is $2.6T over 2024-2033."
+    },
+    "recommendation": "Replace this card with the OBBBA baseline card. The interesting question is no longer 'what would extending cost' but 'what did making it permanent do' — which is the $3.4T CBO score and the 3.9%/2.3% distributional split."
+  },
+  "validation_benchmarks": {
+    "_purpose": "Gameplan Phase 0 required validating three static calculations against PolicyEngine. PolicyEngine could not be exercised (see parameters.json > policyengine_validation). These are the substitute external benchmarks the engine should be tested against in Phase 2.",
+    "top_rate_plus_2pts": {
+      "exact_match_exists": false,
+      "note": "NO SHOP PUBLISHES A TOP-BRACKET-ONLY +2pp ESTIMATE. CBO's is the top FOUR brackets; Tax Foundation's is +2.6pp bundled with a threshold change. The engine cannot be validated against an exact-match published figure for this reform — say so in the build report rather than pretending otherwise.",
+      "nearest": [
+        {
+          "shop": "CBO",
+          "reform": "top four brackets +2pp",
+          "value": 569.5,
+          "window": "FY2025-2034",
+          "baseline": "pre-obbba"
+        },
+        {
+          "shop": "Tax Foundation",
+          "reform": "top rate to 39.6% with pre-TCJA thresholds (+2.6pp)",
+          "conventional": 409,
+          "dynamic": 187.5,
+          "window": "2026-2035",
+          "baseline": "post-obbba"
+        }
+      ]
+    },
+    "capital_gains_plus_5pts": {
+      "estimates": [
+        {
+          "shop": "Agersnap & Zidar (NBER w27705)",
+          "value_annual": [
+            18,
+            30
+          ],
+          "implied_10yr": [
+            180,
+            300
+          ],
+          "quote": "a 5 percentage point rate increase would yield $18 to $30 billion in annual federal tax revenue",
+          "note": "An ANNUAL figure the authors do not present as a scored budget window."
+        },
+        {
+          "shop": "Penn Wharton Budget Model",
+          "reform": "top rate on LTCG and qualified dividends 20% to 24.2% (+4.2pp)",
+          "conventional": 66,
+          "dynamic": 59.3,
+          "window": "2021-2030",
+          "baseline": "pre-obbba",
+          "url": "https://budgetmodel.wharton.upenn.edu/p/2019-11-21-policy-options-increase-tax-rates-on-capital-gains-dividends/"
+        },
+        {
+          "shop": "CBO",
+          "reform": "+2pp",
+          "value": 103,
+          "window": "FY2025-2034",
+          "baseline": "pre-obbba"
+        },
+        {
+          "shop": "Tax Foundation 2026 Options Guide",
+          "reform": "top rate to 30% (+10pp statutory)",
+          "conventional": 362.5,
+          "dynamic_total_deficit": 432,
+          "window": "10 years",
+          "baseline": "post-obbba",
+          "url": "https://taxfoundation.org/tax-reform-guide/option/raise-the-top-tax-rate-on-capital-gains-and-dividends-to-30/"
+        }
+      ],
+      "the_spread_is_the_finding": "For a ~4-5pp increase, PWBM says ~$66B/10yr while Agersnap & Zidar imply ~$180-300B/10yr — a 3-5x SPREAD driven entirely by realization-elasticity assumptions. Tax Foundation's $362.5B for a 10pp increase sits between them and is notably SUBLINEAR, consistent with a high elasticity. There is no consensus number. The engine must produce a RANGE here, and if it produces a point estimate the guardrail test has failed."
+    },
+    "repeal_199a": {
+      "estimates": [
+        {
+          "shop": "Tax Foundation 2026 Options Guide",
+          "conventional": 835.7,
+          "dynamic": 505.9,
+          "window": "2027-2036",
+          "baseline": "post-obbba",
+          "url": "https://taxfoundation.org/tax-reform-guide/option/eliminate-the-section-199a-pass-through-deduction/",
+          "note": "BEST AVAILABLE and on the correct baseline. No CBO, JCT, or TPC standalone post-OBBBA 199A repeal score exists."
+        },
+        {
+          "shop": "Penn Wharton Budget Model",
+          "reform": "LIMIT excess benefits, not repeal",
+          "value_range": [
+            45.5,
+            177.6
+          ],
+          "window": "FY2026-2035",
+          "note": "A different policy. Do not use as a repeal benchmark."
+        }
+      ]
+    },
+    "policyengine_note": "If a future session can run the policyengine-us Python package, note that PolicyEngine does NOT model capital gains realization responses ('we are now working on adding capital gains responses'). It would substantially overstate revenue from a capital gains rate increase. It is a good validator for the top-rate and 199A levers and a poor one for capital gains."
+  },
+  "not_verified_this_phase": {
+    "_warning": "Empty as of 2026-08-18. Every item once listed here has been verified, corrected, or explicitly dropped. Anything added in future must be verified before it ships.",
+    "items": [],
+    "cleared_in_phase_3": {
+      "date": "2026-08-18",
+      "items": [
+        "Housing vouchers — VERIFIED, with one correction: 6.4 million out of poverty (Urban, Aug 2023), NOT 9.3 million. See scenarios.json > housing_vouchers.",
+        "Bring back the 2021 CTC — VERIFIED. Child SPM series 2020-2023 from Census primaries, 2024 from ITEP (secondary, Census primary robots-disallowed). Cost $109.5B (JCT via AAF), not ~$105B. See scenarios.json > restore_2021_ctc.",
+        "Close the big loopholes — VERIFIED AS A COMPOSITE of already-verified components, restricted to built levers, with the mandatory interaction warning. See scenarios.json > close_the_loopholes.",
+        "The 1986 model — VERIFIED. Rates were already in series-arrays.json; the revenue-neutral $120B five-year shift is CRFB (secondary). See scenarios.json > tra86_model.",
+        "Overall SPM series — CONFIRMED, not corrected. Census: SPM was 12.9% in 2023 and 12.9% in 2024. The repeated 12.9 in series-arrays.json > spm_poverty is real, not a copy-paste error. Sources: https://www.census.gov/library/stories/2024/09/supplemental-poverty-measure.html (2023) and https://www.census.gov/library/stories/2025/09/spm-below-official-poverty-rate.html (2024, quote: 'The national official poverty rate of 10.6% was 2.3 percentage points lower than the Supplemental Poverty Measure (SPM) of 12.9% in 2024.').",
+        "California Prop 30 counter-experiment — VERIFIED, and CORRECTED in framing. The page implied \"raised top rates without the predicted exodus\". Rauh & Shyu (AEJ:EP 2024) find behavioural responses eroded 45.2% of the windfall in year one and 60.9% by year two, driven largely by the intensive margin; Varner, Young & Prohofsky find the migration piece small (0.04% of the top-earner population over two years). Both now ship, paired. See act1-notes.json > prop_30_counter_experiment.",
+        "Causal-honesty notes 8 and 9 — CLOSED, flags removed. Note 8 now names Piketty-Saez-Stantcheva (AEJ:EP 2014) and Hope & Limberg (Socio-Economic Review 2022) as the load-bearing citations, cites Hungerford CRS R42729 with the Tax Foundation critique of it attached, and says plainly that the critique reaches the CRS report and not the two panel studies. Note 9 needed no new source — everything it displays was already verified; it declined to display three statistics, which is a decision, and the note now says so. See act1-notes.json."
+      ]
+    }
+  },
+  "housing_vouchers": {
+    "card": "Housing vouchers for everyone who qualifies",
+    "verified": "2026-08-18, Phase 3",
+    "evidence_strength": "strong",
+    "status": "corrected",
+    "dossier_error": "The gameplan and the unverified list carried '9.3 million out of poverty (Urban 2021)'. Urban's own published estimate is 6.4 MILLION, from an August 2023 research report modelled on 2022 conditions. No Urban publication reachable this session contains 9.3 million. The 9.3M figure must not ship.",
+    "baseline": "n/a — spending-side scenario, not a revenue score. It has no OBBBA baseline problem because it is not a score against current tax law.",
+    "scenario_definition": "Fund and use Housing Choice Vouchers for every income-eligible household, instead of the roughly one in four served today. Modelled by Urban with ATTIS on 2018 ACS data adjusted to represent 2022.",
+    "cost": {
+      "value": 118,
+      "unit": "usd_billions",
+      "period": "2022 (simulated)",
+      "basis": "estimate",
+      "status": "verified",
+      "source": "Urban Institute, How Much Could Full Funding and Use of Housing Choice Vouchers Reduce Poverty? — Laura Wheaton, Ilham Dehry, Linda Giannarelli, Sarah Knowles",
+      "url": "https://www.urban.org/sites/default/files/2023-08/How%20Much%20Could%20Full%20Funding%20and%20Use%20of%20Housing%20Choice%20Vouchers%20Reduce%20Poverty.pdf",
+      "published": "2023-08",
+      "tier": "primary",
+      "quote": "We estimate that providing subsidies to all who are eligible would increase the total amount of subsidies paid by $118 billion, to a total of $168 billion.",
+      "note": "ANNUAL, not a ten-year window — do not compare it to a ten-year revenue score without multiplying. Gross subsidy cost; Urban models no offset for reduced spending elsewhere."
+    },
+    "poverty_effect": {
+      "people_lifted": {
+        "value": 6.4,
+        "unit": "millions_of_people",
+        "period": "2022 (simulated)",
+        "basis": "estimate",
+        "status": "corrected",
+        "source": "Urban Institute (Wheaton et al., Aug 2023)",
+        "url": "https://www.urban.org/sites/default/files/2023-08/How%20Much%20Could%20Full%20Funding%20and%20Use%20of%20Housing%20Choice%20Vouchers%20Reduce%20Poverty.pdf",
+        "published": "2023-08",
+        "tier": "primary",
+        "quote": "The reduction in the rate from 14.7 percent to 12.8 percent amounts to 6.4 million people moving from below poverty to above poverty because of the increased resources from housing subsidies."
+      },
+      "spm_rate_before": {
+        "value": 14.7,
+        "unit": "percent",
+        "period": "2022 (simulated)",
+        "status": "verified",
+        "tier": "primary",
+        "quote": "We estimate that at current levels of housing assistance, 14.7 percent of the population is below the SPM poverty level"
+      },
+      "spm_rate_after": {
+        "value": 12.8,
+        "unit": "percent",
+        "period": "2022 (simulated)",
+        "status": "verified",
+        "tier": "primary",
+        "quote": "the poverty rate would fall to 12.8 percent with full funding and use of housing vouchers"
+      },
+      "note": "This is the ONLY poverty figure in the dataset attached to a housing scenario, and it is a published microsimulation result, not an elasticity this tool applied. Display it as Urban's number, never as the engine's."
+    },
+    "coverage_gap": {
+      "share_served": {
+        "value": 25,
+        "unit": "percent",
+        "period": "2022 (simulated)",
+        "status": "verified",
+        "tier": "primary",
+        "source": "Urban Institute (Wheaton et al., Aug 2023)",
+        "quote": "We estimate that about 25 percent of households eligible for housing assistance currently receive it."
+      },
+      "households": {
+        "current": 4.4,
+        "expansion": 13.2,
+        "total": 17.6,
+        "unit": "millions_of_households",
+        "period": "2022 (simulated)",
+        "status": "verified",
+        "tier": "primary",
+        "quote": "About 4.4 million households currently receive housing assistance and we estimate that this would increase by 13.2 million to a total of 17.6 million with full funding and use of housing vouchers."
+      }
+    },
+    "causal_evidence": {
+      "label": "The randomised trial behind the homelessness claim",
+      "study": "Family Options Study — Gubits, Shinn, Wood, Brown, Dastrup & Bell, 'What Interventions Work Best for Families who Experience Homelessness? Impact Estimates from the Family Options Study', Journal of Policy Analysis and Management 37(4), 735-766 (2018)",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6168747",
+      "hud_report": "HUD, Family Options Study: 3-Year Impacts of Housing and Services Interventions for Homeless Families (October 2016)",
+      "hud_url": "https://www.huduser.gov/portal/sites/default/files/pdf/family-options-study-full-report.pdf",
+      "published": "2018",
+      "tier": "primary",
+      "period": "37 months after random assignment",
+      "headline_quote": "The offer of a long-term rent subsidy reduced use of emergency shelters in months 21 to 32 after random assignment by more than three-quarters",
+      "rates": {
+        "outcome": "Any stay in emergency shelter in months 21 to 32 after RA (%)",
+        "long_term_rent_subsidy": 4.4,
+        "usual_care": 18.8,
+        "unit": "percent",
+        "quote": "Any stay in emergency shelter in months 21 to 32 after RA (%)"
+      },
+      "what_it_does_and_does_not_show": "The trial randomised PRIORITY ACCESS to a long-term subsidy among families already in shelter. It is strong evidence that a subsidy keeps a family housed once offered. It is NOT evidence about the population-wide effect of universal vouchers, and it does not measure the same outcome as Urban's poverty simulation.",
+      "dropped": "A second outcome — the share homeless or doubled up in the prior six months — was extracted inconsistently across two independent retrievals of the same paper (15.8/34.0 versus 16.9/38.1). It is therefore NOT shipped. Only the emergency-shelter row, which reproduced identically both times and matches the paper's own 'more than three-quarters' sentence, is used."
+    },
+    "critics": [
+      {
+        "claim": "Making vouchers more generous across a whole metro area mostly raises rents.",
+        "source": "Robert Collinson & Peter Ganong, 'How Do Changes in Housing Voucher Design Affect Rent and Neighborhood Quality?', American Economic Journal: Economic Policy (2018)",
+        "url": "https://robcollinson.github.io/RobWebsite/voucher_CollinsonGanong.pdf",
+        "tier": "primary",
+        "published": "2018",
+        "quote": "A policy that makes vouchers more generous across a metro area benefits landlords through increased rents, with minimal impact on neighborhood and unit quality. A second policy that indexes rent ceilings to neighborhood rents leads voucher holders to move into higher quality neighborhoods with lower crime, poverty, and unemployment.",
+        "note": "Both halves ship. The finding is about DESIGN, not about vouchers as such — the same paper reports that indexing ceilings to neighborhood rents works. Omitting the second sentence would misrepresent the authors."
+      },
+      {
+        "claim": "Voucher receipt reduces work.",
+        "source": "Brian A. Jacob & Jens Ludwig, 'The Effects of Housing Assistance on Labor Supply: Evidence from a Voucher Lottery', American Economic Review 102(1), 272-304 (2012)",
+        "url": "https://www.aeaweb.org/articles?id=10.1257%2Faer.102.1.272",
+        "tier": "primary",
+        "published": "2012",
+        "quote": "reduces labor force participation by around 4 percentage points (6 percent)",
+        "quote2": "quarterly earnings by $329 (10 percent)",
+        "note": "Chicago voucher lottery, working-age adults. The authors also report a roughly 2 percentage point (15 percent) rise in TANF participation, and find no support for the housing-specific mechanisms that were expected to promote work."
+      },
+      {
+        "claim": "Universalising vouchers is the wrong instrument; supply is the binding constraint.",
+        "status": "named_not_scored",
+        "note": "This argument is made in the policy press (e.g. City Journal, 'Don't Universalize Housing Vouchers'). No quantified estimate from it was verified this session, so the card names the position and does not attach a number to it."
+      }
+    ],
+    "engine_note": "The engine does not score this card's spending side. The card sets no tax levers by default; it is offered as a DESTINATION for revenue — pair it with any revenue-raising card and the tool will report how many years of the $118 billion annual cost that revenue would cover. That division is arithmetic on two published figures, not a model."
+  },
+  "restore_2021_ctc": {
+    "card": "Bring back the 2021 Child Tax Credit",
+    "verified": "2026-08-18, Phase 3",
+    "evidence_strength": "strong on the poverty effect, contested on employment",
+    "status": "verified",
+    "baseline": "pre-obbba for the cost score; the current-law comparison is post-OBBBA",
+    "scenario_definition": "Restore the American Rescue Plan Act's one-year child tax credit: $3,600 per child under 6 and $3,000 per child aged 6-17, fully refundable, paid monthly in advance.",
+    "parameters_2021": {
+      "status": "verified",
+      "tier": "secondary",
+      "period": "TY2021",
+      "source": "Tax Policy Center Briefing Book, 'How did the 2021 American Rescue Plan Act change the Child Tax Credit?'",
+      "url": "https://taxpolicycenter.org/briefing-book/how-did-2021-american-rescue-plan-act-change-child-tax-credit",
+      "published": "2024-01",
+      "quote": "For 2021, the child tax credit provided a credit of up to $3,600 per child under age 6 and $3,000 per child from ages 6 to 17.",
+      "quote2": "The credit was fully refundable, meaning low-income families qualified for the maximum credit regardless of how much they earned."
+    },
+    "cost": {
+      "value": 109.5,
+      "unit": "usd_billions",
+      "period": "FY2021-2031 (a one-year policy; essentially all of the cost lands in FY2021-2022)",
+      "basis": "conventional",
+      "status": "corrected",
+      "baseline": "pre-obbba",
+      "scorer": "Joint Committee on Taxation",
+      "source": "American Action Forum, 'The Advanceable Child Tax Credit in the American Rescue Plan Act', quoting JCT",
+      "url": "https://www.americanactionforum.org/insight/the-advanceable-child-tax-credit-in-the-american-rescue-plan-act/",
+      "published": "2021-03-29",
+      "tier": "secondary",
+      "quote": "the Joint Committee on Taxation estimated that these expansions and modifications to the CTC will cost $109.5 billion over the next decade.",
+      "note": "The unverified list carried '~$105B for one year'. JCT's own figure as reported is $109.5 billion. The JCT document itself (JCX-14-21) is published only as a PDF this session could not parse, so the tier is SECONDARY — a named source quoting the scorekeeper, not the scorekeeper's table."
+    },
+    "child_poverty_series": {
+      "label": "Child Supplemental Poverty Measure rate",
+      "unit": "percent",
+      "note": "The natural experiment. The expansion was in force for calendar 2021 only. THE SPM IS NOT A CONSISTENT TIME SERIES — Census's own 'comparisons over time should be made with caution' caveat ships with this series, exactly as it does with the overall SPM series in series-arrays.json.",
+      "points": [
+        {
+          "year": 2020,
+          "value": 9.7,
+          "status": "verified",
+          "tier": "primary",
+          "source": "U.S. Census Bureau, 'Expansions to Child Tax Credit Contributed to 46% Decline in Child Poverty Since 2020'",
+          "url": "https://www.census.gov/library/stories/2022/09/record-drop-in-child-poverty.html",
+          "published": "2022-09-13",
+          "quote": "Child poverty, calculated by the Supplemental Poverty Measure (SPM), fell to its lowest recorded level in 2021, declining 46% from 9.7% in 2020 to 5.2% in 2021"
+        },
+        {
+          "year": 2021,
+          "value": 5.2,
+          "status": "verified",
+          "tier": "primary",
+          "source": "U.S. Census Bureau, 'Child Supplemental Poverty Measure Below Official Rate'",
+          "url": "https://www.census.gov/library/stories/2024/10/child-supplemental-poverty-measure.html",
+          "published": "2024-10-17",
+          "quote": "the national child SPM rate was its lowest ever at 5.2%"
+        },
+        {
+          "year": 2022,
+          "value": 12.4,
+          "status": "verified",
+          "tier": "primary",
+          "source": "U.S. Census Bureau, 'Child Supplemental Poverty Measure Below Official Rate'",
+          "url": "https://www.census.gov/library/stories/2024/10/child-supplemental-poverty-measure.html",
+          "published": "2024-10-17",
+          "quote": "The rate increased to 12.4% in 2022"
+        },
+        {
+          "year": 2023,
+          "value": 13.7,
+          "status": "verified",
+          "tier": "primary",
+          "source": "U.S. Census Bureau, 'Child Supplemental Poverty Measure Below Official Rate'",
+          "url": "https://www.census.gov/library/stories/2024/10/child-supplemental-poverty-measure.html",
+          "published": "2024-10-17",
+          "quote": "and 13.7% in 2023"
+        },
+        {
+          "year": 2024,
+          "value": 13.4,
+          "status": "verified",
+          "tier": "secondary",
+          "source": "Institute on Taxation and Economic Policy, 'Child Poverty Remains Unacceptably High, New Federal Changes Unlikely to Move Needle'",
+          "url": "https://itep.org/child-poverty-remains-unacceptably-child-tax-credit-changes/",
+          "quote": "13.4 percent of children living in poverty",
+          "note": "TIER SECONDARY. The Census primary for 2024 (P60-287) is published on www2.census.gov, which is robots-disallowed to this session's tooling, exactly as recorded for the 2009-2010 gap in series-arrays.json. Label it on screen."
+        }
+      ],
+      "attribution_caveat": "Census attributes the 2021 low to the expansion — 'mostly attributed to the 1-year expanded Child Tax Credit' — but 2021 also carried stimulus payments, expanded unemployment insurance and an expanded EITC. The 2021→2022 snap-back is the cleanest single piece of evidence, and it is still a before-and-after, not a randomised trial."
+    },
+    "employment_dispute": {
+      "note": "This is the card's genuine disagreement, and it is a disagreement between a PREDICTION and an OBSERVATION. Ship both, never averaged.",
+      "predicted": {
+        "shop": "Kevin Corinth, Bruce Meyer, Matthew Stadnicki & Derek Wu (AEI / University of Chicago / NBER)",
+        "value": 1.5,
+        "unit": "millions_of_workers",
+        "basis": "static-plus-labor-supply simulation",
+        "period": "a permanent child allowance",
+        "tier": "secondary",
+        "published": "2021-12-06",
+        "source": "American Enterprise Institute, 'The Child Tax Credit, Labor Supply, and Poverty', summarising Corinth, Meyer, Stadnicki & Wu",
+        "url": "https://www.aei.org/articles/the-child-tax-credit-labor-supply-and-poverty/",
+        "working_paper": "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3938983",
+        "quote": "By eliminating the strong work incentives in the previous CTC, we estimate that the proposal would reduce employment by approximately 1.5 million workers, which would diminish the proposal's effect on child poverty and eliminate its effect on deep child poverty altogether.",
+        "note": "TIER SECONDARY — the SSRN working paper returned HTTP 429 to this session, so the quote is AEI's own summary written by an author of the paper, not the paper's abstract."
+      },
+      "observed": {
+        "shop": "Elizabeth Ananat, Benjamin Glasner, Christal Hamilton & Zachary Parolin",
+        "source": "NBER Working Paper 29823, 'Effects of the Expanded Child Tax Credit on Employment Outcomes: Evidence from Real-World Data from April to December 2021'",
+        "url": "https://www.nber.org/system/files/working_papers/w29823/w29823.pdf",
+        "published": "2022-03",
+        "tier": "primary",
+        "period": "April-December 2021",
+        "quote": "we find very small, inconsistently signed, and statistically insignificant impacts of the CTC both on employment in the prior week and on active participation in the labor force among adults living in households with children.",
+        "note": "The two are not strictly the same object: Corinth et al. model a PERMANENT child allowance; Ananat et al. measure a policy people knew would expire in six months. That difference is the honest reason both can be right, and it belongs on the card."
+      }
+    },
+    "current_law": {
+      "label": "What the credit actually is now, after OBBBA",
+      "amount": {
+        "value": 2200,
+        "unit": "usd",
+        "period": "TY2026",
+        "status": "verified",
+        "tier": "primary",
+        "source": "IRS, Revenue Procedure 2025-32, Section 4.05",
+        "url": "https://www.irs.gov/pub/irs-drop/rp-25-32.pdf",
+        "quote": "the maximum amount of the credit allowed under § 24(a) is $2,200"
+      },
+      "refundable": {
+        "value": 1700,
+        "unit": "usd",
+        "period": "TY2026",
+        "status": "verified",
+        "tier": "primary",
+        "source": "IRS, Revenue Procedure 2025-32, Section 4.05",
+        "url": "https://www.irs.gov/pub/irs-drop/rp-25-32.pdf",
+        "quote": "the amount used in § 24(d)(1)(A) to determine the amount of the credit under § 24 that may be refundable is $1,700"
+      },
+      "refundable_prior_year": {
+        "value": 1700,
+        "unit": "usd",
+        "period": "TY2025",
+        "status": "verified",
+        "tier": "primary",
+        "source": "IRS, Revenue Procedure 2024-40, Section 2.05",
+        "url": "https://www.irs.gov/pub/irs-drop/rp-24-40.pdf",
+        "quote": "For taxable years beginning in 2025, the amount used in § 24(d)(1)(A) to determine the amount of credit under § 24 that may be refundable is $1,700."
+      },
+      "indexed": {
+        "status": "verified",
+        "tier": "secondary",
+        "source": "Institute on Taxation and Economic Policy",
+        "url": "https://itep.org/child-poverty-remains-unacceptably-child-tax-credit-changes/",
+        "quote": "The recent expansion of the federal CTC will boost the credit from $2,000 to $2,200 per child and index it to inflation going forward, but the credit will remain only partially refundable."
+      },
+      "why_it_matters": "The gap between $2,200 and $1,700 is the whole argument. A family with too little tax liability to absorb the credit cannot reach the top amount, which is what full refundability in 2021 changed."
+    },
+    "engine_note": "The engine does not score the CTC as a tax lever — there is no CTC control in the sandbox and building one would require a distributional microsimulation this dataset does not contain. The card is a SPENDING destination, priced at JCT's $109.5 billion, and it carries the only pre-scored poverty figures in the tool."
+  },
+  "close_the_loopholes": {
+    "card": "Close the big loopholes",
+    "verified": "2026-08-18, Phase 3 — composite construction verified; every component was already verified in Phase 0",
+    "evidence_strength": "moderate",
+    "status": "verified_as_composite",
+    "baseline": "mixed — components carry different baselines and windows; the card must show each one's label",
+    "composition_rule": "GATE CONDITION 3 (Phase 2→3): this card is built ONLY from levers the engine actually scores. 1031 exchanges, the full municipal bond exemption and mega-Roth caps are not built and are not in it.",
+    "components": [
+      {
+        "lever": "stepUp = 'atDeath'",
+        "data_key": "scores.tax_gains_at_death"
+      },
+      {
+        "lever": "loopholes.carriedInterest",
+        "data_key": "scores.carried_interest"
+      },
+      {
+        "lever": "loopholes.s199a",
+        "data_key": "scores.repeal_199a"
+      },
+      {
+        "lever": "loopholes.salt",
+        "data_key": "scores.salt_eliminate"
+      },
+      {
+        "lever": "enforcement = +100",
+        "data_key": "scores.irs_restore"
+      }
+    ],
+    "ptet_salt": "PTET-SALT has no separate published score and therefore has no control. It is named in the SALT lever's own caveat, as it was in Phase 2. The card names it and attaches no number.",
+    "interaction_warning": {
+      "required": true,
+      "text": "Tax expenditures do not add up. Each score is estimated against CURRENT law with everything else unchanged; closing several at once changes the base each later one is measured against, and closing a route to avoidance pushes money down the remaining routes. The sum of the parts overstates the whole, and no scorekeeper has published a score for this package.",
+      "see": "causal-honesty note 14, already on the page"
+    },
+    "windows_do_not_match": "The components are scored over FY2023-2032, FY2025-2034, FY2026-2035 and 2027-2036 windows, against pre- and post-OBBBA baselines, by CBO, the Tax Foundation, CRS and the Yale Budget Lab. Adding them produces a number with no single window and no single scorekeeper. Show the components; treat the total as an order of magnitude."
+  },
+  "tra86_model": {
+    "card": "The 1986 model: broaden the base, lower the rates",
+    "verified": "2026-08-18, Phase 3",
+    "evidence_strength": "strong on what happened, contested as a template",
+    "status": "verified",
+    "baseline": "n/a — historical, not a score against current law",
+    "scenario_definition": "The Tax Reform Act of 1986: cut the top individual rate hard, cut the corporate rate, and pay for both by eliminating deductions, credits and preferences. The bipartisan alternative shape, and the steelman for a reader who distrusts rate increases.",
+    "rates": {
+      "note": "Already verified in Phase 0 and shipping in series-arrays.json. This card cites them, it does not add them.",
+      "individual_top": {
+        "from": 50,
+        "to": 28,
+        "series": "series-arrays.json > top_statutory_rate (1986: 50, 1987: 38.5, 1988: 28)"
+      },
+      "corporate_top": {
+        "from": 46,
+        "to": 34,
+        "series": "series-arrays.json > corporate_top_rate (1979-1986: 46, 1987: blended transition year, 1988-1992: 34 with a 39% bubble rate between $100k and $335k)"
+      }
+    },
+    "revenue_neutrality": {
+      "status": "verified",
+      "tier": "secondary",
+      "period": "five years from enactment",
+      "basis": "conventional",
+      "value": 120,
+      "unit": "usd_billions",
+      "source": "Committee for a Responsible Federal Budget, 'The 1986 Tax Reform Act Turns 27'",
+      "url": "https://www.crfb.org/blogs/1986-tax-reform-act-turns-27",
+      "published": "2013-10-22",
+      "quote": "Overall, the Act was revenue-neutral, with the individual tax system receiving a $120 billion tax cut over five years and the corporate side getting a $120 billion tax increase",
+      "quote2": "reducing the top individual rate from 50 to 28 percent",
+      "quote3": "the top corporate rate from 46 to 34 percent",
+      "note": "TIER SECONDARY. The primary is JCT's General Explanation of the Tax Reform Act of 1986 (the Blue Book), which was not retrievable this session."
+    },
+    "what_happened_after": {
+      "status": "verified",
+      "tier": "secondary",
+      "source": "Committee for a Responsible Federal Budget",
+      "url": "https://www.crfb.org/blogs/1986-tax-reform-act-turns-27",
+      "published": "2013-10-22",
+      "quote": "Some of the tax breaks that were eliminated have been re-instated in some form or another, while many other new tax expenditures have been enacted.",
+      "rate_history": "The 28% top rate lasted three years. series-arrays.json > top_statutory_rate: 28 in 1988-1990, 31 in 1991, 39.6 by 1993."
+    },
+    "critics": [
+      {
+        "claim": "Base-broadening and higher top rates are complements, not substitutes — so 1986 is the wrong template.",
+        "source": "Andrew Fieldhouse, Economic Policy Institute Issue Brief #361, 'Broadening the tax base and raising top rates are complements, not substitutes: 1986-style tax reform is a flawed template'",
+        "url": "https://www.epi.org/publication/ib361-broadening-the-tax-base-and-raising-top-rates/",
+        "published": "2013-05",
+        "tier": "primary",
+        "quote": "tax reform that broadens the tax base is actually complemented by higher marginal tax rates",
+        "quote2": "revenue neutrality and distributional neutrality are clearly inappropriate goals for tax reform today",
+        "quote3": "The equalization of tax rates on capital gains and ordinary income from the Tax Reform Act of 1986 has long been ended, and the Bush-era tax cuts created a new preferential rate on dividends.",
+        "why_this_matters_here": "This is not an outside opinion about the engine — it is the mechanism the engine already implements. Effective ETI = selected ETI x (1 - 0.702 x broadening index), anchored to Diamond & Saez's own 0.57 -> 0.17 pair. Broadening the base lowers the elasticity, which RAISES the revenue-maximising rate. The card is the one place where that coupling is the point rather than a footnote."
+      },
+      {
+        "claim": "The rate cut is the durable half and the base-broadening is the perishable half.",
+        "basis": "Read directly off the two CRFB quotes above and the statutory rate series. Not a separate source; the card states it as a reading of the record, labelled as such."
+      }
+    ],
+    "engine_note": "The card sets the top rate DOWN and turns broadeners ON at the same time. That combination is the strongest test of the guardrail: the page must never show a rate cut as net-positive, and here it does not — the revenue comes from the base, and the engine reports the rate cut's own contribution separately and negative."
+  }
+}

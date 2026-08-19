@@ -1,0 +1,984 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-3YXK0RL6XV"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-3YXK0RL6XV');
+</script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pet-Friendly Resources Finder — You Don't Have to Choose Between Shelter and Your Animal · Common Ladder</title>
+  <meta name="description" content="Losing housing with a dog, cat, or other animal in Maricopa County? Answer a few questions and get the shelters that take pets, the programs that will foster your animal until you're back on your feet, and free pet food and vet care. No account, nothing stored.">
+  <link rel="canonical" href="https://commonladder.org/static-tools/pet-friendly-resources.html">
+  <link rel="stylesheet" href="/style.css">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="alternate icon" type="image/png" href="/favicon-32.png">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Pet-Friendly Resources Finder",
+    "url": "https://commonladder.org/static-tools/pet-friendly-resources.html",
+    "applicationCategory": "HealthApplication",
+    "operatingSystem": "Any",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+    "publisher": { "@type": "Organization", "name": "Common Ladder", "url": "https://commonladder.org" },
+    "areaServed": { "@type": "AdministrativeArea", "name": "Maricopa County, Arizona" },
+    "description": "A free tool for people in Maricopa County facing homelessness, eviction, domestic violence, hospitalization, or treatment who have a pet. Answer a few optional questions and get shelters that accept animals, temporary foster programs that hold a pet for 30 to 90 days, free pet food pantries, low-cost vet clinics, and a plain-language explanation of service animal rights. Runs entirely in the browser; nothing is uploaded, and answers are only kept on the device if the user opts in."
+  }
+  </script>
+  <noscript><style>.nav__links{display:flex!important;flex-wrap:wrap!important;}.nav__toggle{display:none!important;}</style></noscript>
+
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Common Ladder">
+  <meta property="og:title" content="Pet-Friendly Resources Finder · Common Ladder">
+  <meta property="og:description" content="Shelters that take pets, programs that will foster your animal until you're stable, and free pet food in Maricopa County. Free, nothing stored.">
+  <meta property="og:url" content="https://commonladder.org/static-tools/pet-friendly-resources.html">
+  <meta property="og:image" content="https://commonladder.org/images/og-default.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Pet-Friendly Resources Finder · Common Ladder">
+  <meta name="twitter:description" content="Shelters that take pets, programs that will foster your animal until you're stable, and free pet food in Maricopa County.">
+  <meta name="twitter:image" content="https://commonladder.org/images/og-default.png">
+
+  <style>
+    .pfr-wrap{max-width:760px;margin:0 auto;padding:1.5rem 1.25rem 3rem;}
+    .pfr-hero{margin:1rem 0 1.25rem;}
+    .pfr-hero h1{font-size:clamp(1.6rem,5vw,2.1rem);color:#1C3D6E;margin:0 0 .5rem;}
+    .pfr-hero h1 span{display:block;font-size:.58em;color:#5a5752;font-weight:600;margin-top:.3rem;}
+    .pfr-hero p{font-size:1.02rem;max-width:62ch;color:#3a3833;}
+    .pfr-perm{background:#eef6f2;border-left:4px solid #4A9E82;border-radius:6px;padding:.85rem 1.1rem;margin:1.1rem 0 0;font-size:.93rem;}
+    .pfr-perm strong{color:#1a5040;}
+    .pfr-verify{background:#fbf3e6;border-left:4px solid #b36a00;border-radius:6px;padding:.85rem 1.1rem;margin:.8rem 0 0;font-size:.93rem;}
+    .pfr-verify strong{color:#8a5a00;}
+
+    .pfr-panel{background:#fff;border:1px solid #e0ddd8;border-radius:14px;padding:1.4rem 1.4rem 1.5rem;margin:1.75rem 0 0;}
+    .pfr-q{margin:0 0 1.5rem;}
+    .pfr-q:last-of-type{margin-bottom:0;}
+    .pfr-q fieldset{border:0;padding:0;margin:0;}
+    .pfr-q legend{display:block;font-weight:700;color:#1C3D6E;font-size:1.04rem;margin:0 0 .15rem;padding:0;}
+    .pfr-help{display:block;font-size:.86rem;color:#5a5752;font-weight:400;margin:0 0 .65rem;}
+
+    .pfr-chips{display:flex;gap:.55rem;flex-wrap:wrap;}
+    .pfr-chip{font:inherit;font-size:.92rem;background:#fff;border:1.5px solid #c8c4bd;border-radius:999px;padding:.5rem 1rem;color:#1C3D6E;cursor:pointer;line-height:1.2;text-align:left;min-height:44px;}
+    .pfr-chip:hover{border-color:#1C3D6E;background:#f0f4f8;}
+    .pfr-chip[aria-pressed="true"]{background:#1C3D6E;color:#fff;border-color:#1C3D6E;}
+    .pfr-chip:focus-visible{outline:2px solid #1C3D6E;outline-offset:2px;}
+
+    .pfr-save{display:flex;gap:.6rem;align-items:flex-start;margin:1.4rem 0 0;background:#f6f5f2;border-radius:10px;padding:.85rem 1rem;font-size:.9rem;color:#3a3833;}
+    .pfr-save input{margin:.15rem 0 0;width:20px;height:20px;flex-shrink:0;}
+    .pfr-save label{cursor:pointer;}
+
+    .pfr-controls{display:flex;gap:.6rem;flex-wrap:wrap;margin:1.5rem 0 0;}
+    .pfr-btn{display:inline-block;background:#1C3D6E;color:#fff;font-weight:700;font-size:1rem;padding:.8rem 1.6rem;border-radius:8px;text-decoration:none;border:0;cursor:pointer;font-family:inherit;min-height:44px;}
+    .pfr-btn:hover{background:#16315a;}
+    .pfr-btn--ghost{background:#fff;color:#1C3D6E;border:1.5px solid #c8c4bd;}
+    .pfr-btn--ghost:hover{border-color:#1C3D6E;background:#f0f4f8;}
+    .pfr-btn:focus-visible{outline:2px solid #1C3D6E;outline-offset:2px;}
+
+    .pfr-results{margin:1.75rem 0 0;}
+    .pfr-results[hidden]{display:none;}
+    .pfr-lead{border-radius:14px;padding:1.2rem 1.4rem;border:1px solid #bcd0ea;background:#eef3fb;color:#27384f;font-size:.97rem;margin:0 0 1.5rem;}
+    .pfr-lead h2{font-size:1.15rem;color:#1C3D6E;margin:0 0 .4rem;}
+    .pfr-lead p{margin:.4rem 0 0;}
+
+    .pfr-sec{margin:2rem 0 0;}
+    .pfr-sec[hidden]{display:none;}
+    .pfr-sec > h2{font-size:1.25rem;color:#1C3D6E;margin:0 0 .3rem;}
+    .pfr-sec > p.pfr-secnote{font-size:.95rem;color:#3a3833;max-width:62ch;margin:.2rem 0 1rem;}
+
+    .pfr-card{background:#fff;border:1px solid #e0ddd8;border-radius:12px;padding:1.1rem 1.25rem;margin:0 0 .9rem;}
+    .pfr-card h3{font-size:1.06rem;color:#1C3D6E;margin:0 0 .3rem;}
+    .pfr-card p{font-size:.95rem;color:#3a3833;margin:.35rem 0 0;max-width:62ch;}
+    .pfr-meta{list-style:none;margin:.6rem 0 0;padding:0;font-size:.93rem;}
+    .pfr-meta li{margin:.28rem 0;color:#3a3833;}
+    .pfr-meta strong{color:#1C3D6E;}
+    .pfr-meta a{font-weight:700;color:#1C3D6E;}
+    .pfr-badge{display:inline-block;font-size:.76rem;font-weight:700;letter-spacing:.02em;text-transform:uppercase;background:#4A9E82;color:#fff;border-radius:999px;padding:.2rem .6rem;margin:0 0 .45rem;}
+    .pfr-badge--call{background:#b36a00;}
+    .pfr-badge--dv{background:#1C3D6E;}
+
+    .pfr-rights{margin:2.25rem 0 0;background:#f0f4f8;border-left:4px solid #1C3D6E;border-radius:6px;padding:1.1rem 1.35rem;font-size:.95rem;}
+    .pfr-rights h2{color:#1C3D6E;font-size:1.15rem;margin:0 0 .4rem;}
+    .pfr-rights h3{color:#1C3D6E;font-size:1rem;margin:1rem 0 .25rem;}
+    .pfr-rights p{margin:.35rem 0 0;color:#27384f;max-width:62ch;}
+    .pfr-rights ul{margin:.4rem 0 0;padding-left:1.2rem;}
+    .pfr-rights li{margin:.3rem 0;color:#27384f;}
+    .pfr-rights a{font-weight:700;color:#1C3D6E;}
+
+    .pfr-ask{margin:2.25rem 0 0;border-top:1px solid #e8e5e0;padding-top:1.5rem;}
+    .pfr-ask h2{font-size:1.25rem;color:#1C3D6E;margin:0 0 .35rem;}
+    .pfr-ask > p{font-size:.95rem;color:#3a3833;max-width:62ch;}
+    .pfr-steps{counter-reset:pfr;list-style:none;margin:1.3rem 0 0;padding:0;}
+    .pfr-steps li{position:relative;padding:0 0 0 2.6rem;margin:0 0 1.15rem;}
+    .pfr-steps li:last-child{margin-bottom:0;}
+    .pfr-steps li::before{counter-increment:pfr;content:counter(pfr);position:absolute;left:0;top:0;width:1.8rem;height:1.8rem;background:#1C3D6E;color:#fff;border-radius:50%;font-weight:800;font-size:.95rem;display:flex;align-items:center;justify-content:center;}
+    .pfr-steps h3{font-size:1.05rem;color:#1C3D6E;margin:.1rem 0 .3rem;}
+    .pfr-steps p{font-size:.95rem;color:#3a3833;margin:0;max-width:62ch;}
+
+    .pfr-more{margin:2.25rem 0 0;border-top:1px solid #e8e5e0;padding-top:1.5rem;}
+    .pfr-more h2{font-size:1.25rem;color:#1C3D6E;margin:0 0 .5rem;}
+    .pfr-more ul{margin:.4rem 0 0;padding-left:1.2rem;}
+    .pfr-more li{margin:.35rem 0;font-size:.95rem;}
+    .pfr-more a{font-weight:700;color:#1C3D6E;}
+
+    .pfr-sources{margin:2rem 0 0;font-size:.88rem;color:#5a5752;}
+    .pfr-sources h2{font-size:1rem;color:#1C3D6E;margin:0 0 .35rem;}
+    .pfr-sources ul{margin:.3rem 0 0;padding-left:1.2rem;}
+    .pfr-sources li{margin:.25rem 0;}
+    .pfr-sources a{color:#1C3D6E;}
+    .pfr-correct{margin:1.5rem 0 0;font-size:.92rem;color:#3a3833;}
+    .pfr-correct a{font-weight:700;color:#1C3D6E;}
+
+    .breadcrumb{max-width:760px;margin:1.25rem auto 0;padding:0 1.25rem;font-size:.85rem;list-style:none;display:flex;gap:.45rem;flex-wrap:wrap;}
+    .breadcrumb li+li::before{content:"/";margin-right:.45rem;color:#a09c95;}
+    .breadcrumb a{color:#1C3D6E;}
+
+    .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);border:0;}
+
+    @media print{
+      .crisis-bar,.nav,.footer,.breadcrumb,.skip-link,.pfr-panel,.pfr-controls,.pfr-save{display:none!important;}
+      body{background:#fff;}
+      .pfr-wrap{max-width:100%;padding:0;}
+      .pfr-card{border:1px solid #999;break-inside:avoid;}
+    }
+  </style>
+</head>
+<body>
+
+<a href="#main" class="skip-link">Skip to main content</a>
+
+<div class="crisis-bar" role="region" aria-label="Crisis help">
+  <strong>Need help right now?</strong>
+  <a href="tel:211">Call 211</a><span class="crisis-bar__sep">·</span>
+  <a href="sms:741741?body=HOME">Text HOME to 741741</a><span class="crisis-bar__sep">·</span>
+  <a href="tel:988">988 Suicide &amp; Crisis</a>
+</div>
+
+<nav class="nav" aria-label="Primary">
+  <div class="nav__inner">
+    <a href="/" class="nav__logo" aria-label="Common Ladder home">
+      <svg width="28" height="28" viewBox="0 0 247 247" fill="none" aria-hidden="true"><g transform="translate(-12.00,-16.00)"> <path fill="#E8911A" fill-opacity="1" fill-rule="evenodd" d="M 254.00,51.00 L 234.00,85.64 L 194.00,85.64 L 174.00,51.00 L 194.00,16.36 L 234.00,16.36 Z M 231.50,51.00 L 222.75,66.16 L 205.25,66.16 L 196.50,51.00 L 205.25,35.84 L 222.75,35.84 Z"/> <path fill="#9FBCBA" fill-opacity="1" fill-rule="evenodd" d="M 148.00,118.00 L 128.00,152.64 L 88.00,152.64 L 68.00,118.00 L 88.00,83.36 L 128.00,83.36 Z M 125.50,118.00 L 116.75,133.16 L 99.25,133.16 L 90.50,118.00 L 99.25,102.84 L 116.75,102.84 Z"/> <path fill="#9FBCBA" fill-opacity="1" fill-rule="evenodd" d="M 259.00,118.00 L 239.00,152.64 L 199.00,152.64 L 179.00,118.00 L 199.00,83.36 L 239.00,83.36 Z M 236.50,118.00 L 227.75,133.16 L 210.25,133.16 L 201.50,118.00 L 210.25,102.84 L 227.75,102.84 Z"/> <path fill="#FFFFFF" fill-opacity="0.94" fill-rule="evenodd" d="M 207.00,164.00 L 187.00,198.64 L 147.00,198.64 L 127.00,164.00 L 147.00,129.36 L 187.00,129.36 Z M 184.50,164.00 L 175.75,179.16 L 158.25,179.16 L 149.50,164.00 L 158.25,148.84 L 175.75,148.84 Z"/> <path fill="#FFFFFF" fill-opacity="0.94" fill-rule="evenodd" d="M 92.00,164.00 L 72.00,198.64 L 32.00,198.64 L 12.00,164.00 L 32.00,129.36 L 72.00,129.36 Z M 69.50,164.00 L 60.75,179.16 L 43.25,179.16 L 34.50,164.00 L 43.25,148.84 L 60.75,148.84 Z"/> <path fill="#FFFFFF" fill-opacity="0.94" fill-rule="evenodd" d="M 161.00,228.00 L 141.00,262.64 L 101.00,262.64 L 81.00,228.00 L 101.00,193.36 L 141.00,193.36 Z M 138.50,228.00 L 129.75,243.16 L 112.25,243.16 L 103.50,228.00 L 112.25,212.84 L 129.75,212.84 Z"/> </g></svg>
+      <span class="nav__wordmark">common<span>ladder</span></span>
+    </a>
+    <button class="nav__toggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="primary-nav" onclick="this.setAttribute('aria-expanded', document.getElementById('primary-nav').classList.toggle('open') ? 'true' : 'false')">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav__links" id="primary-nav">
+      <li><a href="/providers.html">For providers</a></li>
+      <li><a href="/learn/">Learn</a></li>
+      <li><a href="/about.html">About</a></li>
+      <li><a href="/find.html" class="nav__cta">Find resources</a></li>
+      <li><a href="/static-tools/my-ladder.html" class="nav__cta nav__cta--ladder">My Ladder</a></li>
+      <li><a href="https://www.weather.gov/" rel="noreferrer" class="nav__exit" onclick="event.preventDefault();window.location.replace('https://www.weather.gov/')">Leave page</a></li>
+    </ul>
+  </div>
+</nav>
+<ol class="breadcrumb" aria-label="Breadcrumb">
+  <li><a href="/">Home</a></li>
+  <li><a href="/static-tools/">Tools</a></li>
+  <li aria-current="page">Pet-Friendly Resources Finder</li>
+</ol>
+
+<main id="main">
+<div class="pfr-wrap">
+
+  <header class="pfr-hero">
+    <h1>Pet-Friendly Resources Finder<span>Maricopa County — you should not have to choose between a roof and your animal</span></h1>
+    <p>A lot of people sleep outside rather than give up a dog or a cat. That is not a character flaw and it is not something to talk anyone out of — for many people the animal is the reason they are still here. This tool points you to the places in Maricopa County that will take you both, the programs that will hold your pet safely for a few weeks or months while you get stable, and the pantries and clinics that keep an animal fed and healthy in the meantime.</p>
+
+    <div class="pfr-perm">
+      <strong>Nothing here is sent anywhere.</strong> No name, no address, no pet. Every answer stays in this browser tab and disappears when you close it, unless you tick the box to keep it on this device.
+    </div>
+    <div class="pfr-verify">
+      <strong>Call before you go.</strong> Kennel space, foster openings and intake hours change constantly, and a full program today may have room next week. Every listing below is something to phone first — not a guaranteed bed. If a number is wrong or a program has changed, <a href="/contact.html">tell us</a> and we will fix it.
+    </div>
+  </header>
+
+  <form class="pfr-panel" id="pfr-form">
+
+    <div class="pfr-q">
+      <fieldset>
+        <legend>What is happening right now?</legend>
+        <span class="pfr-help">Pick the closest one. There is no wrong answer, and you can change it after you see the results.</span>
+        <div class="pfr-chips" id="pfr-sit">
+          <button type="button" class="pfr-chip" data-sit="tonight" aria-pressed="false">I need somewhere to sleep tonight</button>
+          <button type="button" class="pfr-chip" data-sit="dv" aria-pressed="false">I am leaving someone who is hurting me</button>
+          <button type="button" class="pfr-chip" data-sit="losing" aria-pressed="false">I am being evicted or about to lose my place</button>
+          <button type="button" class="pfr-chip" data-sit="medical" aria-pressed="false">I am going into treatment, the hospital, or jail</button>
+          <button type="button" class="pfr-chip" data-sit="afford" aria-pressed="false">I have a place, I just cannot afford my pet right now</button>
+        </div>
+      </fieldset>
+    </div>
+
+    <div class="pfr-q">
+      <fieldset>
+        <legend>Would you rather stay together, or have someone keep your pet for a while?</legend>
+        <span class="pfr-help">Temporary care is not surrendering your animal. These programs exist specifically to give the pet back.</span>
+        <div class="pfr-chips" id="pfr-mode">
+          <button type="button" class="pfr-chip" data-mode="together" aria-pressed="false">Stay together if there is any way</button>
+          <button type="button" class="pfr-chip" data-mode="foster" aria-pressed="false">Someone could hold my pet for a while</button>
+          <button type="button" class="pfr-chip" data-mode="both" aria-pressed="false">Show me both — I do not know yet</button>
+        </div>
+      </fieldset>
+    </div>
+
+    <div class="pfr-q">
+      <fieldset>
+        <legend>Anything else that might open a door?</legend>
+        <span class="pfr-help">Optional. Tap any that apply — each one unlocks programs that other people cannot use. Tap again to turn it off.</span>
+        <div class="pfr-chips" id="pfr-flags">
+          <button type="button" class="pfr-chip" data-flag="kids" aria-pressed="false">I have children with me</button>
+          <button type="button" class="pfr-chip" data-flag="vet" aria-pressed="false">I am a veteran or active duty</button>
+          <button type="button" class="pfr-chip" data-flag="service" aria-pressed="false">My animal is a service or assistance animal</button>
+        </div>
+      </fieldset>
+    </div>
+
+    <div class="pfr-save">
+      <input type="checkbox" id="pfr-remember">
+      <label for="pfr-remember">Keep my answers on this device so I do not have to redo them. Leave this off if you are on a shared or library computer, or if someone else might open this browser.</label>
+    </div>
+
+    <div class="pfr-controls">
+      <button type="submit" class="pfr-btn">Show my options</button>
+      <button type="button" class="pfr-btn pfr-btn--ghost" id="pfr-clear">Clear everything</button>
+    </div>
+  </form>
+
+  <section class="pfr-results" id="pfr-results" hidden aria-live="polite">
+    <div class="pfr-lead" id="pfr-lead">
+      <h2 id="pfr-lead-h">Your options</h2>
+      <p id="pfr-lead-p"></p>
+    </div>
+
+    <div class="pfr-sec" id="sec-dv" hidden>
+      <h2>Domestic violence shelters that take pets</h2>
+      <p class="pfr-secnote">Abusers very often use an animal to keep someone from leaving — threatening the pet, or promising to hurt it if you go. Advocates know this pattern well. You do not have to explain or prove anything to be believed. If you are in danger right now, call 911. The Arizona statewide hotline is <a href="tel:18007827263">1-800-782-6400</a> and the national hotline is <a href="tel:18007997233">1-800-799-7233</a> — both are free, 24 hours, and can arrange a bed and safety planning tonight.</p>
+      <div id="cards-dv"></div>
+    </div>
+
+    <div class="pfr-sec" id="sec-together" hidden>
+      <h2>Places that may take you and your pet together</h2>
+      <p class="pfr-secnote">Pet space at a shelter is usually a small number of kennels or a handful of designated rooms, so it fills fast and it is worth calling more than one. Ask specifically for the pet coordinator or the kennel — front desk staff sometimes do not know the program exists.</p>
+      <div id="cards-together"></div>
+    </div>
+
+    <div class="pfr-sec" id="sec-foster" hidden>
+      <h2>Programs that will care for your pet until you can take them back</h2>
+      <p class="pfr-secnote">This is temporary foster, not surrender. You keep ownership, the program keeps the animal safe, and the whole point is the reunion. Most run 30 to 90 days and most ask for vaccination records and spay/neuter — and several will cover those for you if the pet is not current. Apply before you are out of options if you can; these programs have waiting lists.</p>
+      <div id="cards-foster"></div>
+    </div>
+
+    <div class="pfr-sec" id="sec-keep" hidden>
+      <h2>Free pet food, low-cost vet care, and help hanging on</h2>
+      <p class="pfr-secnote">If the problem is money rather than a place to sleep, start here. Keeping a pet fed and vaccinated is far cheaper and far less painful than any of the options above, and every one of these is free or reduced cost.</p>
+      <div id="cards-keep"></div>
+    </div>
+
+    <div class="pfr-sec" id="sec-always" hidden>
+      <h2>If nothing above fits</h2>
+      <div id="cards-always"></div>
+    </div>
+  </section>
+
+  <section class="pfr-rights">
+    <h2>Service animals are not pets — and that matters at the door</h2>
+    <p>If your animal is a service animal, a "no pets" rule is not supposed to apply to you. This is worth knowing before you get turned away by someone who is wrong about the law.</p>
+
+    <h3>Service animals</h3>
+    <p>Under the Americans with Disabilities Act, a service animal is a dog — or in some cases a miniature horse — that has been individually trained to do work or perform tasks for a person with a disability. Programs that are open to the public, including most shelters and day centers, generally have to let a service animal in even where pets are not allowed.</p>
+    <ul>
+      <li>Staff may ask only two things: whether the animal is required because of a disability, and what work or task it has been trained to perform.</li>
+      <li>They may <strong>not</strong> ask about your disability, demand papers, a certificate, an ID card, or a demonstration, or charge a pet fee or deposit.</li>
+      <li>There is no official federal registry, so an online "certification" you paid for proves nothing — and you do not need one.</li>
+      <li>The animal does have to be housebroken and under your control. If it is genuinely out of control and you cannot settle it, that is the one basis for asking you to remove it.</li>
+    </ul>
+
+    <h3>Emotional support animals</h3>
+    <p>An emotional support animal provides comfort but has not been trained to perform a specific task, and the ADA does not cover it. In <em>housing</em>, an emotional support animal has usually been handled as a reasonable accommodation request under the Fair Housing Act, which can override a landlord's no-pets policy. Whether a homeless shelter counts as "housing" for that purpose has always been unsettled, and federal enforcement guidance on emotional support animals shifted again in 2026 toward a trained-animal standard — so do not assume, and do not accept a flat refusal as the final word either.</p>
+    <p>If you are refused housing or shelter over an assistance animal, talk to a legal advocate before you give up. <strong>Community Legal Services</strong> — <a href="tel:6022583434">602-258-3434</a> — takes Maricopa County housing calls at no cost.</p>
+  </section>
+
+  <section class="pfr-ask">
+    <h2>What to say when you call</h2>
+    <p>Ten seconds of the right wording gets you past a "no" that was really a "the person answering does not know." Try this order.</p>
+    <ol class="pfr-steps">
+      <li>
+        <h3>Lead with the animal, not the story</h3>
+        <p>"I need shelter and I have a forty-pound dog. Do you have kennel space, or do you work with a program that does?" Front-line staff route on facts. The details of how you got here can wait.</p>
+      </li>
+      <li>
+        <h3>Ask for the pet coordinator by name of role</h3>
+        <p>If the first answer is no, ask: "Is there someone there who handles pets, or a partner rescue you refer to?" Several Valley shelters have a pet arrangement that is not on their website and that reception does not always know about.</p>
+      </li>
+      <li>
+        <h3>Say the words "temporary care" or "crisis boarding"</h3>
+        <p>These are the program names the rescues use. "Can I board my dog?" gets you a price quote. "I need temporary care because of a crisis" gets you the free program.</p>
+      </li>
+      <li>
+        <h3>Ask what they need from you, and write it down</h3>
+        <p>Usually: rabies and distemper records, proof of spay or neuter, and a way to reach you. If you do not have records, say so — most of these programs will vaccinate or fix the animal for you rather than turn you away. Missing paperwork is a delay, not a refusal.</p>
+      </li>
+      <li>
+        <h3>If it is a wait list, get on it today and keep calling</h3>
+        <p>Ask when to check back and whether they have an urgent list. Lost Our Home, for instance, reviews urgent cases daily. A wait list you joined last week beats an emergency call today.</p>
+      </li>
+    </ol>
+  </section>
+
+  <section class="pfr-more">
+    <h2>Related tools and pages</h2>
+    <ul>
+      <li><a href="/static-tools/maricopa-navigator.html">Maricopa Navigator</a> — full shelter and housing routing for the county, with or without a pet.</li>
+      <li><a href="/static-tools/stay-housed-maricopa.html">Stay-Housed Navigator</a> — rent and utility help before an eviction, which is the cheapest way to keep a pet.</li>
+      <li><a href="/static-tools/cooling-center-locator.html">Cooling Center Locator</a> — Phoenix heat kills animals fast. Most cooling centers do not take pets, so check before you walk there with one.</li>
+      <li><a href="/static-tools/id-recovery-wizard.html">ID Recovery Wizard</a> — several pet programs need a photo ID before they can intake an animal.</li>
+      <li><a href="/help/emergency-shelter/">Emergency shelter</a> and <a href="/help/safety/">Safety and domestic violence</a> — the broader category pages.</li>
+    </ul>
+  </section>
+
+  <section class="pfr-sources">
+    <h2>Where this list comes from</h2>
+    <ul>
+      <li><a href="https://www.maricopa.gov/6313/Pet-Housing-Resources" rel="nofollow noreferrer">Maricopa County Animal Care &amp; Control — Pet Housing Resources</a>, the county's own directory of temporary foster and pet-friendly housing.</li>
+      <li><a href="https://azpetproject.org/resources/community-resources/" rel="nofollow noreferrer">The Arizona Pet Project — Community Resources</a>, for pet food pantries and low-cost clinics.</li>
+      <li><a href="https://www.lostourhome.org/get-help/temporary-care" rel="nofollow noreferrer">Lost Our Home Pet Rescue — Temporary Care Program</a>, for program length, medical requirements and office hours.</li>
+      <li>Provider websites for each organization listed.</li>
+    </ul>
+    <p class="pfr-correct">Checked <time datetime="2026-08-18">August 18, 2026</time>. Programs change without notice — always call first. Found something out of date? <a href="/contact.html">Send us a correction</a> and we will verify and update it.</p>
+  </section>
+
+</div>
+</main>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer__grid">
+      <div class="footer__brand">
+        <h3>Common Ladder</h3>
+        <p>The civic resource platform connecting people experiencing homelessness with every service in your community.</p>
+      </div>
+      <div>
+        <h4>Find help</h4>
+        <ul>
+          <li><a href="/find.html?cat=shelter">Shelter</a></li>
+          <li><a href="/find.html?cat=food">Food</a></li>
+          <li><a href="/find.html?cat=legal">Legal</a></li>
+          <li><a href="/help/">All categories</a></li>
+          <li><a href="/static-tools/">Local navigators</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>For providers</h4>
+        <ul>
+          <li><a href="/providers.html">Tools &amp; referrals</a></li>
+          <li><a href="/providers.html#case-manager-guide">Case manager guide</a></li>
+          <li><a href="/data-reports.html">Data &amp; reports</a></li>
+          <li><a href="/learn/">Four learning pathways</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>About</h4>
+        <ul>
+          <li><a href="/about.html">Our mission</a></li>
+          <li><a href="/about.html#methodology">Methodology</a></li>
+          <li><a href="/about.html#team">Team</a></li>
+          <li><a href="/brand/visual-guidelines.html">Brand guidelines</a></li>
+          <li><a href="/contact.html">Contact</a></li>
+          <li><a href="/privacy.html">Privacy</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer__transparency">
+      <strong>Transparency:</strong> Common Ladder is an independent civic project. We do not sell user data, run ads, or accept payment from listed resources.
+    </div>
+    <div class="footer__bottom">
+      <span>&copy; 2026 Common Ladder. Free to use, always.</span>
+      <span><time datetime="2026-08-18">Last updated August 18, 2026</time></span>
+    </div>
+  </div>
+</footer>
+
+<script data-id="cl-card-click">
+(function(){
+  document.querySelectorAll('.card, .post-card:not(.post-card--linked)').forEach(function(el){
+    var a = el.querySelector('a[href]');
+    if(!a) return;
+    el.addEventListener('click', function(e){
+      if(e.target.tagName==='A'||e.target.closest('a')) return;
+      window.location.href = a.href;
+    });
+  });
+})();
+</script>
+<script>
+(function(){
+  "use strict";
+
+  var STORE = "cl-pfr-v1";
+
+  var form = document.getElementById("pfr-form");
+  var sitWrap = document.getElementById("pfr-sit");
+  var modeWrap = document.getElementById("pfr-mode");
+  var flagWrap = document.getElementById("pfr-flags");
+  var remember = document.getElementById("pfr-remember");
+  var clearBtn = document.getElementById("pfr-clear");
+  var results = document.getElementById("pfr-results");
+  var leadH = document.getElementById("pfr-lead-h");
+  var leadP = document.getElementById("pfr-lead-p");
+
+  var sitBtns = Array.prototype.slice.call(sitWrap.querySelectorAll(".pfr-chip"));
+  var modeBtns = Array.prototype.slice.call(modeWrap.querySelectorAll(".pfr-chip"));
+  var flagBtns = Array.prototype.slice.call(flagWrap.querySelectorAll(".pfr-chip"));
+
+  var sit = "";
+  var mode = "";
+  var flags = {};
+
+  /* ---- Resource data -------------------------------------------------
+     Every entry is verified against a primary or government source and
+     is presented as "call to confirm", never as a guaranteed bed.
+     tags: which sections an entry can appear in.
+     only: if present, the entry only shows when one of these flags/sits is set.
+  --------------------------------------------------------------------- */
+
+  var DATA = [
+
+    /* --- Domestic violence, pets welcome --- */
+    {
+      sec: "dv",
+      name: "Sojourner Center — Pet Companion Services",
+      badge: "Pets stay with you",
+      badgeClass: "pfr-badge--dv",
+      phone: "602-244-0997",
+      tel: "6022440997",
+      area: "Phoenix",
+      what: "Shelter for survivors and their animals together, at no cost, in suite-style rooms with dog doors and a dog park on site. Not only dogs — they have taken cats, birds, reptiles and fish. Widely described as the pet program other Arizona shelters refer to.",
+      ask: "Ask for pet companion services and say what animal you have."
+    },
+    {
+      sec: "dv",
+      name: "New Life Center — PAWS",
+      badge: "Pets stay with you",
+      badgeClass: "pfr-badge--dv",
+      phone: "623-932-4404",
+      tel: "6239324404",
+      area: "West Valley",
+      what: "One of a very small number of domestic violence shelters in the country set up to house survivors' pets on site. Emergency shelter with an animal program attached.",
+      ask: "Ask about PAWS — Protecting Animals With Survivors."
+    },
+    {
+      sec: "dv",
+      name: "Chicanos Por La Causa — De Colores",
+      badge: "Pet friendly",
+      badgeClass: "pfr-badge--dv",
+      phone: "602-269-1515",
+      tel: "6022691515",
+      addr: "6850 W. Indian School Rd., Phoenix, AZ 85033",
+      area: "West Phoenix",
+      what: "Domestic violence shelter listed by Maricopa County as pet friendly. Bilingual services.",
+      ask: "Referrals also go through decoloresreferrals@cplc.org."
+    },
+    {
+      sec: "dv",
+      name: "Catholic Charities — My Sister's Place",
+      badge: "Pet placed nearby",
+      badgeClass: "pfr-badge--dv",
+      phone: "480-821-1024",
+      tel: "4808211024",
+      area: "East Valley",
+      what: "Shelter that will find your animal a temporary home while you are there and reunite you once you have somewhere permanent to go, so leaving does not mean losing the pet.",
+      ask: "Tell intake you have an animal that needs placing."
+    },
+    {
+      sec: "dv",
+      name: "Arizona Humane Society — Project Safehouse",
+      badge: "Free foster, 30 days",
+      badgeClass: "pfr-badge--dv",
+      phone: "602-997-7585",
+      tel: "6029977585",
+      area: "Valley-wide",
+      what: "Foster care for up to 30 days for the pet of someone entering a domestic violence shelter, with food and supplies provided. This is the program that makes a non-pet DV shelter workable.",
+      ask: "Say you are entering a domestic violence shelter and need Project Safehouse."
+    },
+    {
+      sec: "dv",
+      name: "Mt. Graham Safe House",
+      badge: "Pets on site",
+      badgeClass: "pfr-badge--dv",
+      phone: "1-888-269-9104",
+      tel: "18882699104",
+      area: "Outside Maricopa — accepts from across Arizona",
+      what: "Co-ed shelter welcoming all victims of domestic violence, with an on-site pet facility so animals stay with their families. Worth calling if you need to be further away, or if Valley beds are full.",
+      ask: "They take referrals statewide — distance can be a safety feature."
+    },
+
+    /* --- Stay together --- */
+    {
+      sec: "together",
+      name: "CASS — Central Arizona Shelter Services",
+      badge: "Call about kennel space",
+      badgeClass: "pfr-badge--call",
+      phone: "602-330-5211",
+      tel: "6023305211",
+      addr: "230 S. 12th Ave., Phoenix, AZ 85007",
+      area: "Central Phoenix — Key Campus",
+      what: "Arizona's largest emergency shelter, listed by Maricopa County under temporary housing for people and their pets. The Key Campus has a designated dog run on the outdoor plaza, and The Arizona Pet Project works with clients there on vaccinations, collars and harnesses. Pet capacity is limited — confirm before you walk over.",
+      ask: "Ask directly whether kennels are open tonight, and about the pet food pantry on campus (602-256-6945)."
+    },
+    {
+      sec: "together",
+      name: "Family Promise of Greater Phoenix — Promise for Pets",
+      badge: "Families with kids",
+      phone: "480-659-5227",
+      tel: "4806595227",
+      addr: "7447 E. Earll Dr., Scottsdale, AZ 85251",
+      area: "South Scottsdale, Glendale, Mesa",
+      what: "A 60-day emergency shelter program for families with at least one child — and any number of pets. Their pet program has sheltered hundreds of animals and was the first of its kind among Family Promise affiliates.",
+      ask: "Say how many children and how many animals; both are fine.",
+      only: ["kids"]
+    },
+    {
+      sec: "together",
+      name: "UMOM New Day Centers",
+      badge: "Call about pets",
+      badgeClass: "pfr-badge--call",
+      phone: "602-275-7852",
+      tel: "6022757852",
+      addr: "3333 E. Van Buren St., Phoenix, AZ 85008",
+      area: "East Phoenix",
+      what: "Family shelter and housing programs, listed by Maricopa County under temporary housing for people and their pets. Arrangements vary by program and by building, so ask about your specific animal.",
+      ask: "Ask which of their programs can take an animal, not just whether pets are allowed."
+    },
+    {
+      sec: "together",
+      name: "St. Vincent de Paul — pet support",
+      badge: "Food and pet basics",
+      phone: "602-329-5034",
+      tel: "6023295034",
+      area: "Phoenix metro",
+      what: "For people at risk of or experiencing homelessness, help covering the basic needs of a pet — so that the animal is not the reason a placement falls apart. Also reachable at cap@svdpaz.org.",
+      ask: "Ask what pet support comes with their housing and outreach programs."
+    },
+
+    /* --- Temporary foster --- */
+    {
+      sec: "foster",
+      name: "Lost Our Home Pet Rescue — Temporary Care Program",
+      badge: "Up to 90 days",
+      phone: "602-445-7391",
+      tel: "6024457391",
+      addr: "2323 S. Hardy Dr., Tempe, AZ 85282",
+      area: "Arizona only",
+      what: "The most comprehensive crisis pet care program in the Valley. Up to 90 days of care so a pet can be returned to the family after eviction, homelessness, domestic violence, medical treatment or rehab. They ask for rabies, distemper and bordetella for dogs, FVRCP and a negative FeLV/FIV test for cats, and spay or neuter — and they will help with vaccinations the pet is missing.",
+      ask: "Apply online, then email TCP@lostourhome.org with 'TCP Urgent' in the subject if it cannot wait — urgent cases are reviewed daily with a reply within 48 hours. Program office hours Tuesday to Saturday, 10am to 5:30pm. Main line 602-445-7387."
+    },
+    {
+      sec: "foster",
+      name: "Arizona Humane Society — Home Away From Home",
+      badge: "30 to 90 days",
+      phone: "602-997-7585",
+      tel: "6029977585",
+      area: "Valley-wide",
+      what: "Temporary foster care or boarding, typically 30 to 90 days, for pets of families in a critical moment — hospitalization or behavioral health treatment, domestic violence, loss of housing, or a military deployment. Run in partnership with PetSmart.",
+      ask: "Ask for Home Away From Home by name, and ask about Bridge the Gap if the problem is the cost of care."
+    },
+    {
+      sec: "foster",
+      name: "Paws for Recovery",
+      badge: "Treatment and rehab",
+      phone: "480-849-1192",
+      tel: "4808491192",
+      area: "Arizona",
+      what: "Cares for cats and dogs while their owner is in drug or alcohol rehabilitation — a year-long program, which is far longer than most, built so that treatment does not cost you the animal.",
+      ask: "Say how long your program is expected to run.",
+      only: ["medical"]
+    },
+    {
+      sec: "foster",
+      name: "Home to Home Fostering",
+      badge: "Volunteer foster homes",
+      area: "Network-based",
+      what: "Connects pet parents in a crisis with volunteer households willing to foster temporarily. Useful as a second line when the structured programs are full. Apply through home-home.org.",
+      ask: "Have vaccination records ready if you have them."
+    },
+    {
+      sec: "foster",
+      name: "Guardian Angels for Soldier's Pet",
+      badge: "Military and veterans",
+      phone: "254-248-1818",
+      tel: "2542481818",
+      area: "National network",
+      what: "Volunteer foster homes for deploying active-duty service members and veterans in specific situations, plus a Military Pet Assistance fund that helps homeless veterans with veterinary care and temporary boarding costs.",
+      ask: "Mention veteran status and whether you have a VA case manager.",
+      only: ["vet"]
+    },
+    {
+      sec: "foster",
+      name: "PACT for Animals",
+      badge: "Veterans and patients",
+      phone: "610-581-4141",
+      tel: "6105814141",
+      area: "National, places pets in foster homes",
+      what: "Places the pets of veterans, hospital patients and military personnel into temporary foster homes until the owner can take them back. Also reachable at sue@pactforanimals.org.",
+      ask: "Ask what they can cover in Arizona specifically.",
+      only: ["vet"]
+    },
+
+    /* --- Keep your pet fed and well --- */
+    {
+      sec: "keep",
+      name: "The Arizona Pet Project",
+      badge: "Start here",
+      phone: "602-882-8627",
+      tel: "6028828627",
+      area: "Arizona",
+      what: "Exists to keep pets with the people who need them, by connecting families in crisis to services before a surrender becomes the only option. If you are not sure who to call, call them and describe the situation. Also info@azpetproject.org.",
+      ask: "Ask them to walk you through what you qualify for."
+    },
+    {
+      sec: "keep",
+      name: "Furry Friends Food Bank — Lost Our Home",
+      badge: "Free pet food",
+      phone: "602-445-7387",
+      tel: "6024457387",
+      addr: "2323 S. Hardy Dr., Tempe, AZ 85282",
+      area: "Tempe",
+      what: "Free pet food for families who are struggling, from the same organization that runs the temporary care program.",
+      ask: "Ask what they have for your animal's size and any diet needs."
+    },
+    {
+      sec: "keep",
+      name: "Empty Bowl Pet Food Pantry",
+      badge: "Free pet food",
+      phone: "602-909-7153",
+      tel: "6029097153",
+      area: "Phoenix metro",
+      what: "Pet food pantry for people who cannot afford to feed their animals. Also emptybowlpetfoodpantry@yahoo.com.",
+      ask: "Ask about distribution days and locations near you."
+    },
+    {
+      sec: "keep",
+      name: "Chuck Waggin' Pet Food Pantry",
+      badge: "Free pet food",
+      phone: "602-686-8104",
+      tel: "6026868104",
+      area: "Phoenix metro",
+      what: "Pet food pantry serving families in need across the Valley. Also info@chuckwaggin.org.",
+      ask: "Ask about delivery if you cannot get to them."
+    },
+    {
+      sec: "keep",
+      name: "Helping Hands for Homeless Hounds",
+      badge: "Built for this",
+      phone: "602-410-0983",
+      tel: "6024100983",
+      area: "Phoenix metro",
+      what: "Pet food and supply help with a specific focus on families facing homelessness — so you will not have to explain your situation twice.",
+      ask: "Say you are unsheltered or about to be; that is who they are for."
+    },
+    {
+      sec: "keep",
+      name: "Vista del Camino — P.E.T. Pantry",
+      badge: "Free pet food",
+      phone: "480-312-2323",
+      tel: "4803122323",
+      area: "Scottsdale",
+      what: "The 'Pets Eat, Too' pantry attached to Scottsdale's Vista del Camino human food bank, so you can pick up both in one trip.",
+      ask: "Ask what you need to bring to qualify."
+    },
+    {
+      sec: "keep",
+      name: "Arizona Humane Society clinic",
+      badge: "Low-cost vet",
+      phone: "602-997-7585",
+      tel: "6029977585",
+      addr: "1521 W. Dobbins Rd., Phoenix, AZ 85041",
+      area: "South Phoenix",
+      what: "Low-cost veterinary care, vaccinations and spay/neuter — often the fastest way to get the records that a shelter or foster program will ask you for.",
+      ask: "Ask about income-qualified pricing and the Bridge the Gap program."
+    },
+    {
+      sec: "keep",
+      name: "Arizona Animal Welfare League & SPCA",
+      badge: "Low-cost vet",
+      phone: "602-273-6852",
+      tel: "6022736852",
+      addr: "25 N. 40th St., Phoenix, AZ 85034",
+      area: "Central Phoenix",
+      what: "Low-cost clinic — ask for extension 122. Vaccinations, spay/neuter and basic care at reduced cost.",
+      ask: "Ask what a rabies and distemper visit will run before you go."
+    },
+    {
+      sec: "keep",
+      name: "Sun Valley Hope Animal Hospital",
+      badge: "Low-cost vet",
+      phone: "623-512-4673",
+      tel: "6235124673",
+      addr: "7150 N. 110th Ave., Glendale, AZ 85307",
+      area: "West Valley",
+      what: "Reduced-cost veterinary hospital serving people who cannot afford standard clinic pricing.",
+      ask: "Ask about payment options before the appointment."
+    },
+
+    /* --- Always shown --- */
+    {
+      sec: "always",
+      name: "2-1-1 Arizona",
+      badge: "Free, 24 hours",
+      phone: "211",
+      tel: "211",
+      area: "Statewide",
+      what: "The statewide referral line. Say the words 'I have a pet' at the start of the call — it changes which shelters they will route you to, and they hold current bed and kennel information that no website can keep up with.",
+      ask: "Ask specifically for pet-friendly shelter and for crisis pet boarding."
+    },
+    {
+      sec: "always",
+      name: "Maricopa County — Pet Housing Resources",
+      badge: "County directory",
+      area: "Maricopa County",
+      what: "The county's own directory of temporary foster and pet-friendly housing organizations, which is where much of this list comes from. Worth checking directly for anything added since we last verified.",
+      ask: "maricopa.gov/6313/Pet-Housing-Resources"
+    },
+    {
+      sec: "always",
+      name: "Maricopa County Animal Care & Control",
+      badge: "County",
+      phone: "602-506-7387",
+      tel: "6025067387",
+      addr: "2500 S. 27th Ave., Phoenix, AZ 85009",
+      area: "Maricopa County",
+      what: "For licensing, lost animals, and questions about what the county can help with. They keep the resource directories above.",
+      ask: "This is not a surrender-first call — ask for the resource list."
+    }
+  ];
+
+  var LEADS = {
+    tonight: {
+      h: "Tonight, with your animal",
+      p: "Start with the two or three closest options and call rather than walk — kennel space is the constraint, not goodwill, and it changes hour to hour. If everything is full, a temporary foster program keeps the pet safe and gets them back to you rather than ending the relationship."
+    },
+    dv: {
+      h: "Leaving, with your animal",
+      p: "There are shelters in this county that will take you and your pet into the same building, and programs that will foster the animal for free while you are in a shelter that cannot. You do not have to leave a pet behind to get out, and you do not have to prove anything to be helped."
+    },
+    losing: {
+      h: "Before you lose the place",
+      p: "This is the best moment you will have. Applying to a temporary care program now, while you still have an address and a few weeks, is far easier than doing it from a parking lot. Also look at rent and utility help — keeping the housing is the cheapest way to keep the pet."
+    },
+    medical: {
+      h: "While you are in treatment or the hospital",
+      p: "These programs were built for exactly this and they expect you back. Ask how long they can hold, tell them the truth about your timeline, and ask what happens if the stay runs longer than planned — most would rather extend than have you leave treatment early."
+    },
+    afford: {
+      h: "Keeping the animal you already have",
+      p: "If the gap is food, vaccinations or a vet bill, you almost certainly do not need to give the pet up. Free pantries and reduced-cost clinics cover most of it, and the organizations below exist specifically to prevent surrenders that money caused."
+    },
+    "": {
+      h: "Everything we have",
+      p: "You did not pick a situation, so here is the full list — shelters that take animals, programs that will hold a pet for you, and free food and vet care. Nothing here costs money."
+    }
+  };
+
+  function el(tag, cls, txt){
+    var e = document.createElement(tag);
+    if(cls) e.className = cls;
+    if(txt != null) e.textContent = txt;
+    return e;
+  }
+
+  function card(r){
+    var c = el("article", "pfr-card");
+
+    if(r.badge){
+      var b = el("span", "pfr-badge" + (r.badgeClass ? " " + r.badgeClass : ""), r.badge);
+      c.appendChild(b);
+    }
+    c.appendChild(el("h3", null, r.name));
+    c.appendChild(el("p", null, r.what));
+
+    var ul = el("ul", "pfr-meta");
+    if(r.phone){
+      var li = el("li");
+      li.appendChild(el("strong", null, "Phone: "));
+      var a = document.createElement("a");
+      a.href = "tel:" + r.tel;
+      a.textContent = r.phone;
+      li.appendChild(a);
+      ul.appendChild(li);
+    }
+    if(r.addr){
+      var li2 = el("li");
+      li2.appendChild(el("strong", null, "Address: "));
+      li2.appendChild(document.createTextNode(r.addr));
+      ul.appendChild(li2);
+    }
+    if(r.area){
+      var li3 = el("li");
+      li3.appendChild(el("strong", null, "Serves: "));
+      li3.appendChild(document.createTextNode(r.area));
+      ul.appendChild(li3);
+    }
+    if(r.ask){
+      var li4 = el("li");
+      li4.appendChild(el("strong", null, "When you call: "));
+      li4.appendChild(document.createTextNode(r.ask));
+      ul.appendChild(li4);
+    }
+    c.appendChild(ul);
+    return c;
+  }
+
+  /* Which sections to show, given the answers.
+     The mode choice is honoured strictly: if someone says they want to stay
+     with their animal, we do not push foster care at them unasked. */
+  function wantedSections(){
+    var want = { keep: true, always: true };
+
+    if(sit === "dv"){ want.dv = true; }
+
+    if(mode === "together"){ want.together = true; }
+    else if(mode === "foster"){ want.foster = true; }
+    else if(mode === "both"){ want.together = true; want.foster = true; }
+    else if(sit !== "afford"){ want.together = true; want.foster = true; }
+
+    /* Treatment, hospital or jail: staying together is not an option there,
+       so the foster programs need to be visible unless they asked otherwise. */
+    if(sit === "medical" && mode !== "together"){ want.foster = true; }
+
+    return want;
+  }
+
+  function eligible(r){
+    if(!r.only) return true;
+    for(var i = 0; i < r.only.length; i++){
+      var k = r.only[i];
+      if(flags[k]) return true;
+      if(sit === k) return true;
+    }
+    return false;
+  }
+
+  function render(){
+    results.hidden = false;
+
+    var lead = LEADS[sit] || LEADS[""];
+    leadH.textContent = lead.h;
+    leadP.textContent = lead.p;
+
+    var want = wantedSections();
+    var secs = ["dv", "together", "foster", "keep", "always"];
+
+    secs.forEach(function(key){
+      var secEl = document.getElementById("sec-" + key);
+      var box = document.getElementById("cards-" + key);
+      box.innerHTML = "";
+      if(!want[key]){ secEl.hidden = true; return; }
+
+      var list = DATA.filter(function(r){ return r.sec === key && eligible(r); });
+      if(!list.length){ secEl.hidden = true; return; }
+
+      list.forEach(function(r){ box.appendChild(card(r)); });
+      secEl.hidden = false;
+    });
+
+    try { results.scrollIntoView({ behavior: "smooth", block: "start" }); } catch(e){}
+  }
+
+  function paint(){
+    sitBtns.forEach(function(b){
+      b.setAttribute("aria-pressed", b.getAttribute("data-sit") === sit ? "true" : "false");
+    });
+    modeBtns.forEach(function(b){
+      b.setAttribute("aria-pressed", b.getAttribute("data-mode") === mode ? "true" : "false");
+    });
+    flagBtns.forEach(function(b){
+      b.setAttribute("aria-pressed", flags[b.getAttribute("data-flag")] ? "true" : "false");
+    });
+  }
+
+  function save(){
+    if(!remember.checked) return;
+    try {
+      localStorage.setItem(STORE, JSON.stringify({ sit: sit, mode: mode, flags: flags, remember: true }));
+    } catch(e){}
+  }
+
+  function wipe(){
+    try { localStorage.removeItem(STORE); } catch(e){}
+  }
+
+  sitBtns.forEach(function(b){
+    b.addEventListener("click", function(){
+      var v = b.getAttribute("data-sit");
+      sit = (sit === v) ? "" : v;
+      if(sit === "dv" && !mode){ mode = "both"; }
+      paint(); save();
+      if(!results.hidden){ render(); }
+    });
+  });
+
+  modeBtns.forEach(function(b){
+    b.addEventListener("click", function(){
+      var v = b.getAttribute("data-mode");
+      mode = (mode === v) ? "" : v;
+      paint(); save();
+      if(!results.hidden){ render(); }
+    });
+  });
+
+  flagBtns.forEach(function(b){
+    b.addEventListener("click", function(){
+      var k = b.getAttribute("data-flag");
+      flags[k] = !flags[k];
+      paint(); save();
+      if(!results.hidden){ render(); }
+    });
+  });
+
+  remember.addEventListener("change", function(){
+    if(remember.checked){ save(); } else { wipe(); }
+  });
+
+  form.addEventListener("submit", function(e){
+    e.preventDefault();
+    render();
+    save();
+  });
+
+  clearBtn.addEventListener("click", function(){
+    sit = ""; mode = ""; flags = {};
+    remember.checked = false;
+    wipe();
+    paint();
+    results.hidden = true;
+    sitBtns[0].focus();
+  });
+
+  function restore(){
+    var raw = null;
+    try { raw = localStorage.getItem(STORE); } catch(e){ return; }
+    if(!raw) return;
+    try {
+      var d = JSON.parse(raw);
+      if(!d || typeof d !== "object") return;
+      remember.checked = true;
+      if(typeof d.sit === "string") sit = d.sit;
+      if(typeof d.mode === "string") mode = d.mode;
+      if(d.flags && typeof d.flags === "object") flags = d.flags;
+      paint();
+      if(sit || mode) render();
+    } catch(e){}
+  }
+
+  paint();
+  restore();
+})();
+</script>
+</body>
+</html>

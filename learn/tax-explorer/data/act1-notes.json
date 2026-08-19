@@ -1,0 +1,116 @@
+{
+  "_meta": {
+    "id": "act1-notes",
+    "title": "Sources for the Act 1 causal-honesty notes that Phase 0 could not close",
+    "built": "2026-08-18",
+    "phase": "3",
+    "why": "Notes 8 and 9 shipped in Phase 1 carrying a visible 'pending re-verification' flag, and the California Prop 30 counter-experiment was named in the ITEP sidebar with no figures. All three are listed in scenarios.json > not_verified_this_phase. This file closes them, to the same standard as every other datum in this directory: a URL fetched during the session that added it, a verbatim line, a period, and a publication date.",
+    "rule": "Every entry here is displayed somewhere in Act 1. Nothing in this file is used in a calculation."
+  },
+
+  "note_8_rates_and_top_shares": {
+    "claim_the_note_makes": "Periods with lower top tax rates tend to coincide with a rising top-1% income share, while the same rate cuts do not show up as higher growth. The mechanism is debated.",
+    "status": "verified",
+    "citations": [
+      {
+        "id": "piketty_saez_stantcheva",
+        "source": "Thomas Piketty, Emmanuel Saez & Stefanie Stantcheva, 'Optimal Taxation of Top Labor Incomes: A Tale of Three Elasticities', American Economic Journal: Economic Policy 6(1), 230-271",
+        "url": "https://eml.berkeley.edu/~saez/piketty-saez-stantchevaAEJ14.pdf",
+        "published": "2014",
+        "tier": "primary",
+        "period": "18 OECD countries, post-1960 changes in top marginal rates",
+        "quote": "Top tax rate cuts are associated with top one percent pretax income shares increases but not higher economic growth.",
+        "note": "This is the abstract's own sentence and it is the exact claim note 8 makes. The paper's three-elasticity framework — labour supply, tax avoidance, and compensation bargaining — is also the source of the 'mechanism is debated' half of the note."
+      },
+      {
+        "id": "hope_limberg",
+        "source": "David Hope & Julian Limberg, 'The economic consequences of major tax cuts for the rich', Socio-Economic Review 20(2), 539-559",
+        "url": "https://academic.oup.com/ser/article/20/2/539/6500315",
+        "published": "2022-04",
+        "tier": "primary",
+        "period": "18 OECD countries, 1965-2015",
+        "quote": "We find tax cuts for the rich lead to higher income inequality in both the short- and medium-term. In contrast, such reforms do not have any significant effect on economic growth or unemployment.",
+        "note": "A different method — identifying discrete major tax reductions and estimating their average effect — reaching the same split result as Piketty, Saez & Stantcheva. Two independent designs agreeing is why note 8 calls the association directionally solid."
+      },
+      {
+        "id": "hungerford_crs",
+        "source": "Thomas L. Hungerford, Congressional Research Service report R42729, 'Taxes and the Economy: An Economic Analysis of the Top Tax Rates Since 1945'",
+        "url": "https://www.everycrsreport.com/reports/R42729.html",
+        "published": "2012-12-12",
+        "tier": "primary",
+        "period": "United States, 1945-2010",
+        "quote": "changes over the past 65 years in the top marginal tax rate and the top capital gains tax rate do not appear correlated with economic growth",
+        "quote_2": "the top tax rate reductions appear to be correlated with the increasing concentration of income at the top",
+        "contested": true,
+        "note": "SHIP THE CONTROVERSY WITH THE CITATION. This report was withdrawn from the CRS website in 2012 after political objection and later reissued. Its method is disputed on the record; see the critique entry below. It is the weakest of the three citations and must never be presented as settled."
+      }
+    ],
+    "critique": {
+      "source": "Tax Foundation, 'Retracted CRS Report on Taxes and Growth Flawed, But Still Cited' (Stephen J. Entin)",
+      "url": "https://taxfoundation.org/blog/retracted-crs-report-taxes-and-growth-flawed-still-cited/",
+      "published": "2012-10-23",
+      "tier": "primary",
+      "status": "verified",
+      "quote": "looking only at the first year effect throws out about 95 percent of the outcome",
+      "arguments": [
+        "The report compares one-year changes in growth or productivity against changes in top rates, where the effects of capital-income tax changes accrue over one to ten years.",
+        "It does not hold other factors constant — monetary policy, regulation and other taxes move across the same periods."
+      ],
+      "note": "This is the strongest published objection to the Hungerford report and it belongs on the page beside it. It does not address Piketty-Saez-Stantcheva or Hope-Limberg, which use panel designs across 18 countries rather than US time series."
+    }
+  },
+
+  "note_9_1950s_caveats": {
+    "claim_the_note_makes": "Nostalgia for the 1950s high-rate era needs its caveats in the same sentence: healthcare could do far less, housing and credit were restricted by race and sex, and the union-density figure usually quoted uses a different denominator from the one this project verified.",
+    "status": "verified",
+    "resolution": "The flag on this note was not a missing source — everything the note DISPLAYS was already verified in Phase 0. It was a note about statistics the note deliberately declines to show. That is a decision, not a pending action, and the note now says so.",
+    "figures_it_displays": [
+      { "what": "National health expenditure as a share of GDP, 1960 and 2024", "values": [5.0, 18.0], "unit": "percent_of_gdp", "see": "series-arrays.json > healthcare_pct_gdp", "source": "CMS National Health Expenditure Accounts", "status": "verified" },
+      { "what": "Union density peak, 1954, total-employment basis", "value": 28.3, "unit": "percent", "see": "series-arrays.json > union_density", "status": "verified" }
+    ],
+    "figures_it_declines_to_display": [
+      "Typical home size in the 1950s versus today — no source in this dataset clears the project's verification bar.",
+      "The era's Black-white household-income ratio — same reason.",
+      "The commonly quoted 'about a third of workers were union members' — real, but computed on wage-and-salary employment, a smaller denominator than the total-employment basis this project verified. Quoting the two figures side by side without the denominators would be a comparison of two different measures."
+    ]
+  },
+
+  "prop_30_counter_experiment": {
+    "claim_the_note_makes": "California raised its top rates in 2012 (Proposition 30) and is the counter-experiment paired with Kansas. The honest answer is that the two best studies of it disagree about how much revenue the behavioural response ate, and agree that outright migration was a small part of it.",
+    "status": "verified",
+    "policy": "Proposition 30, approved November 2012, raised California's top marginal income tax rates retroactively to the 2012 tax year, adding up to 3 percentage points at the top.",
+    "estimates": [
+      {
+        "shop": "Joshua Rauh & Ryan Shyu",
+        "source": "'Behavioral Responses to State Income Taxation of High Earners: Evidence from California', American Economic Journal: Economic Policy 16(1), 34-86",
+        "url": "https://www.aeaweb.org/articles?id=10.1257%2Fpol.20200500",
+        "published": "2024",
+        "tier": "primary",
+        "period": "California, 2013-2014",
+        "finding": "A large behavioural response, mostly from reported income rather than from moving.",
+        "outmigration_pct_of_top_bracket_base": 0.8,
+        "revenue_eroded_year_1_pct": 45.2,
+        "revenue_eroded_year_2_pct": 60.9,
+        "quote": "An additional 0.8 percent of the residential tax base that landed in the top bracket left California in 2013.",
+        "quote_2": "These responses eroded 45.2 percent of state windfall tax revenues within the first year and 60.9 percent within 2 years, driven largely by the intensive margin.",
+        "note": "THE SKEPTICAL SIDE, AND IT MUST SHIP. 'Driven largely by the intensive margin' means the erosion came mostly from how much income high earners reported, not from how many of them left."
+      },
+      {
+        "shop": "Charles Varner, Cristobal Young & Allen Prohofsky",
+        "source": "'Millionaire Migration in California: Administrative Data for Three Waves of Tax Reform', Stanford Center on Poverty and Inequality with the California Franchise Tax Board",
+        "url": "https://inequality.stanford.edu/sites/default/files/millionaire-migration-california-impact-top-tax-rates.pdf",
+        "published": "working paper, estimates described by the authors as preliminary",
+        "tier": "primary",
+        "period": "California, 2013-2014",
+        "finding": "A measurable but small migration response, not material to state revenue.",
+        "migration_per_1000_per_point": 0.8,
+        "share_of_top_earner_population_lost_pct": 0.04,
+        "quote": "For each 1 point increase in the tax rate, we find that the net migration rate decreases 0.8 per thousand population",
+        "quote_2": "California lost 0.04 percent (i.e. one twenty-fifth of one percent) of its top earner population over the two years following the tax change.",
+        "note": "The authors label their own estimates preliminary. Ship that label."
+      }
+    ],
+    "how_to_present_it": "NOT as 'California raised rates and nothing happened'. The two studies agree that outright millionaire flight was small, and disagree sharply about the total behavioural cost, because most of what Rauh and Shyu measure is reported income falling rather than people leaving. Presenting only Varner and Young would flatter the tax-increase case; presenting only Rauh and Shyu would flatter the tax-cut case. The pairing is the finding.",
+    "pairs_with": "The Kansas experiment, verified in Phase 0, which is the same natural experiment run in the other direction."
+  }
+}

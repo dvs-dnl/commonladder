@@ -1,0 +1,26 @@
+  <span class="tier">Tier 1 · Plain framing</span>
+
+  <h2 id="scenarios">Act 3 — what people propose</h2>
+  <p>Twelve things people actually propose. Tap one and it loads into the sandbox above: the same engine, the same guardrails, the same why-panel. Nothing here is scored a second way.</p>
+  <p>Each card carries what changes, what published estimates say happens, why it happens, how strong the evidence is, what its critics say, and where every figure came from. Where this tool's own arithmetic disagrees with a published score, both numbers are shown. That disagreement usually has a reason, and the reason is on the card.</p>
+
+  <div class="tx-flag"><strong>A card is a simplification of a bill.</strong> Real legislation runs to hundreds of pages of thresholds, phase-ins, exclusions and effective dates, and those details routinely move a score more than the headline rate does. Read these as the <em>shape</em> of a policy, not as a draft of one.</div>
+
+  <div class="tx3-share">
+    <button type="button" class="tx3-share__btn" id="tx3-share">Copy a link to your current settings</button>
+    <span class="tx3-share__note" id="tx3-share-note" role="status" aria-live="polite">Every setting above fits in the link. No account, nothing stored, nothing sent anywhere.</span>
+  </div>
+
+  <div class="tx3-grid" id="tx3-grid">
+    <p class="tx-out-def">The scenario library needs JavaScript. Everything in Act 1 above works without it.</p>
+  </div>
+
+  <span class="tier tier--3">Tier 3 · Implications</span>
+
+  <h2 id="notes-act3">One more thing the scenario library won't let you oversimplify</h2>
+  <ol class="tx-notes-list" style="list-style:none;padding:0;">
+    <li class="tx-note" id="note-16">
+      <span class="tx-note__num" aria-hidden="true">16</span><h3>A card is not a bill</h3>
+      <p>Every card above compresses a policy into a handful of settings. Real legislation is where the money actually moves: an exclusion for family farms, a five-year phase-in, a threshold indexed to one price index rather than another. Those choices routinely matter more to a score than the headline number does — the payroll-cap card is the clearest case, where one design decision nobody argues about changes the answer by roughly a third. When a card and a real proposal disagree, assume the proposal has details this tool cannot see, and go and read it.</p>
+    </li>
+  </ol>

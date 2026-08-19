@@ -1,0 +1,116 @@
+# Tax Impact Explorer — Phase 0 data files
+
+**Built:** 2026-08-17 (Phase 0, Opus, per `docs/tax-explorer-gameplan.md` §7)
+**Evidence base:** `research/tax-explorer-research-2026-08-17.md`
+**Provenance table:** `docs/tax-explorer-provenance-2026-08-17.md`
+**Build report (deviations, gaps, human actions):** `docs/tax-explorer-build-report-2026-08-17.md`
+
+---
+
+## The rule these files exist to enforce
+
+Every number the shipped tool displays must resolve to a datum in this directory.
+No build session (Phases 1–4) may introduce a figure from model memory, from the
+dossier alone, or from a fresh web search. If a number is needed and is not here,
+the correct action is to **add it here with full provenance first**, or to not
+display it.
+
+## Datum schema
+
+Every leaf value is an object, never a bare number:
+
+```json
+{
+  "value": 2656,
+  "unit": "usd_billions",
+  "period": "FY2025",
+  "basis": "actual",
+  "status": "verified",
+  "source": "CBO, Monthly Budget Review: Fiscal Year 2025 final",
+  "url": "https://www.cbo.gov/system/files/2025-11/61307-MBR-FY25-final.pdf",
+  "published": "2025-11-10",
+  "tier": "primary",
+  "quote": "Individual Income Taxes | 2,176 | 2,426 | 2,656 | 9.5",
+  "note": "optional — caveats that must ship with the figure"
+}
+```
+
+Field meanings:
+
+| Field | Values / meaning |
+|---|---|
+| `unit` | `usd_billions`, `usd`, `percent`, `percent_of_gdp`, `ratio`, `count`, `years`, `elasticity` |
+| `period` | Fiscal year (`FY2025`), calendar year (`2022`), or budget window (`FY2025-2034`). **Never omitted** — Content Engine Policy. |
+| `basis` | `actual`, `projection`, `static`, `conventional`, `dynamic`, `estimate`, `formula` |
+| `status` | `verified` · `corrected` (dossier was wrong, this is the right number) · `blocked` (could not be retrieved — see `note`) · `unsourced` (dossier claim with no source found — **must not ship**) |
+| `tier` | `primary` (the issuing body's own document) · `secondary` (a source quoting the primary verbatim) |
+| `quote` | Verbatim line from the source containing the figure. Required for every `verified`/`corrected` datum. |
+| `baseline` | On revenue scores only: `pre-obbba` or `post-obbba`. See below. |
+
+### `status: "unsourced"` is a tripwire, not a value
+
+Any datum carrying `status: "unsourced"` has a `value` of `null` and exists only to
+record that the dossier made a claim which verification could not support. Phases 1–4
+must not render these. They are listed for the reviewer so that a claim which silently
+disappears is distinguishable from one that was never checked.
+
+### The OBBBA baseline problem — read before using any revenue score
+
+P.L. 119-21 (the One Big Beautiful Bill Act) was enacted July 2025. It made the TCJA
+individual rates permanent, set the estate exemption at $15M, and changed SALT.
+
+**Almost every published revenue score predates it.** CBO's options volume is
+December 2024 and assumed the TCJA individual provisions would expire after 2025 —
+they did not. Those scores are directionally stale, and most revenue-raisers would
+score *higher* against a permanent-TCJA baseline.
+
+Every score datum therefore carries a `baseline` field. The UI must surface this:
+a pre-OBBBA score shown without that label is a correctness bug, not a polish issue.
+Only three sources in this dataset are post-OBBBA: the Tax Foundation 2026 Options
+Guide, the Yale Budget Lab carried-interest re-estimate (May 2026), and CRS IF13190
+on the mortgage interest deduction (March 2026).
+
+## Files
+
+| File | Contents |
+|---|---|
+| `baseline-fy2025.json` | Current-law fiscal baseline: receipts by source, outlays, deficit, GDP, discretionary totals, GDP composition |
+| `history-series.json` | Act 1 chart series: statutory rates 1913–2026, effective rates, corporate/payroll/capgains/estate, distribution, mobility, cost-of-living |
+| `parameters.json` | Act 2 behavioral dials: ETI, elasticities, multipliers, MPC, labor supply, corporate incidence, macro feedback |
+| `expenditures.json` | Tax expenditures [STATIC], repeal scores [CONV], distributional shares, avoidance mechanics, the tax gap, enforcement |
+| `scenarios.json` | Act 3 preset scenario cards: every score, both sides of every dispute |
+| `act1-notes.json` | Sources for the Act 1 causal-honesty notes, and both sides of the California Proposition 30 counter-experiment (added Phase 3, 2026-08-18) |
+| `blocked.json` | Machine-readable list of what could not be retrieved and exactly what closes each item |
+
+## What is NOT in here yet
+
+Three datasets are blocked because they are published only as binary spreadsheets,
+which this session's tooling cannot parse. They are listed in `blocked.json` with
+download URLs. **Phase 1 cannot draw the class-impact chart without the first one.**
+
+1. CBO 61911 supplemental data — average household income by quintile, and average
+   federal tax rate for the 2nd/3rd/4th quintiles, 2022.
+2. IRS SOI Table 3.5 (TY2023) — tax generated by rate and by AGI size class. This is
+   the static microsimulation base for Layer 1 of the engine.
+3. IRS SOI Table 4.1 (TY2023) — top 0.1% / 0.01% thresholds and average rates.
+
+Percentile-level data from Table 4.1 *is* available second-hand down to the top 1%
+(see `history-series.json` → `soi_percentiles`), so Act 1 and the top-1% bar of the
+class chart can be built now. Only the sub-1% breakouts and the quintile dollar
+values are hard-blocked.
+
+## Added in Phase 3 (2026-08-18)
+
+`scenarios.json` gained four verified scenario cards — `housing_vouchers`, `restore_2021_ctc`,
+`close_the_loopholes` and `tra86_model` — and `act1-notes.json` is new. Every figure added
+carries a URL fetched during that session, a verbatim quote, a period and a publication date,
+matching the precedent Phase 2 set when it added the TY2023 bracket threshold.
+
+Two corrections were recorded rather than quietly applied:
+
+- **Housing vouchers**: the project's own brief claimed 9.3 million people lifted out of poverty
+  (Urban 2021). Urban's published estimate is **6.4 million**, from an August 2023 report modelled
+  on 2022 conditions. The 9.3 million figure could not be found in any Urban publication.
+- **2021 CTC**: the brief said "~$105B for one year". JCT's figure as reported is **$109.5 billion**.
+
+`not_verified_this_phase` is now empty. Anything added to it in future must be verified before it ships.

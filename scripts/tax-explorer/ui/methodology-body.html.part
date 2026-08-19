@@ -1,0 +1,74 @@
+  <p class="meta">Methodology and sources for <a href="/learn/tax-explorer/">The Tax Ladder</a> · last reviewed <time datetime="2026-08-18">18 August 2026</time></p>
+
+  <p class="meth-lede">Every number the tool displays resolves to a file in <code>learn/tax-explorer/data/</code>, and every one of those files stores the verbatim line from the source it came from. The tool strips those quotes to keep its own weight down. This page is where they live.</p>
+
+  <div class="meth-callout">
+    <strong>How to read this page.</strong> The narrative sections come first: the four calculations the tool performs that are its own rather than a scorekeeper's, the one validation it promised and did not complete, the baseline problem that sits under almost every published score in circulation, and the list of things the tool will not say. The tables at the end are the raw provenance — parameter, value, period, source, and the exact sentence it was read from.
+  </div>
+
+  <nav class="onpage" aria-label="On this page">
+    <h2>On this page</h2>
+    <ol>
+      <li><a href="#convention">The ten-year convention</a></li>
+      <li><a href="#derivations">Four calculations that are ours</a></li>
+      <li><a href="#policyengine">The validation that did not happen</a></li>
+      <li><a href="#obbba">The baseline problem</a></li>
+      <li><a href="#never">What this tool will not say</a></li>
+      <li><a href="#params">Every behavioural parameter</a></li>
+      <li><a href="#scores">Every pre-scored reform</a></li>
+      <li><a href="#cards">Every scenario-card figure</a></li>
+      <li><a href="#notes">The Act 1 honesty notes</a></li>
+      <li><a href="#blocked">What could not be retrieved</a></li>
+      <li><a href="#files">The data files themselves</a></li>
+    </ol>
+  </nav>
+
+  <h2 id="convention">The ten-year convention</h2>
+  <p>Two kinds of number appear in the sandbox, and they are produced in different ways.</p>
+  <p><strong>Pre-scored reforms</strong> — closing a loophole, adding a value-added tax, restoring enforcement funding — take the published conventional score directly, over whatever budget window its scorekeeper used. Those windows differ between sources and are printed beside every figure. A conventional score already contains the taxpayer response; the tool does not apply a second behavioural adjustment on top of one.</p>
+  <p><strong>Rate changes</strong> are computed here, from IRS Statistics of Income Table 3.5 for tax year 2023, and multiplied by ten. They are not uprated for income growth across the window, which real scorekeepers do. Every self-computed ten-year figure in this tool is therefore smaller than a properly uprated score of the same policy would be. Where a lever's own figure lands below a published estimate of the same idea, that is one of the reasons; when that happens, the panel says so.</p>
+
+  <h2 id="derivations">Four calculations that are ours</h2>
+  <p>Most of what the engine does is arithmetic on somebody else's published number. Four steps are not. Each is a judgement, each has a direction of bias, and each is labelled in the interface where it does its work.</p>
+
+  <h3>1. The AGI-class to CBO-group crosswalk</h3>
+  <p>Revenue is computed on tax returns. Distribution is reported for households. The two are not the same population and they are not sorted the same way. IRS Statistics of Income ranks returns by adjusted gross income; the Congressional Budget Office ranks households by income before transfers and taxes, adjusted for household size. A married couple filing jointly is one return and one household; two adults sharing a flat are two returns and two households; and a household of four sits lower in CBO's ranking than a single filer on the same income, while the IRS ranks the two identically.</p>
+  <p>The engine maps each SOI income class onto CBO's published 2022 group boundaries by overlap, treating income as uniformly spread inside each class, and folds the result onto CBO's six groups. <strong>Direction of bias:</strong> uniform spreading understates concentration inside the top class, so effects driven by the very highest incomes are, if anything, allocated slightly downward. The distributional chart is a statement about direction and relative magnitude between groups. It is not a year-matched ledger, and the third decimal place of any bar is not meaningful.</p>
+
+  <h3>2. The corporate capital-income allocation</h3>
+  <p>The corporate incidence dial asks how much of a corporate tax change lands on workers and how much on owners of capital. Moving that dial requires knowing how capital income is distributed across the six groups — and CBO publishes average federal tax rates by source, not a capital-income share by group.</p>
+  <p>The engine backs the share out of two CBO tables by solving for the capital share implied by the published corporate rate under CBO's own stated incidence assumption, which allocates 25 percent of the corporate tax to labour and 75 percent to capital. In other words: given what CBO says the corporate tax rate is for each group, and given CBO's own split, what capital-income distribution must lie underneath? That solved distribution is what lets the dial move at all. <strong>Direction of bias:</strong> the derivation is anchored to CBO's assumption, so a user who moves the dial toward the "labour bears most of it" end is applying a different incidence assumption to a distribution that was inferred under CBO's. The further from 25 percent the dial travels, the more approximate the result.</p>
+
+  <h3>3. Corporate revenue scaled linearly</h3>
+  <p>A change in the corporate rate is scaled linearly from actual FY2025 corporate receipts: half the rate, roughly half the receipts. <strong>Direction of bias:</strong> real corporate tax bases are not linear in the rate — profit-shifting, loss carryforwards, and entity-choice responses all bend the relationship, and the bend is steeper at higher rates. Large corporate-rate movements are the least reliable figure the sandbox produces, and the further from 21 percent the slider travels, the less the number should be trusted.</p>
+
+  <h3>4. The revenue-feedback-to-GDP conversion</h3>
+  <p>Published growth-feedback estimates are expressed as a share of a policy's static cost recovered through economic growth. The tool needs an effect on GDP. It converts one to the other using the Committee for a Responsible Federal Budget's published ratio — that a policy would need to generate five to six dollars of economic activity for every dollar of cost to be self-financing — and reports the result as a band, never a point.</p>
+  <p><strong>Direction of bias:</strong> this is a linear reading of a published rule of thumb, applied outside the specific case CRFB derived it for. It is the coarsest step in the model, which is why the GDP output is a shaded range with both endpoints labelled by the lens that produced them, and why it is never fed back into the revenue figure. That last decision is structural: it is what makes it impossible for any combination of settings in the sandbox to show a tax cut financing itself.</p>
+
+  <h2 id="policyengine">How the engine is validated</h2>
+  <p>The engine is benchmarked against published conventional scores of comparable reforms from CBO, the Tax Foundation and the Penn Wharton Budget Model. Where the engine's own figure can be compared with one of those, both numbers are shown with the reason they differ. A published-score comparison is a weaker check than a microsimulation cross-run, and it is described that way rather than as a match.</p>
+  <p>The build plan also called for a cross-run against PolicyEngine, an open-source microsimulation model. That cross-run has not been completed, and no PolicyEngine result appears anywhere in the tool.</p>
+  <p>One case is specifically excluded even from the substitute check. <strong>No cross-check of any kind is claimed for the capital-gains lever</strong>, because PolicyEngine does not model realization responses — the thing that dominates the answer for capital gains. The project's data file records the developers' own statement that capital-gains behavioural responses were still being added. A validator that does not model the mechanism cannot validate a lever built on it.</p>
+
+  <h2 id="obbba">The baseline problem</h2>
+  <p>Public Law 119-21, the One Big Beautiful Bill Act, was enacted in July 2025. It made the 2017 individual rate schedule permanent, set the estate exemption at $15 million, and changed the state and local tax deduction.</p>
+  <p><strong>Almost every published revenue score still in circulation predates it.</strong> The Congressional Budget Office's options volume is dated December 2024 and assumed the individual provisions would expire at the end of 2025. They did not. Those scores are stale in <em>direction</em>, not merely in size: measured against a permanent-rates baseline, most revenue-raisers would score higher than their published figure, because there is more revenue left to raise.</p>
+  <p>This is why a pre-OBBBA label on a score is a correctness question rather than a footnote. A score is a difference between two worlds, and if the world it was differenced against no longer exists, the number means something other than what it appears to mean. Every score datum in this project carries a <code>baseline</code> field, and the interface prints it beside the figure.</p>
+  <p>Three sources in the entire dataset are post-OBBBA: the Tax Foundation's 2026 Options Guide, the Yale Budget Lab's May 2026 re-estimate of carried interest, and Congressional Research Service report IF13190 of March 2026 on the mortgage interest deduction. Everything else is pre-OBBBA and labelled.</p>
+
+  <h2 id="never">What this tool will not say</h2>
+  <p>The list below is enforced two ways: by a unit test over every string the engine generates, and by a scan of the rendered page and every scenario card.</p>
+  <ol class="meth-never">
+    <li><strong>No tax cut finances itself.</strong> Growth effects are computed and displayed, and are never added back into the revenue figure. Verified growth feedback in this dataset runs from about −5 percent to +32 percent of a change's static cost. The arithmetic of getting to 100 percent is set out in the sandbox's own honesty notes.</li>
+    <li><strong>No point estimate of GDP.</strong> The macro output is always a two-ended band, and the endpoints are labelled with the modelling lens that produced them.</li>
+    <li><strong>No year-by-year macro path.</strong> The tool reports a tenth-year effect and a ten-year total. It does not draw a trajectory between them.</li>
+    <li><strong>No sub-quintile precision.</strong> Distribution is reported for quintiles plus the top 1 percent. Finer breakouts exist in the source data for some series and are not used in the chart.</li>
+    <li><strong>No certainty about tax incidence.</strong> Who ultimately bears the corporate tax is disputed; the tool ships a dial with the range of published positions and names the shop at each end.</li>
+    <li><strong>No optimal-rate claim.</strong> The sandbox will show where revenue from a band stops rising. Revenue-maximising is not a recommendation, and the tool does not make one.</li>
+    <li><strong>No averaging of contested estimates.</strong> Where shops disagree, both numbers ship with attribution.</li>
+    <li><strong>No number without a period.</strong> Every dollar figure carries its fiscal year or budget window.</li>
+  </ol>
+  <div class="meth-callout">
+    <strong>And one thing the tool does say, unprompted.</strong> Where a figure could not be verified, the space is left empty and the gap is named. Every such gap is listed under <a href="#blocked">what could not be retrieved</a>, with what would close it.
+  </div>

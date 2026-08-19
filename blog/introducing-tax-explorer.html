@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-3YXK0RL6XV"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>We Checked Our Own Numbers First. Two of Them Were Wrong. &mdash; Common Ladder</title>
+  <meta name="description" content="Two figures this project had carried for weeks were wrong — 9.3 million should have been 6.4 million. Introducing The Tax Ladder, and how building it caught them.">
+  <link rel="canonical" href="https://commonladder.org/blog/introducing-tax-explorer.html">
+  <link rel="stylesheet" href="/style.css">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="alternate icon" type="image/png" href="/favicon-32.png">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "We Checked Our Own Numbers First. Two of Them Were Wrong.",
+    "description": "Two figures this project had carried for weeks were wrong — 9.3 million should have been 6.4 million. Introducing The Tax Ladder, and how building it caught them.",
+    "author": { "@type": "Organization", "name": "Common Ladder" },
+    "publisher": { "@type": "Organization", "name": "Common Ladder", "url": "https://commonladder.org" },
+    "datePublished": "2026-08-18",
+    "dateModified": "2026-08-18",
+    "mainEntityOfPage": "https://commonladder.org/blog/introducing-tax-explorer.html"
+  }
+  </script>
+  <noscript><style>.nav__links{display:flex!important;flex-wrap:wrap!important;}.nav__toggle{display:none!important;}</style></noscript>
+
+  <style>
+  /* .callout is a solid blue panel with white text; a plain inline link inside it
+     inherits the global link colour and lands blue-on-blue at 1.00:1. Scoped here
+     rather than in style.css, which four other posts and thirteen .btn links share. */
+  .callout a:not(.btn) { color:#fff; text-decoration:underline; text-underline-offset:2px; }
+  .callout a:not(.btn):hover { text-decoration-thickness:2px; }
+  </style>
+
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Common Ladder">
+  <meta property="og:title" content="We Checked Our Own Numbers First. Two of Them Were Wrong. &mdash; Common Ladder">
+  <meta property="og:description" content="Two figures this project had carried for weeks were wrong. Both were caught because the checking happened before the building. Introducing The Tax Ladder.">
+  <meta property="og:url" content="https://commonladder.org/blog/introducing-tax-explorer.html">
+  <meta property="og:image" content="https://commonladder.org/images/og-default.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="We Checked Our Own Numbers First. Two of Them Were Wrong. &mdash; Common Ladder">
+  <meta name="twitter:description" content="A tax tool whose premise is that the numbers are checkable, opening with its own corrected numbers.">
+  <meta name="twitter:image" content="https://commonladder.org/images/og-default.png">
+</head>
+<body>
+
+<a href="#main" class="skip-link">Skip to main content</a>
+
+<div class="crisis-bar" role="region" aria-label="Crisis help">
+  <strong>Need help right now?</strong>
+  <a href="tel:211">Call 211</a><span class="crisis-bar__sep">·</span>
+  <a href="sms:741741?body=HOME">Text HOME to 741741</a><span class="crisis-bar__sep">·</span>
+  <a href="tel:988">988 Suicide &amp; Crisis</a>
+</div>
+<nav class="nav" aria-label="Primary">
+  <div class="nav__inner">
+    <a href="/" class="nav__logo" aria-label="Common Ladder home">
+      <svg width="28" height="28" viewBox="0 0 247 247" fill="none" aria-hidden="true"><g transform="translate(-12.00,-16.00)"> <path fill="#E8911A" fill-opacity="1" fill-rule="evenodd" d="M 254.00,51.00 L 234.00,85.64 L 194.00,85.64 L 174.00,51.00 L 194.00,16.36 L 234.00,16.36 Z M 231.50,51.00 L 222.75,66.16 L 205.25,66.16 L 196.50,51.00 L 205.25,35.84 L 222.75,35.84 Z"/> <path fill="#9FBCBA" fill-opacity="1" fill-rule="evenodd" d="M 148.00,118.00 L 128.00,152.64 L 88.00,152.64 L 68.00,118.00 L 88.00,83.36 L 128.00,83.36 Z M 125.50,118.00 L 116.75,133.16 L 99.25,133.16 L 90.50,118.00 L 99.25,102.84 L 116.75,102.84 Z"/> <path fill="#9FBCBA" fill-opacity="1" fill-rule="evenodd" d="M 259.00,118.00 L 239.00,152.64 L 199.00,152.64 L 179.00,118.00 L 199.00,83.36 L 239.00,83.36 Z M 236.50,118.00 L 227.75,133.16 L 210.25,133.16 L 201.50,118.00 L 210.25,102.84 L 227.75,102.84 Z"/> <path fill="#FFFFFF" fill-opacity="0.94" fill-rule="evenodd" d="M 207.00,164.00 L 187.00,198.64 L 147.00,198.64 L 127.00,164.00 L 147.00,129.36 L 187.00,129.36 Z M 184.50,164.00 L 175.75,179.16 L 158.25,179.16 L 149.50,164.00 L 158.25,148.84 L 175.75,148.84 Z"/> <path fill="#FFFFFF" fill-opacity="0.94" fill-rule="evenodd" d="M 92.00,164.00 L 72.00,198.64 L 32.00,198.64 L 12.00,164.00 L 32.00,129.36 L 72.00,129.36 Z M 69.50,164.00 L 60.75,179.16 L 43.25,179.16 L 34.50,164.00 L 43.25,148.84 L 60.75,148.84 Z"/> <path fill="#FFFFFF" fill-opacity="0.94" fill-rule="evenodd" d="M 161.00,228.00 L 141.00,262.64 L 101.00,262.64 L 81.00,228.00 L 101.00,193.36 L 141.00,193.36 Z M 138.50,228.00 L 129.75,243.16 L 112.25,243.16 L 103.50,228.00 L 112.25,212.84 L 129.75,212.84 Z"/> </g></svg>
+      <span class="nav__wordmark">common<span>ladder</span></span>
+    </a>
+    <button class="nav__toggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="primary-nav" onclick="this.setAttribute('aria-expanded', document.getElementById('primary-nav').classList.toggle('open') ? 'true' : 'false')">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav__links" id="primary-nav">
+            <li><a href="/providers.html">For providers</a></li>
+      <li><a href="/learn/">Learn</a></li>
+      <li><a href="/about.html">About</a></li>
+      <li><a href="/find.html" class="nav__cta">Find resources</a></li>
+      <li><a href="/static-tools/my-ladder.html" class="nav__cta nav__cta--ladder">My Ladder</a></li>
+      <li><a href="https://www.weather.gov/" rel="noreferrer" class="nav__exit" onclick="event.preventDefault();window.location.replace('https://www.weather.gov/')">Leave page</a></li>
+    </ul>
+  </div>
+</nav>
+
+<main id="main" class="article">
+  <span class="eyebrow">Evidence Brief</span>
+  <h1>We Checked Our Own Numbers First. Two of Them Were Wrong.</h1>
+  <p class="meta">By Common Ladder &middot; August 18, 2026 &middot; 7 min read</p>
+
+  <div class="callout">
+    <ul>
+      <li>This project's own brief said full funding of housing vouchers would lift <strong>9.3 million</strong> people out of poverty. The <a href="https://www.urban.org/sites/default/files/2023-08/How%20Much%20Could%20Full%20Funding%20and%20Use%20of%20Housing%20Choice%20Vouchers%20Reduce%20Poverty.pdf" target="_blank" rel="noopener">Urban Institute's published estimate</a> is <strong>6.4 million</strong>. No source for the larger figure exists that we could find.</li>
+      <li>The brief priced the 2021 Child Tax Credit expansion at about <strong>$105 billion</strong>. The <a href="https://www.americanactionforum.org/insight/the-advanceable-child-tax-credit-in-the-american-rescue-plan-act/" target="_blank" rel="noopener">Joint Committee on Taxation's figure as reported</a> is <strong>$109.5 billion</strong>.</li>
+      <li>Both were caught because the checking ran <em>before</em> the building, not after it.</li>
+      <li><a href="/learn/tax-explorer/">The Tax Ladder</a> is live: a scrubbable history of American taxation from 1913, a sandbox where you move the rates yourself, and twelve scenario cards with the published scores attached.</li>
+      <li>Every figure on it carries its fiscal year, its scorer, and the data file it was read from. The <a href="/learn/tax-explorer/methodology.html">methodology page</a> publishes the list of things the tool refuses to say.</li>
+    </ul>
+  </div>
+
+  <p>The most useful thing that happened while building an interactive tax tool was that two of our own numbers turned out to be wrong.</p>
+
+  <p>Neither was a typo. Both had been sitting in the project's research brief for weeks, formatted like every other figure, attributed to a real institution, and repeated in planning documents. They were the kind of number that gets copied forward because it already looks checked.</p>
+
+  <hr style="margin: 2rem 0; border: none; border-top: 1px solid #e0ddd8;">
+
+  <h2>The two corrections</h2>
+
+  <p>The first concerns housing vouchers, which is the closest thing this site has to a signature policy. The brief claimed that fully funding the Housing Choice Voucher program would lift 9.3 million people above the poverty line, attributed to the Urban Institute in 2021.</p>
+
+  <p><a href="https://www.urban.org/sites/default/files/2023-08/How%20Much%20Could%20Full%20Funding%20and%20Use%20of%20Housing%20Choice%20Vouchers%20Reduce%20Poverty.pdf" target="_blank" rel="noopener">Urban's estimate</a>, published in August 2023 and modelled on 2022 conditions, is that the poverty rate would fall from 14.7% to 12.8% &mdash; <strong>6.4 million people</strong>. The extra cost is <strong>$118 billion a year</strong>, gross, with nothing netted out for reduced spending elsewhere. About a quarter of eligible households currently receive any housing assistance at all.<sup class="fn-ref">1</sup> No Urban publication we could reach contains the 9.3 million figure.</p>
+
+  <p>The second concerns the 2021 Child Tax Credit expansion, the best natural experiment American anti-poverty policy has produced this century. The brief priced one year of it at "about $105 billion." The <a href="https://www.americanactionforum.org/insight/the-advanceable-child-tax-credit-in-the-american-rescue-plan-act/" target="_blank" rel="noopener">Joint Committee on Taxation's score, as reported</a>, is <strong>$109.5 billion</strong>.<sup class="fn-ref">5</sup></p>
+
+  <p>A four-billion-dollar difference does not change anyone's mind about the Child Tax Credit. That is roughly the point. A number that survives because nobody would notice it being off is exactly the number that never gets checked.</p>
+
+  <hr style="margin: 2rem 0; border: none; border-top: 1px solid #e0ddd8;">
+
+  <h2>Why the order matters</h2>
+
+  <p>Both figures were on their way onto a published page. Both were caught in a verification pass that ran as a separate piece of work before any of the scenario cards existed &mdash; a pass whose only rule was that every figure had to come back with the sentence it was read from, quoted, or be marked unverified and dropped.</p>
+
+  <p>Run that pass after the build and the incentives invert. By then the number is already in the chart, the chart is already in the layout, and the correction costs a rebuild. The 9.3 million figure would very likely have shipped, because it is a better number than 6.4 million and there would have been a deadline.</p>
+
+  <p>The same pass turned up a third case worth naming, because it cuts the other way. This project had stored the 2022 average federal tax rate for the highest quintile from a secondary reading of a <a href="https://www.cbo.gov/publication/61911" target="_blank" rel="noopener">Congressional Budget Office</a> report. Two of the three figures in that reading were right; the third was wrong by 2.7 points. The tool now shows CBO's own numbers: in 2022, the lowest quintile paid <strong>1.4%</strong> of income in all federal taxes combined, the highest quintile <strong>25.9%</strong>, and the top 1% <strong>31.5%</strong>.<sup class="fn-ref">4</sup> Checking a source against a source cannot find that. Only the spreadsheet can.</p>
+
+  <hr style="margin: 2rem 0; border: none; border-top: 1px solid #e0ddd8;">
+
+  <h2>What the tool does</h2>
+
+  <p>The Tax Ladder is in three parts.</p>
+
+  <p><strong>The history</strong> runs 1913 to 2026 and is built around one gap. The top statutory rate &mdash; the headline number in the law &mdash; has ranged from 7% in 1913 to 94% in 1944, and sat at 91% for the whole of the 1950s. Almost nobody at the top paid it. Plotting the statutory rate against the effective rate the very top actually paid turns "they used to tax the rich at 91%" from a slogan into a measurable distance, and that distance is the entire subject of the second part.</p>
+
+  <p><strong>The sandbox</strong> gives you the levers: top marginal rate and the income it starts at, capital gains, the corporate rate, the payroll cap, ten loophole toggles, IRS enforcement, and swaps to a flat tax, a national sales tax, a VAT, a wealth tax or a financial transaction tax. Every change produces four things at once &mdash; the ten-year revenue effect broken into what it raises on paper, what avoidance takes back, and what is left; a signed bar chart of what happens to each economic class, shown with every result; a GDP range, never a single number; and a plain-language explanation of why you got that answer.</p>
+
+  <p>Push the top rate high enough and revenue rolls over and starts falling. Where it turns depends entirely on one assumption dial, and the dial is in the corner where you can move it. A revenue-maximising rate is not a recommendation; it is the point past which a government collects less, which is a different claim from what a government should do.</p>
+
+  <p><strong>Twelve scenario cards</strong> carry the published scores for real proposals &mdash; closing the big loopholes, a 70% top bracket, a wealth tax, a flat tax, the FairTax, funding the IRS, scrapping the payroll cap, restoring the 2021 Child Tax Credit, housing vouchers for everyone who qualifies, a carbon dividend, current law, and the 1986 reform as a template. Tapping a card writes its settings into the sandbox and lets the same engine run. A card does not compute its own answer, so a card and the sandbox cannot drift apart.</p>
+
+  <hr style="margin: 2rem 0; border: none; border-top: 1px solid #e0ddd8;">
+
+  <h2>Where honest people disagree, both numbers ship</h2>
+
+  <p>Disputed estimates appear as pairs with names attached, never as an average. The share of income held by the top 1% in 2022 is <strong>23.6%</strong> or <strong>15.5%</strong> depending on whose allocation choices you accept &mdash; an eight-point gap between two credible series using the same definition of income. Both lines are on the chart.</p>
+
+  <p>The Child Tax Credit card carries a prediction and an observation that point in opposite directions: one team modelled a permanent child allowance and projected a large drop in employment, another measured the actual 2021 payments and found no detectable effect.<sup class="fn-ref">2</sup> Both can be right, because a payment everyone knows will stop in six months is not the policy the first team modelled. The card says so.</p>
+
+  <p>The assumption dial that governs the whole engine is labelled with the real modelling shops each setting imitates, so a reader can find out which set of assumptions they have been agreeing with.</p>
+
+  <hr style="margin: 2rem 0; border: none; border-top: 1px solid #e0ddd8;">
+
+  <h2>What it will not say</h2>
+
+  <p>The <a href="/learn/tax-explorer/methodology.html">methodology page</a> publishes the list. No tax cut pays for itself. No single-number GDP effect. No year-by-year macroeconomic path. No distributional claim finer than a quintile, plus the top 1%. No certainty about who ultimately bears the corporate tax. No optimal rate.</p>
+
+  <p>Those are constraints on the engine, enforced by tests: a sweep across every combination of rate cut, assumption setting and model lens confirms that no reachable state of the tool displays a rate cut raising money.<sup class="fn-ref">6</sup></p>
+
+  <hr style="margin: 2rem 0; border: none; border-top: 1px solid #e0ddd8;">
+
+  <h2>Why a homelessness site built a tax tool</h2>
+
+  <p>Common Ladder's argument is that homelessness is a systems problem. The tax code is the system one level up: it decides what the safety net can afford before anyone argues about how to spend it.</p>
+
+  <p>The vouchers card is where the two halves meet. Housing Choice Vouchers reach about one in four eligible households; qualifying does not get you a voucher, it gets you a place on a waiting list.<sup class="fn-ref">1</sup> The randomised evidence on what a long-term subsidy does for a family in shelter is among the strongest in the field.<sup class="fn-ref">3</sup> The gap between that evidence and what gets funded is a budget decision, and the sandbox is where you can see what closing it would take.</p>
+
+  <p>The tool will not tell you which lever to pull. It will tell you what each one costs, who pays for it, who published the estimate, and what the people who disagree with that estimate say.</p>
+
+  <p><a href="/learn/tax-explorer/"><strong>Open The Tax Ladder &rarr;</strong></a> &middot; <a href="/learn/tax-explorer/methodology.html">Read the methodology and sources</a></p>
+
+  <aside class="related" aria-label="Read next">
+    <h3>Read next</h3>
+    <ul>
+      <li><a href="/blog/federal-homelessness-spending-outcomes.html">Federal Homelessness Spending Went Up. Outcomes Went Down. Both Things Are True.</a></li>
+      <li><a href="/blog/cash-transfers-homelessness-evidence.html">What Happens When You Just Give People Money</a></li>
+      <li><a href="/learn/solutions/">Pathway 03 &mdash; What actually ends homelessness</a></li>
+    </ul>
+  </aside>
+
+  <section class="footnotes" aria-label="Sources and footnotes">
+    <h2>Sources &amp; footnotes</h2>
+    <ol>
+      <li id="fn1">Wheaton, Dehry, Giannarelli and Knowles, <a href="https://www.urban.org/sites/default/files/2023-08/How%20Much%20Could%20Full%20Funding%20and%20Use%20of%20Housing%20Choice%20Vouchers%20Reduce%20Poverty.pdf" target="_blank" rel="noopener">"How Much Could Full Funding and Use of Housing Choice Vouchers Reduce Poverty?", Urban Institute (August 2023)</a>. Simulated on 2022 conditions using the ATTIS microsimulation model. Full funding and use would raise subsidies paid by $118 billion, to a total of $168 billion; the SPM poverty rate falls from 14.7% to 12.8%, which the authors describe as 6.4 million people moving from below poverty to above it. About 25% of eligible households currently receive assistance; 4.4 million households receive it now, rising to 17.6 million under full funding and use. The cost figure is annual and gross, with no offset for reduced spending elsewhere &mdash; comparing it to a ten-year revenue score without noticing that is an error of a factor of ten. Figures and their data paths are reproduced on the tool's <a href="/learn/tax-explorer/methodology.html">methodology page</a>.</li>
+      <li id="fn2">The prediction: Corinth, Meyer, Stadnicki and Wu, summarised by <a href="https://www.aei.org/articles/the-child-tax-credit-labor-supply-and-poverty/" target="_blank" rel="noopener">AEI (December 2021)</a> &mdash; "we estimate that the proposal would reduce employment by approximately 1.5 million workers." The observation: Ananat, Glasner, Hamilton and Parolin, <a href="https://www.nber.org/system/files/working_papers/w29823/w29823.pdf" target="_blank" rel="noopener">NBER Working Paper 29823 (March 2022)</a> &mdash; "very small, inconsistently signed, and statistically insignificant impacts of the CTC both on employment in the prior week and on active participation in the labor force." The first models a permanent child allowance; the second measures a payment that was legislated to expire.</li>
+      <li id="fn3">Gubits, Shinn, Wood, Brown, Dastrup and Bell, <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC6168747" target="_blank" rel="noopener">"What Interventions Work Best for Families who Experience Homelessness?", <em>Journal of Policy Analysis and Management</em> 37(4):735&ndash;766 (2018)</a> &mdash; the Family Options Study. The offer of a long-term rent subsidy reduced emergency-shelter use in months 21 to 32 after random assignment "by more than three-quarters" (4.4% versus 18.8% under usual care). The trial randomised priority access among families already in shelter; it is evidence about what a subsidy does for such a family, not about what would happen if every eligible household were served at once. Full report: <a href="https://www.huduser.gov/portal/sites/default/files/pdf/family-options-study-full-report.pdf" target="_blank" rel="noopener">HUD PD&amp;R</a>.</li>
+      <li id="fn4">Congressional Budget Office, <a href="https://www.cbo.gov/publication/61911" target="_blank" rel="noopener">"The Distribution of Household Income, 2022"</a>. Average federal tax rates by income group, all federal taxes combined under CBO's incidence assumptions. The tool reads these from CBO's own supplemental spreadsheet rather than from any secondary account of it; the discrepancy described above (23.2% versus CBO's 25.9% for the highest quintile) was found by that comparison.</li>
+      <li id="fn5">Joint Committee on Taxation's $109.5 billion score for the one-year 2021 Child Tax Credit expansion is used here as reported by the <a href="https://www.americanactionforum.org/insight/the-advanceable-child-tax-credit-in-the-american-rescue-plan-act/" target="_blank" rel="noopener">American Action Forum (March 2021)</a>, and is labelled as a secondary source on the tool. JCX-14-21 could not be read directly. Child poverty figures on the card come from the <a href="https://www.census.gov/library/stories/2024/10/child-supplemental-poverty-measure.html" target="_blank" rel="noopener">Census Bureau's Supplemental Poverty Measure series</a>.</li>
+      <li id="fn6">Every figure the tool displays is re-resolved against its data file by an automated test before release, together with a period and a source for each one. The parameter tables, the derivations the project made itself, and the published list of claims the tool will not make are on the <a href="/learn/tax-explorer/methodology.html">methodology page</a>.</li>
+    </ol>
+  </section>
+
+  <p class="meta">Figures are as of the fiscal years shown on each one. This page and the tool are reviewed when major tax legislation passes, not on a schedule. Found a figure you can't reproduce from its source? Email <a href="mailto:corrections.commonladder@gmail.com">corrections.commonladder@gmail.com</a></p>
+</main>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer__grid">
+      <div class="footer__brand">
+        <h3>Common Ladder</h3>
+        <p>The civic resource platform connecting people experiencing homelessness with every service in your community.</p>
+      </div>
+      <div>
+        <h4>Find help</h4>
+        <ul>
+          <li><a href="/find.html?cat=shelter">Shelter</a></li>
+          <li><a href="/find.html?cat=food">Food</a></li>
+          <li><a href="/find.html?cat=legal">Legal</a></li>
+          <li><a href="/help/">All categories</a></li>
+          <li><a href="/static-tools/">Local navigators</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>For providers</h4>
+        <ul>
+          <li><a href="/providers.html">Tools &amp; referrals</a></li>
+          <li><a href="/providers.html#case-manager-guide">Case manager guide</a></li>
+          <li><a href="/data-reports.html">Data &amp; reports</a></li>
+          <li><a href="/learn/">Four learning pathways</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>About</h4>
+        <ul>
+          <li><a href="/about.html">Our mission</a></li>
+          <li><a href="/about.html#methodology">Methodology</a></li>
+          <li><a href="/about.html#team">Team</a></li>
+          <li><a href="/brand/visual-guidelines.html">Brand guidelines</a></li>
+          <li><a href="/contact.html">Contact</a></li>
+          <li><a href="/privacy.html">Privacy</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer__transparency">
+      <strong>Transparency:</strong> Common Ladder is an independent civic project. We do not sell user data, run ads, or accept payment from listed resources.
+    </div>
+    <div class="footer__bottom">
+      <span>&copy; 2026 Common Ladder. Free to use, always.</span>
+      <span><time datetime="2026-08-18">Last updated August 18, 2026</time></span>
+    </div>
+  </div>
+</footer>
+
+<script data-id="cl-card-click">
+(function(){
+  document.querySelectorAll('.card, .post-card:not(.post-card--linked)').forEach(function(el){
+    var a = el.querySelector('a[href]');
+    if(!a) return;
+    el.addEventListener('click', function(e){
+      if(e.target.tagName==='A'||e.target.closest('a')) return;
+      window.location.href = a.href;
+    });
+  });
+})();
+</script>
+</body>
+</html>

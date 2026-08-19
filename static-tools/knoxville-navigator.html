@@ -1,0 +1,1077 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- Common Ladder navigator template. See NAVIGATOR_HOWTO.md for setup steps. Do NOT paste real HTML tags into this comment - it will break the document. -->
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-3YXK0RL6XV"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-3YXK0RL6XV');
+</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Knoxville &amp; Knox County Homelessness Resource Navigator — Common Ladder</title>
+<meta name="description" content="Find shelter, food, health care, and housing programs in Knoxville and Knox County, Tennessee (CoC TN-502). Answer four questions to get resources matched to your situation, including where to get a CHAMP coordinated entry assessment.">
+<link rel="canonical" href="https://commonladder.org/static-tools/knoxville-navigator.html">
+<style>
+  /* ── Reset & Base ── */
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    /* Navigator palette — slightly different from main site for tool readability */
+    --bg:        #FAF7F2;
+    --primary:   #1A5276;
+    --accent:    #2E86AB;
+    --text:      #1C2B33;
+    --green:     #27AE60;
+    --green-dark:#1E8449;
+    --muted:     #6B7C85;
+    --border:    #D5D0C8;
+    --card-bg:   #FFFFFF;
+    --shadow:    0 2px 12px rgba(26,82,118,0.10);
+
+    /* Common Ladder brand — used for home badge only */
+    --cl-blue:   #1C3D6E;
+    --cl-amber:  #E8911A;
+  }
+
+  html { font-size: 18px; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    line-height: 1.6;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  /* ── Layout shell ── */
+  #app {
+    width: 100%;
+    max-width: 640px;
+    padding: 24px 20px 60px;
+    flex: 1;
+  }
+
+  /* ── County badge (top of app, always visible) ── */
+  .county-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: var(--primary);
+    color: #fff;
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    padding: 4px 10px;
+    border-radius: 100px;
+    margin-bottom: 28px;
+  }
+  .county-badge svg { flex-shrink: 0; } #app /* ── Question card ── */
+  .card{
+    background: var(--card-bg);
+    border-radius: 16px;
+    padding: 32px 28px;
+    box-shadow: var(--shadow);
+    margin-bottom: 16px;
+  }
+
+  .q-label {
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 14px;
+  }
+
+  .q-text {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--primary);
+    line-height: 1.35;
+    margin-bottom: 8px;
+  }
+
+  .q-sub {
+    font-size: 0.88rem;
+    color: var(--muted);
+    margin-bottom: 28px;
+  }
+
+  /* ── Buttons ── */
+  .btn-row {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+  } #app .btn{
+    flex: 1;
+    min-width: 120px;
+    padding: 14px 20px;
+    border: none;
+    border-radius: 10px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.15s, transform 0.1s;
+  } #app .btn:active{ transform: scale(0.98); }
+
+  .btn-yes  { background: var(--primary); color: #fff; }
+  .btn-yes:hover  { background: #154360; }
+  .btn-no   { background: #EBF5FB; color: var(--primary); }
+  .btn-no:hover   { background: #D6EAF8; }
+
+  .btn-primary {
+    display: inline-block;
+    background: var(--green);
+    color: #fff;
+    padding: 16px 28px;
+    border-radius: 10px;
+    font-size: 1.05rem;
+    font-weight: 700;
+    text-decoration: none;
+    text-align: center;
+    margin-top: 8px;
+    transition: background 0.15s;
+  }
+  .btn-primary:hover { background: var(--green-dark); }
+
+  /* Save-to-My-Ladder secondary CTA on the result step */
+  .btn-save-ladder {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    width: 100%;
+    background: var(--cl-amber);
+    color: #fff;
+    border: none;
+    padding: 14px 22px;
+    border-radius: 10px;
+    font-size: 0.98rem;
+    font-weight: 700;
+    text-decoration: none;
+    text-align: center;
+    margin-top: 10px;
+    cursor: pointer;
+    transition: opacity 0.15s;
+    font-family: inherit;
+  }
+  .btn-save-ladder:hover { opacity: 0.9; }
+  .btn-save-ladder__sub {
+    display: block;
+    text-align: center;
+    font-size: 0.78rem;
+    color: var(--muted);
+    margin-top: 6px;
+  }
+
+  .btn-restart {
+    background: none;
+    border: 1.5px solid var(--border);
+    color: var(--muted);
+    font-size: 0.85rem;
+    padding: 8px 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    margin-top: 12px;
+    transition: border-color 0.15s;
+  }
+  .btn-restart:hover { border-color: var(--primary); color: var(--primary); }
+
+  /* ── Progress bar ── */
+  .progress-wrap {
+    margin-bottom: 20px;
+  }
+  .progress-bar {
+    height: 4px;
+    background: var(--border);
+    border-radius: 2px;
+    overflow: hidden;
+  }
+  .progress-fill {
+    height: 100%;
+    background: var(--accent);
+    border-radius: 2px;
+    transition: width 0.35s ease;
+  }
+  .progress-label {
+    font-size: 0.72rem;
+    color: var(--muted);
+    margin-top: 5px;
+  }
+
+  /* ── Result card ── */
+  .result-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 4px 12px;
+    border-radius: 100px;
+    font-size: 0.78rem;
+    font-weight: 700;
+    margin-bottom: 18px;
+  }
+  .badge-veterans { background: #D5E8D4; color: #27AE60; }
+  .badge-youth    { background: #D5E8D4; color: #27AE60; }
+  .badge-families { background: #DAE8FC; color: #1A5276; }
+  .badge-chronic  { background: #FFF2CC; color: #856404; }
+  .badge-adult    { background: #E8DAEF; color: #6C3483; }
+
+  .result-headline {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--primary);
+    line-height: 1.35;
+    margin-bottom: 20px;
+  }
+
+  .first-action {
+    background: #EBF5FB;
+    border-left: 4px solid var(--accent);
+    border-radius: 0 10px 10px 0;
+    padding: 16px 18px;
+    font-size: 0.95rem;
+    margin-bottom: 20px;
+  } #app .section-head{
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin: 22px 0 10px;
+  }
+
+  .what-to-expect {
+    font-size: 0.93rem;
+    color: var(--text);
+    line-height: 1.6;
+    margin-bottom: 4px;
+  }
+
+  /* ── Bring list ── */
+  .bring-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  .bring-list li {
+    display: flex;
+    gap: 8px;
+    font-size: 0.9rem;
+    padding: 5px 0;
+    border-bottom: 1px solid var(--border);
+    color: var(--text);
+  }
+  .bring-list li:last-child { border-bottom: none; }
+  .bring-list li::before { content: "✓"; color: var(--green); font-weight: 700; flex-shrink: 0; }
+
+  /* ── Resource cards ── */
+  .resource-card {
+    border: 1.5px solid var(--border);
+    border-radius: 10px;
+    padding: 14px 16px;
+    margin-bottom: 10px;
+  }
+  .resource-card__name {
+    font-weight: 700;
+    font-size: 0.95rem;
+    color: var(--primary);
+    margin-bottom: 2px;
+  }
+  .resource-card__phone {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--green-dark);
+    text-decoration: none;
+    display: inline-block;
+    margin-bottom: 3px;
+  }
+  .resource-card__note {
+    font-size: 0.82rem;
+    color: var(--muted);
+  }
+
+  /* ── Extra note ── */
+  .extra-note {
+    background: #FFFDE7;
+    border: 1px solid #FDD835;
+    border-radius: 8px;
+    padding: 12px 14px;
+    font-size: 0.88rem;
+    color: #5D4037;
+    margin-top: 16px;
+  }
+
+  /* ── Confidence badge ── */
+  .conf-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    padding: 3px 10px;
+    border-radius: 100px;
+    margin-top: 20px;
+    cursor: help;
+    position: relative;
+  }
+  .conf-verified   { background: #D5E8D4; color: #27AE60; }
+  .conf-research   { background: #DAE8FC; color: #1A5276; }
+  .conf-unverified { background: #FFE6CC; color: #D6760C; }
+  .conf-tooltip {
+    display: none;
+    position: absolute;
+    bottom: calc(100% + 8px);
+    left: 50%;
+    transform: translateX(-50%);
+    background: #1C2B33;
+    color: #fff;
+    font-size: 0.75rem;
+    font-weight: 400;
+    line-height: 1.5;
+    padding: 10px 14px;
+    border-radius: 8px;
+    width: 260px;
+    z-index: 10;
+    pointer-events: none;
+  }
+  .conf-tooltip::after {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    border: 6px solid transparent;
+    border-top-color: #1C2B33;
+  }
+  .conf-badge:hover .conf-tooltip,
+  .conf-badge.open  .conf-tooltip { display: block; }
+
+  /* ── Welcome screen ── */
+  .welcome-title {
+    font-size: 1.6rem;
+    font-weight: 800;
+    color: var(--primary);
+    line-height: 1.25;
+    margin-bottom: 12px;
+  }
+  .welcome-sub {
+    font-size: 1rem;
+    color: var(--muted);
+    margin-bottom: 28px;
+  }
+  .welcome-start {
+    background: var(--primary);
+    color: #fff;
+    border: none;
+    border-radius: 12px;
+    padding: 18px 32px;
+    font-size: 1.05rem;
+    font-weight: 700;
+    cursor: pointer;
+    width: 100%;
+    transition: background 0.15s;
+  }
+  .welcome-start:hover { background: #154360; }
+
+  /* ── Footer ── */
+  footer {
+    text-align: center;
+    padding: 20px 20px 32px;
+    font-size: 0.8rem;
+    color: var(--muted);
+    line-height: 1.8;
+    max-width: 640px;
+    width: 100%;
+  }
+  footer a { color: var(--muted); }
+  footer a:hover { color: var(--primary); }
+  .footer-divider { margin: 0 8px; opacity: 0.5; }
+
+  /* ── Common Ladder home badge (fixed top-right) ── */
+  .cl-home {
+    position: fixed;
+    top: 14px;
+    right: 16px;
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    background: var(--cl-blue);
+    color: #fff;
+    text-decoration: none;
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.01em;
+    padding: 7px 13px 7px 9px;
+    border-radius: 100px;
+    box-shadow: 0 2px 10px rgba(28,61,110,0.25);
+    z-index: 999;
+    transition: background 0.15s;
+  }
+  .cl-home:hover { background: #163260; }
+  .cl-home__rung { color: var(--cl-amber); }
+  @media (min-width: 721px) { .cl-home { display: none; } }
+
+  /* ── Print styles ── */
+  @media print {
+    .btn-restart, .progress-wrap, footer .share-note { display: none; }
+    .cl-home { display: none; }
+  }
+
+  /* ── Mobile ── */
+  @media (max-width: 480px) {
+    html { font-size: 16px; } #app .card{ padding: 24px 18px; }
+    .cl-home span { display: none; } /* icon only on small screens */
+    .cl-home { padding: 8px 10px; }
+    .conf-tooltip { width: 200px; left: 0; transform: none; }
+    .conf-tooltip::after { left: 24px; transform: none; }
+  }
+
+  /* ── cl-css-isolation-2026-06-11: the global shell loads /style.css AFTER this
+     block, and its listing-page rules (.card padding:0/flex/pointer/child margins,
+     .btn, .section-head) were overriding the wizard styles above. Selectors above
+     are #app-prefixed to win the cascade; these rules neutralize global-only
+     properties the wizard never declared. ── */
+  #app .card { cursor: default; display: block; }
+  #app .card:hover { transform: none; }
+  #app .card > h3, #app .card > p, #app .card > a, #app .card > .btn { margin-left: 0; margin-right: 0; }
+  #app .card > *:last-child { margin-bottom: 0; }
+  #app .card p { color: var(--text); font-size: inherit; }
+  #app .btn { font-family: inherit; }
+  #app .section-head { text-align: left; }
+</style>
+  <link rel="stylesheet" href="/style.css">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="alternate icon" type="image/png" href="/favicon-32.png">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+</head>
+<body>
+
+<a href="#main" class="skip-link">Skip to main content</a>
+
+<div class="crisis-bar" role="region" aria-label="Crisis help">
+  <strong>Need help right now?</strong>
+  <a href="tel:211">Call 211</a><span class="crisis-bar__sep">·</span>
+  <a href="sms:741741?body=HOME">Text HOME to 741741</a><span class="crisis-bar__sep">·</span>
+  <a href="tel:988">988 Suicide &amp; Crisis</a>
+</div>
+
+<nav class="nav" aria-label="Primary">
+  <div class="nav__inner">
+    <a href="/" class="nav__logo" aria-label="Common Ladder home">
+      <svg width="28" height="28" viewBox="0 0 247 247" fill="none" aria-hidden="true"><g transform="translate(-12.00,-16.00)"> <path fill="#E8911A" fill-opacity="1" fill-rule="evenodd" d="M 254.00,51.00 L 234.00,85.64 L 194.00,85.64 L 174.00,51.00 L 194.00,16.36 L 234.00,16.36 Z M 231.50,51.00 L 222.75,66.16 L 205.25,66.16 L 196.50,51.00 L 205.25,35.84 L 222.75,35.84 Z"/> <path fill="#9FBCBA" fill-opacity="1" fill-rule="evenodd" d="M 148.00,118.00 L 128.00,152.64 L 88.00,152.64 L 68.00,118.00 L 88.00,83.36 L 128.00,83.36 Z M 125.50,118.00 L 116.75,133.16 L 99.25,133.16 L 90.50,118.00 L 99.25,102.84 L 116.75,102.84 Z"/> <path fill="#9FBCBA" fill-opacity="1" fill-rule="evenodd" d="M 259.00,118.00 L 239.00,152.64 L 199.00,152.64 L 179.00,118.00 L 199.00,83.36 L 239.00,83.36 Z M 236.50,118.00 L 227.75,133.16 L 210.25,133.16 L 201.50,118.00 L 210.25,102.84 L 227.75,102.84 Z"/> <path fill="#FFFFFF" fill-opacity="0.94" fill-rule="evenodd" d="M 207.00,164.00 L 187.00,198.64 L 147.00,198.64 L 127.00,164.00 L 147.00,129.36 L 187.00,129.36 Z M 184.50,164.00 L 175.75,179.16 L 158.25,179.16 L 149.50,164.00 L 158.25,148.84 L 175.75,148.84 Z"/> <path fill="#FFFFFF" fill-opacity="0.94" fill-rule="evenodd" d="M 92.00,164.00 L 72.00,198.64 L 32.00,198.64 L 12.00,164.00 L 32.00,129.36 L 72.00,129.36 Z M 69.50,164.00 L 60.75,179.16 L 43.25,179.16 L 34.50,164.00 L 43.25,148.84 L 60.75,148.84 Z"/> <path fill="#FFFFFF" fill-opacity="0.94" fill-rule="evenodd" d="M 161.00,228.00 L 141.00,262.64 L 101.00,262.64 L 81.00,228.00 L 101.00,193.36 L 141.00,193.36 Z M 138.50,228.00 L 129.75,243.16 L 112.25,243.16 L 103.50,228.00 L 112.25,212.84 L 129.75,212.84 Z"/> </g></svg>
+      <span class="nav__wordmark">common<span>ladder</span></span>
+    </a>
+    <button class="nav__toggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="primary-nav" onclick="this.setAttribute('aria-expanded', document.getElementById('primary-nav').classList.toggle('open') ? 'true' : 'false')">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav__links" id="primary-nav">
+            <li><a href="/providers.html">For providers</a></li>
+      <li><a href="/learn/">Learn</a></li>
+      <li><a href="/about.html">About</a></li>
+      <li><a href="/find.html" class="nav__cta">Find resources</a></li>
+      <li><a href="/static-tools/my-ladder.html" class="nav__cta nav__cta--ladder">My Ladder</a></li>
+      <li><a href="https://www.weather.gov/" rel="noreferrer" class="nav__exit" onclick="event.preventDefault();window.location.replace('https://www.weather.gov/')">Leave page</a></li>
+    </ul>
+  </div>
+</nav>
+
+<main id="main">
+
+
+
+
+
+<!-- Common Ladder home badge — always present, fixed top-right -->
+<a href="https://commonladder.org" class="cl-home" aria-label="Return to Common Ladder home">
+  <svg width="18" height="18" viewBox="0 0 28 28" fill="none" aria-hidden="true">
+    <rect x="4" y="2" width="3" height="24" rx="1.5" fill="white" opacity=".9"/>
+    <rect x="21" y="2" width="3" height="24" rx="1.5" fill="white" opacity=".9"/>
+    <rect x="4" y="7" width="20" height="3" rx="1.5" fill="#E8911A"/>
+    <rect x="4" y="14" width="20" height="3" rx="1.5" fill="#E8911A"/>
+    <rect x="4" y="21" width="20" height="3" rx="1.5" fill="#E8911A"/>
+  </svg>
+  <span>common<span class="cl-home__rung">ladder</span></span>
+</a>
+
+<!-- App shell — all screens rendered by JS into here -->
+<div id="app"></div>
+
+<!-- Footer — update CoC ID and location text -->
+<a href="/resources.html" class="quick-help" aria-label="Find help now"><svg class="icon" viewBox="0 0 16 16" aria-hidden="true" style="margin-right:.35em;vertical-align:-.15em"><path d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z" fill="currentColor"/></svg> Find help now</a>
+
+</main>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer__grid">
+      <div class="footer__brand">
+        <h3>Common Ladder</h3>
+        <p>The civic resource platform connecting people experiencing homelessness with every service in your community.</p>
+      </div>
+      <div>
+        <h4>Find help</h4>
+        <ul>
+          <li><a href="/find.html?cat=shelter">Shelter</a></li>
+          <li><a href="/find.html?cat=food">Food</a></li>
+          <li><a href="/find.html?cat=legal">Legal</a></li>
+          <li><a href="/help/">All categories</a></li>
+          <li><a href="/static-tools/">Local navigators</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>For providers</h4>
+        <ul>
+          <li><a href="/providers.html">Tools &amp; referrals</a></li>
+          <li><a href="/providers.html#case-manager-guide">Case manager guide</a></li>
+          <li><a href="/data-reports.html">Data &amp; reports</a></li>
+          <li><a href="/learn/">Four learning pathways</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>About</h4>
+        <ul>
+          <li><a href="/about.html">Our mission</a></li>
+          <li><a href="/about.html#methodology">Methodology</a></li>
+          <li><a href="/about.html#team">Team</a></li>
+          <li><a href="/brand/visual-guidelines.html">Brand guidelines</a></li>
+          <li><a href="/contact.html">Contact</a></li>
+          <li><a href="/privacy.html">Privacy</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer__transparency">
+      <strong>Transparency:</strong> Common Ladder is an independent civic project. We do not sell user data, run ads, or accept payment from listed resources.
+    </div>
+    <div class="footer__bottom">
+      <span>&copy; 2026 Common Ladder. Free to use, always.</span>
+      <span><time datetime="2026-08-17">Last updated August 17, 2026</time></span> <span>&middot; Knoxville/Knox County CoC (TN-502) &mdash; Knoxville &amp; Knox County, Tennessee. Is this information out of date? <a href="mailto:corrections.commonladder@gmail.com?subject=Correction:%20/static-tools/knoxville-navigator.html">Report an error</a></span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  /* ═══════════════════════════════════════════════════════════
+     STATE
+  ═══════════════════════════════════════════════════════════ */
+  var state = {
+    step: 'welcome',   // welcome | q1 | q2 | q3 | q4 | result_*
+    pathway: null
+  };
+
+  /* ═══════════════════════════════════════════════════════════
+     QUESTIONS
+     Standard across all navigators — do not change the flow.
+     Only change label text if local terminology differs.
+  ═══════════════════════════════════════════════════════════ */
+  var QUESTIONS = [
+    {
+      id: 'q1',
+      text: 'Are you a U.S. military veteran?',
+      sub: 'This includes any branch of the armed forces.',
+      next_yes: 'result_veterans',
+      next_no: 'q2'
+    },
+    {
+      id: 'q2',
+      text: 'Are you 24 years old or younger?',
+      sub: 'Youth-specific programs are available for people 24 and under.',
+      yes_label: 'Yes, 24 or younger',
+      no_label: 'No, 25 or older',
+      next_yes: 'result_youth',
+      next_no: 'q3'
+    },
+    {
+      id: 'q3',
+      text: 'Do you have children with you right now?',
+      sub: 'This includes any minors in your care.',
+      next_yes: 'result_families',
+      next_no: 'q4'
+    },
+    {
+      id: 'q4',
+      text: 'Have you been without stable housing for more than a year — or off and on for years — AND do you have a health condition that makes it harder to work or take care of yourself?',
+      sub: 'This includes physical conditions, mental health conditions, or substance use.',
+      next_yes: 'result_chronic',
+      next_no: 'result_adult'
+    }
+  ];
+
+  var Q_INDEX = { q1: 0, q2: 1, q3: 2, q4: 3 };
+
+  /* ═══════════════════════════════════════════════════════════
+     CONFIDENCE TIERS
+     Apply to every pathway. Be honest about what's verified.
+     level: 'verified' | 'research' | 'unverified'
+  ═══════════════════════════════════════════════════════════ */
+  var CONFIDENCE_META = {
+    verified: {
+      icon: '✓',
+      label: 'Verified',
+      cssClass: 'conf-verified',
+      tooltip: 'Confirmed directly with the CoC or provider. Phone numbers and intake processes have been tested.'
+    },
+    research: {
+      icon: '◐',
+      label: 'Research-based',
+      cssClass: 'conf-research',
+      tooltip: 'Gathered from official agency websites and public records. Likely accurate but may have changed — call ahead to confirm.'
+    },
+    unverified: {
+      icon: '?',
+      label: 'Unverified',
+      cssClass: 'conf-unverified',
+      tooltip: 'Based on general knowledge. Not checked against primary sources. Call ahead before relying on this information.'
+    }
+  };
+
+  /* ═══════════════════════════════════════════════════════════
+     PATHWAY DATA
+     Knoxville & Knox County, TN — CoC TN-502.
+     Coordinated entry system is CHAMP (Coordinated Housing
+     Assessment and Match Plan), NOT the VI-SPDAT.
+     Three designated access points: CAC Homeward Bound (youth
+     21 and under + families), Volunteers of America (veteran
+     households), VMC Bush Family Refuge (single adults).
+  ═══════════════════════════════════════════════════════════ */
+  var PATHWAYS = {
+
+    result_veterans: {
+      label: 'Veterans Pathway',
+      badgeClass: 'badge-veterans',
+      badgeIcon: '🎖',
+      headline: 'There\'s a dedicated system built for you.',
+      firstAction: 'Call the National Call Center for Homeless Veterans right now: <strong>1-877-4AID-VET (1-877-424-3838)</strong>. Available 24/7. You do NOT need your DD-214 to call. Then, locally, contact <strong>Volunteers of America at (865) 338-3370</strong> — they are the designated veteran access point for Knoxville\'s coordinated entry system.',
+      callNumber: 'tel:18774243838',
+      callLabel: 'Call 1-877-4AID-VET',
+      what_to_expect: 'Knoxville\'s coordinated entry system is called <strong>CHAMP</strong> (Coordinated Housing Assessment and Match Plan), and it has a separate front door for veteran households. If you are a veteran, the spouse of a veteran, the head of a veteran household, or you only served time in military training, start with Volunteers of America at 9111 Cross Park Drive, Bldg. E, Ste. 119. Call ahead — this location asks that you phone before coming in rather than walking up. Volunteers of America Mid-States also runs <strong>SSVF</strong> here, which pays for rapid rehousing, deposits, back rent, and prevention assistance.<br><br>VA health care for Knox County is delivered through <strong>VA Mountain Home Health Care</strong>, headquartered in Johnson City. The Knox County VA Clinic at 1557 Downtown West Boulevard offers mental health and audiology only — homeless program case management, the domiciliary, and HUD-VASH are coordinated through Mountain Home. Ask explicitly for the Homeless Programs care coordinator.<br><br>One local wrinkle worth knowing: HUD-VASH voucher administration in this region has historically run through the Oak Ridge Housing Authority, with limited coverage inside Knox County itself. Do not assume a VASH voucher will be usable in Knoxville — ask the case manager which voucher you are actually being offered and where it can be used before you turn down other options.',
+      bring: [
+        'DD-214 discharge papers (if you have them — not required to call)',
+        'Photo ID (if available)',
+        'Any VA documentation, award letters, or claim numbers you have',
+        'Nothing at all is required to phone the national hotline'
+      ],
+      resources: [
+        {
+          name: 'Volunteers of America — SSVF / CHAMP veteran access point',
+          phone: '(865) 338-3370',
+          tel: 'tel:8653383370',
+          note: '9111 Cross Park Dr, Bldg. E, Ste. 119. Designated coordinated entry access point for veteran households. Call in advance rather than walking in.'
+        },
+        {
+          name: 'VA Mountain Home Health Care',
+          phone: '(423) 926-1171',
+          tel: 'tel:4239261171',
+          note: 'Serves Knox County. Ask for the Homeless Veterans Program or a homeless care coordinator. Runs a domiciliary with a homeless treatment track.'
+        },
+        {
+          name: 'Knox County Veterans Services',
+          phone: '(865) 215-5645',
+          tel: 'tel:8652155645',
+          note: 'County office. Free help replacing a lost DD-214 and filing VA benefit claims — useful if paperwork is the thing blocking you.'
+        },
+        {
+          name: 'National Call Center for Homeless Veterans',
+          phone: '1-877-424-3838',
+          tel: 'tel:18774243838',
+          note: 'Available 24/7. Can connect you to programs anywhere in the country.'
+        }
+      ],
+      confidence: {
+        level: 'research',
+        note: 'Veteran access point and address sourced from the Knoxville/Knox County CHAMP coordinated entry page (KnoxHMIS, UT SWORPS). VA numbers from VA.gov. Knox County Veterans Services number from the Knoxville/Knox County Homeless Coalition directory. Phone numbers have not been called to confirm. Note: a second listing places SSVF intake at 511 N. Broadway via (865) 524-3926 — if the Cross Park Drive number does not answer, try that one.',
+        lastChecked: 'August 2026'
+      }
+    },
+
+    result_youth: {
+      label: 'Youth Pathway',
+      badgeClass: 'badge-youth',
+      badgeIcon: '🌱',
+      headline: 'You have access to youth-specific services here.',
+      firstAction: 'Go to <strong>CAC Homeward Bound</strong> at 2247 Western Avenue, or call <strong>(865) 546-3500</strong> — this is Knoxville\'s designated coordinated entry access point for young people on their own, open Monday–Friday 8:00 a.m. to 4:45 p.m.',
+      callNumber: 'tel:8655463500',
+      callLabel: 'Call CAC Homeward Bound: (865) 546-3500',
+      what_to_expect: 'Knoxville routes young people through a different front door than single adults. <strong>CAC Homeward Bound</strong> — part of the Knoxville-Knox County Community Action Committee — is the designated CHAMP access point for youth and young adults on their own, and for families with children. You do not need documentation to complete a CHAMP assessment. Staff will ask about where you have been sleeping, your income, health, and safety, and then match you to whatever housing programs you qualify for.<br><br><strong>Important age note:</strong> the CHAMP youth access point is designed for people <strong>21 and under</strong>. If you are 22, 23, or 24, you are still a young adult for most program purposes, but coordinated entry will likely route you through the single-adult access point — the VMC Bush Family Refuge at 511 N. Broadway, walk-in Tuesday through Thursday mornings. Go there if Homeward Bound tells you you\'re outside their age range, and say clearly that you want a CHAMP assessment.<br><br>If you are <strong>17 or younger</strong> and need somewhere safe tonight, the McNabb Center runs Safe Place and a Youth Emergency Shelter for ages 12–17 — call the crisis line at (865) 523-2689. Safe Place also means you can walk into any business displaying the yellow-and-black Safe Place sign and ask staff to call for you.',
+      bring: [
+        'Nothing is required for a CHAMP assessment — no ID, no paperwork',
+        'Photo ID or birth certificate if you happen to have them (helps later, not at intake)',
+        'A phone number or email where someone can reach you — this matters more than documents',
+        'If you are under 18, you do not need a parent\'s permission to call the Safe Place crisis line'
+      ],
+      resources: [
+        {
+          name: 'CAC Homeward Bound (Community Action Committee)',
+          phone: '(865) 546-3500',
+          tel: 'tel:8655463500',
+          note: '2247 Western Ave. CHAMP coordinated entry access point for youth/young adults 21 and under and for families with children. Mon–Fri 8:00 a.m.–4:45 p.m.'
+        },
+        {
+          name: 'McNabb Center — Youth LINC & Safe Place',
+          phone: '(865) 523-2689',
+          tel: 'tel:8655232689',
+          note: 'Crisis line for runaway and homeless youth. Emergency shelter for ages 12–17. Call to check eligibility — you do not need an adult to call for you.'
+        },
+        {
+          name: 'CONNECT Ministries',
+          phone: '(865) 851-8005',
+          tel: 'tel:8658518005',
+          note: 'Youth outreach and mentoring in Knoxville. Good first contact if you want someone to walk with you to an appointment.'
+        },
+        {
+          name: 'VMC Bush Family Refuge (if you are 22–24)',
+          phone: '(865) 673-0235',
+          tel: 'tel:8656730235',
+          note: '511 N. Broadway. Walk-in CHAMP assessments Tue/Wed/Thu, 8:30–11:00 a.m. Use this if you are told you\'re too old for the youth access point.'
+        }
+      ],
+      confidence: {
+        level: 'research',
+        note: 'Access point designations, ages, addresses, and hours sourced from the Knoxville/Knox County CHAMP coordinated entry page (KnoxHMIS, UT SWORPS). Youth provider numbers from the Knoxville/Knox County Homeless Coalition directory and McNabb Center. Phone numbers have not been called to confirm, and shelter age ranges can shift — call before traveling.',
+        lastChecked: 'August 2026'
+      }
+    },
+
+    result_families: {
+      label: 'Families Pathway',
+      badgeClass: 'badge-families',
+      badgeIcon: '👨‍👩‍👧',
+      headline: 'Families with children get a separate, faster track here.',
+      firstAction: 'Call <strong>Family Promise of Knoxville at (865) 584-2822</strong> for emergency shelter that keeps your family together — and call <strong>CAC Homeward Bound at (865) 546-3500</strong> to get on the CHAMP coordinated entry list, which is how families are matched to longer-term housing.',
+      callNumber: 'tel:8655842822',
+      callLabel: 'Call Family Promise: (865) 584-2822',
+      what_to_expect: 'Knoxville treats families with children as their own track. Two calls matter, and they do different things.<br><br><strong>Family Promise of Knoxville</strong> provides emergency shelter for families through a rotating network of more than 40 host congregations, plus case management while you\'re in the program and stabilization support after you\'re housed. Families stay together — you will not be split by gender. Capacity is limited and there can be a wait, so call as early as you can rather than waiting until the last night.<br><br><strong>CAC Homeward Bound</strong>, at 2247 Western Avenue, is the designated CHAMP coordinated entry access point for families with children. This is the assessment that gets you onto the list for rapid rehousing and permanent supportive housing. No documentation is required to complete it. Doing both — shelter with one, assessment with the other — is normal and expected here.<br><br><strong>Your children\'s school rights:</strong> under the federal McKinney-Vento Act, children who are homeless can stay enrolled in their original school even if you have moved, and the district must arrange transportation. They can also enroll immediately without proof of address, immunization records, or a birth certificate. Ask Knox County Schools for the <strong>homeless education liaison</strong> — this right is not optional and does not depend on you being in a shelter.<br><br>If you are leaving domestic violence, go straight to the Knoxville Family Justice Center 24-hour crisis line at (865) 521-6336 instead — that pathway is faster and does not require you to disclose your location.',
+      bring: [
+        'Photo ID for the adults, if you have it',
+        'Birth certificates and Social Security cards for the children, if available — not required to be assessed',
+        'Any custody or guardianship paperwork, if relevant',
+        'Nothing at all is required for the CHAMP assessment at Homeward Bound'
+      ],
+      resources: [
+        {
+          name: 'Family Promise of Knoxville',
+          phone: '(865) 584-2822',
+          tel: 'tel:8655842822',
+          note: 'Emergency shelter for families with children through a host-congregation network, plus prevention, case management, and post-housing stabilization.'
+        },
+        {
+          name: 'CAC Homeward Bound (Community Action Committee)',
+          phone: '(865) 546-3500',
+          tel: 'tel:8655463500',
+          note: '2247 Western Ave. CHAMP coordinated entry access point for families with children. Mon–Fri 8:00 a.m.–4:45 p.m. This is your route to rapid rehousing.'
+        },
+        {
+          name: 'Salvation Army of Knoxville',
+          phone: '(865) 525-9401',
+          tel: 'tel:8655259401',
+          note: 'Emergency and transitional shelter. Call for current family availability — capacity varies night to night.'
+        },
+        {
+          name: 'Knoxville Family Justice Center (domestic violence)',
+          phone: '(865) 521-6336',
+          tel: 'tel:8655216336',
+          note: '24-hour crisis line. Use this instead if you are fleeing violence — it is a faster and more protective route than general shelter intake.'
+        }
+      ],
+      confidence: {
+        level: 'research',
+        note: 'Family access point sourced from the Knoxville/Knox County CHAMP coordinated entry page (KnoxHMIS, UT SWORPS). Family Promise, Salvation Army, and Family Justice Center numbers from provider websites and the Knoxville/Knox County Homeless Coalition directory. Phone numbers have not been called to confirm. McKinney-Vento rights are federal law and do not vary locally, but the Knox County Schools liaison contact was not confirmed and should be requested by name.',
+        lastChecked: 'August 2026'
+      }
+    },
+
+    result_chronic: {
+      label: 'Chronic Homelessness Pathway',
+      badgeClass: 'badge-chronic',
+      badgeIcon: '🏠',
+      headline: 'You may qualify for permanent supportive housing.',
+      firstAction: 'Go to the <strong>VMC Bush Family Refuge, 511 N. Broadway</strong>, on a Tuesday, Wednesday, or Thursday between <strong>8:30 and 11:00 a.m.</strong> and ask for a <strong>CHAMP assessment</strong>. Walk-in, no appointment, no documents needed. Questions first: <strong>(865) 673-0235</strong>.',
+      callNumber: 'tel:8656730235',
+      callLabel: 'Call VMC Bush Family Refuge: (865) 673-0235',
+      what_to_expect: 'Permanent supportive housing in Knoxville is allocated almost entirely through <strong>CHAMP</strong> — the Coordinated Housing Assessment and Match Plan. There is no separate PSH waitlist you can join directly. If you are not in CHAMP, you are not in line, no matter how long you have been outside.<br><br><strong>The assessment tool here is not the VI-SPDAT.</strong> Knoxville retired its old vulnerability index after an 18-month analysis with the University of Tennessee College of Social Work found it produced uneven outcomes by race and gender, and replaced it with a locally built tool. So if a worker elsewhere told you to "ask for your VI-SPDAT score," the right phrase in Knoxville is <strong>"I want a CHAMP assessment"</strong> or <strong>"I want to be added to the CHAMP PSH list."</strong><br><br>To be eligible you must be literally homeless — sleeping outside, in a vehicle or abandoned building, in an emergency shelter, fleeing domestic violence, or exiting an institution where you stayed 90 days or less after being homeless. After the assessment you go onto a prioritized list. If a program has an opening and you match, someone from that agency contacts you directly. <strong>Being assessed does not guarantee housing</strong> — the community has far fewer PSH units than people who qualify — but it is the only door.<br><br>The PSH stock you\'d likely be matched to includes VMC\'s <strong>Minvilla Manor</strong> (57 apartments) and <strong>Caswell Manor</strong> (48 apartments), both staffed 24/7. Both take residents only by CHAMP referral, selected from the list by vulnerability.<br><br>If you cannot physically get to the Refuge, VMC\'s <strong>Street Outreach</strong> team does CHAMP intakes in the field. Outreach workers are out most of the day and return calls when they\'re back in the office, so leave a message and a way to reach you.',
+      bring: [
+        'Nothing is required for the CHAMP assessment — this is worth repeating',
+        'Photo ID and Social Security card if you have them (needed later, at program enrollment, not now)',
+        'Any medical, disability, or mental health documentation — this can affect prioritization',
+        'A reliable phone number, or the number of someone who can pass along a message'
+      ],
+      resources: [
+        {
+          name: 'VMC Bush Family Refuge — CHAMP access point',
+          phone: '(865) 673-0235',
+          tel: 'tel:8656730235',
+          note: '511 N. Broadway. Walk-in CHAMP intakes Tue/Wed/Thu 8:30–11:00 a.m., assigned in order. Also does free TN state IDs, birth certificates, KAT bus tickets, and prescription assistance.'
+        },
+        {
+          name: 'Volunteer Ministry Center (main office) — PSH & Street Outreach',
+          phone: '(865) 524-3926',
+          tel: 'tel:8655243926',
+          note: 'Operates Minvilla Manor and Caswell Manor permanent supportive housing (24/7 staffed), rapid rehousing, a day Resource Center, and a dental clinic for people who are literally homeless.'
+        },
+        {
+          name: 'Positively Living / Parkridge Harbor',
+          phone: '(865) 525-1540',
+          tel: 'tel:8655251540',
+          note: 'Supportive housing and case management for people living with HIV, behavioral health conditions, or substance use disorders.'
+        },
+        {
+          name: 'McNabb Center',
+          phone: '(865) 637-9711',
+          tel: 'tel:8656379711',
+          note: 'Mental health and substance use treatment, plus housing programs. Ask about behavioral health support that can strengthen a PSH referral.'
+        }
+      ],
+      confidence: {
+        level: 'research',
+        note: 'CHAMP eligibility, access point hours, and the replacement of the prior vulnerability index sourced from the Knoxville/Knox County CHAMP page (KnoxHMIS, UT SWORPS) and the City of Knoxville Office of Housing Stability. PSH unit counts and referral process from the Volunteer Ministry Center programs page. Phone numbers have not been called to confirm. Walk-in hours are the single most likely detail to change — call (865) 673-0235 before traveling.',
+        lastChecked: 'August 2026'
+      }
+    },
+
+    result_adult: {
+      label: 'Single Adults Pathway',
+      badgeClass: 'badge-adult',
+      badgeIcon: '📞',
+      headline: 'Here\'s where to go for emergency shelter and housing help.',
+      firstAction: 'For a bed tonight, go to <strong>Knox Area Rescue Ministries (KARM), 418 N. Broadway</strong> — open <strong>24/7, 365 days a year</strong>, shelter and showers for men and women 18 and older. Phone: <strong>(865) 673-6540</strong>.',
+      callNumber: 'tel:8656736540',
+      callLabel: 'Call KARM: (865) 673-6540',
+      what_to_expect: '<strong>KARM</strong> is the largest emergency shelter for single adults in Knox County and it does not close. Meals are served to anyone, sheltered or not: breakfast 6:30–7:45 a.m., lunch 11:30 a.m.–12:45 p.m., dinner 4:30–5:45 p.m. Showers are available. Beds are first-come and fill up in cold weather, so arriving earlier in the evening improves your odds. KARM also runs longer-term restoration programs, case management, and job training if you want to stay connected past a single night.<br><br>Getting a bed and getting <em>housed</em> are two different processes here. For housing, you need a <strong>CHAMP assessment</strong> — Knoxville\'s coordinated entry system. Single adults do this at the <strong>VMC Bush Family Refuge, 511 N. Broadway</strong>, walk-in Tuesday/Wednesday/Thursday 8:30–11:00 a.m., taken in assignment order. <strong>No documentation of any kind is required</strong> for a CHAMP assessment, a replacement ID, KAT bus tickets, or prescription payment assistance. If ID or a birth certificate is what\'s blocking you, the Refuge is also where you fix that — for free.<br><br>Practical sequence that works well here: KARM for shelter and meals tonight → Bush Family Refuge on the next Tuesday–Thursday morning for the CHAMP assessment and any documents you\'re missing → follow up on the referral you\'re given. Doing the CHAMP assessment early matters, because the list moves slowly and your place on it depends on when you were assessed.<br><br>If you are 56 or older, ask about <strong>Catholic Charities Samaritan Place</strong> — it is a quieter setting than a large shelter floor.',
+      bring: [
+        'Photo ID (helpful for shelter, NOT required for a CHAMP assessment)',
+        'Social Security card or number, if available',
+        'Any documentation of income or benefits',
+        'Medications in their labeled containers, if you take any'
+      ],
+      resources: [
+        {
+          name: 'Knox Area Rescue Ministries (KARM)',
+          phone: '(865) 673-6540',
+          tel: 'tel:8656736540',
+          note: '418 N. Broadway, Knoxville. Open 24/7/365. Shelter and showers for men and women 18+. Meals served to anyone: 6:30 a.m., 11:30 a.m., 4:30 p.m.'
+        },
+        {
+          name: 'VMC Bush Family Refuge — CHAMP access point',
+          phone: '(865) 673-0235',
+          tel: 'tel:8656730235',
+          note: '511 N. Broadway. Walk-in CHAMP intakes Tue/Wed/Thu 8:30–11:00 a.m. Free TN state IDs, birth certificates, bus tickets, prescription help, eviction prevention. No documents needed.'
+        },
+        {
+          name: 'Salvation Army of Knoxville',
+          phone: '(865) 525-9401',
+          tel: 'tel:8655259401',
+          note: 'Emergency and transitional shelter for men and women. Call for tonight\'s availability.'
+        },
+        {
+          name: '211 (Tennessee 211)',
+          phone: 'Call or text 211',
+          tel: 'tel:211',
+          note: 'Covers all 95 Tennessee counties. In Knoxville it is operated through the City\'s 311 Center for Service Innovation. Also at tn211.com.'
+        }
+      ],
+      extra_note: '<strong>Age 56 or older?</strong> Catholic Charities Samaritan Place — (865) 684-1880 — provides shelter and transitional housing for older adults. <strong>Need free health care?</strong> The Interfaith Health Clinic (865) 546-7330 and Cherokee Health (1-866-231-4477) both serve uninsured Knox County residents, and VMC operates a free dental clinic for people who are literally homeless. <strong>Facing eviction?</strong> Legal Aid of East Tennessee, (865) 637-0484, represents tenants at no cost — call before your court date, not after.',
+      confidence: {
+        level: 'research',
+        note: 'KARM address, 24/7 status, and meal times sourced from karm.org. CHAMP walk-in hours and the no-documentation policy from the Knoxville/Knox County CHAMP page (KnoxHMIS, UT SWORPS) and the Volunteer Ministry Center programs page. Salvation Army, Samaritan Place, clinic, and Legal Aid numbers from the Knoxville/Knox County Homeless Coalition directory, which is not frequently updated. Phone numbers have not been called to confirm — call ahead before traveling.',
+        lastChecked: 'August 2026'
+      }
+    }
+
+  }; // end PATHWAYS
+
+  /* ═══════════════════════════════════════════════════════════
+     RENDER ENGINE — do not modify below this line
+     unless fixing a structural bug.
+  ═══════════════════════════════════════════════════════════ */
+  function render() {
+    var app = document.getElementById('app');
+    var html = '';
+
+    // County badge always shown at top
+    html += '<div class="county-badge">';
+    html += '<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>';
+    html += 'Knoxville &amp; Knox County, TN &mdash; TN-502</div>';
+
+    if (state.step === 'welcome') {
+      html += renderWelcome();
+    } else if (state.step.startsWith('result_')) {
+      html += renderResult(state.step);
+    } else {
+      html += renderQuestion(state.step);
+    }
+
+    app.innerHTML = html;
+  }
+
+  function renderWelcome() {
+    return '<div class="card">' +
+      '<div class="welcome-title">Find the right help.<br>Answer 4 quick questions.</div>' +
+      '<div class="welcome-sub">We\'ll match you to the services and programs most likely to help — based on your situation, not a generic list.</div>' +
+      '<button class="welcome-start" onclick="goTo(\'q1\')">Get started &rarr;</button>' +
+      '</div>' +
+      '<div style="font-size:0.8rem; color:var(--muted); text-align:center; margin-top:12px;">No personal information collected. Free to use.</div>';
+  }
+
+  function renderQuestion(qid) {
+    var q = QUESTIONS[Q_INDEX[qid]];
+    var stepNum = Q_INDEX[qid] + 1;
+    var pct = Math.round((stepNum / QUESTIONS.length) * 100);
+    var html = '';
+
+    html += '<div class="progress-wrap">' +
+      '<div class="progress-bar"><div class="progress-fill" style="width:' + pct + '%"></div></div>' +
+      '<div class="progress-label">Question ' + stepNum + ' of ' + QUESTIONS.length + '</div>' +
+      '</div>';
+
+    html += '<div class="card">' +
+      '<div class="q-label">Question ' + stepNum + '</div>' +
+      '<div class="q-text">' + q.text + '</div>' +
+      '<div class="q-sub">' + q.sub + '</div>' +
+      '<div class="btn-row">' +
+      '<button class="btn btn-yes" onclick="answer(true)">' + (q.yes_label || 'Yes') + '</button>' +
+      '<button class="btn btn-no"  onclick="answer(false)">' + (q.no_label  || 'No')  + '</button>' +
+      '</div>' +
+      '</div>';
+
+    if (Q_INDEX[qid] > 0) {
+      html += '<button class="btn-restart" onclick="history.back()">← Back</button>';
+    }
+
+    return html;
+  }
+
+  function renderConfidenceBadge(conf) {
+    var meta = CONFIDENCE_META[conf.level];
+    return '<span class="conf-badge ' + meta.cssClass + '" onclick="this.classList.toggle(\'open\')" tabindex="0" role="button" aria-label="Information confidence: ' + meta.label + '">' +
+      meta.icon + ' ' + meta.label +
+      ' &mdash; Last checked: ' + conf.lastChecked +
+      '<span class="conf-tooltip">' + meta.tooltip + (conf.note ? '<br><br>' + conf.note : '') + '</span>' +
+      '</span>';
+  }
+
+  // Build a base64 payload that adds this pathway to My Ladder when opened.
+  function buildLadderUrl(p) {
+    try {
+      var stripTags = function(s){ return String(s||'').replace(/<[^>]+>/g,'').replace(/\s+/g,' ').trim(); };
+      var phoneFromTel = (p.callNumber||'').replace(/^tel:/,'').replace(/[^\d+\-()\s]/g,'');
+      var data = {
+        cat: 'shelter',
+        name: p.label + ' — ' + stripTags(p.callLabel),
+        phone: phoneFromTel,
+        address: '',
+        notes: 'First step: ' + stripTags(p.firstAction) + ' · What to expect: ' + stripTags(p.what_to_expect),
+        followups: (p.bring||[]).map(function(b){ return { text: stripTags(b) }; })
+                   .concat((p.resources||[]).slice(0,3).map(function(r){
+                     return { text: 'Contact: ' + stripTags(r.name) + (r.phone ? ' — ' + r.phone : '') };
+                   })),
+        source: (document.title||'').split(' — ')[0]
+      };
+      var encoded = btoa(unescape(encodeURIComponent(JSON.stringify(data))));
+      return 'https://my.commonladder.org/?add=' + encoded;
+    } catch(e) {
+      return 'https://my.commonladder.org/';
+    }
+  }
+
+  function renderResult(rid) {
+    var p = PATHWAYS[rid];
+    var html = '';
+
+    html += '<div class="card">';
+    html += '<span class="result-badge ' + p.badgeClass + '">' + p.badgeIcon + ' ' + p.label + '</span>';
+    html += '<div class="result-headline">' + p.headline + '</div>';
+
+    // First action block
+    html += '<div class="first-action">' + p.firstAction + '</div>';
+    html += '<a href="' + p.callNumber + '" class="btn-primary">' + p.callLabel + '</a>';
+
+    // Save-to-My-Ladder CTA — lets users carry their pathway, first step, and bring list into their personal plan.
+    var ladderUrl = buildLadderUrl(p);
+    html += '<a href="' + ladderUrl + '" target="_blank" rel="noopener" class="btn-save-ladder">📋 Save this plan to My Ladder</a>';
+    html += '<div class="btn-save-ladder__sub">Track calls, schedule visits, add notes — your data stays on your device.</div>';
+
+    // What to expect
+    html += '<div class="section-head">What to expect</div>';
+    html += '<div class="what-to-expect">' + p.what_to_expect + '</div>';
+
+    // What to bring
+    html += '<div class="section-head">What to bring</div>';
+    html += '<ul class="bring-list">';
+    p.bring.forEach(function(item) { html += '<li>' + item + '</li>'; });
+    html += '</ul>';
+
+    // Additional resources
+    html += '<div class="section-head">Additional resources</div>';
+    p.resources.forEach(function(r) {
+      html += '<div class="resource-card">';
+      html += '<div class="resource-card__name">' + r.name + '</div>';
+      html += '<a href="' + r.tel + '" class="resource-card__phone">' + r.phone + '</a>';
+      if (r.note) html += '<div class="resource-card__note">' + r.note + '</div>';
+      html += '</div>';
+    });
+
+    // Extra note (optional)
+    if (p.extra_note) {
+      html += '<div class="extra-note">' + p.extra_note + '</div>';
+    }
+
+    // Confidence badge
+    html += renderConfidenceBadge(p.confidence);
+
+    html += '</div>'; // end card
+
+    // Restart
+    html += '<button class="btn-restart" onclick="goTo(\'welcome\')">← Start over</button>';
+
+    return html;
+  }
+
+  function goTo(step) {
+    state.step = step;
+    render();
+    window.scrollTo(0, 0);
+  }
+
+  function answer(isYes) {
+    var q = QUESTIONS[Q_INDEX[state.step]];
+    var next = isYes ? q.next_yes : q.next_no;
+    if (next.startsWith('result_')) {
+      state.pathway = next;
+    }
+    goTo(next);
+  }
+
+  // Tooltip close on outside click
+  document.addEventListener('click', function(e) {
+    if (!e.target.closest('.conf-badge')) {
+      document.querySelectorAll('.conf-badge.open').forEach(function(el) {
+        el.classList.remove('open');
+      });
+    }
+  });
+
+  // Initial render
+  render();
+</script>
+<script data-id="cl-card-click">
+(function(){
+  document.querySelectorAll('.card, .post-card:not(.post-card--linked)').forEach(function(el){
+    if(el.closest('#app')) return; /* wizard cards are not link cards */
+    var a = el.querySelector('a[href]');
+    if(!a) return;
+    el.addEventListener('click', function(e){
+      if(e.target.tagName==='A'||e.target.closest('a')) return;
+      window.location.href = a.href;
+    });
+  });
+})();
+</script>
+</body>
+</html>

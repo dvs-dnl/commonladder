@@ -1,0 +1,973 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-3YXK0RL6XV"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-3YXK0RL6XV');
+</script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Landlord Letter Generator — Put It in Writing, in Plain Words · Common Ladder</title>
+  <meta name="description" content="Need to write your landlord about back rent, a repair, your deposit, or moving out? Pick your situation, fill in what you know, and get a clear letter you can copy or print — with the Arizona law that backs it up. Free, no account, nothing sent anywhere.">
+  <link rel="canonical" href="https://commonladder.org/static-tools/landlord-letter-generator.html">
+  <link rel="stylesheet" href="/style.css">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="alternate icon" type="image/png" href="/favicon-32.png">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Landlord Letter Generator",
+    "url": "https://commonladder.org/static-tools/landlord-letter-generator.html",
+    "applicationCategory": "BusinessApplication",
+    "operatingSystem": "Any",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+    "publisher": { "@type": "Organization", "name": "Common Ladder", "url": "https://commonladder.org" },
+    "description": "A free plain-language letter writer for renters. Choose a situation — a payment plan for back rent, rental assistance on the way, a repair request, a security deposit demand, a 30-day move-out notice, ending a lease early, a rental reference, or an early termination after domestic violence — fill in optional blanks, and get a complete letter to copy or print, alongside the Arizona statute that supports it. Not legal advice. Runs entirely in the browser; nothing is uploaded, and answers are only kept on the device if the user opts in."
+  }
+  </script>
+  <noscript><style>.nav__links{display:flex!important;flex-wrap:wrap!important;}.nav__toggle{display:none!important;}</style></noscript>
+
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Common Ladder">
+  <meta property="og:title" content="Landlord Letter Generator — Put It in Writing, in Plain Words · Common Ladder">
+  <meta property="og:description" content="Pick your situation, fill in what you know, and get a clear letter to your landlord you can copy or print — with the Arizona law behind it. Free, nothing stored.">
+  <meta property="og:url" content="https://commonladder.org/static-tools/landlord-letter-generator.html">
+  <meta property="og:image" content="https://commonladder.org/images/og-default.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Landlord Letter Generator · Common Ladder">
+  <meta name="twitter:description" content="Pick your situation, fill in what you know, and get a clear letter to your landlord you can copy or print — with the Arizona law behind it.">
+  <meta name="twitter:image" content="https://commonladder.org/images/og-default.png">
+
+  <style>
+    .llg-wrap{max-width:760px;margin:0 auto;padding:1.5rem 1.25rem 3rem;}
+    .llg-hero{margin:1rem 0 1.25rem;}
+    .llg-hero h1{font-size:clamp(1.6rem,5vw,2.1rem);color:#1C3D6E;margin:0 0 .5rem;}
+    .llg-hero h1 span{display:block;font-size:.58em;color:#5a5752;font-weight:600;margin-top:.3rem;}
+    .llg-hero p{font-size:1.02rem;max-width:62ch;color:#3a3833;}
+    .llg-perm{background:#eef6f2;border-left:4px solid #4A9E82;border-radius:6px;padding:.85rem 1.1rem;margin:1.1rem 0 0;font-size:.93rem;}
+    .llg-perm strong{color:#1a5040;}
+    .llg-legal{background:#fbf3e6;border-left:4px solid #b36a00;border-radius:6px;padding:.85rem 1.1rem;margin:.8rem 0 0;font-size:.93rem;}
+    .llg-legal strong{color:#8a5a00;}
+
+    .llg-panel{background:#fff;border:1px solid #e0ddd8;border-radius:14px;padding:1.4rem 1.4rem 1.5rem;margin:1.75rem 0 0;}
+    .llg-q{margin:0 0 1.5rem;}
+    .llg-q:last-of-type{margin-bottom:0;}
+    .llg-q fieldset{border:0;padding:0;margin:0;}
+    .llg-q legend{display:block;font-weight:700;color:#1C3D6E;font-size:1.04rem;margin:0 0 .15rem;padding:0;}
+    .llg-help{display:block;font-size:.86rem;color:#5a5752;font-weight:400;margin:0 0 .65rem;}
+
+    .llg-chips{display:flex;gap:.55rem;flex-wrap:wrap;}
+    .llg-chip{font:inherit;font-size:.92rem;background:#fff;border:1.5px solid #c8c4bd;border-radius:999px;padding:.5rem 1rem;color:#1C3D6E;cursor:pointer;line-height:1.2;text-align:left;}
+    .llg-chip:hover{border-color:#1C3D6E;background:#f0f4f8;}
+    .llg-chip[aria-pressed="true"]{background:#1C3D6E;color:#fff;border-color:#1C3D6E;}
+    .llg-chip:focus-visible{outline:2px solid #1C3D6E;outline-offset:2px;}
+
+    .llg-fields{display:grid;grid-template-columns:1fr 1fr;gap:.9rem 1rem;margin:.2rem 0 0;}
+    @media (max-width:560px){.llg-fields{grid-template-columns:1fr;}}
+    .llg-field{display:flex;flex-direction:column;}
+    .llg-field--wide{grid-column:1/-1;}
+    .llg-field[hidden]{display:none;}
+    .llg-field label{font-size:.88rem;font-weight:600;color:#1C3D6E;margin:0 0 .3rem;}
+    .llg-field input{font:inherit;font-size:1rem;padding:.6rem .7rem;border:1.5px solid #c8c4bd;border-radius:8px;background:#fff;color:#2c2a26;min-height:44px;}
+    .llg-field input:focus-visible{outline:2px solid #1C3D6E;outline-offset:1px;border-color:#1C3D6E;}
+    .llg-field .llg-hint{font-size:.8rem;color:#5a5752;margin:.25rem 0 0;}
+
+    .llg-save{display:flex;gap:.6rem;align-items:flex-start;margin:1.4rem 0 0;background:#f6f5f2;border-radius:10px;padding:.85rem 1rem;font-size:.9rem;color:#3a3833;}
+    .llg-save input{margin:.15rem 0 0;width:20px;height:20px;flex-shrink:0;}
+    .llg-save label{cursor:pointer;}
+
+    .llg-controls{display:flex;gap:.6rem;flex-wrap:wrap;margin:1.5rem 0 0;}
+    .llg-btn{display:inline-block;background:#1C3D6E;color:#fff;font-weight:700;font-size:1rem;padding:.8rem 1.6rem;border-radius:8px;text-decoration:none;border:0;cursor:pointer;font-family:inherit;min-height:44px;}
+    .llg-btn:hover{background:#16315a;}
+    .llg-btn--ghost{background:#fff;color:#1C3D6E;border:1.5px solid #c8c4bd;}
+    .llg-btn--ghost:hover{border-color:#1C3D6E;background:#f0f4f8;}
+    .llg-btn:focus-visible{outline:2px solid #1C3D6E;outline-offset:2px;}
+
+    .llg-results{margin:1.75rem 0 0;}
+    .llg-results[hidden]{display:none;}
+    .llg-empty{border-radius:14px;padding:1.2rem 1.4rem;border:1px solid #bcd0ea;background:#eef3fb;color:#27384f;font-size:.97rem;}
+    .llg-empty h2{font-size:1.15rem;color:#1C3D6E;margin:0 0 .4rem;}
+
+    .llg-out{margin:0;}
+    .llg-out h2{font-size:1.25rem;color:#1C3D6E;margin:0 0 .35rem;}
+    .llg-what{font-size:.95rem;color:#3a3833;margin:.2rem 0 1rem;max-width:62ch;}
+    .llg-letter{background:#fff;border:1px solid #e0ddd8;border-radius:12px;padding:1.4rem 1.5rem;font-family:Georgia,'Times New Roman',serif;font-size:1rem;line-height:1.65;color:#2c2a26;white-space:pre-wrap;word-wrap:break-word;overflow-wrap:break-word;margin:0;}
+    .llg-actions{display:flex;gap:.6rem;flex-wrap:wrap;margin:.9rem 0 0;align-items:center;}
+    .llg-status{font-size:.88rem;color:#1a5040;font-weight:600;}
+
+    .llg-law{margin:1.5rem 0 0;background:#f0f4f8;border-left:4px solid #1C3D6E;border-radius:6px;padding:1rem 1.25rem;font-size:.95rem;}
+    .llg-law h3{color:#1C3D6E;font-size:1.05rem;margin:0 0 .4rem;}
+    .llg-law p{margin:.35rem 0 0;color:#27384f;}
+    .llg-warn{margin:1.1rem 0 0;background:#fbf3e6;border-left:4px solid #b36a00;border-radius:6px;padding:1rem 1.25rem;font-size:.95rem;color:#3a3833;}
+    .llg-warn h3{color:#8a5a00;font-size:1.05rem;margin:0 0 .4rem;}
+    .llg-warn ul{margin:.4rem 0 0;padding-left:1.2rem;}
+    .llg-warn li{margin:.3rem 0;}
+    .llg-warn a{font-weight:700;color:#1C3D6E;}
+
+    .llg-send{margin:2.5rem 0 0;border-top:1px solid #e8e5e0;padding-top:1.5rem;}
+    .llg-send h2{font-size:1.25rem;color:#1C3D6E;margin:0 0 .35rem;}
+    .llg-send > p{font-size:.95rem;color:#3a3833;max-width:62ch;}
+    .llg-steps{counter-reset:llg;list-style:none;margin:1.3rem 0 0;padding:0;}
+    .llg-steps li{position:relative;padding:0 0 0 2.6rem;margin:0 0 1.15rem;}
+    .llg-steps li:last-child{margin-bottom:0;}
+    .llg-steps li::before{counter-increment:llg;content:counter(llg);position:absolute;left:0;top:0;width:1.8rem;height:1.8rem;background:#1C3D6E;color:#fff;border-radius:50%;font-weight:800;font-size:.95rem;display:flex;align-items:center;justify-content:center;}
+    .llg-steps h3{font-size:1.05rem;color:#1C3D6E;margin:.1rem 0 .3rem;}
+    .llg-steps p{font-size:.95rem;color:#3a3833;margin:.25rem 0 0;max-width:60ch;}
+
+    .llg-how{margin:2.5rem 0 0;border-top:1px solid #e8e5e0;padding-top:1.5rem;}
+    .llg-how h2{font-size:1.25rem;color:#1C3D6E;margin:0 0 .75rem;}
+    .llg-how details{background:#fff;border:1px solid #e0ddd8;border-radius:10px;padding:.4rem 1.1rem;margin:.7rem 0;}
+    .llg-how summary{font-weight:700;color:#1C3D6E;cursor:pointer;padding:.6rem 0;font-size:1rem;}
+    .llg-how summary:focus-visible{outline:2px solid #1C3D6E;outline-offset:2px;}
+    .llg-how p{font-size:.95rem;color:#3a3833;margin:.3rem 0 .8rem;}
+    .llg-how ul{font-size:.95rem;color:#3a3833;margin:.3rem 0 .8rem;padding-left:1.2rem;}
+    .llg-how li{margin:.3rem 0;}
+
+    .llg-more{margin:2.5rem 0 0;border-top:1px solid #e8e5e0;padding-top:1.5rem;}
+    .llg-more h2{font-size:1.25rem;color:#1C3D6E;margin:0 0 .6rem;}
+    .llg-more ul{margin:.4rem 0 0;padding-left:1.2rem;font-size:.95rem;}
+    .llg-more li{margin:.4rem 0;}
+
+    .llg-verify{margin-top:2rem;padding:1rem 1.25rem;background:#f0f4f8;border-left:3px solid #1C3D6E;border-radius:4px;font-size:.9rem;}
+    .llg-sources{margin-top:1.25rem;font-size:.85rem;color:#5a5752;}
+    .llg-sources h2{font-size:1rem;color:#1C3D6E;margin:0 0 .4rem;}
+    .llg-sources ul{margin:.3rem 0 0;padding-left:1.2rem;}
+    .llg-sources li{margin:.3rem 0;}
+
+    .breadcrumb{max-width:760px;margin:1.25rem auto 0;padding:0 1.25rem;font-size:.85rem;list-style:none;display:flex;gap:.45rem;flex-wrap:wrap;}
+    .breadcrumb li+li::before{content:"/";margin-right:.45rem;color:#a09c95;}
+    .breadcrumb a{color:#1C3D6E;}
+
+    .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);border:0;}
+
+    @media print{
+      .crisis-bar,.nav,.footer,.breadcrumb,.skip-link,.llg-hero,.llg-panel,.llg-actions,.llg-law,.llg-warn,.llg-send,.llg-how,.llg-more,.llg-verify,.llg-sources,.llg-out h2,.llg-what,.llg-empty,.llg-correct{display:none!important;}
+      body{background:#fff;}
+      .llg-wrap{max-width:100%;padding:0;}
+      .llg-letter{border:0;border-radius:0;padding:0;font-size:12pt;line-height:1.55;}
+    }
+  </style>
+</head>
+<body>
+
+<a href="#main" class="skip-link">Skip to main content</a>
+
+<div class="crisis-bar" role="region" aria-label="Crisis help">
+  <strong>Need help right now?</strong>
+  <a href="tel:211">Call 211</a><span class="crisis-bar__sep">·</span>
+  <a href="sms:741741?body=HOME">Text HOME to 741741</a><span class="crisis-bar__sep">·</span>
+  <a href="tel:988">988 Suicide &amp; Crisis</a>
+</div>
+
+<nav class="nav" aria-label="Primary">
+  <div class="nav__inner">
+    <a href="/" class="nav__logo" aria-label="Common Ladder home">
+      <svg width="28" height="28" viewBox="0 0 247 247" fill="none" aria-hidden="true"><g transform="translate(-12.00,-16.00)"> <path fill="#E8911A" fill-opacity="1" fill-rule="evenodd" d="M 254.00,51.00 L 234.00,85.64 L 194.00,85.64 L 174.00,51.00 L 194.00,16.36 L 234.00,16.36 Z M 231.50,51.00 L 222.75,66.16 L 205.25,66.16 L 196.50,51.00 L 205.25,35.84 L 222.75,35.84 Z"/> <path fill="#9FBCBA" fill-opacity="1" fill-rule="evenodd" d="M 148.00,118.00 L 128.00,152.64 L 88.00,152.64 L 68.00,118.00 L 88.00,83.36 L 128.00,83.36 Z M 125.50,118.00 L 116.75,133.16 L 99.25,133.16 L 90.50,118.00 L 99.25,102.84 L 116.75,102.84 Z"/> <path fill="#9FBCBA" fill-opacity="1" fill-rule="evenodd" d="M 259.00,118.00 L 239.00,152.64 L 199.00,152.64 L 179.00,118.00 L 199.00,83.36 L 239.00,83.36 Z M 236.50,118.00 L 227.75,133.16 L 210.25,133.16 L 201.50,118.00 L 210.25,102.84 L 227.75,102.84 Z"/> <path fill="#FFFFFF" fill-opacity="0.94" fill-rule="evenodd" d="M 207.00,164.00 L 187.00,198.64 L 147.00,198.64 L 127.00,164.00 L 147.00,129.36 L 187.00,129.36 Z M 184.50,164.00 L 175.75,179.16 L 158.25,179.16 L 149.50,164.00 L 158.25,148.84 L 175.75,148.84 Z"/> <path fill="#FFFFFF" fill-opacity="0.94" fill-rule="evenodd" d="M 92.00,164.00 L 72.00,198.64 L 32.00,198.64 L 12.00,164.00 L 32.00,129.36 L 72.00,129.36 Z M 69.50,164.00 L 60.75,179.16 L 43.25,179.16 L 34.50,164.00 L 43.25,148.84 L 60.75,148.84 Z"/> <path fill="#FFFFFF" fill-opacity="0.94" fill-rule="evenodd" d="M 161.00,228.00 L 141.00,262.64 L 101.00,262.64 L 81.00,228.00 L 101.00,193.36 L 141.00,193.36 Z M 138.50,228.00 L 129.75,243.16 L 112.25,243.16 L 103.50,228.00 L 112.25,212.84 L 129.75,212.84 Z"/> </g></svg>
+      <span class="nav__wordmark">common<span>ladder</span></span>
+    </a>
+    <button class="nav__toggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="primary-nav" onclick="this.setAttribute('aria-expanded', document.getElementById('primary-nav').classList.toggle('open') ? 'true' : 'false')">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav__links" id="primary-nav">
+      <li><a href="/providers.html">For providers</a></li>
+      <li><a href="/learn/">Learn</a></li>
+      <li><a href="/about.html">About</a></li>
+      <li><a href="/find.html" class="nav__cta">Find resources</a></li>
+      <li><a href="/static-tools/my-ladder.html" class="nav__cta nav__cta--ladder">My Ladder</a></li>
+      <li><a href="https://www.weather.gov/" rel="noreferrer" class="nav__exit" onclick="event.preventDefault();window.location.replace('https://www.weather.gov/')">Leave page</a></li>
+    </ul>
+  </div>
+</nav>
+
+<ol class="breadcrumb" aria-label="Breadcrumb">
+  <li><a href="/">Home</a></li>
+  <li><a href="/static-tools/">Tools</a></li>
+  <li aria-current="page">Landlord Letter Generator</li>
+</ol>
+
+<main id="main">
+<div class="llg-wrap">
+
+  <header class="llg-hero">
+    <h1>Landlord Letter Generator <span>Say it in writing, in plain words, with the law on your side</span></h1>
+    <p>A lot of housing problems get worse because nothing was ever put in writing. A text you can screenshot or a letter you can hand over changes what happens next &mdash; it creates a record, it makes a landlord answer, and in several situations Arizona law <strong>only</strong> counts it if it is written down. Pick your situation below, fill in whatever you know, and this page writes the letter for you. You can copy it, print it, or read it off the screen and copy it out by hand.</p>
+
+    <div class="llg-perm" role="note">
+      <strong>Nothing you type leaves this page.</strong> There is no account, no upload, and no one on our end can see it. By default your answers are not even saved on this device &mdash; if you are on a library or shelter computer, just close the tab and it is gone. There is a box you can tick if you <em>want</em> it remembered on your own phone.
+    </div>
+
+    <div class="llg-legal" role="note">
+      <strong>This is not legal advice.</strong> These are plain-language starting points, not court filings, and every situation has details a letter cannot know. Free legal help for renters exists in Arizona: <a href="tel:6022583434">Community Legal Services, 602-258-3434</a> (statewide 800-852-9075), free live chat at <a href="https://azevictionhelp.org/" rel="noopener">AZEvictionHelp.org</a>, or dial <a href="tel:211">2-1-1</a>. If you have already been served with court papers, call <em>today</em> &mdash; not after you send a letter.
+    </div>
+  </header>
+
+  <form class="llg-panel" id="llg-form" novalidate>
+    <div class="llg-q">
+      <fieldset>
+        <legend>What do you need to say?</legend>
+        <span class="llg-help">Pick the one closest to your situation. Nothing is locked in &mdash; you can switch at any time and the letter rewrites itself.</span>
+        <div class="llg-chips" id="llg-kinds" role="group" aria-label="What do you need to say to your landlord">
+          <button type="button" class="llg-chip" data-kind="plan" aria-pressed="false">I&rsquo;m behind on rent and want a payment plan</button>
+          <button type="button" class="llg-chip" data-kind="assist" aria-pressed="false">Rent help is on the way &mdash; please wait</button>
+          <button type="button" class="llg-chip" data-kind="repairs" aria-pressed="false">Something needs to be fixed</button>
+          <button type="button" class="llg-chip" data-kind="deposit" aria-pressed="false">I want my security deposit back</button>
+          <button type="button" class="llg-chip" data-kind="notice" aria-pressed="false">I&rsquo;m giving 30 days&rsquo; notice to move out</button>
+          <button type="button" class="llg-chip" data-kind="endlease" aria-pressed="false">I need out of my lease early</button>
+          <button type="button" class="llg-chip" data-kind="reference" aria-pressed="false">I need a rental reference</button>
+          <button type="button" class="llg-chip" data-kind="dv" aria-pressed="false">I&rsquo;m leaving because of domestic violence</button>
+        </div>
+      </fieldset>
+    </div>
+
+    <div class="llg-q">
+      <fieldset>
+        <legend>Fill in what you know</legend>
+        <span class="llg-help">All of this is optional. Anything you leave blank shows up in the letter as a blank line in brackets, so you can write it in by hand later. A letter with a few blanks still works.</span>
+        <div class="llg-fields" id="llg-fields">
+          <div class="llg-field"><label for="f-name">Your name</label><input type="text" id="f-name" data-k="name" autocomplete="off" spellcheck="false"></div>
+          <div class="llg-field"><label for="f-contact">How they can reach you</label><input type="text" id="f-contact" data-k="contact" autocomplete="off" spellcheck="false"><p class="llg-hint">A phone number, an email, or a friend&rsquo;s number that gets to you.</p></div>
+          <div class="llg-field llg-field--wide"><label for="f-address">The address you rent (with unit number)</label><input type="text" id="f-address" data-k="address" autocomplete="off"></div>
+          <div class="llg-field"><label for="f-landlord">Landlord or property manager</label><input type="text" id="f-landlord" data-k="landlord" autocomplete="off"><p class="llg-hint">A name if you have one, otherwise the office name.</p></div>
+          <div class="llg-field"><label for="f-date">Today&rsquo;s date</label><input type="text" id="f-date" data-k="date" autocomplete="off"></div>
+
+          <div class="llg-field" data-for="plan" hidden><label for="f-owed">How much you owe</label><input type="text" id="f-owed" data-k="owed" autocomplete="off" inputmode="decimal"></div>
+          <div class="llg-field" data-for="plan" hidden><label for="f-now">What you can pay now</label><input type="text" id="f-now" data-k="paynow" autocomplete="off" inputmode="decimal"></div>
+          <div class="llg-field" data-for="plan" hidden><label for="f-nowdate">Date you can pay that</label><input type="text" id="f-nowdate" data-k="paydate" autocomplete="off"></div>
+          <div class="llg-field" data-for="plan" hidden><label for="f-extra">Extra you can add each month</label><input type="text" id="f-extra" data-k="extra" autocomplete="off" inputmode="decimal"><p class="llg-hint">On top of your normal rent, until the balance is clear.</p></div>
+          <div class="llg-field llg-field--wide" data-for="plan" hidden><label for="f-why">What happened, in one line</label><input type="text" id="f-why" data-k="why" autocomplete="off"><p class="llg-hint">Example: my hours were cut in June. You do not owe anyone your whole story.</p></div>
+
+          <div class="llg-field" data-for="assist" hidden><label for="f-program">Program you applied to</label><input type="text" id="f-program" data-k="program" autocomplete="off"><p class="llg-hint">Example: Maricopa County emergency rental assistance.</p></div>
+          <div class="llg-field" data-for="assist" hidden><label for="f-applied">Date you applied</label><input type="text" id="f-applied" data-k="applied" autocomplete="off"></div>
+          <div class="llg-field" data-for="assist" hidden><label for="f-case">Case or application number</label><input type="text" id="f-case" data-k="casenum" autocomplete="off"></div>
+          <div class="llg-field" data-for="assist" hidden><label for="f-caseworker">Who they can call to confirm</label><input type="text" id="f-caseworker" data-k="worker" autocomplete="off"><p class="llg-hint">Caseworker name and number, if you have one.</p></div>
+
+          <div class="llg-field llg-field--wide" data-for="repairs" hidden><label for="f-broken">What needs fixing</label><input type="text" id="f-broken" data-k="broken" autocomplete="off"><p class="llg-hint">Example: the air conditioning has not cooled since Saturday.</p></div>
+          <div class="llg-field" data-for="repairs" hidden><label for="f-told">When you first told them</label><input type="text" id="f-told" data-k="told" autocomplete="off"></div>
+          <div class="llg-field" data-for="repairs" hidden><label for="f-urgent">Is it a health or safety problem?</label><input type="text" id="f-urgent" data-k="urgent" autocomplete="off"><p class="llg-hint">Type yes or no. Heat, water, electricity, gas, plumbing, locks, sewage &mdash; those are yes.</p></div>
+
+          <div class="llg-field" data-for="deposit" hidden><label for="f-movedout">Date you moved out</label><input type="text" id="f-movedout" data-k="movedout" autocomplete="off"></div>
+          <div class="llg-field" data-for="deposit" hidden><label for="f-deposit">Deposit amount you paid</label><input type="text" id="f-deposit" data-k="deposit" autocomplete="off" inputmode="decimal"></div>
+          <div class="llg-field llg-field--wide" data-for="deposit" hidden><label for="f-sendto">Where to mail your money</label><input type="text" id="f-sendto" data-k="sendto" autocomplete="off"><p class="llg-hint">A friend&rsquo;s address, a shelter&rsquo;s mailing address, or a P.O. box all work.</p></div>
+
+          <div class="llg-field" data-for="notice endlease dv" hidden><label for="f-moveout">Date you plan to be out</label><input type="text" id="f-moveout" data-k="moveout" autocomplete="off"></div>
+          <div class="llg-field llg-field--wide" data-for="endlease" hidden><label for="f-reason">Why you need out, in one line</label><input type="text" id="f-reason" data-k="reason" autocomplete="off"><p class="llg-hint">Keep it short and factual. Example: I lost my job and cannot cover this rent.</p></div>
+          <div class="llg-field llg-field--wide" data-for="notice deposit dv" hidden><label for="f-forward">Address to send anything after you go</label><input type="text" id="f-forward" data-k="forward" autocomplete="off"></div>
+
+          <div class="llg-field" data-for="reference" hidden><label for="f-refto">Who needs the reference</label><input type="text" id="f-refto" data-k="refto" autocomplete="off"><p class="llg-hint">The new landlord, agency, or program name.</p></div>
+          <div class="llg-field" data-for="reference" hidden><label for="f-refsend">Where to send it</label><input type="text" id="f-refsend" data-k="refsend" autocomplete="off"></div>
+          <div class="llg-field" data-for="reference" hidden><label for="f-since">You have rented here since</label><input type="text" id="f-since" data-k="since" autocomplete="off"></div>
+
+          <div class="llg-field llg-field--wide" data-for="dv" hidden><label for="f-proof">What proof you have</label><input type="text" id="f-proof" data-k="proof" autocomplete="off"><p class="llg-hint">Order of protection, or a police report number. Arizona law requires one of the two &mdash; see the note under your letter.</p></div>
+        </div>
+      </fieldset>
+    </div>
+
+    <div class="llg-save">
+      <input type="checkbox" id="llg-remember">
+      <label for="llg-remember"><strong>Remember what I typed on this device.</strong> Leave this unchecked on a shared or public computer. If you check it and change your mind, the Start over button wipes it.</label>
+    </div>
+
+    <div class="llg-controls">
+      <button type="submit" class="llg-btn" id="llg-go">Write my letter</button>
+      <button type="button" class="llg-btn llg-btn--ghost" id="llg-clear">Start over</button>
+    </div>
+  </form>
+
+  <section class="llg-results" id="llg-results" hidden aria-live="polite">
+    <div class="llg-empty" id="llg-empty" hidden>
+      <h2>Pick a situation first</h2>
+      <p>Choose one of the buttons above and your letter will appear here. You do not have to fill in any of the blanks to see it.</p>
+    </div>
+
+    <div class="llg-out" id="llg-outwrap" hidden>
+      <h2 id="llg-title"></h2>
+      <p class="llg-what" id="llg-what"></p>
+      <pre class="llg-letter" id="llg-letter"></pre>
+      <div class="llg-actions">
+        <button type="button" class="llg-btn" id="llg-copy">Copy the letter</button>
+        <button type="button" class="llg-btn llg-btn--ghost" id="llg-print">Print it</button>
+        <span class="llg-status" id="llg-status" role="status"></span>
+      </div>
+
+      <div class="llg-law" id="llg-law">
+        <h3 id="llg-law-title">What the law says</h3>
+        <p id="llg-law-body"></p>
+      </div>
+
+      <div class="llg-warn" id="llg-warn" hidden>
+        <h3 id="llg-warn-title">Before you send this</h3>
+        <ul id="llg-warn-list"></ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="llg-send" aria-label="How to send it so it counts">
+    <h2>How to send it so it counts</h2>
+    <p>A letter only protects you if you can prove it existed and that they got it. That proof is the whole point &mdash; it is what turns &ldquo;I told them&rdquo; into something a judge, a caseworker, or a program can act on.</p>
+    <ol class="llg-steps">
+      <li>
+        <h3>Keep a copy before it leaves your hands</h3>
+        <p>Photograph every page with your phone before you send it, even a handwritten one. If you have no phone, ask at a library or a day center &mdash; most will make you a copy free.</p>
+      </li>
+      <li>
+        <h3>Text or email it if you can</h3>
+        <p>An email or a text is the easiest proof there is: it stamps itself with the date and it sits in your sent folder. Send it to whatever address or number the office already uses with you, and keep the thread.</p>
+      </li>
+      <li>
+        <h3>If you hand it over in person, ask them to date your copy</h3>
+        <p>Bring two copies. Ask the office to write the date on yours and hand it back. If they will not, write down the date, the time, and the name of the person you gave it to as soon as you walk out.</p>
+      </li>
+      <li>
+        <h3>For deposits and for domestic violence notices, use certified mail</h3>
+        <p>These two carry legal deadlines and legal consequences, so it is worth paying for certified mail with return receipt at the post office &mdash; usually under ten dollars. The receipt proves the date they received it, which is exactly what the clock runs from.</p>
+      </li>
+      <li>
+        <h3>Give it a reasonable amount of time, then follow up in writing too</h3>
+        <p>If you hear nothing, send a short second message referring to the first by date. A polite paper trail is far stronger than a phone call nobody remembers.</p>
+      </li>
+    </ol>
+  </section>
+
+  <section class="llg-how" aria-label="Common questions">
+    <h2>Common questions</h2>
+
+    <details>
+      <summary>Does my landlord have to answer a letter?</summary>
+      <p>Not always &mdash; a landlord can ignore a request for a payment plan or an early lease release, because those are things you are asking for, not things you are owed. But some of these letters start a legal clock whether the landlord likes it or not: a written repair notice, a written deposit demand, a 30-day notice on a month-to-month tenancy, and a domestic-violence early termination all have consequences in Arizona law once they are delivered. The letter is what makes the clock start.</p>
+    </details>
+
+    <details>
+      <summary>My writing isn&rsquo;t good. Will they take me seriously?</summary>
+      <p>Yes. Nobody is grading this. A letter is taken seriously because of what it says and when it was sent, not because of spelling or fancy words. Short, clear, and dated beats long and polished every time &mdash; and every letter on this page is written to be plain on purpose. Copying it out by hand on notebook paper is completely fine.</p>
+    </details>
+
+    <details>
+      <summary>Should I explain my whole situation?</summary>
+      <p>No. One factual line about what changed is enough &mdash; hours cut, a medical bill, a car repair, a household member moved out. You do not owe your landlord your medical history, your immigration status, your family details, or a justification for your life. Details you volunteer can be used in ways you did not intend, so keep it to what is relevant to the money or the repair.</p>
+    </details>
+
+    <details>
+      <summary>What if I already got a 5-day notice or court papers?</summary>
+      <p>Send the letter <em>and</em> call for legal help the same day &mdash; do not wait to see whether the letter works. Arizona eviction moves in days, not weeks, and a case can be filed while you are still waiting on an answer. Start with <a href="/static-tools/eviction-timeline-explainer.html">the Eviction Timeline Explainer</a> to see exactly where you are and how much time is left, then call <a href="tel:6022583434">Community Legal Services at 602-258-3434</a>.</p>
+    </details>
+
+    <details>
+      <summary>Is it safe to admit I owe money?</summary>
+      <p>If you genuinely owe back rent, saying so is not what puts you at risk &mdash; the ledger already says it, and a landlord who is considering a payment plan needs to see that you know the number. What matters is that you do not sign or agree to anything that gives up rights you have. Never sign a document at a courthouse or a leasing office that you have not read, and if the words &ldquo;stipulated judgment&rdquo; appear, talk to legal aid before signing.</p>
+    </details>
+
+    <details>
+      <summary>The landlord said yes over the phone. Do I still need paper?</summary>
+      <p>Yes, and this is the single most expensive mistake renters make. Arizona&rsquo;s partial-payment law (A.R.S. &sect; 33-1371) only preserves an arrangement if it was put in a writing signed at the same time, with the date the rest is due. A verbal &ldquo;we&rsquo;re good&rdquo; from a leasing agent does not stop an eviction filing, and staff turn over. Send a short message confirming what was agreed and ask them to reply yes &mdash; that reply is your record.</p>
+    </details>
+
+    <details>
+      <summary>I don&rsquo;t have an address to get mail at anymore.</summary>
+      <p>You can still get your deposit and your paperwork. Use a trusted friend or relative&rsquo;s address, a shelter or day center that accepts mail for guests, a general delivery address at a post office, or a free P.O. box program if one is available locally. Put whatever you choose in the letter so there is no excuse for &ldquo;we couldn&rsquo;t reach you.&rdquo; Our <a href="/static-tools/id-recovery-wizard.html">ID Recovery Wizard</a> covers mailing-address workarounds in more detail.</p>
+    </details>
+
+    <details>
+      <summary>Is anything I type here saved or sent?</summary>
+      <p>No personal information is collected, transmitted, or visible to anyone but you. The letter is assembled in your browser. By default nothing is written to the device at all &mdash; only if you tick &ldquo;Remember what I typed on this device&rdquo; is anything stored, and then only in this browser on this device, and only until you press Start over. If you are on a shared computer, leave the box unchecked and close the tab when you are done.</p>
+    </details>
+  </section>
+
+  <section class="llg-more" aria-label="Tools that pair with this one">
+    <h2>What goes with this</h2>
+    <ul>
+      <li><a href="/static-tools/eviction-timeline-explainer.html">Arizona Eviction Timeline Explainer</a> &mdash; if a notice or a court date is already in play, start here to see the clock.</li>
+      <li><a href="/static-tools/stay-housed-maricopa.html">Stay-Housed Navigator</a> &mdash; routes Maricopa County households to rent and utility help before an eviction is filed.</li>
+      <li><a href="/static-tools/benefit-screener.html">Benefit Screener</a> &mdash; freeing up money elsewhere in the budget is often what makes a payment plan possible.</li>
+      <li><a href="/static-tools/my-ladder.html">My Ladder</a> &mdash; keep the dates you sent things, who you spoke to, and what comes next in one place.</li>
+    </ul>
+  </section>
+
+  <div class="llg-verify">
+    <strong>Verify before you rely on it.</strong> These letters describe Arizona&rsquo;s residential landlord&ndash;tenant law in plain language for tenants in ordinary rentals; they are not legal advice, mobile home parks and some subsidized programs follow different rules, and statutes change. For your specific case contact <a href="tel:6022583434">Community Legal Services (602-258-3434, statewide 800-852-9075)</a>, chat free at <a href="https://azevictionhelp.org/" rel="noopener">AZEvictionHelp.org</a>, or call <a href="tel:211">2-1-1</a> for rental assistance near you. Court forms and self-help guides are at <a href="https://azcourthelp.org/" rel="noopener">AZCourtHelp.org</a>. If you are in danger, the National Domestic Violence Hotline is <a href="tel:18007997233">1-800-799-7233</a>.
+  </div>
+
+  <div class="llg-sources">
+    <h2>Sources</h2>
+    <ul>
+      <li>A.R.S. &sect; 33-1321 (security deposits; 14 business days; itemized list; double damages) &mdash; azleg.gov</li>
+      <li>A.R.S. &sect; 33-1361 (tenant remedy for landlord noncompliance; 10-day and 5-day written notices) and &sect; 33-1324 (landlord duty to maintain) &mdash; azleg.gov</li>
+      <li>A.R.S. &sect; 33-1371 (acceptance of partial payments; contemporaneous written agreement; housing assistance payments) &mdash; azleg.gov</li>
+      <li>A.R.S. &sect; 33-1375 (periodic tenancy; 30-day written notice; holdover) &mdash; azleg.gov</li>
+      <li>A.R.S. &sect; 33-1318 (early termination for domestic violence or sexual assault; 30-day written notice; order of protection or law enforcement report) &mdash; azleg.gov</li>
+      <li>Arizona Department of Housing &mdash; Arizona Residential Landlord and Tenant Act (plain-text edition)</li>
+      <li>Community Legal Services &mdash; Arizona Tenants&rsquo; Rights and Responsibilities Handbook</li>
+      <li>Maricopa County Justice Courts &mdash; five-day emergency repair request and notice-to-vacate forms</li>
+      <li>Servicemembers Civil Relief Act, 50 U.S.C. &sect; 3955 (military lease termination)</li>
+    </ul>
+  </div>
+
+  <p class="llg-correct" style="margin-top:1.5rem; color:var(--gray); font-size:.875rem;"><em>See something out of date, or a letter that did not fit your situation? <a href="/contact.html">Contact us</a> &mdash; we read every note.</em></p>
+
+</div>
+</main>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer__grid">
+      <div class="footer__brand">
+        <h3>Common Ladder</h3>
+        <p>The civic resource platform connecting people experiencing homelessness with every service in your community.</p>
+      </div>
+      <div>
+        <h4>Find help</h4>
+        <ul>
+          <li><a href="/find.html?cat=shelter">Shelter</a></li>
+          <li><a href="/find.html?cat=food">Food</a></li>
+          <li><a href="/find.html?cat=legal">Legal</a></li>
+          <li><a href="/help/">All categories</a></li>
+          <li><a href="/static-tools/">Local navigators</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>For providers</h4>
+        <ul>
+          <li><a href="/providers.html">Tools &amp; referrals</a></li>
+          <li><a href="/providers.html#case-manager-guide">Case manager guide</a></li>
+          <li><a href="/data-reports.html">Data &amp; reports</a></li>
+          <li><a href="/learn/">Four learning pathways</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>About</h4>
+        <ul>
+          <li><a href="/about.html">Our mission</a></li>
+          <li><a href="/about.html#methodology">Methodology</a></li>
+          <li><a href="/about.html#team">Team</a></li>
+          <li><a href="/brand/visual-guidelines.html">Brand guidelines</a></li>
+          <li><a href="/contact.html">Contact</a></li>
+          <li><a href="/privacy.html">Privacy</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer__transparency">
+      <strong>Transparency:</strong> Common Ladder is an independent civic project. We do not sell user data, run ads, or accept payment from listed resources.
+    </div>
+    <div class="footer__bottom">
+      <span>&copy; 2026 Common Ladder. Free to use, always.</span>
+      <span><time datetime="2026-08-11">Last updated August 11, 2026</time></span>
+    </div>
+  </div>
+</footer>
+
+<script data-id="cl-card-click">
+(function(){
+  document.querySelectorAll('.card, .post-card:not(.post-card--linked)').forEach(function(el){
+    var a = el.querySelector('a[href]');
+    if(!a) return;
+    el.addEventListener('click', function(e){
+      if(e.target.tagName==='A'||e.target.closest('a')) return;
+      window.location.href = a.href;
+    });
+  });
+})();
+</script>
+
+<script>
+(function(){
+  "use strict";
+
+  var STORE = "cl-llg-v1";
+
+  var form = document.getElementById("llg-form");
+  var kindWrap = document.getElementById("llg-kinds");
+  var kindBtns = Array.prototype.slice.call(kindWrap.querySelectorAll(".llg-chip"));
+  var fieldWrap = document.getElementById("llg-fields");
+  var fieldEls = Array.prototype.slice.call(fieldWrap.querySelectorAll(".llg-field"));
+  var inputs = Array.prototype.slice.call(fieldWrap.querySelectorAll("input[data-k]"));
+  var remember = document.getElementById("llg-remember");
+  var clearBtn = document.getElementById("llg-clear");
+  var results = document.getElementById("llg-results");
+  var emptyBox = document.getElementById("llg-empty");
+  var outWrap = document.getElementById("llg-outwrap");
+  var titleEl = document.getElementById("llg-title");
+  var whatEl = document.getElementById("llg-what");
+  var letterEl = document.getElementById("llg-letter");
+  var lawTitle = document.getElementById("llg-law-title");
+  var lawBody = document.getElementById("llg-law-body");
+  var warnBox = document.getElementById("llg-warn");
+  var warnList = document.getElementById("llg-warn-list");
+  var copyBtn = document.getElementById("llg-copy");
+  var printBtn = document.getElementById("llg-print");
+  var statusEl = document.getElementById("llg-status");
+
+  var kind = "";
+
+  function todayLong(){
+    try {
+      var d = new Date();
+      var m = ["January","February","March","April","May","June","July","August","September","October","November","December"];
+      return m[d.getMonth()] + " " + d.getDate() + ", " + d.getFullYear();
+    } catch(e){ return ""; }
+  }
+
+  function scrollTo(el){
+    try { if(el && typeof el.scrollIntoView === "function"){ el.scrollIntoView({ behavior: "smooth", block: "nearest" }); } } catch(e){}
+  }
+
+  function vals(){
+    var o = {};
+    inputs.forEach(function(i){ o[i.getAttribute("data-k")] = (i.value || "").trim(); });
+    return o;
+  }
+
+  function blank(label){ return "[" + label + "]"; }
+
+  function G(v, key, label){
+    return v[key] ? v[key] : blank(label);
+  }
+
+  function money(v, key, label){
+    if(!v[key]) return blank(label);
+    var t = v[key];
+    return /^[0-9]/.test(t) ? "$" + t : t;
+  }
+
+  function yes(t){ return /^\s*(y|yes|true|1)/i.test(t || ""); }
+
+  function head(v, extraLine){
+    var lines = [];
+    lines.push(G(v, "date", "today's date"));
+    lines.push("");
+    lines.push("To: " + G(v, "landlord", "landlord or property manager"));
+    lines.push("From: " + G(v, "name", "your full name"));
+    lines.push("Rental address: " + G(v, "address", "the address you rent, with unit number"));
+    if(extraLine){ lines.push(extraLine); }
+    lines.push("");
+    return lines.join("\n");
+  }
+
+  function sign(v, closing){
+    var lines = [];
+    lines.push("");
+    lines.push("");
+    lines.push(closing || "Thank you for reading this.");
+    lines.push("");
+    lines.push("Sincerely,");
+    lines.push(G(v, "name", "your full name"));
+    lines.push("Reach me at: " + G(v, "contact", "your phone number or email"));
+    return lines.join("\n");
+  }
+
+  var LETTERS = {
+
+    plan: {
+      label: "Asking for a payment plan on back rent",
+      what: "This letter tells your landlord the number you owe, what you can actually pay and when, and asks to put the arrangement in writing. It works best sent before a case is filed — the earlier it lands, the more room there is.",
+      law: "Arizona law does not require a landlord to accept a partial payment. But A.R.S. § 33-1371 says that if a landlord does accept one and still wants to keep the right to evict, the tenant has to agree in a writing signed at the same time that spells out the terms and the date the balance is due. That cuts both ways: a written, signed plan is the only version that protects you too. A verbal agreement with a leasing agent is worth very little a month later.",
+      warn: [
+        "Only promise what you can actually pay. A plan you miss is worse than no plan — if a five-day notice was already served, breaking a written payment agreement can let the landlord move forward without sending a new notice.",
+        "Ask for their answer in writing. An email or text reply saying yes is enough.",
+        "Apply for rental assistance at the same time, not instead. Call <a href=\"tel:211\">2-1-1</a> or use the <a href=\"/static-tools/stay-housed-maricopa.html\">Stay-Housed Navigator</a> — an approved application often changes the answer."
+      ],
+      build: function(v){
+        var body = [];
+        body.push("Re: Payment plan for past due rent");
+        body.push("");
+        body.push("Dear " + G(v, "landlord", "landlord or property manager") + ",");
+        body.push("");
+        body.push("I am writing about the rent I owe on " + G(v, "address", "the address you rent") + ". I know I am behind. I believe the amount past due is " + money(v, "owed", "amount you owe") + ". I am not asking you to forgive it. I am asking for a way to pay it.");
+        if(v.why){ body.push(""); body.push("What happened: " + v.why + ". That is being dealt with, and I want to get current."); }
+        body.push("");
+        body.push("Here is what I can do:");
+        body.push("");
+        body.push("  1. Pay " + money(v, "paynow", "amount you can pay now") + " on " + G(v, "paydate", "date you can pay it") + ".");
+        body.push("  2. Pay " + money(v, "extra", "extra amount per month") + " each month on top of my regular rent until the past due balance is paid off.");
+        body.push("");
+        body.push("If that works, I would like us to put it in writing and both sign it, with the amounts and the due dates written out. Arizona law (A.R.S. § 33-1371) treats a partial payment differently depending on whether there is a signed written agreement, so having it on paper protects both of us and avoids any misunderstanding later.");
+        body.push("");
+        body.push("If those numbers do not work for you, please tell me what would. I would rather hear a counter-offer than nothing. I have also applied for rental assistance and will tell you the moment I hear back.");
+        body.push("");
+        body.push("I would like to stay, and I would like to settle this without either of us going to court.");
+        return head(v) + body.join("\n") + sign(v, "Thank you for taking the time to read this.");
+      }
+    },
+
+    assist: {
+      label: "Telling your landlord rent help is coming",
+      what: "This letter puts your pending assistance application on the record and asks the landlord to hold off while it processes. It also hands them the practical reason to wait: the money usually goes straight to them.",
+      law: "A landlord is not required to wait for an assistance payment. What often persuades them is that A.R.S. § 33-1371(C) says accepting a housing assistance payment is not treated as accepting a partial payment and does not waive the landlord's right to terminate for any breach — so taking the program's money costs them nothing legally. Many Arizona programs also pay the landlord directly and require a signed W-9 and payment agreement from them, which is why the letter offers to connect them.",
+      warn: [
+        "Send this as soon as you apply, not when the notice arrives. A pending application is far more persuasive on day 3 than on day 30.",
+        "Give the program your landlord's correct contact and W-9 details if they ask — a missing landlord form is the most common reason approved money never lands.",
+        "Keep paying what you can while you wait. Partial payment plus a pending application is a much stronger position than nothing."
+      ],
+      build: function(v){
+        var body = [];
+        body.push("Re: Pending rental assistance");
+        body.push("");
+        body.push("Dear " + G(v, "landlord", "landlord or property manager") + ",");
+        body.push("");
+        body.push("I want you to know in writing that I have applied for rental assistance and that a payment is being processed.");
+        body.push("");
+        body.push("  Program: " + G(v, "program", "the program you applied to"));
+        body.push("  Date I applied: " + G(v, "applied", "date you applied"));
+        body.push("  Case or application number: " + G(v, "casenum", "case or application number"));
+        body.push("  Who you can call to confirm it: " + G(v, "worker", "caseworker name and number"));
+        body.push("");
+        body.push("I am asking you to hold off on filing anything while this is processed. Most of these programs pay the landlord directly rather than paying me, and they usually need a signed payment agreement and a W-9 from you before the money can be released. If you give me the right contact, or tell me where to send the forms, I will make sure the program gets what it needs from you the same day.");
+        body.push("");
+        body.push("Accepting an assistance payment does not give up any of your rights. Under A.R.S. § 33-1371, a housing assistance payment is not treated as a partial payment of rent and does not waive your right to act on any breach.");
+        body.push("");
+        body.push("I will tell you the moment I have a decision, either way. If the application is denied I will come to you with a payment plan instead rather than leaving you guessing.");
+        return head(v) + body.join("\n") + sign(v, "Thank you for working with me on this.");
+      }
+    },
+
+    repairs: {
+      label: "Asking for a repair, in writing",
+      what: "This is a written repair notice. It records what is broken, when you first reported it, and the deadline the law gives the landlord to fix it. Sending it in writing is what turns a maintenance complaint into something with legal weight.",
+      law: "Under A.R.S. § 33-1361, a tenant gives the landlord written notice describing the problem. For a condition that materially affects health and safety under § 33-1324 — heat, cooling, water, hot water, electricity, gas, plumbing, sewage, working locks — the landlord has five days from receiving the notice. For other material breaches of the rental agreement, it is ten days. The written notice is what starts the count, which is why a phone call to the office does not do the same job. Maricopa County Justice Courts publish a five-day emergency repair form for the health-and-safety version.",
+      warn: [
+        "In Phoenix summer, broken cooling is a health and safety issue, not an inconvenience — use the five-day version and do not wait. If it is dangerously hot right now, call <a href=\"tel:211\">2-1-1</a> and see the <a href=\"/static-tools/cooling-center-locator.html\">Cooling Center Locator</a> while the repair is pending.",
+        "Photograph the problem with a date on it, and keep photos of every attempt you already made to report it.",
+        "Do not stop paying rent because a repair was not made. Arizona has specific remedies with their own steps, and withholding rent without following them can turn into an eviction. Call legal aid first."
+      ],
+      build: function(v){
+        var urgent = yes(v.urgent);
+        var days = urgent ? "five (5) days" : "ten (10) days";
+        var cite = urgent ? "A.R.S. § 33-1361(A) and § 33-1324, which apply when a condition materially affects health and safety" : "A.R.S. § 33-1361(A), which applies to a material breach of the rental agreement";
+        var body = [];
+        body.push("Re: Written notice of needed repair");
+        body.push("");
+        body.push("Dear " + G(v, "landlord", "landlord or property manager") + ",");
+        body.push("");
+        body.push("This is written notice of a repair that is needed at the address above.");
+        body.push("");
+        body.push("  What is wrong: " + G(v, "broken", "describe what is broken"));
+        body.push("  When I first reported it: " + G(v, "told", "date you first told them"));
+        if(urgent){ body.push("  This condition affects health and safety."); }
+        body.push("");
+        body.push("Please repair this within " + days + " of receiving this notice, as provided by " + cite + ".");
+        body.push("");
+        body.push("I will give access at any reasonable time so the work can be done, and you can reach me at the number below to arrange it. If a vendor needs to be scheduled, please tell me the date so I can be here.");
+        body.push("");
+        body.push("I am keeping a copy of this notice and a record of the date it was delivered.");
+        return head(v) + body.join("\n") + sign(v, "Thank you for taking care of this.");
+      }
+    },
+
+    deposit: {
+      label: "Demanding your security deposit back",
+      what: "This letter formally demands your deposit and an itemized list of anything taken out of it, and gives them an address to send it to. The demand matters: it is one of the things the legal clock runs from.",
+      law: "A.R.S. § 33-1321(D) requires the landlord to return the deposit, along with an itemized list of any deductions, within fourteen business days — business days, so weekends and holidays do not count — after the tenancy ends, you hand over possession, and you demand it. If a landlord withholds money wrongfully, § 33-1321(E) lets a tenant recover twice the amount wrongfully withheld. You can also ask for the receipts and invoices behind any deduction.",
+      warn: [
+        "Send this one by certified mail with return receipt if you possibly can. The receipt is the proof of your demand and of the date the clock started.",
+        "Give a mailing address, even a temporary one. \"We had nowhere to send it\" is the most common excuse for keeping a deposit.",
+        "If they miss the deadline or the deductions look invented, small claims court in a justice court is designed for this, costs little, and does not require a lawyer. AZCourtHelp.org has the forms."
+      ],
+      build: function(v){
+        var body = [];
+        body.push("Re: Demand for return of security deposit");
+        body.push("");
+        body.push("Dear " + G(v, "landlord", "landlord or property manager") + ",");
+        body.push("");
+        body.push("My tenancy at the address above ended and I returned possession of the unit on " + G(v, "movedout", "date you moved out") + ". This letter is my written demand for the return of my security deposit of " + money(v, "deposit", "deposit amount you paid") + ".");
+        body.push("");
+        body.push("Under A.R.S. § 33-1321(D), you have fourteen business days after termination, delivery of possession, and this demand to return the deposit together with an itemized list of any deductions. If you are deducting anything, please send the itemized list showing each expense and the amount, along with copies of the invoices or receipts supporting it.");
+        body.push("");
+        body.push("Please send the deposit and the itemized list to:");
+        body.push("");
+        body.push("  " + G(v, "sendto", "the address where they should mail it"));
+        body.push("");
+        body.push("If I do not receive the deposit or the itemized list within that time, A.R.S. § 33-1321(E) allows a tenant to recover twice the amount wrongfully withheld, and I am prepared to file in justice court to do that. I would much rather resolve it here.");
+        return head(v) + body.join("\n") + sign(v, "Thank you — I will watch for it.");
+      }
+    },
+
+    notice: {
+      label: "Giving 30 days’ notice to move out",
+      what: "This is a clean, dated 30-day notice ending a month-to-month tenancy. Giving it properly is what stops rent from continuing to run and protects you from a holdover claim.",
+      law: "A.R.S. § 33-1375(B) lets either side end a month-to-month tenancy with written notice given at least thirty days before the periodic rental date named in the notice — in practice, at least a full rental period. The thirty days run from when the notice is delivered, not from when you wrote it. If a tenant stays past the end without the landlord's consent and the holdover is willful and not in good faith, § 33-1375(C) lets the landlord recover up to two months' rent or twice the actual damages.",
+      warn: [
+        "This is for a month-to-month tenancy. If you are inside a fixed-term lease, a 30-day notice does not release you — use the \"I need out of my lease early\" letter instead.",
+        "Time it to the rent due date. Notice given mid-month usually means you owe through the end of the following rental period, not thirty days from today.",
+        "Ask for a walkthrough and photograph every room on your way out. Those photos are what win a deposit dispute later."
+      ],
+      build: function(v){
+        var body = [];
+        body.push("Re: Thirty (30) day notice of termination of month-to-month tenancy");
+        body.push("");
+        body.push("Dear " + G(v, "landlord", "landlord or property manager") + ",");
+        body.push("");
+        body.push("This is my written notice that I am ending my month-to-month rental agreement at " + G(v, "address", "the address you rent") + ". I will move out and return possession on " + G(v, "moveout", "the date you will be out") + ", which is at least thirty days from the date you receive this notice, as provided by A.R.S. § 33-1375.");
+        body.push("");
+        body.push("I will leave the unit clean and return all keys and any remote or fob on that date.");
+        body.push("");
+        body.push("I would like to be present for the move-out inspection. Please tell me a time that works, and please put in writing anything you believe I owe so we can settle it.");
+        body.push("");
+        body.push("Please send my security deposit and an itemized list of any deductions, as required by A.R.S. § 33-1321, to:");
+        body.push("");
+        body.push("  " + G(v, "forward", "the address where they should send mail"));
+        return head(v) + body.join("\n") + sign(v, "Thank you for the tenancy.");
+      }
+    },
+
+    endlease: {
+      label: "Asking to end a fixed lease early",
+      what: "There is no general right to walk away from a signed lease in Arizona, so this letter does the next best thing: it makes a specific, reasonable proposal and asks for a written release. Landlords often say yes, because an empty unit they can re-rent beats chasing an unpayable balance.",
+      law: "Outside of specific exceptions — domestic violence under § 33-1318, military orders under the federal Servicemembers Civil Relief Act, and a landlord's own material breach under § 33-1361 — breaking a fixed lease early is a negotiation, not a right. What you are asking for is a mutual written termination. Arizona landlords are generally expected to make reasonable efforts to re-rent rather than let the balance run, so a tenant who gives real notice and cooperates with showings is in a much better position than one who disappears.",
+      warn: [
+        "Do not just leave. An abandoned unit turns into a money judgment that follows you into every future rental application.",
+        "Get any deal in writing and make sure it says the lease is terminated and what, if anything, you still owe. A verbal release is not a release.",
+        "If you are leaving because of domestic violence or military orders, do not use this letter — you may have a legal right to terminate with no penalty. Use the domestic violence option above, or ask your installation's legal assistance office about the SCRA."
+      ],
+      build: function(v){
+        var body = [];
+        body.push("Re: Request to end my lease early by mutual agreement");
+        body.push("");
+        body.push("Dear " + G(v, "landlord", "landlord or property manager") + ",");
+        body.push("");
+        body.push("I am asking to be released from my lease at " + G(v, "address", "the address you rent") + " early, with a move-out date of " + G(v, "moveout", "the date you could be out") + ".");
+        body.push("");
+        body.push("The reason: " + G(v, "reason", "one line on why you need out") + ".");
+        body.push("");
+        body.push("I know I signed a lease and that you are not required to let me out of it. I am not disappearing and I am not asking you to lose money. Here is what I can offer to make it work for you:");
+        body.push("");
+        body.push("  1. As much notice as you need, and a firm move-out date you can rely on.");
+        body.push("  2. Full cooperation with showings, including access at reasonable times while I am still here.");
+        body.push("  3. The unit left clean and undamaged, so it is ready to lease immediately.");
+        body.push("  4. A reasonable amount toward the cost of re-renting, if that is what it takes to close this out.");
+        body.push("");
+        body.push("If you agree, please send me a short written agreement stating that the lease is terminated as of the move-out date and what, if anything, I still owe. I will sign and return it right away.");
+        body.push("");
+        body.push("If you would rather not release the lease, please tell me what you would accept instead. I would rather work this out with you than default and leave us both worse off.");
+        return head(v) + body.join("\n") + sign(v, "Thank you for considering it.");
+      }
+    },
+
+    reference: {
+      label: "Asking for a rental reference",
+      what: "A short, easy-to-say-yes-to request for a written reference or rental history verification. Making it specific and low-effort is what gets it answered — and a reference from a previous landlord is often the thing that gets a next application approved.",
+      law: "No statute requires a landlord to give a reference; this is a favor, and the letter is written that way. What a landlord can usually confirm without much thought is factual: the dates you rented, the rent amount, and whether you paid. Some housing programs will send their own verification form instead, which is even easier for a landlord to complete.",
+      warn: [
+        "Ask the person who actually knows you — an on-site manager or maintenance lead — rather than a corporate email address, if you have that option.",
+        "Make it concrete. Give a name, an address to send it to, and a date you need it by, or it will sit.",
+        "If the reference will not be good, do not go silent about it. Many programs and landlords accept an explanation letter plus a case manager reference instead."
+      ],
+      build: function(v){
+        var body = [];
+        body.push("Re: Request for a rental reference");
+        body.push("");
+        body.push("Dear " + G(v, "landlord", "landlord or property manager") + ",");
+        body.push("");
+        body.push("I am applying for housing and I am asking whether you would be willing to give me a rental reference.");
+        body.push("");
+        body.push("  I have rented at " + G(v, "address", "the address you rent") + " since " + G(v, "since", "the date you moved in") + ".");
+        body.push("  Who needs it: " + G(v, "refto", "the new landlord, agency, or program") + ".");
+        body.push("  Where to send it: " + G(v, "refsend", "the address, email, or fax to send it to") + ".");
+        body.push("");
+        body.push("It does not need to be long. Confirming the dates I rented, the rent amount, and your experience with me as a tenant is enough, and a few sentences on your letterhead carries a lot of weight. If they send you their own verification form instead, filling that out is just as good.");
+        body.push("");
+        body.push("If there is anything in my rental history you would want to mention, I would rather know now so I can explain it up front.");
+        return head(v) + body.join("\n") + sign(v, "Thank you — I appreciate you taking the time.");
+      }
+    },
+
+    dv: {
+      label: "Early termination after domestic violence",
+      what: "Arizona gives survivors a real right to end a lease early without early-termination penalties — but only if the notice is done a specific way. This letter follows the statute's requirements. Your safety comes before the paperwork: if you are in danger, leave first and handle the lease afterward.",
+      law: "A.R.S. § 33-1318 lets a tenant who is a victim of domestic violence or sexual assault terminate early by giving the landlord written notice at least thirty days ahead — delivered by hand or by registered or certified mail — requesting termination on an agreed date within the next thirty days. The notice must include either a copy of an order of protection issued to the tenant or a copy of a written departmental report from a law enforcement agency showing the tenant reported being a victim. The events must have happened within the thirty days immediately before the notice, unless the landlord waives that. A tenant who meets the requirements and vacates is not liable for rent after that and cannot be charged early-termination penalties or fees. The statute also covers lock changes and gives the landlord immunity for complying.",
+      warn: [
+        "Your safety first. If you are in danger right now, call 911. The National Domestic Violence Hotline is <a href=\"tel:18007997233\">1-800-799-7233</a>, and in Arizona the statewide DV hotline is <a href=\"tel:18007827263\">1-800-782-6400</a> — both can help with emergency shelter and safety planning tonight.",
+        "Think about whether it is safe to put a forwarding address in writing at all. You can leave it out entirely, or use an advocate's office, a P.O. box, or Arizona's Address Confidentiality Program instead. Never list an address the abuser could reach.",
+        "This letter only works with the required document attached — an order of protection issued to you, or a written law enforcement report. A victim advocate can help you get either one, often the same day.",
+        "Talk to a legal advocate before sending if you can. Community Legal Services (<a href=\"tel:6022583434\">602-258-3434</a>) and a local DV agency can review it free, and they know how landlords in your area respond."
+      ],
+      build: function(v){
+        var body = [];
+        body.push("Re: Notice of early termination under A.R.S. § 33-1318");
+        body.push("");
+        body.push("Dear " + G(v, "landlord", "landlord or property manager") + ",");
+        body.push("");
+        body.push("This is written notice under A.R.S. § 33-1318 that I am terminating my rental agreement for " + G(v, "address", "the address you rent") + " early because I am a victim of domestic violence.");
+        body.push("");
+        body.push("I request that the rental agreement terminate on " + G(v, "moveout", "the termination date you are requesting") + ", which is within thirty days of this notice. I will return possession and keys on that date.");
+        body.push("");
+        body.push("Attached, as the statute requires, is: " + G(v, "proof", "your order of protection or law enforcement report") + ".");
+        body.push("");
+        body.push("The circumstances that make me a victim of domestic violence occurred within the thirty days immediately before the date of this notice.");
+        body.push("");
+        body.push("Under A.R.S. § 33-1318, once I meet these requirements and vacate, I am not liable for rent after the termination date and may not be charged an early termination penalty or fee. I am asking that you honor that and confirm it in writing.");
+        body.push("");
+        body.push("I am also asking that no information about me, my whereabouts, or my forwarding address be given to anyone who asks.");
+        body.push("");
+        body.push("Anything you need to send me after I go can go to:");
+        body.push("");
+        body.push("  " + G(v, "forward", "a safe address, or leave this out entirely"));
+        return head(v) + body.join("\n") + sign(v, "Thank you for handling this promptly and discreetly.");
+      }
+    }
+  };
+
+  function showFields(){
+    fieldEls.forEach(function(el){
+      var forAttr = el.getAttribute("data-for");
+      if(!forAttr){ el.hidden = false; return; }
+      var list = forAttr.split(/\s+/);
+      el.hidden = !(kind && list.indexOf(kind) !== -1);
+    });
+  }
+
+  function setKind(v){
+    kind = (v && LETTERS[v]) ? v : "";
+    kindBtns.forEach(function(b){
+      b.setAttribute("aria-pressed", b.getAttribute("data-kind") === kind ? "true" : "false");
+    });
+    showFields();
+  }
+
+  kindBtns.forEach(function(b){
+    b.addEventListener("click", function(){
+      setKind(b.getAttribute("data-kind"));
+      save();
+      if(!results.hidden){ render(); }
+    });
+  });
+
+  function save(){
+    if(!remember.checked){ return; }
+    try {
+      var d = { kind: kind, remember: true, v: vals() };
+      localStorage.setItem(STORE, JSON.stringify(d));
+    } catch(e){}
+  }
+
+  function wipe(){
+    try { localStorage.removeItem(STORE); } catch(e){}
+  }
+
+  remember.addEventListener("change", function(){
+    if(remember.checked){ save(); } else { wipe(); }
+  });
+
+  inputs.forEach(function(i){
+    i.addEventListener("input", function(){ save(); });
+  });
+
+  function render(){
+    results.hidden = false;
+    statusEl.textContent = "";
+
+    if(!kind){
+      emptyBox.hidden = false;
+      outWrap.hidden = true;
+      scrollTo(results);
+      return;
+    }
+
+    var L = LETTERS[kind];
+    var v = vals();
+
+    emptyBox.hidden = true;
+    outWrap.hidden = false;
+
+    titleEl.textContent = "Your letter: " + L.label;
+    whatEl.textContent = L.what;
+    letterEl.textContent = L.build(v);
+    lawBody.textContent = L.law;
+
+    warnList.innerHTML = "";
+    if(L.warn && L.warn.length){
+      warnBox.hidden = false;
+      L.warn.forEach(function(w){
+        var li = document.createElement("li");
+        li.innerHTML = w;
+        warnList.appendChild(li);
+      });
+    } else {
+      warnBox.hidden = true;
+    }
+
+    scrollTo(outWrap);
+  }
+
+  form.addEventListener("submit", function(e){
+    e.preventDefault();
+    render();
+    save();
+  });
+
+  copyBtn.addEventListener("click", function(){
+    var text = letterEl.textContent;
+    function ok(){ statusEl.textContent = "Copied. Paste it into a text, an email, or a document."; }
+    function fallback(){
+      try {
+        var r = document.createRange();
+        r.selectNodeContents(letterEl);
+        var s = window.getSelection();
+        s.removeAllRanges();
+        s.addRange(r);
+        statusEl.textContent = "Your letter is selected — press and hold, then choose Copy.";
+      } catch(err){
+        statusEl.textContent = "Copying is blocked on this browser. You can still print it, or read it off the screen.";
+      }
+    }
+    try {
+      if(navigator.clipboard && navigator.clipboard.writeText){
+        navigator.clipboard.writeText(text).then(ok, fallback);
+      } else { fallback(); }
+    } catch(err){ fallback(); }
+  });
+
+  printBtn.addEventListener("click", function(){
+    try { window.print(); }
+    catch(err){ statusEl.textContent = "Printing is blocked here. Try your browser menu, or copy the letter instead."; }
+  });
+
+  clearBtn.addEventListener("click", function(){
+    setKind("");
+    inputs.forEach(function(i){ i.value = ""; });
+    remember.checked = false;
+    wipe();
+    results.hidden = true;
+    emptyBox.hidden = true;
+    outWrap.hidden = true;
+    statusEl.textContent = "";
+    prefillDate();
+    kindBtns[0].focus();
+  });
+
+  function prefillDate(){
+    var d = document.getElementById("f-date");
+    if(d && !d.value){ d.value = todayLong(); }
+  }
+
+  function restore(){
+    var raw = null;
+    try { raw = localStorage.getItem(STORE); } catch(e){ return; }
+    if(!raw) return;
+    try {
+      var d = JSON.parse(raw);
+      if(!d || typeof d !== "object") return;
+      remember.checked = true;
+      if(d.v && typeof d.v === "object"){
+        inputs.forEach(function(i){
+          var k = i.getAttribute("data-k");
+          if(typeof d.v[k] === "string"){ i.value = d.v[k]; }
+        });
+      }
+      if(d.kind && LETTERS[d.kind]){
+        setKind(d.kind);
+        render();
+      }
+    } catch(e){}
+  }
+
+  showFields();
+  restore();
+  prefillDate();
+})();
+</script>
+</body>
+</html>

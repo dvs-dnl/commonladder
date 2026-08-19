@@ -1,0 +1,314 @@
+{
+ "_meta": {
+  "id": "blocked",
+  "title": "What Phase 0 could not retrieve, and exactly what closes each item",
+  "built": "2026-08-17",
+  "note": "Two categories. BLOCKING items stop a specific Phase 1-3 deliverable and need a human action. NON-BLOCKING items are claims that must simply not ship until sourced — the tool works without them.",
+  "common_cause": "The dominant blocker is binary spreadsheets. Federal agencies increasingly publish distributional data ONLY as .xlsx/.xls, and this session's tooling reads text and HTML but returns unparseable binary for those. Every such item closes with a manual download.",
+  "revised": "2026-08-17 (third revision). Daniel downloaded the source spreadsheets; B1, B2, B3, B4, B7 and B9 are all CLOSED. B5 (PolicyEngine) and B6/B8 (minor) remain.",
+  "remaining": "B5 PolicyEngine validation (substitute benchmarks in place). B6 withdrawn as unnecessary. B8 absolute-mobility cohort array (both endpoints already sourced). NOTHING now blocks Phase 1 or Phase 2."
+ },
+ "blocking": [
+  {
+   "id": "B1",
+   "severity": "CLOSED — no longer blocking",
+   "what": "CBO 2022 average household income by quintile (before and after transfers and taxes), the top-1% dollar values, and the average federal tax rate for the SECOND, MIDDLE, and FOURTH quintiles.",
+   "why_it_matters": "Gameplan §4 Act 2 output 2: the by-class chart is ALWAYS VISIBLE and is Daniel's stated core requirement. Three of its five quintile bars cannot be drawn without this file. The lowest quintile (1.4%), highest quintile (23.2%), and top 1% (31.5%) ARE available from published prose; the middle three are not.",
+   "why_blocked": "CBO publication 61911 contains NO numbered data tables — every income-by-quintile value exists only as a chart in the PDF and as numbers in the supplemental Excel. Both .xlsx files return unparseable binary.",
+   "download": [
+    "https://www.cbo.gov/system/files/2026-01/61911-supplemental-data.xlsx",
+    "https://www.cbo.gov/system/files/2026-01/61911-data-underlying-figures.xlsx",
+    "https://www.cbo.gov/system/files/2026-01/61911-additional-data-for-researchers.zip"
+   ],
+   "human_action": "Download 61911-supplemental-data.xlsx, open it, and read the 2022 rows. Needed: average income before transfers and taxes by quintile + top 1%; average income after transfers and taxes by the same groups; average federal tax rate for all five quintiles and the top 1%; and the full 1979-2022 historical series by quintile (which also closes B4). Drop the values into a CSV or paste them into a session. Estimated effort: 5-10 minutes.",
+   "do_not_do": "Do NOT chart-read the PDF. An automated read of Figure 1 suggested roughly $20k/$60k/$110k/$180k/$450k by quintile, at best plus or minus $10,000. Those are NOT data and must never be published as CBO figures. Do not interpolate the three missing tax rates either.",
+   "note": "CBO quintiles contain equal numbers of PEOPLE, not equal numbers of households, so household counts cannot be derived by dividing.",
+   "second_pass_note": "A dedicated pass tried six routes and failed on the 2022 values: CBO has no interactive/JSON endpoint for this series; the 2022 report contains no tables and no appendix (it outsources definitions to the 2021 edition); no secondary source republishes the quintile dollar table; CBO offers no CSV alternative. What the pass DID recover, from prose in earlier editions: 2021 lowest quintile $22,500 before / $48,700 after and highest $418,100 before / $316,800 after; 2020 lowest $21,900/$45,800 and highest $357,800/$275,700; 2019 lowest $23,800, middle $81,800, highest $332,100, top 1% ~$2.0M, top 0.01% ~$43.0M; 2018 lowest $22,500/$37,700, middle $77,500, highest $321,700. CRITICAL: two independent fetches of the 2021 edition's Appendix C TABLES returned mutually contradictory numbers for the second/middle/fourth quintiles, so only prose-stated values are trusted. The second and fourth quintiles are unrecovered for EVERY year.",
+   "phase1_workaround": "Phase 1 CAN build a credible class chart today using CBO's 1979-2005 series (all five quintiles, from series-arrays.json) for the historical panel, and the 2019 prose values for a recent snapshot. What it cannot do is render 2022 quintile dollar values or the 2022 second/middle/fourth quintile tax rates.",
+   "status": "CLOSED",
+   "resolution": "CLOSED 2026-08-17. 61911-supplemental-data.xlsx parsed. Recovered FAR more than the 2022 values: all 12 CBO tables run 1979-2022, including average household income by source, average federal tax rates BY TAX COMPONENT, income shares and tax shares, for all five quintiles plus 81-90th, 91-95th, 96-99th and top 1 percent. Extracted to data/cbo-distribution.json. THIS ALSO CLOSES B4."
+  },
+  {
+   "id": "B2",
+   "severity": "CLOSED — no longer blocking",
+   "what": "IRS SOI Table 3.5 (TY2023), 'All Returns: Tax Generated, by Rate and by Size of Adjusted Gross Income' — the distribution of income taxed at each marginal rate bracket.",
+   "why_it_matters": "Layer 1 applies rate and base changes across the income distribution. Without bracket-level detail the top-rate slider with an adjustable threshold — Act 2's headline lever — cannot be computed. The available fallback (SOI TY2022 preliminary, in history-series.json) tops out at a single '$250,000 or more' bucket, which is far too coarse.",
+   "why_blocked": "IRS publishes these only as .xls. No HTML or PDF equivalent exists for TY2023; the Pub 1304 full PDF is available only through TY2022.",
+   "download": [
+    "https://www.irs.gov/pub/irs-soi/23in35tr.xls",
+    "https://www.irs.gov/pub/irs-soi/23in34tr.xls",
+    "https://www.irs.gov/pub/irs-soi/23in11si.xls",
+    "https://www.irs.gov/pub/irs-soi/23in12ms.xls",
+    "https://www.irs.gov/pub/irs-soi/23in14ar.xls"
+   ],
+   "human_action": "Download 23in35tr.xls at minimum. If the engine also wants AGI-class aggregates, add 23in11si.xls. Export each to CSV.",
+   "correction": "THE GAMEPLAN AND DOSSIER NAME THE WRONG TABLE. Table 3.4 is 'Tax Classified by Both the Marginal Rate and Each Rate at Which Tax Was Computed, BY FILING STATUS.' The by-AGI-size table the engine needs is TABLE 3.5. Fix this in the gameplan.",
+   "context": "TY2023 is the latest complete published SOI year (Pub 1304 tables released March 2026). High-income tables lag further — TY2022 is the latest for those.",
+   "status": "CLOSED",
+   "resolution": "CLOSED 2026-08-17. 23in35tr.xls parsed (needed xlrd 1.2.0 in the container; the device lacks xlrd). 25 AGI classes to $10M+, with number of returns, income taxed and tax generated at every ordinary rate (10/12/22/24/32/35/37) and every capital-gains rate (0/15/20/25/28). Extracted to data/soi-table-3-5.json."
+  },
+  {
+   "id": "B3",
+   "severity": "CLOSED — no longer blocking",
+   "what": "IRS SOI Table 4.1 (TY2023) — top 0.1% and top 0.01% AGI thresholds and average tax rates.",
+   "why_it_matters": "Gameplan §2 scope: 'Quintiles + top 1%/0.1% everywhere.' The top 0.1% bar cannot be drawn from published secondary sources — neither Tax Foundation nor NTU breaks out below the top 1%.",
+   "why_blocked": ".xlsx, unparseable binary.",
+   "download": [
+    "https://www.irs.gov/pub/irs-soi/23in41ts.xlsx"
+   ],
+   "human_action": "Download and read the top 0.1% / 0.01% rows.",
+   "workaround_available": "The top-1% row IS available second-hand and is loaded in history-series.json > soi_percentiles. Phase 1 can proceed with quintiles + top 1%, deferring the 0.1% bar. Note also that CBO publishes total-federal-rate detail for the 99th-99.9th (31.0%), 99.9th-99.99th (32.6%), and top 0.01% (31.2%) via Tax Foundation's reading — so a partial sub-1% story is tellable today.",
+   "scope_decision_needed": "If B3 stays blocked, either ship v1 with quintiles + top 1% only and say so, or defer. Do not fabricate the 0.1% bar.",
+   "status": "CLOSED",
+   "resolution": "CLOSED 2026-08-17. 23in41ts.xlsx parsed. Recovered TY2001-2023 (not just 2023) across eight measures, down to the TOP 0.001 PERCENT. Extracted to data/soi-percentiles.json."
+  },
+  {
+   "id": "B4",
+   "severity": "CLOSED — no longer blocking",
+   "what": "CBO effective federal tax rate by quintile, full series 1979-2022.",
+   "why_blocked": "Same Excel as B1. Additionally, THE DOSSIER'S CITATION IS WRONG: cbo.gov/publication/61259 is 'H.R. 1491, Disaster Related Extension of Deadlines Act' (2025-03-24), a bill cost estimate with no distributional data. That citation must be removed from the dossier and the gameplan.",
+   "human_action": "Same download as B1 — the historical tab of 61911-supplemental-data.xlsx carries the full 1979-2022 series.",
+   "what_is_available_today": "Only fragments, all secondary: top 1% 'ranging between 25 and 35 percent since 1979'; bottom quintile 'averaged about 10.6 percent in the 1980s but has remained below 3 percent since 2007'; and the verified 2022 endpoints. The dossier's stated endpoints (top 1% ~33% in 1979 to ~30% in 2021; middle ~19% to ~13%) are UNVERIFIED and must not ship.",
+   "extra_warning": "2021 is a distorted pandemic year (the bottom 60% paid just 1.3% of federal taxes that year because of recovery rebate credits). 2022 is the correct endpoint, and its verified top-1% rate of 31.5% makes the dossier's 'declining to ~30%' narrative misleading.",
+   "status": "CLOSED",
+   "resolution": "CLOSED 2026-08-17 by the same file as B1 — cbo-distribution.json carries the full 1979-2022 series by group and by tax component."
+  },
+  {
+   "id": "B5",
+   "severity": "BLOCKS THE POLICYENGINE VALIDATION REQUIRED BY PHASE 0",
+   "what": "Three static calculations validated against PolicyEngine: top rate +2pp, capital gains +5pp, 199A repeal.",
+   "why_blocked": "PolicyEngine's REST API requires an HTTP POST to create a parameterized reform, which this build environment could not issue. The one stored policy matching a target reform (id 32979, capital gains 23.8%→28.8%) returned status 'computing' on every poll and never resolved. GET /us/metadata exceeds 48MB and cannot be retrieved, so parameter paths could not be confirmed either.",
+   "human_action": "Run the policyengine-us Python package locally — it executes the same model without the async queue, the auth, or the 48MB metadata blob. Alternatively, POST to create each policy and poll the GET economy endpoint:\n  POST https://api.policyengine.org/us/policy with {\"label\":\"...\",\"data\":{<param>:{\"2026-01-01.2035-12-31\":<value>}}}\n  then GET https://api.policyengine.org/us/economy/{new_id}/over/2?region=us&time_period=2026 until status != computing",
+   "parameter_paths_unverified": "gov.irs.income.bracket.rates.7 (top rate) and gov.irs.deductions.qbi.* (199A) are INFERRED, not confirmed. Check them against /us/metadata before scripting.",
+   "important_caveat": "PolicyEngine does NOT model capital gains realization responses ('we are now working on adding capital gains responses'). It would substantially overstate revenue from the capital gains reform. Use it to validate the top-rate and 199A levers; use the elasticity literature for capital gains.",
+   "substitute_in_place": "External benchmarks from other shops are loaded in scenarios.json > validation_benchmarks, including three POST-OBBBA figures from the Tax Foundation 2026 Options Guide. Phase 2 can test against those. This does not fully discharge the gameplan requirement — see the build report.",
+   "second_pass_note": "Substitute post-OBBBA benchmarks are loaded in scenarios.json > validation_benchmarks. Still worth running locally."
+  },
+  {
+   "id": "B6",
+   "severity": "CLOSED AS UNNECESSARY — do not chase",
+   "what": "Supplemental Poverty Measure, 2009 and 2010.",
+   "why_blocked": "The two Census reports containing them (P60-241, P60-244) live only on www2.census.gov, which is robots-disallowed. The www.census.gov content/dam mirrors 404.",
+   "download": [
+    "https://www.census.gov/data/tables/2025/demo/income-poverty/p60-287.html -> tableB-2.xlsx"
+   ],
+   "note": "2011-2024 is fully sourced (14 points). The SPM story — record low in 2021, snap-back in 2022 — is entirely tellable without 2009-2010.",
+   "status": "WITHDRAWN 2026-08-17",
+   "why_withdrawn": "The Census page hosting tableB-2.xlsx returns 404, and the two years it would buy (2009, 2010) are not needed. The SPM argument — record low 7.8% in 2021 during a recession because of transfers, snapping back to 12.4% in 2022 when they lapsed — lives entirely inside the sourced 2011-2024 range. The tool should simply state that its SPM series begins in 2011."
+  },
+  {
+   "id": "B7",
+   "severity": "CLOSED — no longer blocking",
+   "what": "Piketty-Saez FISCAL income top shares, 1999-2024.",
+   "why_blocked": "Saez's update lives only in TabFig2024.xlsx. wid.world/bulk_download returns 404 and api.wid.world returns 403.",
+   "download": [
+    "https://eml.berkeley.edu/~saez/ -> TabFig2024.xlsx"
+   ],
+   "note": "1913-1998 IS sourced from the original QJE Table II. And the WID/DINA variant is complete 1913-2024. So the tool can still show two of three series in full and the third through 1998.",
+   "status": "CLOSED",
+   "resolution": "CLOSED 2026-08-17. TabFig2024.xlsx parsed. Piketty-Saez fiscal-income top shares now run 1913-2024 in BOTH capital-gains variants (Tables A1 and A3), replacing the 1913-1998 QJE extract."
+  },
+  {
+   "id": "B8",
+   "severity": "LOW — costs the cohort detail of one exhibit",
+   "what": "Absolute mobility by birth cohort, the full cohort-by-cohort array.",
+   "why_blocked": "Opportunity Insights publishes it only as .dta and .xlsx; the Harvard Dataverse mirror is robots-disallowed; the paper shows it in Figure 1B only.",
+   "download": [
+    "https://opportunityinsights.org/wp-content/uploads/2018/04/table1_national_absmob_by_cohort_parpctile.xlsx"
+   ],
+   "note": "The two endpoints (92% for the 1940 cohort, 50% for 1984) are verbatim-sourced and carry the point on their own."
+  },
+  {
+   "id": "B9",
+   "severity": "CLOSED — no longer blocking",
+   "what": "IRS SOI estate tax filing-year Table 1, FILING YEARS 2023 and 2024 only: total returns filed, and number or share taxable.",
+   "why_it_matters": "series-arrays.json > estate_returns currently runs 2001-2022 (108,071 filed / 51,766 taxable in 2001 down to 8,130 / 3,171 in 2022). Two more years makes it current. The collapse is already legible without them.",
+   "why_blocked": "IRS publishes the filing-year tables only as .xlsx.",
+   "download": [
+    "https://www.irs.gov/statistics/soi-tax-stats-estate-tax-filing-year-tables -> Table 1, filing years 2023 and 2024"
+   ],
+   "optional_extra": "Filing years 1995-2000 would add a pre-EGTRRA baseline. Low value; skip unless free.",
+   "basis_warning": "This series is FILING YEAR, not year of death. Most returns filed in year T are for deaths in T-1. TPC's year-of-death projections (~7,100 filed / ~4,000 taxable for 2023 deaths) are on a DIFFERENT basis and must not be plotted on the same line.",
+   "status": "CLOSED",
+   "resolution": "CLOSED 2026-08-17. IRS SOI estate Table 1 for filing years 2023 and 2024 parsed: FY2023 9,024 filed / 3,690 taxable; FY2024 7,195 filed / 2,663 taxable. Those two years use IRS's own taxable count, not the derived one."
+  }
+ ],
+ "non_blocking_must_not_ship": [
+  {
+   "claim": "CBO scored TCJA at ~-$2.3T including debt service",
+   "closes_with": "Confirming whether it traces to a CBO table or is a third-party derivation; if the latter it must never be attributed to CBO",
+   "substitute_available": "The defensible CBO number is -$1.9 trillion over 2018-2028, inclusive of both debt service and macroeconomic feedback"
+  },
+  {
+   "claim": "Muni bond tax expenditure ~$30-40B/yr; closing new issues raises ~$100-120B/10yr",
+   "closes_with": "JCX-45-25 Table 1 or Treasury OTA's tax expenditure table",
+   "substitute_available": "CBO's private-activity-bond option at $43.1B/10yr — but that is a SUBSET, not all munis"
+  },
+  {
+   "claim": "Section 1031 like-kind exchanges ~$9-10B/yr",
+   "closes_with": "JCX-45-25 Table 1 or Treasury's FY2025 tax expenditure volume",
+   "substitute_available": "none — but the step-up interaction (1031 is deferral unless held to death) IS sourced and is the more interesting point"
+  },
+  {
+   "claim": "199A repeal raises ~$700B/10yr",
+   "closes_with": "nothing needed — REPLACED by Tax Foundation's post-OBBBA $835.7B conventional / $505.9B dynamic",
+   "substitute_available": "yes, and it is better sourced and on the right baseline"
+  },
+  {
+   "claim": "Employer health exclusion payroll side ~$120-150B",
+   "closes_with": "Treasury OTA or CBO — NOT JCT, which excludes the payroll side from the tax expenditure concept by definition",
+   "substitute_available": "CBO's ~$268B/10yr implied delta between its income-only and income-plus-payroll alternatives"
+  },
+  {
+   "claim": "Top 1% accounts for ~28% of unreported income and ~36% of unpaid tax (NBER w28542)",
+   "closes_with": "DeBacker et al., Tax Noncompliance and Measures of Income Inequality, Tax Notes Federal 2020-02-17 (paywalled)",
+   "substitute_available": "Treasury/Sarin: 'more than $160 billion lost annually is from taxes that top 1 percent choose not to pay', TY2019 base. MISATTRIBUTION — the figures are affirmatively not in w28542."
+  },
+  {
+   "claim": "US profit-shifting revenue loss ~$60B/yr (Torslov-Wier-Zucman)",
+   "closes_with": "TWZ appendix tables at missingprofits.world or an EU Tax Observatory country table",
+   "substitute_available": "TWZ's percentage form: 17% of US corporate tax revenue in 2016, up from 14% in 2015"
+  },
+  {
+   "claim": "Summers-Sarin scored the Warren wealth tax at ~$1.1T/10yr",
+   "closes_with": "locating a Summers-Sarin publication stating a 10-year total, if one exists",
+   "substitute_available": "Their published $25-75B/YEAR range with the explicit disclaimer that it is a back-of-envelope figure"
+  },
+  {
+   "claim": "OECD net wealth taxes fell from 12 countries in 1990 to 3-4 by 2018",
+   "closes_with": "an OECD iLibrary HTML chapter, or Tax Foundation/IMF quoting the counts verbatim",
+   "substitute_available": "PolitiFact citing OECD: '13 countries collected revenues from net wealth taxes in 1996' — different year and denominator, so not a substitute for the trend claim"
+  },
+  {
+   "claim": "Wyden mark-to-market would cover ~700 taxpayers",
+   "closes_with": "a JCT distribution memo or a CRS mirror of IF11957",
+   "substitute_available": "The eligibility rule itself: 'more than $1 billion in assets or more than $100 million in income for three consecutive years'"
+  },
+  {
+   "claim": "US tax-to-GDP ratio is 25.2% (2023)",
+   "closes_with": "an OECD Data Explorer HTML endpoint or a think-tank piece quoting the US line",
+   "substitute_available": "TPC: 27% of GDP for 2021, all levels of government — different definition and vintage, state it explicitly"
+  },
+  {
+   "claim": "Home price-to-income ratio was 2.2-3.0 from 1950-1985",
+   "closes_with": "a Census decennial construction, which would be a derived figure and must be labeled as such",
+   "substitute_available": "JCHS data goes back only to the early 1970s. The verified 5.6 (2022) record and 4.1 (2019) comparator carry the point."
+  },
+  {
+   "claim": "Kansas lost ~$700M/yr in revenue",
+   "closes_with": "Kansas Legislative Research Department fiscal notes",
+   "substitute_available": "CBPP's '$4.5 billion through FY2018', quoted verbatim"
+  },
+  {
+   "claim": "About 2% of deaths were subject to estate tax in 2000",
+   "closes_with": "CDC/NCHS total deaths for 2001, or an IRS SOI estate table stating the share",
+   "substitute_available": "State the numerator instead: ~50,500 taxable estates in 2001 vs ~4,000 today"
+  },
+  {
+   "claim": "Federal Reserve remittances, FY2025 dollar level",
+   "closes_with": "MTS September 2025 Table 3 via a non-403 path, or the Fed's own 2025 preliminary financial information release (note: calendar year, not fiscal)",
+   "substitute_available": "none — and do NOT derive it from CBO's 'increased by $2 billion (or 75 percent)', which is arithmetic on a rounded delta. The level sits inside OMB's $49.7B miscellaneous receipts line."
+  },
+  {
+   "claim": "JCT's $451B gross macroeconomic feedback figure for TCJA",
+   "closes_with": "reading pages 1-2 of the JCX-69-17 PDF directly",
+   "substitute_available": "The $385B NET deficit reduction IS verbatim-sourced, and -1,456.0 + 385 = -1,071 reconciles exactly"
+  },
+  {
+   "claim": "Union density was ~33% in the 1950s",
+   "status": "DENOMINATOR MISMATCH, not unsourced",
+   "closes_with": "A source using union members as a share of NONAGRICULTURAL WAGE AND SALARY employment — unionstats.com or a BLS historical series",
+   "substitute_available": "On the total-employed denominator now in series-arrays.json, the 1950s peak is 28.3% (1954). Both are correct on their own denominator; the tool must state which it uses."
+  }
+ ],
+ "citation_errors_to_fix_in_source_docs": [
+  {
+   "document": "research/tax-explorer-research-2026-08-17.md §B7",
+   "error": "Cites cbo.gov/publication/61259 for the CBO effective-rate-by-quintile series. That publication is an unrelated bill cost estimate.",
+   "fix": "Replace with CBO publication 62300 / file 61911 supplemental data."
+  },
+  {
+   "document": "docs/tax-explorer-gameplan.md §5 and research §Phase 0 queue item 4",
+   "error": "Names 'SOI Table 3.4' as the tax-generated-by-AGI-size table.",
+   "fix": "It is Table 3.5. Table 3.4 is by filing status."
+  },
+  {
+   "document": "research §C2",
+   "error": "Dates the JCT $15.6B carried interest score to the 2025 Carried Interest Fairness Act.",
+   "fix": "It is JCT's 2015 score of the 2015 bill, on a pre-TCJA baseline."
+  },
+  {
+   "document": "research §C1",
+   "error": "Attributes a 61%-to-top-1% share for 199A to JCX-32-18.",
+   "fix": "That document uses dollar bands, not percentiles; the $1M+ band share is 44.3%. Use JCT's 2024 figure: ~87% to the top AGI decile (AGI >= $174,000)."
+  },
+  {
+   "document": "research §C4",
+   "error": "Attributes top-1% shares of unreported income (28%/36%) to NBER w28542.",
+   "fix": "Those figures are not in that paper. Use Treasury/Sarin's '>$160B annually', citing DeBacker et al."
+  },
+  {
+   "document": "research §A2 and §A6",
+   "error": "States a CBO aggregate labor supply elasticity of 0.19.",
+   "fix": "0.19 appears in no CBO document. CBO's central is 0.27 (range 0.17-0.37) in the Oct 2012 report; the 0.1-0.3 range is from WP 2012-12."
+  },
+  {
+   "document": "research §A2",
+   "error": "Attributes the AOC 70% revenue range to the Tax Policy Center.",
+   "fix": "TPC published no revenue estimate. The $189B is Tax Foundation's dynamic score; the ~$700B is a Washington Post figure."
+  },
+  {
+   "document": "research §B2",
+   "error": "'Only a few hundred filers hit the 91% bracket.'",
+   "fix": "Fewer than 10,000 households (Tax Foundation citing the WSJ)."
+  },
+  {
+   "document": "research §B7",
+   "error": "'92% of children born 1940 out-earned their parents; ~50% of those born 1984.'",
+   "fix": "Chetty et al. say 'approximately 90%' and 'the 1980s'."
+  },
+  {
+   "document": "docs/tax-explorer-provenance-2026-08-17.md",
+   "error": "Listed the Chetty absolute-mobility figure as CORRECTED (90% / 'the 1980s'), on the basis that 92%/1984 was a secondary-retelling error.",
+   "fix": "REVERSED. Both are verbatim in the paper — 90%/'the 1980s' in the abstract, 92%/1984 in the body. The dossier's 92%/1984 was right. Use it, cite the body."
+  }
+ ],
+ "resolved_by_series_harvest": [
+  {
+   "was": "Federal receipts %GDP post-1945 range (14.5-20% unsourced)",
+   "now": "RESOLVED via FRED FYFRGDA188S full 1929-2025 series. Verified bounds 13.2% (1950) to 19.8% (1945/2000). The dossier was wrong at both ends."
+  },
+  {
+   "was": "Real public college tuition tripled 1980-2020 (unsourced)",
+   "now": "RESOLVED via NCES Digest Table 330.10, 1963-2024 in constant dollars — and the framing was wrong: it roughly QUADRUPLED to a 2015-16 peak then FELL 13%. Must be paired with College Board net price, which peaked in 2012-13 and has fallen ~48%."
+  },
+  {
+   "was": "CBO effective rate by quintile 1979-2022 (B4, thought xlsx-only)",
+   "now": "PARTIALLY RESOLVED. CBO's older reports publish it as extractable PDF: total rates 1979-2005, and rates by component plus SHARES of federal tax liabilities 1979-2002. Only 2003-2021 remains blocked."
+  },
+  {
+   "was": "Piketty-Saez top income shares (thought xlsx-only)",
+   "now": "RESOLVED for 1913-1998 via the original QJE 2003 Table II, both capital-gains variants. And the WID/DINA variant 1913-2024 came via the Our World in Data grapher CSV endpoint."
+  },
+  {
+   "was": "Auten-Splinter full series",
+   "now": "RESOLVED 1960-2022 via Table A1 of their May 2025 update PDF."
+  },
+  {
+   "was": "Piketty-Saez effective rates by top group",
+   "now": "RESOLVED — full matrix 1960-2004 across 11 groups, plus components for 1970 and 2004."
+  },
+  {
+   "was": "Full payroll cap and rate history",
+   "now": "RESOLVED 1937-2026 from SSA HTML tables."
+  },
+  {
+   "was": "Estate exemption and top rate history",
+   "now": "RESOLVED 1916-2026, plus returns filed/taxable 2001-2022."
+  },
+  {
+   "was": "Federal receipts by source composition",
+   "now": "RESOLVED FY1934-2023 actuals via TPC's PDF mirror of OMB Historical Table 2.2 — a stronger exhibit than the four scattered points the dossier had."
+  }
+ ]
+}

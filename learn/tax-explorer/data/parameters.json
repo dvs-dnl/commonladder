@@ -1,0 +1,441 @@
+{
+  "_meta": {
+    "id": "parameters",
+    "title": "Act 2 behavioral parameters — the assumption dials",
+    "built": "2026-08-17",
+    "phase": "0",
+    "warning": "Four dossier parameter values did not survive verification and are CORRECTED below: the labor supply elasticity (0.19 does not exist in any CBO document), the low-income MPC band (0.5-0.9 is unsupported), the growth feedback range (1-32%, not 4-35%), and the state-dependence of fiscal multipliers (CONTESTED, not settled). Do not restore the dossier values."
+  },
+
+  "eti": {
+    "label": "Elasticity of taxable income",
+    "central": 0.25,
+    "range": [0.12, 0.40],
+    "unit": "elasticity",
+    "status": "verified",
+    "tier": "secondary",
+    "source": "Saez, Slemrod & Giertz, The Elasticity of Taxable Income with Respect to Marginal Tax Rates: A Critical Review, Journal of Economic Literature 50(1), March 2012, pp. 3-50",
+    "quoting_source": "JCT, Estimating Changes in the Federal Individual Income Tax: Exploring Elasticities of Taxable Income (JCX-2-17)",
+    "url": "https://www.jct.gov/getattachment/a551a96e-ff70-41d2-b583-23217d5ac433/x-2-17-4967.pdf",
+    "primary_url": "https://eml.berkeley.edu/~saez/saez-slemrod-giertzJEL12.pdf",
+    "published": "2017-01-23",
+    "quote": "However, in a 2012 review of the literature, leading scholars argued 'the best available estimates range from 0.12 to 0.40.'",
+    "quote_central": "for an elasticity estimate of e = 0.25 (corresponding, as we discuss later, to the mid-range of the estimates from the literature)",
+    "authors_own_caveat": "The lead-in clause is part of the finding and must ship with the number: \"there are no truly convincing estimates of the long-run elasticity.\"",
+    "what_it_measures": {
+      "quote": "the elasticity captures not only the hours of work response, but also all other behavioral responses to marginal tax rates",
+      "quote_2": "all responses to taxation are symptomatic of deadweight loss ... whether they take the form of reduced labor supply, increased charitable contributions or mortgage interest payments ... or a different form of business organization",
+      "note": "DO NOT describe ETI as a labor-supply elasticity in the why-panel. It is a REPORTED-INCOME elasticity, and at the top it mostly reflects avoidance and income-shifting, not real output changes."
+    },
+    "top_earners": {
+      "value": 0.57,
+      "context": "the elasticity Diamond & Saez adopt for the CURRENT taxable income base at the top",
+      "broad_base_alternative": 0.17,
+      "source": "Diamond & Saez, The Case for a Progressive Tax, JEP 25(4), 2011",
+      "url": "https://eml.berkeley.edu/~saez/diamond-saezJEP11opttax.pdf",
+      "quote": "the optimal top tax rate using the current taxable income base ... would be τ*=1/(1+1.5 x 0.57)=54 percent while the optimal top tax rate using a broader income base ... would be τ*=1/(1+1.5 x 0.17)=80 percent.",
+      "note": "THE MOST IMPORTANT DIAL-DESIGN FACT IN THE DATASET: same population, same year, two elasticities differing by 3.4x purely from how the base is defined."
+    },
+    "design_constraint": {
+      "severity": "hard",
+      "quote_1": "the tax base choice affects the taxable income elasticity. Thus ... the ETI can be thought of as a policy choice",
+      "quote_2": "a tax system with a narrow base and many deductions and avoidance opportunities is likely to generate high elasticities",
+      "quote_3": "the tax avoidance or evasion component of the elasticity e is not an immutable parameter and can be reduced through base broadening and tax enforcement",
+      "implication": "ETI IS NOT A STRUCTURAL PARAMETER. It is endogenous to the tax code being simulated. An ETI dial that stays fixed while the user closes loopholes or broadens the base directly contradicts both source papers. The engine must either (a) couple the ETI to the active base-broadening toggles, or (b) show a visible warning in the why-panel when the user broadens the base without lowering ETI. Option (a) is correct; option (b) is the minimum acceptable."
+    },
+    "jct_own_assumption": {
+      "value": null, "status": "blocked",
+      "quote": "This approach is based on empirical research suggesting that taxable income elasticities are lower for lower-income taxpayers than for higher-income taxpayers.",
+      "quote_2": "applies a series of taxable income elasticities that vary by income groups",
+      "note": "JCT confirms it uses an income-graduated ETI schedule but DOES NOT PUBLISH the numerical values. The tool must not present any specific number as 'JCT's ETI.' It can honestly say JCT uses an income-graduated schedule it does not disclose."
+    }
+  },
+
+  "revenue_maximizing_top_rate": {
+    "label": "Revenue-maximizing top marginal rate (the Laffer peak)",
+    "formula": "tau* = 1 / (1 + a * e)",
+    "pareto_parameter_a": 1.5,
+    "status": "verified",
+    "source": "Diamond & Saez, The Case for a Progressive Tax: From Basic Research to Policy Recommendations, JEP 25(4), 2011",
+    "url": "https://eml.berkeley.edu/~saez/diamond-saezJEP11opttax.pdf",
+    "tier": "primary",
+    "quote_formula": "The optimal top tax rate τ* is given by the formula τ*=1/(1+a e).",
+    "quote_a": "For the U.S. economy, the cutoff for the top percentile of tax filers is approximately $400,000 and the average income for this group is approximately $1.2 million, so that zm/z*=3 and hence a=1.5.",
+    "quote_73": "if e=.25, a mid-range estimate from the empirical literature, then τ*=1/(1+1.5 x .25)=73 percent",
+    "quote_comparison": "73 percent, substantially higher than the current 42.5 percent top US marginal tax rate (combining all taxes).",
+    "published_points": [
+      {"e": 0.25, "tau_star": 73},
+      {"e": 0.57, "tau_star": 54, "note": "current taxable income base"},
+      {"e": 0.17, "tau_star": 80, "note": "broader income base"}
+    ],
+    "critical_labeling_requirement": "73% IS AN ALL-IN COMBINED RATE — federal income + state + payroll + sales. The authors' own comparison baseline is a 42.5% combined US top rate. If the tool shows 73% next to a federal statutory bracket it WILL mislead. Label it every time.",
+    "dossier_correction": {
+      "dossier_claimed": "~54-63% at e = 0.4-0.5",
+      "status": "computable_but_not_published",
+      "note": "Arithmetically consistent with the verified formula (a=1.5: e=0.4 gives 62.5%; e=0.5 gives 57.1%) but Diamond and Saez DO NOT PRINT those numbers. The tool may compute them live from the formula — that is honest — but must not attribute the specific figures to the paper."
+    },
+    "credible_critique": {
+      "value": 49, "unit": "percent",
+      "source": "Badel, Huggett & Luo, Taxing Top Earners: A Human Capital Perspective, The Economic Journal 130(629), 2020, pp. 1200-1225",
+      "url": "https://ntanet.org/wp-content/uploads/2020/02/Mark-Huggett-Session1422_Paper2892_FullPaper_1.pdf",
+      "tier": "primary",
+      "quote": "An established view is that the revenue maximizing top tax rate for the US is approximately 73 percent. In contrast, the revenue maximizing top tax rate is approximately 49 percent in our quantitative human capital model.",
+      "authors_caveat": "The key reason for the lower top tax rate is the presence of two new forces not captured by the model underlying the established view.",
+      "note": "This is a MODEL-BASED result, not an empirical estimate — a different epistemic category from the ETI literature. Say so. The 73% vs 49% gap is a live disagreement, which is precisely why the tool ships a range and a dial rather than a number."
+    },
+    "never_claim": "The revenue-maximizing rate is NOT the optimal rate. Optimality is an ethical judgment about how much we should value a dollar to a rich person versus a poor one; revenue maximization is an empirical question. Conflating them is on the never-claim list."
+  },
+
+  "capital_gains_realization_elasticity": {
+    "label": "Capital gains realization elasticity — the single most important behavioral interaction in the tool",
+    "persistent": {
+      "value": -0.72, "status": "verified", "tier": "secondary",
+      "source": "Dowd, McClelland & Muthitacharoen, New Evidence on the Tax Elasticity of Capital Gains, National Tax Journal 68(3), 2015, pp. 511-544",
+      "url": "https://ideas.repec.org/a/ntj/journl/v68y2015i3p511-544.html",
+      "quote": "The preferred persistent elasticity estimate is –0.72 and is statistically significant and robust to a number of sensitivity tests.",
+      "citation_trap": "CITE -0.72 TO THE 2015 NTJ PUBLISHED VERSION, NOT the CBO working paper. The CBO working paper (2012-09) says -0.79 (SE 0.11). Getting this backwards is a citation error the tool would carry forever."
+    },
+    "transitory": {
+      "value": -1.20, "se": 0.35, "status": "verified", "tier": "primary",
+      "source": "Dowd, McClelland & Muthitacharoen, New Evidence on the Tax Elasticity of Capital Gains, CBO Working Paper 2012-09",
+      "url": "https://www.cbo.gov/sites/default/files/112th-congress-2011-2012/workingpaper/43334-taxelasticitycapgains.pdf",
+      "published": "2012-06", "quote": "-1.20 with a standard error of 0.35",
+      "note": "Whether the transitory estimate was also revised in the published NTJ version is unresolved — the NTJ abstract states only the persistent figure."
+    },
+    "authors_own_caveats": [
+      "The consistency of our estimates relies on the distributional assumptions of our parametric model",
+      "model examines the average effect of tax changes, although the effect may vary substantially across income categories",
+      "If sophisticated taxpayers plan many years in advance, lagged variables may be endogenous rather than predetermined"
+    ],
+    "caveat_note": "The 'effect may vary substantially across income categories' caveat matters a great deal here, because the tool applies this parameter to a very top-heavy base.",
+    "scorekeeper_rev_max_rate": {
+      "value": 30, "descriptor": "around", "unit": "percent", "status": "verified",
+      "source": "Sarin, Summers, Zidar & Zwick, Rethinking How We Score Capital Gains Tax Reform, BFI Working Paper 2021-10 / Tax Policy and the Economy 36, 2022",
+      "url": "https://repec.bfi.uchicago.edu/RePEc/pdfs/BFI_WP_2021-10.pdf",
+      "quote": "The prevailing wisdom among some in the scorekeeping community (e.g., Tax Policy Center, Tax Foundation, Penn Wharton Budget Model) has been that the revenue-maximizing capital gains rate is around 30 percent",
+      "note": "This is the authors characterizing OTHERS' assumptions in order to dispute them — it is not an estimate they endorse. Attribute carefully. CRS R41364 (Gravelle, updated 2026-03-03) reaches a very different figure under its own assumptions: 'The revenue maximizing tax rate would be 65%.' The scorekeeper consensus is much narrower than the published literature."
+    },
+    "agersnap_zidar_alternative": {
+      "revenue_elasticity": [-0.5, -0.3], "rev_max_rate": [38, 47], "status": "verified", "tier": "abstract",
+      "source": "Agersnap & Zidar, The Tax Elasticity of Capital Gains and Revenue-Maximizing Rates, NBER Working Paper 27705, 2020",
+      "url": "https://ideas.repec.org/p/nbr/nberwo/27705.html",
+      "quote": "We find that the elasticity of revenues with respect to the tax rate over a ten-year period is -0.5 to -0.3, indicating that capital gains tax cuts do not pay for themselves, and that a 5 percentage point rate increase would yield $18 to $30 billion in annual federal tax revenue. Our long-run estimates yield revenue-maximizing capital gains tax rates of 38 to 47 percent.",
+      "comparability_warning": "This is a REVENUE elasticity, not a REALIZATIONS elasticity. It is not directly comparable to Dowd et al.'s -0.72 without conversion. CRS notes the study's identification favorably: it uses exogenous state tax rate changes, is a panel study, and controls for interstate migration.",
+      "note": "38-47% is explicitly a LONG-RUN estimate, distinct from the ten-year revenue elasticity."
+    },
+    "step_up_interaction": {
+      "label": "The pairing that changes the answer",
+      "additional_revenue": {"value": 200, "unit": "usd_billions", "window": "a decade"},
+      "crude_calc": {"without_step_up_repeal": 1000, "with_step_up_repeal": 1400, "unit": "usd_billions"},
+      "status": "verified", "tier": "primary",
+      "source": "Sarin, Summers, Zidar & Zwick, BFI WP 2021-10 / Tax Policy and the Economy 36, 2022",
+      "url": "https://repec.bfi.uchicago.edu/RePEc/pdfs/BFI_WP_2021-10.pdf",
+      "quote_mechanism": "additional base-broadening reforms, like eliminating stepped-up basis and making charitable giving a realization event, will decrease the elasticity of the tax base to rate changes.",
+      "quote_amount": "Eliminating stepped-up basis would diminish incentives to lock-in gains, which is why we estimate an added $200 billion in additional capital gains taxes collected if raising capital gains rates is combined with this change.",
+      "quote_crude": "A crude calculation illustrates that raising capital gains rates to ordinary income levels could raise $1 trillion more revenue over a decade than other estimates suggest. ... With the elimination of stepped-up basis, this estimate rises to $1.4 trillion.",
+      "authors_own_caveat": "The authors call it 'a crude calculation' in their own abstract, and close by asking that 'scorekeeping procedures employed in evaluating capital gains should be made more transparent and be the subject of external professional debate and review.'",
+      "engine_requirement": "THE DURABLE FINDING IS THE MECHANISM, NOT THE NUMBER: eliminating step-up LOWERS the elasticity, which mechanically RAISES the revenue-maximizing rate. The engine must couple the elasticity dial to the step-up toggle. The authors publish revenue amounts, not a revised revenue-maximizing RATE — do not invent one.",
+      "gameplan_reference": "This implements gameplan §9 test 4: cap gains 23.8 to 39.6 WITHOUT tax-at-death gives small/negative net revenue; WITH tax-at-death gives strongly positive. The pair must diverge."
+    }
+  },
+
+  "fiscal_multipliers": {
+    "label": "Output per $1 of policy, first ~2 years",
+    "cbo_arra_table": {
+      "status": "verified", "tier": "primary",
+      "source": "CBO, Estimated Impact of the American Recovery and Reinvestment Act on Employment and Economic Output from January 2012 Through March 2012",
+      "url": "https://www.cbo.gov/sites/default/files/cbofiles/attachments/05-25-Impact_of_ARRA.pdf",
+      "published": "2012-05",
+      "table_name": "Estimated Output Multipliers of Major Provisions of the American Recovery and Reinvestment Act of 2009",
+      "rows": [
+        {"provision": "Purchases of Goods and Services by the Federal Government", "low": 0.5, "high": 2.5},
+        {"provision": "Transfer Payments to State and Local Governments for Infrastructure", "low": 0.4, "high": 2.2},
+        {"provision": "Transfer Payments to State and Local Governments for Other Purposes", "low": 0.4, "high": 1.8},
+        {"provision": "Transfer Payments to Individuals", "low": 0.4, "high": 2.1},
+        {"provision": "One-Time Payments to Retirees", "low": 0.2, "high": 1.0},
+        {"provision": "Two-Year Tax Cuts for Lower- and Middle-Income People", "low": 0.3, "high": 1.5},
+        {"provision": "One-Year Tax Cut for Higher-Income People", "low": 0.1, "high": 0.6},
+        {"provision": "Extension of First-Time Homebuyer Credit", "low": 0.2, "high": 0.8},
+        {"provision": "Corporate Tax Provisions Primarily Affecting Cash Flow", "low": 0.0, "high": 0.4}
+      ],
+      "caveat": "CBO publishes these as LOW/HIGH BOUNDS, not central estimates with confidence intervals. The high-income tax cut range 0.1-0.6 is a 6x span; presenting a midpoint as a point estimate misrepresents CBO's own uncertainty.",
+      "note": "These are ARRA-era, recession-conditioned estimates. See state_dependence below before applying them to a non-recession baseline."
+    },
+    "zandi_moodys": {
+      "status": "verified", "tier": "primary",
+      "source": "Mark M. Zandi, Assessing the Macro Economic Impact of Fiscal Stimulus 2008, Moody's Economy.com, Table 1 'Fiscal Economic Bang for the Buck'",
+      "url": "https://www.economy.com/mark-zandi/documents/Stimulus-Impact-2008.pdf",
+      "published": "2008-01",
+      "rows": [
+        {"provision": "Temporary increase in food stamps", "value": 1.73},
+        {"provision": "Extending UI benefits", "value": 1.64},
+        {"provision": "Increased infrastructure spending", "value": 1.59},
+        {"provision": "General aid to state governments", "value": 1.36},
+        {"provision": "Temporary payroll tax holiday", "value": 1.29},
+        {"provision": "Refundable lump-sum tax rebate", "value": 1.26},
+        {"provision": "Across the board tax cut", "value": 1.03},
+        {"provision": "Non-refundable lump-sum tax rebate", "value": 1.02},
+        {"provision": "Make dividend and capital gains tax cuts permanent", "value": 0.37},
+        {"provision": "Cut in corporate tax rate", "value": 0.30},
+        {"provision": "Make Bush income tax cuts permanent", "value": 0.29},
+        {"provision": "Accelerated depreciation", "value": 0.27}
+      ],
+      "dossier_corrections": [
+        "Infrastructure is 1.59, not 1.57",
+        "'Permanent upper-income tax cuts 0.32-0.35' is not a published number — it straddles two distinct rows (0.29 income, 0.37 dividend/capgains)"
+      ],
+      "epistemic_warning": "These are SINGLE-MODEL POINT ESTIMATES from a proprietary macro model, not a literature range — a much weaker epistemic object than the CBO table. The tool must NOT display them with equal authority. Zandi republished this table in multiple vintages with slightly different values; cite the vintage explicitly."
+    },
+    "state_dependence": {
+      "status": "CONTESTED",
+      "dossier_framing": "the standard finding is that multipliers are larger in recessions / at the zero lower bound",
+      "verdict": "THAT FRAMING DOES NOT SURVIVE VERIFICATION. Two leading papers reach opposite conclusions. Ship this as a user-selectable regime with BOTH citations visible, not as a default assumption.",
+      "supports": {
+        "source": "Auerbach & Gorodnichenko, Measuring the Output Responses to Fiscal Policy, AEJ: Economic Policy 4(2), May 2012, pp. 1-27",
+        "url": "https://www.aeaweb.org/articles?id=10.1257%2Fpol.4.2.1", "tier": "abstract",
+        "quote": "A key issue in current research and policy is the size of fiscal multipliers when the economy is in recession. We provide three insights. First, using regime-switching models, we find large differences in the size of spending multipliers in recessions and expansions with fiscal policy being considerably more effective in recessions than in expansions."
+      },
+      "rejects": {
+        "source": "Ramey & Zubairy, Government Spending Multipliers in Good Times and in Bad: Evidence from US Historical Data, Journal of Political Economy 126(2), 2018, pp. 850-901",
+        "url": "https://econweb.ucsd.edu/~vramey/research/Ramey_Zubairy_JPE_published.pdf", "tier": "primary",
+        "quote": "We investigate whether US government spending multipliers are higher during periods of economic slack or when interest rates are near the zero lower bound. Using new quarterly historical US data covering multiple large wars and deep recessions, we estimate multipliers that are below unity irrespective of the amount of slack in the economy. These results are robust to two leading identification schemes, two different estimation methodologies, and many alternative specifications. In contrast, the results are more mixed for the zero lower bound state, with a few specifications implying multipliers as high as 1.5."
+      },
+      "resolution": "The ZLB half of the claim survives partially (Ramey-Zubairy concede 'more mixed' at the ZLB, with some specifications reaching 1.5). The recession/slack half is DIRECTLY CONTRADICTED. The 'recession vs normal' regime dial must carry a visible note that the profession is split."
+    }
+  },
+
+  "mpc": {
+    "label": "Marginal propensity to consume — why a dollar to the bottom moves demand more than a dollar to the top",
+    "johnson_parker_souleles": {
+      "value_nondurables_3mo": [0.20, 0.40], "value_cumulative_6mo": 0.67,
+      "status": "verified", "tier": "abstract",
+      "source": "Johnson, Parker & Souleles, Household Expenditure and the Income Tax Rebates of 2001, AER 96(5), December 2006, pp. 1589-1610",
+      "url": "https://www.aeaweb.org/articles?id=10.1257%2Faer.96.5.1589",
+      "quote": "spent 20 to 40 percent of their rebates on nondurable goods during the three-month period ... roughly two-thirds of their rebates ... responses are larger for households with low liquid wealth or low income",
+      "authors_caveat": "The headline 20-40% is NONDURABLES ONLY over ONE QUARTER. The two-thirds figure is a different horizon AND a broader consumption concept.",
+      "requirement": "THE TOOL MUST ATTACH HORIZON AND CONSUMPTION CATEGORY to any MPC value, or the same study will appear to support 0.2 and 0.67 simultaneously. That is the standard misuse of this paper."
+    },
+    "heterogeneity": {
+      "status": "corrected",
+      "dossier_claimed": "0.5-0.9 for low-liquidity/low-income households; top quintile ~0.2",
+      "verified": {"mean": 0.48, "lowest_cash_on_hand": 0.65, "richest": 0.30},
+      "source": "Jappelli & Pistaferri, Fiscal Policy and MPC Heterogeneity, AEJ: Macroeconomics 6(4), 2014, pp. 107-136",
+      "url": "https://web.stanford.edu/~pista/MPC.pdf", "tier": "primary",
+      "quote": "The marginal propensity to consume (MPC) is 48 percent on average. We also find substantial heterogeneity in the distribution, as households with low cash-on-hand exhibit a much higher MPC than affluent households",
+      "quote_2": "Average MPC declines sharply with cash-on-hand, from around 65 percent in the lowest cash-on-hand percentile to some 30 percent for the richest households",
+      "authors_caveat": "This is ITALIAN survey data (2010 Survey of Household Income and Wealth) based on HYPOTHETICAL survey responses, not observed spending.",
+      "corroborating": {
+        "source": "Fisher et al., Federal Reserve Bank of Boston Working Paper 19-4",
+        "url": "https://www.bostonfed.org/-/media/Documents/Workingpapers/PDF/2019/wp1904.pdf",
+        "published": "2019-02",
+        "overall_mpc": 0.10,
+        "by_wealth_quintile": [0.218, 0.166, 0.002, 0.002, 0.015],
+        "authors_caveat": "The Boston Fed authors flag their own estimates as 'at the low end of the range examined in other research' because they use biennial data, and cite Carroll et al. (2017) for a 0.2-0.6 range."
+      },
+      "verdict": "THE QUALITATIVE GRADIENT IS ROBUST ACROSS SOURCES; THE SPECIFIC NUMBERS ARE NOT. The dossier's 0.5-0.9 low-income band is unsupported — 0.65 is the verified top of the low-liquidity range. Ship as a gradient with wide, visible bounds, never as two point values. Note also that the Boston Fed quintiles are by WEALTH, which does not map cleanly onto income."
+    }
+  },
+
+  "labor_supply_elasticity": {
+    "label": "Aggregate labor supply (substitution) elasticity",
+    "status": "corrected",
+    "dossier_claimed": "central 0.19, range 0.1-0.3",
+    "verdict": "0.19 DOES NOT APPEAR IN ANY CBO DOCUMENT. The claim spliced two documents: the central estimate belongs to the October 2012 report and is 0.27; the 0.1-0.3 range belongs to the working paper. Use one or the other, cited correctly — never the splice.",
+    "cbo_report": {
+      "central": 0.27, "range": [0.17, 0.37], "income_elasticity_central": -0.05, "income_elasticity_range": [-0.10, 0],
+      "source": "CBO, How the Supply of Labor Responds to Changes in Fiscal Policy",
+      "url": "https://www.cbo.gov/sites/default/files/cbofiles/attachments/10-25-2012-Labor_Supply_and_Fiscal_Policy.pdf",
+      "published": "2012-10", "tier": "primary",
+      "quote": "the overall substitution elasticity ranges from 0.17 to 0.37, with a central estimate of 0.27",
+      "quote_income": "an income elasticity that ranges from -0.10 to zero (meaning that no income effect occurs), with a central estimate of -0.05"
+    },
+    "cbo_working_paper": {
+      "range": [0.1, 0.3],
+      "source": "McClelland & Mok, A Review of Recent Research on Labor Supply Elasticities, CBO Working Paper 2012-12",
+      "url": "https://www.cbo.gov/sites/default/files/112th-congress-2011-2012/workingpaper/10-25-2012-recentresearchonlaborsupplyelasticities.pdf",
+      "published": "2012-10", "tier": "primary",
+      "quote": "substitution elasticities for the total population that range from 0.1 to 0.3"
+    },
+    "margins": {
+      "status": "partial",
+      "dossier_claimed": "prime-age men's intensive-margin elasticity ~0.05-0.1",
+      "verdict": "The DIRECTION is well supported; the specific 0.05-0.1 band was NOT FOUND in any CBO document. Do not ship it.",
+      "verified_values": {
+        "hours_elasticity_men_and_single_women": [-0.1, 0.2],
+        "participation_elasticity_men_and_single_women": [0, 0.1],
+        "total_substitution_men_and_single_women": [0.1, 0.3],
+        "total_substitution_married_women": [0.2, 0.4],
+        "participation_elasticity_eitc_eligible": [0.3, 1.2],
+        "bottom_decile_participation_component": 0.22,
+        "bottom_decile_total_substitution": 0.47,
+        "top_earners_total_substitution": 0.29
+      },
+      "quotes": [
+        "hours elasticity ... ranges from -0.1 to 0.2",
+        "Estimates of the participation elasticity for lower-income taxpayers eligible for the EITC range from 0.3 to 1.2",
+        "the total substitution elasticity (including both hours and participation effects) appears to range from 0.1 to 0.3 for men and single women and from 0.2 to 0.4 for married women",
+        "substitution elasticities tend to be smaller for primary earners with higher earnings because, for them, the effects on participation are smaller",
+        "For the bottom 10 percent of earners, the participation component of the elasticity is 0.22, giving them a total substitution elasticity of 0.47"
+      ],
+      "authors_caveat": "CBO notes married women's elasticities 'have fallen substantially in the last three decades' — these parameters are NOT time-invariant. CBO also observes the effects on hours worked do not appear to differ across earnings levels for primary earners, which cuts against a men-specific intensive-margin number.",
+      "teaching_point": "Extensive-margin responses (whether to work at all) dominate for EITC recipients and secondary earners; intensive-margin responses (hours) are small and centered near zero for primary earners. Modest rate changes barely move hours worked. This is why a top-rate change is mostly an avoidance story, not a work-effort story."
+    }
+  },
+
+  "corporate_incidence": {
+    "label": "Share of the corporate income tax borne by labor",
+    "default": 25,
+    "slider_range": [18, 70],
+    "unit": "percent",
+    "status": "verified",
+    "headline": "THE WIDEST DISAGREEMENT IN THIS ENTIRE DATASET — 18% (Treasury) to 70%+ (Tax Foundation), a ~4x range on a first-order parameter. That spread IS the honest headline for this dial.",
+    "shops": [
+      {"shop": "JCT", "labor": 25, "capital": 75, "tier": "primary",
+       "source": "JCT, Modeling the Distribution of Taxes on Business Income (JCX-14-13)",
+       "url": "https://www.jct.gov/getattachment/c16301b2-921e-45d4-9811-eab7b0e01d62/x-14-13-4528.pdf",
+       "published": "2013-10-16",
+       "quote": "25 percent of corporate income taxes are borne by domestic labor and 75 percent are borne by owners of domestic capital",
+       "caveat": "This is a LONG-RUN assumption with a phase-in: 'a provision enacted in the first year of the ten-year budget window reaches a long-run equilibrium in the final year of the 10-year budget window.' The 25/75 split is NOT the incidence in year 1. This matters for any year-by-year display."},
+      {"shop": "CBO", "labor": 25, "capital": 75, "tier": "primary",
+       "source": "CBO, The Distribution of Household Income in 2021, Appendix A (Incidence of Federal Taxes)",
+       "url": "https://www.cbo.gov/publication/60706", "published": "2024-09",
+       "quote": "CBO's approach is to allocate 75 percent of corporate income taxes to owners of capital in proportion to their income from interest, dividends, rents, and adjusted capital gains... CBO allocates the remaining 25 percent of corporate income taxes to workers in proportion to their income from labor."},
+      {"shop": "Treasury (OTA)", "labor": 18, "capital": 82, "tier": "primary",
+       "source": "Cronin, Lin, Power & Cooper, Distributing the Corporate Income Tax: Revised U.S. Treasury Methodology, OTA Technical Paper 5",
+       "url": "https://home.treasury.gov/system/files/131/TP-5.pdf", "published": "2012-05",
+       "quote": "82% of the corporate income tax burden is distributed to capital income and 18% is distributed to labor income.",
+       "caveat": "The 82% decomposes into 63% SUPERNORMAL return and 18% normal return. The supernormal share is doing most of the work, and that decomposition is the substantive methodological claim, not the headline split. A dial that slides labor share from 18% to 70% is implicitly sliding an assumption about how much corporate income is economic rent — the why-panel should say so."},
+      {"shop": "Tax Policy Center", "labor": 20, "capital": 80, "tier": "secondary",
+       "source": "TPC Briefing Book, Who bears the burden of the corporate income tax?",
+       "url": "https://taxpolicycenter.org/briefing-book/who-bears-burden-corporate-income-tax", "published": "2024-01",
+       "quote": "investment returns (dividends, interest, capital gains, etc.) bear 80 percent of the burden, with wages and other labor income carrying the remaining 20 percent.",
+       "caveat": "TPC uses a DIFFERENT split for timing changes: 'borne 50 percent by labor and 50 percent by all capital.' JCT and CBO do not make this distinction."},
+      {"shop": "Tax Foundation", "labor_range": [50, 100], "labor_most_likely": 70, "tier": "primary",
+       "source": "Stephen J. Entin, Labor Bears Much of the Cost of the Corporate Tax, Tax Foundation",
+       "url": "https://taxfoundation.org/research/all/federal/labor-bears-corporate-tax/",
+       "published": "2017-10-24", "updated": "2023-10-17",
+       "quote": "These studies appear to show that labor bears between 50 percent and 100 percent of the burden of the corporate income tax, with 70 percent or higher the most likely outcome.",
+       "caveat": "An advocacy organization's synthesis of a selected literature, and the outlier among the five bodies checked. Brookings separately identifies Tax Foundation as an outlier in the TCJA dynamic-scoring context. Label the lean."}
+    ],
+    "never_claim": "Corporate incidence certainty. Always show the split, per the never-claim list."
+  },
+
+  "growth_feedback": {
+    "label": "How much of a rate cut's static cost does growth offset?",
+    "status": "corrected",
+    "dossier_claimed": "~4-35%",
+    "verified_range": [1, 32],
+    "unit": "percent",
+    "verdict": "The verified span is roughly 1-32%, and it INCLUDES A NEGATIVE CASE. The dossier's bookends were not found as such.",
+    "anchors": [
+      {"anchor": "CBO 2005, 10 percent rate cut, first five years", "value": [1, 22], "tier": "primary",
+       "source": "CBO, Analyzing the Economic and Budgetary Effects of a 10 Percent Cut in Income Tax Rates",
+       "url": "https://www.cbo.gov/sites/default/files/109th-congress-2005-2006/reports/12-01-10percenttaxcut.pdf",
+       "published": "2005-12-01",
+       "quote": "the budgetary impact of the economic changes was estimated to offset between 1 percent and 22 percent of the revenue loss from the tax cut over the first five years and add as much as 5 percent to that loss or offset as much as 32 percent of it over the second five years."},
+      {"anchor": "CBO 2005, second five years", "value": [-5, 32], "note": "NEGATIVE CASE: supply-side effects could ADD as much as 5 percent to the loss. A dial floored at zero would hide a published downside — do not floor it."},
+      {"anchor": "CBO 2005, models with both supply and demand effects", "value": 15, "descriptor": "somewhat less than",
+       "quote": "According to models that account for both supply-side and demand-side effects, those effects might offset somewhat less than 15 percent of the revenue loss over the first five years."},
+      {"anchor": "JCT on TCJA", "feedback_gross": 451, "static_cost": 1456, "pct_gross": 31, "net_after_interest": 385, "pct_net": 26,
+       "tier": "primary", "source": "JCT, Macroeconomic Analysis of the Conference Agreement for H.R. 1 (JCX-69-17)",
+       "url": "https://www.jct.gov/getattachment/53ad7658-20ac-4c10-b4d0-2759305432aa/x-69-17-5055.pdf",
+       "published": "2017-12-22",
+       "quote": "the overall budgetary effects of changes in economic growth are projected to reduce the deficit by $385 billion during the budget window."},
+      {"anchor": "TCJA, average across models", "value": 25, "descriptor": "about a quarter", "excluding_tax_foundation": 20, "descriptor_ex_tf": "less than",
+       "tier": "primary", "source": "William G. Gale, Brookings, Did the 2017 tax cut pay for itself?",
+       "url": "https://www.brookings.edu/articles/did-the-2017-tax-cut-the-tax-cuts-and-jobs-act-pay-for-itself/",
+       "published": "2020-02-14",
+       "quote": "On average, these models estimated that economic growth effects (the 'dynamic effects') will only offset about a quarter of the 10-year revenue loss associated with the TCJA. ... Excluding the Tax Foundation, which is an outlier in these estimates, drops the average offset to less than 20%."},
+      {"anchor": "TCJA extension", "value": [1, 14], "tier": "primary",
+       "source": "CRFB, Tax Cut Extension Only Pays for 1-14% of Itself",
+       "url": "https://www.crfb.org/blogs/tax-cut-extension-only-pays-1-14-itself", "published": "2024-06-06",
+       "quote": "TCJA extension would create dynamic feedback sufficient to offset between 1 percent and 14 percent of its static cost over a decade.",
+       "by_shop": {"Tax Foundation": ">14", "Pomerleau & Schneider": 5, "Penn Wharton": 4, "Yale Budget Lab": "<1"}}
+    ],
+    "intuition_pump": {
+      "quote": "tax cuts rarely if ever fully pay for themselves. Because taxes capture only a fraction of income and some spending grows with income, a policy would need to produce $5 to $6 of economic activity for every $1 of cost to be self-financing.",
+      "source": "CRFB", "url": "https://www.crfb.org/blogs/tax-cut-extension-only-pays-1-14-itself",
+      "note": "USE THIS IN THE WHY-PANEL. It explains WHY self-financing is arithmetically out of reach, rather than just asserting it."
+    },
+    "tcja_verdict": {
+      "quote": "it is almost certainly true that the TCJA meaningfully reduced revenue from where it would have been absent the TCJA.",
+      "source": "CRFB, Has TCJA Paid For Itself?", "url": "https://www.crfb.org/blogs/has-tcja-paid-itself", "published": "2025-01-22"
+    },
+    "never_claim": "No lever combination in the tool may ever display a rate cut with net-positive revenue. This is gameplan §9 test 7."
+  },
+
+  "tcja_four_scores": {
+    "label": "The same bill, four scores — the teachable core of the whole tool",
+    "status": "corrected",
+    "comparability_warning": "CRITICAL: these four use DIFFERENT WINDOWS AND DIFFERENT MEASURES. Presenting them side by side without stating window and measure would itself be misleading — which would be an unusually bad failure for a page whose entire thesis is that assumptions drive answers.",
+    "shops": [
+      {"shop": "JCT", "conventional": -1456.0, "dynamic": -1071.4, "window": "FY2018-2027", "measure": "revenue", "status": "verified", "tier": "primary",
+       "conventional_doc": "JCX-67-17, Estimated Budget Effects of the Conference Agreement for H.R. 1, published 2017-12-18",
+       "conventional_url": "https://www.jct.gov/getattachment/2f1d880c-ca26-429d-9044-63ac084d07cd/x-67-17-5053.pdf",
+       "conventional_quote": "NET TOTAL ... -1,074.0 -1,456.0",
+       "dynamic_doc": "JCX-69-17, published 2017-12-22",
+       "dynamic_url": "https://www.jct.gov/getattachment/53ad7658-20ac-4c10-b4d0-2759305432aa/x-69-17-5055.pdf",
+       "dynamic_quote": "Overall, the budgetary effects of changes in economic growth are projected to reduce the deficit by $385 billion during the budget window.",
+       "note": "The final year (FY2027) is POSITIVE +32.9. Reconciles exactly: -1,456.0 + 385 = -1,071."},
+      {"shop": "CBO", "total_deficit_effect": -1900, "primary_deficit_before_feedback": -1800, "feedback": 550, "debt_service": -600,
+       "window": "2018-2028 (ELEVEN years)", "measure": "deficit including debt service", "status": "corrected", "tier": "primary",
+       "dossier_claimed": "~-$2.3T conventional incl. debt service; -$1.9T dynamic incl. ~$400B feedback",
+       "source": "CBO, How the 2017 Tax Act Affects CBO's Projections", "url": "https://www.cbo.gov/publication/53787", "published": "2018-04-20",
+       "quotes": ["CBO estimated that the tax act would increase the primary deficit by $1.8 trillion",
+                  "the feedback is estimated to lower the cumulative primary deficit by about $550 billion",
+                  "raised projected debt-service costs by roughly $600 billion",
+                  "The act therefore increases the total projected deficit over the 2018–2028 period by about $1.9 trillion."],
+       "corrections": ["Feedback is ~$550B, NOT ~$400B",
+                       "The framing was inverted: -$1.9T ALREADY INCLUDES both debt service and feedback; it is not a separate dynamic figure alongside a -$2.3T conventional one",
+                       "THE -$2.3T FIGURE IS UNSOURCED. No CBO sentence states it. DO NOT ATTRIBUTE IT TO CBO. The defensible CBO number is -$1.9 trillion over 2018-2028 inclusive of debt service and feedback.",
+                       "The window is ELEVEN years, not ten"]},
+      {"shop": "Penn Wharton Budget Model", "conventional_revenue": -2209, "dynamic_revenue_high_return": -1786, "dynamic_revenue_low_return": -2038,
+       "static_debt": 2387, "dynamic_debt_high_return": 1941, "dynamic_debt_low_return": 2238,
+       "window": "2018-2027", "measure": "revenue AND debt, reported separately", "status": "corrected", "tier": "primary",
+       "dossier_claimed": "~-$2.0T conventional; -$1.9T to -$2.2T dynamic",
+       "url": "https://budgetmodel.wharton.upenn.edu/legacy-briefs/2017-12-18-the-tax-cuts-and-jobs-act-reported-by-conference-committee-121517-preliminary-static-and-dynamic-effects-on-the-budget-and-the-economy.pdf",
+       "published": "2017-12-18",
+       "quote": "2018-2027 -$2,209 -$1,786 -$2,038 $2,387 $1,941 $2,238",
+       "corrections": ["PWBM's conventional revenue loss is -$2.2T, NOT ~-$2.0T",
+                       "The dossier's claimed dynamic range -$1.9T to -$2.2T actually matches PWBM's dynamic DEBT range (+$1.94T to +$2.24T, which includes interest), not its dynamic REVENUE range (-$1.79T to -$2.04T). Any citation must state which measure."]},
+      {"shop": "Tax Foundation", "conventional": -1470, "dynamic": -448, "window": "2018-2027", "measure": "revenue", "status": "verified", "tier": "primary",
+       "url": "https://taxfoundation.org/research/all/federal/final-tax-cuts-and-jobs-act-details-analysis/", "published": "2017-12-18",
+       "quote": "the plan would decrease federal revenues by $1.47 trillion on a static basis and by $448 billion on a dynamic basis",
+       "note": "By far the smallest dynamic estimate because its model assumes the largest growth response. Its static figure is essentially JCT's."}
+    ],
+    "the_lesson": "Conventional scores agree within roughly plus or minus 20 percent. Dynamic scores diverge by a factor of about four for the identical bill — driven overwhelmingly by ONE assumption: whether deficit-financed cuts crowd out private investment. That is why the model-lens toggle is a first-class UI feature and not a settings-menu afterthought."
+  },
+
+  "policyengine_validation": {
+    "label": "Gameplan §Phase 0 requirement: validate 3 static calculations against PolicyEngine",
+    "status": "NOT COMPLETED — see build report for the deviation",
+    "reason": "PolicyEngine's REST API cannot create a parameterized reform via HTTP GET; policy creation requires POST, which this session's tooling cannot issue. The one stored policy matching a target reform (id 32979, capital gains 23.8% to 28.8%) returned status 'computing' on every poll and never resolved.",
+    "api_notes": {
+      "spec_url": "https://api.policyengine.org/specification",
+      "get_able": [
+        "GET https://api.policyengine.org/us/policies?query={search}",
+        "GET https://api.policyengine.org/us/policy/{policy_id}",
+        "GET https://api.policyengine.org/us/economy/{policy_id}/over/{baseline_policy_id}?region=us&time_period={year}",
+        "GET https://api.policyengine.org/us/economy/{policy_id}/over/{baseline_policy_id}/budget-window?region=us&start_year={y}&window_size=10"
+      ],
+      "post_required": "POST https://api.policyengine.org/us/policy — creating any new reform",
+      "baseline_policy_id": 2,
+      "metadata_blocked": "GET /us/metadata exceeds 48MB and cannot be retrieved by this tooling — so PolicyEngine parameter paths could not be confirmed.",
+      "recommended_route": "Skip the REST API. Use the policyengine-us Python package locally, which runs the same model without the async queue, the auth, or the 48MB metadata blob."
+    },
+    "critical_finding_about_policyengine": {
+      "severity": "high",
+      "quote": "we are now working on adding capital gains responses",
+      "source": "Max Ghenis, Behavioral Responses in PolicyEngine US",
+      "url": "https://blog.policyengine.org/behavioral-responses-in-policyengine-us-18ecb8bf8267",
+      "implication": "POLICYENGINE DOES NOT MODEL CAPITAL GAINS REALIZATION RESPONSES. Since realization elasticity is the entire ballgame for capital gains scoring, PolicyEngine would SUBSTANTIALLY OVERSTATE revenue from a capital gains rate increase relative to every other shop. It is a poor validator for that specific lever. It is a good validator for the top-rate and 199A levers, where labor-supply elasticities exist and can be switched on. Whether this is still true as of Aug 2026 is unconfirmed — check the gov.simulation.* parameter tree before relying on it.",
+      "policyengine_elasticities": {
+        "income_elasticity_default": -0.05,
+        "substitution_elasticity_range": [0.22, 0.32],
+        "detail": "0.31 for the lowest income decile to 0.22 for the highest deciles among primary earners, secondary earners at 0.32; both following CBO",
+        "behavioral_responses_default": "OFF — applied only by explicit opt-in"
+      }
+    },
+    "substitute_benchmarks": "Because PolicyEngine could not be exercised, external benchmarks for the three validation reforms were sourced from other shops instead. See scenarios.json > validation_benchmarks. The Tax Foundation 2026 Options Guide is the most useful of these because it is POST-OBBBA."
+  }
+}

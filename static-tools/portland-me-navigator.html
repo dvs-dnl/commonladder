@@ -1,0 +1,1061 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- Common Ladder navigator template. See NAVIGATOR_HOWTO.md for setup steps. Do NOT paste real HTML tags into this comment - it will break the document. -->
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-3YXK0RL6XV"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-3YXK0RL6XV');
+</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Portland, Maine Homelessness Resource Navigator — Common Ladder</title>
+<meta name="description" content="Find shelter, food, health care, and housing programs in Portland, Maine (CoC ME-502). Answer four questions to get resources matched to your situation.">
+<link rel="canonical" href="https://commonladder.org/static-tools/portland-me-navigator.html">
+<style>
+  /* ── Reset & Base ── */
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    /* Navigator palette — slightly different from main site for tool readability */
+    --bg:        #FAF7F2;
+    --primary:   #1A5276;
+    --accent:    #2E86AB;
+    --text:      #1C2B33;
+    --green:     #27AE60;
+    --green-dark:#1E8449;
+    --muted:     #6B7C85;
+    --border:    #D5D0C8;
+    --card-bg:   #FFFFFF;
+    --shadow:    0 2px 12px rgba(26,82,118,0.10);
+
+    /* Common Ladder brand — used for home badge only */
+    --cl-blue:   #1C3D6E;
+    --cl-amber:  #E8911A;
+  }
+
+  html { font-size: 18px; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    line-height: 1.6;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  /* ── Layout shell ── */
+  #app {
+    width: 100%;
+    max-width: 640px;
+    padding: 24px 20px 60px;
+    flex: 1;
+  }
+
+  /* ── County badge (top of app, always visible) ── */
+  .county-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: var(--primary);
+    color: #fff;
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    padding: 4px 10px;
+    border-radius: 100px;
+    margin-bottom: 28px;
+  }
+  .county-badge svg { flex-shrink: 0; } #app /* ── Question card ── */
+  .card{
+    background: var(--card-bg);
+    border-radius: 16px;
+    padding: 32px 28px;
+    box-shadow: var(--shadow);
+    margin-bottom: 16px;
+  }
+
+  .q-label {
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 14px;
+  }
+
+  .q-text {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--primary);
+    line-height: 1.35;
+    margin-bottom: 8px;
+  }
+
+  .q-sub {
+    font-size: 0.88rem;
+    color: var(--muted);
+    margin-bottom: 28px;
+  }
+
+  /* ── Buttons ── */
+  .btn-row {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+  } #app .btn{
+    flex: 1;
+    min-width: 120px;
+    padding: 14px 20px;
+    border: none;
+    border-radius: 10px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.15s, transform 0.1s;
+  } #app .btn:active{ transform: scale(0.98); }
+
+  .btn-yes  { background: var(--primary); color: #fff; }
+  .btn-yes:hover  { background: #154360; }
+  .btn-no   { background: #EBF5FB; color: var(--primary); }
+  .btn-no:hover   { background: #D6EAF8; }
+
+  .btn-primary {
+    display: inline-block;
+    background: var(--green);
+    color: #fff;
+    padding: 16px 28px;
+    border-radius: 10px;
+    font-size: 1.05rem;
+    font-weight: 700;
+    text-decoration: none;
+    text-align: center;
+    margin-top: 8px;
+    transition: background 0.15s;
+  }
+  .btn-primary:hover { background: var(--green-dark); }
+
+  /* Save-to-My-Ladder secondary CTA on the result step */
+  .btn-save-ladder {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    width: 100%;
+    background: var(--cl-amber);
+    color: #fff;
+    border: none;
+    padding: 14px 22px;
+    border-radius: 10px;
+    font-size: 0.98rem;
+    font-weight: 700;
+    text-decoration: none;
+    text-align: center;
+    margin-top: 10px;
+    cursor: pointer;
+    transition: opacity 0.15s;
+    font-family: inherit;
+  }
+  .btn-save-ladder:hover { opacity: 0.9; }
+  .btn-save-ladder__sub {
+    display: block;
+    text-align: center;
+    font-size: 0.78rem;
+    color: var(--muted);
+    margin-top: 6px;
+  }
+
+  .btn-restart {
+    background: none;
+    border: 1.5px solid var(--border);
+    color: var(--muted);
+    font-size: 0.85rem;
+    padding: 8px 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    margin-top: 12px;
+    transition: border-color 0.15s;
+  }
+  .btn-restart:hover { border-color: var(--primary); color: var(--primary); }
+
+  /* ── Progress bar ── */
+  .progress-wrap {
+    margin-bottom: 20px;
+  }
+  .progress-bar {
+    height: 4px;
+    background: var(--border);
+    border-radius: 2px;
+    overflow: hidden;
+  }
+  .progress-fill {
+    height: 100%;
+    background: var(--accent);
+    border-radius: 2px;
+    transition: width 0.35s ease;
+  }
+  .progress-label {
+    font-size: 0.72rem;
+    color: var(--muted);
+    margin-top: 5px;
+  }
+
+  /* ── Result card ── */
+  .result-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 4px 12px;
+    border-radius: 100px;
+    font-size: 0.78rem;
+    font-weight: 700;
+    margin-bottom: 18px;
+  }
+  .badge-veterans { background: #D5E8D4; color: #27AE60; }
+  .badge-youth    { background: #D5E8D4; color: #27AE60; }
+  .badge-families { background: #DAE8FC; color: #1A5276; }
+  .badge-chronic  { background: #FFF2CC; color: #856404; }
+  .badge-adult    { background: #E8DAEF; color: #6C3483; }
+
+  .result-headline {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--primary);
+    line-height: 1.35;
+    margin-bottom: 20px;
+  }
+
+  .first-action {
+    background: #EBF5FB;
+    border-left: 4px solid var(--accent);
+    border-radius: 0 10px 10px 0;
+    padding: 16px 18px;
+    font-size: 0.95rem;
+    margin-bottom: 20px;
+  } #app .section-head{
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin: 22px 0 10px;
+  }
+
+  .what-to-expect {
+    font-size: 0.93rem;
+    color: var(--text);
+    line-height: 1.6;
+    margin-bottom: 4px;
+  }
+
+  /* ── Bring list ── */
+  .bring-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  .bring-list li {
+    display: flex;
+    gap: 8px;
+    font-size: 0.9rem;
+    padding: 5px 0;
+    border-bottom: 1px solid var(--border);
+    color: var(--text);
+  }
+  .bring-list li:last-child { border-bottom: none; }
+  .bring-list li::before { content: "✓"; color: var(--green); font-weight: 700; flex-shrink: 0; }
+
+  /* ── Resource cards ── */
+  .resource-card {
+    border: 1.5px solid var(--border);
+    border-radius: 10px;
+    padding: 14px 16px;
+    margin-bottom: 10px;
+  }
+  .resource-card__name {
+    font-weight: 700;
+    font-size: 0.95rem;
+    color: var(--primary);
+    margin-bottom: 2px;
+  }
+  .resource-card__phone {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--green-dark);
+    text-decoration: none;
+    display: inline-block;
+    margin-bottom: 3px;
+  }
+  .resource-card__note {
+    font-size: 0.82rem;
+    color: var(--muted);
+  }
+
+  /* ── Extra note ── */
+  .extra-note {
+    background: #FFFDE7;
+    border: 1px solid #FDD835;
+    border-radius: 8px;
+    padding: 12px 14px;
+    font-size: 0.88rem;
+    color: #5D4037;
+    margin-top: 16px;
+  }
+
+  /* ── Confidence badge ── */
+  .conf-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    padding: 3px 10px;
+    border-radius: 100px;
+    margin-top: 20px;
+    cursor: help;
+    position: relative;
+  }
+  .conf-verified   { background: #D5E8D4; color: #27AE60; }
+  .conf-research   { background: #DAE8FC; color: #1A5276; }
+  .conf-unverified { background: #FFE6CC; color: #D6760C; }
+  .conf-tooltip {
+    display: none;
+    position: absolute;
+    bottom: calc(100% + 8px);
+    left: 50%;
+    transform: translateX(-50%);
+    background: #1C2B33;
+    color: #fff;
+    font-size: 0.75rem;
+    font-weight: 400;
+    line-height: 1.5;
+    padding: 10px 14px;
+    border-radius: 8px;
+    width: 260px;
+    z-index: 10;
+    pointer-events: none;
+  }
+  .conf-tooltip::after {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    border: 6px solid transparent;
+    border-top-color: #1C2B33;
+  }
+  .conf-badge:hover .conf-tooltip,
+  .conf-badge.open  .conf-tooltip { display: block; }
+
+  /* ── Welcome screen ── */
+  .welcome-title {
+    font-size: 1.6rem;
+    font-weight: 800;
+    color: var(--primary);
+    line-height: 1.25;
+    margin-bottom: 12px;
+  }
+  .welcome-sub {
+    font-size: 1rem;
+    color: var(--muted);
+    margin-bottom: 28px;
+  }
+  .welcome-start {
+    background: var(--primary);
+    color: #fff;
+    border: none;
+    border-radius: 12px;
+    padding: 18px 32px;
+    font-size: 1.05rem;
+    font-weight: 700;
+    cursor: pointer;
+    width: 100%;
+    transition: background 0.15s;
+  }
+  .welcome-start:hover { background: #154360; }
+
+  /* ── Footer ── */
+  footer {
+    text-align: center;
+    padding: 20px 20px 32px;
+    font-size: 0.8rem;
+    color: var(--muted);
+    line-height: 1.8;
+    max-width: 640px;
+    width: 100%;
+  }
+  footer a { color: var(--muted); }
+  footer a:hover { color: var(--primary); }
+  .footer-divider { margin: 0 8px; opacity: 0.5; }
+
+  /* ── Common Ladder home badge (fixed top-right) ── */
+  .cl-home {
+    position: fixed;
+    top: 14px;
+    right: 16px;
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    background: var(--cl-blue);
+    color: #fff;
+    text-decoration: none;
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.01em;
+    padding: 7px 13px 7px 9px;
+    border-radius: 100px;
+    box-shadow: 0 2px 10px rgba(28,61,110,0.25);
+    z-index: 999;
+    transition: background 0.15s;
+  }
+  .cl-home:hover { background: #163260; }
+  .cl-home__rung { color: var(--cl-amber); }
+  @media (min-width: 721px) { .cl-home { display: none; } }
+
+  /* ── Print styles ── */
+  @media print {
+    .btn-restart, .progress-wrap, footer .share-note { display: none; }
+    .cl-home { display: none; }
+  }
+
+  /* ── Mobile ── */
+  @media (max-width: 480px) {
+    html { font-size: 16px; } #app .card{ padding: 24px 18px; }
+    .cl-home span { display: none; } /* icon only on small screens */
+    .cl-home { padding: 8px 10px; }
+    .conf-tooltip { width: 200px; left: 0; transform: none; }
+    .conf-tooltip::after { left: 24px; transform: none; }
+  }
+
+  /* ── cl-css-isolation-2026-06-11: the global shell loads /style.css AFTER this
+     block, and its listing-page rules (.card padding:0/flex/pointer/child margins,
+     .btn, .section-head) were overriding the wizard styles above. Selectors above
+     are #app-prefixed to win the cascade; these rules neutralize global-only
+     properties the wizard never declared. ── */
+  #app .card { cursor: default; display: block; }
+  #app .card:hover { transform: none; }
+  #app .card > h3, #app .card > p, #app .card > a, #app .card > .btn { margin-left: 0; margin-right: 0; }
+  #app .card > *:last-child { margin-bottom: 0; }
+  #app .card p { color: var(--text); font-size: inherit; }
+  #app .btn { font-family: inherit; }
+  #app .section-head { text-align: left; }
+</style>
+  <link rel="stylesheet" href="/style.css">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="alternate icon" type="image/png" href="/favicon-32.png">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+</head>
+<body>
+
+<a href="#main" class="skip-link">Skip to main content</a>
+
+<div class="crisis-bar" role="region" aria-label="Crisis help">
+  <strong>Need help right now?</strong>
+  <a href="tel:211">Call 211</a><span class="crisis-bar__sep">·</span>
+  <a href="sms:741741?body=HOME">Text HOME to 741741</a><span class="crisis-bar__sep">·</span>
+  <a href="tel:988">988 Suicide &amp; Crisis</a>
+</div>
+
+<nav class="nav" aria-label="Primary">
+  <div class="nav__inner">
+    <a href="/" class="nav__logo" aria-label="Common Ladder home">
+      <svg width="28" height="28" viewBox="0 0 247 247" fill="none" aria-hidden="true"><g transform="translate(-12.00,-16.00)"> <path fill="#E8911A" fill-opacity="1" fill-rule="evenodd" d="M 254.00,51.00 L 234.00,85.64 L 194.00,85.64 L 174.00,51.00 L 194.00,16.36 L 234.00,16.36 Z M 231.50,51.00 L 222.75,66.16 L 205.25,66.16 L 196.50,51.00 L 205.25,35.84 L 222.75,35.84 Z"/> <path fill="#9FBCBA" fill-opacity="1" fill-rule="evenodd" d="M 148.00,118.00 L 128.00,152.64 L 88.00,152.64 L 68.00,118.00 L 88.00,83.36 L 128.00,83.36 Z M 125.50,118.00 L 116.75,133.16 L 99.25,133.16 L 90.50,118.00 L 99.25,102.84 L 116.75,102.84 Z"/> <path fill="#9FBCBA" fill-opacity="1" fill-rule="evenodd" d="M 259.00,118.00 L 239.00,152.64 L 199.00,152.64 L 179.00,118.00 L 199.00,83.36 L 239.00,83.36 Z M 236.50,118.00 L 227.75,133.16 L 210.25,133.16 L 201.50,118.00 L 210.25,102.84 L 227.75,102.84 Z"/> <path fill="#FFFFFF" fill-opacity="0.94" fill-rule="evenodd" d="M 207.00,164.00 L 187.00,198.64 L 147.00,198.64 L 127.00,164.00 L 147.00,129.36 L 187.00,129.36 Z M 184.50,164.00 L 175.75,179.16 L 158.25,179.16 L 149.50,164.00 L 158.25,148.84 L 175.75,148.84 Z"/> <path fill="#FFFFFF" fill-opacity="0.94" fill-rule="evenodd" d="M 92.00,164.00 L 72.00,198.64 L 32.00,198.64 L 12.00,164.00 L 32.00,129.36 L 72.00,129.36 Z M 69.50,164.00 L 60.75,179.16 L 43.25,179.16 L 34.50,164.00 L 43.25,148.84 L 60.75,148.84 Z"/> <path fill="#FFFFFF" fill-opacity="0.94" fill-rule="evenodd" d="M 161.00,228.00 L 141.00,262.64 L 101.00,262.64 L 81.00,228.00 L 101.00,193.36 L 141.00,193.36 Z M 138.50,228.00 L 129.75,243.16 L 112.25,243.16 L 103.50,228.00 L 112.25,212.84 L 129.75,212.84 Z"/> </g></svg>
+      <span class="nav__wordmark">common<span>ladder</span></span>
+    </a>
+    <button class="nav__toggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="primary-nav" onclick="this.setAttribute('aria-expanded', document.getElementById('primary-nav').classList.toggle('open') ? 'true' : 'false')">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav__links" id="primary-nav">
+            <li><a href="/providers.html">For providers</a></li>
+      <li><a href="/learn/">Learn</a></li>
+      <li><a href="/about.html">About</a></li>
+      <li><a href="/find.html" class="nav__cta">Find resources</a></li>
+      <li><a href="/static-tools/my-ladder.html" class="nav__cta nav__cta--ladder">My Ladder</a></li>
+      <li><a href="https://www.weather.gov/" rel="noreferrer" class="nav__exit" onclick="event.preventDefault();window.location.replace('https://www.weather.gov/')">Leave page</a></li>
+    </ul>
+  </div>
+</nav>
+
+<main id="main">
+
+
+
+
+
+<!-- Common Ladder home badge — always present, fixed top-right -->
+<a href="https://commonladder.org" class="cl-home" aria-label="Return to Common Ladder home">
+  <svg width="18" height="18" viewBox="0 0 28 28" fill="none" aria-hidden="true">
+    <rect x="4" y="2" width="3" height="24" rx="1.5" fill="white" opacity=".9"/>
+    <rect x="21" y="2" width="3" height="24" rx="1.5" fill="white" opacity=".9"/>
+    <rect x="4" y="7" width="20" height="3" rx="1.5" fill="#E8911A"/>
+    <rect x="4" y="14" width="20" height="3" rx="1.5" fill="#E8911A"/>
+    <rect x="4" y="21" width="20" height="3" rx="1.5" fill="#E8911A"/>
+  </svg>
+  <span>common<span class="cl-home__rung">ladder</span></span>
+</a>
+
+<!-- App shell — all screens rendered by JS into here -->
+<div id="app"></div>
+
+<!-- Footer — update CoC ID and location text -->
+<a href="/resources.html" class="quick-help" aria-label="Find help now"><svg class="icon" viewBox="0 0 16 16" aria-hidden="true" style="margin-right:.35em;vertical-align:-.15em"><path d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z" fill="currentColor"/></svg> Find help now</a>
+
+</main>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer__grid">
+      <div class="footer__brand">
+        <h3>Common Ladder</h3>
+        <p>The civic resource platform connecting people experiencing homelessness with every service in your community.</p>
+      </div>
+      <div>
+        <h4>Find help</h4>
+        <ul>
+          <li><a href="/find.html?cat=shelter">Shelter</a></li>
+          <li><a href="/find.html?cat=food">Food</a></li>
+          <li><a href="/find.html?cat=legal">Legal</a></li>
+          <li><a href="/help/">All categories</a></li>
+          <li><a href="/static-tools/">Local navigators</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>For providers</h4>
+        <ul>
+          <li><a href="/providers.html">Tools &amp; referrals</a></li>
+          <li><a href="/providers.html#case-manager-guide">Case manager guide</a></li>
+          <li><a href="/data-reports.html">Data &amp; reports</a></li>
+          <li><a href="/learn/">Four learning pathways</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>About</h4>
+        <ul>
+          <li><a href="/about.html">Our mission</a></li>
+          <li><a href="/about.html#methodology">Methodology</a></li>
+          <li><a href="/about.html#team">Team</a></li>
+          <li><a href="/brand/visual-guidelines.html">Brand guidelines</a></li>
+          <li><a href="/contact.html">Contact</a></li>
+          <li><a href="/privacy.html">Privacy</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer__transparency">
+      <strong>Transparency:</strong> Common Ladder is an independent civic project. We do not sell user data, run ads, or accept payment from listed resources.
+    </div>
+    <div class="footer__bottom">
+      <span>&copy; 2026 Common Ladder. Free to use, always.</span>
+      <span><time datetime="2026-08-03">Last updated August 3, 2026</time></span> <span>&middot; Portland CoC (ME-502) &mdash; Portland, South Portland &amp; Cumberland County, Maine. Is this information out of date? <a href="mailto:corrections.commonladder@gmail.com?subject=Correction:%20/static-tools/portland-me-navigator.html">Report an error</a></span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  /* ═══════════════════════════════════════════════════════════
+     STATE
+  ═══════════════════════════════════════════════════════════ */
+  var state = {
+    step: 'welcome',   // welcome | q1 | q2 | q3 | q4 | result_*
+    pathway: null
+  };
+
+  /* ═══════════════════════════════════════════════════════════
+     QUESTIONS
+     Standard across all navigators — do not change the flow.
+     Only change label text if local terminology differs.
+  ═══════════════════════════════════════════════════════════ */
+  var QUESTIONS = [
+    {
+      id: 'q1',
+      text: 'Are you a U.S. military veteran?',
+      sub: 'This includes any branch of the armed forces.',
+      next_yes: 'result_veterans',
+      next_no: 'q2'
+    },
+    {
+      id: 'q2',
+      text: 'Are you 24 years old or younger?',
+      sub: 'Youth-specific programs are available for people 24 and under.',
+      yes_label: 'Yes, 24 or younger',
+      no_label: 'No, 25 or older',
+      next_yes: 'result_youth',
+      next_no: 'q3'
+    },
+    {
+      id: 'q3',
+      text: 'Do you have children with you right now?',
+      sub: 'This includes any minors in your care.',
+      next_yes: 'result_families',
+      next_no: 'q4'
+    },
+    {
+      id: 'q4',
+      text: 'Have you been without stable housing for more than a year — or off and on for years — AND do you have a health condition that makes it harder to work or take care of yourself?',
+      sub: 'This includes physical conditions, mental health conditions, or substance use.',
+      next_yes: 'result_chronic',
+      next_no: 'result_adult'
+    }
+  ];
+
+  var Q_INDEX = { q1: 0, q2: 1, q3: 2, q4: 3 };
+
+  /* ═══════════════════════════════════════════════════════════
+     CONFIDENCE TIERS
+     Apply to every pathway. Be honest about what's verified.
+     level: 'verified' | 'research' | 'unverified'
+  ═══════════════════════════════════════════════════════════ */
+  var CONFIDENCE_META = {
+    verified: {
+      icon: '✓',
+      label: 'Verified',
+      cssClass: 'conf-verified',
+      tooltip: 'Confirmed directly with the CoC or provider. Phone numbers and intake processes have been tested.'
+    },
+    research: {
+      icon: '◐',
+      label: 'Research-based',
+      cssClass: 'conf-research',
+      tooltip: 'Gathered from official agency websites and public records. Likely accurate but may have changed — call ahead to confirm.'
+    },
+    unverified: {
+      icon: '?',
+      label: 'Unverified',
+      cssClass: 'conf-unverified',
+      tooltip: 'Based on general knowledge. Not checked against primary sources. Call ahead before relying on this information.'
+    }
+  };
+
+  /* ═══════════════════════════════════════════════════════════
+     PATHWAY DATA
+     Portland CoC (ME-502) resource data. Verified August 2026.
+     Each pathway needs: firstAction + callNumber + resources.
+     Keep firstAction to one clear sentence + phone number.
+     resources: 3 is ideal; 2 minimum; 4 maximum.
+  ═══════════════════════════════════════════════════════════ */
+  var PATHWAYS = {
+
+    result_veterans: {
+      label: 'Veterans Pathway',
+      badgeClass: 'badge-veterans',
+      badgeIcon: '🎖',
+      headline: 'There\'s a dedicated system built for you.',
+      firstAction: 'Call the National Call Center for Homeless Veterans right now: <strong>1-877-4AID-VET (1-877-424-3838)</strong>. Available 24/7. You do NOT need your DD-214 to call.',
+      callNumber: 'tel:18774243838',
+      callLabel: 'Call 1-877-4AID-VET',
+      what_to_expect: 'Maine runs veteran homelessness as a separate, faster track than the general shelter queue &mdash; use it. <strong>Preble Street Veterans Housing Services</strong> is the SSVF grantee for the entire state, with offices in Portland, Lewiston, and Bangor. SSVF can pay back rent, a security deposit, and first month&rsquo;s rent, and can move you straight into an apartment without waiting for a shelter bed. <strong>HUD-VASH</strong> &mdash; a housing voucher paired with a VA case manager &mdash; is administered through the VA Maine Healthcare System at Togus in Augusta, which also operates veteran transitional (Grant &amp; Per Diem) housing on the Togus campus. You do not need to be enrolled in VA health care, and you do not need a fully honorable discharge, to be screened for SSVF. Ask anyway.',
+      bring: [
+        'DD-214 discharge papers (if you have them — not required to call)',
+        'Photo ID (if available)',
+        'Any VA documentation you have'
+      ],
+      resources: [
+        {
+          name: 'VA Maine Healthcare System &mdash; Togus',
+          phone: '(207) 623-8411',
+          tel: 'tel:2076238411',
+          note: 'Ask for the Homeless Veterans Program when you call.'
+        },
+        {
+          name: 'Preble Street Veterans Housing Services (SSVF)',
+          phone: '(207) 956-6556',
+          tel: 'tel:2079566556',
+          note: 'Statewide SSVF grantee. Rapid rehousing, back rent, deposits. Offices in Portland, Lewiston, and Bangor. Toll free 1-800-377-5709.'
+        },
+        {
+          name: 'National Call Center for Homeless Veterans',
+          phone: '1-877-424-3838',
+          tel: 'tel:18774243838',
+          note: 'Available 24/7. Can connect you to programs anywhere in the country.'
+        }
+      ],
+      confidence: {
+        level: 'research',   // upgrade to 'verified' once phone numbers are confirmed
+        note: 'Sourced from VA.gov (VA Maine Healthcare System) and preblestreet.org. Phone numbers not yet confirmed by direct call.',
+        lastChecked: 'August 2026'
+      }
+    },
+
+    result_youth: {
+      label: 'Youth Pathway',
+      badgeClass: 'badge-youth',
+      badgeIcon: '🌱',
+      headline: 'You have access to youth-specific services here.',
+      firstAction: 'Call <strong>Preble Street Teen Services</strong> at <strong>(207) 775-0026 ext. 1330</strong> &mdash; or just walk into the Teen Center at 343 Cumberland Ave, open every day 8am&ndash;7pm, and ask for a bed tonight.',
+      callNumber: 'tel:2077750026',
+      callLabel: 'Call Preble Street Teen Services: (207) 775-0026',
+      what_to_expect: 'The <strong>Joe Kreisler Teen Shelter</strong> at 38 Preble Street is Maine&rsquo;s largest youth shelter &mdash; 28 beds, open nightly 8pm&ndash;8am, ages 12 through 20. It is low-barrier: no ID, no sobriety requirement, no referral, no parent needed. During the day the <strong>Teen Center</strong> at 343 Cumberland Ave is open 8am&ndash;7pm with three meals, showers, laundry, clothing, crisis counseling, and staff who help with school, work, and getting your documents replaced. If you are 18&ndash;24 you are also eligible for the adult system, and Preble Street can start a coordinated entry assessment and refer you to youth rapid rehousing or Portland Housing Authority&rsquo;s First Place program. Going through the youth door first is usually faster and safer.',
+      bring: [
+        'Photo ID (helpful for housing paperwork later &mdash; not needed to get a bed)',
+        'A phone number or email where staff can reach you',
+        'Nothing at all is required to walk into the Teen Center or the Teen Shelter'
+      ],
+      resources: [
+        {
+          name: 'Preble Street Teen Center &amp; Joe Kreisler Teen Shelter',
+          phone: '(207) 775-0026',
+          tel: 'tel:2077750026',
+          note: 'Teen Center: 343 Cumberland Ave, daily 8am&ndash;7pm. Shelter: 38 Preble St, nightly 8pm&ndash;8am. Ages 12&ndash;20. Ask for ext. 1330.'
+        },
+        {
+          name: 'New Beginnings &mdash; Marian&rsquo;s Place',
+          phone: '(207) 795-4070',
+          tel: 'tel:2077954070',
+          note: 'Maine&rsquo;s only licensed 24-hour youth emergency shelter, ages 10&ndash;19. Answers 24/7, 365 days. Lewiston &mdash; they arrange transport.'
+        },
+        {
+          name: '211 Maine',
+          phone: 'Call or text 211',
+          tel: 'tel:211',
+          note: '24/7 statewide. Dial 211, or text your ZIP code to 898-211. Ask about youth beds.'
+        }
+      ],
+      extra_note: '\u26a0\ufe0f Under 18? In Maine you can be sheltered at a licensed youth shelter without a parent&rsquo;s permission. Marian&rsquo;s Place (207-795-4070) is licensed for ages 10&ndash;19 and answers around the clock.',
+      confidence: {
+        level: 'research',
+        note: 'Sourced from preblestreet.org and newbeginmaine.org. Hours and age ranges change seasonally &mdash; call before you travel.',
+        lastChecked: 'August 2026'
+      }
+    },
+
+    result_families: {
+      label: 'Families Pathway',
+      badgeClass: 'badge-families',
+      badgeIcon: '🏠',
+      headline: 'Families with children are prioritized in the shelter system.',
+      firstAction: 'Go to the City of Portland <strong>Prevention &amp; Diversion Program</strong> at <strong>39 Forest Avenue</strong>, or call <strong>(207) 482-5122</strong>. This is the single front door to every city shelter &mdash; families cannot be placed without going through here first.',
+      callNumber: 'tel:2074825122',
+      callLabel: 'Call Prevention &amp; Diversion: (207) 482-5122',
+      what_to_expect: 'Prevention &amp; Diversion is open Monday&ndash;Friday, 8am&ndash;8pm at 39 Forest Ave. Staff will first look at whether a one-time rent payment, a landlord mediation call, or a bus ticket to family elsewhere can keep you out of shelter &mdash; that is what &ldquo;diversion&rdquo; means, and it frequently resolves faster than waiting for a bed. If shelter is the right answer, families are placed at the City of Portland Family Shelter on Chestnut Street. <strong>Be direct about the wait.</strong> Family shelter capacity in Greater Portland has been strained for several years; ask specifically whether hotel or motel placement is available tonight and what the current wait looks like. Separately: under the federal <strong>McKinney-Vento Act</strong> your children keep the right to stay enrolled in their current school even after you move, and the district must arrange transportation. Ask Portland Public Schools for the homeless education liaison &mdash; do not wait for the school to offer.',
+      bring: [
+        'Birth certificates for children (helpful but not always required)',
+        'Photo ID for adults',
+        'Documentation of income or benefits (if available)',
+        'Social security cards (if you have them)'
+      ],
+      resources: [
+        {
+          name: 'City of Portland Prevention &amp; Diversion',
+          phone: '(207) 482-5122',
+          tel: 'tel:2074825122',
+          note: '39 Forest Ave. Mon&ndash;Fri 8am&ndash;8pm. Centralized intake for all city shelter, including families. Start here.'
+        },
+        {
+          name: 'City of Portland Family Shelter',
+          phone: '(207) 772-8339',
+          tel: 'tel:2077728339',
+          note: '54 Chestnut St. Emergency shelter for families with children. Placement is made through Prevention &amp; Diversion.'
+        },
+        {
+          name: 'Greater Portland Family Promise',
+          phone: '(207) 200-8672',
+          tel: 'tel:2072008672',
+          note: 'Shelter, meals, intensive case management, and housing stabilization for families with children in Greater Portland.'
+        },
+        {
+          name: '211 Maine',
+          phone: 'Call or text 211',
+          tel: 'tel:211',
+          note: '24/7 statewide. Text your ZIP to 898-211. Ask specifically about family shelter and hotel voucher availability.'
+        }
+      ],
+      confidence: {
+        level: 'research',
+        note: 'Sourced from portlandmaine.gov and greaterportlandfamilypromise.org. Family shelter capacity changes daily; the phone numbers are the reliable part.',
+        lastChecked: 'August 2026'
+      }
+    },
+
+    result_chronic: {
+      label: 'Chronic Homelessness Pathway',
+      badgeClass: 'badge-chronic',
+      badgeIcon: '🔑',
+      headline: 'Permanent supportive housing may be the right fit for you.',
+      firstAction: 'Go to the City of Portland <strong>Prevention &amp; Diversion Program</strong>, 39 Forest Avenue, or call <strong>(207) 482-5122</strong>. Ask by name for a <strong>coordinated entry assessment</strong> &mdash; that is the step that puts you on the by-name list for permanent supportive housing.',
+      callNumber: 'tel:2074825122',
+      callLabel: 'Call Prevention &amp; Diversion: (207) 482-5122',
+      what_to_expect: '<strong>Maine no longer uses the VI-SPDAT.</strong> The Maine and Portland CoCs now prioritize primarily by <strong>length of time homeless</strong> over the past three years, scored through a coordinated entry assessment and tracked on a by-name list held by your region&rsquo;s Homeless Response Service Hub. Cumberland County&rsquo;s hub is led by United Way of Southern Maine. The practical consequence: <em>documentation of your homelessness is what moves you up the list.</em> Every shelter night, every street outreach contact, every day-center visit that gets entered into HMIS counts. Ask any shelter or outreach worker to make sure you are entered in HMIS and to record how long you have been homeless &mdash; including time before you came to Portland. While you wait, the Homeless Services Center on Riverside Street and Milestone Recovery on India Street provide shelter, and Preble Street&rsquo;s outreach and health teams do case management on the street with no appointment. Shalom House holds the largest CoC permanent supportive housing portfolio in Greater Portland.',
+      bring: [
+        'Photo ID (any form)',
+        'Documentation of health conditions (if available — not required to be assessed)',
+        'Any records of prior housing or service history'
+      ],
+      resources: [
+        {
+          name: 'City of Portland Prevention &amp; Diversion',
+          phone: '(207) 482-5122',
+          tel: 'tel:2074825122',
+          note: '39 Forest Ave, Mon&ndash;Fri 8am&ndash;8pm. Entry point for coordinated entry assessment and all city shelter.'
+        },
+        {
+          name: 'Shalom House',
+          phone: '(207) 874-1080',
+          tel: 'tel:2078741080',
+          note: '106 Gilman St. CoC permanent supportive housing and rental assistance for people with serious mental illness, co-occurring disorders, or other disabilities.'
+        },
+        {
+          name: 'Preble Street Street Outreach',
+          phone: '(207) 775-0026',
+          tel: 'tel:2077750026',
+          note: 'Ask for outreach &mdash; ext. 1880. Meets people where they are, outdoors, with no appointment and no ID. Can start your HMIS record.'
+        },
+        {
+          name: '211 Maine',
+          phone: 'Call or text 211',
+          tel: 'tel:211',
+          note: '24/7 statewide. Also connects to behavioral health crisis services. Maine crisis line: 1-888-568-1112.'
+        }
+      ],
+      extra_note: '\ud83d\udccb Qualifying conditions include physical, mental health, or substance use disorders that substantially affect daily functioning. You do not need a formal diagnosis to be assessed &mdash; but a diagnosis on paper does help, and a case manager can help you get one.',
+      confidence: {
+        level: 'research',
+        note: 'Sourced from mainehomelessplanning.org, mainehousing.org, portlandmaine.gov, and shalomhouseinc.org. Prioritization method confirmed as length-of-time-homeless, not VI-SPDAT.',
+        lastChecked: 'August 2026'
+      }
+    },
+
+    result_adult: {
+      label: 'Single Adults Pathway',
+      badgeClass: 'badge-adult',
+      badgeIcon: '📞',
+      headline: 'Here\'s where to go for emergency shelter and housing help.',
+      firstAction: 'If you have <strong>not</strong> stayed in a City of Portland shelter in the last 90 days, go to <strong>Prevention &amp; Diversion, 39 Forest Avenue</strong> (Mon&ndash;Fri, 8am&ndash;8pm) or call <strong>(207) 482-5122</strong>. If you <strong>have</strong> stayed recently, call the <strong>Homeless Services Center at (207) 761-2072</strong> &mdash; 654 Riverside Street, staffed 24/7.',
+      callNumber: 'tel:2074825122',
+      callLabel: 'Call Prevention &amp; Diversion: (207) 482-5122',
+      what_to_expect: 'Portland runs a <strong>single front door</strong>. Prevention &amp; Diversion at 39 Forest Ave assesses everyone new to the system, and will first try to resolve your situation without a shelter bed &mdash; a rent or utility payment, a call to a landlord, a bus ticket to family. Say yes to hearing those options; they often work faster than a bed does. If you need shelter, you are referred to the <strong>Homeless Services Center at 654 Riverside Street</strong>: a large low-barrier shelter, staffed 24/7, with meals, showers, laundry, on-site medical care, and case management. Riverside Street sits about five miles from the peninsula &mdash; ask at intake about the bus route and any shuttle, because getting back downtown for appointments is the part people get caught out by. <strong>ID helps but is not required to be sheltered.</strong> Milestone Recovery at 65 India St runs a separate 41-bed low-barrier shelter for men with chronic alcohol and drug dependence and will take people who are actively intoxicated. For food, showers, mail, a clothing closet, and on-site health care during the day, Preble Street&rsquo;s Resource Center at 252 Oxford St serves meals daily, no questions asked.',
+      bring: [
+        'Photo ID (helpful but not always required)',
+        'Social security card or number (if available)',
+        'Any documentation of income or benefits'
+      ],
+      resources: [
+        {
+          name: 'City of Portland Homeless Services Center',
+          phone: '(207) 761-2072',
+          tel: 'tel:2077612072',
+          note: '654 Riverside St. Staffed 24/7. Meals, showers, laundry, on-site medical care, case management.'
+        },
+        {
+          name: 'City of Portland Prevention &amp; Diversion',
+          phone: '(207) 482-5122',
+          tel: 'tel:2074825122',
+          note: '39 Forest Ave, Mon&ndash;Fri 8am&ndash;8pm. Required first stop if you have not been in a city shelter in the last 90 days.'
+        },
+        {
+          name: 'Milestone Recovery',
+          phone: '(207) 775-4790',
+          tel: 'tel:2077754790',
+          note: '65 India St. 41-bed low-barrier shelter for men with chronic alcohol and drug dependence. Open 24/7. Accepts people who are actively intoxicated.'
+        },
+        {
+          name: '211 Maine',
+          phone: 'Call or text 211',
+          tel: 'tel:211',
+          note: '24/7 statewide. Dial 211 or text your ZIP to 898-211 for bed availability and every other local service.'
+        }
+      ],
+      extra_note: '\ud83c\udf7d Preble Street Resource Center, 252 Oxford St &mdash; hot meals daily with no questions asked, plus a clothing closet, mail service, case management, and on-site health care. Call (207) 775-0026.',
+      confidence: {
+        level: 'research',
+        note: 'Sourced from portlandmaine.gov, preblestreet.org, and milestone-recovery.org. The 90-day Prevention &amp; Diversion rule is city policy and has changed before &mdash; call ahead.',
+        lastChecked: 'August 2026'
+      }
+    }
+
+  }; // end PATHWAYS
+
+  /* ═══════════════════════════════════════════════════════════
+     RENDER ENGINE — do not modify below this line
+     unless fixing a structural bug.
+  ═══════════════════════════════════════════════════════════ */
+  function render() {
+    var app = document.getElementById('app');
+    var html = '';
+
+    // County badge always shown at top
+    html += '<div class="county-badge">';
+    html += '<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>';
+    html += 'Portland, Maine &mdash; ME-502</div>';
+
+    if (state.step === 'welcome') {
+      html += renderWelcome();
+    } else if (state.step.startsWith('result_')) {
+      html += renderResult(state.step);
+    } else {
+      html += renderQuestion(state.step);
+    }
+
+    app.innerHTML = html;
+  }
+
+  function renderWelcome() {
+    return '<div class="card">' +
+      '<div class="welcome-title">Find the right help.<br>Answer 4 quick questions.</div>' +
+      '<div class="welcome-sub">We\'ll match you to the services and programs most likely to help — based on your situation, not a generic list.</div>' +
+      '<button class="welcome-start" onclick="goTo(\'q1\')">Get started &rarr;</button>' +
+      '</div>' +
+      '<div style="font-size:0.8rem; color:var(--muted); text-align:center; margin-top:12px;">No personal information collected. Free to use.</div>';
+  }
+
+  function renderQuestion(qid) {
+    var q = QUESTIONS[Q_INDEX[qid]];
+    var stepNum = Q_INDEX[qid] + 1;
+    var pct = Math.round((stepNum / QUESTIONS.length) * 100);
+    var html = '';
+
+    html += '<div class="progress-wrap">' +
+      '<div class="progress-bar"><div class="progress-fill" style="width:' + pct + '%"></div></div>' +
+      '<div class="progress-label">Question ' + stepNum + ' of ' + QUESTIONS.length + '</div>' +
+      '</div>';
+
+    html += '<div class="card">' +
+      '<div class="q-label">Question ' + stepNum + '</div>' +
+      '<div class="q-text">' + q.text + '</div>' +
+      '<div class="q-sub">' + q.sub + '</div>' +
+      '<div class="btn-row">' +
+      '<button class="btn btn-yes" onclick="answer(true)">' + (q.yes_label || 'Yes') + '</button>' +
+      '<button class="btn btn-no"  onclick="answer(false)">' + (q.no_label  || 'No')  + '</button>' +
+      '</div>' +
+      '</div>';
+
+    if (Q_INDEX[qid] > 0) {
+      html += '<button class="btn-restart" onclick="history.back()">← Back</button>';
+    }
+
+    return html;
+  }
+
+  function renderConfidenceBadge(conf) {
+    var meta = CONFIDENCE_META[conf.level];
+    return '<span class="conf-badge ' + meta.cssClass + '" onclick="this.classList.toggle(\'open\')" tabindex="0" role="button" aria-label="Information confidence: ' + meta.label + '">' +
+      meta.icon + ' ' + meta.label +
+      ' &mdash; Last checked: ' + conf.lastChecked +
+      '<span class="conf-tooltip">' + meta.tooltip + (conf.note ? '<br><br>' + conf.note : '') + '</span>' +
+      '</span>';
+  }
+
+  // Build a base64 payload that adds this pathway to My Ladder when opened.
+  function buildLadderUrl(p) {
+    try {
+      var stripTags = function(s){ return String(s||'').replace(/<[^>]+>/g,'').replace(/\s+/g,' ').trim(); };
+      var phoneFromTel = (p.callNumber||'').replace(/^tel:/,'').replace(/[^\d+\-()\s]/g,'');
+      var data = {
+        cat: 'shelter',
+        name: p.label + ' — ' + stripTags(p.callLabel),
+        phone: phoneFromTel,
+        address: '',
+        notes: 'First step: ' + stripTags(p.firstAction) + ' · What to expect: ' + stripTags(p.what_to_expect),
+        followups: (p.bring||[]).map(function(b){ return { text: stripTags(b) }; })
+                   .concat((p.resources||[]).slice(0,3).map(function(r){
+                     return { text: 'Contact: ' + stripTags(r.name) + (r.phone ? ' — ' + r.phone : '') };
+                   })),
+        source: (document.title||'').split(' — ')[0]
+      };
+      var encoded = btoa(unescape(encodeURIComponent(JSON.stringify(data))));
+      return 'https://my.commonladder.org/?add=' + encoded;
+    } catch(e) {
+      return 'https://my.commonladder.org/';
+    }
+  }
+
+  function renderResult(rid) {
+    var p = PATHWAYS[rid];
+    var html = '';
+
+    html += '<div class="card">';
+    html += '<span class="result-badge ' + p.badgeClass + '">' + p.badgeIcon + ' ' + p.label + '</span>';
+    html += '<div class="result-headline">' + p.headline + '</div>';
+
+    // First action block
+    html += '<div class="first-action">' + p.firstAction + '</div>';
+    html += '<a href="' + p.callNumber + '" class="btn-primary">' + p.callLabel + '</a>';
+
+    // Save-to-My-Ladder CTA — lets users carry their pathway, first step, and bring list into their personal plan.
+    var ladderUrl = buildLadderUrl(p);
+    html += '<a href="' + ladderUrl + '" target="_blank" rel="noopener" class="btn-save-ladder">📋 Save this plan to My Ladder</a>';
+    html += '<div class="btn-save-ladder__sub">Track calls, schedule visits, add notes — your data stays on your device.</div>';
+
+    // What to expect
+    html += '<div class="section-head">What to expect</div>';
+    html += '<div class="what-to-expect">' + p.what_to_expect + '</div>';
+
+    // What to bring
+    html += '<div class="section-head">What to bring</div>';
+    html += '<ul class="bring-list">';
+    p.bring.forEach(function(item) { html += '<li>' + item + '</li>'; });
+    html += '</ul>';
+
+    // Additional resources
+    html += '<div class="section-head">Additional resources</div>';
+    p.resources.forEach(function(r) {
+      html += '<div class="resource-card">';
+      html += '<div class="resource-card__name">' + r.name + '</div>';
+      html += '<a href="' + r.tel + '" class="resource-card__phone">' + r.phone + '</a>';
+      if (r.note) html += '<div class="resource-card__note">' + r.note + '</div>';
+      html += '</div>';
+    });
+
+    // Extra note (optional)
+    if (p.extra_note) {
+      html += '<div class="extra-note">' + p.extra_note + '</div>';
+    }
+
+    // Confidence badge
+    html += renderConfidenceBadge(p.confidence);
+
+    html += '</div>'; // end card
+
+    // Restart
+    html += '<button class="btn-restart" onclick="goTo(\'welcome\')">← Start over</button>';
+
+    return html;
+  }
+
+  function goTo(step) {
+    state.step = step;
+    render();
+    window.scrollTo(0, 0);
+  }
+
+  function answer(isYes) {
+    var q = QUESTIONS[Q_INDEX[state.step]];
+    var next = isYes ? q.next_yes : q.next_no;
+    if (next.startsWith('result_')) {
+      state.pathway = next;
+    }
+    goTo(next);
+  }
+
+  // Tooltip close on outside click
+  document.addEventListener('click', function(e) {
+    if (!e.target.closest('.conf-badge')) {
+      document.querySelectorAll('.conf-badge.open').forEach(function(el) {
+        el.classList.remove('open');
+      });
+    }
+  });
+
+  // Initial render
+  render();
+</script>
+<script data-id="cl-card-click">
+(function(){
+  document.querySelectorAll('.card, .post-card:not(.post-card--linked)').forEach(function(el){
+    if(el.closest('#app')) return; /* wizard cards are not link cards */
+    var a = el.querySelector('a[href]');
+    if(!a) return;
+    el.addEventListener('click', function(e){
+      if(e.target.tagName==='A'||e.target.closest('a')) return;
+      window.location.href = a.href;
+    });
+  });
+})();
+</script>
+</body>
+</html>

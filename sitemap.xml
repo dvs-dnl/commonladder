@@ -1114,6 +1114,18 @@
     <lastmod>2026-06-07</lastmod>
   </url>
   <url>
+    <loc>https://commonladder.org/learn/evidence/treatment-first-toolkit/</loc>
+    <lastmod>2026-08-17</lastmod>
+  </url>
+  <url>
+    <loc>https://commonladder.org/learn/evidence/court-vacates-nofo/</loc>
+    <lastmod>2026-08-14</lastmod>
+  </url>
+  <url>
+    <loc>https://commonladder.org/learn/evidence/fy26-nofo-coc-guidance/</loc>
+    <lastmod>2026-08-14</lastmod>
+  </url>
+  <url>
     <loc>https://commonladder.org/learn/evidence/core-framework/</loc>
     <lastmod>2026-06-07</lastmod>
   </url>
@@ -1286,6 +1298,30 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://commonladder.org/static-tools/eviction-timeline-explainer.html</loc>
+    <lastmod>2026-08-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://commonladder.org/blog/intro-eviction-timeline-explainer.html</loc>
+    <lastmod>2026-08-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://commonladder.org/static-tools/landlord-letter-generator.html</loc>
+    <lastmod>2026-08-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://commonladder.org/blog/intro-landlord-letter-generator.html</loc>
+    <lastmod>2026-08-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://commonladder.org/blog/eviction-right-to-counsel-evidence.html</loc>
     <lastmod>2026-07-02</lastmod>
   </url>
@@ -1296,5 +1332,33 @@
   <url>
     <loc>https://commonladder.org/blog/aging-older-adults-homelessness-evidence.html</loc>
     <lastmod>2026-07-30</lastmod>
+  </url>
+  <url>
+    <loc>https://commonladder.org/blog/cooling-center-targeting-evidence.html</loc>
+    <lastmod>2026-08-06</lastmod>
+  </url>
+  <url>
+    <loc>https://commonladder.org/blog/employment-help-phoenix.html</loc>
+    <lastmod>2026-08-16</lastmod>
+  </url>
+  <url>
+    <loc>https://commonladder.org/learn/tax-explorer/</loc>
+    <lastmod>2026-08-18</lastmod>
+  </url>
+  <url>
+    <loc>https://commonladder.org/learn/tax-explorer/methodology.html</loc>
+    <lastmod>2026-08-18</lastmod>
+  </url>
+  <url>
+    <loc>https://commonladder.org/blog/introducing-tax-explorer.html</loc>
+    <lastmod>2026-08-18</lastmod>
+  </url>
+  <url>
+    <loc>https://commonladder.org/static-tools/pet-friendly-resources.html</loc>
+    <lastmod>2026-08-18</lastmod>
+  </url>
+  <url>
+    <loc>https://commonladder.org/blog/intro-pet-friendly-resources.html</loc>
+    <lastmod>2026-08-18</lastmod>
   </url>
 </urlset>

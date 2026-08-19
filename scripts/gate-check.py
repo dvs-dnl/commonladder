@@ -551,6 +551,30 @@ def gate_wizard_css_isolation():
     critical("Wizard CSS isolated from global stylesheet", not bad, "; ".join(bad[:8]))
 
 
+# ============================================================
+# CL-G20 (WARN) — footer <time> stamp must equal JSON-LD dateModified
+# Root cause history: commit 66d8c85 (2026-07-30) updated JSON-LD
+# dateModified + byline but not the footer <time> element that
+# cl-freshness-guard actually reads, so four freshly-verified pages
+# showed visitors a false "this may be stale" banner. The 2026-08-03
+# verification run fixed those four by hand and noted "nothing enforces
+# dateModified == footer <time>; this will recur without a gate."
+# The 2026-08-08 audit then found 18 more. This is that gate.
+# ============================================================
+def gate_footer_time_matches_datemodified():
+    bad = []
+    for p in sorted(REPO.rglob("*.html")):
+        r = rel(p)
+        if r.startswith(("wp-theme/", "garden-planner")):
+            continue
+        s = _read(p)
+        ft = re.findall(r'<time datetime="(\d{4}-\d{2}-\d{2})"', s)
+        dm = re.findall(r'"dateModified"\s*:\s*"(\d{4}-\d{2}-\d{2})', s)
+        if ft and dm and ft[-1] != dm[-1]:
+            bad.append(f"{r}: footer {ft[-1]} != dateModified {dm[-1]}")
+    warn("Footer <time> matches JSON-LD dateModified", not bad, "; ".join(bad[:8]))
+
+
 def main():
     gates = [
         gate_inline_js_syntax, gate_jsonld_valid, gate_ga_consistency,
@@ -560,6 +584,7 @@ def main():
         gate_nav_cta, gate_single_h1, gate_wcag_text_color, gate_head_baseline,
         gate_card_click_present, gate_blog_in_sitemap, gate_lazy_load_imgs,
         gate_skip_link_target, gate_wizard_css_isolation,
+        gate_footer_time_matches_datemodified,
     ]
     for g in gates:
         try:
