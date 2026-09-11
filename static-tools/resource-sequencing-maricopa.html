@@ -819,7 +819,7 @@
     </div>
     <div class="footer__bottom">
       <span>&copy; 2026 Common Ladder. Free to use, always.</span>
-      <span><time datetime="2026-07-29">Last updated July 29, 2026</time></span>
+      <span><time datetime="2026-09-02">Last updated September 2, 2026</time></span>
     </div>
   </div>
 </footer>
@@ -854,11 +854,12 @@ const SQ_NODES = {
     where: [
       { name: 'SafeLink Wireless', detail: 'Lifeline carrier in Arizona', site: 'safelinkwireless.com' },
       { name: 'Assurance Wireless', detail: 'Lifeline carrier in Arizona', site: 'assurancewireless.com' },
-      { name: 'Q Link Wireless', detail: 'Lifeline carrier in Arizona', site: 'qlinkwireless.com' },
+      { name: 'StandUp Wireless', detail: 'Lifeline carrier in Arizona · took over most former Q Link customers', site: 'standupwireless.com' },
+      { name: 'USAC Lifeline — "Companies Near Me"', detail: 'The official federal lookup for carriers approved in your ZIP · use this if a carrier above is not taking new sign-ups', site: 'lifelinesupport.org' },
       { name: 'Native American Connections', detail: 'Phone program for eligible Indigenous community members in Phoenix', site: 'nativeconnections.org' }
     ],
     bring: 'Proof of program eligibility (SNAP, Medicaid/AHCCCS, SSI, or income documentation) OR a referral from a case manager. A mailing address is required for delivery — see "Set up a mailing address" if you don\'t have one.',
-    shortcut: 'If you have any Google account from before, set up Google Voice on a library computer — it gives you a free, persistent U.S. number you can use over WiFi without owning a phone. The number survives losing the device.',
+    shortcut: 'Q Link Wireless is gone — the FCC permanently barred it from Lifeline and the company shut down, so do not apply there. If you have any Google account from before, set up Google Voice on a library computer — it gives you a free, persistent U.S. number you can use over WiFi without owning a phone. The number survives losing the device.',
     unlocks: 'Shelter callbacks, benefits verification texts, employer follow-ups, every other navigator on this site.'
   },
 
@@ -867,12 +868,11 @@ const SQ_NODES = {
     time: 'Same day at most sites',
     why: 'Almost every official document — replacement ID, birth certificate, SNAP card, AHCCCS card, court notice — needs to be mailed somewhere. Without an address, the paperwork chain stalls.',
     where: [
-      { name: 'Andre House', detail: '213 S 11th Ave, Phoenix · mail service for guests', site: 'andrehouse.org' },
-      { name: 'Justa Center', detail: '1001 W Jefferson St, Phoenix · mail + day services for adults 55+', site: 'justacenter.org' },
-      { name: 'CASS / Keys to Change', detail: 'Mail held for registered campus residents', site: 'keystochange.org' },
+      { name: 'Key Campus mailroom (Keys to Change)', detail: 'Brian Garcia Welcome Center, 204 S 12th Ave, Phoenix · open 24 hours · the country\'s only dedicated mailroom for people experiencing homelessness · 602-282-0853', site: 'keystochangeaz.org' },
+      { name: 'Justa Center', detail: '1001 W Jefferson St, Phoenix · mail + day services for adults 55+ · 602-254-6524', site: 'justacenter.org' },
       { name: 'St. Vincent de Paul', detail: 'Some day-center locations hold mail for guests — ask at intake', site: 'stvincentdepaul.net' }
     ],
-    bring: 'Typically nothing for mail-only setup. Some sites ask you to sign in or register as a guest.',
+    bring: 'Typically nothing for mail-only setup. Some sites ask you to sign in or register as a guest. The Key Campus Welcome Center does not require documents to start.',
     shortcut: 'A trusted family member or friend\'s address works for mail-only purposes, even if you don\'t live there. You don\'t have to live somewhere to receive mail there.',
     unlocks: 'Replacement birth certificate, state ID, SNAP, AHCCCS, bank account, Lifeline phone delivery.'
   },
@@ -887,7 +887,7 @@ const SQ_NODES = {
       { name: 'Any shelter or day center you\'re engaged with', detail: 'Most case managers can issue this on letterhead' }
     ],
     bring: 'Yourself. No ID required to start a 211 referral. Have a way to be reached (phone or scheduled visit).',
-    shortcut: 'If you can get into any day center (Andre House, Justa Center, St. Vincent de Paul) and engage with their case manager for one visit, they can usually write this letter same-week. The letter does not require you to be enrolled in a shelter program.',
+    shortcut: 'If you can get into a day center with case management on site (Justa Center for 55+, St. Vincent de Paul, or the Lodestar Day Resource Center on the Key Campus) and engage with a case manager for one visit, they can usually write this letter same-week. The letter does not require you to be enrolled in a shelter program.',
     unlocks: 'State ID replacement (substitutes for proof of residency), expedited SNAP (homeless designation gets a 7-day decision instead of 30), AHCCCS Medicaid expedited path.'
   },
 
@@ -898,6 +898,7 @@ const SQ_NODES = {
     where: [
       { name: 'VitalChek.com', detail: 'Online intermediary for most U.S. states · fee varies', site: 'vitalchek.com' },
       { name: 'Your birth state\'s Department of Health / Vital Records', detail: 'Google "[state] vital records birth certificate" — direct application is cheapest', site: '' },
+      { name: 'Homeless ID Project', detail: '1125 W Jackson St, Phoenix (inside the Lodestar Day Resource Center at Key Campus) · M–F 8am–1pm, first come first served, closed the 2nd Wednesday and 3rd Monday of each month · free · helps regardless of which state you were born in, and pays the fee · 602-223-3427', site: 'homelessidproject.org' },
       { name: 'Salvation Army or Catholic Charities (in some metros)', detail: 'May fund the fee for unhoused applicants — ask 211' }
     ],
     bring: 'Your full name at birth, date of birth, parents\' full names (including mother\'s maiden name), city and state of birth. A photo ID helps but most states accept a notarized form instead. A mailing address.',
@@ -907,14 +908,15 @@ const SQ_NODES = {
 
   'birth-cert-az': {
     title: 'Order an Arizona birth certificate',
-    time: 'Same day at the office; 2–4 weeks by mail',
+    time: 'Same day at a Maricopa County office in most cases; 2–4 weeks by mail from the state',
     why: 'If you were born in Arizona, the process is faster than out-of-state. Required to replace state ID if you don\'t already have one.',
     where: [
-      { name: 'Arizona Department of Health Services — Office of Vital Records', detail: '1818 W Adams St, Phoenix · in-person or mail', site: 'azdhs.gov/vital-records' },
-      { name: 'Maricopa County Office of Vital Registration', detail: 'Several locations across Maricopa County · in-person same-day in many cases', site: 'maricopa.gov' }
+      { name: 'Maricopa County Office of Vital Registration', detail: 'Five offices valleywide (Phoenix, Mesa, Peoria, Glendale, Goodyear) · M–F 8am–4:30pm, arrive by 4pm · same-day certified copy in most cases · 602-506-6805 — start here', site: 'maricopa.gov/2770/Vital-Records' },
+      { name: 'Homeless ID Project', detail: '1125 W Jackson St, Phoenix (inside the Lodestar Day Resource Center) · M–F 8am–1pm, closed 2nd Wed + 3rd Mon · free, and they pay the fee · 602-223-3427', site: 'homelessidproject.org' },
+      { name: 'Arizona Bureau of Vital Records (AZDHS)', detail: '1818 W Adams St, Phoenix · no longer offers same-day walk-in issuance — mail-in, or by appointment for special cases (amendments, delayed registration, adoptions) · 602-364-1300 or 1-888-816-5907', site: 'azdhs.gov/licensing/vital-records' }
     ],
     bring: 'Photo ID (any U.S. or foreign government-issued ID). If you don\'t have any ID at all, AZDHS allows a notarized alternate identity-verification process — call the Vital Records office to ask for the current form and rules.',
-    shortcut: 'Some libraries and credit unions offer free notary services — call ahead. Andre House and a few faith-based programs can also connect you to free notaries.',
+    shortcut: 'Go to a Maricopa County office, not the state bureau — the state stopped doing same-day walk-ups, the county still does it. If the fee is the obstacle, the Homeless ID Project covers it. Some libraries and credit unions also offer free notary services — call ahead.',
     unlocks: 'State ID replacement, Social Security card replacement.'
   },
 
@@ -936,11 +938,13 @@ const SQ_NODES = {
     time: 'Same day at MVD with appointment; 1–2 weeks by mail',
     why: 'Most shelters, most jobs, most benefits offices, most bank accounts, and most landlords want a state ID. This is the central document everything else routes through.',
     where: [
+      { name: 'Homeless ID Project (Tele-MVD)', detail: '1125 W Jackson St, Phoenix (inside the Lodestar Day Resource Center at Key Campus) · M–F 8am–1pm, first come first served, closed 2nd Wed + 3rd Mon · applies through the MVD for you and pays the fee · staff can start even if you have no documents at all · 602-223-3427', site: 'homelessidproject.org' },
+      { name: 'Homeless ID Project — other Maricopa days', detail: 'Acacia Library, 750 E Townley Ave, Phoenix (2nd + 4th Thu 1–3:30pm) · SVdP Mesa dining room, 49 W Broadway Rd (2nd + 4th Tue 1–3:30pm) · Tempe Community Action Agency, 2146 Apache Blvd (1st + 3rd Mon 1–3:30pm) · Arizona Justice Center, 5585 W Glenn Dr, Glendale (Wed 1–3:30pm)', site: 'homelessidproject.org/id-service-locations' },
       { name: 'Arizona Motor Vehicle Division (MVD)', detail: 'Multiple Maricopa County locations · book an appointment online at azdot.gov · skip the walk-in line', site: 'azdot.gov/mvd' },
       { name: 'AAA branches (for AAA members)', detail: 'Limited MVD services available without an appointment', site: '' }
     ],
     bring: 'Birth certificate (or U.S. passport or naturalization papers) + Social Security card (or W-2/tax doc) + two documents proving Arizona residency OR a homeless-status verification letter. There is a state ID fee; a fee waiver for individuals experiencing homelessness is available — ask explicitly when you check in, as it is not always posted.',
-    shortcut: 'The fee waiver for homelessness is not posted prominently — you have to ask. Bring your homeless-status verification letter and request the fee waiver explicitly. Same with the residency requirement: the letter substitutes for utility bills and lease paperwork.',
+    shortcut: 'Easiest route: let the Homeless ID Project do it. They run Tele-MVD on the Key Campus, cover the fee, and will start the process even if you walked in with nothing — you leave with a temporary paper ID and the card arrives in 7–10 business days. If you go to MVD yourself: the fee waiver for homelessness is not posted prominently — you have to ask. Bring your homeless-status verification letter and request the fee waiver explicitly. Same with the residency requirement: the letter substitutes for utility bills and lease paperwork.',
     unlocks: 'Shelter intake at most programs, employment, bank accounts, leases, voting, many benefits, and most healthcare appointments.'
   },
 
@@ -949,15 +953,17 @@ const SQ_NODES = {
     time: 'Same night to a few days',
     why: 'The standard advice (get ID first, then shelter) leaves you outside for weeks. Some Maricopa programs accept intake without ID — including most family shelters, DV shelters, some faith-based programs, and several specialty programs. This is the field-pragmatic path.',
     where: [
-      { name: 'UMOM New Day Centers', detail: 'Family shelter (parents with kids) · 3333 E Van Buren St, Phoenix', site: 'umom.org' },
+      { name: 'Family Housing Hub', detail: 'Families with children under 18 start here — it is the single point of entry for family shelter in Maricopa County. Call 2-1-1 and ask for the Family Housing Hub · operated by UMOM on the 3333 E Van Buren St campus', site: 'fhhub.org' },
+      { name: 'UMOM New Day Centers', detail: 'Family shelter (parents with kids) · 3333 E Van Buren St, Phoenix · 602-275-7852', site: 'umom.org' },
+      { name: 'UMOM Halle Women\'s Center', detail: 'Single women without children, including survivors of domestic violence · 3424 E Van Buren St, Phoenix · call for the shelter wait list · 602-362-5833', site: 'umom.org/shelter' },
       { name: 'House of Refuge', detail: 'Transitional housing for families · Mesa', site: 'houseofrefuge.org' },
       { name: 'Save the Family', detail: 'Family-focused shelter and rapid rehousing · Mesa', site: 'savethefamily.org' },
       { name: 'Family Promise of Greater Phoenix', detail: 'Rotating family shelter network · multiple sites', site: 'familypromiseaz.org' },
       { name: 'Native American Connections', detail: 'Behavioral health + housing programs · prioritizes Indigenous community members', site: 'nativeconnections.org' },
-      { name: 'Tumbleweed Center for Youth Development', detail: 'For people 12–25 · Phoenix', site: 'tumbleweed.org' }
+      { name: 'Tumbleweed Center for Youth Development', detail: 'For people 12–25 · Phoenix · 602-271-9904', site: 'tumbleweed.org' }
     ],
     bring: 'Yourself. Many of these programs will help you get ID after you\'re in — that\'s the whole point of the pragmatic path.',
-    shortcut: 'If you are a parent with children, a youth under 25, fleeing DV, or a veteran, you should not go to CASS/Keys to Change first — go directly to the population-specific program above. The campus shelter is the entry of last resort, not first resort, for these populations.',
+    shortcut: 'If you are a parent with children, a youth under 25, fleeing DV, or a veteran, you should not go to the Key Campus single-adult shelter first — go directly to the population-specific program above. The campus shelter is the entry of last resort, not first resort, for these populations.',
     unlocks: 'A case manager who can pull every other string on this list — birth certificate, state ID, SNAP, AHCCCS, housing voucher.',
     warrantNote: 'Most low-barrier emergency shelters do not run warrant checks at intake. Background checks happen later — when you apply for transitional housing, rapid rehousing, or HUD-funded permanent supportive housing. Use your time in emergency shelter to resolve the warrant through legal aid (next step). DV shelters and family shelters are the most likely to admit without screening; sober-living and treatment-based programs are the most likely to screen.'
   },
@@ -967,12 +973,14 @@ const SQ_NODES = {
     time: 'Initial assessment within days; placement timeline varies',
     why: 'Coordinated entry is the single front door to most federally-funded housing in Maricopa County — rapid rehousing, permanent supportive housing, transitional housing. You have to be in it to be in line.',
     where: [
-      { name: 'Maricopa Regional Continuum of Care (CoC)', detail: 'Call 211 and ask for the coordinated-entry intake. As of writing, Solari/Crisis Response Network operates much of this for Maricopa.', site: 'maricopacoc.org' },
-      { name: 'Keys to Change (Human Services Campus)', detail: 'Hosts coordinated-entry assessments daily · 230 S 12th Ave, Phoenix', site: 'keystochange.org' },
-      { name: 'St. Vincent de Paul, Native American Connections, UMOM, and most other shelters', detail: 'Can also conduct the assessment — you don\'t have to go to the campus' }
+      { name: 'Single adults — Brian Garcia Welcome Center', detail: 'Key Campus, 204 S 12th Ave, Phoenix · open 24 hours a day, 7 days a week · no documents required to start · does the vulnerability screening, diversion, and shelter referral · 602-229-5155', site: 'keystochangeaz.org' },
+      { name: 'Families with children under 18 — Family Housing Hub', detail: 'The single point of entry for families in Maricopa County. This is a different system from the one for single adults — do not queue at the Welcome Center. Call 2-1-1 and ask for the Family Housing Hub.', site: 'fhhub.org' },
+      { name: 'Youth 12–17 — Safe Place', detail: 'Call 602-841-5799, or text "Safe" and your address to 44357' },
+      { name: 'Veterans — VA Community Resource & Referral Center', detail: '1500 E Thomas Rd, Suite 106, Phoenix · M–F 7:30am–4pm · 602-248-6040', site: 'va.gov/phoenix-health-care' },
+      { name: 'Other coordinated entry access points', detail: 'The CoC publishes a current map and list of access points across the county — ask 211 for the one nearest you, or see the CoC site', site: 'maricopacoc.org/get-help' }
     ],
-    bring: 'Some form of ID is helpful but not always required. A way to be contacted (phone, email, or a trusted person\'s contact).',
-    shortcut: 'You can complete the coordinated entry assessment at any partner agency, not just the Human Services Campus. If the campus feels unsafe or you\'ve had a bad experience there, ask at Andre House, Justa Center, UMOM, or Native American Connections — they can do the same assessment.',
+    bring: 'Some form of ID is helpful but not required at the Welcome Center. A way to be contacted (phone, email, or a trusted person\'s contact) — this is the part that actually determines whether a match reaches you.',
+    shortcut: 'Maricopa runs two parallel coordinated entry systems — one for single adults, one for families with children — and getting into the wrong queue costs you weeks. If you have kids under 18 with you, the Family Housing Hub is your door, not the campus. If you are a single adult and the campus feels unsafe, you do not have to go there: call 211 and ask for the coordinated entry access point closest to you, or ask the shelter or day center you are already engaged with whether they are an access point.',
     unlocks: 'Rapid rehousing match, permanent supportive housing wait list, HUD-VASH for veterans, voucher placement.'
   },
 
@@ -1008,7 +1016,7 @@ const SQ_NODES = {
     time: '1–3 weeks for consultation; days if it\'s urgent',
     why: 'If you have an active warrant, the shelter intake process is one of the places where you might be flagged. It\'s much better to resolve the legal piece on your terms than to have it surface during a benefits or housing application.',
     where: [
-      { name: 'Community Legal Services', detail: 'Civil legal aid for low-income Maricopa County residents · main Phoenix office downtown · intake by phone (see website)', site: 'clsaz.org' },
+      { name: 'Community Legal Services', detail: 'Civil legal aid for low-income Maricopa County residents · 305 S 2nd Ave, Phoenix · phone intake M–F 9am–2pm, no walk-ins · 602-258-3434 or 1-800-852-9075', site: 'clsaz.org' },
       { name: 'William E. Morris Institute for Justice', detail: 'Civil legal aid focused on systemic issues', site: 'morrisinstituteforjustice.org' },
       { name: 'Arizona Justice Project', detail: 'For unresolved criminal issues, including warrants and post-conviction relief', site: 'azjusticeproject.org' },
       { name: 'Maricopa County Public Defender Pre-trial Services', detail: 'If you have an active criminal case, this is your assigned office', site: '' }
@@ -1023,7 +1031,8 @@ const SQ_NODES = {
     time: 'HUD-VASH placement: weeks; SSVF: days; same-day care at the VA',
     why: 'If you have any U.S. military service, you have access to a parallel system that\'s much faster and better-funded than the general one. HUD-VASH housing vouchers, SSVF rapid rehousing, MANA House, US Vets Phoenix.',
     where: [
-      { name: 'VA Phoenix Healthcare System — Homeless Programs', detail: '650 E Indian School Rd, Phoenix · ask for the Homeless Patient Aligned Care Team (HPACT)', site: 'phoenix.va.gov' },
+      { name: 'VA Community Resource & Referral Center (CRRC)', detail: '1500 E Thomas Rd, Suite 106, Phoenix · M–F 7:30am–4pm · 602-248-6040 · this is the VA\'s dedicated front door for veterans who are homeless or at risk — housing assessment, HUD-VASH and SSVF referral, peer support, employment', site: 'va.gov/phoenix-health-care' },
+      { name: 'Phoenix VA Health Care System — Homeless Programs', detail: '650 E Indian School Rd, Phoenix · ask for the Homeless Patient Aligned Care Team (HPACT) · 602-277-5551', site: 'va.gov/phoenix-health-care' },
       { name: 'MANA House', detail: 'Transitional housing for veterans · run by US VETS · Phoenix', site: 'usvets.org/phoenix' },
       { name: 'US VETS Phoenix', detail: 'Multiple veteran-specific programs', site: 'usvets.org' },
       { name: 'VA homeless veterans crisis line', detail: '1-877-424-3838 · 24/7 · connects to local programs' }

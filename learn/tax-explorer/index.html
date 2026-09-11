@@ -24,11 +24,11 @@
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Common Ladder">
   <meta property="og:url" content="https://commonladder.org/learn/tax-explorer/">
-  <meta property="og:image" content="https://commonladder.org/images/og-default.png">
+  <meta property="og:image" content="https://commonladder.org/images/og-tax-explorer.png">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="The Tax Ladder — Common Ladder">
   <meta name="twitter:description" content="Scrub 1913–2026 of federal tax history — statutory vs. effective rates, who pays, and where the money actually comes from. Every figure sourced and dated.">
-  <meta name="twitter:image" content="https://commonladder.org/images/og-default.png">
+  <meta name="twitter:image" content="https://commonladder.org/images/og-tax-explorer.png">
 
 <style>
 /* ===== Tax Ladder — page-local styles (tx- prefix) ===== */
@@ -40,6 +40,15 @@
 .crisis-bar__sep { color:#565f6d; }
 .pathway__eyebrow { color:#8a5a00; }
 .tx-page { max-width: 980px; }
+
+/* breadcrumb (page-local: global style.css has no breadcrumb rules) */
+ol.breadcrumb { list-style:none; max-width:980px; margin:1.1rem auto 0; padding:0 20px; font-size:.85rem; color:#565f6d; display:flex; flex-wrap:wrap; align-items:center; gap:.4rem; }
+ol.breadcrumb li { display:flex; align-items:center; gap:.4rem; }
+ol.breadcrumb li + li::before { content:"›"; color:#8f8b80; }
+ol.breadcrumb a { color:#1C3D6E; text-decoration:none; }
+ol.breadcrumb a:hover { text-decoration:underline; }
+ol.breadcrumb [aria-current="page"], ol.breadcrumb li[aria-current="page"] { color:#565f6d; }
+
 .tx-page .pathway__lede { margin-bottom: 1.4rem; }
 .tx-badge { display:inline-block; font-size:.72rem; font-weight:700; text-transform:uppercase; letter-spacing:.04em; padding:.18rem .55rem; border-radius:999px; background:var(--blue); color:#fff; margin:0 .35rem .35rem 0; }
 .tx-badge--outline { background:#fff; color:var(--blue); border:1.5px solid var(--blue); }

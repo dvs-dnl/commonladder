@@ -226,6 +226,15 @@ const html = `<!DOCTYPE html>
 .meth-status--blocked, .meth-status--unsourced { background:#8a5a00; }
 .meth-cardhead th { background:#f4f4f2; font-family:'Manrope',sans-serif; color:var(--blue); font-size:.85rem; padding-top:.8rem; }
 .meth-blocked li { margin-bottom:.8rem; font-size:.9rem; line-height:1.55; overflow-wrap:anywhere; }
+
+/* breadcrumb (page-local: global style.css has no breadcrumb rules) */
+ol.breadcrumb { list-style:none; max-width:780px; margin:1.1rem auto 0; padding:0 20px; font-size:.85rem; color:#565f6d; display:flex; flex-wrap:wrap; align-items:center; gap:.4rem; }
+ol.breadcrumb li { display:flex; align-items:center; gap:.4rem; }
+ol.breadcrumb li + li::before { content:"›"; color:#8f8b80; }
+ol.breadcrumb a { color:#1C3D6E; text-decoration:none; }
+ol.breadcrumb a:hover { text-decoration:underline; }
+ol.breadcrumb [aria-current="page"], ol.breadcrumb li[aria-current="page"] { color:#565f6d; }
+
 code, .meth-path { overflow-wrap:anywhere; }
 @media (max-width:520px){ .meth-table { font-size:.74rem; } }
 </style>

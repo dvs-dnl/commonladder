@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-3YXK0RL6XV"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-3YXK0RL6XV');
+</script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Warrant Resolution Explainer — What an Outstanding Warrant Does (and Doesn't) Change · Common Ladder</title>
+  <meta name="description" content="Have a warrant in Maricopa County and worried it will cost you shelter, benefits, or housing? Pick what kind of warrant it is and see the safest path to resolving it, who to call, and what an outstanding warrant actually does — and doesn't — affect. Plain language, free, nothing stored.">
+  <link rel="canonical" href="https://commonladder.org/static-tools/warrant-resolution-explainer.html">
+  <link rel="stylesheet" href="/style.css">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="alternate icon" type="image/png" href="/favicon-32.png">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Warrant Resolution Explainer",
+    "url": "https://commonladder.org/static-tools/warrant-resolution-explainer.html",
+    "applicationCategory": "ReferenceApplication",
+    "operatingSystem": "Any",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+    "publisher": { "@type": "Organization", "name": "Common Ladder", "url": "https://commonladder.org" },
+    "areaServed": { "@type": "AdministrativeArea", "name": "Maricopa County, Arizona" },
+    "description": "A plain-language explainer for people experiencing homelessness in Maricopa County who have, or think they might have, an outstanding warrant. Pick the type of warrant and see the safest path to resolving it, who to call, and whether it actually affects shelter access, SNAP/AHCCCS/TANF/SSI benefits, or getting an ID. Includes information on the Maricopa County Regional Homeless Court. Not legal advice. Runs entirely on your device; nothing is stored or sent."
+  }
+  </script>
+  <noscript><style>.nav__links{display:flex!important;flex-wrap:wrap!important;}.nav__toggle{display:none!important;}</style></noscript>
+
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Common Ladder">
+  <meta property="og:title" content="Warrant Resolution Explainer — What an Outstanding Warrant Does (and Doesn't) Change · Common Ladder">
+  <meta property="og:description" content="Pick the kind of warrant you have and see the safest path to resolving it, who to call, and whether it really affects shelter, benefits, or an ID. Free, nothing stored.">
+  <meta property="og:url" content="https://commonladder.org/static-tools/warrant-resolution-explainer.html">
+  <meta property="og:image" content="https://commonladder.org/images/og-default.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Warrant Resolution Explainer · Common Ladder">
+  <meta name="twitter:description" content="Pick the kind of warrant you have and see the safest path to resolving it, who to call, and what it does and doesn't affect. Free, nothing stored.">
+  <meta name="twitter:image" content="https://commonladder.org/images/og-default.png">
+
+  <style>
+    .wre-wrap{max-width:720px;margin:0 auto;padding:1.5rem 1.25rem 3rem;}
+    .wre-hero{margin:1rem 0 1.25rem;}
+    .wre-hero h1{font-size:clamp(1.6rem,5vw,2.1rem);color:#1C3D6E;margin:0 0 .5rem;}
+    .wre-hero h1 span{display:block;font-size:.58em;color:#5a5752;font-weight:600;margin-top:.3rem;}
+    .wre-hero p{font-size:1.02rem;max-width:62ch;color:#3a3833;}
+    .wre-perm{background:#eef6f2;border-left:4px solid #4A9E82;border-radius:6px;padding:.85rem 1.1rem;margin:1.1rem 0 0;font-size:.93rem;}
+    .wre-perm strong{color:#1a5040;}
+    .wre-legal{background:#fbf3e6;border-left:4px solid #b36a00;border-radius:6px;padding:.85rem 1.1rem;margin:.8rem 0 0;font-size:.93rem;}
+    .wre-legal strong{color:#8a5a00;}
+
+    .wre-panel{background:#fff;border:1px solid #e0ddd8;border-radius:14px;padding:1.4rem 1.4rem 1.5rem;margin:1.75rem 0 0;}
+    .wre-q > legend{display:block;font-weight:700;color:#1C3D6E;font-size:1.04rem;margin:0 0 .15rem;padding:0;}
+    .wre-q .wre-help{display:block;font-size:.86rem;color:#5a5752;font-weight:400;margin:0 0 .65rem;}
+    .wre-q fieldset{border:0;padding:0;margin:0;}
+
+    .wre-chips{display:flex;gap:.55rem;flex-wrap:wrap;}
+    .wre-chip{font:inherit;font-size:.92rem;background:#fff;border:1.5px solid #c8c4bd;border-radius:999px;padding:.5rem 1rem;color:#1C3D6E;cursor:pointer;line-height:1.2;text-align:left;min-height:44px;}
+    .wre-chip:hover{border-color:#1C3D6E;background:#f0f4f8;}
+    .wre-chip[aria-pressed="true"]{background:#1C3D6E;color:#fff;border-color:#1C3D6E;}
+    .wre-chip:focus-visible{outline:2px solid #1C3D6E;outline-offset:2px;}
+
+    .wre-controls{display:flex;gap:.6rem;flex-wrap:wrap;margin:1.5rem 0 0;}
+    .wre-btn{display:inline-block;background:#1C3D6E;color:#fff;font-weight:700;font-size:1rem;padding:.8rem 1.6rem;border-radius:8px;text-decoration:none;border:0;cursor:pointer;font-family:inherit;min-height:44px;}
+    .wre-btn:hover{background:#16315a;}
+    .wre-btn--ghost{background:#fff;color:#1C3D6E;border:1.5px solid #c8c4bd;}
+    .wre-btn--ghost:hover{border-color:#1C3D6E;background:#f0f4f8;}
+    .wre-btn:focus-visible{outline:2px solid #1C3D6E;outline-offset:2px;}
+
+    .wre-results{margin:1.75rem 0 0;}
+    .wre-results[hidden]{display:none;}
+
+    .wre-now{border-radius:14px;padding:1.3rem 1.4rem;border:1px solid #bcd0ea;background:#eef3fb;}
+    .wre-now h2{font-size:1.2rem;color:#1C3D6E;margin:0 0 .5rem;}
+    .wre-now p{font-size:.97rem;margin:.4rem 0 0;color:#27384f;}
+
+    .wre-note{margin:1.25rem 0 0;background:#fff;border:1px solid #e0ddd8;border-radius:10px;padding:1rem 1.25rem;}
+    .wre-note h3{font-size:1rem;color:#8a5a00;margin:0 0 .35rem;}
+    .wre-note p{font-size:.95rem;color:#3a3833;margin:.3rem 0 0;}
+
+    .wre-steps{counter-reset:wre;list-style:none;margin:1.4rem 0 0;padding:0;}
+    .wre-steps li{position:relative;padding:0 0 0 2.6rem;margin:0 0 1.25rem;}
+    .wre-steps li:last-child{margin-bottom:0;}
+    .wre-steps li::before{counter-increment:wre;content:counter(wre);position:absolute;left:0;top:0;width:1.8rem;height:1.8rem;background:#1C3D6E;color:#fff;border-radius:50%;font-weight:800;font-size:.95rem;display:flex;align-items:center;justify-content:center;}
+    .wre-steps h3{font-size:1.05rem;color:#1C3D6E;margin:.1rem 0 .3rem;}
+    .wre-steps p{font-size:.95rem;color:#3a3833;margin:.25rem 0 0;}
+
+    .wre-call{margin:1.5rem 0 0;background:#f0f4f8;border-left:4px solid #1C3D6E;border-radius:6px;padding:1rem 1.25rem;font-size:.95rem;}
+    .wre-call h3{color:#1C3D6E;font-size:1.05rem;margin:0 0 .4rem;}
+    .wre-call ul{margin:.4rem 0 0;padding-left:1.2rem;}
+    .wre-call li{margin:.35rem 0;}
+    .wre-call a{font-weight:700;color:#1C3D6E;}
+
+    .wre-overview{margin:2.5rem 0 0;border-top:1px solid #e8e5e0;padding-top:1.5rem;}
+    .wre-overview h2{font-size:1.25rem;color:#1C3D6E;margin:0 0 .35rem;}
+    .wre-overview > p{font-size:.95rem;color:#3a3833;max-width:62ch;}
+
+    .wre-how{margin:2.5rem 0 0;border-top:1px solid #e8e5e0;padding-top:1.5rem;}
+    .wre-how h2{font-size:1.25rem;color:#1C3D6E;margin:0 0 .75rem;}
+    .wre-how details{background:#fff;border:1px solid #e0ddd8;border-radius:10px;padding:.4rem 1.1rem;margin:.7rem 0;}
+    .wre-how summary{font-weight:700;color:#1C3D6E;cursor:pointer;padding:.6rem 0;font-size:1rem;}
+    .wre-how summary:focus-visible{outline:2px solid #1C3D6E;outline-offset:2px;}
+    .wre-how p{font-size:.95rem;color:#3a3833;margin:.3rem 0 .8rem;}
+    .wre-how ul{font-size:.95rem;color:#3a3833;margin:.3rem 0 .8rem;padding-left:1.2rem;}
+    .wre-how li{margin:.3rem 0;}
+
+    .wre-verify{margin-top:2rem;padding:1rem 1.25rem;background:#f0f4f8;border-left:3px solid #1C3D6E;border-radius:4px;font-size:.9rem;}
+    .wre-sources{margin-top:1.25rem;font-size:.85rem;color:#5a5752;}
+    .wre-sources h2{font-size:1rem;color:#1C3D6E;margin:0 0 .4rem;}
+    .wre-sources ul{margin:.3rem 0 0;padding-left:1.2rem;}
+    .wre-sources li{margin:.3rem 0;}
+
+    .breadcrumb{max-width:720px;margin:1.25rem auto 0;padding:0 1.25rem;font-size:.85rem;list-style:none;display:flex;gap:.45rem;flex-wrap:wrap;}
+    .breadcrumb li+li::before{content:"/";margin-right:.45rem;color:#a09c95;}
+    .breadcrumb a{color:#1C3D6E;}
+
+    .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);border:0;}
+  </style>
+</head>
+<body>
+
+<a href="#main" class="skip-link">Skip to main content</a>
+
+<div class="crisis-bar" role="region" aria-label="Crisis help">
+  <strong>Need help right now?</strong>
+  <a href="tel:211">Call 211</a><span class="crisis-bar__sep">·</span>
+  <a href="sms:741741?body=HOME">Text HOME to 741741</a><span class="crisis-bar__sep">·</span>
+  <a href="tel:988">988 Suicide &amp; Crisis</a>
+</div>
+
+<nav class="nav" aria-label="Primary">
+  <div class="nav__inner">
+    <a href="/" class="nav__logo" aria-label="Common Ladder home">
+      <svg width="28" height="28" viewBox="0 0 247 247" fill="none" aria-hidden="true"><g transform="translate(-12.00,-16.00)"> <path fill="#E8911A" fill-opacity="1" fill-rule="evenodd" d="M 254.00,51.00 L 234.00,85.64 L 194.00,85.64 L 174.00,51.00 L 194.00,16.36 L 234.00,16.36 Z M 231.50,51.00 L 222.75,66.16 L 205.25,66.16 L 196.50,51.00 L 205.25,35.84 L 222.75,35.84 Z"/> <path fill="#9FBCBA" fill-opacity="1" fill-rule="evenodd" d="M 148.00,118.00 L 128.00,152.64 L 88.00,152.64 L 68.00,118.00 L 88.00,83.36 L 128.00,83.36 Z M 125.50,118.00 L 116.75,133.16 L 99.25,133.16 L 90.50,118.00 L 99.25,102.84 L 116.75,102.84 Z"/> <path fill="#9FBCBA" fill-opacity="1" fill-rule="evenodd" d="M 259.00,118.00 L 239.00,152.64 L 199.00,152.64 L 179.00,118.00 L 199.00,83.36 L 239.00,83.36 Z M 236.50,118.00 L 227.75,133.16 L 210.25,133.16 L 201.50,118.00 L 210.25,102.84 L 227.75,102.84 Z"/> <path fill="#FFFFFF" fill-opacity="0.94" fill-rule="evenodd" d="M 207.00,164.00 L 187.00,198.64 L 147.00,198.64 L 127.00,164.00 L 147.00,129.36 L 187.00,129.36 Z M 184.50,164.00 L 175.75,179.16 L 158.25,179.16 L 149.50,164.00 L 158.25,148.84 L 175.75,148.84 Z"/> <path fill="#FFFFFF" fill-opacity="0.94" fill-rule="evenodd" d="M 92.00,164.00 L 72.00,198.64 L 32.00,198.64 L 12.00,164.00 L 32.00,129.36 L 72.00,129.36 Z M 69.50,164.00 L 60.75,179.16 L 43.25,179.16 L 34.50,164.00 L 43.25,148.84 L 60.75,148.84 Z"/> <path fill="#FFFFFF" fill-opacity="0.94" fill-rule="evenodd" d="M 161.00,228.00 L 141.00,262.64 L 101.00,262.64 L 81.00,228.00 L 101.00,193.36 L 141.00,193.36 Z M 138.50,228.00 L 129.75,243.16 L 112.25,243.16 L 103.50,228.00 L 112.25,212.84 L 129.75,212.84 Z"/> </g></svg>
+      <span class="nav__wordmark">common<span>ladder</span></span>
+    </a>
+    <button class="nav__toggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="primary-nav" onclick="this.setAttribute('aria-expanded', document.getElementById('primary-nav').classList.toggle('open') ? 'true' : 'false')">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav__links" id="primary-nav">
+      <li><a href="/providers.html">For providers</a></li>
+      <li><a href="/learn/">Learn</a></li>
+      <li><a href="/about.html">About</a></li>
+      <li><a href="/find.html" class="nav__cta">Find resources</a></li>
+      <li><a href="/static-tools/my-ladder.html" class="nav__cta nav__cta--ladder">My Ladder</a></li>
+      <li><a href="https://www.weather.gov/" rel="noreferrer" class="nav__exit" onclick="event.preventDefault();window.location.replace('https://www.weather.gov/')">Leave page</a></li>
+    </ul>
+  </div>
+</nav>
+
+<ol class="breadcrumb" aria-label="Breadcrumb">
+  <li><a href="/">Home</a></li>
+  <li><a href="/static-tools/">Tools</a></li>
+  <li aria-current="page">Warrant Resolution Explainer</li>
+</ol>
+
+<main id="main">
+<div class="wre-wrap">
+
+  <header class="wre-hero">
+    <h1>Warrant Resolution Explainer <span>What an outstanding warrant does &mdash; and doesn't &mdash; change, and the safest way to clear it</span></h1>
+    <p>A warrant hanging over you is exhausting, and the worry is often bigger than the warrant itself. Most warrants people carry while unhoused are <strong>bench warrants</strong> &mdash; missed traffic court, an unpaid fine, a missed check-in &mdash; not the kind of thing that follows you into a shelter bed or a benefits application. Pick what's closest to your situation below and see the safest next step, who to call, and what it actually affects. This is written for Maricopa County, Arizona.</p>
+
+    <div class="wre-perm" role="note">
+      <strong>Nothing here is stored or sent anywhere.</strong> Your choice stays on this device only so the page remembers it if you come back. No account, no sign-up, and no one sees what you pick.
+    </div>
+
+    <div class="wre-legal" role="note">
+      <strong>This is not legal advice.</strong> It is a plain-language map of your options. A warrant is a legal matter, and every case is different &mdash; a lawyer can look at yours for free if you qualify. Call <a href="tel:6025067711">Maricopa County Public Defense Services at 602-506-7711</a> or the <a href="tel:6025068575">Criminal Department Information Desk at 602-506-8575</a> to find out where your case stands.
+    </div>
+  </header>
+
+  <form class="wre-panel" id="wre-form" novalidate>
+    <div class="wre-q">
+      <fieldset>
+        <legend>What's closest to your situation?</legend>
+        <span class="wre-help">Pick the one that matches. You can change it any time &mdash; nothing is saved anywhere but this device.</span>
+        <div class="wre-chips" id="wre-stage" role="group" aria-label="What kind of warrant situation applies to you">
+          <button type="button" class="wre-chip" data-stage="unsure" aria-pressed="false">I'm not sure if I have a warrant</button>
+          <button type="button" class="wre-chip" data-stage="bench" aria-pressed="false">A ticket, fine, or missed court date</button>
+          <button type="button" class="wre-chip" data-stage="probation" aria-pressed="false">Missed a probation check-in</button>
+          <button type="button" class="wre-chip" data-stage="felony" aria-pressed="false">A felony or serious charge</button>
+          <button type="button" class="wre-chip" data-stage="otherstate" aria-pressed="false">The warrant is from another state</button>
+        </div>
+      </fieldset>
+    </div>
+
+    <div class="wre-controls">
+      <button type="submit" class="wre-btn" id="wre-go">Show me the safest next step</button>
+      <button type="button" class="wre-btn wre-btn--ghost" id="wre-clear">Reset</button>
+    </div>
+  </form>
+
+  <section class="wre-results" id="wre-results" hidden aria-live="polite">
+    <div class="wre-now">
+      <h2 id="wre-now-title"></h2>
+      <p id="wre-now-body"></p>
+    </div>
+
+    <div class="wre-note" id="wre-note" hidden>
+      <h3>Worth knowing</h3>
+      <p id="wre-note-body"></p>
+    </div>
+
+    <ol class="wre-steps" id="wre-steps"></ol>
+
+    <div class="wre-call">
+      <h3>Who to call</h3>
+      <ul id="wre-call-list"></ul>
+    </div>
+  </section>
+
+  <section class="wre-overview" aria-label="What a warrant does and doesn't change">
+    <h2>What an outstanding warrant does &mdash; and doesn't &mdash; change</h2>
+    <p>The fear is usually bigger than the reality. Here's what actually tends to happen, and what doesn't, based on how services in Maricopa County actually operate.</p>
+  </section>
+
+  <section class="wre-how" aria-label="Common questions">
+    <h2>Common questions</h2>
+
+    <details>
+      <summary>Will a warrant stop me from getting into a shelter?</summary>
+      <p>Generally, no. Shelter intake staff at places like Central Arizona Shelter Services, the Human Services Campus, the Brian Garcia Welcome Center, and the Family Housing Hub are not law enforcement, and running warrant checks at intake is not standard practice in Maricopa County's shelter system &mdash; coordinated entry is built to get people inside, not to screen them out over legal history. That said, policies can vary by program and this page can't promise every provider's rule. If it's weighing on you, you can ask a shelter directly, or ask 2-1-1 to connect you somewhere first. What can affect a specific bed: safety concerns for other guests, active violent charges, or program-specific rules &mdash; not the mere existence of a bench warrant.</p>
+    </details>
+
+    <details>
+      <summary>Will it affect my SNAP, AHCCCS, TANF, or SSI benefits?</summary>
+      <p>For most people carrying a bench warrant &mdash; a missed traffic court date, an unpaid fine, a minor citation &mdash; the answer is no. Federal law only disqualifies someone from SNAP or TANF as a "fleeing felon," and that has a narrow legal meaning: it requires an outstanding <strong>felony</strong> warrant where law enforcement is actively trying to arrest you <em>and</em> has told the benefits agency they intend to. A warrant simply existing in a database is not enough to trigger it. If you're worried, don't assume you're disqualified and stop applying &mdash; call <a href="tel:211">2-1-1</a> or your DES caseworker and ask directly. AHCCCS (Arizona's Medicaid) does not use this rule at all.</p>
+    </details>
+
+    <details>
+      <summary>Can I still get a state ID or driver's license?</summary>
+      <p>Getting a standard Arizona ID card is not tied to warrant checks at MVD. A suspended or revoked <strong>driver's license</strong> is a separate issue from a warrant &mdash; it has its own reinstatement process, unrelated to whether you have an outstanding warrant on an unrelated matter. If you're working on getting ID sorted out, the <a href="/static-tools/id-recovery-wizard.html">ID Recovery Wizard</a> maps the right order to get your documents back.</p>
+    </details>
+
+    <details>
+      <summary>What is Maricopa County Regional Homeless Court, and can it help me?</summary>
+      <p>The Maricopa County Regional Homeless Court (MCRHC) exists specifically to quash warrants and clear fines tied to minor misdemeanor cases for people working on ending their homelessness &mdash; converting what you'd owe into completed program hours instead. It is held the third Tuesday of every month at 204 S 12th Ave, Phoenix, AZ 85007. You don't apply directly: you enroll with a qualified case manager or program provider first (most require things like sobriety, housing, or treatment progress and some community service), and once you're making progress, your case manager applies to MCRHC on your behalf and appears with you. It cannot help with active felony warrants, charges with mandatory sentencing, or cases where a victim has invoked their rights. Ask any case manager you're working with whether they're a qualified MCRHC provider, or call the court's Information Center at <a href="tel:6025063204">602-506-3204</a> to ask how to connect with one.</p>
+    </details>
+
+    <details>
+      <summary>What happens if I just ignore it?</summary>
+      <p>Warrants don't expire and don't go away on their own &mdash; they sit until an arrest happens, often at the worst possible moment: a traffic stop, a hospital visit, an unrelated police contact. Ignoring a missed court date can also add a new charge on top of the original one: Failure to Appear. For a misdemeanor case, that's a Class 2 misdemeanor (up to 4 months in jail, up to $750) the first time, rising to a Class 1 misdemeanor (up to 6 months, up to $2,500) if it happens again. For a felony case, Failure to Appear is itself a Class 5 felony (up to 1.5 years and a fine, though courts have discretion to reduce this with mitigating circumstances). Addressing it &mdash; even just a phone call to ask what's needed &mdash; almost always leaves you better off than waiting.</p>
+    </details>
+
+    <details>
+      <summary>Is anything saved on this page?</summary>
+      <p>No personal information is collected. The only thing this page remembers is which button you tapped, kept on your own device so it can show the same guidance if you return. The <strong>Reset</strong> button clears it instantly.</p>
+    </details>
+  </section>
+
+  <div class="wre-verify">
+    <strong>Verify before you rely on it.</strong> This page explains general Arizona and Maricopa County processes in plain language; it is not legal advice, and every warrant and every case is different. For guidance on your specific situation, contact <a href="tel:6025067711">Maricopa County Public Defense Services (602-506-7711)</a> or <a href="tel:6025068575">the Criminal Department Information Desk (602-506-8575)</a>, or call <a href="tel:211">2-1-1</a> for help connecting to a case manager or legal aid.
+  </div>
+
+  <div class="wre-sources">
+    <h2>Sources</h2>
+    <ul>
+      <li>Maricopa County Superior Court &mdash; Warrant Information &amp; Self-Surrender (superiorcourt.maricopa.gov)</li>
+      <li>Maricopa County Regional Homeless Court &mdash; eligibility, process, and location (superiorcourt.maricopa.gov)</li>
+      <li>Maricopa County Public Defense Services (maricopa.gov)</li>
+      <li>A.R.S. &sect; 13-2506 (Failure to Appear, 2nd degree), &sect; 13-2507 (Failure to Appear, 1st degree) &mdash; azleg.gov</li>
+      <li>USDA FNS &mdash; Fleeing Felons Questions &amp; Answers; 7 CFR 273.11(n) &mdash; fns.usda.gov</li>
+      <li>2-1-1 Arizona</li>
+    </ul>
+  </div>
+
+  <p style="margin-top:1.5rem; color:var(--gray); font-size:.875rem;"><em>See something out of date? <a href="/contact.html">Contact us</a> &mdash; we read every note.</em></p>
+
+</div>
+</main>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer__grid">
+      <div class="footer__brand">
+        <h3>Common Ladder</h3>
+        <p>The civic resource platform connecting people experiencing homelessness with every service in your community.</p>
+      </div>
+      <div>
+        <h4>Find help</h4>
+        <ul>
+          <li><a href="/find.html?cat=shelter">Shelter</a></li>
+          <li><a href="/find.html?cat=food">Food</a></li>
+          <li><a href="/find.html?cat=legal">Legal</a></li>
+          <li><a href="/help/">All categories</a></li>
+          <li><a href="/static-tools/">Local navigators</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>For providers</h4>
+        <ul>
+          <li><a href="/providers.html">Tools &amp; referrals</a></li>
+          <li><a href="/providers.html#case-manager-guide">Case manager guide</a></li>
+          <li><a href="/data-reports.html">Data &amp; reports</a></li>
+          <li><a href="/learn/">Four learning pathways</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>About</h4>
+        <ul>
+          <li><a href="/about.html">Our mission</a></li>
+          <li><a href="/about.html#methodology">Methodology</a></li>
+          <li><a href="/about.html#team">Team</a></li>
+          <li><a href="/brand/visual-guidelines.html">Brand guidelines</a></li>
+          <li><a href="/contact.html">Contact</a></li>
+          <li><a href="/privacy.html">Privacy</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer__transparency">
+      <strong>Transparency:</strong> Common Ladder is an independent civic project. We do not sell user data, run ads, or accept payment from listed resources.
+    </div>
+    <div class="footer__bottom">
+      <span>&copy; 2026 Common Ladder. Free to use, always.</span>
+      <span><time datetime="2026-08-25">Last updated August 25, 2026</time></span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  "use strict";
+
+  var STORE = "cl-wre-v1";
+
+  var form = document.getElementById("wre-form");
+  var clearBtn = document.getElementById("wre-clear");
+  var results = document.getElementById("wre-results");
+  var nowTitle = document.getElementById("wre-now-title");
+  var nowBody = document.getElementById("wre-now-body");
+  var noteWrap = document.getElementById("wre-note");
+  var noteBody = document.getElementById("wre-note-body");
+  var stepsList = document.getElementById("wre-steps");
+  var callList = document.getElementById("wre-call-list");
+
+  var stageBtns = Array.prototype.slice.call(document.querySelectorAll("#wre-stage .wre-chip"));
+  var stage = "";
+
+  var CALLS = {
+    court:   { html: '<strong>Maricopa Superior Court Criminal Information Desk</strong> — <a href="tel:6025068575">602-506-8575</a>. Ask what court issued your warrant and what it takes to resolve it.' },
+    probationcourt: { html: '<strong>Probation Violation Court</strong> — <a href="tel:6023720427">602-372-0427</a>. For warrants tied to a Maricopa County probation violation.' },
+    pd:      { html: '<strong>Maricopa County Public Defense Services</strong> — <a href="tel:6025067711">602-506-7711</a>. Free representation if you can\'t afford a lawyer, once the court appoints one.' },
+    cls:     { html: '<strong>Community Legal Services</strong> — <a href="tel:6022583434">602-258-3434</a>. Free help with the civil side of things — benefits, housing — not the criminal warrant itself.' },
+    homelesscourt: { html: '<strong>Maricopa County Regional Homeless Court</strong> — <a href="tel:6025063204">602-506-3204</a> (Court Information Center). Ask how to connect with a qualified case manager who can refer you.' },
+    assist:  { html: '<strong>2-1-1 Arizona</strong> — <a href="tel:211">call 2-1-1</a>. Free, statewide help finding a case manager, legal aid, or shelter.' },
+    courthelp: { html: '<strong>AZCourtHelp.org</strong> — free self-help information and forms for every Arizona court.' }
+  };
+
+  var STAGES = {
+    unsure: {
+      title: "Not sure if you have a warrant — here's how to check safely",
+      body: "Checking is almost always safer than not knowing, and asking does not get you arrested on the spot. The key is checking through the actual court, not a third-party “warrant search” website — many of those are run by bail bond companies and can be inaccurate or pushy about payment.",
+      note: "You only need to give your name and date of birth to ask. You don't have to explain why you're asking or give an address.",
+      steps: [
+        ["Call the court directly", "For a Maricopa County Superior Court case, call the Criminal Information Desk at 602-506-8575. For a traffic ticket or city ordinance, it's likely a city/municipal court or Justice Court instead — the clerk can point you to the right one if you're not sure."],
+        ["Have a lawyer or advocate check for you", "If you're not ready to call yourself, Public Defense Services or a legal aid worker can often check court records on your behalf without you having to be the one to ask."],
+        ["Write down what you find", "Case number, court name, and what it's for. You'll need this if you call again or talk to an attorney."]
+      ],
+      calls: ["court", "courthelp"]
+    },
+    bench: {
+      title: "A ticket, fine, or missed court date — this is usually the easiest kind to resolve",
+      body: "A bench warrant means a judge ordered your arrest because you missed something — a hearing, a payment, jury duty — not because of a new crime. Most of these can be cleared with a phone call and never require you to be arrested.",
+      note: "Courts are required to consider your ability to pay before jailing someone over unpaid fines — being unable to pay is not, by itself, supposed to keep the warrant open forever.",
+      steps: [
+        ["Call the court that issued it", "City/municipal court for a ticket, Justice Court for many misdemeanors, or the Superior Court Criminal Information Desk (602-506-8575) if you're not sure which. Ask exactly what it takes to clear it — a payment, a new court date, or a hearing."],
+        ["Ask about a payment plan or fee waiver", "If money is the issue, say so — many Arizona courts will set up a plan rather than hold the warrant open."],
+        ["Ask if a lawyer can appear for you", "For a lot of bench warrants, an attorney — or in some courts, a case manager — can get it quashed without you personally walking into a courthouse to be arrested."],
+        ["If it's tied to homelessness — trespassing, camping, sleeping in public — ask about Homeless Court", "This is exactly the kind of case the Maricopa County Regional Homeless Court exists to resolve, converting the fine into completed program hours instead."]
+      ],
+      calls: ["court", "homelesscourt", "courthelp"]
+    },
+    probation: {
+      title: "Missed a probation or parole check-in",
+      body: "Contact the court directly rather than waiting — probation violation warrants tend to get worse the longer they sit, and a lot of missed check-ins have understandable explanations that courts have heard before.",
+      note: "Housing instability is one of the most common reasons people miss check-ins, and it is not a new idea to the people who handle these cases.",
+      steps: [
+        ["Call Probation Violation Court right away", "602-372-0427. Waiting can make a missed check-in look intentional, even when it wasn't."],
+        ["Bring documentation if you have it", "A shelter intake date, a case manager's name and number, a treatment program enrollment — anything that shows what was happening when you missed the check-in."],
+        ["If you know your probation officer, reach out before things escalate further", "A heads-up can sometimes prevent an issue from turning into a warrant in the first place, or help resolve one that already has."],
+        ["Get a lawyer involved", "Probation violations can carry real jail time — Public Defense Services (602-506-7711) or a private attorney should be part of this, not something to navigate alone."]
+      ],
+      calls: ["probationcourt", "pd", "courthelp"]
+    },
+    felony: {
+      title: "A felony or serious charge — get a lawyer before you do anything else",
+      body: "This is the one situation where turning yourself in without warning can genuinely be the safer move — but only after a lawyer is arranged first. It is also the one type of warrant the Maricopa County Regional Homeless Court cannot resolve.",
+      note: "Appearing at a courthouse alone, without a lawyer, hoping to “clear it up” is the most common mistake people make with a felony warrant. Call for help first.",
+      steps: [
+        ["Call Public Defense Services or a criminal defense attorney first", "602-506-7711. A lawyer can sometimes arrange bail terms or a scheduled appearance instead of an unplanned arrest."],
+        ["Don't self-surrender without legal advice lined up", "Even a short call beforehand changes what happens next in your case."],
+        ["Know your rights if you're near police", "You can stay calm, identify yourself, and ask for a lawyer before answering other questions."],
+        ["Keep any paperwork you've received", "Notices, citations, or court documents help an attorney move faster on your behalf."]
+      ],
+      calls: ["pd", "court", "cls"]
+    },
+    otherstate: {
+      title: "The warrant is from another state",
+      body: "A warrant doesn't stop working at the state line. Arizona can extradite for many out-of-state warrants, and a routine stop here can turn into a hold while the other state decides what to do.",
+      note: "Whether a state will actually extradite for a specific warrant varies a lot — smaller counties sometimes won't pursue low-level warrants across state lines, but this needs an actual answer from a lawyer, not a guess.",
+      steps: [
+        ["Get a lawyer involved before anything else moves", "Either in the state that issued the warrant, or Arizona counsel who can coordinate with it."],
+        ["Ask specifically whether that state will extradite for this warrant", "Your attorney can find this out — it changes what the safest next step looks like."],
+        ["Tell your attorney if you're settled here now", "Stable housing, work, or treatment progress in Arizona can matter to how a case gets handled."]
+      ],
+      calls: ["pd", "cls"]
+    }
+  };
+
+  function setStage(v){
+    stage = v;
+    stageBtns.forEach(function(b){ b.setAttribute("aria-pressed", b.getAttribute("data-stage") === v ? "true" : "false"); });
+  }
+
+  stageBtns.forEach(function(b){
+    b.addEventListener("click", function(){ setStage(b.getAttribute("data-stage")); save(); });
+  });
+
+  function save(){
+    try { localStorage.setItem(STORE, JSON.stringify({ stage: stage })); } catch(e){}
+  }
+
+  function render(){
+    if(!stage){
+      results.hidden = false;
+      nowTitle.textContent = "Pick what's closest to your situation above";
+      nowBody.textContent = "Choose an option, then tap “Show me the safest next step.” The general questions below apply either way.";
+      noteWrap.hidden = true;
+      stepsList.innerHTML = "";
+      callList.innerHTML = "";
+      results.scrollIntoView({ behavior: "smooth", block: "nearest" });
+      return;
+    }
+
+    var s = STAGES[stage];
+    nowTitle.textContent = s.title;
+    nowBody.textContent = s.body;
+
+    if(s.note){
+      noteWrap.hidden = false;
+      noteBody.textContent = s.note;
+    } else {
+      noteWrap.hidden = true;
+    }
+
+    stepsList.innerHTML = "";
+    s.steps.forEach(function(step){
+      var li = document.createElement("li");
+      var h = document.createElement("h3");
+      h.textContent = step[0];
+      var p = document.createElement("p");
+      p.textContent = step[1];
+      li.appendChild(h);
+      li.appendChild(p);
+      stepsList.appendChild(li);
+    });
+
+    callList.innerHTML = "";
+    s.calls.forEach(function(key){
+      var li = document.createElement("li");
+      li.innerHTML = CALLS[key].html;
+      callList.appendChild(li);
+    });
+
+    results.hidden = false;
+    results.scrollIntoView({ behavior: "smooth", block: "nearest" });
+  }
+
+  form.addEventListener("submit", function(e){
+    e.preventDefault();
+    render();
+    save();
+  });
+
+  clearBtn.addEventListener("click", function(){
+    setStage("");
+    results.hidden = true;
+    try { localStorage.removeItem(STORE); } catch(e){}
+    stageBtns[0].focus();
+  });
+
+  function restore(){
+    try {
+      var raw = localStorage.getItem(STORE);
+      if(!raw) return;
+      var d = JSON.parse(raw);
+      if(d.stage && STAGES[d.stage]){ setStage(d.stage); render(); }
+    } catch(e){}
+  }
+
+  restore();
+})();
+</script>
+</body>
+</html>
