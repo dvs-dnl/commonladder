@@ -26,3 +26,12 @@ secrets.*
 
 # Brand-assets dev preview renders (not the canonical SVG sources)
 brand-assets/preview-*.png
+
+# Scratch smoke-test harnesses run from the theme root (they must live here to
+# resolve node_modules). Added 2026-09-21 by cl-tool-2026-09-21.
+*.tmp.js
+
+# Never commit dependencies. e27638a (2026-09-14) added 1,832 files / ~26MB from
+# an untracked node_modules/; this stops a repeat. Does NOT un-commit what is
+# already in the index — that still needs `git rm -r --cached node_modules`.
+node_modules/
