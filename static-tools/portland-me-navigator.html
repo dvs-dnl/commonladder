@@ -505,7 +505,7 @@
 </a>
 
 <!-- App shell — all screens rendered by JS into here -->
-<div role="note" style="background:#ffedd5;border:1px solid #9a3412;color:#6b2710;border-radius:10px;padding:14px 18px;margin:0 auto 18px;max-width:680px;font-size:.9rem;line-height:1.5;"><strong style="color:#9a3412;">AI-researched, not locally verified.</strong> Common Ladder is based in Arizona. We built this guide from public sources but don’t yet verify these listings by phone the way we do our Arizona tools. Use it to learn <em>what to ask for</em>, then <strong>call <a href="tel:211" style="color:#9a3412;">211</a></strong> for the current local provider. Last researched <time datetime="2026-08-03">August 3, 2026</time>. Wrong info? <a href="mailto:corrections.commonladder@gmail.com?subject=Resource%20update:%20Portland%2C%20Maine" style="color:#9a3412;">Tell us</a>.</div>
+<div role="note" style="background:#ffedd5;border:1px solid #9a3412;color:#6b2710;border-radius:10px;padding:14px 18px;margin:0 auto 18px;max-width:680px;font-size:.9rem;line-height:1.5;"><strong style="color:#9a3412;">AI-researched, not locally verified.</strong> Common Ladder is based in Arizona. We built this guide from public sources but don’t yet verify these listings by phone the way we do our Arizona tools. Use it to learn <em>what to ask for</em>, then <strong>call <a href="tel:211" style="color:#9a3412;">211</a></strong> for the current local provider. Last researched <time datetime="2026-06-14">June 14, 2026</time>. Wrong info? <a href="mailto:corrections.commonladder@gmail.com?subject=Resource%20update:%20Portland%2C%20Maine" style="color:#9a3412;">Tell us</a>.</div>
 
 <div id="app"></div>
 
@@ -557,7 +557,7 @@
     </div>
     <div class="footer__bottom">
       <span>&copy; 2026 Common Ladder. Free to use, always.</span>
-      <span><time datetime="2026-08-03">Last updated August 3, 2026</time></span> <span>&middot; Portland CoC (ME-502) &mdash; Portland, South Portland &amp; Cumberland County, Maine. Is this information out of date? <a href="mailto:corrections.commonladder@gmail.com?subject=Correction:%20/static-tools/portland-me-navigator.html">Report an error</a></span>
+      <span><time datetime="2026-10-19">Last updated October 19, 2026</time></span> <span>&middot; Portland CoC (ME-502) &mdash; Portland, South Portland &amp; Cumberland County, Maine. Is this information out of date? <a href="mailto:corrections.commonladder@gmail.com?subject=Correction:%20/static-tools/portland-me-navigator.html">Report an error</a></span>
     </div>
   </div>
 </footer>
@@ -644,234 +644,182 @@
      Keep firstAction to one clear sentence + phone number.
      resources: 3 is ideal; 2 minimum; 4 maximum.
   ═══════════════════════════════════════════════════════════ */
-  var PATHWAYS = {
+    var PATHWAYS = {
 
     result_veterans: {
-      label: 'Veterans Pathway',
-      badgeClass: 'badge-veterans',
-      badgeIcon: '🎖',
-      headline: 'There\'s a dedicated system built for you.',
-      firstAction: 'Call the National Call Center for Homeless Veterans right now: <strong>1-877-4AID-VET (1-877-424-3838)</strong>. Available 24/7. You do NOT need your DD-214 to call.',
-      callNumber: 'tel:18774243838',
-      callLabel: 'Call 1-877-4AID-VET',
-      what_to_expect: 'Maine runs veteran homelessness as a separate, faster track than the general shelter queue &mdash; use it. <strong>Preble Street Veterans Housing Services</strong> is the SSVF grantee for the entire state, with offices in Portland, Lewiston, and Bangor. SSVF can pay back rent, a security deposit, and first month&rsquo;s rent, and can move you straight into an apartment without waiting for a shelter bed. <strong>HUD-VASH</strong> &mdash; a housing voucher paired with a VA case manager &mdash; is administered through the VA Maine Healthcare System at Togus in Augusta, which also operates veteran transitional (Grant &amp; Per Diem) housing on the Togus campus. You do not need to be enrolled in VA health care, and you do not need a fully honorable discharge, to be screened for SSVF. Ask anyway.',
+      label: "Veterans Pathway",
+      badgeClass: "badge-veterans",
+      badgeIcon: "🎖",
+      headline: "There's a dedicated system built for veterans.",
+      firstAction: "Call <strong>211</strong> — free, 24/7 — and say: <em>“I’m a veteran and I’m homeless or about to be.”</em> Ask to be connected to the <strong>VA’s Health Care for Homeless Veterans (HCHV)</strong> program and your local <strong>coordinated-entry assessment</strong>. Veterans qualify for both VA housing (HUD-VASH) and the local Continuum of Care at the same time.",
+      callNumber: "tel:211",
+      callLabel: "Call 211",
+      what_to_expect: "211 will route you to the nearest VA homeless-program coordinator and your local CoC. The National Call Center for Homeless Veterans is available 24/7 anywhere in the U.S. if you can’t reach a local office.",
       bring: [
-        'DD-214 discharge papers (if you have them — not required to call)',
-        'Photo ID (if available)',
-        'Any VA documentation you have'
+        "DD-214 discharge papers (if you have them — not required to call)",
+        "Photo ID (if available)",
+        "Any VA documentation you have",
       ],
       resources: [
         {
-          name: 'VA Maine Healthcare System &mdash; Togus',
-          phone: '(207) 623-8411',
-          tel: 'tel:2076238411',
-          note: 'Ask for the Homeless Veterans Program when you call.'
+          name: "National Call Center for Homeless Veterans",
+          phone: "1-877-424-3838",
+          tel: "tel:18774243838",
+          note: "24/7. Available everywhere."
         },
         {
-          name: 'Preble Street Veterans Housing Services (SSVF)',
-          phone: '(207) 956-6556',
-          tel: 'tel:2079566556',
-          note: 'Statewide SSVF grantee. Rapid rehousing, back rent, deposits. Offices in Portland, Lewiston, and Bangor. Toll free 1-800-377-5709.'
+          name: "Veterans Crisis Line",
+          phone: "988",
+          tel: "tel:988",
+          note: "Press 1 for the VA crisis line."
         },
-        {
-          name: 'National Call Center for Homeless Veterans',
-          phone: '1-877-424-3838',
-          tel: 'tel:18774243838',
-          note: 'Available 24/7. Can connect you to programs anywhere in the country.'
-        }
       ],
       confidence: {
-        level: 'research',   // upgrade to 'verified' once phone numbers are confirmed
-        note: 'Sourced from VA.gov (VA Maine Healthcare System) and preblestreet.org. Phone numbers not yet confirmed by direct call.',
-        lastChecked: 'August 2026'
+        level: "unverified",
+        note: "AI-researched from public sources — not locally phone-verified. Call 211 to confirm the current local provider. Last researched June 14, 2026.",
+        lastChecked: "June 14, 2026"
       }
     },
 
     result_youth: {
-      label: 'Youth Pathway',
-      badgeClass: 'badge-youth',
-      badgeIcon: '🌱',
-      headline: 'You have access to youth-specific services here.',
-      firstAction: 'Call <strong>Preble Street Teen Services</strong> at <strong>(207) 775-0026 ext. 1330</strong> &mdash; or just walk into the Teen Center at 343 Cumberland Ave, open every day 8am&ndash;7pm, and ask for a bed tonight.',
-      callNumber: 'tel:2077750026',
-      callLabel: 'Call Preble Street Teen Services: (207) 775-0026',
-      what_to_expect: 'The <strong>Joe Kreisler Teen Shelter</strong> at 38 Preble Street is Maine&rsquo;s largest youth shelter &mdash; 28 beds, open nightly 8pm&ndash;8am, ages 12 through 20. It is low-barrier: no ID, no sobriety requirement, no referral, no parent needed. During the day the <strong>Teen Center</strong> at 343 Cumberland Ave is open 8am&ndash;7pm with three meals, showers, laundry, clothing, crisis counseling, and staff who help with school, work, and getting your documents replaced. If you are 18&ndash;24 you are also eligible for the adult system, and Preble Street can start a coordinated entry assessment and refer you to youth rapid rehousing or Portland Housing Authority&rsquo;s First Place program. Going through the youth door first is usually faster and safer.',
+      label: "Youth Pathway",
+      badgeClass: "badge-youth",
+      badgeIcon: "🌱",
+      headline: "If you’re 24 or under, there’s a youth-specific path.",
+      firstAction: "Call or text <strong>211</strong> and say: <em>“I’m 24 or younger and I need a safe place to stay.”</em> Ask for the <strong>youth emergency shelter</strong> and the <strong>runaway &amp; homeless youth (RHY) program</strong> in your area.",
+      callNumber: "tel:211",
+      callLabel: "Call 211",
+      what_to_expect: "211 routes you to the nearest youth shelter or drop-in center. The national backstops below are always available, day or night.",
       bring: [
-        'Photo ID (helpful for housing paperwork later &mdash; not needed to get a bed)',
-        'A phone number or email where staff can reach you',
-        'Nothing at all is required to walk into the Teen Center or the Teen Shelter'
+        "Photo ID (helpful — not required for crisis services)",
+        "Anything important you can carry",
+        "Nothing is required to call",
       ],
       resources: [
         {
-          name: 'Preble Street Teen Center &amp; Joe Kreisler Teen Shelter',
-          phone: '(207) 775-0026',
-          tel: 'tel:2077750026',
-          note: 'Teen Center: 343 Cumberland Ave, daily 8am&ndash;7pm. Shelter: 38 Preble St, nightly 8pm&ndash;8am. Ages 12&ndash;20. Ask for ext. 1330.'
+          name: "Safe Place",
+          phone: "Text SAFE + your location to 44357",
+          tel: "sms:44357?body=SAFE",
+          note: "Or walk into any QuikTrip and ask staff to call for you."
         },
         {
-          name: 'New Beginnings &mdash; Marian&rsquo;s Place',
-          phone: '(207) 795-4070',
-          tel: 'tel:2077954070',
-          note: 'Maine&rsquo;s only licensed 24-hour youth emergency shelter, ages 10&ndash;19. Answers 24/7, 365 days. Lewiston &mdash; they arrange transport.'
+          name: "National Runaway Safeline",
+          phone: "1-800-786-2929",
+          tel: "tel:18007862929",
+          note: "24/7, free, confidential."
         },
-        {
-          name: '211 Maine',
-          phone: 'Call or text 211',
-          tel: 'tel:211',
-          note: '24/7 statewide. Dial 211, or text your ZIP code to 898-211. Ask about youth beds.'
-        }
       ],
-      extra_note: '\u26a0\ufe0f Under 18? In Maine you can be sheltered at a licensed youth shelter without a parent&rsquo;s permission. Marian&rsquo;s Place (207-795-4070) is licensed for ages 10&ndash;19 and answers around the clock.',
       confidence: {
-        level: 'research',
-        note: 'Sourced from preblestreet.org and newbeginmaine.org. Hours and age ranges change seasonally &mdash; call before you travel.',
-        lastChecked: 'August 2026'
+        level: "unverified",
+        note: "AI-researched from public sources — not locally phone-verified. Call 211 to confirm the current local provider. Last researched June 14, 2026.",
+        lastChecked: "June 14, 2026"
       }
     },
 
     result_families: {
-      label: 'Families Pathway',
-      badgeClass: 'badge-families',
-      badgeIcon: '🏠',
-      headline: 'Families with children are prioritized in the shelter system.',
-      firstAction: 'Go to the City of Portland <strong>Prevention &amp; Diversion Program</strong> at <strong>39 Forest Avenue</strong>, or call <strong>(207) 482-5122</strong>. This is the single front door to every city shelter &mdash; families cannot be placed without going through here first.',
-      callNumber: 'tel:2074825122',
-      callLabel: 'Call Prevention &amp; Diversion: (207) 482-5122',
-      what_to_expect: 'Prevention &amp; Diversion is open Monday&ndash;Friday, 8am&ndash;8pm at 39 Forest Ave. Staff will first look at whether a one-time rent payment, a landlord mediation call, or a bus ticket to family elsewhere can keep you out of shelter &mdash; that is what &ldquo;diversion&rdquo; means, and it frequently resolves faster than waiting for a bed. If shelter is the right answer, families are placed at the City of Portland Family Shelter on Chestnut Street. <strong>Be direct about the wait.</strong> Family shelter capacity in Greater Portland has been strained for several years; ask specifically whether hotel or motel placement is available tonight and what the current wait looks like. Separately: under the federal <strong>McKinney-Vento Act</strong> your children keep the right to stay enrolled in their current school even after you move, and the district must arrange transportation. Ask Portland Public Schools for the homeless education liaison &mdash; do not wait for the school to offer.',
+      label: "Families Pathway",
+      badgeClass: "badge-families",
+      badgeIcon: "🏠",
+      headline: "Families are kept together in the shelter system.",
+      firstAction: "Call or text <strong>211</strong> and say: <em>“I have my kids with me and we need shelter tonight.”</em> Ask for <strong>family emergency shelter</strong> and the <strong>coordinated-entry assessment</strong> for rapid re-housing.",
+      callNumber: "tel:211",
+      callLabel: "Call 211",
+      what_to_expect: "211 routes you to family shelter and the local coordinated-entry system. If you are fleeing domestic violence, use the confidential hotline below instead — DV shelter is separate and won’t list your location.",
       bring: [
-        'Birth certificates for children (helpful but not always required)',
-        'Photo ID for adults',
-        'Documentation of income or benefits (if available)',
-        'Social security cards (if you have them)'
+        "Photo ID for adults (if available)",
+        "Birth certificates for children (helpful, not always required)",
+        "Documentation of income or benefits (if available)",
       ],
       resources: [
         {
-          name: 'City of Portland Prevention &amp; Diversion',
-          phone: '(207) 482-5122',
-          tel: 'tel:2074825122',
-          note: '39 Forest Ave. Mon&ndash;Fri 8am&ndash;8pm. Centralized intake for all city shelter, including families. Start here.'
+          name: "National Domestic Violence Hotline",
+          phone: "1-800-799-7233",
+          tel: "tel:18007997233",
+          note: "24/7, confidential. Text START to 88788. Connects you to a local confidential DV shelter."
         },
         {
-          name: 'City of Portland Family Shelter',
-          phone: '(207) 772-8339',
-          tel: 'tel:2077728339',
-          note: '54 Chestnut St. Emergency shelter for families with children. Placement is made through Prevention &amp; Diversion.'
+          name: "United Way 211",
+          phone: "211",
+          tel: "tel:211",
+          note: "Family shelter + coordinated entry."
         },
-        {
-          name: 'Greater Portland Family Promise',
-          phone: '(207) 200-8672',
-          tel: 'tel:2072008672',
-          note: 'Shelter, meals, intensive case management, and housing stabilization for families with children in Greater Portland.'
-        },
-        {
-          name: '211 Maine',
-          phone: 'Call or text 211',
-          tel: 'tel:211',
-          note: '24/7 statewide. Text your ZIP to 898-211. Ask specifically about family shelter and hotel voucher availability.'
-        }
       ],
       confidence: {
-        level: 'research',
-        note: 'Sourced from portlandmaine.gov and greaterportlandfamilypromise.org. Family shelter capacity changes daily; the phone numbers are the reliable part.',
-        lastChecked: 'August 2026'
+        level: "unverified",
+        note: "AI-researched from public sources — not locally phone-verified. Call 211 to confirm the current local provider. Last researched June 14, 2026.",
+        lastChecked: "June 14, 2026"
       }
     },
 
     result_chronic: {
-      label: 'Chronic Homelessness Pathway',
-      badgeClass: 'badge-chronic',
-      badgeIcon: '🔑',
-      headline: 'Permanent supportive housing may be the right fit for you.',
-      firstAction: 'Go to the City of Portland <strong>Prevention &amp; Diversion Program</strong>, 39 Forest Avenue, or call <strong>(207) 482-5122</strong>. Ask by name for a <strong>coordinated entry assessment</strong> &mdash; that is the step that puts you on the by-name list for permanent supportive housing.',
-      callNumber: 'tel:2074825122',
-      callLabel: 'Call Prevention &amp; Diversion: (207) 482-5122',
-      what_to_expect: '<strong>Maine no longer uses the VI-SPDAT.</strong> The Maine and Portland CoCs now prioritize primarily by <strong>length of time homeless</strong> over the past three years, scored through a coordinated entry assessment and tracked on a by-name list held by your region&rsquo;s Homeless Response Service Hub. Cumberland County&rsquo;s hub is led by United Way of Southern Maine. The practical consequence: <em>documentation of your homelessness is what moves you up the list.</em> Every shelter night, every street outreach contact, every day-center visit that gets entered into HMIS counts. Ask any shelter or outreach worker to make sure you are entered in HMIS and to record how long you have been homeless &mdash; including time before you came to Portland. While you wait, the Homeless Services Center on Riverside Street and Milestone Recovery on India Street provide shelter, and Preble Street&rsquo;s outreach and health teams do case management on the street with no appointment. Shalom House holds the largest CoC permanent supportive housing portfolio in Greater Portland.',
+      label: "Chronic Homelessness Pathway",
+      badgeClass: "badge-chronic",
+      badgeIcon: "🔑",
+      headline: "The housing list starts with one assessment.",
+      firstAction: "Call or text <strong>211</strong> and say: <em>“I’ve been homeless a long time and I want to get on the housing list.”</em> Ask for the <strong>coordinated-entry assessment</strong> — in this system, permanent supportive housing is reached by being assessed and placed on the community housing-referral list. The assessment is the door; there is no separate number.",
+      callNumber: "tel:211",
+      callLabel: "Call 211",
+      what_to_expect: "A coordinated-entry assessor will ask about your situation and add you to the local housing-referral list. While you wait, ask 211 for tonight’s shelter and a daytime drop-in center.",
       bring: [
-        'Photo ID (any form)',
-        'Documentation of health conditions (if available — not required to be assessed)',
-        'Any records of prior housing or service history'
+        "Photo ID (any form)",
+        "Documentation of health conditions (if available — not required to be assessed)",
+        "Any records of prior housing or service history",
       ],
       resources: [
         {
-          name: 'City of Portland Prevention &amp; Diversion',
-          phone: '(207) 482-5122',
-          tel: 'tel:2074825122',
-          note: '39 Forest Ave, Mon&ndash;Fri 8am&ndash;8pm. Entry point for coordinated entry assessment and all city shelter.'
+          name: "988 Suicide &amp; Crisis Lifeline",
+          phone: "988",
+          tel: "tel:988",
+          note: "Behavioral-health crisis support + SOAR disability-benefit help tied to housing."
         },
         {
-          name: 'Shalom House',
-          phone: '(207) 874-1080',
-          tel: 'tel:2078741080',
-          note: '106 Gilman St. CoC permanent supportive housing and rental assistance for people with serious mental illness, co-occurring disorders, or other disabilities.'
+          name: "United Way 211",
+          phone: "211",
+          tel: "tel:211",
+          note: "Coordinated entry + shelter while you wait."
         },
-        {
-          name: 'Preble Street Street Outreach',
-          phone: '(207) 775-0026',
-          tel: 'tel:2077750026',
-          note: 'Ask for outreach &mdash; ext. 1880. Meets people where they are, outdoors, with no appointment and no ID. Can start your HMIS record.'
-        },
-        {
-          name: '211 Maine',
-          phone: 'Call or text 211',
-          tel: 'tel:211',
-          note: '24/7 statewide. Also connects to behavioral health crisis services. Maine crisis line: 1-888-568-1112.'
-        }
       ],
-      extra_note: '\ud83d\udccb Qualifying conditions include physical, mental health, or substance use disorders that substantially affect daily functioning. You do not need a formal diagnosis to be assessed &mdash; but a diagnosis on paper does help, and a case manager can help you get one.',
       confidence: {
-        level: 'research',
-        note: 'Sourced from mainehomelessplanning.org, mainehousing.org, portlandmaine.gov, and shalomhouseinc.org. Prioritization method confirmed as length-of-time-homeless, not VI-SPDAT.',
-        lastChecked: 'August 2026'
+        level: "unverified",
+        note: "AI-researched from public sources — not locally phone-verified. Call 211 to confirm the current local provider. Last researched June 14, 2026.",
+        lastChecked: "June 14, 2026"
       }
     },
 
     result_adult: {
-      label: 'Single Adults Pathway',
-      badgeClass: 'badge-adult',
-      badgeIcon: '📞',
-      headline: 'Here\'s where to go for emergency shelter and housing help.',
-      firstAction: 'If you have <strong>not</strong> stayed in a City of Portland shelter in the last 90 days, go to <strong>Prevention &amp; Diversion, 39 Forest Avenue</strong> (Mon&ndash;Fri, 8am&ndash;8pm) or call <strong>(207) 482-5122</strong>. If you <strong>have</strong> stayed recently, call the <strong>Homeless Services Center at (207) 761-2072</strong> &mdash; 654 Riverside Street, staffed 24/7.',
-      callNumber: 'tel:2074825122',
-      callLabel: 'Call Prevention &amp; Diversion: (207) 482-5122',
-      what_to_expect: 'Portland runs a <strong>single front door</strong>. Prevention &amp; Diversion at 39 Forest Ave assesses everyone new to the system, and will first try to resolve your situation without a shelter bed &mdash; a rent or utility payment, a call to a landlord, a bus ticket to family. Say yes to hearing those options; they often work faster than a bed does. If you need shelter, you are referred to the <strong>Homeless Services Center at 654 Riverside Street</strong>: a large low-barrier shelter, staffed 24/7, with meals, showers, laundry, on-site medical care, and case management. Riverside Street sits about five miles from the peninsula &mdash; ask at intake about the bus route and any shuttle, because getting back downtown for appointments is the part people get caught out by. <strong>ID helps but is not required to be sheltered.</strong> Milestone Recovery at 65 India St runs a separate 41-bed low-barrier shelter for men with chronic alcohol and drug dependence and will take people who are actively intoxicated. For food, showers, mail, a clothing closet, and on-site health care during the day, Preble Street&rsquo;s Resource Center at 252 Oxford St serves meals daily, no questions asked.',
+      label: "Single Adults Pathway",
+      badgeClass: "badge-adult",
+      badgeIcon: "📞",
+      headline: "Start with tonight’s shelter, then the housing list.",
+      firstAction: "Call or text <strong>211</strong> and say: <em>“I need a shelter bed tonight.”</em> Ask for <strong>tonight’s open beds for single adults</strong>, the nearest <strong>daytime drop-in center</strong> (showers, mail, case management), and a <strong>free meal site</strong>. 211 is multilingual and 24/7.",
+      callNumber: "tel:211",
+      callLabel: "Call 211",
+      what_to_expect: "211 has the current shelter-bed picture for your area, which changes daily. Ask them to also start a coordinated-entry assessment so you’re working toward housing, not just tonight.",
       bring: [
-        'Photo ID (helpful but not always required)',
-        'Social security card or number (if available)',
-        'Any documentation of income or benefits'
+        "Photo ID (helpful but not always required)",
+        "Social security card or number (if available)",
+        "Any documentation of income or benefits",
       ],
       resources: [
         {
-          name: 'City of Portland Homeless Services Center',
-          phone: '(207) 761-2072',
-          tel: 'tel:2077612072',
-          note: '654 Riverside St. Staffed 24/7. Meals, showers, laundry, on-site medical care, case management.'
+          name: "Find a free clinic (FQHC)",
+          phone: "Ask 211",
+          tel: "tel:211",
+          note: "Federally Qualified Health Centers treat everyone regardless of ability to pay."
         },
         {
-          name: 'City of Portland Prevention &amp; Diversion',
-          phone: '(207) 482-5122',
-          tel: 'tel:2074825122',
-          note: '39 Forest Ave, Mon&ndash;Fri 8am&ndash;8pm. Required first stop if you have not been in a city shelter in the last 90 days.'
+          name: "988 Suicide &amp; Crisis Lifeline",
+          phone: "988",
+          tel: "tel:988",
+          note: "24/7 mental-health support."
         },
-        {
-          name: 'Milestone Recovery',
-          phone: '(207) 775-4790',
-          tel: 'tel:2077754790',
-          note: '65 India St. 41-bed low-barrier shelter for men with chronic alcohol and drug dependence. Open 24/7. Accepts people who are actively intoxicated.'
-        },
-        {
-          name: '211 Maine',
-          phone: 'Call or text 211',
-          tel: 'tel:211',
-          note: '24/7 statewide. Dial 211 or text your ZIP to 898-211 for bed availability and every other local service.'
-        }
       ],
-      extra_note: '\ud83c\udf7d Preble Street Resource Center, 252 Oxford St &mdash; hot meals daily with no questions asked, plus a clothing closet, mail service, case management, and on-site health care. Call (207) 775-0026.',
       confidence: {
-        level: 'research',
-        note: 'Sourced from portlandmaine.gov, preblestreet.org, and milestone-recovery.org. The 90-day Prevention &amp; Diversion rule is city policy and has changed before &mdash; call ahead.',
-        lastChecked: 'August 2026'
+        level: "unverified",
+        note: "AI-researched from public sources — not locally phone-verified. Call 211 to confirm the current local provider. Last researched June 14, 2026.",
+        lastChecked: "June 14, 2026"
       }
-    }
+    },
 
   }; // end PATHWAYS
 

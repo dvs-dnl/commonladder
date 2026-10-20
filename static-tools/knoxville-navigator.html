@@ -505,7 +505,7 @@
 </a>
 
 <!-- App shell — all screens rendered by JS into here -->
-<div role="note" style="background:#ffedd5;border:1px solid #9a3412;color:#6b2710;border-radius:10px;padding:14px 18px;margin:0 auto 18px;max-width:680px;font-size:.9rem;line-height:1.5;"><strong style="color:#9a3412;">AI-researched, not locally verified.</strong> Common Ladder is based in Arizona. We built this guide from public sources but don’t yet verify these listings by phone the way we do our Arizona tools. Use it to learn <em>what to ask for</em>, then <strong>call <a href="tel:211" style="color:#9a3412;">211</a></strong> for the current local provider. Last researched <time datetime="2026-08-17">August 17, 2026</time>. Wrong info? <a href="mailto:corrections.commonladder@gmail.com?subject=Resource%20update:%20Knoxville%20/%20Knox%20County" style="color:#9a3412;">Tell us</a>.</div>
+<div role="note" style="background:#ffedd5;border:1px solid #9a3412;color:#6b2710;border-radius:10px;padding:14px 18px;margin:0 auto 18px;max-width:680px;font-size:.9rem;line-height:1.5;"><strong style="color:#9a3412;">AI-researched, not locally verified.</strong> Common Ladder is based in Arizona. We built this guide from public sources but don’t yet verify these listings by phone the way we do our Arizona tools. Use it to learn <em>what to ask for</em>, then <strong>call <a href="tel:211" style="color:#9a3412;">211</a></strong> for the current local provider. Last researched <time datetime="2026-06-14">June 14, 2026</time>. Wrong info? <a href="mailto:corrections.commonladder@gmail.com?subject=Resource%20update:%20Knoxville%20/%20Knox%20County" style="color:#9a3412;">Tell us</a>.</div>
 
 <div id="app"></div>
 
@@ -557,7 +557,7 @@
     </div>
     <div class="footer__bottom">
       <span>&copy; 2026 Common Ladder. Free to use, always.</span>
-      <span><time datetime="2026-08-17">Last updated August 17, 2026</time></span> <span>&middot; Knoxville/Knox County CoC (TN-502) &mdash; Knoxville &amp; Knox County, Tennessee. Is this information out of date? <a href="mailto:corrections.commonladder@gmail.com?subject=Correction:%20/static-tools/knoxville-navigator.html">Report an error</a></span>
+      <span><time datetime="2026-10-19">Last updated October 19, 2026</time></span> <span>&middot; Knoxville/Knox County CoC (TN-502) &mdash; Knoxville &amp; Knox County, Tennessee. Is this information out of date? <a href="mailto:corrections.commonladder@gmail.com?subject=Correction:%20/static-tools/knoxville-navigator.html">Report an error</a></span>
     </div>
   </div>
 </footer>
@@ -646,248 +646,182 @@
      21 and under + families), Volunteers of America (veteran
      households), VMC Bush Family Refuge (single adults).
   ═══════════════════════════════════════════════════════════ */
-  var PATHWAYS = {
+    var PATHWAYS = {
 
     result_veterans: {
-      label: 'Veterans Pathway',
-      badgeClass: 'badge-veterans',
-      badgeIcon: '🎖',
-      headline: 'There\'s a dedicated system built for you.',
-      firstAction: 'Call the National Call Center for Homeless Veterans right now: <strong>1-877-4AID-VET (1-877-424-3838)</strong>. Available 24/7. You do NOT need your DD-214 to call. Then, locally, contact <strong>Volunteers of America at (865) 338-3370</strong> — they are the designated veteran access point for Knoxville\'s coordinated entry system.',
-      callNumber: 'tel:18774243838',
-      callLabel: 'Call 1-877-4AID-VET',
-      what_to_expect: 'Knoxville\'s coordinated entry system is called <strong>CHAMP</strong> (Coordinated Housing Assessment and Match Plan), and it has a separate front door for veteran households. If you are a veteran, the spouse of a veteran, the head of a veteran household, or you only served time in military training, start with Volunteers of America at 9111 Cross Park Drive, Bldg. E, Ste. 119. Call ahead — this location asks that you phone before coming in rather than walking up. Volunteers of America Mid-States also runs <strong>SSVF</strong> here, which pays for rapid rehousing, deposits, back rent, and prevention assistance.<br><br>VA health care for Knox County is delivered through <strong>VA Mountain Home Health Care</strong>, headquartered in Johnson City. The Knox County VA Clinic at 1557 Downtown West Boulevard offers mental health and audiology only — homeless program case management, the domiciliary, and HUD-VASH are coordinated through Mountain Home. Ask explicitly for the Homeless Programs care coordinator.<br><br>One local wrinkle worth knowing: HUD-VASH voucher administration in this region has historically run through the Oak Ridge Housing Authority, with limited coverage inside Knox County itself. Do not assume a VASH voucher will be usable in Knoxville — ask the case manager which voucher you are actually being offered and where it can be used before you turn down other options.',
+      label: "Veterans Pathway",
+      badgeClass: "badge-veterans",
+      badgeIcon: "🎖",
+      headline: "There's a dedicated system built for veterans.",
+      firstAction: "Call <strong>211</strong> — free, 24/7 — and say: <em>“I’m a veteran and I’m homeless or about to be.”</em> Ask to be connected to the <strong>VA’s Health Care for Homeless Veterans (HCHV)</strong> program and your local <strong>coordinated-entry assessment</strong>. Veterans qualify for both VA housing (HUD-VASH) and the local Continuum of Care at the same time.",
+      callNumber: "tel:211",
+      callLabel: "Call 211",
+      what_to_expect: "211 will route you to the nearest VA homeless-program coordinator and your local CoC. The National Call Center for Homeless Veterans is available 24/7 anywhere in the U.S. if you can’t reach a local office.",
       bring: [
-        'DD-214 discharge papers (if you have them — not required to call)',
-        'Photo ID (if available)',
-        'Any VA documentation, award letters, or claim numbers you have',
-        'Nothing at all is required to phone the national hotline'
+        "DD-214 discharge papers (if you have them — not required to call)",
+        "Photo ID (if available)",
+        "Any VA documentation you have",
       ],
       resources: [
         {
-          name: 'Volunteers of America — SSVF / CHAMP veteran access point',
-          phone: '(865) 338-3370',
-          tel: 'tel:8653383370',
-          note: '9111 Cross Park Dr, Bldg. E, Ste. 119. Designated coordinated entry access point for veteran households. Call in advance rather than walking in.'
+          name: "National Call Center for Homeless Veterans",
+          phone: "1-877-424-3838",
+          tel: "tel:18774243838",
+          note: "24/7. Available everywhere."
         },
         {
-          name: 'VA Mountain Home Health Care',
-          phone: '(423) 926-1171',
-          tel: 'tel:4239261171',
-          note: 'Serves Knox County. Ask for the Homeless Veterans Program or a homeless care coordinator. Runs a domiciliary with a homeless treatment track.'
+          name: "Veterans Crisis Line",
+          phone: "988",
+          tel: "tel:988",
+          note: "Press 1 for the VA crisis line."
         },
-        {
-          name: 'Knox County Veterans Services',
-          phone: '(865) 215-5645',
-          tel: 'tel:8652155645',
-          note: 'County office. Free help replacing a lost DD-214 and filing VA benefit claims — useful if paperwork is the thing blocking you.'
-        },
-        {
-          name: 'National Call Center for Homeless Veterans',
-          phone: '1-877-424-3838',
-          tel: 'tel:18774243838',
-          note: 'Available 24/7. Can connect you to programs anywhere in the country.'
-        }
       ],
       confidence: {
-        level: 'research',
-        note: 'Veteran access point and address sourced from the Knoxville/Knox County CHAMP coordinated entry page (KnoxHMIS, UT SWORPS). VA numbers from VA.gov. Knox County Veterans Services number from the Knoxville/Knox County Homeless Coalition directory. Phone numbers have not been called to confirm. Note: a second listing places SSVF intake at 511 N. Broadway via (865) 524-3926 — if the Cross Park Drive number does not answer, try that one.',
-        lastChecked: 'August 2026'
+        level: "unverified",
+        note: "AI-researched from public sources — not locally phone-verified. Call 211 to confirm the current local provider. Last researched June 14, 2026.",
+        lastChecked: "June 14, 2026"
       }
     },
 
     result_youth: {
-      label: 'Youth Pathway',
-      badgeClass: 'badge-youth',
-      badgeIcon: '🌱',
-      headline: 'You have access to youth-specific services here.',
-      firstAction: 'Go to <strong>CAC Homeward Bound</strong> at 2247 Western Avenue, or call <strong>(865) 546-3500</strong> — this is Knoxville\'s designated coordinated entry access point for young people on their own, open Monday–Friday 8:00 a.m. to 4:45 p.m.',
-      callNumber: 'tel:8655463500',
-      callLabel: 'Call CAC Homeward Bound: (865) 546-3500',
-      what_to_expect: 'Knoxville routes young people through a different front door than single adults. <strong>CAC Homeward Bound</strong> — part of the Knoxville-Knox County Community Action Committee — is the designated CHAMP access point for youth and young adults on their own, and for families with children. You do not need documentation to complete a CHAMP assessment. Staff will ask about where you have been sleeping, your income, health, and safety, and then match you to whatever housing programs you qualify for.<br><br><strong>Important age note:</strong> the CHAMP youth access point is designed for people <strong>21 and under</strong>. If you are 22, 23, or 24, you are still a young adult for most program purposes, but coordinated entry will likely route you through the single-adult access point — the VMC Bush Family Refuge at 511 N. Broadway, walk-in Tuesday through Thursday mornings. Go there if Homeward Bound tells you you\'re outside their age range, and say clearly that you want a CHAMP assessment.<br><br>If you are <strong>17 or younger</strong> and need somewhere safe tonight, the McNabb Center runs Safe Place and a Youth Emergency Shelter for ages 12–17 — call the crisis line at (865) 523-2689. Safe Place also means you can walk into any business displaying the yellow-and-black Safe Place sign and ask staff to call for you.',
+      label: "Youth Pathway",
+      badgeClass: "badge-youth",
+      badgeIcon: "🌱",
+      headline: "If you’re 24 or under, there’s a youth-specific path.",
+      firstAction: "Call or text <strong>211</strong> and say: <em>“I’m 24 or younger and I need a safe place to stay.”</em> Ask for the <strong>youth emergency shelter</strong> and the <strong>runaway &amp; homeless youth (RHY) program</strong> in your area.",
+      callNumber: "tel:211",
+      callLabel: "Call 211",
+      what_to_expect: "211 routes you to the nearest youth shelter or drop-in center. The national backstops below are always available, day or night.",
       bring: [
-        'Nothing is required for a CHAMP assessment — no ID, no paperwork',
-        'Photo ID or birth certificate if you happen to have them (helps later, not at intake)',
-        'A phone number or email where someone can reach you — this matters more than documents',
-        'If you are under 18, you do not need a parent\'s permission to call the Safe Place crisis line'
+        "Photo ID (helpful — not required for crisis services)",
+        "Anything important you can carry",
+        "Nothing is required to call",
       ],
       resources: [
         {
-          name: 'CAC Homeward Bound (Community Action Committee)',
-          phone: '(865) 546-3500',
-          tel: 'tel:8655463500',
-          note: '2247 Western Ave. CHAMP coordinated entry access point for youth/young adults 21 and under and for families with children. Mon–Fri 8:00 a.m.–4:45 p.m.'
+          name: "Safe Place",
+          phone: "Text SAFE + your location to 44357",
+          tel: "sms:44357?body=SAFE",
+          note: "Or walk into any QuikTrip and ask staff to call for you."
         },
         {
-          name: 'McNabb Center — Youth LINC & Safe Place',
-          phone: '(865) 523-2689',
-          tel: 'tel:8655232689',
-          note: 'Crisis line for runaway and homeless youth. Emergency shelter for ages 12–17. Call to check eligibility — you do not need an adult to call for you.'
+          name: "National Runaway Safeline",
+          phone: "1-800-786-2929",
+          tel: "tel:18007862929",
+          note: "24/7, free, confidential."
         },
-        {
-          name: 'CONNECT Ministries',
-          phone: '(865) 851-8005',
-          tel: 'tel:8658518005',
-          note: 'Youth outreach and mentoring in Knoxville. Good first contact if you want someone to walk with you to an appointment.'
-        },
-        {
-          name: 'VMC Bush Family Refuge (if you are 22–24)',
-          phone: '(865) 673-0235',
-          tel: 'tel:8656730235',
-          note: '511 N. Broadway. Walk-in CHAMP assessments Tue/Wed/Thu, 8:30–11:00 a.m. Use this if you are told you\'re too old for the youth access point.'
-        }
       ],
       confidence: {
-        level: 'research',
-        note: 'Access point designations, ages, addresses, and hours sourced from the Knoxville/Knox County CHAMP coordinated entry page (KnoxHMIS, UT SWORPS). Youth provider numbers from the Knoxville/Knox County Homeless Coalition directory and McNabb Center. Phone numbers have not been called to confirm, and shelter age ranges can shift — call before traveling.',
-        lastChecked: 'August 2026'
+        level: "unverified",
+        note: "AI-researched from public sources — not locally phone-verified. Call 211 to confirm the current local provider. Last researched June 14, 2026.",
+        lastChecked: "June 14, 2026"
       }
     },
 
     result_families: {
-      label: 'Families Pathway',
-      badgeClass: 'badge-families',
-      badgeIcon: '👨‍👩‍👧',
-      headline: 'Families with children get a separate, faster track here.',
-      firstAction: 'Call <strong>Family Promise of Knoxville at (865) 584-2822</strong> for emergency shelter that keeps your family together — and call <strong>CAC Homeward Bound at (865) 546-3500</strong> to get on the CHAMP coordinated entry list, which is how families are matched to longer-term housing.',
-      callNumber: 'tel:8655842822',
-      callLabel: 'Call Family Promise: (865) 584-2822',
-      what_to_expect: 'Knoxville treats families with children as their own track. Two calls matter, and they do different things.<br><br><strong>Family Promise of Knoxville</strong> provides emergency shelter for families through a rotating network of more than 40 host congregations, plus case management while you\'re in the program and stabilization support after you\'re housed. Families stay together — you will not be split by gender. Capacity is limited and there can be a wait, so call as early as you can rather than waiting until the last night.<br><br><strong>CAC Homeward Bound</strong>, at 2247 Western Avenue, is the designated CHAMP coordinated entry access point for families with children. This is the assessment that gets you onto the list for rapid rehousing and permanent supportive housing. No documentation is required to complete it. Doing both — shelter with one, assessment with the other — is normal and expected here.<br><br><strong>Your children\'s school rights:</strong> under the federal McKinney-Vento Act, children who are homeless can stay enrolled in their original school even if you have moved, and the district must arrange transportation. They can also enroll immediately without proof of address, immunization records, or a birth certificate. Ask Knox County Schools for the <strong>homeless education liaison</strong> — this right is not optional and does not depend on you being in a shelter.<br><br>If you are leaving domestic violence, go straight to the Knoxville Family Justice Center 24-hour crisis line at (865) 521-6336 instead — that pathway is faster and does not require you to disclose your location.',
+      label: "Families Pathway",
+      badgeClass: "badge-families",
+      badgeIcon: "🏠",
+      headline: "Families are kept together in the shelter system.",
+      firstAction: "Call or text <strong>211</strong> and say: <em>“I have my kids with me and we need shelter tonight.”</em> Ask for <strong>family emergency shelter</strong> and the <strong>coordinated-entry assessment</strong> for rapid re-housing.",
+      callNumber: "tel:211",
+      callLabel: "Call 211",
+      what_to_expect: "211 routes you to family shelter and the local coordinated-entry system. If you are fleeing domestic violence, use the confidential hotline below instead — DV shelter is separate and won’t list your location.",
       bring: [
-        'Photo ID for the adults, if you have it',
-        'Birth certificates and Social Security cards for the children, if available — not required to be assessed',
-        'Any custody or guardianship paperwork, if relevant',
-        'Nothing at all is required for the CHAMP assessment at Homeward Bound'
+        "Photo ID for adults (if available)",
+        "Birth certificates for children (helpful, not always required)",
+        "Documentation of income or benefits (if available)",
       ],
       resources: [
         {
-          name: 'Family Promise of Knoxville',
-          phone: '(865) 584-2822',
-          tel: 'tel:8655842822',
-          note: 'Emergency shelter for families with children through a host-congregation network, plus prevention, case management, and post-housing stabilization.'
+          name: "National Domestic Violence Hotline",
+          phone: "1-800-799-7233",
+          tel: "tel:18007997233",
+          note: "24/7, confidential. Text START to 88788. Connects you to a local confidential DV shelter."
         },
         {
-          name: 'CAC Homeward Bound (Community Action Committee)',
-          phone: '(865) 546-3500',
-          tel: 'tel:8655463500',
-          note: '2247 Western Ave. CHAMP coordinated entry access point for families with children. Mon–Fri 8:00 a.m.–4:45 p.m. This is your route to rapid rehousing.'
+          name: "United Way 211",
+          phone: "211",
+          tel: "tel:211",
+          note: "Family shelter + coordinated entry."
         },
-        {
-          name: 'Salvation Army of Knoxville',
-          phone: '(865) 525-9401',
-          tel: 'tel:8655259401',
-          note: 'Emergency and transitional shelter. Call for current family availability — capacity varies night to night.'
-        },
-        {
-          name: 'Knoxville Family Justice Center (domestic violence)',
-          phone: '(865) 521-6336',
-          tel: 'tel:8655216336',
-          note: '24-hour crisis line. Use this instead if you are fleeing violence — it is a faster and more protective route than general shelter intake.'
-        }
       ],
       confidence: {
-        level: 'research',
-        note: 'Family access point sourced from the Knoxville/Knox County CHAMP coordinated entry page (KnoxHMIS, UT SWORPS). Family Promise, Salvation Army, and Family Justice Center numbers from provider websites and the Knoxville/Knox County Homeless Coalition directory. Phone numbers have not been called to confirm. McKinney-Vento rights are federal law and do not vary locally, but the Knox County Schools liaison contact was not confirmed and should be requested by name.',
-        lastChecked: 'August 2026'
+        level: "unverified",
+        note: "AI-researched from public sources — not locally phone-verified. Call 211 to confirm the current local provider. Last researched June 14, 2026.",
+        lastChecked: "June 14, 2026"
       }
     },
 
     result_chronic: {
-      label: 'Chronic Homelessness Pathway',
-      badgeClass: 'badge-chronic',
-      badgeIcon: '🏠',
-      headline: 'You may qualify for permanent supportive housing.',
-      firstAction: 'Go to the <strong>VMC Bush Family Refuge, 511 N. Broadway</strong>, on a Tuesday, Wednesday, or Thursday between <strong>8:30 and 11:00 a.m.</strong> and ask for a <strong>CHAMP assessment</strong>. Walk-in, no appointment, no documents needed. Questions first: <strong>(865) 673-0235</strong>.',
-      callNumber: 'tel:8656730235',
-      callLabel: 'Call VMC Bush Family Refuge: (865) 673-0235',
-      what_to_expect: 'Permanent supportive housing in Knoxville is allocated almost entirely through <strong>CHAMP</strong> — the Coordinated Housing Assessment and Match Plan. There is no separate PSH waitlist you can join directly. If you are not in CHAMP, you are not in line, no matter how long you have been outside.<br><br><strong>The assessment tool here is not the VI-SPDAT.</strong> Knoxville retired its old vulnerability index after an 18-month analysis with the University of Tennessee College of Social Work found it produced uneven outcomes by race and gender, and replaced it with a locally built tool. So if a worker elsewhere told you to "ask for your VI-SPDAT score," the right phrase in Knoxville is <strong>"I want a CHAMP assessment"</strong> or <strong>"I want to be added to the CHAMP PSH list."</strong><br><br>To be eligible you must be literally homeless — sleeping outside, in a vehicle or abandoned building, in an emergency shelter, fleeing domestic violence, or exiting an institution where you stayed 90 days or less after being homeless. After the assessment you go onto a prioritized list. If a program has an opening and you match, someone from that agency contacts you directly. <strong>Being assessed does not guarantee housing</strong> — the community has far fewer PSH units than people who qualify — but it is the only door.<br><br>The PSH stock you\'d likely be matched to includes VMC\'s <strong>Minvilla Manor</strong> (57 apartments) and <strong>Caswell Manor</strong> (48 apartments), both staffed 24/7. Both take residents only by CHAMP referral, selected from the list by vulnerability.<br><br>If you cannot physically get to the Refuge, VMC\'s <strong>Street Outreach</strong> team does CHAMP intakes in the field. Outreach workers are out most of the day and return calls when they\'re back in the office, so leave a message and a way to reach you.',
+      label: "Chronic Homelessness Pathway",
+      badgeClass: "badge-chronic",
+      badgeIcon: "🔑",
+      headline: "The housing list starts with one assessment.",
+      firstAction: "Call or text <strong>211</strong> and say: <em>“I’ve been homeless a long time and I want to get on the housing list.”</em> Ask for the <strong>coordinated-entry assessment</strong> — in this system, permanent supportive housing is reached by being assessed and placed on the community housing-referral list. The assessment is the door; there is no separate number.",
+      callNumber: "tel:211",
+      callLabel: "Call 211",
+      what_to_expect: "A coordinated-entry assessor will ask about your situation and add you to the local housing-referral list. While you wait, ask 211 for tonight’s shelter and a daytime drop-in center.",
       bring: [
-        'Nothing is required for the CHAMP assessment — this is worth repeating',
-        'Photo ID and Social Security card if you have them (needed later, at program enrollment, not now)',
-        'Any medical, disability, or mental health documentation — this can affect prioritization',
-        'A reliable phone number, or the number of someone who can pass along a message'
+        "Photo ID (any form)",
+        "Documentation of health conditions (if available — not required to be assessed)",
+        "Any records of prior housing or service history",
       ],
       resources: [
         {
-          name: 'VMC Bush Family Refuge — CHAMP access point',
-          phone: '(865) 673-0235',
-          tel: 'tel:8656730235',
-          note: '511 N. Broadway. Walk-in CHAMP intakes Tue/Wed/Thu 8:30–11:00 a.m., assigned in order. Also does free TN state IDs, birth certificates, KAT bus tickets, and prescription assistance.'
+          name: "988 Suicide &amp; Crisis Lifeline",
+          phone: "988",
+          tel: "tel:988",
+          note: "Behavioral-health crisis support + SOAR disability-benefit help tied to housing."
         },
         {
-          name: 'Volunteer Ministry Center (main office) — PSH & Street Outreach',
-          phone: '(865) 524-3926',
-          tel: 'tel:8655243926',
-          note: 'Operates Minvilla Manor and Caswell Manor permanent supportive housing (24/7 staffed), rapid rehousing, a day Resource Center, and a dental clinic for people who are literally homeless.'
+          name: "United Way 211",
+          phone: "211",
+          tel: "tel:211",
+          note: "Coordinated entry + shelter while you wait."
         },
-        {
-          name: 'Positively Living / Parkridge Harbor',
-          phone: '(865) 525-1540',
-          tel: 'tel:8655251540',
-          note: 'Supportive housing and case management for people living with HIV, behavioral health conditions, or substance use disorders.'
-        },
-        {
-          name: 'McNabb Center',
-          phone: '(865) 637-9711',
-          tel: 'tel:8656379711',
-          note: 'Mental health and substance use treatment, plus housing programs. Ask about behavioral health support that can strengthen a PSH referral.'
-        }
       ],
       confidence: {
-        level: 'research',
-        note: 'CHAMP eligibility, access point hours, and the replacement of the prior vulnerability index sourced from the Knoxville/Knox County CHAMP page (KnoxHMIS, UT SWORPS) and the City of Knoxville Office of Housing Stability. PSH unit counts and referral process from the Volunteer Ministry Center programs page. Phone numbers have not been called to confirm. Walk-in hours are the single most likely detail to change — call (865) 673-0235 before traveling.',
-        lastChecked: 'August 2026'
+        level: "unverified",
+        note: "AI-researched from public sources — not locally phone-verified. Call 211 to confirm the current local provider. Last researched June 14, 2026.",
+        lastChecked: "June 14, 2026"
       }
     },
 
     result_adult: {
-      label: 'Single Adults Pathway',
-      badgeClass: 'badge-adult',
-      badgeIcon: '📞',
-      headline: 'Here\'s where to go for emergency shelter and housing help.',
-      firstAction: 'For a bed tonight, go to <strong>Knox Area Rescue Ministries (KARM), 418 N. Broadway</strong> — open <strong>24/7, 365 days a year</strong>, shelter and showers for men and women 18 and older. Phone: <strong>(865) 673-6540</strong>.',
-      callNumber: 'tel:8656736540',
-      callLabel: 'Call KARM: (865) 673-6540',
-      what_to_expect: '<strong>KARM</strong> is the largest emergency shelter for single adults in Knox County and it does not close. Meals are served to anyone, sheltered or not: breakfast 6:30–7:45 a.m., lunch 11:30 a.m.–12:45 p.m., dinner 4:30–5:45 p.m. Showers are available. Beds are first-come and fill up in cold weather, so arriving earlier in the evening improves your odds. KARM also runs longer-term restoration programs, case management, and job training if you want to stay connected past a single night.<br><br>Getting a bed and getting <em>housed</em> are two different processes here. For housing, you need a <strong>CHAMP assessment</strong> — Knoxville\'s coordinated entry system. Single adults do this at the <strong>VMC Bush Family Refuge, 511 N. Broadway</strong>, walk-in Tuesday/Wednesday/Thursday 8:30–11:00 a.m., taken in assignment order. <strong>No documentation of any kind is required</strong> for a CHAMP assessment, a replacement ID, KAT bus tickets, or prescription payment assistance. If ID or a birth certificate is what\'s blocking you, the Refuge is also where you fix that — for free.<br><br>Practical sequence that works well here: KARM for shelter and meals tonight → Bush Family Refuge on the next Tuesday–Thursday morning for the CHAMP assessment and any documents you\'re missing → follow up on the referral you\'re given. Doing the CHAMP assessment early matters, because the list moves slowly and your place on it depends on when you were assessed.<br><br>If you are 56 or older, ask about <strong>Catholic Charities Samaritan Place</strong> — it is a quieter setting than a large shelter floor.',
+      label: "Single Adults Pathway",
+      badgeClass: "badge-adult",
+      badgeIcon: "📞",
+      headline: "Start with tonight’s shelter, then the housing list.",
+      firstAction: "Call or text <strong>211</strong> and say: <em>“I need a shelter bed tonight.”</em> Ask for <strong>tonight’s open beds for single adults</strong>, the nearest <strong>daytime drop-in center</strong> (showers, mail, case management), and a <strong>free meal site</strong>. 211 is multilingual and 24/7.",
+      callNumber: "tel:211",
+      callLabel: "Call 211",
+      what_to_expect: "211 has the current shelter-bed picture for your area, which changes daily. Ask them to also start a coordinated-entry assessment so you’re working toward housing, not just tonight.",
       bring: [
-        'Photo ID (helpful for shelter, NOT required for a CHAMP assessment)',
-        'Social Security card or number, if available',
-        'Any documentation of income or benefits',
-        'Medications in their labeled containers, if you take any'
+        "Photo ID (helpful but not always required)",
+        "Social security card or number (if available)",
+        "Any documentation of income or benefits",
       ],
       resources: [
         {
-          name: 'Knox Area Rescue Ministries (KARM)',
-          phone: '(865) 673-6540',
-          tel: 'tel:8656736540',
-          note: '418 N. Broadway, Knoxville. Open 24/7/365. Shelter and showers for men and women 18+. Meals served to anyone: 6:30 a.m., 11:30 a.m., 4:30 p.m.'
+          name: "Find a free clinic (FQHC)",
+          phone: "Ask 211",
+          tel: "tel:211",
+          note: "Federally Qualified Health Centers treat everyone regardless of ability to pay."
         },
         {
-          name: 'VMC Bush Family Refuge — CHAMP access point',
-          phone: '(865) 673-0235',
-          tel: 'tel:8656730235',
-          note: '511 N. Broadway. Walk-in CHAMP intakes Tue/Wed/Thu 8:30–11:00 a.m. Free TN state IDs, birth certificates, bus tickets, prescription help, eviction prevention. No documents needed.'
+          name: "988 Suicide &amp; Crisis Lifeline",
+          phone: "988",
+          tel: "tel:988",
+          note: "24/7 mental-health support."
         },
-        {
-          name: 'Salvation Army of Knoxville',
-          phone: '(865) 525-9401',
-          tel: 'tel:8655259401',
-          note: 'Emergency and transitional shelter for men and women. Call for tonight\'s availability.'
-        },
-        {
-          name: '211 (Tennessee 211)',
-          phone: 'Call or text 211',
-          tel: 'tel:211',
-          note: 'Covers all 95 Tennessee counties. In Knoxville it is operated through the City\'s 311 Center for Service Innovation. Also at tn211.com.'
-        }
       ],
-      extra_note: '<strong>Age 56 or older?</strong> Catholic Charities Samaritan Place — (865) 684-1880 — provides shelter and transitional housing for older adults. <strong>Need free health care?</strong> The Interfaith Health Clinic (865) 546-7330 and Cherokee Health (1-866-231-4477) both serve uninsured Knox County residents, and VMC operates a free dental clinic for people who are literally homeless. <strong>Facing eviction?</strong> Legal Aid of East Tennessee, (865) 637-0484, represents tenants at no cost — call before your court date, not after.',
       confidence: {
-        level: 'research',
-        note: 'KARM address, 24/7 status, and meal times sourced from karm.org. CHAMP walk-in hours and the no-documentation policy from the Knoxville/Knox County CHAMP page (KnoxHMIS, UT SWORPS) and the Volunteer Ministry Center programs page. Salvation Army, Samaritan Place, clinic, and Legal Aid numbers from the Knoxville/Knox County Homeless Coalition directory, which is not frequently updated. Phone numbers have not been called to confirm — call ahead before traveling.',
-        lastChecked: 'August 2026'
+        level: "unverified",
+        note: "AI-researched from public sources — not locally phone-verified. Call 211 to confirm the current local provider. Last researched June 14, 2026.",
+        lastChecked: "June 14, 2026"
       }
-    }
+    },
 
   }; // end PATHWAYS
 

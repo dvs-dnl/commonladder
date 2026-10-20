@@ -504,7 +504,7 @@
 </a>
 
 <!-- App shell — all screens rendered by JS into here -->
-<div role="note" style="background:#ffedd5;border:1px solid #9a3412;color:#6b2710;border-radius:10px;padding:14px 18px;margin:0 auto 18px;max-width:680px;font-size:.9rem;line-height:1.5;"><strong style="color:#9a3412;">AI-researched, not locally verified.</strong> Common Ladder is based in Arizona. We built this guide from public sources but don’t yet verify these listings by phone the way we do our Arizona tools. Use it to learn <em>what to ask for</em>, then <strong>call <a href="tel:211" style="color:#9a3412;">211</a></strong> for the current local provider. Last researched <time datetime="2026-08-17">August 17, 2026</time>. Wrong info? <a href="mailto:corrections.commonladder@gmail.com?subject=Resource%20update:%20Des%20Moines%20/%20Polk%20County" style="color:#9a3412;">Tell us</a>.</div>
+<div role="note" style="background:#ffedd5;border:1px solid #9a3412;color:#6b2710;border-radius:10px;padding:14px 18px;margin:0 auto 18px;max-width:680px;font-size:.9rem;line-height:1.5;"><strong style="color:#9a3412;">AI-researched, not locally verified.</strong> Common Ladder is based in Arizona. We built this guide from public sources but don’t yet verify these listings by phone the way we do our Arizona tools. Use it to learn <em>what to ask for</em>, then <strong>call <a href="tel:211" style="color:#9a3412;">211</a></strong> for the current local provider. Last researched <time datetime="2026-06-14">June 14, 2026</time>. Wrong info? <a href="mailto:corrections.commonladder@gmail.com?subject=Resource%20update:%20Des%20Moines%20/%20Polk%20County" style="color:#9a3412;">Tell us</a>.</div>
 
 <div id="app"></div>
 
@@ -557,7 +557,7 @@
     <div class="footer__bottom">
       <span>&copy; 2026 Common Ladder. Free to use, always.</span>
       <span>IA-502 &middot; Des Moines / Polk County, IA</span>
-      <span><time datetime="2026-08-17">Last updated August 17, 2026</time></span>
+      <span><time datetime="2026-10-19">Last updated October 19, 2026</time></span>
       <span>&middot; Is this information out of date? <a href="mailto:corrections.commonladder@gmail.com?subject=Update:%20/static-tools/des-moines-navigator.html">Email us</a></span>
     </div>
   </div>
@@ -645,222 +645,182 @@
      Keep firstAction to one clear sentence + phone number.
      resources: 3 is ideal; 2 minimum; 4 maximum.
   ═══════════════════════════════════════════════════════════ */
-  var PATHWAYS = {
+    var PATHWAYS = {
 
     result_veterans: {
-      label: 'Veterans Pathway',
-      badgeClass: 'badge-veterans',
-      badgeIcon: '🎖',
-      headline: 'There\'s a dedicated system built for you.',
-      firstAction: 'Call the National Call Center for Homeless Veterans right now: <strong>1-877-4AID-VET (1-877-424-3838)</strong>. Available 24/7. You do NOT need your DD-214 to call. Locally, the VA Central Iowa homeless program and Primary Health Care\'s SSVF program at <strong>(515) 248-1851</strong> can get you into housing.',
-      callNumber: 'tel:18774243838',
-      callLabel: 'Call 1-877-4AID-VET',
-      what_to_expect: 'VA Central Iowa Health Care System in Des Moines runs homeless programs including HUD-VASH housing vouchers and case management. Primary Health Care operates the local SSVF program (Supportive Services for Veteran Families) — rapid rehousing and homelessness prevention for Veteran households. You can start with the VA\'s homeless coordinator, the SSVF program, or the national call center; all can route you to local help.',
+      label: "Veterans Pathway",
+      badgeClass: "badge-veterans",
+      badgeIcon: "🎖",
+      headline: "There's a dedicated system built for veterans.",
+      firstAction: "Call <strong>211</strong> — free, 24/7 — and say: <em>“I’m a veteran and I’m homeless or about to be.”</em> Ask to be connected to the <strong>VA’s Health Care for Homeless Veterans (HCHV)</strong> program and your local <strong>coordinated-entry assessment</strong>. Veterans qualify for both VA housing (HUD-VASH) and the local Continuum of Care at the same time.",
+      callNumber: "tel:211",
+      callLabel: "Call 211",
+      what_to_expect: "211 will route you to the nearest VA homeless-program coordinator and your local CoC. The National Call Center for Homeless Veterans is available 24/7 anywhere in the U.S. if you can’t reach a local office.",
       bring: [
-        'DD-214 discharge papers (if you have them — not required to call)',
-        'Photo ID (if available)',
-        'Any VA documentation you have'
+        "DD-214 discharge papers (if you have them — not required to call)",
+        "Photo ID (if available)",
+        "Any VA documentation you have",
       ],
       resources: [
         {
-          name: 'VA Central Iowa Health Care System',
-          phone: '(515) 699-5999',
-          tel: 'tel:15156995999',
-          note: '3600 30th St, Des Moines. Ask for the Homeless Veterans Program / HUD-VASH coordinator. Toll-free: 1-800-294-8387. VA also runs a walk-in Community Resource &amp; Referral Center for homeless veterans just north of downtown near 12th &amp; Center St, off Keo Way.'
+          name: "National Call Center for Homeless Veterans",
+          phone: "1-877-424-3838",
+          tel: "tel:18774243838",
+          note: "24/7. Available everywhere."
         },
         {
-          name: 'Primary Health Care — SSVF (Veterans)',
-          phone: '(515) 248-1851',
-          tel: 'tel:15152481851',
-          note: 'Supportive Services for Veteran Families — rapid rehousing and prevention for Veteran households in Polk, Dallas, Jasper, Marshall, Story and Warren counties. This is the SSVF line, not the general intake line.'
+          name: "Veterans Crisis Line",
+          phone: "988",
+          tel: "tel:988",
+          note: "Press 1 for the VA crisis line."
         },
-        {
-          name: 'National Call Center for Homeless Veterans',
-          phone: '1-877-424-3838',
-          tel: 'tel:18774243838',
-          note: 'Available 24/7. Can connect you to programs anywhere in the country.'
-        }
       ],
       confidence: {
-        level: 'research',
-        note: 'Re-verified August 2026 against va.gov and phciowa.org. VA does not publish a direct HCHV coordinator phone, so the numbers here are the medical-center lines — call ahead to confirm.',
-        lastChecked: 'August 2026'
+        level: "unverified",
+        note: "AI-researched from public sources — not locally phone-verified. Call 211 to confirm the current local provider. Last researched June 14, 2026.",
+        lastChecked: "June 14, 2026"
       }
     },
 
     result_youth: {
-      label: 'Youth Pathway',
-      badgeClass: 'badge-youth',
-      badgeIcon: '🌱',
-      headline: 'You have access to youth-specific services here.',
-      firstAction: 'Iowa Homeless Youth Centers (IHYC) at <strong>(515) 883-2379</strong> — the drop-in Youth Opportunity Center at 612 Locust St, downtown Des Moines, is open Monday–Friday noon–6 p.m. with meals, showers, laundry, and case management for ages 18–24.',
-      callNumber: 'tel:15158832379',
-      callLabel: 'Call IHYC: (515) 883-2379',
-      what_to_expect: 'IHYC (a YSS program) serves youth and young adults ages 18–24 with drop-in services, emergency beds, and longer-term housing supports. The Youth Opportunity Center offers free meals (lunch 12–1, dinner 5–6), showers, laundry, hygiene items, a food pantry, job and resume help, and case management. Des Moines/Polk County (IA-502) was selected for the federal Youth Homelessness Demonstration Program in the 2018–19 round, which built out a dedicated youth housing system here; the projects it funded are still running. No documentation is required to use the drop-in center.',
+      label: "Youth Pathway",
+      badgeClass: "badge-youth",
+      badgeIcon: "🌱",
+      headline: "If you’re 24 or under, there’s a youth-specific path.",
+      firstAction: "Call or text <strong>211</strong> and say: <em>“I’m 24 or younger and I need a safe place to stay.”</em> Ask for the <strong>youth emergency shelter</strong> and the <strong>runaway &amp; homeless youth (RHY) program</strong> in your area.",
+      callNumber: "tel:211",
+      callLabel: "Call 211",
+      what_to_expect: "211 routes you to the nearest youth shelter or drop-in center. The national backstops below are always available, day or night.",
       bring: [
-        'Photo ID (helpful — not required for the drop-in center)',
-        'Nothing is required to use the drop-in center',
-        'Any documents about prior housing or income (helpful, optional)'
+        "Photo ID (helpful — not required for crisis services)",
+        "Anything important you can carry",
+        "Nothing is required to call",
       ],
       resources: [
         {
-          name: 'Iowa Homeless Youth Centers (IHYC / YSS)',
-          phone: '(515) 883-2379',
-          tel: 'tel:15158832379',
-          note: 'Youth Opportunity Center, 612 Locust St. Drop-in, emergency beds, and housing support for ages 18–24.'
+          name: "Safe Place",
+          phone: "Text SAFE + your location to 44357",
+          tel: "sms:44357?body=SAFE",
+          note: "Or walk into any QuikTrip and ask staff to call for you."
         },
         {
-          name: 'Primary Health Care — Homeless Centralized Intake',
-          phone: '(515) 248-1850',
-          tel: 'tel:15152481850',
-          note: 'Coordinated entry / housing assessment. 1200 University Ave, Suite 110A (West Entrance). Walk-ins only, Mon–Fri 8:00 a.m.–3:30 p.m. — arrive early.'
+          name: "National Runaway Safeline",
+          phone: "1-800-786-2929",
+          tel: "tel:18007862929",
+          note: "24/7, free, confidential."
         },
-        {
-          name: '211',
-          phone: 'Call or text 211',
-          tel: 'tel:211',
-          note: '24/7 connection to all local services including crisis shelter. Call 211, or text your ZIP code to 898211.'
-        }
       ],
-      extra_note: '⚠️ Under 18? Iowa allows youth under 18 to access some services without parental consent. Call IHYC or 211 if you\'re unsure about local rules.',
       confidence: {
-        level: 'research',
-        note: 'Sourced from yss.org and United Way of Central Iowa listings. yss.org could not be re-fetched in the August 2026 check, so these hours are carried forward unconfirmed — call (515) 883-2379 before you go.',
-        lastChecked: 'August 2026 (hours unconfirmed)'
+        level: "unverified",
+        note: "AI-researched from public sources — not locally phone-verified. Call 211 to confirm the current local provider. Last researched June 14, 2026.",
+        lastChecked: "June 14, 2026"
       }
     },
 
     result_families: {
-      label: 'Families Pathway',
-      badgeClass: 'badge-families',
-      badgeIcon: '🏠',
-      headline: 'Families with children are prioritized in the shelter system.',
-      firstAction: 'Hope Ministries\' Center for Women & Children at <strong>(515) 264-0144</strong> — shelter and case management for single women and mothers with children at <strong>3800 E. Douglas Ave</strong>, Des Moines. Call before you go; this is not a walk-in emergency shelter. For coordinated entry into family shelter and housing programs, you can also call Primary Health Care at <strong>(515) 248-1850</strong>.',
-      callNumber: 'tel:15152640144',
-      callLabel: 'Call Hope Center: (515) 264-0144',
-      what_to_expect: 'Families with children are prioritized for shelter. Hope Ministries provides short-term shelter (a 30-day program, extendable up to 90 days) plus longer-term residential recovery options and case management for women and children. Note the address changed in late 2024 — the old E University Ave site is now Hope\'s men\'s supportive housing campus, so go to 3800 E. Douglas Ave. Polk County uses Centralized Intake through Primary Health Care to match families to shelter, rapid rehousing, and housing programs. Children keep the right to stay in their school of origin under McKinney-Vento. Family shelter can fill up — call ahead about availability, and call 211 if you need a bed tonight.',
+      label: "Families Pathway",
+      badgeClass: "badge-families",
+      badgeIcon: "🏠",
+      headline: "Families are kept together in the shelter system.",
+      firstAction: "Call or text <strong>211</strong> and say: <em>“I have my kids with me and we need shelter tonight.”</em> Ask for <strong>family emergency shelter</strong> and the <strong>coordinated-entry assessment</strong> for rapid re-housing.",
+      callNumber: "tel:211",
+      callLabel: "Call 211",
+      what_to_expect: "211 routes you to family shelter and the local coordinated-entry system. If you are fleeing domestic violence, use the confidential hotline below instead — DV shelter is separate and won’t list your location.",
       bring: [
-        'Birth certificates for children (helpful but not always required)',
-        'Photo ID for adults',
-        'Documentation of income or benefits (if available)',
-        'Social security cards (if you have them)'
+        "Photo ID for adults (if available)",
+        "Birth certificates for children (helpful, not always required)",
+        "Documentation of income or benefits (if available)",
       ],
       resources: [
         {
-          name: 'Hope Ministries — Center for Women & Children',
-          phone: '(515) 264-0144',
-          tel: 'tel:15152640144',
-          note: '3800 E. Douglas Ave (moved from E University Ave in late 2024). Call ahead for intake — not a walk-in shelter. Main line: (515) 265-7272.'
+          name: "National Domestic Violence Hotline",
+          phone: "1-800-799-7233",
+          tel: "tel:18007997233",
+          note: "24/7, confidential. Text START to 88788. Connects you to a local confidential DV shelter."
         },
         {
-          name: 'Primary Health Care — Homeless Centralized Intake',
-          phone: '(515) 248-1850',
-          tel: 'tel:15152481850',
-          note: 'Coordinated entry for families. 1200 University Ave, Suite 110A (West Entrance). Walk-ins only, Mon–Fri 8:00 a.m.–3:30 p.m. — arrive early; after about 1 p.m. you may not be seen that day.'
+          name: "United Way 211",
+          phone: "211",
+          tel: "tel:211",
+          note: "Family shelter + coordinated entry."
         },
-        {
-          name: '211',
-          phone: 'Call or text 211',
-          tel: 'tel:211',
-          note: '24/7. Ask specifically about family shelter availability. Call 211, or text your ZIP code to 898211.'
-        }
       ],
       confidence: {
-        level: 'research',
-        note: 'Re-verified August 2026 against hopeiowa.org and phciowa.org. The Center for Women & Children address was corrected this check — it moved to 3800 E. Douglas Ave in late 2024.',
-        lastChecked: 'August 2026'
+        level: "unverified",
+        note: "AI-researched from public sources — not locally phone-verified. Call 211 to confirm the current local provider. Last researched June 14, 2026.",
+        lastChecked: "June 14, 2026"
       }
     },
 
     result_chronic: {
-      label: 'Chronic Homelessness Pathway',
-      badgeClass: 'badge-chronic',
-      badgeIcon: '🔑',
-      headline: 'Permanent supportive housing may be the right fit for you.',
-      firstAction: 'Primary Health Care Homeless Support Services (Centralized Intake) at <strong>(515) 248-1850</strong> — 1200 University Ave, Suite 110A (West Entrance), Des Moines, intake 8:00 a.m.–3:30 p.m. weekdays, <strong>walk-ins only</strong>. Go early: waits run up to 90 minutes, and if you arrive after about 1 p.m. you may not be seen that day. Ask specifically for a <strong>coordinated entry housing assessment</strong>.',
-      callNumber: 'tel:15152481850',
-      callLabel: 'Call Centralized Intake: (515) 248-1850',
-      what_to_expect: 'Polk County (IA-502) uses a single Centralized Intake / coordinated entry run by Primary Health Care to assess people for permanent supportive housing (PSH) and other programs. A housing assessment determines your priority; PSH pairs long-term rental help with case management for people who have a disabling condition and long or repeated homelessness. While you wait, Central Iowa Shelter & Services provides shelter, meals, and on-site case management. Anawim Housing is a major local PSH and supportive-housing provider.',
+      label: "Chronic Homelessness Pathway",
+      badgeClass: "badge-chronic",
+      badgeIcon: "🔑",
+      headline: "The housing list starts with one assessment.",
+      firstAction: "Call or text <strong>211</strong> and say: <em>“I’ve been homeless a long time and I want to get on the housing list.”</em> Ask for the <strong>coordinated-entry assessment</strong> — in this system, permanent supportive housing is reached by being assessed and placed on the community housing-referral list. The assessment is the door; there is no separate number.",
+      callNumber: "tel:211",
+      callLabel: "Call 211",
+      what_to_expect: "A coordinated-entry assessor will ask about your situation and add you to the local housing-referral list. While you wait, ask 211 for tonight’s shelter and a daytime drop-in center.",
       bring: [
-        'Photo ID (any form)',
-        'Documentation of health conditions (if available — not required to be assessed)',
-        'Any records of prior housing or service history'
+        "Photo ID (any form)",
+        "Documentation of health conditions (if available — not required to be assessed)",
+        "Any records of prior housing or service history",
       ],
       resources: [
         {
-          name: 'Primary Health Care — Homeless Centralized Intake',
-          phone: '(515) 248-1850',
-          tel: 'tel:15152481850',
-          note: 'Coordinated entry and housing assessment. 1200 University Ave, Suite 110A (West Entrance). Walk-ins only, Mon–Fri 8:00 a.m.–3:30 p.m.'
+          name: "988 Suicide &amp; Crisis Lifeline",
+          phone: "988",
+          tel: "tel:988",
+          note: "Behavioral-health crisis support + SOAR disability-benefit help tied to housing."
         },
         {
-          name: 'Anawim Housing',
-          phone: '(515) 244-8308',
-          tel: 'tel:15152448308',
-          note: 'Permanent supportive and affordable housing across Des Moines and central Iowa.'
+          name: "United Way 211",
+          phone: "211",
+          tel: "tel:211",
+          note: "Coordinated entry + shelter while you wait."
         },
-        {
-          name: '211',
-          phone: 'Call or text 211',
-          tel: 'tel:211',
-          note: '24/7. Can connect to behavioral health crisis services as well. Call 211, or text your ZIP code to 898211.'
-        }
       ],
-      extra_note: '📋 Qualifying conditions include physical, mental health, or substance use disorders that substantially affect daily functioning. You don\'t need a formal diagnosis to be assessed.',
       confidence: {
-        level: 'research',
-        note: 'Re-verified August 2026 against phciowa.org, homewardiowa.org and anawimhousing.org. Call ahead to confirm.',
-        lastChecked: 'August 2026'
+        level: "unverified",
+        note: "AI-researched from public sources — not locally phone-verified. Call 211 to confirm the current local provider. Last researched June 14, 2026.",
+        lastChecked: "June 14, 2026"
       }
     },
 
     result_adult: {
-      label: 'Single Adults Pathway',
-      badgeClass: 'badge-adult',
-      badgeIcon: '📞',
-      headline: 'Here\'s where to go for emergency shelter and housing help.',
-      firstAction: 'Central Iowa Shelter & Services (CISS) at <strong>(515) 284-5719</strong> — walk in or call. Low-barrier emergency shelter at 1420 Mulberry St, Des Moines, open 24/7/365 for adults 18 and older. To get connected to housing programs, also contact Primary Health Care Centralized Intake at <strong>(515) 248-1850</strong>.',
-      callNumber: 'tel:15152845719',
-      callLabel: 'Call CISS: (515) 284-5719',
-      what_to_expect: 'CISS calls itself a low-barrier shelter — 150 emergency shelter beds, stays up to 90 days, adults 18 and older. It does not publish an ID or sobriety requirement, but it does not publish a guarantee either, so ask when you call. On entry you can work with case managers and get daily meals (the community kitchen serves lunch and dinner), showers, laundry, an on-site health clinic, and help getting into housing. For housing-program assessment, Primary Health Care runs the county\'s Centralized Intake. If shelter is full, call 211 for real-time options.',
+      label: "Single Adults Pathway",
+      badgeClass: "badge-adult",
+      badgeIcon: "📞",
+      headline: "Start with tonight’s shelter, then the housing list.",
+      firstAction: "Call or text <strong>211</strong> and say: <em>“I need a shelter bed tonight.”</em> Ask for <strong>tonight’s open beds for single adults</strong>, the nearest <strong>daytime drop-in center</strong> (showers, mail, case management), and a <strong>free meal site</strong>. 211 is multilingual and 24/7.",
+      callNumber: "tel:211",
+      callLabel: "Call 211",
+      what_to_expect: "211 has the current shelter-bed picture for your area, which changes daily. Ask them to also start a coordinated-entry assessment so you’re working toward housing, not just tonight.",
       bring: [
-        'Photo ID (helpful but not required)',
-        'Social security card or number (if available)',
-        'Any documentation of income or benefits'
+        "Photo ID (helpful but not always required)",
+        "Social security card or number (if available)",
+        "Any documentation of income or benefits",
       ],
       resources: [
         {
-          name: 'Central Iowa Shelter & Services (CISS)',
-          phone: '(515) 284-5719',
-          tel: 'tel:15152845719',
-          note: '1420 Mulberry St. Open 24/7/365. Low-barrier shelter (150 beds, up to 90 days), meals, showers, laundry, on-site health clinic, case management. Adults 18+.'
+          name: "Find a free clinic (FQHC)",
+          phone: "Ask 211",
+          tel: "tel:211",
+          note: "Federally Qualified Health Centers treat everyone regardless of ability to pay."
         },
         {
-          name: 'Primary Health Care — Homeless Centralized Intake',
-          phone: '(515) 248-1850',
-          tel: 'tel:15152481850',
-          note: 'Coordinated entry to housing programs. 1200 University Ave, Suite 110A (West Entrance). Walk-ins only, Mon–Fri 8:00 a.m.–3:30 p.m.'
+          name: "988 Suicide &amp; Crisis Lifeline",
+          phone: "988",
+          tel: "tel:988",
+          note: "24/7 mental-health support."
         },
-        {
-          name: 'Bethel Mission (men)',
-          phone: '(515) 244-5445',
-          tel: 'tel:15152445445',
-          note: '1310 6th Ave. Free emergency shelter for men — a bed, three meals a day, hygiene items, clothing, and laundry.'
-        },
-        {
-          name: '211',
-          phone: 'Call or text 211',
-          tel: 'tel:211',
-          note: '24/7. Real-time bed availability and connection to all local services. Call 211, or text your ZIP code to 898211.'
-        }
       ],
-      extra_note: '🍽 Free meals, no ID and no proof of need: <strong>Hope Café, 1310 6th Ave</strong> — Mon–Sat breakfast 7 a.m., lunch noon, dinner 5 p.m.; Sunday breakfast 8 a.m., lunch 1:30 p.m., dinner 5 p.m.',
       confidence: {
-        level: 'research',
-        note: 'Re-verified August 2026 against centraliowashelter.org, phciowa.org and hopeiowa.org. Call ahead to confirm.',
-        lastChecked: 'August 2026'
+        level: "unverified",
+        note: "AI-researched from public sources — not locally phone-verified. Call 211 to confirm the current local provider. Last researched June 14, 2026.",
+        lastChecked: "June 14, 2026"
       }
-    }
+    },
 
   }; // end PATHWAYS
 

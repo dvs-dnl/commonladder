@@ -424,13 +424,6 @@
   </url>
   
   <url>
-    <loc>https://commonladder.org/help/id-documents/</loc>
-    <lastmod>2026-05-24</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.85</priority>
-  </url>
-  
-  <url>
     <loc>https://commonladder.org/help/veteran-services/</loc>
     <lastmod>2026-05-24</lastmod>
     <changefreq>weekly</changefreq>
@@ -836,6 +829,12 @@
   <url>
     <loc>https://commonladder.org/blog/intro-ged-pathway-finder.html</loc>
     <lastmod>2026-09-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://commonladder.org/blog/shelter-diversion-evidence.html</loc>
+    <lastmod>2026-10-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>

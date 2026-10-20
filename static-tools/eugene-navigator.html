@@ -498,7 +498,7 @@
 
 <main id="main">
 
-<div role="note" style="background:#ffedd5;border:1px solid #9a3412;color:#6b2710;border-radius:10px;padding:14px 18px;margin:0 auto 18px;max-width:680px;font-size:.9rem;line-height:1.5;"><strong style="color:#9a3412;">AI-researched, not locally verified.</strong> Common Ladder is based in Arizona. We built this guide from public sources but don’t yet verify these listings by phone the way we do our Arizona tools. Use it to learn <em>what to ask for</em>, then <strong>call <a href="tel:211" style="color:#9a3412;">211</a></strong> for the current local provider. Last researched <time datetime="2026-08-19">August 19, 2026</time>. Wrong info? <a href="mailto:corrections.commonladder@gmail.com?subject=Resource%20update:%20Eugene%20/%20Springfield%20/%20Lane%20County" style="color:#9a3412;">Tell us</a>.</div>
+<div role="note" style="background:#ffedd5;border:1px solid #9a3412;color:#6b2710;border-radius:10px;padding:14px 18px;margin:0 auto 18px;max-width:680px;font-size:.9rem;line-height:1.5;"><strong style="color:#9a3412;">AI-researched, not locally verified.</strong> Common Ladder is based in Arizona. We built this guide from public sources but don’t yet verify these listings by phone the way we do our Arizona tools. Use it to learn <em>what to ask for</em>, then <strong>call <a href="tel:211" style="color:#9a3412;">211</a></strong> for the current local provider. Last researched <time datetime="2026-06-14">June 14, 2026</time>. Wrong info? <a href="mailto:corrections.commonladder@gmail.com?subject=Resource%20update:%20Eugene%20/%20Springfield%20/%20Lane%20County" style="color:#9a3412;">Tell us</a>.</div>
 
 
 <!-- Common Ladder home badge — always present, fixed top-right -->
@@ -564,7 +564,7 @@
     </div>
     <div class="footer__bottom">
       <span>&copy; 2026 Common Ladder. Free to use, always.</span>
-      <span><time datetime="2026-08-19">Last updated August 19, 2026</time></span> <span>&middot; Is this information out of date? <a href="mailto:corrections.commonladder@gmail.com?subject=Correction:%20/static-tools/eugene-navigator.html">Report an error</a></span>
+      <span><time datetime="2026-10-19">Last updated October 19, 2026</time></span> <span>&middot; Is this information out of date? <a href="mailto:corrections.commonladder@gmail.com?subject=Correction:%20/static-tools/eugene-navigator.html">Report an error</a></span>
     </div>
   </div>
 </footer>
@@ -651,215 +651,182 @@
      Keep firstAction to one clear sentence + phone number.
      resources: 3 is ideal; 2 minimum; 4 maximum.
   ═══════════════════════════════════════════════════════════ */
-  var PATHWAYS = {
+    var PATHWAYS = {
 
     result_veterans: {
-      label: 'Veterans Pathway',
-      badgeClass: 'badge-veterans',
-      badgeIcon: '🎖',
-      headline: 'There\'s a dedicated system built for you.',
-      firstAction: 'Call the National Call Center for Homeless Veterans right now: <strong>1-877-4AID-VET (1-877-424-3838)</strong>. Available 24/7. You do NOT need your DD-214 to call.',
-      callNumber: 'tel:18774243838',
-      callLabel: 'Call 1-877-4AID-VET',
-      what_to_expect: 'Lane County veterans are served by the VA Roseburg Health Care System, which runs the Eugene VA Health Care Center (3355 Chad Drive) and a Homeless Veteran Program at the Downtown Eugene VA Clinic (211 E 7th Ave, Suite 220). HUD-VASH vouchers pair housing with VA case management. St. Vincent de Paul of Lane County runs SSVF \u2014 rapid rehousing and prevention money for veteran households \u2014 and ShelterCare also operates veteran housing programs.',
+      label: "Veterans Pathway",
+      badgeClass: "badge-veterans",
+      badgeIcon: "🎖",
+      headline: "There's a dedicated system built for veterans.",
+      firstAction: "Call <strong>211</strong> — free, 24/7 — and say: <em>“I’m a veteran and I’m homeless or about to be.”</em> Ask to be connected to the <strong>VA’s Health Care for Homeless Veterans (HCHV)</strong> program and your local <strong>coordinated-entry assessment</strong>. Veterans qualify for both VA housing (HUD-VASH) and the local Continuum of Care at the same time.",
+      callNumber: "tel:211",
+      callLabel: "Call 211",
+      what_to_expect: "211 will route you to the nearest VA homeless-program coordinator and your local CoC. The National Call Center for Homeless Veterans is available 24/7 anywhere in the U.S. if you can’t reach a local office.",
       bring: [
-        'DD-214 discharge papers (if you have them — not required to call)',
-        'Photo ID (if available)',
-        'Any VA documentation you have'
+        "DD-214 discharge papers (if you have them — not required to call)",
+        "Photo ID (if available)",
+        "Any VA documentation you have",
       ],
       resources: [
         {
-          name: 'VA Roseburg Health Care System (Eugene VA)',
-          phone: '(541) 440-1000',
-          tel: 'tel:5414401000',
-          note: 'Roseburg VA main line. Eugene VA Clinic (3355 Chad Drive) direct: (541) 607-0897. Homeless Veteran Program also at the Downtown Eugene VA Clinic, 211 E 7th Ave — Mon–Fri 8:30am–4:30pm.'
+          name: "National Call Center for Homeless Veterans",
+          phone: "1-877-424-3838",
+          tel: "tel:18774243838",
+          note: "24/7. Available everywhere."
         },
         {
-          name: 'St. Vincent de Paul of Lane County — SSVF',
-          phone: '(541) 743-7107',
-          tel: 'tel:5417437107',
-          note: 'Supportive Services for Veteran Families — rapid rehousing and prevention.'
+          name: "Veterans Crisis Line",
+          phone: "988",
+          tel: "tel:988",
+          note: "Press 1 for the VA crisis line."
         },
-        {
-          name: 'National Call Center for Homeless Veterans',
-          phone: '1-877-424-3838',
-          tel: 'tel:18774243838',
-          note: 'Available 24/7. Can connect you to programs anywhere in the country.'
-        }
       ],
       confidence: {
-        level: 'research',
-        note: 'Sourced from VA.gov, svdp.us, and Lane County public records. Re-verified against provider websites (eugenemission.org, svdp.us, lookingglass.us, sheltercare.org, va.gov, lanecountyor.gov) August 19, 2026. Phone numbers have not been individually dialed.',
-        lastChecked: 'August 2026'
+        level: "unverified",
+        note: "AI-researched from public sources — not locally phone-verified. Call 211 to confirm the current local provider. Last researched June 14, 2026.",
+        lastChecked: "June 14, 2026"
       }
     },
 
     result_youth: {
-      label: 'Youth Pathway',
-      badgeClass: 'badge-youth',
-      badgeIcon: '🌱',
-      headline: 'You have access to youth-specific services here.',
-      firstAction: 'If you\'re 16\u201324, call Looking Glass New Roads at <strong>(541) 686-4310</strong> \u2014 a drop-in center at 941 W 7th Ave in Eugene with food, showers, clothing, and housing help. Under 18? Call the Station 7 24/7 line: <strong>(541) 689-3111</strong>.',
-      callNumber: 'tel:5416864310',
-      callLabel: 'Call New Roads: (541) 686-4310',
-      what_to_expect: 'Looking Glass Community Services runs the youth system here. New Roads serves ages 16\u201324 with a drop-in center (no documentation needed to walk in), housing navigation, and employment help. Station 7 provides emergency shelter for ages 11\u201317 with a 24/7 helpline. Both can connect you to longer-term housing programs.',
+      label: "Youth Pathway",
+      badgeClass: "badge-youth",
+      badgeIcon: "🌱",
+      headline: "If you’re 24 or under, there’s a youth-specific path.",
+      firstAction: "Call or text <strong>211</strong> and say: <em>“I’m 24 or younger and I need a safe place to stay.”</em> Ask for the <strong>youth emergency shelter</strong> and the <strong>runaway &amp; homeless youth (RHY) program</strong> in your area.",
+      callNumber: "tel:211",
+      callLabel: "Call 211",
+      what_to_expect: "211 routes you to the nearest youth shelter or drop-in center. The national backstops below are always available, day or night.",
       bring: [
-        'Photo ID (helpful — call ahead to confirm what\'s required)',
-        'Nothing required to use a drop-in center',
-        'New Roads drop-in has no entry requirements \u2014 just show up during open hours'
+        "Photo ID (helpful — not required for crisis services)",
+        "Anything important you can carry",
+        "Nothing is required to call",
       ],
       resources: [
         {
-          name: 'Looking Glass — New Roads (ages 16–24)',
-          phone: '(541) 686-4310',
-          tel: 'tel:5416864310',
-          note: 'Drop-in center at 941 W 7th Ave, Eugene — food, showers, clothing, housing and job help. Open 8am–5pm daily except Wednesday (8am–2pm and 4–5pm).'
+          name: "Safe Place",
+          phone: "Text SAFE + your location to 44357",
+          tel: "sms:44357?body=SAFE",
+          note: "Or walk into any QuikTrip and ask staff to call for you."
         },
         {
-          name: 'Looking Glass — Station 7 (ages 11–17)',
-          phone: '(541) 689-3111',
-          tel: 'tel:5416893111',
-          note: '931 W 7th Ave, Eugene. 24/7 helpline and emergency shelter for runaway and homeless youth ages 11–17.'
+          name: "National Runaway Safeline",
+          phone: "1-800-786-2929",
+          tel: "tel:18007862929",
+          note: "24/7, free, confidential."
         },
-        {
-          name: '211',
-          phone: 'Call or text 211',
-          tel: 'tel:211',
-          note: '24/7 connection to all local services including crisis shelter.'
-        }
       ],
-      extra_note: '⚠️ Under 18? Most states allow youth under 18 to access shelter without parental consent. Call 211 if you\'re unsure about local rules.',
       confidence: {
-        level: 'research',
-        note: 'Sourced from agency websites (svdp.us, lookingglass.us, sheltercare.org, va.gov) and Lane County / 211info public records. Re-verified against provider websites (eugenemission.org, svdp.us, lookingglass.us, sheltercare.org, va.gov, lanecountyor.gov) August 19, 2026. Phone numbers have not been individually dialed.',
-        lastChecked: 'August 2026'
+        level: "unverified",
+        note: "AI-researched from public sources — not locally phone-verified. Call 211 to confirm the current local provider. Last researched June 14, 2026.",
+        lastChecked: "June 14, 2026"
       }
     },
 
     result_families: {
-      label: 'Families Pathway',
-      badgeClass: 'badge-families',
-      badgeIcon: '🏠',
-      headline: 'Families with children are prioritized in the shelter system.',
-      firstAction: 'Call St. Vincent de Paul\'s First Place Family Center at <strong>(541) 342-7728</strong> \u2014 the day center at 4060 W. Amazon Drive (open 9am\u20135pm daily) is the gateway to SVdP\'s family shelter (Night Shelter Annex) and offers showers, laundry, food support, and case management.',
-      callNumber: 'tel:5413427728',
-      callLabel: 'Call First Place: (541) 342-7728',
-      what_to_expect: 'Families with children get priority in Lane County\'s system. First Place Family Center (the day center at 4060 W. Amazon Drive, open 9am\u20135pm daily) is the gateway to the low-barrier Night Shelter Annex \u2014 individual dorm units, meals, showers, and wraparound case management for up to 28 families, with stays as long as six months. FPFC also schedules Front Door Assessments \u2014 Lane County\'s coordinated entry \u2014 at (541) 342-7728. Your kids keep the right to stay in their school under McKinney-Vento. Capacity is limited, so also call 211 to get on coordinated entry.',
+      label: "Families Pathway",
+      badgeClass: "badge-families",
+      badgeIcon: "🏠",
+      headline: "Families are kept together in the shelter system.",
+      firstAction: "Call or text <strong>211</strong> and say: <em>“I have my kids with me and we need shelter tonight.”</em> Ask for <strong>family emergency shelter</strong> and the <strong>coordinated-entry assessment</strong> for rapid re-housing.",
+      callNumber: "tel:211",
+      callLabel: "Call 211",
+      what_to_expect: "211 routes you to family shelter and the local coordinated-entry system. If you are fleeing domestic violence, use the confidential hotline below instead — DV shelter is separate and won’t list your location.",
       bring: [
-        'Birth certificates for children (helpful but not always required)',
-        'Photo ID for adults',
-        'Documentation of income or benefits (if available)',
-        'Social security cards (if you have them)'
+        "Photo ID for adults (if available)",
+        "Birth certificates for children (helpful, not always required)",
+        "Documentation of income or benefits (if available)",
       ],
       resources: [
         {
-          name: 'First Place Family Center (St. Vincent de Paul)',
-          phone: '(541) 342-7728',
-          tel: 'tel:5413427728',
-          note: '4060 W. Amazon Drive, Eugene — open 9am–5pm daily. Entry point to the family shelter and to Front Door (coordinated entry) assessments.'
+          name: "National Domestic Violence Hotline",
+          phone: "1-800-799-7233",
+          tel: "tel:18007997233",
+          note: "24/7, confidential. Text START to 88788. Connects you to a local confidential DV shelter."
         },
         {
-          name: 'SVdP Night Shelter Annex',
-          phone: '(541) 600-8444',
-          tel: 'tel:5416008444',
-          note: 'Low-barrier family shelter — 28 family units, meals, showers, case management. Stays up to six months.'
+          name: "United Way 211",
+          phone: "211",
+          tel: "tel:211",
+          note: "Family shelter + coordinated entry."
         },
-        {
-          name: '211',
-          phone: 'Call or text 211',
-          tel: 'tel:211',
-          note: '24/7. Ask specifically about family shelter availability.'
-        }
       ],
       confidence: {
-        level: 'research',
-        note: 'Sourced from agency websites (svdp.us, lookingglass.us, sheltercare.org, va.gov) and Lane County / 211info public records. Re-verified against provider websites (eugenemission.org, svdp.us, lookingglass.us, sheltercare.org, va.gov, lanecountyor.gov) August 19, 2026. Phone numbers have not been individually dialed.',
-        lastChecked: 'August 2026'
+        level: "unverified",
+        note: "AI-researched from public sources — not locally phone-verified. Call 211 to confirm the current local provider. Last researched June 14, 2026.",
+        lastChecked: "June 14, 2026"
       }
     },
 
     result_chronic: {
-      label: 'Chronic Homelessness Pathway',
-      badgeClass: 'badge-chronic',
-      badgeIcon: '🔑',
-      headline: 'Permanent supportive housing may be the right fit for you.',
-      firstAction: 'Call <strong>211</strong> \u2014 Lane County runs coordinated entry through 211. Enter your zip code, press 1 for housing/shelter, and ask for a <strong>coordinated entry housing assessment</strong>.',
-      callNumber: 'tel:211',
-      callLabel: 'Call or text 211',
-      what_to_expect: 'Lane County\'s coordinated entry assessment places you on the list for permanent supportive housing. ShelterCare is the county\'s major PSH provider (Camas, Sahalie, and Shankle programs) for people who are chronically homeless and have a disability, with behavioral health support included. Waits can be long \u2014 the Eugene Mission\'s Rescue Shelter (up to 14 days, 8am check-in at 2nd & Chambers) can bridge a short gap while you wait.',
+      label: "Chronic Homelessness Pathway",
+      badgeClass: "badge-chronic",
+      badgeIcon: "🔑",
+      headline: "The housing list starts with one assessment.",
+      firstAction: "Call or text <strong>211</strong> and say: <em>“I’ve been homeless a long time and I want to get on the housing list.”</em> Ask for the <strong>coordinated-entry assessment</strong> — in this system, permanent supportive housing is reached by being assessed and placed on the community housing-referral list. The assessment is the door; there is no separate number.",
+      callNumber: "tel:211",
+      callLabel: "Call 211",
+      what_to_expect: "A coordinated-entry assessor will ask about your situation and add you to the local housing-referral list. While you wait, ask 211 for tonight’s shelter and a daytime drop-in center.",
       bring: [
-        'Photo ID (any form)',
-        'Documentation of health conditions (if available — not required to be assessed)',
-        'Any records of prior housing or service history'
+        "Photo ID (any form)",
+        "Documentation of health conditions (if available — not required to be assessed)",
+        "Any records of prior housing or service history",
       ],
       resources: [
         {
-          name: 'Lane County Coordinated Entry (via 211)',
-          phone: 'Call or text 211',
-          tel: 'tel:211',
-          note: 'Entry point for coordinated entry and the PSH assessment in Lane County.'
+          name: "988 Suicide &amp; Crisis Lifeline",
+          phone: "988",
+          tel: "tel:988",
+          note: "Behavioral-health crisis support + SOAR disability-benefit help tied to housing."
         },
         {
-          name: 'ShelterCare',
-          phone: '(541) 686-1262',
-          tel: 'tel:5416861262',
-          note: 'Permanent supportive housing and behavioral health services — 499 W 4th Ave, Eugene.'
+          name: "United Way 211",
+          phone: "211",
+          tel: "tel:211",
+          note: "Coordinated entry + shelter while you wait."
         },
-        {
-          name: '211',
-          phone: 'Call or text 211',
-          tel: 'tel:211',
-          note: '24/7. Can connect to behavioral health crisis services as well.'
-        }
       ],
-      extra_note: '📋 Qualifying conditions include physical, mental health, or substance use disorders that substantially affect daily functioning. You don\'t need a formal diagnosis to be assessed.',
       confidence: {
-        level: 'research',
-        note: 'Sourced from agency websites (svdp.us, lookingglass.us, sheltercare.org, va.gov) and Lane County / 211info public records. Re-verified against provider websites (eugenemission.org, svdp.us, lookingglass.us, sheltercare.org, va.gov, lanecountyor.gov) August 19, 2026. Phone numbers have not been individually dialed.',
-        lastChecked: 'August 2026'
+        level: "unverified",
+        note: "AI-researched from public sources — not locally phone-verified. Call 211 to confirm the current local provider. Last researched June 14, 2026.",
+        lastChecked: "June 14, 2026"
       }
     },
 
     result_adult: {
-      label: 'Single Adults Pathway',
-      badgeClass: 'badge-adult',
-      badgeIcon: '📞',
-      headline: 'Here\'s where to go for emergency shelter and housing help.',
-      firstAction: 'Go to the <strong>Eugene Mission</strong> west campus gate at 2nd Ave and Chambers St \u2014 Rescue Shelter check-in is at <strong>8am daily</strong> (arrive by 7:30\u20138am; a bed lottery is used when beds are limited) \u2014 or call <strong>(541) 344-3251</strong> first.',
-      callNumber: 'tel:5413443251',
-      callLabel: 'Call Eugene Mission: (541) 344-3251',
-      what_to_expect: 'The Eugene Mission\'s Rescue Shelter checks in new guests at the west campus gate (2nd and Chambers) at 8am daily \u2014 no arrivals before 7:30am, and a bed lottery is used when beds are limited. A stay is up to 14 days, with meals, showers, secured baggage storage, and clothing by request; guests commit to staying on campus for the duration, and drugs and alcohol are not allowed. Questions: call (541) 344-3251 ext. 105 (the ROC office). For other shelter options, rent help, or to get on the housing list, call 211 and ask for coordinated entry.',
+      label: "Single Adults Pathway",
+      badgeClass: "badge-adult",
+      badgeIcon: "📞",
+      headline: "Start with tonight’s shelter, then the housing list.",
+      firstAction: "Call or text <strong>211</strong> and say: <em>“I need a shelter bed tonight.”</em> Ask for <strong>tonight’s open beds for single adults</strong>, the nearest <strong>daytime drop-in center</strong> (showers, mail, case management), and a <strong>free meal site</strong>. 211 is multilingual and 24/7.",
+      callNumber: "tel:211",
+      callLabel: "Call 211",
+      what_to_expect: "211 has the current shelter-bed picture for your area, which changes daily. Ask them to also start a coordinated-entry assessment so you’re working toward housing, not just tonight.",
       bring: [
-        'Photo ID (helpful but not always required)',
-        'Social security card or number (if available)',
-        'Any documentation of income or benefits'
+        "Photo ID (helpful but not always required)",
+        "Social security card or number (if available)",
+        "Any documentation of income or benefits",
       ],
       resources: [
         {
-          name: 'Eugene Mission — Rescue Shelter',
-          phone: '(541) 344-3251',
-          tel: 'tel:5413443251',
-          note: '1542 W 1st Ave, Eugene. Check-in 8am daily at the west campus gate (2nd & Chambers); no arrivals before 7:30am. Stays up to 14 days. Questions: ext. 105.'
+          name: "Find a free clinic (FQHC)",
+          phone: "Ask 211",
+          tel: "tel:211",
+          note: "Federally Qualified Health Centers treat everyone regardless of ability to pay."
         },
         {
-          name: 'ShelterCare',
-          phone: '(541) 686-1262',
-          tel: 'tel:5416861262',
-          note: 'Housing programs and behavioral health services for adults — 499 W 4th Ave, Eugene.'
+          name: "988 Suicide &amp; Crisis Lifeline",
+          phone: "988",
+          tel: "tel:988",
+          note: "24/7 mental-health support."
         },
-        {
-          name: '211',
-          phone: 'Call or text 211',
-          tel: 'tel:211',
-          note: '24/7. Real-time bed availability and connection to all local services.'
-        }
       ],
       confidence: {
-        level: 'research',
-        note: 'Sourced from agency websites (svdp.us, lookingglass.us, sheltercare.org, va.gov) and Lane County / 211info public records. Re-verified against provider websites (eugenemission.org, svdp.us, lookingglass.us, sheltercare.org, va.gov, lanecountyor.gov) August 19, 2026. Phone numbers have not been individually dialed.',
-        lastChecked: 'August 2026'
+        level: "unverified",
+        note: "AI-researched from public sources — not locally phone-verified. Call 211 to confirm the current local provider. Last researched June 14, 2026.",
+        lastChecked: "June 14, 2026"
       }
-    }
+    },
 
   }; // end PATHWAYS
 

@@ -35,3 +35,6 @@ brand-assets/preview-*.png
 # an untracked node_modules/; this stops a repeat. Does NOT un-commit what is
 # already in the index — that still needs `git rm -r --cached node_modules`.
 node_modules/
+
+# Held back 2026-10-19 (cl-push-unblock-2026-10-19): unclaimed new city navigator; breadth is frozen per Content Engine Policy R1. Remove this line to publish it.
+static-tools/little-rock-navigator.html
