@@ -1208,185 +1208,67 @@ textarea:focus-visible {
 }
 .hero-embed__myladder:hover { background: #c97a14; text-decoration: none; }
 .hero-embed__myladder svg { width: 12px; height: 12px; }
-/* ── Hero "Learn about homelessness" module — myth vs. fact flip card ──
-   Replaces the old static .hero-embed__learn tile. Entirely CSS: a hidden
-   checkbox drives the flip (so it works on hover, click/tap, and keyboard
-   with JS disabled) and three hidden radios choose which myth is on stage.
-   Copy for the three cards is lifted from the pathway intros on /learn/. */
-/* The questionnaire card next to this one is tall; centering keeps the
-   module optically balanced instead of stretching one sentence over 700px. */
-.myth { position: relative; display: flex; flex-direction: column; gap: .5rem; align-self: center; width: 100%; }
-.myth__head { display: flex; align-items: center; gap: .5rem; padding: 0 .15rem; }
-.myth__head svg { width: 19px; height: 19px; flex: none; }
-.myth__head h2 {
-  font-family: 'Manrope', system-ui, sans-serif;
-  font-size: .94rem;
-  font-weight: 800;
-  color: #fff;
-  margin: 0;
-  letter-spacing: -.01em;
+/* ── Hero "Learn about homelessness" module — conversation click-through ──
+   Replaced the 3-card myth flip (2026-10-20). Visitor picks a question,
+   gets a short sourced answer, then picks a follow-up. Nodes live in the
+   TALK object at the bottom of index.html; without JS the starter
+   questions are plain links to the /learn/ pathways. */
+.talk { display: flex; flex-direction: column; gap: .6rem; width: 100%; align-self: stretch; min-height: 0; }
+.talk__head { display: flex; align-items: center; gap: .5rem; padding: 0 .15rem; }
+.talk__head svg { width: 19px; height: 19px; flex: none; }
+.talk__head h2 { font: 800 .94rem 'Manrope', system-ui, sans-serif; color: #fff; margin: 0; letter-spacing: -.01em; }
+.talk__restart { margin-left: auto; background: none; border: 0; color: #fff; font: 500 .72rem 'Inter', sans-serif; text-decoration: underline; text-underline-offset: 2px; cursor: pointer; padding: .2rem; }
+.talk__restart[hidden] { display: none; }
+.talk__log {
+  display: flex; flex-direction: column; gap: .55rem;
+  max-height: 440px; overflow-y: auto; overscroll-behavior: contain;
+  padding: .15rem .15rem .25rem;
 }
-.myth__stage { position: relative; flex: 0 0 auto; height: 262px; perspective: 1100px; }
-
-.myth > input[name="cl-myth"] { position: absolute; opacity: 0; pointer-events: none; }
-
-/* Only the selected myth is visible AND in the accessibility tree — the
-   visibility flip is what keeps screen readers from reading all three. */
-.myth__card {
-  position: absolute;
-  inset: 0;
-  opacity: 0;
-  visibility: hidden;
-  pointer-events: none;
-  transition: opacity .25s, visibility 0s .25s;
+.talk__intro { font-size: .8rem; line-height: 1.45; color: #fff; margin: 0; }
+.talk__me {
+  align-self: flex-end; max-width: 88%;
+  background: var(--amber); color: var(--dark);
+  font: 700 .8rem/1.35 'Inter', sans-serif;
+  padding: .5rem .7rem; border-radius: 12px 12px 3px 12px; margin: 0;
 }
-#cl-myth-1:checked ~ .myth__stage .myth__card[data-myth="1"],
-#cl-myth-2:checked ~ .myth__stage .myth__card[data-myth="2"],
-#cl-myth-3:checked ~ .myth__stage .myth__card[data-myth="3"] {
-  opacity: 1;
-  visibility: visible;
-  pointer-events: auto;
-  transition: opacity .25s, visibility 0s 0s;
+.talk__them {
+  align-self: flex-start; max-width: 96%;
+  background: rgba(255,255,255,.12); border: 1px solid rgba(255,255,255,.28);
+  color: #fff; border-radius: 12px 12px 12px 3px; padding: .65rem .8rem;
+  font-size: .8rem; line-height: 1.5;
 }
-
-/* Full-bleed while face-up; shrinks once flipped so the CTA underneath is a
-   single tap, while the top of the card still flips back. */
-.myth__toggle {
-  position: absolute;
-  top: 0; left: 0;
-  width: 100%; height: 100%;
-  z-index: 3;
-  margin: 0;
-  opacity: 0;
-  cursor: pointer;
+.talk__them:focus-visible { outline: 3px solid var(--amber); outline-offset: 2px; }
+.talk__them p { margin: 0 0 .45rem; }
+.talk__them p:last-child { margin-bottom: 0; }
+.talk__them b { color: #fff; }
+.talk__voice { margin: .5rem 0 .45rem; padding: .1rem 0 .1rem .65rem; border-left: 3px solid #9FBCBA; font-style: italic; }
+.talk__voice cite { display: block; font-style: normal; font-size: .7rem; margin-top: .2rem; }
+.talk__src { font-size: .7rem; line-height: 1.4; margin: .45rem 0 0; }
+.talk__them a { color: #fff; text-decoration: underline; text-underline-offset: 2px; }
+.talk__more { display: inline-block; margin-top: .4rem; font-weight: 700; font-size: .74rem; }
+/* .hero p sets a large size, centered max-width and opacity .88 — reset it
+   here so text in the module keeps full contrast and its own scale. */
+.hero .talk p { font-size: .8rem; line-height: 1.5; opacity: 1; max-width: none; margin: 0; }
+.hero .talk .talk__them p + p { margin-top: .45rem; }
+.hero .talk .talk__me { font-weight: 700; line-height: 1.35; }
+.hero .talk .talk__src { font-size: .7rem; line-height: 1.4; margin-top: .45rem; }
+.talk__choices { display: flex; flex-direction: column; gap: .35rem; }
+.talk__choices > span { font: 700 .64rem 'Inter', sans-serif; letter-spacing: .09em; text-transform: uppercase; color: #9FBCBA; padding: 0 .15rem; }
+.talk__opt {
+  display: block; width: 100%; text-align: left;
+  background: transparent; color: #fff;
+  border: 1.5px solid rgba(255,255,255,.55); border-radius: 10px;
+  padding: .5rem .7rem; font: 500 .8rem/1.35 'Inter', sans-serif;
+  cursor: pointer; text-decoration: none;
+  transition: background .15s, border-color .15s;
 }
-.myth__toggle:checked { height: 58%; }
-.myth__inner {
-  position: absolute;
-  inset: 0;
-  transform-style: preserve-3d;
-  transition: transform .5s cubic-bezier(.4,.2,.2,1);
-}
-.myth__card:hover .myth__inner,
-.myth__toggle:checked ~ .myth__inner,
-.myth__toggle:focus-visible ~ .myth__inner { transform: rotateY(180deg); }
-.myth__toggle:focus-visible ~ .myth__inner .myth__face {
-  outline: 3px solid var(--amber);
-  outline-offset: 2px;
-}
-.myth__face {
-  position: absolute;
-  inset: 0;
-  backface-visibility: hidden;
-  -webkit-backface-visibility: hidden;
-  border: 2px solid rgba(255,255,255,.22);
-  background: rgba(255,255,255,.10);
-  border-radius: 14px;
-  padding: .9rem 1rem;
-  display: flex;
-  flex-direction: column;
-  transition: visibility 0s 0s;
-}
-.myth__face--back {
-  transform: rotateY(180deg);
-  background: rgba(255,255,255,.16);
-  border-color: rgba(255,255,255,.42);
-  visibility: hidden;
-}
-/* Swap which face is exposed to assistive tech, halfway through the flip. */
-.myth__card:hover .myth__face--front,
-.myth__toggle:checked ~ .myth__inner .myth__face--front,
-.myth__toggle:focus-visible ~ .myth__inner .myth__face--front {
-  visibility: hidden;
-  transition: visibility 0s .25s;
-}
-.myth__card:hover .myth__face--back,
-.myth__toggle:checked ~ .myth__inner .myth__face--back,
-.myth__toggle:focus-visible ~ .myth__inner .myth__face--back {
-  visibility: visible;
-  transition: visibility 0s .25s;
-}
-.myth__kicker {
-  display: inline-flex;
-  align-items: center;
-  gap: .3rem;
-  font: 700 .64rem 'Inter', sans-serif;
-  letter-spacing: .09em;
-  text-transform: uppercase;
-  color: #9FBCBA;              /* light sage — 5.3:1 on the navy hero */
-  margin-bottom: .45rem;
-}
-.myth__kicker svg { width: 12px; height: 12px; }
-.myth__q {
-  font: 800 .95rem/1.3 'Manrope', system-ui, sans-serif;
-  color: #fff;
-  margin: 0;
-}
-.myth__a { font-size: .78rem; line-height: 1.45; opacity: .92; margin: 0; }
-.myth__a b { color: #fff; }
-.myth__prompt {
-  margin-top: auto;
-  font-size: .68rem;
-  opacity: .72;
-  display: flex;
-  align-items: center;
-  gap: .3rem;
-}
-.myth__prompt svg { width: 11px; height: 11px; }
-.myth__link {
-  position: relative;
-  z-index: 5;
-  margin-top: auto;
-  align-self: flex-start;
-  display: inline-flex;
-  align-items: center;
-  gap: .3rem;
-  background: var(--amber);
-  color: var(--dark);
-  font: 700 .72rem 'Inter', sans-serif;
-  padding: .45rem .7rem;
-  border-radius: var(--radius);
-  text-decoration: none;
-}
-.myth__link:hover { background: #FFA733; text-decoration: none; color: var(--dark); }
-.myth__link:focus-visible { outline: 3px solid #fff; outline-offset: 2px; }
-.myth__pips { display: flex; gap: .35rem; align-items: center; justify-content: center; }
-.myth__pip {
-  width: 32px;
-  height: 22px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 4px;
-  cursor: pointer;
-}
-.myth__pip::before {
-  content: "";
-  display: block;
-  width: 26px;
-  height: 5px;
-  border-radius: 3px;
-  background: rgba(255,255,255,.28);
-  transition: background .18s;
-}
-.myth__pip:hover::before { background: rgba(255,255,255,.55); }
-#cl-myth-1:checked ~ .myth__pips label[for="cl-myth-1"]::before,
-#cl-myth-2:checked ~ .myth__pips label[for="cl-myth-2"]::before,
-#cl-myth-3:checked ~ .myth__pips label[for="cl-myth-3"]::before { background: var(--amber); }
-#cl-myth-1:focus-visible ~ .myth__pips label[for="cl-myth-1"],
-#cl-myth-2:focus-visible ~ .myth__pips label[for="cl-myth-2"],
-#cl-myth-3:focus-visible ~ .myth__pips label[for="cl-myth-3"] {
-  outline: 3px solid var(--amber);
-  outline-offset: 1px;
-}
+.talk__opt:hover { background: rgba(255,255,255,.12); border-color: #fff; text-decoration: none; color: #fff; }
+.talk__opt:focus-visible { outline: 3px solid var(--amber); outline-offset: 2px; }
+@media (max-width: 720px) { .talk__log { max-height: 380px; } }
+@media (prefers-reduced-motion: reduce) { .talk__log { scroll-behavior: auto; } .talk__opt { transition: none; } }
 
 @media (max-width: 720px) {
   .hero-embed {
     grid-template-columns: 1fr;
   }
-  .myth__stage { height: 232px; }
-}
-@media (prefers-reduced-motion: reduce) {
-  .myth__inner { transition: none; }
-  .myth__card { transition: none; }
 }

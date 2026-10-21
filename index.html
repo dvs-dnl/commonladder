@@ -132,110 +132,26 @@
         </div>
         <div id="ml-questionnaire-mount-home"></div>
       </div>
-      <!-- Learn module: myth vs. fact flip card. Pure CSS — a hidden checkbox
-           per card drives the flip (hover, click/tap, and keyboard all work,
-           and it still works with JS disabled) and three hidden radios switch
-           which myth is showing. Copy comes from the pathway intros on /learn/. -->
-      <div class="myth" role="region" aria-label="Learn about homelessness">
-        <div class="myth__head">
+      <!-- Learn module: conversation click-through. Nodes live in the talk
+           script before </body>; without JS the starter questions link to /learn/. -->
+      <div class="talk" id="talk" role="region" aria-labelledby="talk-h">
+        <div class="talk__head">
           <svg width="19" height="19" viewBox="0 0 247 247" fill="none" aria-hidden="true"><g transform="translate(-12.00,-16.00)"><path fill="#E8911A" fill-rule="evenodd" d="M 254,51 L 234,85.64 L 194,85.64 L 174,51 L 194,16.36 L 234,16.36 Z M 231.5,51 L 222.75,66.16 L 205.25,66.16 L 196.5,51 L 205.25,35.84 L 222.75,35.84 Z"/><path fill="#9FBCBA" fill-rule="evenodd" d="M 148,118 L 128,152.64 L 88,152.64 L 68,118 L 88,83.36 L 128,83.36 Z M 125.5,118 L 116.75,133.16 L 99.25,133.16 L 90.5,118 L 99.25,102.84 L 116.75,102.84 Z"/><path fill="#9FBCBA" fill-rule="evenodd" d="M 259,118 L 239,152.64 L 199,152.64 L 179,118 L 199,83.36 L 239,83.36 Z M 236.5,118 L 227.75,133.16 L 210.25,133.16 L 201.5,118 L 210.25,102.84 L 227.75,102.84 Z"/><path fill="#FFFFFF" fill-opacity="0.94" fill-rule="evenodd" d="M 207,164 L 187,198.64 L 147,198.64 L 127,164 L 147,129.36 L 187,129.36 Z M 184.5,164 L 175.75,179.16 L 158.25,179.16 L 149.5,164 L 158.25,148.84 L 175.75,148.84 Z"/><path fill="#FFFFFF" fill-opacity="0.94" fill-rule="evenodd" d="M 92,164 L 72,198.64 L 32,198.64 L 12,164 L 32,129.36 L 72,129.36 Z M 69.5,164 L 60.75,179.16 L 43.25,179.16 L 34.5,164 L 43.25,148.84 L 60.75,148.84 Z"/><path fill="#FFFFFF" fill-opacity="0.94" fill-rule="evenodd" d="M 161,228 L 141,262.64 L 101,262.64 L 81,228 L 101,193.36 L 141,193.36 Z M 138.5,228 L 129.75,243.16 L 112.25,243.16 L 103.5,228 L 112.25,212.84 L 129.75,212.84 Z"/></g></svg>
-          <h2>Learn about homelessness</h2>
+          <h2 id="talk-h">Learn about homelessness</h2>
+          <button type="button" class="talk__restart" hidden>Start over</button>
         </div>
-
-        <input type="radio" name="cl-myth" id="cl-myth-1" checked>
-        <input type="radio" name="cl-myth" id="cl-myth-2">
-        <input type="radio" name="cl-myth" id="cl-myth-3">
-
-        <div class="myth__stage">
-
-          <div class="myth__card" data-myth="1">
-            <input type="checkbox" class="myth__toggle" aria-label="Reveal the answer: are most people experiencing homelessness chronically homeless?">
-            <div class="myth__inner">
-              <div class="myth__face myth__face--front">
-                <span class="myth__kicker">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M9.1 9a3 3 0 0 1 5.8 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12" y2="17.01"/></svg>
-                  Common belief
-                </span>
-                <p class="myth__q">&ldquo;Most people experiencing homelessness are chronically homeless &mdash; living on the street for years.&rdquo;</p>
-                <span class="myth__prompt">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M21 12a9 9 0 1 1-3-6.7"/><polyline points="21 3 21 9 15 9"/></svg>
-                  Tap to see what the data says
-                </span>
-              </div>
-              <div class="myth__face myth__face--back">
-                <span class="myth__kicker">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
-                  What the data says
-                </span>
-                <p class="myth__a">That picture is <b>roughly a quarter</b> of the population in any given year. The rest are families, kids, workers, veterans, and people you never see.</p>
-                <a class="myth__link" href="/learn/who/">Pathway 02: Who experiences it
-                  <svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg>
-                </a>
-              </div>
-            </div>
-          </div>
-
-          <div class="myth__card" data-myth="2">
-            <input type="checkbox" class="myth__toggle" aria-label="Reveal the answer: is addiction the main cause of homelessness?">
-            <div class="myth__inner">
-              <div class="myth__face myth__face--front">
-                <span class="myth__kicker">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M9.1 9a3 3 0 0 1 5.8 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12" y2="17.01"/></svg>
-                  Common belief
-                </span>
-                <p class="myth__q">&ldquo;Homelessness is caused by addiction, mental illness, and personal failure.&rdquo;</p>
-                <span class="myth__prompt">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M21 12a9 9 0 1 1-3-6.7"/><polyline points="21 3 21 9 15 9"/></svg>
-                  Tap to see what the data says
-                </span>
-              </div>
-              <div class="myth__face myth__face--back">
-                <span class="myth__kicker">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
-                  What the data says
-                </span>
-                <p class="myth__a">Those rank <b>third or fourth</b> on the list. The dominant variable is the <b>housing market itself</b> &mdash; cost and supply, not character.</p>
-                <a class="myth__link" href="/learn/causes/">Pathway 01: What causes it
-                  <svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg>
-                </a>
-              </div>
-            </div>
-          </div>
-
-          <div class="myth__card" data-myth="3">
-            <input type="checkbox" class="myth__toggle" aria-label="Reveal the answer: do we know how to end homelessness?">
-            <div class="myth__inner">
-              <div class="myth__face myth__face--front">
-                <span class="myth__kicker">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M9.1 9a3 3 0 0 1 5.8 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12" y2="17.01"/></svg>
-                  Common belief
-                </span>
-                <p class="myth__q">&ldquo;Nobody actually knows how to fix homelessness.&rdquo;</p>
-                <span class="myth__prompt">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M21 12a9 9 0 1 1-3-6.7"/><polyline points="21 3 21 9 15 9"/></svg>
-                  Tap to see what the data says
-                </span>
-              </div>
-              <div class="myth__face myth__face--back">
-                <span class="myth__kicker">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
-                  What the data says
-                </span>
-                <p class="myth__a">We have <b>decades of evidence</b> on what works &mdash; housing, immediately, without preconditions. The gap is funding and political will, <b>not knowledge</b>.</p>
-                <a class="myth__link" href="/learn/solutions/">Pathway 03: What actually ends it
-                  <svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg>
-                </a>
-              </div>
-            </div>
-          </div>
-
+        <div class="talk__log" aria-live="polite">
+          <p class="talk__intro">Pick a question. Each answer is short, links to its source, and leads to the next thing people usually ask.</p>
         </div>
-
-        <div class="myth__pips" role="group" aria-label="Choose which question to see">
-          <label class="myth__pip" for="cl-myth-1"><span class="sr-only">Show question 1 of 3</span></label>
-          <label class="myth__pip" for="cl-myth-2"><span class="sr-only">Show question 2 of 3</span></label>
-          <label class="myth__pip" for="cl-myth-3"><span class="sr-only">Show question 3 of 3</span></label>
+        <div class="talk__choices">
+          <span>What do you want to ask?</span>
+          <a class="talk__opt" href="/learn/who/#sheltered">What I see downtown is people using in tents.</a>
+          <a class="talk__opt" href="/learn/causes/#housing-market">Isn't it mostly drugs and mental illness?</a>
+          <a class="talk__opt" href="/learn/who/#subpopulations">Why don't they just get a job?</a>
+          <a class="talk__opt" href="/learn/causes/#myths">Don't people move here for the services and the weather?</a>
+          <a class="talk__opt" href="/learn/solutions/">Can homelessness actually be fixed?</a>
         </div>
+      </div>
       </div>
     </div>
   </div>
@@ -523,6 +439,191 @@
   window.MyLadder.mountQuestionnaire(mount, {
     onComplete: function () { window.location.href = '/static-tools/my-ladder.html'; }
   });
+})();
+</script>
+<script>
+/* Hero conversation (.talk). Each node: q = what the visitor says,
+   a = answer paragraphs (HTML), v = optional lived-experience quote
+   [text, name, source, url], s = sources [label, url], m = [Learn href, label],
+   n = follow-up node ids. START lists the opening questions. */
+(function () {
+  var root = document.getElementById('talk');
+  if (!root) return;
+  var T = {
+  intro: "Pick a question. Each answer is short, links to its source, and leads to the next thing people usually ask.",
+  start: ["seen", "drugs", "jobs", "move", "fix"],
+  nodes: {
+    seen: {
+      q: "What I see downtown is people using in tents.",
+      a: ["What you see is real. It is also the most visible slice. In January 2025, <b>266,320 of 745,652</b> people counted nationally were unsheltered. Nearly two-thirds were in shelters. Many more sleep in cars or on a friend's couch and are never counted.",
+          "A single block shows who is outside tonight, not why the number is high in some cities and low in others."],
+      s: [["HUD, 2025 count", "https://www.hud.gov/news/hud-no-26-037"]],
+      m: ["/learn/who/#sheltered", "Who experiences it"],
+      n: ["drugs", "refuse", "camps"]
+    },
+    drugs: {
+      q: "Isn't it mostly drugs and mental illness?",
+      a: ["Both are common, and for many people they started before they lost housing. They still don't explain where homelessness happens.",
+          "Researchers Gregg Colburn and Clayton Page Aldern compared U.S. regions on drug use, mental illness, poverty, weather, and benefits. None explained why some places have far more homelessness. <b>Rents and rental vacancy rates</b> did."],
+      s: [["Colburn &amp; Aldern, <i>Homelessness Is a Housing Problem</i>", "https://www.ucpress.edu/books/homelessness-is-a-housing-problem/paper"]],
+      m: ["/learn/causes/#housing-market", "The housing market is the dominant variable"],
+      n: ["place", "use", "treatment"]
+    },
+    use: {
+      q: "But drug use on the street is everywhere.",
+      a: ["It's widespread. In California's statewide study, <b>65%</b> had a period of regular drug use in their lives, and <b>64%</b> of them started before they first became homeless.",
+          "Treatment is part of the answer and hard to get: one in five people who used wanted treatment and couldn't get it."],
+      s: [["UCSF Benioff Homelessness and Housing Initiative, 2023", "https://endhomelessness.org/wp-content/uploads/2024/10/CASPEH_Report_62023.pdf"]],
+      m: ["/learn/causes/#addiction", "What the data on addiction shows"],
+      n: ["place", "treatment"]
+    },
+    place: {
+      q: "Then why is it so much worse in some cities?",
+      a: ["Because some cities have far more people competing for far fewer cheap apartments. West Virginia and Arkansas were hit hard by opioids and still have low homelessness rates. Rent there is lower.",
+          "When rent climbs faster than pay and vacancies disappear, the people with the least room to fall are pushed out first. That pressure is constant, and it explains the map."],
+      v: ["Falling into homelessness comes down to one simple fact: how far you have to fall.", "Jamie R.", "Community Solutions", "https://community.solutions/metro-denver-takes-a-regional-approach-to-homelessness-with-built-for-zero/"],
+      s: [["Colburn &amp; Aldern", "https://www.ucpress.edu/books/homelessness-is-a-housing-problem/paper"], ["LA Times, via Planetizen", "https://dev.planetizen.com/news/2022/07/117795-whats-root-homelessness-lack-affordable-housing"]],
+      m: ["/learn/causes/#housing-market", "The housing market is the dominant variable"],
+      n: ["move", "fix", "prevent"]
+    },
+    treatment: {
+      q: "Shouldn't people get treatment before they get housing?",
+      a: ["Treatment matters. The question is the order. In Canada's At Home/Chez Soi trial, with more than 2,000 people in five cities, <b>62%</b> of people given housing first were housed all of the last six months, versus <b>31%</b> with usual services.",
+          "Substance use and symptoms improved about the same in both groups. Housing first keeps people housed; it doesn't make addiction worse, and it doesn't cure it on its own."],
+      s: [["Mental Health Commission of Canada", "https://mentalhealthcommission.ca/wp-content/uploads/2021/09/At2520Home2520Final2520Report2520-2520Main2520Messages2520-2520ENG_0.pdf"], ["CDC Community Guide review", "https://pmc.ncbi.nlm.nih.gov/articles/PMC8513528/"]],
+      m: ["/learn/solutions/#housing-first", "Housing First, the core principle"],
+      n: ["fix", "cost"]
+    },
+    jobs: {
+      q: "Why don't they just get a job?",
+      a: ["Many have one. Linking Census and IRS records, researchers found <b>53%</b> of sheltered and <b>40%</b> of unsheltered adults under 65 had formal earnings in 2010.",
+          "The gap is that the pay doesn't cover the rent."],
+      s: [["Meyer, Wyse &amp; Corinth", "https://cepr.org/voxeu/columns/introducing-new-dataset-better-understand-homelessness-us"]],
+      m: ["/learn/who/#subpopulations", "Who experiences it"],
+      n: ["working", "place"]
+    },
+    working: {
+      q: "If they work, why are they still homeless?",
+      a: ["Before losing housing, the median household in California's statewide study lived on <b>$960 a month</b>. At that income, one rent increase or one cut in hours is enough.",
+          "Once you're out, keeping a job gets harder: no address, no shower, a phone that dies, belongings that get taken."],
+      v: ["I couldn't sustain employment. I couldn't pay rent and pay for groceries.", "Zach S.", "NPR / StoryCorps", "https://www.npr.org/2015/04/18/400363059/formerly-homeless-vet-and-his-dad-remember-his-darkest-moments"],
+      s: [["UCSF Benioff Homelessness and Housing Initiative, 2023", "https://homelessness.ucsf.edu/sites/default/files/2023-06/CASPEH_Executive_Summary.pdf"]],
+      m: ["/learn/causes/#proximate", "What pushes someone over the edge"],
+      n: ["prevent", "fix"]
+    },
+    move: {
+      q: "Don't people move here for the services and the weather?",
+      a: ["Most people become homeless where they already live. In California's statewide study, <b>9 in 10</b> lost their last housing in California and <b>75%</b> were in the same county. In San Francisco's 2024 count, 59% were last housed in the city.",
+          "Maricopa County doesn't publish this figure. Where it's measured, the pattern holds: people stay near family, work, and the place they know."],
+      s: [["UCSF Benioff Homelessness and Housing Initiative, 2023", "https://endhomelessness.org/wp-content/uploads/2024/10/CASPEH_Report_62023.pdf"], ["San Francisco 2024 count", "https://sf.gov/reports/september-2024/2024-point-time-count"]],
+      m: ["/learn/causes/#myths", "Counter-arguments and where they fail"],
+      n: ["place", "refuse"]
+    },
+    refuse: {
+      q: "Don't a lot of people refuse shelter?",
+      a: ["Some turn down a bed. More can't get one: <b>41%</b> in California's statewide study had wanted shelter and couldn't get in. People who decline name curfews, leaving every morning, losing their belongings, and safety.",
+          "When beds open, people use them. After Maricopa County added shelter beds, the January 2026 count showed sheltered homelessness was up 14% and unsheltered down 12%."],
+      v: ["You are not always welcome; you might be welcome one night and then the next day you are not.", "Francisco", "Father Joe's Villages", "https://my.neighbor.org/franciscos-story/"],
+      s: [["UCSF BHHI, 2023", "https://endhomelessness.org/wp-content/uploads/2024/10/CASPEH_Report_62023.pdf"], ["Maricopa Association of Governments, 2026", "https://azmag.gov/Newsroom/News-Releases/point-in-time-homeless-count-numbers-holding-steady-from-last-year"]],
+      m: ["/learn/who/#sheltered", "Sheltered vs. unsheltered"],
+      n: ["camps", "fix"]
+    },
+    camps: {
+      q: "Why not just clear the camps?",
+      a: ["Cities can: the Supreme Court ruled in 2024 (<i>Grants Pass v. Johnson</i>) that enforcing camping bans is constitutional. The question is whether it reduces homelessness.",
+          "A study of the 100 largest U.S. cities from 2000 to 2021 found anti-camping laws did not. Sweeps also take IDs, phones, and medication: <b>42%</b> of mostly unsheltered people in California had belongings taken in six months. That resets the path to a job or an apartment."],
+      s: [["Lebovits &amp; Sullivan, via Next City", "https://nextcity.org/urbanist-news/a-new-study-proves-criminalizing-homelessness-doesnt-reduce-homelessness"], ["<i>Grants Pass v. Johnson</i>", "https://www.supremecourt.gov/opinions/23pdf/23-175_19m2.pdf"], ["UCSF BHHI, 2023", "https://endhomelessness.org/wp-content/uploads/2024/10/CASPEH_Report_62023.pdf"]],
+      m: ["/learn/solutions/#what-doesnt-work", "What doesn't work, and why we keep trying it"],
+      n: ["cost", "fix"]
+    },
+    cost: {
+      q: "Isn't housing people too expensive?",
+      a: ["Leaving people outside is expensive too: jail, ER visits, detox. In Denver's supportive housing trial, <b>86%</b> were still housed after a year, police contacts fell 34%, arrests fell 40%, and costs dropped by <b>$6,876 per person per year</b>.",
+          "The biggest savings come from the people who use emergency systems the most. For others, the savings are smaller."],
+      s: [["Urban Institute Denver study, via NLIHC", "https://nlihc.org/resource/supportive-housing-leads-greater-housing-stability-less-jail-time-and-cost-savings"]],
+      m: ["/learn/solutions/#cost", "The cost case"],
+      n: ["fix", "act"]
+    },
+    fix: {
+      q: "Can homelessness actually be fixed?",
+      a: ["Yes, and it's been done. In the original Pathways to Housing program in New York, <b>88%</b> stayed housed after five years, versus 47% in the comparison group. Pairing vouchers with case management for veterans helped cut veteran homelessness nearly in half between 2010 and 2018.",
+          "What limits progress is the number of homes people can afford, and the money to match people to them."],
+      v: ["I didn't know I could think like this, and it started with having a place to stay.", "Tammy", "DESC", "https://www.desc.org/tammys-story-finding-safety-at-desc/"],
+      s: [["Tsemberis &amp; Eisenberg, 2000", "https://psychiatryonline.org/doi/10.1176/appi.ps.51.4.487"], ["U.S. Department of Veterans Affairs", "https://news.va.gov/press-room/trump-administration-announces-decline-in-veteran-homelessness/"]],
+      m: ["/learn/solutions/#case-studies", "Where it has worked"],
+      n: ["prevent", "treatment", "act"]
+    },
+    prevent: {
+      q: "What would have kept people housed in the first place?",
+      a: ["Ask them. In California's statewide study, <b>70%</b> said a <b>$300–$500</b> monthly rent subsidy would have kept them housed, and 90% said a housing voucher would have. Renters on a lease got a median of 10 days' notice before they lost their home.",
+          "Prevention means covering the gap before the eviction, not after."],
+      s: [["UCSF Benioff Homelessness and Housing Initiative, 2023", "https://endhomelessness.org/wp-content/uploads/2024/10/CASPEH_Report_62023.pdf"]],
+      m: ["/learn/solutions/#prevention", "Prevention and diversion"],
+      n: ["act", "cost"]
+    },
+    act: {
+      q: "What can I do about it?",
+      a: ["Three things move the numbers. Back more homes near jobs and transit in your city. Support rent help that stops evictions before they happen. Show up when your city council votes on either.",
+          "If someone near you needs help tonight, <a href=\"/find.html\">Find resources</a> routes them to the right place."],
+      m: ["/learn/society/#what-you-can-do", "What you can do"],
+      n: []
+    }
+  }
+};
+  var log = root.querySelector('.talk__log');
+  var box = root.querySelector('.talk__choices');
+  var restart = root.querySelector('.talk__restart');
+  var seen = {};
+
+  function el(tag, cls, html) {
+    var e = document.createElement(tag);
+    if (cls) e.className = cls;
+    if (html != null) e.innerHTML = html;
+    return e;
+  }
+  function choices(ids, label) {
+    box.innerHTML = '';
+    box.appendChild(el('span', null, label));
+    ids.filter(function (id) { return T.nodes[id] && !seen[id]; }).forEach(function (id) {
+      var b = el('button', 'talk__opt');
+      b.type = 'button';
+      b.textContent = T.nodes[id].q;
+      b.addEventListener('click', function () { say(id); });
+      box.appendChild(b);
+    });
+    var left = T.start.filter(function (id) { return !seen[id]; });
+    if (box.children.length < 2 && left.length) {
+      var o = el('button', 'talk__opt', 'Ask about something else');
+      o.type = 'button';
+      o.addEventListener('click', function () { choices(T.start, 'What do you want to ask?'); });
+      box.appendChild(o);
+    }
+  }
+  function say(id) {
+    var n = T.nodes[id];
+    seen[id] = 1;
+    restart.hidden = false;
+    log.appendChild(el('p', 'talk__me', n.q.replace(/[&<>]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;' }[c]; })));
+    var r = el('div', 'talk__them');
+    r.tabIndex = -1;
+    r.innerHTML = n.a.map(function (p) { return '<p>' + p + '</p>'; }).join('') +
+      (n.v ? '<blockquote class="talk__voice">“' + n.v[0] + '”<cite>— ' + n.v[1] + ', <a href="' + n.v[3] + '" target="_blank" rel="noopener">' + n.v[2] + '</a></cite></blockquote>' : '') +
+      (n.s ? '<p class="talk__src">Source: ' + n.s.map(function (s) { return '<a href="' + s[1] + '" target="_blank" rel="noopener">' + s[0] + '</a>'; }).join(' · ') + '</p>' : '') +
+      (n.m ? '<a class="talk__more" href="' + n.m[0] + '">' + n.m[1] + ' ›</a>' : '');
+    log.appendChild(r);
+    log.scrollTop = r.offsetTop - log.offsetTop - 8;
+    r.focus({ preventScroll: true });
+    choices(n.n || [], 'Ask next');
+    if (typeof gtag === 'function') gtag('event', 'talk_pick', { node: id });
+  }
+  restart.addEventListener('click', function () {
+    seen = {};
+    log.innerHTML = '';
+    log.appendChild(el('p', 'talk__intro', T.intro));
+    restart.hidden = true;
+    choices(T.start, 'What do you want to ask?');
+  });
+  choices(T.start, 'What do you want to ask?');
 })();
 </script>
 </body>
