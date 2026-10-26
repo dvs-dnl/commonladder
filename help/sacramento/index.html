@@ -8,6 +8,8 @@
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
   gtag('config', 'G-3YXK0RL6XV');
+  // Count taps on phone numbers: which number and which page, never who tapped. Disclosed on /privacy.html.
+  document.addEventListener('click', function (e) { var a = e.target && e.target.closest ? e.target.closest('a[href^="tel:"]') : null; if (a) { gtag('event', 'tel_tap', { tel: a.getAttribute('href').slice(4), page: location.pathname }); } }, true);
 </script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -142,7 +144,7 @@
           <div class="card-tags"><span class="tag">E</span><span class="tag">m</span><span class="tag">e</span><span class="tag">r</span><span class="tag">g</span><span class="tag">e</span><span class="tag">n</span><span class="tag">c</span><span class="tag">y</span><span class="tag"> </span><span class="tag">S</span><span class="tag">h</span><span class="tag">e</span><span class="tag">l</span><span class="tag">t</span><span class="tag">e</span><span class="tag">r</span></div>
           <p>Sacramento County's largest shelter (130 beds), with 30&ndash;90 day stays for single adults. Intake is through 2-1-1, not a direct line.</p>
           <dl class="resource-details"><dt>Eligibility</dt><dd>Single adults; assessed via 2-1-1</dd><dt>Address</dt><dd><a href="https://maps.google.com/?q=1200+North+B+Street+Sacramento+CA" rel="noopener" target="_blank">1200 North B St, Sacramento, CA 95811</a></dd><dt>Intake</dt><dd>Dial <a href="tel:211">2-1-1</a> for a shelter assessment</dd><dt>Cost</dt><dd>Free</dd></dl>
-          <p class="card-verified"><small>Verified June 2026</small></p>
+          <p class="card-verified"><small>Researched June 2026 · not yet re-confirmed with the provider — call before you go · <a href="mailto:corrections.commonladder@gmail.com?subject=Correction%3A%20Salvation%20Army%20Center%20of%20Hope%20%28help/sacramento/index.html%29">Report a problem</a></small></p>
         </div>
 
         <div class="card">
@@ -150,7 +152,7 @@
           <div class="card-tags"><span class="tag">E</span><span class="tag">m</span><span class="tag">e</span><span class="tag">r</span><span class="tag">g</span><span class="tag">e</span><span class="tag">n</span><span class="tag">c</span><span class="tag">y</span><span class="tag"> </span><span class="tag">S</span><span class="tag">h</span><span class="tag">e</span><span class="tag">l</span><span class="tag">t</span><span class="tag">e</span><span class="tag">r</span></div>
           <p>Men's shelter with nightly first-come bed sign-ups at 5:30 p.m. Includes dinner, showers, clothing, and breakfast. Walk-in &mdash; no referral needed.</p>
           <dl class="resource-details"><dt>Eligibility</dt><dd>Men 18+; photo ID + current negative TB card</dd><dt>Hours</dt><dd>Bed sign-up nightly 5:30 p.m.</dd><dt>Address</dt><dd><a href="https://maps.google.com/?q=400+Bannon+St+Sacramento+CA" rel="noopener" target="_blank">400 Bannon St, Sacramento, CA 95811</a></dd><dt>Phone</dt><dd><a href="tel:9164473268">(916) 447-3268</a></dd><dt>Cost</dt><dd>Free</dd></dl>
-          <p class="card-verified"><small>Verified June 2026</small></p>
+          <p class="card-verified"><small>Researched June 2026 · not yet re-confirmed with the provider — call before you go · <a href="mailto:corrections.commonladder@gmail.com?subject=Correction%3A%20Union%20Gospel%20Mission%20%28help/sacramento/index.html%29">Report a problem</a></small></p>
         </div>
 
         <div class="card">
@@ -158,7 +160,7 @@
           <div class="card-tags"><span class="tag">Families</span><span class="tag">Women & children</span></div>
           <p>Residential program plus a short-term respite shelter for women and children. Sobriety required for most programs.</p>
           <dl class="resource-details"><dt>Eligibility</dt><dd>Women and children</dd><dt>Phone</dt><dd><a href="tel:9164531482">(916) 453-1482</a></dd><dt>Cost</dt><dd>Free</dd></dl>
-          <p class="card-verified"><small>Verified June 2026</small></p>
+          <p class="card-verified"><small>Researched June 2026 · not yet re-confirmed with the provider — call before you go · <a href="mailto:corrections.commonladder@gmail.com?subject=Correction%3A%20Saint%20John%27s%20Program%20for%20Real%20Change%20%28help/sacramento/index.html%29">Report a problem</a></small></p>
         </div>
 
         <div class="card">
@@ -166,7 +168,7 @@
           <div class="card-tags"><span class="tag">Families</span></div>
           <p>Emergency family shelter and the Mather Community Campus transitional housing. Intake runs through 2-1-1's Coordinated Access System.</p>
           <dl class="resource-details"><dt>Eligibility</dt><dd>Families with children; via 2-1-1</dd><dt>Address</dt><dd><a href="https://maps.google.com/?q=8001+Folsom+Blvd+Sacramento+CA" rel="noopener" target="_blank">8001 Folsom Blvd, Sacramento, CA 95826</a></dd><dt>Phone</dt><dd><a href="tel:9164542120">(916) 454-2120</a></dd><dt>Cost</dt><dd>Free</dd></dl>
-          <p class="card-verified"><small>Verified June 2026</small></p>
+          <p class="card-verified"><small>Researched June 2026 · not yet re-confirmed with the provider — call before you go · <a href="mailto:corrections.commonladder@gmail.com?subject=Correction%3A%20Next%20Move%20Homeless%20Services%20%28help/sacramento/index.html%29">Report a problem</a></small></p>
         </div>
 
         <div class="card">
@@ -174,7 +176,7 @@
           <div class="card-tags"><span class="tag">Youth Shelter</span><span class="tag">Ages 12&ndash;24</span></div>
           <p>Drop-in center for ages 18&ndash;24 (meals, showers, case management, free ID help) and a 24-hour adolescent shelter line for ages 12&ndash;17.</p>
           <dl class="resource-details"><dt>Eligibility</dt><dd>Youth 12&ndash;24</dd><dt>Address</dt><dd><a href="https://maps.google.com/?q=815+S+Street+Sacramento+CA" rel="noopener" target="_blank">815 S Street, Sacramento, CA 95811</a></dd><dt>Phone</dt><dd><a href="tel:9165043313">(916) 504-3313</a> &middot; 12&ndash;17 line <a href="tel:9166281492">(916) 628-1492</a></dd><dt>Cost</dt><dd>Free</dd></dl>
-          <p class="card-verified"><small>Verified June 2026</small></p>
+          <p class="card-verified"><small>Researched June 2026 · not yet re-confirmed with the provider — call before you go · <a href="mailto:corrections.commonladder@gmail.com?subject=Correction%3A%20WIND%20Youth%20Services%20%28help/sacramento/index.html%29">Report a problem</a></small></p>
         </div>
 
         <div class="card">
@@ -182,7 +184,7 @@
           <div class="card-tags"><span class="tag">Veterans</span></div>
           <p>Homeless veteran care coordinator for HUD-VASH and Health Care for Homeless Veterans, with a homeless walk-in clinic at Building 800.</p>
           <dl class="resource-details"><dt>Eligibility</dt><dd>Veterans</dd><dt>Address</dt><dd><a href="https://maps.google.com/?q=10535+Hospital+Way+Mather+CA" rel="noopener" target="_blank">10535 Hospital Way, Mather, CA 95655</a></dd><dt>Phone</dt><dd>Homeless care <a href="tel:9168437271">(916) 843-7271</a> &middot; National line <a href="tel:18774243838">1-877-424-3838</a></dd><dt>Cost</dt><dd>Free</dd></dl>
-          <p class="card-verified"><small>Verified June 2026</small></p>
+          <p class="card-verified"><small>Researched June 2026 · not yet re-confirmed with the provider — call before you go · <a href="mailto:corrections.commonladder@gmail.com?subject=Correction%3A%20Sacramento%20VA%20Medical%20Center%20%28Mather%29%20%28help/sacramento/index.html%29">Report a problem</a></small></p>
         </div>
 
         <div class="card">
@@ -190,7 +192,7 @@
           <div class="card-tags"><span class="tag">Day Services</span><span class="tag">Meals</span></div>
           <p>The largest daytime services campus &mdash; meals, showers, hygiene, and case management. Maryhouse is the daytime drop-in for women and families.</p>
           <dl class="resource-details"><dt>Eligibility</dt><dd>Adults; Maryhouse for women &amp; families</dd><dt>Address</dt><dd><a href="https://maps.google.com/?q=1351+North+C+St+Sacramento+CA" rel="noopener" target="_blank">1351 North C St, Sacramento, CA 95811</a></dd><dt>Phone</dt><dd><a href="tel:9164460874">(916) 446-0874</a> &middot; Maryhouse <a href="tel:9166372450">(916) 637-2450</a></dd><dt>Cost</dt><dd>Free</dd></dl>
-          <p class="card-verified"><small>Verified June 2026</small></p>
+          <p class="card-verified"><small>Researched June 2026 · not yet re-confirmed with the provider — call before you go · <a href="mailto:corrections.commonladder@gmail.com?subject=Correction%3A%20Loaves%20%26%20Fishes%20%28help/sacramento/index.html%29">Report a problem</a></small></p>
         </div>
 
         <div class="card">
@@ -198,7 +200,7 @@
           <div class="card-tags"><span class="tag">Permanent Supportive Housing</span><span class="tag">Behavioral Health</span></div>
           <p>Permanent supportive housing and behavioral-health services for people experiencing chronic homelessness. Access through 2-1-1 coordinated entry.</p>
           <dl class="resource-details"><dt>Eligibility</dt><dd>Via coordinated entry (2-1-1)</dd><dt>Phone</dt><dd><a href="tel:9164410123">(916) 441-0123</a></dd><dt>Cost</dt><dd>Free</dd></dl>
-          <p class="card-verified"><small>Verified June 2026</small></p>
+          <p class="card-verified"><small>Researched June 2026 · not yet re-confirmed with the provider — call before you go · <a href="mailto:corrections.commonladder@gmail.com?subject=Correction%3A%20HOPE%20Cooperative%20%28help/sacramento/index.html%29">Report a problem</a></small></p>
         </div>
 
       </div>

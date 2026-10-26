@@ -8,6 +8,8 @@
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
   gtag('config', 'G-3YXK0RL6XV');
+  // Count taps on phone numbers: which number and which page, never who tapped. Disclosed on /privacy.html.
+  document.addEventListener('click', function (e) { var a = e.target && e.target.closest ? e.target.closest('a[href^="tel:"]') : null; if (a) { gtag('event', 'tel_tap', { tel: a.getAttribute('href').slice(4), page: location.pathname }); } }, true);
 </script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -140,44 +142,19 @@
         <h2>ID &amp; Documents programs</h2>
       </div>
       <div class="cards">
-        <div class="card">
-          <h3>Maricopa County — Birth Certificate Assistance</h3>
-          <div class="card-tags"><span class="tag">Birth Certificate</span><span class="tag">Vital Records</span><span class="tag">Documents</span></div>
-          <p>Provides low-cost certified copies of Arizona birth certificates for individuals experiencing homelessness or economic hardship.</p>
+        <div class="card" data-record="maricopa-vital-records">
+          <h3>Maricopa County — Birth Certificates (Vital Registration)</h3>
+          <div class="card-tags"><span class="tag">Birth certificate</span><span class="tag">Same-day</span><span class="tag">$20</span></div>
+          <p class="card-access"><strong>What to do:</strong> Same-day service in person at any of five offices. Bring a current, signed photo ID and the fee. If you have no ID, start with the ID Recovery Wizard.</p>
           <dl class="resource-details">
-            <dt>Eligibility</dt><dd>Arizona-born individuals with proof of identity (or assistance obtaining it)</dd>
-            <dt>Hours</dt><dd>Mon–Fri 8 am–5 pm</dd>
-            <dt>Address</dt><dd><a href="https://maps.google.com/?q=222+E+Javelina+Ave+Mesa+AZ+85210" rel="noopener" target="_blank">222 E Javelina Ave, Mesa, AZ 85210</a></dd>
-            <dt>Phone</dt><dd><a href="tel:6025063358">(602) 506-3358</a></dd>
-            <dt>Cost</dt><dd>Reduced fee or free for homeless individuals</dd>
+            <dt>Who it’s for</dt><dd>The person named on the record (of legal age), a parent, spouse, grandparent, adult child or sibling, guardian, and others listed by the county</dd>
+            <dt>Hours</dt><dd>Mon, Tue, Thu, Fri 8 a.m.–4:30 p.m.<br>Wed 9 a.m.–4:30 p.m.</dd>
+            <dt>Locations</dt><dd>Central Valley: 1645 E. Roosevelt St., Phoenix, AZ 85006<br>East Valley: 331 E. Coury Ave., Mesa, AZ 85210<br>Glendale: 5141 W. Lamar Rd., Glendale, AZ 85301<br>Northwest Valley: 8088 W. Whitney Dr., Suite 2A, Peoria, AZ 85345<br>Goodyear: 14130 W. McDowell Rd., Goodyear, AZ 85395</dd>
+            <dt>Phone</dt><dd><a href="tel:6025066805">(602) 506-6805</a></dd>
+            <dt>Cost</dt><dd>$20 per certified copy ($30 for corrections and amendments). Cash, money order, cashier's check, or credit card.</dd>
+            <dt>Website</dt><dd><a href="https://www.maricopa.gov/DocumentCenter/View/3049" target="_blank" rel="noopener">maricopa.gov</a></dd>
           </dl>
-          <p class="card-verified"><small>Verified May 2026</small></p>
-        </div>
-        <div class="card">
-          <h3>Services &amp; Advocacy for GLBT Elders (SAGE) — ID Clinic</h3>
-          <div class="card-tags"><span class="tag">State ID</span><span class="tag">Driver License</span><span class="tag">Document Recovery</span></div>
-          <p>Hosts periodic ID clinics helping people experiencing homelessness obtain a state photo ID at no cost, in partnership with Arizona MVD.</p>
-          <dl class="resource-details">
-            <dt>Eligibility</dt><dd>Adults 18+ without current photo ID</dd>
-            <dt>Hours</dt><dd>Clinic dates vary; call to schedule</dd>
-            <dt>Address</dt><dd><a href="https://maps.google.com/?q=1+N+1st+St+Phoenix+AZ+85004" rel="noopener" target="_blank">1 N 1st St, Phoenix, AZ 85004</a></dd>
-            <dt>Phone</dt><dd><a href="tel:6022850287">(602) 285-0287</a></dd>
-            <dt>Cost</dt><dd>Free</dd>
-          </dl>
-          <p class="card-verified"><small>Verified May 2026</small></p>
-        </div>
-        <div class="card">
-          <h3>Restore Hope Ministries — Document Recovery</h3>
-          <div class="card-tags"><span class="tag">ID</span><span class="tag">Social Security Card</span><span class="tag">Birth Certificate</span></div>
-          <p>Helps individuals experiencing homelessness navigate the process of obtaining a state ID, Social Security card, and birth certificate.</p>
-          <dl class="resource-details">
-            <dt>Eligibility</dt><dd>Adults experiencing homelessness in Maricopa County</dd>
-            <dt>Hours</dt><dd>Mon–Thu 9 am–3 pm; appointment preferred</dd>
-            <dt>Address</dt><dd><a href="https://maps.google.com/?q=3610+E+McDowell+Rd+Phoenix+AZ+85008" rel="noopener" target="_blank">3610 E McDowell Rd, Phoenix, AZ 85008</a></dd>
-            <dt>Phone</dt><dd><a href="tel:6022671829">(602) 267-1829</a></dd>
-            <dt>Cost</dt><dd>Free</dd>
-          </dl>
-          <p class="card-verified"><small>Verified May 2026</small></p>
+          <p class="card-verified"><small>Confirmed in Maricopa County’s published brochure · Oct. 26, 2026 · <a href="mailto:corrections.commonladder@gmail.com?subject=Correction%3A%20Maricopa%20County%20Office%20of%20Vital%20Registration%20%28help/id-documents/index.html%29">Report a problem</a></small></p>
         </div>
         <div class="card">
           <h3>Social Security Administration — Card Replacement</h3>
@@ -190,7 +167,7 @@
             <dt>Phone</dt><dd><a href="tel:8007721213">(800) 772-1213</a></dd>
             <dt>Cost</dt><dd>Free</dd>
           </dl>
-          <p class="card-verified"><small>Verified May 2026</small></p>
+          <p class="card-verified"><small>Researched May 2026 · not yet re-confirmed with the provider — call before you go · <a href="mailto:corrections.commonladder@gmail.com?subject=Correction%3A%20Social%20Security%20Administration%20%E2%80%94%20Card%20Replacement%20%28help/id-documents/index.html%29">Report a problem</a></small></p>
         </div>
       </div>
     </div>

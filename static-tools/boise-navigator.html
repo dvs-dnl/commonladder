@@ -9,6 +9,8 @@
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
   gtag('config', 'G-3YXK0RL6XV');
+  // Count taps on phone numbers: which number and which page, never who tapped. Disclosed on /privacy.html.
+  document.addEventListener('click', function (e) { var a = e.target && e.target.closest ? e.target.closest('a[href^="tel:"]') : null; if (a) { gtag('event', 'tel_tap', { tel: a.getAttribute('href').slice(4), page: location.pathname }); } }, true);
 </script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -791,7 +793,7 @@
       badgeClass: "badge-adult",
       badgeIcon: "📞",
       headline: "Start with tonight’s shelter, then the housing list.",
-      firstAction: "Call or text <strong>211</strong> and say: <em>“I need a shelter bed tonight.”</em> Ask for <strong>tonight’s open beds for single adults</strong>, the nearest <strong>daytime drop-in center</strong> (showers, mail, case management), and a <strong>free meal site</strong>. 211 is multilingual and 24/7.",
+      firstAction: "Call or text <strong>211</strong> and say: <em>“I need a shelter bed tonight.”</em> Ask for <strong>tonight’s open beds for single adults</strong>, the nearest <strong>daytime drop-in center</strong> (showers, mail, case management), and a <strong>free meal site</strong>. 211 is free and multilingual; hours vary by area.",
       callNumber: "tel:211",
       callLabel: "Call 211",
       what_to_expect: "211 has the current shelter-bed picture for your area, which changes daily. Ask them to also start a coordinated-entry assessment so you’re working toward housing, not just tonight.",

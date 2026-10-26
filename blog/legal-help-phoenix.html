@@ -8,6 +8,8 @@
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
   gtag('config', 'G-3YXK0RL6XV');
+  // Count taps on phone numbers: which number and which page, never who tapped. Disclosed on /privacy.html.
+  document.addEventListener('click', function (e) { var a = e.target && e.target.closest ? e.target.closest('a[href^="tel:"]') : null; if (a) { gtag('event', 'tel_tap', { tel: a.getAttribute('href').slice(4), page: location.pathname }); } }, true);
 </script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -83,7 +85,7 @@
   <h1>Free and Low-Cost Legal Help in Phoenix: Eviction, Records, Benefits, and DV</h1>
   <p class="meta">By Common Ladder · June 28, 2026 · 6 min read</p>
 
-  <p>A legal problem can pull a stable life apart fast — an eviction notice, a benefits cutoff, an old record that blocks every apartment application. The good news: in Maricopa County there is a real network of free civil legal aid, and you do not need money or an address to use it. If you're not sure where to start, <strong>call 211</strong> (dial 2-1-1 from any phone, free, 24/7) for a current referral. This guide covers the four problems we're asked about most.</p>
+  <p>A legal problem can pull a stable life apart fast — an eviction notice, a benefits cutoff, an old record that blocks every apartment application. The good news: in Maricopa County there is a real network of free civil legal aid, and you do not need money or an address to use it. If you're not sure where to start, <strong>call 211</strong> (dial 2-1-1 from any phone, free; live help 9 a.m.–7 p.m. daily) for a current referral. This guide covers the four problems we're asked about most.</p>
 
   <hr style="margin: 2rem 0; border: none; border-top: 1px solid #e0ddd8;">
 

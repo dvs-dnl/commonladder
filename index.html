@@ -8,6 +8,8 @@
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
   gtag('config', 'G-3YXK0RL6XV');
+  // Count taps on phone numbers: which number and which page, never who tapped. Disclosed on /privacy.html.
+  document.addEventListener('click', function (e) { var a = e.target && e.target.closest ? e.target.closest('a[href^="tel:"]') : null; if (a) { gtag('event', 'tel_tap', { tel: a.getAttribute('href').slice(4), page: location.pathname }); } }, true);
 </script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -115,7 +117,27 @@
 <section class="hero">
   <div class="container">
     <h1>Every resource. <em>Every next step.</em></h1>
-    <p>Find shelters, food, health care, and housing programs near you — free, in plain language, no account required.</p>
+    <p class="hero-lede">Free, in plain language, no account required.</p>
+    <!-- Need-first entry (2026-10-26): the first thing on the page is the question a
+         person in crisis is actually asking. Each tile goes to the page that already
+         answers it best. My Ladder and Learn sit below as secondary paths. -->
+    <nav class="need-first" aria-labelledby="need-first-h">
+      <h2 id="need-first-h" class="need-first__q">What do you need help with today?</h2>
+      <div class="need-first__grid">
+        <a class="need-tile need-tile--urgent" href="/blog/emergency-shelter-phoenix-tonight.html"><span class="need-tile__icon" aria-hidden="true">🛏️</span><span class="need-tile__label">A place to sleep tonight</span></a>
+        <a class="need-tile" href="/blog/free-meals-phoenix.html"><span class="need-tile__icon" aria-hidden="true">🍽️</span><span class="need-tile__label">Food today</span></a>
+        <a class="need-tile" href="/static-tools/stay-housed-maricopa.html"><span class="need-tile__icon" aria-hidden="true">🔑</span><span class="need-tile__label">Keep my housing</span><span class="need-tile__sub">Behind on rent or facing eviction</span></a>
+        <a class="need-tile" href="/blog/free-health-clinics-phoenix.html"><span class="need-tile__icon" aria-hidden="true">🩺</span><span class="need-tile__label">See a doctor</span><span class="need-tile__sub">Free and low-cost clinics</span></a>
+        <a class="need-tile" href="/help/safety/"><span class="need-tile__icon" aria-hidden="true">🛡️</span><span class="need-tile__label">I’m not safe</span><span class="need-tile__sub">Domestic violence and safety</span></a>
+        <a class="need-tile" href="/static-tools/benefit-screener.html"><span class="need-tile__icon" aria-hidden="true">💵</span><span class="need-tile__label">Money and benefits</span><span class="need-tile__sub">See what you may qualify for</span></a>
+        <a class="need-tile" href="/static-tools/id-recovery-wizard.html"><span class="need-tile__icon" aria-hidden="true">🪪</span><span class="need-tile__label">Replace my ID</span></a>
+        <a class="need-tile" href="/find.html"><span class="need-tile__icon" aria-hidden="true">🧭</span><span class="need-tile__label">Something else</span><span class="need-tile__sub">All categories, by zip code</span></a>
+      </div>
+      <p class="need-first__note">In danger right now? Call <a href="tel:911">911</a>. For domestic violence shelter in Maricopa County, call the screening line, open 24/7: <a href="tel:4808903039">480-890-3039</a>.</p>
+      <p class="need-first__note">Listings are for the Phoenix area. Somewhere else? Call <a href="tel:211">211</a> or <a href="/find.html">search by zip code</a>.</p>
+    </nav>
+
+    <p class="hero-secondary">Not an emergency? Build a step-by-step plan, or learn how homelessness works.</p>
     <!-- Hero embed: My Ladder questionnaire on the left, Learn path on the right.
          Replaces the old 2-up "Find Resources / Learn" cards. The left card captures
          intake answers; on completion the shared JS saves a plan to localStorage and
@@ -124,7 +146,7 @@
     <div class="hero-embed">
       <div class="hero-embed__card">
         <div class="hero-embed__head">
-          <h2 class="hero-embed__title">Personalized plan for resources you qualify for specific to your current situation.</h2>
+          <h2 class="hero-embed__title">Build a plan for your situation: answer a few questions and get your next steps, saved on this device.</h2>
           <a href="/static-tools/my-ladder.html" class="hero-embed__myladder" aria-label="Open My Ladder">
             My Ladder
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg>
@@ -152,7 +174,6 @@
           <a class="talk__opt" href="/learn/solutions/">Can homelessness actually be fixed?</a>
         </div>
       </div>
-      </div>
     </div>
   </div>
 </section>
@@ -175,13 +196,13 @@
       <div class="card card--amber">
         <figure class="card__photo"><img src="images/cards/audience-case-managers.jpg" alt="A case manager and a client sit together at a desk, looking at a laptop and a printed form." loading="lazy" onload="this.classList.add('loaded');this.parentElement.classList.add('has-image')" onerror="this.remove()"></figure>
         <h3>Case managers &amp; nonprofits</h3>
-        <p>The most complete, up-to-date picture of every service in your area — so you spend less time searching and more time with clients.</p>
+        <p>Phoenix-area services in one place, with a note on each listing saying whether we have confirmed it with the provider, so you spend less time searching and more time with clients.</p>
         <a href="/resources.html" class="btn btn--blue btn--sm">See all resources</a>
       </div>
       <div class="card card--sage">
         <figure class="card__photo"><img src="images/cards/audience-government.jpg" alt="Morning sun on the steps of a small civic building, with people walking past." loading="lazy" onload="this.classList.add('loaded');this.parentElement.classList.add('has-image')" onerror="this.remove()"></figure>
         <h3>Government &amp; policy</h3>
-        <p>Real-time visibility into what services exist, where gaps are, and what your community's residents are actually accessing.</p>
+        <p>A plain-language view of what services exist and where the gaps are, drawn from public sources we cite.</p>
         <a href="/about.html" class="btn btn--blue btn--sm">Request a briefing</a>
       </div>
       <div class="card">

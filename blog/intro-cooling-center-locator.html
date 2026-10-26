@@ -8,6 +8,8 @@
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
   gtag('config', 'G-3YXK0RL6XV');
+  // Count taps on phone numbers: which number and which page, never who tapped. Disclosed on /privacy.html.
+  document.addEventListener('click', function (e) { var a = e.target && e.target.closest ? e.target.closest('a[href^="tel:"]') : null; if (a) { gtag('event', 'tel_tap', { tel: a.getAttribute('href').slice(4), page: location.pathname }); } }, true);
 </script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -98,7 +100,7 @@
 
   <p>Like every Common Ladder tool, the locator collects no personal information, requires no account, and stores nothing anywhere except your own device. There's no ID check at any site on the list — and the page says so up front, because the fear of being turned away keeps people outside in the heat. The signs of heat exhaustion and heat stroke are on the page too, with one clear instruction: hot dry skin, confusion, no sweat — that's 911, not a cooling center.</p>
 
-  <p>It loads fast on a low-end phone, works at 375 pixels wide, and degrades politely: no JavaScript, no problem, the full site list is plain HTML and 2-1-1 answers around the clock.</p>
+  <p>It loads fast on a low-end phone, works at 375 pixels wide, and degrades politely: no JavaScript, no problem, the full site list is plain HTML, and 2-1-1 live operators answer 9 a.m.–7 p.m. daily.</p>
 
   <h2>When to use which</h2>
 

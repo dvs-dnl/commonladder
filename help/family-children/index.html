@@ -8,6 +8,8 @@
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
   gtag('config', 'G-3YXK0RL6XV');
+  // Count taps on phone numbers: which number and which page, never who tapped. Disclosed on /privacy.html.
+  document.addEventListener('click', function (e) { var a = e.target && e.target.closest ? e.target.closest('a[href^="tel:"]') : null; if (a) { gtag('event', 'tel_tap', { tel: a.getAttribute('href').slice(4), page: location.pathname }); } }, true);
 </script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -138,33 +140,40 @@
             <dt>Phone</dt><dd><a href="tel:4808980228">(480) 898-0228</a></dd>
             <dt>Cost</dt><dd>Free</dd>
           </dl>
-          <p class="card-verified"><small>Verified May 2026</small></p>
+          <p class="card-verified"><small>Researched May 2026 · not yet re-confirmed with the provider — call before you go · <a href="mailto:corrections.commonladder@gmail.com?subject=Correction%3A%20Save%20the%20Family%20Foundation%20of%20Arizona%20%28help/family-children/index.html%29">Report a problem</a></small></p>
         </div>
-        <div class="card">
-          <h3>Arizona Department of Child Safety — Family Support</h3>
-          <div class="card-tags"><span class="tag">Children</span><span class="tag">Family Support</span><span class="tag">Crisis Prevention</span></div>
-          <p>Offers family preservation services, kinship support, and referrals to community resources to keep families safely together.</p>
+        <div class="card" data-record="dcs-child-abuse-hotline">
+          <h3>Arizona DCS — Child Abuse Hotline (reports only)</h3>
+          <div class="card-tags"><span class="tag">Report abuse or neglect</span></div>
+          <p class="card-access"><strong>What to do:</strong> This line takes reports of abuse and neglect. It is not a family-assistance or housing line.</p>
           <dl class="resource-details">
-            <dt>Eligibility</dt><dd>Families with children under 18 in Arizona</dd>
-            <dt>Hours</dt><dd>Mon–Fri 8 am–5 pm; 24/7 crisis line</dd>
-            <dt>Address</dt><dd><a href="https://maps.google.com/?q=3003+N+Central+Ave+Phoenix+AZ+85012" rel="noopener" target="_blank">3003 N Central Ave, Phoenix, AZ 85012</a></dd>
-            <dt>Phone</dt><dd><a href="tel:8887672445">(888) 767-2445</a></dd>
-            <dt>Cost</dt><dd>Free</dd>
+            <dt>Who it’s for</dt><dd>Anyone reporting suspected child abuse or neglect</dd>
+            <dt>Phone</dt><dd><a href="tel:18887672445">1-888-767-2445</a><br>TDD: <a href="tel:6025301831">(602) 530-1831</a></dd>
           </dl>
-          <p class="card-verified"><small>Verified May 2026</small></p>
+          <p class="card-verified"><small>Listed by Child Crisis Arizona · Oct. 26, 2026 · <a href="mailto:corrections.commonladder@gmail.com?subject=Correction%3A%20Arizona%20Department%20of%20Child%20Safety%20%28help/family-children/index.html%29">Report a problem</a></small></p>
         </div>
-        <div class="card">
-          <h3>Child Crisis Arizona</h3>
-          <div class="card-tags"><span class="tag">Child Crisis</span><span class="tag">Family Shelter</span><span class="tag">Respite Care</span></div>
-          <p>Emergency shelter and crisis services for children and families in immediate need, including short-term respite care.</p>
+        <div class="card" data-record="child-crisis-arizona-shelter">
+          <h3>Child Crisis Arizona — Emergency Children's Shelter (ages 2–10)</h3>
+          <div class="card-tags"><span class="tag">Children only</span><span class="tag">24/7</span></div>
+          <p class="card-access"><strong>What to do:</strong> Open 24/7. Placement by DCS, Tribal Social Services, or a parent or caregiver in an emergency with no other care option, based on availability. For a family to stay together, call the Family Housing Hub (602-595-8700).</p>
           <dl class="resource-details">
-            <dt>Eligibility</dt><dd>Families with children in crisis situations</dd>
-            <dt>Hours</dt><dd>24/7 for emergencies</dd>
-            <dt>Address</dt><dd><a href="https://maps.google.com/?q=1002+N+Dobson+Rd+Mesa+AZ+85201" rel="noopener" target="_blank">1002 N Dobson Rd, Mesa, AZ 85201</a></dd>
+            <dt>Who it’s for</dt><dd>Children ages 2–10. The child stays at the shelter; it is NOT a shelter for a parent and child together.</dd>
+            <dt>Hours</dt><dd>24 hours a day, 7 days a week</dd>
             <dt>Phone</dt><dd><a href="tel:4808349424">(480) 834-9424</a></dd>
-            <dt>Cost</dt><dd>Free</dd>
+            <dt>Website</dt><dd><a href="https://www.childcrisisaz.org/what-we-do/emergency-residential-services" target="_blank" rel="noopener">childcrisisaz.org</a></dd>
           </dl>
-          <p class="card-verified"><small>Verified May 2026</small></p>
+          <p class="card-verified"><small>Confirmed on Child Crisis Arizona’s own website · Oct. 26, 2026 · <a href="mailto:corrections.commonladder@gmail.com?subject=Correction%3A%20Child%20Crisis%20Arizona%20%28help/family-children/index.html%29">Report a problem</a></small></p>
+        </div>
+        <div class="card" data-record="family-housing-hub">
+          <h3>Family Housing Hub — family shelter entry</h3>
+          <div class="card-tags"><span class="tag">Families</span><span class="tag">Phone screening</span><span class="tag">Waiting list</span></div>
+          <p class="card-access"><strong>What to do:</strong> Call to be screened. There is always a waiting list for family shelter, ordered by need.</p>
+          <dl class="resource-details">
+            <dt>Who it’s for</dt><dd>Families with children under 18</dd>
+            <dt>Phone</dt><dd><a href="tel:6025958700">(602) 595-8700</a><br>TDD (Mon–Fri 8 a.m.–5 p.m.): <a href="tel:6027591896">(602) 759-1896</a></dd>
+            <dt>Website</dt><dd><a href="https://keystochangeaz.org/get-help/" target="_blank" rel="noopener">keystochangeaz.org</a></dd>
+          </dl>
+          <p class="card-verified"><small>Confirmed on Family Housing Hub’s own website · Oct. 26, 2026 · <a href="mailto:corrections.commonladder@gmail.com?subject=Correction%3A%20Family%20Housing%20Hub%20%28help/family-children/index.html%29">Report a problem</a></small></p>
         </div>
         <div class="card">
           <h3>Head Start / Early Head Start — Maricopa</h3>
@@ -177,7 +186,7 @@
             <dt>Phone</dt><dd><a href="tel:6022523560">(602) 252-3560</a></dd>
             <dt>Cost</dt><dd>Free</dd>
           </dl>
-          <p class="card-verified"><small>Verified May 2026</small></p>
+          <p class="card-verified"><small>Researched May 2026 · not yet re-confirmed with the provider — call before you go · <a href="mailto:corrections.commonladder@gmail.com?subject=Correction%3A%20Head%20Start%20/%20Early%20Head%20Start%20%E2%80%94%20Maricopa%20%28help/family-children/index.html%29">Report a problem</a></small></p>
         </div>
       </div>
     </div>

@@ -8,6 +8,8 @@
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
   gtag('config', 'G-3YXK0RL6XV');
+  // Count taps on phone numbers: which number and which page, never who tapped. Disclosed on /privacy.html.
+  document.addEventListener('click', function (e) { var a = e.target && e.target.closest ? e.target.closest('a[href^="tel:"]') : null; if (a) { gtag('event', 'tel_tap', { tel: a.getAttribute('href').slice(4), page: location.pathname }); } }, true);
 </script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -128,19 +130,6 @@
       </div>
       <div class="cards">
         <div class="card">
-          <h3>CASS — Drop-in Hygiene Center</h3>
-          <div class="card-tags"><span class="tag">Showers</span><span class="tag">Laundry</span><span class="tag">Hygiene Supplies</span></div>
-          <p>Drop-in showers, laundry, and hygiene supplies for individuals experiencing homelessness in Phoenix.</p>
-          <dl class="resource-details">
-            <dt>Eligibility</dt><dd>Anyone experiencing homelessness</dd>
-            <dt>Hours</dt><dd>Mon–Fri 7 am–3 pm</dd>
-            <dt>Address</dt><dd><a href="https://maps.google.com/?q=230+S+12th+Ave+Phoenix+AZ+85007" rel="noopener" target="_blank">230 S 12th Ave, Phoenix, AZ 85007</a></dd>
-            <dt>Phone</dt><dd><a href="tel:6025342500">(602) 534-2500</a></dd>
-            <dt>Cost</dt><dd>Free</dd>
-          </dl>
-          <p class="card-verified"><small>Verified May 2026</small></p>
-        </div>
-        <div class="card">
           <h3>Neighborhood Ministries — Essentials Pantry</h3>
           <div class="card-tags"><span class="tag">Clothing</span><span class="tag">Hygiene Supplies</span><span class="tag">Essentials</span></div>
           <p>Provides clothing, hygiene products, and essential household items to individuals and families in need.</p>
@@ -151,33 +140,21 @@
             <dt>Phone</dt><dd><a href="tel:6022521904">(602) 252-1904</a></dd>
             <dt>Cost</dt><dd>Free</dd>
           </dl>
-          <p class="card-verified"><small>Verified May 2026</small></p>
+          <p class="card-verified"><small>Researched May 2026 · not yet re-confirmed with the provider — call before you go · <a href="mailto:corrections.commonladder@gmail.com?subject=Correction%3A%20Neighborhood%20Ministries%20%E2%80%94%20Essentials%20Pantry%20%28help/hygiene-essentials/index.html%29">Report a problem</a></small></p>
         </div>
-        <div class="card">
-          <h3>Ozanam Manor — Hygiene Services</h3>
-          <div class="card-tags"><span class="tag">Showers</span><span class="tag">Clothing</span><span class="tag">Laundry</span></div>
-          <p>Provides showers, clothing, and laundry services to homeless adults as part of a broader day shelter program.</p>
+        <div class="card" data-record="andre-house">
+          <h3>Andre House — meals, showers, laundry, clothing</h3>
+          <div class="card-tags"><span class="tag">Hot dinner</span><span class="tag">Showers</span><span class="tag">Laundry</span><span class="tag">Clothing</span></div>
+          <p class="card-access"><strong>What to do:</strong> Walk in. Lines form before each service. Andre House is not a shelter and does not offer housing.</p>
           <dl class="resource-details">
-            <dt>Eligibility</dt><dd>Adults 18+ experiencing homelessness</dd>
-            <dt>Hours</dt><dd>Mon–Fri 6:30 am–2 pm</dd>
-            <dt>Address</dt><dd><a href="https://maps.google.com/?q=721+W+Madison+St+Phoenix+AZ+85007" rel="noopener" target="_blank">721 W Madison St, Phoenix, AZ 85007</a></dd>
-            <dt>Phone</dt><dd><a href="tel:6022529965">(602) 252-9965</a></dd>
+            <dt>Who it’s for</dt><dd>Anyone who comes to the door</dd>
+            <dt>Hours</dt><dd>Dinner: Sat–Thu 5–6 p.m. (line forms at 4 p.m.) — no dinner on Fridays<br>Showers: Mon–Thu 12:30–3 p.m. (line forms at noon)<br>Laundry: Mon–Wed 8:30 a.m.–noon (16 slots; line forms before 8 a.m.; pick up at 3 p.m.)<br>Clothing closet: Tue and Thu 12:30–3 p.m.; Sat 1–3 p.m.<br>Hygiene kits, backpacks, blankets: Mon–Thu and Sat–Sun 1–3 p.m.</dd>
+            <dt>Where</dt><dd><a href="https://maps.google.com/?q=213+S+11th+Ave+Phoenix+AZ+85007" rel="noopener" target="_blank">213 S. 11th Ave., Phoenix, AZ 85007</a></dd>
+            <dt>Phone</dt><dd><a href="tel:6022550580">(602) 255-0580</a></dd>
             <dt>Cost</dt><dd>Free</dd>
+            <dt>Website</dt><dd><a href="https://andrehouse.org/what-we-do/" target="_blank" rel="noopener">andrehouse.org</a></dd>
           </dl>
-          <p class="card-verified"><small>Verified May 2026</small></p>
-        </div>
-        <div class="card">
-          <h3>St. Vincent de Paul — Clothing Room</h3>
-          <div class="card-tags"><span class="tag">Clothing</span><span class="tag">Vouchers</span><span class="tag">Essentials</span></div>
-          <p>Provides clothing vouchers and donated clothing items to individuals and families experiencing poverty or homelessness.</p>
-          <dl class="resource-details">
-            <dt>Eligibility</dt><dd>Adults and families in need; no ID required</dd>
-            <dt>Hours</dt><dd>Tue &amp; Thu 9 am–noon; call for other locations</dd>
-            <dt>Address</dt><dd><a href="https://maps.google.com/?q=420+W+Watkins+Rd+Phoenix+AZ+85003" rel="noopener" target="_blank">420 W Watkins Rd, Phoenix, AZ 85003</a></dd>
-            <dt>Phone</dt><dd><a href="tel:6022616886">(602) 261-6886</a></dd>
-            <dt>Cost</dt><dd>Free</dd>
-          </dl>
-          <p class="card-verified"><small>Verified May 2026</small></p>
+          <p class="card-verified"><small>Confirmed on Andre House of Arizona’s own website · Oct. 26, 2026 · <a href="mailto:corrections.commonladder@gmail.com?subject=Correction%3A%20Andre%20House%20of%20Arizona%20%28help/hygiene-essentials/index.html%29">Report a problem</a></small></p>
         </div>
       </div>
     </div>

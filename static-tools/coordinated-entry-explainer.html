@@ -8,6 +8,8 @@
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
   gtag('config', 'G-3YXK0RL6XV');
+  // Count taps on phone numbers: which number and which page, never who tapped. Disclosed on /privacy.html.
+  document.addEventListener('click', function (e) { var a = e.target && e.target.closest ? e.target.closest('a[href^="tel:"]') : null; if (a) { gtag('event', 'tel_tap', { tel: a.getAttribute('href').slice(4), page: location.pathname }); } }, true);
 </script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -397,10 +399,10 @@
 
   // Maricopa County access points (verify before you go; see note on page)
   var MARICOPA = {
-    single:  { tel: "602-229-5155", label: "Call the Brian Garcia Welcome Center: 602-229-5155", addr: "206 S. 12th Ave, Phoenix · open 24/7 · single adults", extra: "This is the main front door for single adults in the Phoenix area. They handle the assessment and can connect you to shelter, housing navigation, medical and behavioral health care, and more." },
+    single:  { tel: "602-883-4509", label: "Call the Brian Garcia Welcome Center: 602-883-4509", addr: "206 S. 12th Ave, Phoenix · call ahead · single adults", extra: "This is the main front door for single adults in the Phoenix area. They handle the assessment and can connect you to shelter, housing navigation, medical and behavioral health care, and more." },
     family:  { tel: "602-595-8700", label: "Call the Family Housing Hub: 602-595-8700", addr: "3307 E. Van Buren St, Phoenix · families with children", extra: "The Family Housing Hub is the single point of entry for families with children in Maricopa County. Call before going — they will walk you through what happens next." },
-    youth:   { tel: "211", label: "Call 2-1-1 and ask for youth coordinated entry", addr: "Maricopa County · ages under 25 on their own", extra: "Young people on their own often have youth-specific access points and providers. 2-1-1 (or 877-211-8661) can route you to the right one. The Brian Garcia Welcome Center at 602-229-5155 can also point you in the right direction." },
-    veteran: { tel: "1-877-424-3838", label: "Call the VA homeless line: 1-877-424-3838", addr: "Maricopa County · veterans · open 24/7", extra: "Veterans usually have a dedicated path with extra programs (like SSVF and HUD-VASH). The national homeless-veteran line is open 24/7; in Phoenix the Brian Garcia Welcome Center (602-229-5155) can also connect you to veteran navigation, and 2-1-1 can route you locally." },
+    youth:   { tel: "211", label: "Call 2-1-1 and ask for youth coordinated entry", addr: "Maricopa County · ages under 25 on their own", extra: "Young people on their own often have youth-specific access points and providers. 2-1-1 (or 877-211-8661) can route you to the right one. The Brian Garcia Welcome Center at 602-883-4509 can also point you in the right direction." },
+    veteran: { tel: "1-877-424-3838", label: "Call the VA homeless line: 1-877-424-3838", addr: "Maricopa County · veterans · open 24/7", extra: "Veterans usually have a dedicated path with extra programs (like SSVF and HUD-VASH). The national homeless-veteran line is open 24/7; in Phoenix the Brian Garcia Welcome Center (602-883-4509) can also connect you to veteran navigation, and 2-1-1 can route you locally." },
     dv:      { tel: "480-890-3039", label: "Call SAFEDVS: 480-890-3039 (or 844-723-3387)", addr: "Maricopa County · confidential DV path", extra: "Survivors have a separate, confidential way into coordinated entry. If you are in immediate danger call 911. The National Domestic Violence Hotline (1-800-799-7233) is available 24/7." }
   };
 
@@ -434,7 +436,7 @@
       startExtra.textContent = m.extra;
     } else {
       startBody.textContent = "Coordinated entry runs in every community, but the exact access point is local. Here is how to find yours:";
-      setCall("211", "Call 2-1-1 (or 877-211-8661)", "Free, 24/7, connects to local services anywhere in the U.S.");
+      setCall("211", "Call 2-1-1 (or 877-211-8661)", "Free. Connects to local services anywhere in the U.S. In Arizona, live help is 9 a.m.–7 p.m. daily; elsewhere, hours vary.");
       startExtra.textContent = GENERIC[who];
     }
 

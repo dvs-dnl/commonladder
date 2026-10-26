@@ -8,6 +8,8 @@
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
   gtag('config', 'G-3YXK0RL6XV');
+  // Count taps on phone numbers: which number and which page, never who tapped. Disclosed on /privacy.html.
+  document.addEventListener('click', function (e) { var a = e.target && e.target.closest ? e.target.closest('a[href^="tel:"]') : null; if (a) { gtag('event', 'tel_tap', { tel: a.getAttribute('href').slice(4), page: location.pathname }); } }, true);
 </script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -127,18 +129,17 @@
         <h2>Legal Help programs</h2>
       </div>
       <div class="cards">
-        <div class="card">
-          <h3>Community Legal Services — Phoenix</h3>
-          <div class="card-tags"><span class="tag">Free Legal Aid</span><span class="tag">Eviction</span><span class="tag">Benefits</span></div>
-          <p>Free civil legal assistance for low-income Arizonans, with a focus on housing, benefits, and consumer issues.</p>
+        <div class="card" data-record="community-legal-services">
+          <h3>Community Legal Services</h3>
+          <div class="card-tags"><span class="tag">Free civil legal aid</span><span class="tag">Apply online or by phone</span></div>
+          <p class="card-access"><strong>What to do:</strong> Apply online at apply.azlawhelp.org or call the intake line. CLS does not advertise walk-in hours — call before visiting.</p>
           <dl class="resource-details">
-            <dt>Eligibility</dt><dd>Low-income individuals and families in Maricopa County</dd>
-            <dt>Hours</dt><dd>Mon–Fri 8:30 am–5 pm; walk-in hours vary</dd>
-            <dt>Address</dt><dd><a href="https://maps.google.com/?q=305+S+2nd+Ave+Phoenix+AZ+85003" rel="noopener" target="_blank">305 S 2nd Ave, Phoenix, AZ 85003</a></dd>
-            <dt>Phone</dt><dd><a href="tel:6022583434">(602) 258-3434</a></dd>
-            <dt>Cost</dt><dd>Free</dd>
+            <dt>Who it’s for</dt><dd>Low-income Arizonans — housing, benefits, consumer, employment, family/DV, set-asides</dd>
+            <dt>Where</dt><dd>305 S. 2nd Ave., Phoenix, AZ 85003</dd>
+            <dt>Phone</dt><dd><a href="tel:6022583434">(602) 258-3434</a><br>Toll-free: <a href="tel:18008529075">1-800-852-9075</a></dd>
+            <dt>Website</dt><dd><a href="https://apply.azlawhelp.org" target="_blank" rel="noopener">apply.azlawhelp.org</a></dd>
           </dl>
-          <p class="card-verified"><small>Verified May 2026</small></p>
+          <p class="card-verified"><small>Confirmed on Community Legal Services’s own website · Oct. 26, 2026 · <a href="mailto:corrections.commonladder@gmail.com?subject=Correction%3A%20Community%20Legal%20Services%20%28help/legal-help/index.html%29">Report a problem</a></small></p>
         </div>
         <div class="card">
           <h3>Warrant Resolution Explainer — free tool</h3>
@@ -172,7 +173,7 @@
             <dt>Phone</dt><dd><a href="tel:6022583434">(602) 258-3434</a></dd>
             <dt>Cost</dt><dd>Free</dd>
           </dl>
-          <p class="card-verified"><small>Verified May 2026</small></p>
+          <p class="card-verified"><small>Researched May 2026 · not yet re-confirmed with the provider — call before you go · <a href="mailto:corrections.commonladder@gmail.com?subject=Correction%3A%20Volunteer%20Lawyers%20Program%20%E2%80%94%20Arizona%20%28help/legal-help/index.html%29">Report a problem</a></small></p>
         </div>
         <div class="card">
           <h3>Arizona Justice Project — Record Clearing</h3>
@@ -185,7 +186,7 @@
             <dt>Phone</dt><dd><a href="tel:6024960693">(602) 496-0693</a></dd>
             <dt>Cost</dt><dd>Free</dd>
           </dl>
-          <p class="card-verified"><small>Verified May 2026</small></p>
+          <p class="card-verified"><small>Researched May 2026 · not yet re-confirmed with the provider — call before you go · <a href="mailto:corrections.commonladder@gmail.com?subject=Correction%3A%20Arizona%20Justice%20Project%20%E2%80%94%20Record%20Clearing%20%28help/legal-help/index.html%29">Report a problem</a></small></p>
         </div>
         <div class="card">
           <h3>DNA People's Legal Services — Navajo Nation &amp; Rural AZ</h3>
@@ -194,11 +195,11 @@
           <dl class="resource-details">
             <dt>Eligibility</dt><dd>Low-income residents of rural Arizona and Tribal lands</dd>
             <dt>Hours</dt><dd>Mon–Fri 8 am–5 pm MST</dd>
-            <dt>Address</dt><dd><a href="https://maps.google.com/?q=Window+Rock+AZ+86515" rel="noopener" target="_blank">P.O. Box 306, Window Rock, AZ 86515</a></dd>
+            <dt>Address</dt><dd>P.O. Box 306, Window Rock, AZ 86515</dd>
             <dt>Phone</dt><dd><a href="tel:9288714151">(928) 871-4151</a></dd>
             <dt>Cost</dt><dd>Free</dd>
           </dl>
-          <p class="card-verified"><small>Verified May 2026</small></p>
+          <p class="card-verified"><small>Researched May 2026 · not yet re-confirmed with the provider — call before you go · <a href="mailto:corrections.commonladder@gmail.com?subject=Correction%3A%20DNA%20People%27s%20Legal%20Services%20%E2%80%94%20Navajo%20Nation%20%26%20Rural%20AZ%20%28help/legal-help/index.html%29">Report a problem</a></small></p>
         </div>
       </div>
     </div>

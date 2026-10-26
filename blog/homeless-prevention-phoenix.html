@@ -8,6 +8,8 @@
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
   gtag('config', 'G-3YXK0RL6XV');
+  // Count taps on phone numbers: which number and which page, never who tapped. Disclosed on /privacy.html.
+  document.addEventListener('click', function (e) { var a = e.target && e.target.closest ? e.target.closest('a[href^="tel:"]') : null; if (a) { gtag('event', 'tel_tap', { tel: a.getAttribute('href').slice(4), page: location.pathname }); } }, true);
 </script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -167,7 +169,7 @@
 
   <p>St. Vincent de Paul offers one-time rent, mortgage and utility help — but not from a central hotline. The help comes from volunteer-run chapters based in Catholic churches, and <strong>each chapter can only serve the neighborhood inside its own boundary</strong>. You have to call the church that covers your address.</p>
 
-  <ul><li><strong>Find your chapter:</strong> use the map at stvincentdepaul.net/get-help/rent-and-utility-bill-assistance and call only the location that serves your area</li><li><strong>General "Need Help?" line:</strong> (602) 266-4673</li><li>Chapters are volunteer-run, so hours vary and funds run out — if one cannot help, ask 211 for the next option</li></ul>
+  <ul><li><strong>Find your chapter:</strong> use the map at stvincentdepaul.net/get-help/rent-and-utility-bill-assistance and call only the location that serves your area</li><li><strong>How to reach them:</strong> call <strong>211</strong>. SVdP has moved its website to svdpaz.org and no longer publishes a help line anywhere on it; the (602) 266-4673 number this page carried could not be confirmed as still answered when we checked on 2026-10-26</li><li>Chapters are volunteer-run, so hours vary and funds run out — if one cannot help, ask 211 for the next option</li></ul>
 
   <h3>Catholic Charities Community Services</h3>
 

@@ -8,6 +8,8 @@
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
   gtag('config', 'G-3YXK0RL6XV');
+  // Count taps on phone numbers: which number and which page, never who tapped. Disclosed on /privacy.html.
+  document.addEventListener('click', function (e) { var a = e.target && e.target.closest ? e.target.closest('a[href^="tel:"]') : null; if (a) { gtag('event', 'tel_tap', { tel: a.getAttribute('href').slice(4), page: location.pathname }); } }, true);
 </script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -1055,8 +1057,8 @@ var SH_PROGRAMS = [
     cities: ['phoenix', 'east-valley', 'west-valley'],
     summary: 'St. Vincent de Paul runs an emergency assistance program out of their Phoenix campus. Funded by donations rather than federal grants, so eligibility rules are more flexible &mdash; they help people who fall through the cracks of the bigger programs.',
     contact: {
-      phone: '602-266-4673',
-      web: 'stvincentdepaul.net',
+      phone: '211 — SVdP no longer publishes a help line (checked 2026-10-26); 211 routes you to the conference for your address',
+      web: 'svdpaz.org',
       hours: 'Appointment only. Mon–Fri business hours.'
     },
     apply: {

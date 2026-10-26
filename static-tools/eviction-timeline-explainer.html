@@ -8,6 +8,8 @@
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
   gtag('config', 'G-3YXK0RL6XV');
+  // Count taps on phone numbers: which number and which page, never who tapped. Disclosed on /privacy.html.
+  document.addEventListener('click', function (e) { var a = e.target && e.target.closest ? e.target.closest('a[href^="tel:"]') : null; if (a) { gtag('event', 'tel_tap', { tel: a.getAttribute('href').slice(4), page: location.pathname }); } }, true);
 </script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -403,7 +405,7 @@
     legal:  { html: '<strong>Community Legal Services</strong> — <a href="tel:6022583434">602-258-3434</a> (or <a href="tel:8008529075">800-852-9075</a>). Free civil legal aid for eligible renters in Maricopa, Mohave, Yavapai, Yuma, and La Paz counties.' },
     chat:   { html: '<strong>AZEvictionHelp.org</strong> — free statewide eviction information and live chat from the Arizona Bar Foundation, with links to legal aid in every county.' },
     court:  { html: '<strong>AZCourtHelp.org</strong> — free court forms (Answer, fee waiver, appeal) and self-help information for every Arizona court.' },
-    shelter:{ html: '<strong>If you may lose housing:</strong> <a href="tel:211">2-1-1</a> for shelter openings; in the Phoenix area the Brian Garcia Welcome Center (<a href="tel:6022295155">602-229-5155</a>, single adults, 24/7) and the Family Housing Hub (<a href="tel:6025958700">602-595-8700</a>, families) are the coordinated entry front doors.' }
+    shelter:{ html: '<strong>If you may lose housing:</strong> <a href="tel:211">2-1-1</a> for shelter openings; in the Phoenix area the Brian Garcia Welcome Center (<a href="tel:6028834509">602-883-4509</a>, single adults; Keys to Change asks you to call ahead) and the Family Housing Hub (<a href="tel:6025958700">602-595-8700</a>, families) are the coordinated entry front doors.' }
   };
 
   var STAGES = {

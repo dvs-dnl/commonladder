@@ -8,6 +8,8 @@
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
   gtag('config', 'G-3YXK0RL6XV');
+  // Count taps on phone numbers: which number and which page, never who tapped. Disclosed on /privacy.html.
+  document.addEventListener('click', function (e) { var a = e.target && e.target.closest ? e.target.closest('a[href^="tel:"]') : null; if (a) { gtag('event', 'tel_tap', { tel: a.getAttribute('href').slice(4), page: location.pathname }); } }, true);
 </script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -341,11 +343,21 @@
   <div class="find-step" id="step-shelter">
     <button class="step-back" onclick="showStep('step-cat')">← Back</button>
     <div class="step-eyebrow">🏠 Shelter</div>
-    <h2 class="step-title">A few quick questions</h2>
-    <p class="step-sub">These help us match you to the right program — there are dedicated resources for specific situations and you want to make sure you get to the right one.</p>
+    <h2 class="step-title">Where are you?</h2>
+    <p class="step-sub">Enter your zip code and we’ll show the shelter front door for your area. That’s all we need.</p>
 
     <div class="intake-card">
-      <div class="intake-card__title">About your situation</div>
+      <div class="intake-card__title">Your zip code</div>
+      <div class="zip-block">
+        <input class="zip-input" type="text" id="shelter-zip" placeholder="e.g. 85003" maxlength="5" inputmode="numeric" pattern="[0-9]*">
+        <button class="btn btn--amber" onclick="submitShelter()">Find shelter →</button>
+      </div>
+      <div class="zip-error" id="shelter-zip-error">Please enter a 5-digit zip code.</div>
+      <p class="zip-note">Your answers stay on your device. We use your zip to find the nearest program.</p>
+    </div>
+    <div class="intake-card">
+      <div class="intake-card__title">Optional: anything that applies?</div>
+      <p class="zip-note" style="margin-top:0">Some programs are only for veterans, young adults or families. Answer any that apply, or skip this and tap <strong>Find shelter</strong>.</p>
       <div class="yn-row">
         <div class="yn-q">Have you served in the U.S. military?</div>
         <div class="yn-btns">
@@ -374,16 +386,7 @@
           <button class="yn-btn no"  data-key="chronic" data-val="no"  onclick="setAnswer(this)">No</button>
         </div>
       </div>
-    </div>
-
-    <div class="intake-card">
-      <div class="intake-card__title">Your zip code</div>
-      <div class="zip-block">
-        <input class="zip-input" type="text" id="shelter-zip" placeholder="e.g. 85003" maxlength="5" inputmode="numeric" pattern="[0-9]*">
-        <button class="btn btn--amber" onclick="submitShelter()">Find shelter →</button>
-      </div>
-      <div class="zip-error" id="shelter-zip-error">Please enter a 5-digit zip code.</div>
-      <p class="zip-note">Your answers stay on your device. We use your zip to find the nearest program.</p>
+      <button class="btn btn--amber" style="margin-top:1rem" onclick="submitShelter()">Find shelter with these answers →</button>
     </div>
   </div>
 
@@ -711,6 +714,7 @@ function selectCat(cat) {
   state.cat = cat;
   if (cat === 'shelter') {
     showStep('step-shelter');
+    var sz = document.getElementById('shelter-zip'); if (sz) sz.focus();
   } else {
     var info = CAT_INFO[cat];
     document.getElementById('other-eyebrow').textContent = (info ? info.icon + ' ' + info.label : 'Resources');
@@ -742,6 +746,13 @@ function getMetro(zip) {
   if (!zip || zip.length < 3) return null;
   return ZIP_MAP[zip.substring(0, 3)] || null;
 }
+
+// Enter in a zip box submits it.
+document.addEventListener('keydown', function (e) {
+  if (e.key !== 'Enter' || !e.target) return;
+  if (e.target.id === 'shelter-zip') { e.preventDefault(); submitShelter(); }
+  else if (e.target.id === 'other-zip') { e.preventDefault(); submitOther(); }
+});
 
 function submitShelter() {
   var zip = document.getElementById('shelter-zip').value.trim();
@@ -833,7 +844,7 @@ function renderShelterResult(pathwayKey, metro) {
 
   html += '<div class="fallback-211">';
   html += '<h3>Need to talk to someone right now?</h3>';
-  html += '<p>211 connects you to live local help — 24 hours a day, 7 days a week, in any language.</p>';
+  html += '<p>211 connects you to live local help. In Arizona, live operators answer 9 a.m. to 7 p.m. every day; elsewhere, hours vary. After hours, search 211arizona.org, or call 988 in a mental health crisis.</p>';
   html += '<a class="call-211" href="tel:211">📞 Call or text 211</a>';
   html += '</div>';
 
@@ -897,7 +908,7 @@ function renderOtherResult(cat, metro) {
   }
 
   html += '<div class="fallback-211"><h3>Not sure where to start?</h3>';
-  html += '<p>211 connects you to local help for any resource — 24/7, any language.</p>';
+  html += '<p>211 connects you to local help for any resource. In Arizona, live operators answer 9 a.m. to 7 p.m. daily; elsewhere, hours vary.</p>';
   html += '<a class="call-211" href="tel:211">📞 Call or text 211</a></div>';
 
   document.getElementById('other-result-content').innerHTML = html;

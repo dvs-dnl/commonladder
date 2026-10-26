@@ -8,6 +8,8 @@
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
   gtag('config', 'G-3YXK0RL6XV');
+  // Count taps on phone numbers: which number and which page, never who tapped. Disclosed on /privacy.html.
+  document.addEventListener('click', function (e) { var a = e.target && e.target.closest ? e.target.closest('a[href^="tel:"]') : null; if (a) { gtag('event', 'tel_tap', { tel: a.getAttribute('href').slice(4), page: location.pathname }); } }, true);
 </script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -76,9 +78,9 @@
 <section class="section">
   <div class="container">
     <div class="section-head">
-      <span class="eyebrow">99 cities &amp; growing</span>
+      <span class="eyebrow">99 cities</span>
       <h2>Find your community</h2>
-      <p>Each navigator is built from publicly available data, verified contacts, and feedback from local case managers. Don't see your city? <a href="https://www.hudexchange.info/programs/coc/coc-map/" target="_blank" rel="noopener">Find your CoC →</a></p>
+      <p>Arizona navigators carry provider listings checked against each provider’s own website, with the date shown. Out-of-state navigators are AI-researched triage guides: they help you work out what to ask for, then route you to your local 211 and national hotlines — each one says so at the top. Don't see your city? <a href="https://www.hudexchange.info/programs/coc/coc-map/" target="_blank" rel="noopener">Find your CoC →</a></p>
     </div>
 
     <!-- GED & Arizona HSE Diploma Pathway Finder feature -->
@@ -387,13 +389,13 @@
     <div class="cards">
       <div class="card">
         <div class="card__icon" aria-hidden="true"><svg class="icon" viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="4" fill="currentColor"/></svg></div>
-        <h3>Maps the whole system</h3>
-        <p>Every shelter, food program, health clinic, legal aid office, and benefits navigator in one place — categorized and searchable.</p>
+        <h3>Maps the system</h3>
+        <p>Shelters, food programs, health clinics, legal aid, and benefits help in one place — categorized and searchable.</p>
       </div>
       <div class="card card--amber">
         <div class="card__icon" aria-hidden="true"><svg class="icon" viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="4" fill="currentColor"/></svg></div>
-        <h3>Verified contacts</h3>
-        <p>Phone numbers, addresses, hours, eligibility, and access requirements — verified at intake and re-checked quarterly.</p>
+        <h3>Honest about what’s checked</h3>
+        <p>Every listing shows when it was last checked and how. Where we have not confirmed something with the provider, we say so — and every listing has a way to report a problem.</p>
       </div>
       <div class="card card--sage">
         <div class="card__icon" aria-hidden="true"><svg class="icon" viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="4" fill="currentColor"/></svg></div>

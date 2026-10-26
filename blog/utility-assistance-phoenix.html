@@ -8,6 +8,8 @@
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
   gtag('config', 'G-3YXK0RL6XV');
+  // Count taps on phone numbers: which number and which page, never who tapped. Disclosed on /privacy.html.
+  document.addEventListener('click', function (e) { var a = e.target && e.target.closest ? e.target.closest('a[href^="tel:"]') : null; if (a) { gtag('event', 'tel_tap', { tel: a.getAttribute('href').slice(4), page: location.pathname }); } }, true);
 </script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -27,12 +29,12 @@
     "author": { "@type": "Organization", "name": "Common Ladder" },
     "publisher": { "@type": "Organization", "name": "Common Ladder", "url": "https://commonladder.org" },
     "datePublished": "2026-06-03",
-    "dateModified": "2026-08-03",
+    "dateModified": "2026-10-26",
     "mainEntityOfPage": "https://commonladder.org/blog/utility-assistance-phoenix.html"
   }
   </script>
   <script type="application/ld+json">
-  {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "How do I get help paying my electric bill in Phoenix?", "acceptedAnswer": {"@type": "Answer", "text": "Start by calling 2-1-1 from any phone (free, 24/7) or texting your ZIP code to 898-211 to learn which programs have funds available right now. The largest option is LIHEAP, which pays a portion of your heating or cooling bill directly to the utility company and does not have to be repaid; apply online at atoz.az.gov (details at des.az.gov/liheap) or call (866) 494-1981, 8 a.m.–5 p.m. Monday–Friday."}}, {"@type": "Question", "name": "Can my utility company shut off my power during extreme heat in Arizona?", "acceptedAnswer": {"@type": "Answer", "text": "Not during the summer moratorium. Arizona Corporation Commission rules bar regulated electric utilities from disconnecting residential customers for nonpayment between June 1 and October 15 — APS, Tucson Electric Power and UNS Electric all use that date window. Other regulated utilities may instead use a temperature trigger, which blocks a shutoff when the forecast high is above 95°F or the low is below 32°F. Two cautions: your bill is not paused or forgiven, so the balance keeps growing while you are protected, and SRP is a public power district that is not regulated by the Commission — call SRP directly at (602) 236-8888 to ask about its policy. Use the protected months to call 211 and set up a payment plan or assistance."}}, {"@type": "Question", "name": "What programs help if I'm an APS customer behind on my bill?", "acceptedAnswer": {"@type": "Answer", "text": "APS offers the Energy Support Program, an ongoing monthly discount of 25% (up to $95 off per month) or 60% (up to $165 off per month) for households at or below 200% of the federal poverty guidelines, and Crisis Bill Assistance, which provides up to $1,000 per year in direct bill payment for those facing hardship. Call the Energy Support line at (844) 309-5655 to apply, or call 211 for a referral to a participating community agency for crisis help."}}, {"@type": "Question", "name": "What documents do I need to apply for utility assistance?", "acceptedAnswer": {"@type": "Answer", "text": "Most programs ask for a photo ID, Social Security cards or numbers for everyone in the household, your most recent utility bill showing your account number and amount owed, and proof of income such as pay stubs or an SSI/SSDI award letter. If you're applying for crisis assistance, also bring documentation of the hardship, such as a termination letter or medical bill."}}, {"@type": "Question", "name": "Where can I get one-time emergency help with a utility bill in Phoenix?", "acceptedAnswer": {"@type": "Answer", "text": "Several community agencies provide one-time emergency utility payments, including the Salvation Army at (602) 267-4127 (up to $500, funded monthly), the Society of St. Vincent de Paul at (602) 266-4673, and Wildfire at (602) 604-0640. Calling early in the month improves your chances, since funds in most programs run out monthly."}}]}
+  {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "How do I get help paying my electric bill in Phoenix?", "acceptedAnswer": {"@type": "Answer", "text": "Start by calling 2-1-1 from any phone in Arizona, free — but note that 211 Arizona answers 9 a.m. to 7 p.m., seven days a week, not around the clock (1-877-211-8661 from outside Arizona). A 211 operator can tell you which programs have funds available right now. The largest option is LIHEAP, which pays a portion of your heating or cooling bill directly to the utility company and does not have to be repaid; apply online at atoz.az.gov (details at des.az.gov/liheap) or call (866) 494-1981, 8 a.m.–5 p.m. Monday–Friday."}}, {"@type": "Question", "name": "Can my utility company shut off my power during extreme heat in Arizona?", "acceptedAnswer": {"@type": "Answer", "text": "Not between June 1 and October 15, which is the summer moratorium — but that window has closed for 2026, so disconnections are possible again now. Arizona Corporation Commission rules bar regulated electric utilities from disconnecting residential customers for nonpayment between June 1 and October 15 — APS, Tucson Electric Power and UNS Electric all use that date window. Other regulated utilities may instead use a temperature trigger, which blocks a shutoff when the forecast high is above 95°F or the low is below 32°F. Two cautions: your bill is not paused or forgiven, so the balance keeps growing while you are protected, and SRP is a public power district that is not regulated by the Commission — call SRP directly at (602) 236-8888 to ask about its policy. Use the protected months to call 211 and set up a payment plan or assistance."}}, {"@type": "Question", "name": "What programs help if I'm an APS customer behind on my bill?", "acceptedAnswer": {"@type": "Answer", "text": "APS offers the Energy Support Program, an ongoing monthly discount of 25% (up to $95 off per month) or 60% (up to $165 off per month) for households at or below 200% of the federal poverty guidelines, and Crisis Bill Assistance, which provides up to $1,000 per year in direct bill payment for those facing hardship. Call the Energy Support line at (844) 309-5655 to apply, or call 211 for a referral to a participating community agency for crisis help."}}, {"@type": "Question", "name": "What documents do I need to apply for utility assistance?", "acceptedAnswer": {"@type": "Answer", "text": "Most programs ask for a photo ID, Social Security cards or numbers for everyone in the household, your most recent utility bill showing your account number and amount owed, and proof of income such as pay stubs or an SSI/SSDI award letter. If you're applying for crisis assistance, also bring documentation of the hardship, such as a termination letter or medical bill."}}, {"@type": "Question", "name": "Where can I get one-time emergency help with a utility bill in Phoenix?", "acceptedAnswer": {"@type": "Answer", "text": "Several community agencies provide one-time emergency utility payments. The Salvation Army takes utility and rental requests at (602) 267-4127 — leave your contact information and wait for a call back; it publishes no dollar cap. Wildfire, the county's community action agency, is at (602) 604-0640. Chicanos Por La Causa books appointments at (602) 805-1666, Monday through Wednesday. For Society of St. Vincent de Paul, call 211 to be routed to the conference serving your ZIP code: SVdP no longer publishes a help line, and we could not confirm the (602) 266-4673 number this page used to list. Calling early in the month improves your chances, since funds in most programs run out monthly."}}]}
   </script>
   <noscript><style>.nav__links{display:flex!important;flex-wrap:wrap!important;}.nav__toggle{display:none!important;}</style></noscript>
 
@@ -81,7 +83,7 @@
 <main id="main" class="article">
   <span class="eyebrow">Utility Assistance</span>
   <h1>Emergency Utility Assistance in Phoenix: Help Paying Your Electric, Gas, and Water Bills</h1>
-  <p class="meta">By Common Ladder · June 3, 2026 · Updated August 3, 2026 · 6 min read</p>
+  <p class="meta">By Common Ladder · June 3, 2026 · Updated October 26, 2026 · 6 min read</p>
 
   <div style="margin:1.25rem 0 1.75rem;padding:1rem 1.25rem;background:#f0f4f8;border-left:4px solid #1C3D6E;border-radius:6px;" data-id="cl-tool-cta">
     <p style="margin:0 0 .45rem;font-weight:700;color:#1C3D6E;font-size:1.02rem;">Behind on a bill, or facing a shut-off?</p>
@@ -90,9 +92,9 @@
     <p style="margin:.7rem 0 0;font-size:.88rem;color:#5a5752;line-height:1.5;">Utility help is often tied to benefits like LIHEAP &mdash; check what you qualify for with the <a href="/static-tools/benefit-screener.html">Benefit Screener</a>, or see whether a rent is affordable with the <a href="/static-tools/housing-affordability-calculator.html">Housing Affordability Calculator</a>.</p>
   </div>
 
-  <p>If your lights, gas, or water are about to be shut off — or already are — <strong>call 211 first.</strong> Dial 2-1-1 from any phone (free, 24/7) or text your ZIP code to 898-211. A live operator can tell you which programs have funds available right now and refer you directly. You do not need to have an address to call.</p>
+  <p>If your lights, gas, or water are about to be shut off — or already are — <strong>call 211 first.</strong> Dial 2-1-1 from any phone in Arizona, free — but note the hours: <strong>211 Arizona answers 9&nbsp;a.m. to 7&nbsp;p.m., seven days a week</strong>, not around the clock. From outside Arizona, use <strong>1-877-211-8661</strong>. A live operator can tell you which programs have funds available right now and refer you directly. You do not need to have an address to call. Outside those hours, <a href="https://211arizona.org" rel="noopener" target="_blank">211arizona.org</a> is searchable any time.</p>
 
-  <p>In Phoenix, losing electricity in summer is a medical emergency. Arizona regulators bar the major electric utilities from cutting off residential service for nonpayment between June 1 and October 15 — but that balance keeps accruing, so the protection is time to act, not a solution. Multiple programs exist specifically to cover your bill before things reach that point. This guide covers every major option, who qualifies, and what to bring when you call.</p>
+  <p>In Phoenix, losing electricity in summer is a medical emergency. Arizona regulators bar the major electric utilities from cutting off residential service for nonpayment between June 1 and October 15 — but that balance keeps accruing, so the protection is time to act, not a solution. <strong>That window has closed for 2026</strong>: since October 16, regulated electric utilities can disconnect again, subject only to the temperature rule further down this page. If you built up a balance over the summer, now is when it matters. Multiple programs exist specifically to cover your bill before things reach that point. This guide covers every major option, who qualifies, and what to bring when you call.</p>
 
   <hr style="margin: 2rem 0; border: none; border-top: 1px solid #e0ddd8;">
 
@@ -100,17 +102,16 @@
 
   <p>The Low Income Home Energy Assistance Program (LIHEAP) is the largest energy assistance program available to Arizona residents. It pays a portion of your heating or cooling bill directly to the utility company. You don't repay it.</p>
 
-  <p>In Maricopa County, LIHEAP benefits run up to <strong>$640 per year</strong> for heating or cooling. If you're in a genuine energy crisis — facing imminent shutoff, no functioning AC in summer heat — there's a separate crisis benefit of up to <strong>$500</strong> that can be accessed faster.</p>
+  <p>LIHEAP benefits run up to <strong>$640 per year</strong> for heating or cooling — but the award is tiered by a points score DES assigns your household, so you may be offered <strong>$160, $320, $480 or $640</strong> rather than the maximum. If you're in a genuine energy crisis — facing imminent shutoff, no functioning AC in summer heat — there's a separate crisis benefit of up to <strong>$500</strong>, awarded once per twelve-month eligibility period, that can be accessed faster.</p>
 
   <ul>
-    <li><strong>Cooling period:</strong> April 1 – November 30</li>
-    <li><strong>Heating period:</strong> December 1 – March 31</li>
+    <li><strong>Season:</strong> LIHEAP is open year-round for both heating and cooling. DES does not publish fixed cooling- and heating-season date ranges on its LIHEAP pages, so <strong>do not wait for a season to open</strong> — apply when you need help. (This page previously listed an April 1 – November 30 cooling period and a December 1 – March 31 heating period; we could not confirm either against DES, so they have been removed rather than left standing.)</li>
     <li><strong>Apply online through AZ DES:</strong> <a href="https://atoz.az.gov" rel="noopener" target="_blank">atoz.az.gov</a> · program details at <a href="https://des.az.gov/liheap" rel="noopener" target="_blank">des.az.gov/liheap</a></li>
     <li><strong>Phone:</strong> (866) 494-1981 — Monday–Friday, 8 a.m.–5 p.m.</li>
     <li><strong>Maricopa County Human Services:</strong> (602) 506-0589</li>
   </ul>
 
-  <p>To apply, bring: a photo ID, Social Security cards for everyone in your household, your most recent utility bill, and proof of income (pay stubs, SSI or SSDI letter, benefits statement). Income eligibility is generally at or below 150% of the federal poverty level, though this varies by year.</p>
+  <p>To apply, bring: a photo ID, Social Security cards for everyone in your household, your most recent utility bill, and proof of income (pay stubs, SSI or SSDI letter, benefits statement). <strong>Do not rule yourself out on income.</strong> Arizona LIHEAP's limits are considerably higher than the 150%-of-poverty figure this page used to quote: DES publishes a gross monthly income limit of <strong>$2,936 for a one-person household and $3,840 for two</strong>, rising with household size. And if anyone in your household receives DES <strong>Cash Assistance or Nutrition Assistance (SNAP)</strong>, you are <strong>categorically eligible</strong> and do not have to meet the income test separately.</p>
 
   <hr style="margin: 2rem 0; border: none; border-top: 1px solid #e0ddd8;">
 
@@ -138,7 +139,7 @@
     <li>Assistance is one-time per hardship event, up to the annual cap</li>
   </ul>
 
-  <p>One participating agency: CPLC HomeLending, (602) 269-2402, 2610 N. 7th Ave., Phoenix, AZ 85007.</p>
+  <p>One participating agency: <strong>Chicanos Por La Causa (CPLC)</strong> — call <strong>(602) 805-1666</strong> to speak to a specialist and book an appointment. CPLC takes utility requests <strong>Monday, Tuesday and Wednesday only</strong>, in set morning and afternoon call windows, and says its help is "contingent upon funding availability," so ask whether funds are open before you plan around it. <em>(This page previously listed CPLC HomeLending at (602) 269-2402, 2610 N. 7th Ave. Neither the number nor the address appears anywhere on CPLC's site; both have been replaced.)</em></p>
 
   <hr style="margin: 2rem 0; border: none; border-top: 1px solid #e0ddd8;">
 
@@ -170,11 +171,11 @@
     <li>A <strong>30% reduction</strong> on the per-therm usage rate</li>
   </ul>
 
-  <p>Southwest Gas also offers a deferred payment plan if you're behind on a bill — you pay a portion now and spread the balance over future months.</p>
+  <p>Southwest Gas also offers an <strong>Installment Plan</strong> if you're behind on a bill — you pay a portion now and spread the balance over future months. Ask for it by that name; "deferred payment plan" is not what Southwest Gas calls it.</p>
 
   <ul>
     <li><strong>Phone:</strong> (877) 860-6020</li>
-    <li>Call to request an income qualification form, or ask about a deferred payment arrangement</li>
+    <li>Call to request an income qualification form, or ask about an Installment Plan</li>
   </ul>
 
   <hr style="margin: 2rem 0; border: none; border-top: 1px solid #e0ddd8;">
@@ -186,8 +187,8 @@
   <ul>
     <li><strong>Phone:</strong> (602) 534-2433 (City of Phoenix Human Services)</li>
     <li>You must have a City of Phoenix utilities account in your name</li>
-    <li>Income eligibility is based on household size relative to the federal poverty guidelines</li>
-    <li>Call to schedule an intake appointment — they can often do it the same week</li>
+    <li>You must live in Phoenix, have a Phoenix City Services bill, and have household income <strong>at or below 200% of the federal poverty level</strong></li>
+    <li><strong>Appointments are limited.</strong> The City says phone lines open at <strong>7&nbsp;a.m. on Monday mornings</strong> — call then, or apply online through a City of Phoenix Family Services Center. Do not count on a same-week appointment</li>
   </ul>
 
   <hr style="margin: 2rem 0; border: none; border-top: 1px solid #e0ddd8;">
@@ -198,11 +199,12 @@
 
   <h3>Salvation Army Phoenix — Hope for Families Line</h3>
 
-  <p>The Salvation Army provides emergency utility bill help for APS, SRP, and Southwest Gas customers facing a financial crisis — job loss, unexpected expense, medical hardship. Assistance is up to $500 and is funded monthly, so calling early in the month improves your chances.</p>
+  <p>The Salvation Army provides emergency utility and rental assistance in Phoenix for households facing a financial crisis — job loss, unexpected expense, medical hardship. Its own page publishes <strong>no dollar cap and no funding schedule</strong>, so treat the "$500, refilled monthly" figure you may see elsewhere (this page carried it too) as unconfirmed and ask when you call.</p>
 
   <ul>
-    <li><strong>Phone:</strong> (602) 267-4127 (automated assistance line)</li>
-    <li>Summer months fill fast — call the first week of the month if possible</li>
+    <li><strong>Utility and rental assistance:</strong> (602) 267-4127 — the Salvation Army asks you to <strong>call and leave your contact information</strong>, then waits for a call back</li>
+    <li><strong>Food boxes and referrals:</strong> (602) 267-4122 (once per month)</li>
+    <li>Funds are widely reported to run short in summer, so call as early in the month as you can</li>
     <li>You'll need your utility account number, ID, and documentation of the hardship</li>
   </ul>
 
@@ -211,10 +213,9 @@
   <p>St. Vincent de Paul provides utility help through its parish-based volunteer conferences across the Valley. Each conference covers specific ZIP codes and has its own intake hours, so availability varies by neighborhood.</p>
 
   <ul>
-    <li><strong>Phone:</strong> (602) 266-4673</li>
-    <li><strong>Address:</strong> 420 W. Watkins Rd., Phoenix, AZ 85003</li>
-    <li><strong>Hours:</strong> Monday–Friday, 8 a.m.–5 p.m.</li>
-    <li>Call the main number to be connected to the conference serving your ZIP code</li>
+    <li><strong>Phone — read this first:</strong> this page carried (602) 266-4673 as SVdP's help line. SVdP has moved its website to <a href="https://www.svdpaz.org" rel="noopener" target="_blank">svdpaz.org</a> and <strong>now publishes no help line at all</strong> — not on its homepage, not on its Get Help page. We could not confirm (602) 266-4673 is still answered. <strong>Use 211 to be routed to the SVdP conference serving your ZIP code</strong>, which is what SVdP's own site tells people to do.</li>
+    <li><strong>Address:</strong> we could not confirm 420 W. Watkins Rd. against SVdP's current site either. The one Phoenix address and number SVdP does publish is its dining room at <strong>1075 W. Jackson St.</strong> (security front desk 602-261-6864) — that is a meal site, not a utility intake office, so do not go there for bill help.</li>
+    <li>Help is delivered through parish-based volunteer conferences, each covering specific ZIP codes with its own intake hours, so availability varies by neighborhood</li>
   </ul>
 
   <h3>Wildfire (Community Action Agency)</h3>
@@ -236,7 +237,7 @@
   <p>This protection applies automatically — you don't need to ask for it. If a utility is threatening shutoff during these conditions, cite this rule explicitly. If they proceed anyway, file a complaint with the Arizona Corporation Commission:</p>
 
   <ul>
-    <li><strong>ACC Consumer Services:</strong> (602) 542-4251</li>
+    <li><strong>ACC Consumer Services:</strong> (602) 542-4251, or toll-free in Arizona <strong>1-800-222-7000</strong> (Tucson office: 520-628-6550)</li>
     <li><strong>Web:</strong> <a href="https://www.azcc.gov" rel="noopener" target="_blank" rel="noopener">azcc.gov</a></li>
   </ul>
 
@@ -270,11 +271,11 @@
 
   <section class="faq" aria-label="Frequently asked questions">
     <h2>Frequently asked questions</h2>
-    <div class="faq__item"><h3>How do I get help paying my electric bill in Phoenix?</h3><p>Start by calling 2-1-1 from any phone (free, 24/7) or texting your ZIP code to 898-211 to learn which programs have funds available right now. The largest option is LIHEAP, which pays a portion of your heating or cooling bill directly to the utility company and does not have to be repaid; apply online at atoz.az.gov (details at des.az.gov/liheap) or call (866) 494-1981, 8 a.m.–5 p.m. Monday–Friday.</p></div>
-    <div class="faq__item"><h3>Can my utility company shut off my power during extreme heat in Arizona?</h3><p>Not during the summer moratorium. Arizona Corporation Commission rules bar regulated electric utilities from disconnecting residential customers for nonpayment between June 1 and October 15 — APS, Tucson Electric Power and UNS Electric all use that date window. Other regulated utilities may instead use a temperature trigger, which blocks a shutoff when the forecast high is above 95°F or the low is below 32°F. Two cautions: your bill is not paused or forgiven, so the balance keeps growing while you are protected, and SRP is a public power district that is not regulated by the Commission — call SRP directly at (602) 236-8888 to ask about its policy. Use the protected months to call 211 and set up a payment plan or assistance.</p></div>
+    <div class="faq__item"><h3>How do I get help paying my electric bill in Phoenix?</h3><p>Start by calling 2-1-1 from any phone in Arizona, free — but note that 211 Arizona answers 9 a.m. to 7 p.m., seven days a week, not around the clock (1-877-211-8661 from outside Arizona). A 211 operator can tell you which programs have funds available right now. The largest option is LIHEAP, which pays a portion of your heating or cooling bill directly to the utility company and does not have to be repaid; apply online at atoz.az.gov (details at des.az.gov/liheap) or call (866) 494-1981, 8 a.m.–5 p.m. Monday–Friday.</p></div>
+    <div class="faq__item"><h3>Can my utility company shut off my power during extreme heat in Arizona?</h3><p>Not between June 1 and October 15, which is the summer moratorium — but that window has closed for 2026, so disconnections are possible again now. Arizona Corporation Commission rules bar regulated electric utilities from disconnecting residential customers for nonpayment between June 1 and October 15 — APS, Tucson Electric Power and UNS Electric all use that date window. Other regulated utilities may instead use a temperature trigger, which blocks a shutoff when the forecast high is above 95°F or the low is below 32°F. Two cautions: your bill is not paused or forgiven, so the balance keeps growing while you are protected, and SRP is a public power district that is not regulated by the Commission — call SRP directly at (602) 236-8888 to ask about its policy. Use the protected months to call 211 and set up a payment plan or assistance.</p></div>
     <div class="faq__item"><h3>What programs help if I'm an APS customer behind on my bill?</h3><p>APS offers the Energy Support Program, an ongoing monthly discount of 25% (up to $95 off per month) or 60% (up to $165 off per month) for households at or below 200% of the federal poverty guidelines, and Crisis Bill Assistance, which provides up to $1,000 per year in direct bill payment for those facing hardship. Call the Energy Support line at (844) 309-5655 to apply, or call 211 for a referral to a participating community agency for crisis help.</p></div>
     <div class="faq__item"><h3>What documents do I need to apply for utility assistance?</h3><p>Most programs ask for a photo ID, Social Security cards or numbers for everyone in the household, your most recent utility bill showing your account number and amount owed, and proof of income such as pay stubs or an SSI/SSDI award letter. If you're applying for crisis assistance, also bring documentation of the hardship, such as a termination letter or medical bill.</p></div>
-    <div class="faq__item"><h3>Where can I get one-time emergency help with a utility bill in Phoenix?</h3><p>Several community agencies provide one-time emergency utility payments, including the Salvation Army at (602) 267-4127 (up to $500, funded monthly), the Society of St. Vincent de Paul at (602) 266-4673, and Wildfire at (602) 604-0640. Calling early in the month improves your chances, since funds in most programs run out monthly.</p></div>
+    <div class="faq__item"><h3>Where can I get one-time emergency help with a utility bill in Phoenix?</h3><p>Several community agencies provide one-time emergency utility payments. The Salvation Army takes utility and rental requests at (602) 267-4127 — leave your contact information and wait for a call back; it publishes no dollar cap. Wildfire, the county's community action agency, is at (602) 604-0640. Chicanos Por La Causa books appointments at (602) 805-1666, Monday through Wednesday. For Society of St. Vincent de Paul, call 211 to be routed to the conference serving your ZIP code: SVdP no longer publishes a help line, and we could not confirm the (602) 266-4673 number this page used to list. Calling early in the month improves your chances, since funds in most programs run out monthly.</p></div>
   </section>
 
   <aside class="related" aria-label="Read next">
@@ -330,7 +331,7 @@
     </div>
     <div class="footer__bottom">
       <span>&copy; 2026 Common Ladder. Free to use, always.</span>
-      <span><time datetime="2026-08-03">Last updated August 3, 2026</time></span>
+      <span><time datetime="2026-10-26">Last updated August 3, 2026</time></span>
     </div>
   </div>
 </footer>

@@ -575,6 +575,123 @@ def gate_footer_time_matches_datemodified():
     warn("Footer <time> matches JSON-LD dateModified", not bad, "; ".join(bad[:8]))
 
 
+# ============================================================
+# G-RECORDS (CRIT) — canonical resource records (data/resource-records.json)
+# Incident 2026-10-25/26: an external accuracy audit found ~20 wrong or fabricated
+# provider listings in help/*, resources.html and shelter-finder-az.html — a defunct
+# youth shelter marked "Verified May 2026", a veterans program listed for the wrong
+# population, the DCS child-abuse hotline presented as family support. The fix made
+# data/resource-records.json the single source of truth for those services. This gate
+# stops any retired (known-wrong) value or suppressed listing from coming back.
+#   scope "global"        -> flagged on every page (except files in allow_in)
+#   scope "near-org"      -> flagged only within `window` chars after `near`
+#   scope "arizona-pages" -> exempts the non-AZ city stub navigators
+# Phone values carry `digits` and match tel: hrefs and any display format.
+# ============================================================
+NON_AZ_STUB_RE = re.compile(r"^static-tools/(?!maricopa|tucson|flagstaff|san-joaquin)[a-z0-9-]+-navigator\.html$")
+
+
+def _phone_spans(s, digits):
+    d = digits[-10:]
+    a, b, c = d[:3], d[3:6], d[6:]
+    pats = [rf"tel:\+?1?{d}(?!\d)", rf"(?<!\d)\(?{a}\)?[\s.\-]?{b}[\s.\-]{c}(?!\d)"]
+    out = []
+    for pat in pats:
+        out += [m.start() for m in re.finditer(pat, s)]
+    return out
+
+
+def gate_canonical_records():
+    name = "Canonical resource records: no retired values or suppressed listings"
+    path = REPO / "data" / "resource-records.json"
+    if not path.exists():
+        critical(name, False, "data/resource-records.json missing")
+        return
+    recs = json.loads(path.read_text(encoding="utf-8"))["records"]
+    pages = [(rel(p), _read(p)) for p in all_pages(include_exempt=False)]
+    bad = []
+    for r in recs:
+        for v in r.get("retired", []):
+            scope = v.get("scope", "global")
+            allow = set(v.get("allow_in", []))
+            for pname, s in pages:
+                if pname in allow:
+                    continue
+                if scope == "arizona-pages" and NON_AZ_STUB_RE.match(pname):
+                    continue
+                if "digits" in v:
+                    spans = _phone_spans(s, v["digits"])
+                else:
+                    spans = [m.start() for m in re.finditer(re.escape(v["value"]), s)]
+                if scope == "near-org":
+                    near, win = v["near"], int(v.get("window", 900))
+                    spans = [i for i in spans if near in s[max(0, i - win):i]]
+                if spans:
+                    bad.append(f"{pname}: '{v['value']}' [{r['id']}: {v['reason']}]")
+    detail = "; ".join(bad[:8]) + (f" (+{len(bad) - 8} more)" if len(bad) > 8 else "")
+    critical(name, not bad, detail)
+
+
+# ============================================================
+# G-211 (CRIT) — never claim 211 answers around the clock
+# Incident 2026-10-26: 211 Arizona's live operators answer 9 a.m.-7 p.m. daily, but
+# ~110 sentences said "211 ... 24/7", including the finder and "...Tonight" pages,
+# sending people to a line nobody answers at night. Out-of-state 211 hours vary and
+# are not verified. Any sentence asserting 211 is 24/7 / around the clock / 24 hours
+# fails, unless the same span negates it ("not a 24-hour line").
+# ============================================================
+_211_247 = re.compile(r"(?:2-1-1|\b211\b)(?:(?!\bnot\b)[^.<\n]){0,90}?(?:24/7|24 hours a day|24-hour|around the clock)", re.I)
+
+
+def gate_211_hours():
+    bad = []
+    for p in all_pages(include_exempt=False):
+        s = _read(p)
+        for m in _211_247.finditer(s):
+            t = re.sub(r"<[^>]+>", "", m.group(0))
+            bad.append(f"{rel(p)}: '{t[:70]}'")
+    critical("211 never described as 24/7 (AZ: 9am-7pm; elsewhere hours vary)", not bad, "; ".join(bad[:6]) + (f" (+{len(bad)-6} more)" if len(bad) > 6 else ""))
+
+
+# ============================================================
+# G-LABELS (CRIT) — no unearned "Verified" labels
+# Incident 2026-10-26: 36 help/* cards said "Verified May 2026" though no help/* page had
+# ever been through a verification run, and several of them were wrong or fabricated.
+# A card may claim confirmation only if it is rendered from data/resource-records.json
+# (data-record="..."), which carries its evidence and date.
+# ============================================================
+def gate_honest_verification_labels():
+    bad = []
+    for p in all_pages(include_exempt=False):
+        s = _read(p)
+        for m in re.finditer(r'<p class="card-verified"><small>(Verified|Confirmed)\b', s):
+            st = s.rfind('<div class="card"', 0, m.start())
+            if 'data-record="' not in s[st:m.start()]:
+                bad.append(f"{rel(p)}:{s[:m.start()].count(chr(10)) + 1}")
+    critical("No unearned 'Verified' card labels (only store-rendered cards may claim it)", not bad, "; ".join(bad[:8]))
+
+
+# ============================================================
+# G-MAPS (CRIT) — no map pin for a place you cannot walk into
+# Incident 2026-10-26: empty maps.google.com/?q= links were wrapped around "Confidential
+# address — call for intake" on two DV shelters, the DV hotline and the 988 line, and a
+# P.O. Box was pinned to a town. A map link must point at a real, public walk-in address.
+# ============================================================
+_MAPLINK = re.compile(r'<a href="https?://(?:www\.)?(?:maps\.google\.com|google\.com/maps)[^"]*\?q=([^"&]*)[^"]*"[^>]*>(.*?)</a>', re.S)
+_NO_PIN = re.compile(r"P\.?\s?O\.?\s?Box|confidential|phone only|no physical location|call for (the )?(address|location|intake)", re.I)
+
+
+def gate_no_bogus_map_pins():
+    bad = []
+    for p in all_pages(include_exempt=False):
+        s = _read(p)
+        for m in _MAPLINK.finditer(s):
+            q, txt = m.group(1).strip(), re.sub(r"<[^>]+>", "", m.group(2))
+            if not q or _NO_PIN.search(txt) or _NO_PIN.search(q.replace("+", " ")):
+                bad.append(f"{rel(p)}:{s[:m.start()].count(chr(10)) + 1} '{txt[:40]}'")
+    critical("No map pins on empty, P.O. Box, phone-only or confidential addresses", not bad, "; ".join(bad[:8]))
+
+
 def main():
     gates = [
         gate_inline_js_syntax, gate_jsonld_valid, gate_ga_consistency,
@@ -585,6 +702,10 @@ def main():
         gate_card_click_present, gate_blog_in_sitemap, gate_lazy_load_imgs,
         gate_skip_link_target, gate_wizard_css_isolation,
         gate_footer_time_matches_datemodified,
+        gate_canonical_records,
+        gate_211_hours,
+        gate_honest_verification_labels,
+        gate_no_bogus_map_pins,
     ]
     for g in gates:
         try:

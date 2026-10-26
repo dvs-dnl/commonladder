@@ -8,6 +8,8 @@
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
   gtag('config', 'G-3YXK0RL6XV');
+  // Count taps on phone numbers: which number and which page, never who tapped. Disclosed on /privacy.html.
+  document.addEventListener('click', function (e) { var a = e.target && e.target.closest ? e.target.closest('a[href^="tel:"]') : null; if (a) { gtag('event', 'tel_tap', { tel: a.getAttribute('href').slice(4), page: location.pathname }); } }, true);
 </script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -150,7 +152,7 @@
       <li><strong>No personal information collected.</strong> Our tools &mdash; the benefit screener, My Ladder, the affordability calculator &mdash; do their work in your browser. Anything you type stays on your own device.</li>
       <li><strong>You can clear it yourself.</strong> Tools that remember your entries (so you can come back to them) keep that data only on your device, and give you a button to erase it. We never wipe it without you asking.</li>
       <li><strong>Export stays in your hands.</strong> When you save or share a plan, it goes out through your own email or printer &mdash; it does not pass through us.</li>
-      <li><strong>Basic, aggregate analytics.</strong> We use Google Analytics to count visits in aggregate so we know which pages help people. We do not sell or share that data, and we are working to move to a privacy-first, cookieless alternative.</li>
+      <li><strong>Basic, aggregate analytics.</strong> We use Google Analytics to count visits in aggregate so we know which pages help people. We also count taps on the phone numbers we list — which number and which page, never who tapped — because that is the closest measure we have of whether the site actually connects anyone to help. We do not sell or share that data, and we are working to move to a privacy-first, cookieless alternative.</li>
     </ul>
   </section>
 
@@ -222,7 +224,7 @@
     </div>
     <div class="footer__bottom">
       <span>&copy; 2026 Common Ladder. Free to use, always.</span>
-      <span><time datetime="2026-06-19">Last updated June 19, 2026</time></span>
+      <span><time datetime="2026-10-26">Last updated October 26, 2026</time></span>
     </div>
   </div>
 </footer>

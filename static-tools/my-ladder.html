@@ -8,6 +8,8 @@
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
   gtag('config', 'G-3YXK0RL6XV');
+  // Count taps on phone numbers: which number and which page, never who tapped. Disclosed on /privacy.html.
+  document.addEventListener('click', function (e) { var a = e.target && e.target.closest ? e.target.closest('a[href^="tel:"]') : null; if (a) { gtag('event', 'tel_tap', { tel: a.getAttribute('href').slice(4), page: location.pathname }); } }, true);
 </script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -981,7 +983,7 @@ function emailLadder() {
 
   // Footer: crisis numbers + live link.
   body += nl + 'CRISIS SUPPORT, ANYTIME' + nl + sep;
-  body += '• 211 Arizona — call 211 (24/7, free, confidential)' + nl;
+  body += '• 211 Arizona — call 211 (free, confidential; live help 9 a.m.–7 p.m. daily)' + nl;
   body += '• National Domestic Violence Hotline — 1-800-799-7233 (call or text)' + nl;
   body += '• Suicide & Crisis Lifeline — 988 (call or text)' + nl + nl;
 

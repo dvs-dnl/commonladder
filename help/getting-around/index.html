@@ -8,6 +8,8 @@
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
   gtag('config', 'G-3YXK0RL6XV');
+  // Count taps on phone numbers: which number and which page, never who tapped. Disclosed on /privacy.html.
+  document.addEventListener('click', function (e) { var a = e.target && e.target.closest ? e.target.closest('a[href^="tel:"]') : null; if (a) { gtag('event', 'tel_tap', { tel: a.getAttribute('href').slice(4), page: location.pathname }); } }, true);
 </script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -130,28 +132,15 @@
         <div class="card">
           <h3>Valley Metro — Reduced Fare Program</h3>
           <div class="card-tags"><span class="tag">Bus Pass</span><span class="tag">Reduced Fare</span><span class="tag">Light Rail</span></div>
-          <p>Provides reduced-fare bus and light rail passes for income-qualified individuals in the Phoenix metro area.</p>
+          <p>Half-price bus and light rail fares for youth, seniors, Medicare cardholders, and people with disabilities. <strong>Low income alone does not qualify</strong> — if that is your situation, ask a shelter or case manager about Valley Metro’s Social Services Fare Program, which agencies use to buy passes for clients.</p>
           <dl class="resource-details">
-            <dt>Eligibility</dt><dd>Individuals meeting income guidelines; Medicaid recipients may qualify</dd>
+            <dt>Eligibility</dt><dd>Youth 6–18, seniors 65+, Medicare cardholders, and people with disabilities (including SSI/SSDI beneficiaries and veterans rated more than 30% disabled). Not based on income or Medicaid.</dd>
             <dt>Hours</dt><dd>Mon–Fri 8 am–5 pm</dd>
             <dt>Address</dt><dd><a href="https://maps.google.com/?q=101+N+1st+Ave+Phoenix+AZ+85003" rel="noopener" target="_blank">101 N 1st Ave, Phoenix, AZ 85003</a></dd>
             <dt>Phone</dt><dd><a href="tel:6022535000">(602) 253-5000</a></dd>
             <dt>Cost</dt><dd>Reduced fare program</dd>
           </dl>
-          <p class="card-verified"><small>Verified May 2026</small></p>
-        </div>
-        <div class="card">
-          <h3>CASS — Transportation Assistance</h3>
-          <div class="card-tags"><span class="tag">Transportation</span><span class="tag">Shelter Clients</span><span class="tag">Bus Passes</span></div>
-          <p>Provides bus passes and transportation assistance to shelter clients for medical appointments, job interviews, and essential services.</p>
-          <dl class="resource-details">
-            <dt>Eligibility</dt><dd>Current CASS shelter or service program clients</dd>
-            <dt>Hours</dt><dd>Mon–Fri 8 am–4 pm; ask at intake</dd>
-            <dt>Address</dt><dd><a href="https://maps.google.com/?q=230+S+12th+Ave+Phoenix+AZ+85007" rel="noopener" target="_blank">230 S 12th Ave, Phoenix, AZ 85007</a></dd>
-            <dt>Phone</dt><dd><a href="tel:6025342500">(602) 534-2500</a></dd>
-            <dt>Cost</dt><dd>Free for clients</dd>
-          </dl>
-          <p class="card-verified"><small>Verified May 2026</small></p>
+          <p class="card-verified"><small>Eligibility confirmed on Valley Metro’s website · Oct. 26, 2026. Address, phone and hours researched May 2026, not yet re-confirmed — call ahead. · <a href="mailto:corrections.commonladder@gmail.com?subject=Correction%3A%20Valley%20Metro%20%28help/getting-around/index.html%29">Report a problem</a></small></p>
         </div>
         <div class="card">
           <h3>AZ Non-Emergency Medical Transportation — AHCCCS</h3>
@@ -160,11 +149,11 @@
           <dl class="resource-details">
             <dt>Eligibility</dt><dd>AHCCCS members without access to transportation</dd>
             <dt>Hours</dt><dd>Schedule at least 2 business days in advance</dd>
-            <dt>Address</dt><dd><a href="https://maps.google.com/?q=" rel="noopener" target="_blank">Phone only — schedule through your health plan</a></dd>
+            <dt>Address</dt><dd>Phone only — schedule through your health plan</dd>
             <dt>Phone</dt><dd><a href="tel:8006548713">(800) 654-8713</a></dd>
             <dt>Cost</dt><dd>Free with AHCCCS</dd>
           </dl>
-          <p class="card-verified"><small>Verified May 2026</small></p>
+          <p class="card-verified"><small>Researched May 2026 · not yet re-confirmed with the provider — call before you go · <a href="mailto:corrections.commonladder@gmail.com?subject=Correction%3A%20AZ%20Non-Emergency%20Medical%20Transportation%20%E2%80%94%20AHCCCS%20%28help/getting-around/index.html%29">Report a problem</a></small></p>
         </div>
         <div class="card">
           <h3>Dial-A-Ride — Scottsdale/Tempe/Mesa</h3>
@@ -173,11 +162,11 @@
           <dl class="resource-details">
             <dt>Eligibility</dt><dd>Individuals with ADA-qualifying disabilities</dd>
             <dt>Hours</dt><dd>Service hours vary by city; call to schedule</dd>
-            <dt>Address</dt><dd><a href="https://maps.google.com/?q=" rel="noopener" target="_blank">Varies by city — call for scheduling</a></dd>
+            <dt>Address</dt><dd>Varies by city — call for scheduling</dd>
             <dt>Phone</dt><dd><a href="tel:4805036000">(480) 503-6000</a></dd>
             <dt>Cost</dt><dd>Reduced fare</dd>
           </dl>
-          <p class="card-verified"><small>Verified May 2026</small></p>
+          <p class="card-verified"><small>Researched May 2026 · not yet re-confirmed with the provider — call before you go · <a href="mailto:corrections.commonladder@gmail.com?subject=Correction%3A%20Dial-A-Ride%20%E2%80%94%20Scottsdale/Tempe/Mesa%20%28help/getting-around/index.html%29">Report a problem</a></small></p>
         </div>
       </div>
     </div>

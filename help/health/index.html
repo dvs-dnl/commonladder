@@ -8,6 +8,8 @@
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
   gtag('config', 'G-3YXK0RL6XV');
+  // Count taps on phone numbers: which number and which page, never who tapped. Disclosed on /privacy.html.
+  document.addEventListener('click', function (e) { var a = e.target && e.target.closest ? e.target.closest('a[href^="tel:"]') : null; if (a) { gtag('event', 'tel_tap', { tel: a.getAttribute('href').slice(4), page: location.pathname }); } }, true);
 </script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -127,31 +129,41 @@
         <h2>Health programs</h2>
       </div>
       <div class="cards">
-        <div class="card">
-          <h3>Circle the City — Healthcare for People Experiencing Homelessness</h3>
-          <div class="card-tags"><span class="tag">Free Clinic</span><span class="tag">Medical</span><span class="tag">Street Outreach</span></div>
-          <p>Provides comprehensive health care — primary care, behavioral health, and street outreach — specifically for people experiencing homelessness in Maricopa County.</p>
+        <div class="card" data-record="circle-the-city-downtown">
+          <h3>Circle the City — Downtown Family Health Center</h3>
+          <div class="card-tags"><span class="tag">Health care</span><span class="tag">Open weekends</span></div>
           <dl class="resource-details">
-            <dt>Eligibility</dt><dd>Anyone experiencing homelessness; no insurance required</dd>
-            <dt>Hours</dt><dd>Mon–Fri 8 am–5 pm; outreach ongoing</dd>
-            <dt>Address</dt><dd><a href="https://maps.google.com/?q=1245+E+Buckeye+Rd+Phoenix+AZ+85034" rel="noopener" target="_blank">1245 E Buckeye Rd, Phoenix, AZ 85034</a></dd>
-            <dt>Phone</dt><dd><a href="tel:6026755143">(602) 675-5143</a></dd>
-            <dt>Cost</dt><dd>Free</dd>
+            <dt>Who it’s for</dt><dd>People facing homelessness in Maricopa County</dd>
+            <dt>Hours</dt><dd>Mon–Fri 8 a.m.–8 p.m.<br>Sat–Sun 8 a.m.–5 p.m.<br>Closed noon–1 p.m.</dd>
+            <dt>Where</dt><dd>220 S. 12th Ave., Phoenix, AZ 85007</dd>
+            <dt>Phone</dt><dd><a href="tel:6022588282">(602) 258-8282</a></dd>
+            <dt>Website</dt><dd><a href="https://circlethecity.org/contact-us/" target="_blank" rel="noopener">circlethecity.org</a></dd>
           </dl>
-          <p class="card-verified"><small>Verified May 2026</small></p>
+          <p class="card-verified"><small>Confirmed on Circle the City’s own website · Oct. 26, 2026 · <a href="mailto:corrections.commonladder@gmail.com?subject=Correction%3A%20Circle%20the%20City%20%28help/health/index.html%29">Report a problem</a></small></p>
         </div>
-        <div class="card">
-          <h3>Maricopa County Department of Public Health — Community Health Centers</h3>
-          <div class="card-tags"><span class="tag">FQHC</span><span class="tag">Sliding Scale</span><span class="tag">Primary Care</span></div>
-          <p>Federally Qualified Health Centers offering primary care, dental, and mental health services on a sliding-fee scale.</p>
+        <div class="card" data-record="circle-the-city-parsons">
+          <h3>Circle the City — Parsons Family Health Center</h3>
+          <div class="card-tags"><span class="tag">Health care</span></div>
           <dl class="resource-details">
-            <dt>Eligibility</dt><dd>Open to all; fees based on income (many pay nothing)</dd>
-            <dt>Hours</dt><dd>Varies by site; call for hours</dd>
-            <dt>Address</dt><dd><a href="https://maps.google.com/?q=4041+N+Central+Ave+Phoenix+AZ+85012" rel="noopener" target="_blank">4041 N Central Ave, Phoenix, AZ 85012</a></dd>
-            <dt>Phone</dt><dd><a href="tel:6025066616">(602) 506-6616</a></dd>
-            <dt>Cost</dt><dd>Free or sliding scale</dd>
+            <dt>Who it’s for</dt><dd>People facing homelessness in Maricopa County</dd>
+            <dt>Hours</dt><dd>Mon–Fri 8 a.m.–5 p.m.<br>Closed noon–1 p.m.</dd>
+            <dt>Where</dt><dd>3522 N. 3rd Ave., Phoenix, AZ 85013</dd>
+            <dt>Phone</dt><dd><a href="tel:6027767676">(602) 776-7676</a></dd>
+            <dt>Website</dt><dd><a href="https://circlethecity.org/contact-us/" target="_blank" rel="noopener">circlethecity.org</a></dd>
           </dl>
-          <p class="card-verified"><small>Verified May 2026</small></p>
+          <p class="card-verified"><small>Confirmed on Circle the City’s own website · Oct. 26, 2026 · <a href="mailto:corrections.commonladder@gmail.com?subject=Correction%3A%20Circle%20the%20City%20%28help/health/index.html%29">Report a problem</a></small></p>
+        </div>
+        <div class="card" data-record="native-health-central">
+          <h3>NATIVE HEALTH Central</h3>
+          <div class="card-tags"><span class="tag">Medical</span><span class="tag">Dental</span><span class="tag">Behavioral health</span></div>
+          <dl class="resource-details">
+            <dt>Who it’s for</dt><dd>Accepts AHCCCS (Medicaid) plans and the American Indian Health Plan; ask about the discount program</dd>
+            <dt>Hours</dt><dd>Medical: Mon–Fri 8 a.m.–7 p.m.<br>Dental: Mon–Fri 8 a.m.–5 p.m.</dd>
+            <dt>Where</dt><dd>4041 N. Central Ave., Building C, Phoenix, AZ 85012</dd>
+            <dt>Phone</dt><dd><a href="tel:6022795262">(602) 279-5262</a> — Appointments</dd>
+            <dt>Website</dt><dd><a href="https://www.nativehealthphoenix.org/locations/" target="_blank" rel="noopener">nativehealthphoenix.org</a></dd>
+          </dl>
+          <p class="card-verified"><small>Confirmed on NATIVE HEALTH of Phoenix’s own website · Oct. 26, 2026 · <a href="mailto:corrections.commonladder@gmail.com?subject=Correction%3A%20NATIVE%20HEALTH%20of%20Phoenix%20%28help/health/index.html%29">Report a problem</a></small></p>
         </div>
         <div class="card">
           <h3>Southwest Network — Integrated Health Care</h3>
@@ -164,7 +176,7 @@
             <dt>Phone</dt><dd><a href="tel:4809418686">(480) 941-8686</a></dd>
             <dt>Cost</dt><dd>Free with AHCCCS; uninsured seen</dd>
           </dl>
-          <p class="card-verified"><small>Verified May 2026</small></p>
+          <p class="card-verified"><small>Researched May 2026 · not yet re-confirmed with the provider — call before you go · <a href="mailto:corrections.commonladder@gmail.com?subject=Correction%3A%20Southwest%20Network%20%E2%80%94%20Integrated%20Health%20Care%20%28help/health/index.html%29">Report a problem</a></small></p>
         </div>
         <div class="card">
           <h3>Valleywise Health — Comprehensive Medical Center</h3>
@@ -177,7 +189,7 @@
             <dt>Phone</dt><dd><a href="tel:6023445011">(602) 344-5011</a></dd>
             <dt>Cost</dt><dd>Free or low cost</dd>
           </dl>
-          <p class="card-verified"><small>Verified May 2026</small></p>
+          <p class="card-verified"><small>Researched May 2026 · not yet re-confirmed with the provider — call before you go · <a href="mailto:corrections.commonladder@gmail.com?subject=Correction%3A%20Valleywise%20Health%20%E2%80%94%20Comprehensive%20Medical%20Center%20%28help/health/index.html%29">Report a problem</a></small></p>
         </div>
       </div>
     </div>

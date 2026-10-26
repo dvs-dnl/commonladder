@@ -8,6 +8,8 @@
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
   gtag('config', 'G-3YXK0RL6XV');
+  // Count taps on phone numbers: which number and which page, never who tapped. Disclosed on /privacy.html.
+  document.addEventListener('click', function (e) { var a = e.target && e.target.closest ? e.target.closest('a[href^="tel:"]') : null; if (a) { gtag('event', 'tel_tap', { tel: a.getAttribute('href').slice(4), page: location.pathname }); } }, true);
 </script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -95,7 +97,7 @@
 
   <p>
     <strong>Address:</strong> Key Campus, 204 S 12th Ave, Phoenix, AZ 85007<br>
-    <strong>Phone:</strong> 602-229-5155 (Key Campus, 24 hours) or 602-282-0853<br>
+    <strong>Phone:</strong> 602-883-4509 (Brian Garcia Welcome Center, 206 S. 12th Ave. &mdash; call ahead) or 602-282-0853 (Key Campus main line, business hours)<br>
     Showers, restrooms, day storage, charging stations, ID assistance, and case management. The Key Campus (formerly the Human Services Campus, now run by Keys to Change) is the central hub for adult homeless services in Phoenix. Services are split across buildings: showers are in outdoor trailers, and <strong>mail is handled at the Brian Garcia Welcome Center</strong>, not at Lodestar.
   </p>
 
@@ -124,7 +126,7 @@
   <p>
     <strong>Phoenix Dining Room (single adults):</strong> 1075 W Jackson St, Phoenix, AZ 85007, on the Key Campus.<br>
     <strong>Resource Center (showers, clothing, hygiene):</strong> 320 W Watkins Rd, Phoenix, AZ 85003 — 602-261-6883.<br>
-    <strong>General information:</strong> 602-266-HOPE (602-266-4673)<br>
+    <strong>General information:</strong> call 211. St. Vincent de Paul has moved its site to svdpaz.org and no longer publishes a help line; the 602-266-HOPE number this page carried could not be confirmed as still answered (checked 2026-10-26)<br>
     Meals at the Phoenix Dining Room: breakfast Mon–Fri 7:00–8:00 a.m., lunch daily 11:00 a.m.–12:45 p.m., dinner Fri 4:00–5:00 p.m. Showers, clothing, and hygiene supplies are at the Resource Center on Watkins Rd, not at the dining room — call 602-261-6883 to confirm the day's hours before you walk over.
   </p>
 

@@ -8,6 +8,8 @@
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
   gtag('config', 'G-3YXK0RL6XV');
+  // Count taps on phone numbers: which number and which page, never who tapped. Disclosed on /privacy.html.
+  document.addEventListener('click', function (e) { var a = e.target && e.target.closest ? e.target.closest('a[href^="tel:"]') : null; if (a) { gtag('event', 'tel_tap', { tel: a.getAttribute('href').slice(4), page: location.pathname }); } }, true);
 </script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -179,55 +181,45 @@
       </div>
       <div class="cards">
 
-        <div class="card">
-          <h3>CASS — Central Arizona Shelter Services</h3>
-          <div class="card-tags">
-            <span class="tag">Emergency Shelter</span>
-            <span class="tag">Men</span>
-          </div>
-          <p>Phoenix's largest emergency shelter for single adults, providing nightly shelter, meals, and case management services.</p>
+        <div class="card" data-record="cass-single-adult-shelter">
+          <h3>CASS — Single Adult Shelter</h3>
+          <div class="card-tags"><span class="tag">Emergency shelter</span><span class="tag">Open 24/7</span><span class="tag">Men &amp; women 18+</span></div>
+          <p class="card-access"><strong>What to do:</strong> Low-barrier emergency shelter, open 24/7. Single adults usually start at the Brian Garcia Welcome Center next door (206 S. 12th Ave., 602-883-4509).</p>
           <dl class="resource-details">
-            <dt>Eligibility</dt><dd>Single adults 18+; must check in by 7 pm</dd>
-            <dt>Hours</dt><dd>Open nightly; intake 4–7 pm</dd>
-            <dt>Address</dt><dd><a href="https://maps.google.com/?q=230+S+12th+Ave+Phoenix+AZ+85007" rel="noopener" target="_blank">230 S 12th Ave, Phoenix, AZ 85007</a></dd>
-            <dt>Phone</dt><dd><a href="tel:6025342500">(602) 534-2500</a></dd>
+            <dt>Who it’s for</dt><dd>Single adults 18+, men and women</dd>
+            <dt>Hours</dt><dd>Open 24 hours a day, 365 days a year</dd>
+            <dt>Where</dt><dd><a href="https://maps.google.com/?q=230+S+12th+Ave+Phoenix+AZ+85007" rel="noopener" target="_blank">230 S. 12th Ave., Phoenix, AZ 85007</a></dd>
+            <dt>Phone</dt><dd><a href="tel:6022566945">(602) 256-6945</a> — CASS main line<br>TTY: <a href="tel:8003678939">(800) 367-8939</a></dd>
             <dt>Cost</dt><dd>Free</dd>
+            <dt>Website</dt><dd><a href="https://www.cassaz.org/services" target="_blank" rel="noopener">cassaz.org</a></dd>
           </dl>
-          <p class="card-verified"><small>Verified May 2026</small></p>
+          <p class="card-verified"><small>Confirmed on Central Arizona Shelter Services’s own website · Oct. 26, 2026 · <a href="mailto:corrections.commonladder@gmail.com?subject=Correction%3A%20Central%20Arizona%20Shelter%20Services%20%28CASS%29%20%28help/housing-shelter/index.html%29">Report a problem</a></small></p>
         </div>
 
-        <div class="card">
-          <h3>Andre House of Arizona</h3>
-          <div class="card-tags">
-            <span class="tag">Transitional Housing</span>
-            <span class="tag">Meals</span>
-          </div>
-          <p>Provides transitional housing, hot meals, and supportive services to men experiencing homelessness in Phoenix.</p>
+        <div class="card" data-record="brian-garcia-welcome-center">
+          <h3>Brian Garcia Welcome Center — start here (single adults)</h3>
+          <div class="card-tags"><span class="tag">Single adults</span><span class="tag">Walk in</span><span class="tag">Key Campus</span></div>
+          <p class="card-access"><strong>What to do:</strong> The starting point for single adults. Walk in or call ahead to begin an assessment and a plan.</p>
           <dl class="resource-details">
-            <dt>Eligibility</dt><dd>Single adult men 18+</dd>
-            <dt>Hours</dt><dd>Mon–Sun; evening meal 5:30–7 pm</dd>
-            <dt>Address</dt><dd><a href="https://maps.google.com/?q=1002+S+7th+Ave+Phoenix+AZ+85007" rel="noopener" target="_blank">1002 S 7th Ave, Phoenix, AZ 85007</a></dd>
-            <dt>Phone</dt><dd><a href="tel:6022527373">(602) 252-7373</a></dd>
-            <dt>Cost</dt><dd>Free</dd>
+            <dt>Who it’s for</dt><dd>Single adults without children experiencing homelessness</dd>
+            <dt>Hours</dt><dd>Keys to Change publishes both 'open 24 hours a day' and 'visit any time 7 a.m.–11 p.m.' — call ahead</dd>
+            <dt>Where</dt><dd><a href="https://maps.google.com/?q=206+S+12th+Ave+Phoenix+AZ+85007" rel="noopener" target="_blank">206 S. 12th Ave., Phoenix, AZ 85007</a></dd>
+            <dt>Phone</dt><dd><a href="tel:6028834509">(602) 883-4509</a> — Call ahead</dd>
+            <dt>Website</dt><dd><a href="https://keystochangeaz.org/get-help/" target="_blank" rel="noopener">keystochangeaz.org</a></dd>
           </dl>
-          <p class="card-verified"><small>Verified May 2026</small></p>
+          <p class="card-note"><small><strong>Heads up:</strong> Hours: the operator's page says 'Open 24 hours a day' in one section and 'Visit any time from 7am-11pm' in another.</small></p>
+          <p class="card-verified"><small>Confirmed on Keys to Change’s own website · Oct. 26, 2026 · <a href="mailto:corrections.commonladder@gmail.com?subject=Correction%3A%20Keys%20to%20Change%20%28help/housing-shelter/index.html%29">Report a problem</a></small></p>
         </div>
 
-        <div class="card">
-          <h3>Tumbleweed Center for Youth Development</h3>
-          <div class="card-tags">
-            <span class="tag">Youth Shelter</span>
-            <span class="tag">Ages 18–24</span>
-          </div>
-          <p>Emergency shelter and transitional housing for youth and young adults experiencing homelessness in Maricopa County.</p>
+        <div class="card" data-record="youth-hotline">
+          <h3>24/7 Youth Hotline (ages 12–17)</h3>
+          <div class="card-tags"><span class="tag">Youth</span><span class="tag">24/7</span><span class="tag">Shelter</span></div>
           <dl class="resource-details">
-            <dt>Eligibility</dt><dd>Youth ages 12–24 experiencing homelessness</dd>
-            <dt>Hours</dt><dd>24 hours; call ahead for intake</dd>
-            <dt>Address</dt><dd><a href="https://maps.google.com/?q=1342+N+22nd+St+Phoenix+AZ+85006" rel="noopener" target="_blank">1342 N 22nd St, Phoenix, AZ 85006</a></dd>
-            <dt>Phone</dt><dd><a href="tel:6024494200">(602) 449-4200</a></dd>
-            <dt>Cost</dt><dd>Free</dd>
+            <dt>Who it’s for</dt><dd>Youth ages 12–17</dd>
+            <dt>Hours</dt><dd>24 hours a day, 7 days a week</dd>
+            <dt>Phone</dt><dd><a href="tel:6028415799">(602) 841-5799</a></dd>
           </dl>
-          <p class="card-verified"><small>Verified May 2026</small></p>
+          <p class="card-verified"><small>Listed by Keys to Change · Oct. 26, 2026 · <a href="mailto:corrections.commonladder@gmail.com?subject=Correction%3A%2024/7%20Youth%20Hotline%20%28Safe%20Place%29%20%28help/housing-shelter/index.html%29">Report a problem</a></small></p>
         </div>
 
         <div class="card">
@@ -244,7 +236,7 @@
             <dt>Phone</dt><dd><a href="tel:6025063580">(602) 506-3580</a></dd>
             <dt>Cost</dt><dd>Free</dd>
           </dl>
-          <p class="card-verified"><small>Verified May 2026</small></p>
+          <p class="card-verified"><small>Researched May 2026 · not yet re-confirmed with the provider — call before you go · <a href="mailto:corrections.commonladder@gmail.com?subject=Correction%3A%20Maricopa%20County%20Human%20Services%20%E2%80%94%20Rapid%20Rehousing%20%28help/housing-shelter/index.html%29">Report a problem</a></small></p>
         </div>
 
       </div>

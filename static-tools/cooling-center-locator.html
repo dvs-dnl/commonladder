@@ -8,6 +8,8 @@
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
   gtag('config', 'G-3YXK0RL6XV');
+  // Count taps on phone numbers: which number and which page, never who tapped. Disclosed on /privacy.html.
+  document.addEventListener('click', function (e) { var a = e.target && e.target.closest ? e.target.closest('a[href^="tel:"]') : null; if (a) { gtag('event', 'tel_tap', { tel: a.getAttribute('href').slice(4), page: location.pathname }); } }, true);
 </script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -156,7 +158,7 @@
       <li>Search by your location and filter by hours and services</li>
     </ul>
     <a class="ccl-btn" href="https://hrn.azmag.gov" target="_blank" rel="noopener">Open the Heat Relief Network map →</a>
-    <a class="ccl-btn ccl-btn--ghost" href="tel:211">Or call 2-1-1 (free, 24/7)</a>
+    <a class="ccl-btn ccl-btn--ghost" href="tel:211">Or call 2-1-1 (free; live help 9 a.m.–7 p.m.)</a>
   </section>
 
   <section class="ccl-zip" id="ccl-zip-tool" aria-label="Find sites near your ZIP code">

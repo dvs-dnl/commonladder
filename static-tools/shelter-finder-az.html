@@ -8,6 +8,8 @@
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
   gtag('config', 'G-3YXK0RL6XV');
+  // Count taps on phone numbers: which number and which page, never who tapped. Disclosed on /privacy.html.
+  document.addEventListener('click', function (e) { var a = e.target && e.target.closest ? e.target.closest('a[href^="tel:"]') : null; if (a) { gtag('event', 'tel_tap', { tel: a.getAttribute('href').slice(4), page: location.pathname }); } }, true);
 </script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -85,6 +87,10 @@
     .r-card__meta-val{color:var(--dark)}
     .r-card__meta a{color:var(--blue)}
     .r-card__meta a:hover{text-decoration:underline}
+    .r-card__call{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:.55rem 1rem;border-radius:var(--radius);background:var(--blue);color:#fff;font-weight:700;font-size:.95rem;text-decoration:none;align-self:flex-start}
+    .r-card__call:hover,.r-card__call:focus{background:#142d52;color:#fff;text-decoration:underline}
+    .r-card__report{font-size:.75rem;color:#555;margin:.35rem 0 0;line-height:1.45}
+    .r-card__report a{color:var(--blue);text-decoration:underline}
     .r-card__city{font-size:.75rem;color:var(--gray);font-weight:600;text-transform:uppercase;letter-spacing:.05em;margin-top:.25rem}
 
     /* Empty state */
@@ -155,9 +161,10 @@
 
   <section class="page-hero">
     <div class="container">
-      <span class="eyebrow">75 verified programs · Arizona</span>
+      <span class="eyebrow">75 programs · Arizona</span>
       <h1>Arizona Shelter &amp; Housing Finder</h1>
       <p>Search emergency shelters, transitional housing, rapid rehousing, and coordinated entry programs across Arizona — no account needed.</p>
+      <p style="font-size:.9rem;">Programs change their intake rules and phone numbers often, and not every listing here has been re-confirmed with the provider. <strong>Call before you go.</strong> Shelter locations for domestic violence programs are confidential — call the 24/7 screening line, <a href="tel:4808903039">480-890-3039</a>.</p>
     </div>
   </section>
 
@@ -358,7 +365,7 @@
     {"name":"POND Housing Navigation","city":"Phoenix","address":"1301 N 7th St, Phoenix, AZ 85006","phone":"602-535-2844","website":null,"types":["Youth","Coordinated Entry"],"desc":"Youth housing navigation and coordinated entry for young adults in Phoenix."},
     {"name":"Salvation Army — Hospitality House","city":"Tucson","address":"1002 N Main Ave, Tucson, AZ 85705","phone":"520-622-5411","website":"https://www.salvationarmyarizona.org","types":["Emergency Shelter","Mission"],"desc":"Emergency shelter and meals for individuals and families in Tucson."},
     {"name":"CAHRA Rapid Rehousing","city":"Eloy","address":"PO Box 2053, Eloy, AZ 85131","phone":"520-466-7101","website":null,"types":["Rapid Rehousing"],"desc":"Rapid rehousing assistance for individuals and families in Pinal County."},
-    {"name":"MANA House","city":"Phoenix","address":"7701 N 35th Ave, Phoenix, AZ 85051","phone":"602-433-9331","website":null,"types":["Veterans","Transitional Housing","Women"],"desc":"Transitional housing for female veterans in the Phoenix area."},
+    {"name":"MANA House (Catholic Charities)","city":"Phoenix","address":"2422 W Holly St, Phoenix, AZ 85009","phone":"602-254-6785","website":"https://manahouseaz.org/get-help/mana-house","types":["Veterans","Transitional Housing"],"desc":"Transitional housing for veterans. Referral only: MANA House accepts referrals only from the Phoenix VA Community Resource & Referral Center (1500 E. Thomas Rd., Suite 106; 602-248-6040, Mon–Fri 7:30 a.m.–4:30 p.m.). Go to the CRRC first. Confirmed with MANA House, Oct. 2026."},
     {"name":"Catholic Charities — Cottonwood","city":"Cottonwood","address":"770 Cactus St, Cottonwood, AZ 86326","phone":"928-634-2121","website":"https://www.catholiccharitiesaz.org","types":["Emergency Shelter","Families"],"desc":"Emergency assistance and shelter support for families in the Verde Valley."},
     {"name":"Catholic Charities — Flagstaff PATH","city":"Flagstaff","address":"2204 E Cedar Ave, Flagstaff, AZ 86004","phone":"928-774-9125","website":"https://www.catholiccharitiesaz.org","types":["Coordinated Entry","Outreach"],"desc":"PATH outreach and coordinated entry services for people experiencing homelessness in Flagstaff."},
     {"name":"Good Neighbor Alliance","city":"Sierra Vista","address":"370 N Garden Ave, Sierra Vista, AZ 85635","phone":"520-458-2851","website":null,"types":["Emergency Shelter","Families"],"desc":"Emergency shelter and basic needs assistance for individuals and families in Sierra Vista."},
@@ -383,7 +390,7 @@
     {"name":"Project Aware","city":"Prescott","address":"543 Hillside Ave, Prescott, AZ 86301","phone":"928-445-4673","website":null,"types":["Emergency Shelter","Men"],"desc":"Emergency shelter and substance use recovery support for men in Prescott."},
     {"name":"Against Abuse Inc","city":"Casa Grande","address":"PO Box 7568, Casa Grande, AZ 85122","phone":"520-836-0858","website":null,"types":["DV/Safe House","Emergency Shelter"],"desc":"Shelter and advocacy for domestic violence survivors in Pinal County."},
     {"name":"Primavera Men's Shelter","city":"Tucson","address":"151 W 40th St, Tucson, AZ 85713","phone":"520-623-5111","website":"https://www.primavera.org","types":["Emergency Shelter","Men"],"desc":"Emergency shelter for men experiencing homelessness in Tucson."},
-    {"name":"Ozanam Manor","city":"Phoenix","address":"1702 S 10th Ave, Phoenix, AZ 85007","phone":"602-261-6886","website":"https://www.svdpaz.org","types":["Transitional Housing","Senior/Disabled"],"desc":"Long-term transitional housing for senior and disabled adults in Phoenix."},
+    {"name":"Ozanam Manor (St. Vincent de Paul)","city":"Phoenix","address":"320 W Watkins Rd, Phoenix, AZ 85003","phone":"602-850-6900","website":"https://www.svdpaz.org/get-help/shelter-and-weather-relief","types":["Transitional Housing","Senior/Disabled"],"desc":"Transitional housing for adults 55+, adults living with a disability, or adults working or looking for work. Not a walk-in shelter: intake starts with a phone screening (602-850-6900, 8 a.m.–3 p.m.), then an in-person interview. Confirmed with St. Vincent de Paul, Oct. 2026."},
     {"name":"Salvation Army — South Corps","city":"Tucson","address":"2201 N Westmoreland Ave, Tucson, AZ 85745","phone":"520-624-9800","website":"https://www.salvationarmyarizona.org","types":["Emergency Shelter","Mission","Families"],"desc":"Emergency shelter, meals, and social services for individuals and families."},
     {"name":"Bisbee Coalition for the Homeless","city":"Bisbee","address":"PO Box 2552, Bisbee, AZ 85603","phone":"520-432-7274","website":null,"types":["Emergency Shelter","Coordinated Entry"],"desc":"Emergency shelter and coordinated entry services for Cochise County."},
     {"name":"Primavera HIP Drop-In","city":"Tucson","address":"702 S 6th Ave, Tucson, AZ 85701","phone":"520-623-5111","website":"https://www.primavera.org","types":["Day Resource","Outreach"],"desc":"Drop-in day services, showers, laundry, and housing navigation for people experiencing homelessness."},
@@ -454,16 +461,29 @@
       ? '<p class="r-card__desc">' + escHtml(r.desc) + '</p>'
       : '';
 
+    // Action first: the call button sits right under the name.
+    var callBtn = '<a class="r-card__call" href="' + phoneHref(r.phone) + '">Call ' + formatPhone(r.phone) + '</a>';
+
+    // A PO Box is a mailing address, not a place to go. Say so instead of implying a location.
+    var isPOBox = /P\.?\s?O\.?\s?Box/i.test(r.address || '');
+    var addrRow = isPOBox
+      ? '<div class="r-card__meta-row"><span class="r-card__meta-label">Location</span><span class="r-card__meta-val">Given by phone (mailing address only: ' + escHtml(r.address) + ')</span></div>'
+      : '<div class="r-card__meta-row"><span class="r-card__meta-label">Address</span><span class="r-card__meta-val">' + escHtml(r.address) + '</span></div>';
+
+    var report = '<p class="r-card__report">Not yet re-confirmed with the provider. Call before you go. ' +
+      '<a href="mailto:corrections.commonladder@gmail.com?subject=' + encodeURIComponent('Correction: ' + r.name + ' (shelter-finder-az)') + '">Report a problem with this listing</a></p>';
+
     return '<div class="r-card">' +
       '<p class="r-card__city">' + escHtml(r.city) + '</p>' +
       '<h3>' + escHtml(r.name) + '</h3>' +
+      callBtn +
       '<div class="r-card__tags">' + tags + '</div>' +
       desc +
       '<div class="r-card__meta">' +
-        '<div class="r-card__meta-row"><span class="r-card__meta-label">Address</span><span class="r-card__meta-val">' + escHtml(r.address) + '</span></div>' +
-        '<div class="r-card__meta-row"><span class="r-card__meta-label">Phone</span><span class="r-card__meta-val"><a href="' + phoneHref(r.phone) + '">' + formatPhone(r.phone) + '</a></span></div>' +
+        addrRow +
         websiteRow +
       '</div>' +
+      report +
     '</div>';
   }
 

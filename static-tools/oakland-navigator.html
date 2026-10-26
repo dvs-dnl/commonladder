@@ -9,6 +9,8 @@
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
   gtag('config', 'G-3YXK0RL6XV');
+  // Count taps on phone numbers: which number and which page, never who tapped. Disclosed on /privacy.html.
+  document.addEventListener('click', function (e) { var a = e.target && e.target.closest ? e.target.closest('a[href^="tel:"]') : null; if (a) { gtag('event', 'tel_tap', { tel: a.getAttribute('href').slice(4), page: location.pathname }); } }, true);
 </script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -755,7 +757,7 @@
       badgeClass: "badge-families",
       badgeIcon: "🏠",
       headline: "Families enter the shelter system through 211 and the Housing Resource Centers.",
-      firstAction: "Call <strong>211</strong> (or <strong>1-888-886-9660</strong>) — free, 24/7 — and say: <em>“I’m a parent with my kids and we’re homeless; I need a family shelter and a Housing Resource Center.”</em> Ask about <strong>East Oakland Community Project (EOCP)</strong>, which runs the county’s largest shelter for families and adults.",
+      firstAction: "Call <strong>211</strong> (or <strong>1-888-886-9660</strong>) — free; hours vary by area — and say: <em>“I’m a parent with my kids and we’re homeless; I need a family shelter and a Housing Resource Center.”</em> Ask about <strong>East Oakland Community Project (EOCP)</strong>, which runs the county’s largest shelter for families and adults.",
       callNumber: "tel:211",
       callLabel: "Call 211",
       what_to_expect: "211 routes families to coordinated entry and family shelter. EOCP ((510) 532-3211) operates Crossroads and family programs; Abode Services ((510) 657-7409) is the county's largest housing-first provider. If you are fleeing domestic violence, use the hotline below — DV shelter is separate and confidential (Building Futures 24-hr: 1-866-292-9688).",

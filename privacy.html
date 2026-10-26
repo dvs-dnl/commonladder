@@ -8,6 +8,8 @@
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
   gtag('config', 'G-3YXK0RL6XV');
+  // Count taps on phone numbers: which number and which page, never who tapped. Disclosed on /privacy.html.
+  document.addEventListener('click', function (e) { var a = e.target && e.target.closest ? e.target.closest('a[href^="tel:"]') : null; if (a) { gtag('event', 'tel_tap', { tel: a.getAttribute('href').slice(4), page: location.pathname }); } }, true);
 </script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -76,10 +78,10 @@
 
     <h2 style="margin-bottom:.75rem">What we collect</h2>
     <p>Almost nothing. Common Ladder does not require an account to use any part of the site. We do not collect names, email addresses, phone numbers, or any identifying information from people browsing the site.</p>
-    <p style="margin-top:1rem">We may collect anonymous usage analytics — page views and general geographic location at the city level — to understand how the platform is being used and where resources are needed most. This data is aggregated and cannot be used to identify individuals.</p>
+    <p style="margin-top:1rem">We use Google Analytics to count page views and general location at the city level. We also count taps on the phone numbers listed on our pages — which number was tapped and on which page, never who tapped it or what was said on the call. We look at these numbers only in aggregate, to learn which listings actually connect people to help, and we do not try to identify anyone.</p>
 
     <h2 style="margin-top:2.5rem; margin-bottom:.75rem">Cookies</h2>
-    <p>We may use minimal session cookies to support tool functionality (for example, remembering a search filter during a session). We do not use advertising cookies, tracking cookies, or any cookies that follow you across sites.</p>
+    <p>Google Analytics sets first-party cookies (named <code>_ga</code>) so it can tell a repeat visit from a new one. We do not use advertising cookies, and these cookies are not shared with other websites. You can block cookies in your browser settings. Our tools save your answers in your own browser’s storage, not in a cookie and not on our servers.</p>
 
     <h2 style="margin-top:2.5rem; margin-bottom:.75rem">Third-party services</h2>
     <p>Common Ladder is hosted on GitHub Pages. Our CoC Finder and related tools use publicly available HUD and government data sources. We do not share any data with advertisers, data brokers, or third-party marketing platforms. We do not monetize this site or its users.</p>
@@ -143,7 +145,7 @@
     </div>
     <div class="footer__bottom">
       <span>&copy; 2026 Common Ladder. Free to use, always.</span>
-      <span><time datetime="2026-05-23">Last updated May 23, 2026</time></span>
+      <span><time datetime="2026-10-26">Last updated October 26, 2026</time></span>
     </div>
   </div>
 </footer>

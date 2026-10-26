@@ -8,6 +8,8 @@
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
   gtag('config', 'G-3YXK0RL6XV');
+  // Count taps on phone numbers: which number and which page, never who tapped. Disclosed on /privacy.html.
+  document.addEventListener('click', function (e) { var a = e.target && e.target.closest ? e.target.closest('a[href^="tel:"]') : null; if (a) { gtag('event', 'tel_tap', { tel: a.getAttribute('href').slice(4), page: location.pathname }); } }, true);
 </script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -146,7 +148,7 @@
   <ul>
     <li><strong>ID.</strong> This is the most common hard stop. Our <a href="/blog/id-recovery-phoenix.html">Phoenix ID recovery guide</a> covers who helps, and the free <a href="/static-tools/id-recovery-wizard.html">ID Recovery Wizard</a> tells you which document to get first so you don&rsquo;t get stuck in the loop where each one requires the others.</li>
     <li><strong>Phone.</strong> Nearly every agency here needs a number that reaches you. Ask a case manager about <strong>Lifeline</strong>, the federal program that discounts phone service for people receiving SNAP, AHCCCS, SSI, and other benefits.</li>
-    <li><strong>An address and mail.</strong> <strong>Key Campus</strong>, run by Keys to Change (formerly the Human Services Campus), at 204 S. 12th Ave., Phoenix &mdash; <a href="tel:6022295155">(602) 229-5155</a> &mdash; is the downtown block where mail service, ID help, health care, legal aid, and employment services sit together. Its mailroom is the only dedicated post office for people experiencing homelessness in the country, and the address it gives you can be used on job applications. The Brian Garcia Welcome Center there is open 24 hours a day.</li>
+    <li><strong>An address and mail.</strong> <strong>Key Campus</strong>, run by Keys to Change (formerly the Human Services Campus), at 204 S. 12th Ave., Phoenix &mdash; campus line <a href="tel:6022820853">(602) 282-0853</a>, or the Brian Garcia Welcome Center at 206 S. 12th Ave. on <a href="tel:6028834509">602-883-4509</a> &mdash; is the downtown block where mail service, ID help, health care, legal aid, and employment services sit together. Its mailroom is the only dedicated post office for people experiencing homelessness in the country, and the address it gives you can be used on job applications. The Brian Garcia Welcome Center there is open 24 hours a day.</li>
     <li><strong>A shower and clean clothes.</strong> See our <a href="/blog/showers-hygiene-homeless-phoenix.html">showers and hygiene guide</a>. St. Joseph the Worker and Goodwill both supply interview clothing.</li>
     <li><strong>Getting there.</strong> Our <a href="/blog/transportation-help-phoenix.html">transportation guide</a> covers free and half-price bus passes, which agencies hand them out, and how to book a free medical ride.</li>
   </ul>

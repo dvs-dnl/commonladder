@@ -8,6 +8,8 @@
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
   gtag('config', 'G-3YXK0RL6XV');
+  // Count taps on phone numbers: which number and which page, never who tapped. Disclosed on /privacy.html.
+  document.addEventListener('click', function (e) { var a = e.target && e.target.closest ? e.target.closest('a[href^="tel:"]') : null; if (a) { gtag('event', 'tel_tap', { tel: a.getAttribute('href').slice(4), page: location.pathname }); } }, true);
 </script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -97,7 +99,7 @@
 
   <h2>The fastest way to get help</h2>
 
-  <p><strong>Call or text 211.</strong> Arizona 211 operates around the clock and can connect you with shelters, food, health care, and other services in the Tucson area. Navigators speak Spanish and can locate what is available tonight based on your location. You can call from any phone — no smartphone required.</p>
+  <p><strong>Call 2-1-1.</strong> 211 Arizona’s live navigators answer 9 a.m.–7 p.m., seven days a week — not around the clock — and can connect you with shelters, food, health care, and other services in the Tucson area. Navigators speak Spanish and can locate what is available tonight based on your location. You can call from any phone — no smartphone required.</p>
 
   <p>If you need a place to sleep tonight and can't get through by phone, try walking in to one of the shelters listed below during intake hours. Most programs in Tucson accept walk-ins, particularly in the evenings. Calling ahead when possible helps, but it is not required at most locations.</p>
 

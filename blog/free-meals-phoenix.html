@@ -8,6 +8,8 @@
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
   gtag('config', 'G-3YXK0RL6XV');
+  // Count taps on phone numbers: which number and which page, never who tapped. Disclosed on /privacy.html.
+  document.addEventListener('click', function (e) { var a = e.target && e.target.closest ? e.target.closest('a[href^="tel:"]') : null; if (a) { gtag('event', 'tel_tap', { tel: a.getAttribute('href').slice(4), page: location.pathname }); } }, true);
 </script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -30,7 +32,7 @@
   </script>
   <script type="application/ld+json">
   {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
-    {"@type":"Question","name":"Where can I get a free hot meal in Phoenix today?","acceptedAnswer":{"@type":"Answer","text":"St. Vincent de Paul's Phoenix Dining Room at 1075 W. Jackson St. serves breakfast Mon–Fri 7–8 a.m., lunch daily 11 a.m.–12:45 p.m., and dinner on Fridays 4–5 p.m., and is open to anyone. The Watkins Road dining room (420 W. Watkins Rd.) is for families only — you must have a child under 18. Meal times can change, so call (602) 266-4673 or 211 to confirm."}},
+    {"@type":"Question","name":"Where can I get a free hot meal in Phoenix today?","acceptedAnswer":{"@type":"Answer","text":"St. Vincent de Paul's Phoenix Dining Room at 1075 W. Jackson St. serves breakfast Mon–Fri 7–8 a.m., lunch daily 11 a.m.–12:45 p.m., and dinner on Fridays 4–5 p.m., and is open to anyone. The Watkins Road dining room (420 W. Watkins Rd.) is for families only — you must have a child under 18. Meal times can change, so call 211 to confirm — SVdP no longer publishes a help line on svdpaz.org and the (602) 266-4673 number could not be confirmed on 2026-10-26."}},
     {"@type":"Question","name":"Do I need an ID to get a free meal?","acceptedAnswer":{"@type":"Answer","text":"Not for a hot meal. No ID is required at St. Vincent de Paul's Phoenix Dining Room and walk-ins are welcome, and André House serves dinner most evenings (closed Fridays) with no questions asked. Food boxes are different — SVdP's drive-thru food box distribution does require an Arizona government-issued ID showing your address."}},
     {"@type":"Question","name":"What's the difference between a food bank and a meal program?","acceptedAnswer":{"@type":"Answer","text":"Food banks typically give you groceries to take with you rather than a sit-down meal — useful if you have somewhere to prepare food or need to stock up. Meal programs serve a prepared meal on site. St. Mary's Food Bank, for example, distributes groceries at its Neighborhood Food Centers (3131 W. Thomas Rd. in Phoenix, Mon–Fri 7:30 a.m.–1:30 p.m.), so bring a bag or box to carry your food."}},
     {"@type":"Question","name":"Are there free meals for kids in Phoenix during the summer?","acceptedAnswer":{"@type":"Answer","text":"Yes. The Summer Food Service Program, a USDA program delivered locally through schools, parks, community centers and food banks, provides free meals to kids 18 and under at sites across Phoenix during summer months. It runs in summer only. To find the nearest site, call 211 or text \"FOOD\" or \"COMIDA\" to 304-304."}},
@@ -112,7 +114,7 @@
   <p>
     <strong>Address:</strong> 420 W. Watkins Rd., Phoenix, AZ 85003<br>
     <strong>Hours:</strong> Mon–Fri, 4–6 p.m.<br>
-    <strong>Phone (SVdP main line):</strong> (602) 266-4673 (266-HOPE)
+    <strong>Phone:</strong> call <strong>211</strong>. SVdP moved its site to svdpaz.org and now publishes no help line; (602) 266-4673 (266-HOPE) could not be confirmed as still answered on 2026-10-26. The one Phoenix number SVdP does publish is 602-261-6864, the security front desk at the 1075 W. Jackson St. dining room
   </p>
 
   <h3>Drive-thru food boxes at the Watkins campus</h3>
@@ -226,7 +228,7 @@
 
   <section class="faq" aria-label="Frequently asked questions">
     <h2>Frequently asked questions</h2>
-    <div class="faq__item"><h3>Where can I get a free hot meal in Phoenix today?</h3><p>St. Vincent de Paul's Phoenix Dining Room at 1075 W. Jackson St. serves breakfast Mon–Fri 7–8 a.m., lunch daily 11 a.m.–12:45 p.m., and dinner on Fridays 4–5 p.m., and is open to anyone. The Watkins Road dining room (420 W. Watkins Rd.) is for families only — you must have a child under 18. Meal times can change, so call (602) 266-4673 or 211 to confirm.</p></div>
+    <div class="faq__item"><h3>Where can I get a free hot meal in Phoenix today?</h3><p>St. Vincent de Paul's Phoenix Dining Room at 1075 W. Jackson St. serves breakfast Mon–Fri 7–8 a.m., lunch daily 11 a.m.–12:45 p.m., and dinner on Fridays 4–5 p.m., and is open to anyone. The Watkins Road dining room (420 W. Watkins Rd.) is for families only — you must have a child under 18. Meal times can change, so call 211 to confirm — SVdP no longer publishes a help line on svdpaz.org and the (602) 266-4673 number could not be confirmed on 2026-10-26.</p></div>
     <div class="faq__item"><h3>Do I need an ID to get a free meal?</h3><p>Not for a hot meal. No ID is required at St. Vincent de Paul's Phoenix Dining Room and walk-ins are welcome, and André House serves dinner most evenings (closed Fridays) with no questions asked. Food boxes are different — SVdP's drive-thru food box distribution does require an Arizona government-issued ID showing your address.</p></div>
     <div class="faq__item"><h3>What's the difference between a food bank and a meal program?</h3><p>Food banks typically give you groceries to take with you rather than a sit-down meal — useful if you have somewhere to prepare food or need to stock up. Meal programs serve a prepared meal on site. St. Mary's Food Bank, for example, distributes groceries at its Neighborhood Food Centers (3131 W. Thomas Rd. in Phoenix, Mon–Fri 7:30 a.m.–1:30 p.m.), so bring a bag or box to carry your food.</p></div>
     <div class="faq__item"><h3>Are there free meals for kids in Phoenix during the summer?</h3><p>Yes. The Summer Food Service Program, a USDA program delivered locally through schools, parks, community centers and food banks, provides free meals to kids 18 and under at sites across Phoenix during summer months. It runs in summer only. To find the nearest site, call 211 or text "FOOD" or "COMIDA" to 304-304.</p></div>

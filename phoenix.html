@@ -8,6 +8,8 @@
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
   gtag('config', 'G-3YXK0RL6XV');
+  // Count taps on phone numbers: which number and which page, never who tapped. Disclosed on /privacy.html.
+  document.addEventListener('click', function (e) { var a = e.target && e.target.closest ? e.target.closest('a[href^="tel:"]') : null; if (a) { gtag('event', 'tel_tap', { tel: a.getAttribute('href').slice(4), page: location.pathname }); } }, true);
 </script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -112,7 +114,8 @@
 
   <h2>The fastest way to get help</h2>
 
-  <p><strong>Call or text 211.</strong> This is Arizona's free social services helpline, available 24 hours a day, 7 days a week. Trained navigators can tell you what's open tonight, what's near you, and what you're eligible for. You can call from any phone — cell or landline — and the service is available in Spanish. You can also text your zip code to 898-211 to get local resource listings.</p>
+  <p><strong>Call 2-1-1.</strong> This is Arizona's free information and referral line. Live navigators answer <strong>9 a.m.–7 p.m., seven days a week</strong> — it is not a 24-hour line. They can tell you what's open, what's near you, and what you're eligible for, and you can ask for Spanish. From any phone, cell or landline; from outside Arizona, call <a href="tel:18772118661">1-877-211-8661</a>. Outside those hours, search the directory at <a href="https://211arizona.org/" target="_blank" rel="noopener">211arizona.org</a>.</p>
+  <p><strong>After 7 p.m.:</strong> single adults can go to the Brian Garcia Welcome Center, 206 S. 12th Ave. (call ahead: <a href="tel:6028834509">602-883-4509</a>). Families call the Family Housing Hub, <a href="tel:6025958700">602-595-8700</a>. Youth 12–17: the 24/7 youth hotline, <a href="tel:6028415799">602-841-5799</a>. Domestic violence: the 24/7 screening line, <a href="tel:4808903039">480-890-3039</a>. Mental health crisis: <a href="tel:988">988</a> or <a href="tel:18006311314">1-800-631-1314</a> (24/7). Immediate danger: <a href="tel:911">911</a>.</p>
 
   <p>If you're already downtown or on the west side, you can walk in to the <strong>Human Services Campus</strong> at <strong>1132 S. 12th Ave, Phoenix, AZ 85034</strong>. The campus is open daily and serves as the main access point for emergency shelter, coordinated entry into the housing system, and connection to services. Multiple organizations operate on-site, so one visit can connect you to many different kinds of help.</p>
 
@@ -133,18 +136,19 @@
   </p>
 
   <h3>Andre House</h3>
-  <p>Andre House operates on the Human Services Campus and focuses specifically on people experiencing street-level homelessness. Beyond their nightly meal service, they provide hygiene supplies, clothing, and connections to other resources. They meet people where they are, without conditions.</p>
+  <p>Andre House operates on the Human Services Campus and focuses specifically on people experiencing street-level homelessness. Andre House serves a free dinner Saturday–Thursday, 5–6 p.m. (line forms at 4 p.m.; <strong>no dinner on Fridays</strong> — St. Vincent de Paul's Phoenix Dining Room serves Friday dinner, 4–5 p.m.). It also offers showers Monday–Thursday 12:30–3 p.m., laundry Monday–Wednesday mornings, a clothing closet, and hygiene kits. It is not a shelter. They meet people where they are, without conditions.</p>
   <p>
-    <strong>Address:</strong> 1 W. Hadley St., Phoenix, AZ 85007<br>
-    <strong>Phone:</strong> (602) 252-9901<br>
+    <strong>Address:</strong> 213 S. 11th Ave., Phoenix, AZ 85007<br>
+    <strong>Phone:</strong> <a href="tel:6022550580">(602) 255-0580</a> · <a href="https://andrehouse.org/what-we-do/" target="_blank" rel="noopener">full schedule</a><br>
     <strong>Who they serve:</strong> Adults experiencing homelessness; particularly those living outside
   </p>
 
-  <h3>St. Joseph the Worker</h3>
+  <h3>St. Joseph the Worker (now “The Worker”)</h3>
   <p>St. Joseph the Worker specializes in employment and economic stability services for people experiencing homelessness, including job placement, resume support, and work-readiness training. They work with both individuals who are currently unhoused and those who are recently housed and at risk of returning to homelessness. If you're looking to get back to work, this is one of the best places to start in Phoenix.</p>
   <p>
-    <strong>Address:</strong> 1learned Ave. (call ahead for current location)<br>
-    <strong>Phone:</strong> (602) 417-9457<br>
+    <strong>Phoenix office:</strong> 382 E. Palm Lane, #150, Phoenix, AZ 85004<br>
+    <strong>Mesa office:</strong> 1833 W. Main St., #128, Mesa, AZ 85201<br>
+    <strong>Phone:</strong> <a href="tel:6027555627">602-755-JOBS (602-755-5627)</a> · <a href="https://www.theworkeraz.org/" target="_blank" rel="noopener">theworkeraz.org</a><br>
     <strong>Who they serve:</strong> Adults seeking employment; people experiencing or at risk of homelessness
   </p>
 
@@ -163,22 +167,23 @@
   <p>Multiple programs serve free meals and distribute groceries across the Phoenix metro. You do not need to be enrolled in any program to eat.</p>
 
   <h3>St. Mary's Food Bank</h3>
-  <p>St. Mary's is the largest food bank in Arizona and one of the oldest in the country. They operate multiple distribution sites across Maricopa County where you can pick up groceries to take with you. No paperwork required at most sites.</p>
+  <p>St. Mary's is the largest food bank in Arizona and one of the oldest in the country. They operate multiple distribution sites across Maricopa County where you can pick up groceries to take with you. <strong>Bring a photo ID and proof of Arizona residence</strong> — the Phoenix food center asks for both at every visit.</p>
   <p>
-    <strong>Main location:</strong> 2831 N. 31st Ave., Phoenix, AZ 85009<br>
-    <strong>Phone:</strong> (602) 242-3663<br>
-    <strong>Hours:</strong> Monday–Friday, 9 AM–3 PM (hours vary by site)
+    <strong>Pick up food:</strong> Phoenix Neighborhood Food Center, 3131 W. Thomas Rd., Phoenix, AZ 85017 · <a href="tel:6023433129">602-343-3129</a><br>
+    <strong>Hours:</strong> Monday–Friday, 7:30 a.m.–1:30 p.m.; some Saturdays 10 a.m.–noon (call first — St. Mary's lists two different Saturday schedules)<br>
+    <strong>Closer to you:</strong> find a pantry at <a href="https://azfoodhelp.org/" target="_blank" rel="noopener">azfoodhelp.org</a><br>
+    <strong>Main office (not a pickup site):</strong> 2831 N. 31st Ave., Phoenix, AZ 85009 · (602) 242-3663
   </p>
 
-  <h3>Andre House daily meals</h3>
-  <p>Andre House serves a hot dinner every evening, no questions asked and no ID required. This is one of the most reliable daily meal programs in Phoenix for people living outside.</p>
+  <h3>Andre House dinner</h3>
+  <p>Andre House serves a free hot dinner six nights a week to anyone who comes, no questions asked. It is one of the most reliable meal programs in Phoenix for people living outside — but <strong>there is no dinner on Fridays</strong>; on Fridays, St. Vincent de Paul's Phoenix Dining Room (1075 W. Jackson St.) serves dinner 4–5 p.m.</p>
   <p>
-    <strong>Address:</strong> 1 W. Hadley St. (on the Human Services Campus)<br>
-    <strong>Hours:</strong> Dinner served nightly, 5:00–6:30 PM
+    <strong>Address:</strong> 213 S. 11th Ave., Phoenix, AZ 85007 · <a href="tel:6022550580">(602) 255-0580</a><br>
+    <strong>Hours:</strong> Dinner Saturday–Thursday, 5:00–6:00 p.m.; the line forms at 4 p.m.
   </p>
 
   <h3>Human Services Campus food programs</h3>
-  <p>Several organizations on the Human Services Campus offer meals and food assistance as part of their broader service model. If you're already at the campus, ask any staff member about current meal service times — they vary by day and season. St. Vincent de Paul also operates a large dining room nearby at 420 W. Watkins St., serving breakfast, lunch, and dinner daily.</p>
+  <p>Several organizations on the Human Services Campus offer meals and food assistance as part of their broader service model. If you're already at the campus, ask any staff member about current meal service times — they vary by day and season. St. Vincent de Paul's Phoenix Dining Room on the campus (1075 W. Jackson St.) serves breakfast Monday–Friday 7–8 a.m., lunch daily 11 a.m.–12:45 p.m., and dinner on Fridays only, 4–5 p.m. Families with a child under 18 eat at SVdP's NextPhase Family Dining Room, 420 W. Watkins Rd., Monday–Friday 4–6 p.m.</p>
 
   <hr style="margin: 2rem 0; border: none; border-top: 1px solid #e0ddd8;">
 

@@ -8,6 +8,8 @@
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
   gtag('config', 'G-3YXK0RL6XV');
+  // Count taps on phone numbers: which number and which page, never who tapped. Disclosed on /privacy.html.
+  document.addEventListener('click', function (e) { var a = e.target && e.target.closest ? e.target.closest('a[href^="tel:"]') : null; if (a) { gtag('event', 'tel_tap', { tel: a.getAttribute('href').slice(4), page: location.pathname }); } }, true);
 </script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -457,7 +459,7 @@ html,body{overflow-x:hidden;max-width:100%;}
         <span class="confidence-badge unverified">Confirm by phone</span>
       </div>
       <div class="result-body">
-        <div class="ask-for"><strong>Call or text <a href="tel:211">211</a></strong> and say: <em>"I need a shelter bed tonight."</em> Ask for <strong>tonight's open beds for single adults</strong>, the nearest <strong>daytime drop-in center</strong> (showers, mail, case management), and a <strong>free meal site</strong>. 211 is multilingual and 24/7.</div><div class="resource-block"><div class="resource-name">Free health care</div><div class="resource-detail">Ask 211 for the nearest <strong>Federally Qualified Health Center (FQHC)</strong> — medical, dental, and behavioral health regardless of ability to pay.</div></div><div class="checked-note">AI-researched from public sources — not locally phone-verified. Call 211 to confirm the current local provider. Last researched: June 14, 2026.</div>
+        <div class="ask-for"><strong>Call or text <a href="tel:211">211</a></strong> and say: <em>"I need a shelter bed tonight."</em> Ask for <strong>tonight's open beds for single adults</strong>, the nearest <strong>daytime drop-in center</strong> (showers, mail, case management), and a <strong>free meal site</strong>. 211 is free and multilingual; hours vary by area.</div><div class="resource-block"><div class="resource-name">Free health care</div><div class="resource-detail">Ask 211 for the nearest <strong>Federally Qualified Health Center (FQHC)</strong> — medical, dental, and behavioral health regardless of ability to pay.</div></div><div class="checked-note">AI-researched from public sources — not locally phone-verified. Call 211 to confirm the current local provider. Last researched: June 14, 2026.</div>
       </div>
     </div>
 

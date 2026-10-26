@@ -8,6 +8,8 @@
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
   gtag('config', 'G-3YXK0RL6XV');
+  // Count taps on phone numbers: which number and which page, never who tapped. Disclosed on /privacy.html.
+  document.addEventListener('click', function (e) { var a = e.target && e.target.closest ? e.target.closest('a[href^="tel:"]') : null; if (a) { gtag('event', 'tel_tap', { tel: a.getAttribute('href').slice(4), page: location.pathname }); } }, true);
 </script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -1312,10 +1314,10 @@
           note: '230 S 12th Ave, Phoenix — largest adult shelter in Maricopa County.'
         },
         {
-          name: 'St. Vincent de Paul (HOPE line)',
-          phone: '(602) 266-4673',
-          tel: 'tel:6022664673',
-          note: 'Meals and services. Shelter is referral-only — call (602) 850-6900, 8am–3pm, for eligibility screening.'
+          name: 'St. Vincent de Paul (call 211 to be routed)',
+          phone: '211',
+          tel: 'tel:211',
+          note: 'Meals and services. SVdP moved to svdpaz.org and no longer publishes a help line — the old 602-266-4673 could not be confirmed on 2026-10-26, so use 211. Shelter is referral-only; SVdP has published (602) 850-6900, 8am–3pm, for eligibility screening.'
         },
         {
           name: 'Key Campus (formerly Human Services Campus)',

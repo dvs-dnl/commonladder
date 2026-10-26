@@ -8,6 +8,8 @@
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
   gtag('config', 'G-3YXK0RL6XV');
+  // Count taps on phone numbers: which number and which page, never who tapped. Disclosed on /privacy.html.
+  document.addEventListener('click', function (e) { var a = e.target && e.target.closest ? e.target.closest('a[href^="tel:"]') : null; if (a) { gtag('event', 'tel_tap', { tel: a.getAttribute('href').slice(4), page: location.pathname }); } }, true);
 </script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -25,17 +27,17 @@
     "author": { "@type": "Organization", "name": "Common Ladder" },
     "publisher": { "@type": "Organization", "name": "Common Ladder", "url": "https://commonladder.org" },
     "datePublished": "2026-05-20",
-    "dateModified": "2026-08-10",
+    "dateModified": "2026-10-26",
     "mainEntityOfPage": "https://commonladder.org/blog/emergency-shelter-phoenix-tonight.html"
   }
   </script>
   <script type="application/ld+json">
   {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
-    {"@type":"Question","name":"Who should I call first to find shelter in Phoenix tonight?","acceptedAnswer":{"@type":"Answer","text":"Call 211, Arizona's social services helpline, available 24/7. Tell them you need emergency shelter tonight and they'll check real-time bed availability across Maricopa County. You can also text your zip code to 898-211 or visit 211arizona.org."}},
+    {"@type":"Question","name":"Who should I call first to find shelter in Phoenix tonight?","acceptedAnswer":{"@type":"Answer","text":"Call 211, Arizona's social services helpline, but note it is not a 24-hour line: 211 Arizona publishes phone hours of 9 a.m. to 7 p.m., seven days a week (1-877-211-8661 from outside Arizona). Tell them you need emergency shelter tonight and they will screen your household onto the shelter waiting list. After 7 p.m., single adults should go to the Brian Garcia Welcome Center at 206 S. 12th Ave., Phoenix, or call it on 602-883-4509; for a mental health crisis call or text 988; if you are fleeing domestic violence call 480-890-3039; if you are in immediate danger call 911."}},
     {"@type":"Question","name":"Do I need an ID to get a shelter bed?","acceptedAnswer":{"@type":"Answer","text":"Most shelters will ask for an ID if you have one, but lack of ID is usually not a barrier to getting a bed for the night. Don't let that stop you from showing up or calling."}},
-    {"@type":"Question","name":"Where can families find shelter in Phoenix?","acceptedAnswer":{"@type":"Answer","text":"UMOM New Day Centers at 3333 E. Van Buren St serves families with children, pregnant women, and women with children under 18. Call (602) 275-7852, or for family intake call 211 or the Family Housing Hub at (602) 595-8700. St. Vincent de Paul and Salvation Army also serve families depending on program availability."}},
+    {"@type":"Question","name":"Where can families find shelter in Phoenix?","acceptedAnswer":{"@type":"Answer","text":"Families with children in Maricopa County go through one door: call 211 (or 1-877-211-8661) to be screened onto the Family Housing Hub waiting list, which is on the UMOM New Day Centers campus at 3333 E. Van Buren St. Keys to Change publishes 602-595-8700 for the Hub. Single women without children should call UMOM's Halle Women's Center directly on 602-362-5833. 602-275-7852 is UMOM's general line, not a shelter intake line. Salvation Army and other family providers take referrals through the same Hub."}},
     {"@type":"Question","name":"What can I expect at a Phoenix shelter?","acceptedAnswer":{"@type":"Answer","text":"At most shelters you can expect a bunk or cot in a shared space, dinner and breakfast, a locker or bag storage, and rules around curfew and sobriety that vary by shelter."}},
-    {"@type":"Question","name":"What should I do if shelters are full tonight?","acceptedAnswer":{"@type":"Answer","text":"Call 211 again, since they update availability in real time and may find a placement you missed. Ask about overflow beds, which some shelters add during extreme heat or cold. During dangerous weather, Maricopa County opens additional cooling centers and warming shelters — check maricopa.gov or call 211 for current locations."}}
+    {"@type":"Question","name":"What should I do if shelters are full tonight?","acceptedAnswer":{"@type":"Answer","text":"Call 211 again during its hours of 9 a.m. to 7 p.m. daily, since the waiting list is ordered by need and your situation may have changed. After 7 p.m., single adults should go to the Brian Garcia Welcome Center at 206 S. 12th Ave., Phoenix, or call 602-883-4509. Ask about overflow beds, which some shelters add during extreme heat or cold. During dangerous weather, Maricopa County opens additional cooling centers and warming shelters — check maricopa.gov or call 211 for current locations."}}
   ]}
   </script>
   <noscript><style>.nav__links{display:flex!important;flex-wrap:wrap!important;}.nav__toggle{display:none!important;}</style></noscript>
@@ -96,15 +98,24 @@
 
   <h2>Your First Call: 2-1-1</h2>
 
-  <p>Before anything else, call <strong>211</strong>. This is Arizona's social services helpline, available 24/7. When you call:</p>
+  <p>Call <strong>211</strong> first — Arizona's social services helpline. <strong>It is not a 24-hour line.</strong> 211 Arizona publishes phone hours of <strong>9&nbsp;a.m. to 7&nbsp;p.m., seven days a week</strong>. From outside Arizona, or from a phone that won't dial 211, use <strong>1-877-211-8661</strong>. When you call:</p>
 
   <ul>
     <li>Tell them you need emergency shelter tonight</li>
-    <li>They'll check real-time bed availability across Maricopa County</li>
+    <li>They will screen your household and can put you on the shelter waiting list — have every adult who needs shelter on the call, and the names and ages of everyone in your family</li>
     <li>They can also connect you to food, transportation, and other services</li>
   </ul>
 
-  <p>You can also text your zip code to <strong>898-211</strong>, or visit <a href="https://211arizona.org" target="_blank" rel="noopener">211arizona.org</a> if you have internet access.</p>
+  <p><strong>If it is after 7&nbsp;p.m.</strong> — which is when most people read a page like this — 211 will not answer. Your after-hours options:</p>
+
+  <ul>
+    <li><strong>Single adults:</strong> the Brian Garcia Welcome Center, <strong>206 S. 12th Ave., Phoenix</strong>. Keys to Change describes it as open around the clock in one place on its site and as 7&nbsp;a.m.–11&nbsp;p.m. in another, so <strong>call ahead on 602-883-4509</strong> rather than relying on either.</li>
+    <li><strong>Mental health crisis, any hour:</strong> call or text <strong>988</strong>.</li>
+    <li><strong>Fleeing domestic violence, any hour:</strong> the Maricopa County DV screening line, <strong>480-890-3039</strong> (see below).</li>
+    <li><strong>Immediate danger:</strong> call <strong>911</strong>.</li>
+  </ul>
+
+  <p><a href="https://211arizona.org" target="_blank" rel="noopener">211arizona.org</a> is searchable at any hour if you have internet access.</p>
 
   <hr style="margin: 2rem 0; border: none; border-top: 1px solid #e0ddd8;">
 
@@ -113,57 +124,64 @@
   <p>Here are some of the main emergency shelters serving single adults and families in Phoenix. Hours and intake policies can change — call ahead when possible.</p>
 
   <h3>Keys to Change (formerly Human Services Campus)</h3>
-  <p>The largest single-site shelter campus in the region, in central Phoenix. CASS (Central Arizona Shelter Services) operates the single-adult emergency shelter here; the Brian Garcia Welcome Center is the front door for intake.</p>
+  <p>The largest single-site shelter campus in the region, in central Phoenix. CASS (Central Arizona Shelter Services) operates the single-adult emergency shelter on the campus; the Brian Garcia Welcome Center is the front door.</p>
   <p>
-    <strong>Address:</strong> 204 S. 12th Ave, Phoenix, AZ 85007<br>
-    <strong>Phone:</strong> (602) 229-5155 (Welcome Center — single-adult shelter intake)<br>
+    <strong>Start here — Brian Garcia Welcome Center:</strong> 206 S. 12th Ave., Phoenix, AZ 85007 · <strong>602-883-4509</strong> (call ahead)<br>
+    <strong>Key Campus main line:</strong> (602) 282-0853, business hours<br>
+    <strong>CASS single-adult shelter:</strong> 230 S. 12th Ave., Phoenix, AZ 85007 · 602-256-6945 (TTY 800-367-8939)<br>
     <strong>Serves:</strong> Single adults (men and women)<br>
-    <strong>Notes:</strong> Walk-in intake. Includes the Lodestar Day Resource Center and CASS (Central Arizona Shelter Services). Coordinated Entry access available on-site.
+    <strong>Notes:</strong> Go to the Welcome Center to begin an assessment; Coordinated Entry access is on-site. The three addresses above are three doors on the same block, so ask for the Welcome Center when you arrive.
   </p>
 
   <h3>UMOM New Day Centers</h3>
-  <p>One of the largest family homeless shelters in the country.</p>
+  <p>One of the largest family homeless shelters in the country. <strong>You cannot walk up and get a family bed</strong> — UMOM routes families through the county's single point of entry, and there is a waiting list.</p>
   <p>
     <strong>Address:</strong> 3333 E. Van Buren St, Phoenix, AZ 85008<br>
-    <strong>Phone:</strong> (602) 275-7852 (families: call 211 or the Family Housing Hub at (602) 595-8700)<br>
-    <strong>Serves:</strong> Families with children, pregnant women, and women with children under 18<br>
-    <strong>Notes:</strong> Call ahead — intake is assessed individually. They also provide transitional housing and wrap-around services.
+    <strong>Families with children:</strong> call <strong>211</strong> (or 1-877-211-8661) to be screened onto the Family Housing Hub waiting list — the Hub is on the UMOM campus. Keys to Change publishes <strong>602-595-8700</strong> for the Hub; the Hub's own site routes everyone through 211.<br>
+    <strong>Single women without children:</strong> call the <strong>Halle Women's Center</strong> directly on <strong>602-362-5833</strong> to get on its waiting list.<br>
+    <strong>Single men:</strong> UMOM refers you to the Welcome Center above.<br>
+    <strong>General UMOM line:</strong> 602-275-7852 — this is the organization's main number, not a shelter intake line.<br>
+    <strong>Notes:</strong> The waiting list is ordered by need, not by when you called, and being added to it is free.
   </p>
 
-  <h3>Paz de Cristo</h3>
-  <p>Primarily a daytime resource center, but they connect guests to overnight shelter options.</p>
+  <h3>Paz de Cristo — day center, not a shelter</h3>
+  <p><strong>Paz de Cristo has no overnight beds</strong> and is in <strong>Mesa</strong>, not Phoenix. We list it because it is a real way in for people in the East Valley — meals, documents and staff who can refer you — but do not travel there expecting a bed tonight.</p>
   <p>
     <strong>Address:</strong> 424 W. Broadway Rd, Mesa, AZ 85210<br>
     <strong>Phone:</strong> (480) 464-2370<br>
-    <strong>Serves:</strong> Adults in the East Valley
+    <strong>Offers:</strong> A hot meal in the dining hall daily; weekly emergency food boxes; showers Wednesdays 9&nbsp;a.m.–1&nbsp;p.m.; clothing and haircuts; help getting a birth certificate or an Arizona ID (adults only)<br>
+    <strong>Serves:</strong> Adults in the East Valley<br>
+    <strong>Notes:</strong> Paz de Cristo publishes hours only for its shower program, so call before you go for anything else.
   </p>
 
   <h3>St. Vincent de Paul (Society of St. Vincent de Paul)</h3>
-  <p>Operates multiple shelters and programs across Maricopa County.</p>
+  <p>SVdP describes "shelter and seasonal weather relief at locations across the Valley," but does not publish which sites those are or who is eligible.</p>
   <p>
-    <strong>Phone:</strong> (602) 266-4673 (General Inquiries / Get Help line)<br>
-    <strong>Serves:</strong> Families and individuals; varies by location<br>
-    <strong>Website:</strong> <a href="https://www.svdpaz.org" target="_blank" rel="noopener">svdpaz.org</a>
+    <strong>How to reach them:</strong> SVdP's current site (<a href="https://www.svdpaz.org" target="_blank" rel="noopener">svdpaz.org</a>) publishes <strong>no help line at all</strong> — it directs people to 2-1-1 for services. The number this page carried, (602) 266-4673, <strong>no longer appears anywhere on SVdP's site and we could not confirm it is still answered</strong>. Try 211 for an SVdP shelter placement, or 602-261-6864 (the security front desk at SVdP's Phoenix dining room, 1075 W. Jackson St.) if you are already downtown.<br>
+    <strong>Serves:</strong> Families and individuals; varies by location
   </p>
 
   <h3>Salvation Army — Phoenix</h3>
   <p>
-    <strong>Family shelter intake:</strong> through Maricopa County's Family Housing Hub — (602) 595-8700, or call 211<br>
-    <strong>Serves:</strong> Families with children (emergency shelter)
+    <strong>Family shelter intake:</strong> there is no direct Salvation Army intake line to give you. Like every other family provider in the county, it takes referrals through the <strong>Family Housing Hub</strong> — call <strong>211</strong> (Keys to Change publishes 602-595-8700 for the Hub).<br>
+    <strong>Serves:</strong> Families with children (emergency shelter)<br>
+    <strong>Notes:</strong> We could not verify a Salvation Army Phoenix shelter phone number or address against the organization's own site, so this entry is a route, not a listing.
   </p>
 
   <hr style="margin: 2rem 0; border: none; border-top: 1px solid #e0ddd8;">
 
   <h2>If You're a Woman or Fleeing Domestic Violence</h2>
 
-  <p>If you are a woman — with or without children — and you are experiencing domestic violence or feel unsafe, contact:</p>
+  <p>If you are experiencing domestic violence or feel unsafe, do not start with 211 — Maricopa County has a dedicated, round-the-clock route into DV shelter, and it moves faster:</p>
 
   <ul>
-    <li><strong>Arizona Coalition to End Sexual and Domestic Violence:</strong> 1-800-782-6400 (24/7 hotline)</li>
-    <li><strong>Sojourner Center (Phoenix):</strong> (602) 244-0089 — the largest domestic violence shelter in Arizona</li>
+    <li><strong>Maricopa County DV centralized screening line (DVSTOP), 24/7:</strong> <strong>480-890-3039</strong> or 844-SAFE-DVS. This is the single screening line for domestic violence shelter beds across the county.</li>
+    <li><strong>Sojourner Center (Phoenix) 24-hour hotline:</strong> <strong>(602) 244-0089</strong> — the largest domestic violence shelter in Arizona. Main office: 602-244-0997.</li>
+    <li><strong>National Domestic Violence Hotline, 24/7:</strong> <strong>1-800-799-7233</strong>.</li>
+    <li><strong>Arizona Coalition to End Sexual and Domestic Violence:</strong> 1-800-782-6400 or 602-279-2900 (TTY 602-279-7270). This is a <strong>statewide coalition, not a 24-hour crisis line</strong> — its survivor site publishes weekday business hours. Use it for advocacy and referrals, not for a bed tonight.</li>
   </ul>
 
-  <p>These shelters operate confidentially and do not require you to be a domestic violence survivor to receive help — call and explain your situation.</p>
+  <p>DV shelters keep their locations confidential and will not publish an address. They do screen for domestic violence, so say plainly what is happening when you call. If you are not fleeing violence but have nowhere safe to go, the general routes above are the right ones — and if you are in immediate danger, call <strong>911</strong> first.</p>
 
   <hr style="margin: 2rem 0; border: none; border-top: 1px solid #e0ddd8;">
 
@@ -173,7 +191,8 @@
 
   <ul>
     <li><strong>National Call Center for Homeless Veterans:</strong> 1-877-4AID-VET (1-877-424-3838), available 24/7</li>
-    <li><strong>Phoenix VA Healthcare System:</strong> (602) 277-5551</li>
+    <li><strong>Phoenix VA Health Care System:</strong> (602) 277-5551, or toll-free 888-214-7264</li>
+    <li><strong>VA Community Resource &amp; Referral Center</strong> — 1500 E. Thomas Rd., Suite 106, Phoenix, AZ 85014. This is the VA's walk-in front door for homeless veterans in Phoenix. The VA does not publish a direct number for it; Keys to Change lists 602-248-6040, Mon–Fri 7:30&nbsp;a.m.–4:30&nbsp;p.m. Confirm on the main VA line above before travelling.</li>
     <li><strong>HUD-VASH program</strong> (Housing and Urban Development–VA Supportive Housing) can fast-track veterans into housing with ongoing support</li>
   </ul>
 
@@ -205,7 +224,7 @@
   <p>Beds fill up fast — especially in summer. If you can't get into a shelter, here are a few options:</p>
 
   <ol>
-    <li><strong>Call 211 again</strong> — they update availability in real time and may find a placement you missed</li>
+    <li><strong>Call 211 again during its hours (9&nbsp;a.m.–7&nbsp;p.m. daily)</strong> — the waiting list is ordered by need and your situation may have changed. After 7&nbsp;p.m., go to the Welcome Center at 206 S. 12th Ave. instead, or call it on 602-883-4509</li>
     <li><strong>Ask about overflow beds</strong> — some shelters add capacity during extreme heat or cold</li>
     <li><strong>Maricopa County Extreme Heat/Cold Emergency Response</strong> — during dangerous weather events, the county opens additional cooling centers and warming shelters. Check <a href="https://www.maricopa.gov" target="_blank" rel="noopener">maricopa.gov</a> or call 211 for current locations</li>
   </ol>
@@ -226,15 +245,15 @@
     <a href="/static-tools/maricopa-navigator.html" class="btn btn--blue btn--sm">Open the Maricopa Navigator</a>
   </div>
 
-  <p style="margin-top:2rem; color:var(--gray); font-size:.875rem;"><em>Last reviewed: August 2026. Resource details can change — always call ahead to confirm hours and availability.</em></p>
+  <p style="margin-top:2rem; color:var(--gray); font-size:.875rem;"><em>Last verified against each provider's own website on October 26, 2026. Resource details can change — always call ahead to confirm hours and availability. Found something out of date? <a href="/contact.html">Tell us</a>.</em></p>
 
   <section class="faq" aria-label="Frequently asked questions">
     <h2>Frequently asked questions</h2>
-    <div class="faq__item"><h3>Who should I call first to find shelter in Phoenix tonight?</h3><p>Call 211, Arizona's social services helpline, available 24/7. Tell them you need emergency shelter tonight and they'll check real-time bed availability across Maricopa County. You can also text your zip code to 898-211 or visit 211arizona.org.</p></div>
+    <div class="faq__item"><h3>Who should I call first to find shelter in Phoenix tonight?</h3><p>Call 211, Arizona's social services helpline, but note it is not a 24-hour line: 211 Arizona publishes phone hours of 9 a.m. to 7 p.m., seven days a week (1-877-211-8661 from outside Arizona). Tell them you need emergency shelter tonight and they will screen your household onto the shelter waiting list. After 7 p.m., single adults should go to the Brian Garcia Welcome Center at 206 S. 12th Ave., Phoenix, or call it on 602-883-4509; for a mental health crisis call or text 988; if you are fleeing domestic violence call 480-890-3039; if you are in immediate danger call 911.</p></div>
     <div class="faq__item"><h3>Do I need an ID to get a shelter bed?</h3><p>Most shelters will ask for an ID if you have one, but lack of ID is usually not a barrier to getting a bed for the night. Don't let that stop you from showing up or calling.</p></div>
-    <div class="faq__item"><h3>Where can families find shelter in Phoenix?</h3><p>UMOM New Day Centers at 3333 E. Van Buren St serves families with children, pregnant women, and women with children under 18. Call (602) 275-7852, or for family intake call 211 or the Family Housing Hub at (602) 595-8700. St. Vincent de Paul and Salvation Army also serve families depending on program availability.</p></div>
+    <div class="faq__item"><h3>Where can families find shelter in Phoenix?</h3><p>Families with children in Maricopa County go through one door: call 211 (or 1-877-211-8661) to be screened onto the Family Housing Hub waiting list, which is on the UMOM New Day Centers campus at 3333 E. Van Buren St. Keys to Change publishes 602-595-8700 for the Hub. Single women without children should call UMOM's Halle Women's Center directly on 602-362-5833. 602-275-7852 is UMOM's general line, not a shelter intake line. Salvation Army and other family providers take referrals through the same Hub.</p></div>
     <div class="faq__item"><h3>What can I expect at a Phoenix shelter?</h3><p>At most shelters you can expect a bunk or cot in a shared space, dinner and breakfast, a locker or bag storage, and rules around curfew and sobriety that vary by shelter.</p></div>
-    <div class="faq__item"><h3>What should I do if shelters are full tonight?</h3><p>Call 211 again, since they update availability in real time and may find a placement you missed. Ask about overflow beds, which some shelters add during extreme heat or cold. During dangerous weather, Maricopa County opens additional cooling centers and warming shelters — check maricopa.gov or call 211 for current locations.</p></div>
+    <div class="faq__item"><h3>What should I do if shelters are full tonight?</h3><p>Call 211 again during its hours of 9 a.m. to 7 p.m. daily, since the waiting list is ordered by need and your situation may have changed. After 7 p.m., single adults should go to the Brian Garcia Welcome Center at 206 S. 12th Ave., Phoenix, or call 602-883-4509. Ask about overflow beds, which some shelters add during extreme heat or cold. During dangerous weather, Maricopa County opens additional cooling centers and warming shelters — check maricopa.gov or call 211 for current locations.</p></div>
   </section>
 
   <aside class="related" aria-label="Read next">
@@ -290,7 +309,7 @@
     </div>
     <div class="footer__bottom">
       <span>&copy; 2026 Common Ladder. Free to use, always.</span>
-      <span><time datetime="2026-08-10">Last updated August 10, 2026</time></span>
+      <span><time datetime="2026-10-26">Last updated August 10, 2026</time></span>
     </div>
   </div>
 </footer>

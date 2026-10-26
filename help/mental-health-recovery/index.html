@@ -8,6 +8,8 @@
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
   gtag('config', 'G-3YXK0RL6XV');
+  // Count taps on phone numbers: which number and which page, never who tapped. Disclosed on /privacy.html.
+  document.addEventListener('click', function (e) { var a = e.target && e.target.closest ? e.target.closest('a[href^="tel:"]') : null; if (a) { gtag('event', 'tel_tap', { tel: a.getAttribute('href').slice(4), page: location.pathname }); } }, true);
 </script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -138,7 +140,7 @@
             <dt>Phone</dt><dd><a href="tel:6022658338">(602) 265-8338</a></dd>
             <dt>Cost</dt><dd>Free or sliding scale</dd>
           </dl>
-          <p class="card-verified"><small>Verified May 2026</small></p>
+          <p class="card-verified"><small>Researched May 2026 · not yet re-confirmed with the provider — call before you go · <a href="mailto:corrections.commonladder@gmail.com?subject=Correction%3A%20Southwest%20Behavioral%20Health%20Services%20%28help/mental-health-recovery/index.html%29">Report a problem</a></small></p>
         </div>
         <div class="card">
           <h3>La Frontera Center — Integrated Behavioral Health</h3>
@@ -151,20 +153,18 @@
             <dt>Phone</dt><dd><a href="tel:5208383850">(520) 838-3850</a></dd>
             <dt>Cost</dt><dd>Free with AHCCCS; sliding scale</dd>
           </dl>
-          <p class="card-verified"><small>Verified May 2026</small></p>
+          <p class="card-verified"><small>Researched May 2026 · not yet re-confirmed with the provider — call before you go · <a href="mailto:corrections.commonladder@gmail.com?subject=Correction%3A%20La%20Frontera%20Center%20%E2%80%94%20Integrated%20Behavioral%20Health%20%28help/mental-health-recovery/index.html%29">Report a problem</a></small></p>
         </div>
-        <div class="card">
-          <h3>Terros Health — Phoenix Outpatient</h3>
-          <div class="card-tags"><span class="tag">Substance Use</span><span class="tag">Recovery</span><span class="tag">Medication-Assisted Treatment</span></div>
-          <p>Provides outpatient substance use counseling, medication-assisted treatment (MAT), and integrated mental health care.</p>
+        <div class="card" data-record="terros-health">
+          <h3>Terros Health</h3>
+          <div class="card-tags"><span class="tag">Mental health</span><span class="tag">Substance use</span><span class="tag">Primary care</span></div>
+          <p class="card-access"><strong>What to do:</strong> Call to schedule and to find the nearest of its health centers (including 27th Avenue and McDowell).</p>
           <dl class="resource-details">
-            <dt>Eligibility</dt><dd>Adults 18+; AHCCCS accepted; walk-ins welcome</dd>
-            <dt>Hours</dt><dd>Mon–Fri 7 am–6 pm</dd>
-            <dt>Address</dt><dd><a href="https://maps.google.com/?q=3003+N+Central+Ave+Phoenix+AZ+85012" rel="noopener" target="_blank">3003 N Central Ave, Phoenix, AZ 85012</a></dd>
-            <dt>Phone</dt><dd><a href="tel:6026856000">(602) 685-6000</a></dd>
-            <dt>Cost</dt><dd>Free with AHCCCS</dd>
+            <dt>Who it’s for</dt><dd>Adults and youth in Maricopa County</dd>
+            <dt>Phone</dt><dd><a href="tel:6026856000">(602) 685-6000</a> — New patients</dd>
+            <dt>Website</dt><dd><a href="https://www.terroshealth.org/locations" target="_blank" rel="noopener">terroshealth.org</a></dd>
           </dl>
-          <p class="card-verified"><small>Verified May 2026</small></p>
+          <p class="card-verified"><small>Confirmed on Terros Health’s own website · Oct. 26, 2026 · <a href="mailto:corrections.commonladder@gmail.com?subject=Correction%3A%20Terros%20Health%20%28help/mental-health-recovery/index.html%29">Report a problem</a></small></p>
         </div>
         <div class="card">
           <h3>Crisis Line — 988 Suicide &amp; Crisis Lifeline</h3>
@@ -173,11 +173,11 @@
           <dl class="resource-details">
             <dt>Eligibility</dt><dd>Open to everyone</dd>
             <dt>Hours</dt><dd>24/7</dd>
-            <dt>Address</dt><dd><a href="https://maps.google.com/?q=" rel="noopener" target="_blank">Phone and chat — no physical location</a></dd>
+            <dt>Address</dt><dd>Phone and chat — no physical location</dd>
             <dt>Phone</dt><dd><a href="tel:988">(988)</a></dd>
             <dt>Cost</dt><dd>Free</dd>
           </dl>
-          <p class="card-verified"><small>Verified May 2026</small></p>
+          <p class="card-verified"><small>Researched May 2026 · not yet re-confirmed with the provider — call before you go · <a href="mailto:corrections.commonladder@gmail.com?subject=Correction%3A%20Crisis%20Line%20%E2%80%94%20988%20Suicide%20%26%20Crisis%20Lifeline%20%28help/mental-health-recovery/index.html%29">Report a problem</a></small></p>
         </div>
       </div>
     </div>

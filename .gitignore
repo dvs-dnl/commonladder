@@ -38,3 +38,8 @@ node_modules/
 
 # Held back 2026-10-19 (cl-push-unblock-2026-10-19): unclaimed new city navigator; breadth is frozen per Content Engine Policy R1. Remove this line to publish it.
 static-tools/little-rock-navigator.html
+
+# Python bytecode from running scripts/record_cards.py and scripts/gate-check.py.
+# Added 2026-10-26 by cl-accuracy-ux-2026-10-26 (the sandbox cannot delete it).
+__pycache__/
+*.pyc

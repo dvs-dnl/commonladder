@@ -8,6 +8,8 @@
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
   gtag('config', 'G-3YXK0RL6XV');
+  // Count taps on phone numbers: which number and which page, never who tapped. Disclosed on /privacy.html.
+  document.addEventListener('click', function (e) { var a = e.target && e.target.closest ? e.target.closest('a[href^="tel:"]') : null; if (a) { gtag('event', 'tel_tap', { tel: a.getAttribute('href').slice(4), page: location.pathname }); } }, true);
 </script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -960,7 +962,7 @@ const SQ_NODES = {
       { name: 'Save the Family', detail: 'Family-focused shelter and rapid rehousing · Mesa', site: 'savethefamily.org' },
       { name: 'Family Promise of Greater Phoenix', detail: 'Rotating family shelter network · multiple sites', site: 'familypromiseaz.org' },
       { name: 'Native American Connections', detail: 'Behavioral health + housing programs · prioritizes Indigenous community members', site: 'nativeconnections.org' },
-      { name: 'Tumbleweed Center for Youth Development', detail: 'For people 12–25 · Phoenix · 602-271-9904', site: 'tumbleweed.org' }
+      { name: '24/7 Youth Hotline (Safe Place)', detail: 'Ages 12–17 · shelter and services · 24/7 · 602-841-5799', site: 'keystochangeaz.org/get-help' }
     ],
     bring: 'Yourself. Many of these programs will help you get ID after you\'re in — that\'s the whole point of the pragmatic path.',
     shortcut: 'If you are a parent with children, a youth under 25, fleeing DV, or a veteran, you should not go to the Key Campus single-adult shelter first — go directly to the population-specific program above. The campus shelter is the entry of last resort, not first resort, for these populations.',
@@ -973,7 +975,7 @@ const SQ_NODES = {
     time: 'Initial assessment within days; placement timeline varies',
     why: 'Coordinated entry is the single front door to most federally-funded housing in Maricopa County — rapid rehousing, permanent supportive housing, transitional housing. You have to be in it to be in line.',
     where: [
-      { name: 'Single adults — Brian Garcia Welcome Center', detail: 'Key Campus, 204 S 12th Ave, Phoenix · open 24 hours a day, 7 days a week · no documents required to start · does the vulnerability screening, diversion, and shelter referral · 602-229-5155', site: 'keystochangeaz.org' },
+      { name: 'Single adults — Brian Garcia Welcome Center', detail: 'Key Campus, 204 S 12th Ave, Phoenix · open 24 hours a day, 7 days a week · no documents required to start · does the vulnerability screening, diversion, and shelter referral · 206 S. 12th Ave., call ahead 602-883-4509', site: 'keystochangeaz.org' },
       { name: 'Families with children under 18 — Family Housing Hub', detail: 'The single point of entry for families in Maricopa County. This is a different system from the one for single adults — do not queue at the Welcome Center. Call 2-1-1 and ask for the Family Housing Hub.', site: 'fhhub.org' },
       { name: 'Youth 12–17 — Safe Place', detail: 'Call 602-841-5799, or text "Safe" and your address to 44357' },
       { name: 'Veterans — VA Community Resource & Referral Center', detail: '1500 E Thomas Rd, Suite 106, Phoenix · M–F 7:30am–4pm · 602-248-6040', site: 'va.gov/phoenix-health-care' },

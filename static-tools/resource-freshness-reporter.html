@@ -8,6 +8,8 @@
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
   gtag('config', 'G-3YXK0RL6XV');
+  // Count taps on phone numbers: which number and which page, never who tapped. Disclosed on /privacy.html.
+  document.addEventListener('click', function (e) { var a = e.target && e.target.closest ? e.target.closest('a[href^="tel:"]') : null; if (a) { gtag('event', 'tel_tap', { tel: a.getAttribute('href').slice(4), page: location.pathname }); } }, true);
 </script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -264,7 +266,7 @@ const LEDGER = [
       "url": "/blog/emergency-shelter-phoenix-tonight.html",
       "type": "Resource guide",
       "juris": "Maricopa County, AZ",
-      "checked": "2026-08-10"
+      "checked": "2026-10-26"
     },
     {
       "title": "Emergency Shelter in Sacramento: Where to Go Tonight",
@@ -341,9 +343,114 @@ const LEDGER = [
       "url": "/blog/utility-assistance-phoenix.html",
       "type": "Resource guide",
       "juris": "Maricopa County, AZ",
-      "checked": "2026-08-03"
+      "checked": "2026-10-26"
+    },
+    {
+      "title": "Help: Housing & Shelter \u2014 directory cards",
+      "url": "/help/housing-shelter/",
+      "type": "Help category",
+      "juris": "Phoenix / Maricopa County, AZ",
+      "checked": "2026-05-24"
+    },
+    {
+      "title": "Help: Hygiene & Essentials \u2014 directory cards",
+      "url": "/help/hygiene-essentials/",
+      "type": "Help category",
+      "juris": "Phoenix / Maricopa County, AZ",
+      "checked": "2026-05-24"
+    },
+    {
+      "title": "Help: Getting Around \u2014 directory cards",
+      "url": "/help/getting-around/",
+      "type": "Help category",
+      "juris": "Phoenix / Maricopa County, AZ",
+      "checked": "2026-05-24"
+    },
+    {
+      "title": "Help: Food \u2014 directory cards",
+      "url": "/help/food/",
+      "type": "Help category",
+      "juris": "Phoenix / Maricopa County, AZ",
+      "checked": "2026-05-24"
+    },
+    {
+      "title": "Help: ID & Documents \u2014 directory cards",
+      "url": "/help/id-documents/",
+      "type": "Help category",
+      "juris": "Phoenix / Maricopa County, AZ",
+      "checked": "2026-05-24"
+    },
+    {
+      "title": "Help: Work & Training \u2014 directory cards",
+      "url": "/help/work-training/",
+      "type": "Help category",
+      "juris": "Phoenix / Maricopa County, AZ",
+      "checked": "2026-05-24"
+    },
+    {
+      "title": "Help: Health \u2014 directory cards",
+      "url": "/help/health/",
+      "type": "Help category",
+      "juris": "Phoenix / Maricopa County, AZ",
+      "checked": "2026-05-24"
+    },
+    {
+      "title": "Help: Family & Children \u2014 directory cards",
+      "url": "/help/family-children/",
+      "type": "Help category",
+      "juris": "Phoenix / Maricopa County, AZ",
+      "checked": "2026-05-24"
+    },
+    {
+      "title": "Help: Mental Health & Recovery \u2014 directory cards",
+      "url": "/help/mental-health-recovery/",
+      "type": "Help category",
+      "juris": "Phoenix / Maricopa County, AZ",
+      "checked": "2026-05-24"
+    },
+    {
+      "title": "Help: Money & Benefits \u2014 directory cards",
+      "url": "/help/money-benefits/",
+      "type": "Help category",
+      "juris": "Phoenix / Maricopa County, AZ",
+      "checked": "2026-05-24"
+    },
+    {
+      "title": "Help: Legal Help \u2014 directory cards",
+      "url": "/help/legal-help/",
+      "type": "Help category",
+      "juris": "Phoenix / Maricopa County, AZ",
+      "checked": "2026-05-24"
+    },
+    {
+      "title": "Help: Safety \u2014 directory cards",
+      "url": "/help/safety/",
+      "type": "Help category",
+      "juris": "Phoenix / Maricopa County, AZ",
+      "checked": "2026-05-24"
+    },
+    {
+      "title": "Find Resources \u2014 Phoenix directory",
+      "url": "/resources.html",
+      "type": "Directory",
+      "juris": "Phoenix / Maricopa County, AZ",
+      "checked": "2026-05-23"
+    },
+    {
+      "title": "Homelessness Resources in Phoenix, AZ",
+      "url": "/phoenix.html",
+      "type": "City page",
+      "juris": "Phoenix, AZ",
+      "checked": "2026-05-24"
+    },
+    {
+      "title": "Arizona Shelter & Housing Finder (75 programs)",
+      "url": "/static-tools/shelter-finder-az.html",
+      "type": "Directory",
+      "juris": "Arizona (statewide)",
+      "checked": "2026-05-25"
     }
-  ];
+];
 const CORRECTIONS = "corrections.commonladder@gmail.com";
 const PREFS_KEY = "cl_rfr_prefs";
 var prefs = {};

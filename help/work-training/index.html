@@ -8,6 +8,8 @@
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
   gtag('config', 'G-3YXK0RL6XV');
+  // Count taps on phone numbers: which number and which page, never who tapped. Disclosed on /privacy.html.
+  document.addEventListener('click', function (e) { var a = e.target && e.target.closest ? e.target.closest('a[href^="tel:"]') : null; if (a) { gtag('event', 'tel_tap', { tel: a.getAttribute('href').slice(4), page: location.pathname }); } }, true);
 </script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -142,20 +144,18 @@
             <dt>Phone</dt><dd><a href="tel:6025343950">(602) 534-3950</a></dd>
             <dt>Cost</dt><dd>Free</dd>
           </dl>
-          <p class="card-verified"><small>Verified May 2026</small></p>
+          <p class="card-verified"><small>Researched May 2026 · not yet re-confirmed with the provider — call before you go · <a href="mailto:corrections.commonladder@gmail.com?subject=Correction%3A%20Arizona%40Work%20%E2%80%94%20Phoenix%20American%20Job%20Center%20%28help/work-training/index.html%29">Report a problem</a></small></p>
         </div>
-        <div class="card">
-          <h3>St. Joseph the Worker</h3>
-          <div class="card-tags"><span class="tag">Employment</span><span class="tag">Homeless</span><span class="tag">Barrier Removal</span></div>
-          <p>Specialized workforce development program for people experiencing homelessness or economic crisis, including job placement, clothing assistance, and employer partnerships.</p>
+        <div class="card" data-record="the-worker">
+          <h3>St. Joseph the Worker (now “The Worker”)</h3>
+          <div class="card-tags"><span class="tag">Jobs</span><span class="tag">Workforce housing</span></div>
           <dl class="resource-details">
-            <dt>Eligibility</dt><dd>Adults experiencing homelessness or economic hardship</dd>
-            <dt>Hours</dt><dd>Mon–Fri 8 am–4 pm</dd>
-            <dt>Address</dt><dd><a href="https://maps.google.com/?q=1406+S+7th+Ave+Phoenix+AZ+85007" rel="noopener" target="_blank">1406 S 7th Ave, Phoenix, AZ 85007</a></dd>
-            <dt>Phone</dt><dd><a href="tel:6024170038">(602) 417-0038</a></dd>
-            <dt>Cost</dt><dd>Free</dd>
+            <dt>Who it’s for</dt><dd>Job seekers, including people experiencing homelessness</dd>
+            <dt>Locations</dt><dd>Phoenix: 382 E. Palm Lane, #150, Phoenix, AZ 85004<br>Mesa: 1833 W. Main St., #128, Mesa, AZ 85201</dd>
+            <dt>Phone</dt><dd><a href="tel:6027555627">(602) 755-5627</a> — 602-755-JOBS</dd>
+            <dt>Website</dt><dd><a href="https://www.theworkeraz.org/" target="_blank" rel="noopener">theworkeraz.org</a></dd>
           </dl>
-          <p class="card-verified"><small>Verified May 2026</small></p>
+          <p class="card-verified"><small>Confirmed on St. Joseph the Worker’s own website · Oct. 26, 2026 · <a href="mailto:corrections.commonladder@gmail.com?subject=Correction%3A%20St.%20Joseph%20the%20Worker%20%28now%20%22The%20Worker%22%29%20%28help/work-training/index.html%29">Report a problem</a></small></p>
         </div>
         <div class="card">
           <h3>Goodwill of Central &amp; Northern Arizona — Job Training</h3>
@@ -168,7 +168,7 @@
             <dt>Phone</dt><dd><a href="tel:6025354000">(602) 535-4000</a></dd>
             <dt>Cost</dt><dd>Free or low cost</dd>
           </dl>
-          <p class="card-verified"><small>Verified May 2026</small></p>
+          <p class="card-verified"><small>Researched May 2026 · not yet re-confirmed with the provider — call before you go · <a href="mailto:corrections.commonladder@gmail.com?subject=Correction%3A%20Goodwill%20of%20Central%20%26%20Northern%20Arizona%20%E2%80%94%20Job%20Training%20%28help/work-training/index.html%29">Report a problem</a></small></p>
         </div>
         <div class="card">
           <h3>Chrysalis — Employment Services for Domestic Violence Survivors</h3>
@@ -177,11 +177,11 @@
           <dl class="resource-details">
             <dt>Eligibility</dt><dd>Survivors of domestic violence and sexual assault</dd>
             <dt>Hours</dt><dd>Mon–Fri 9 am–5 pm</dd>
-            <dt>Address</dt><dd><a href="https://maps.google.com/?q=2502+E+McDowell+Rd+Phoenix+AZ+85008" rel="noopener" target="_blank">2502 E McDowell Rd, Phoenix, AZ 85008</a></dd>
+            <dt>Address</dt><dd>Call first — Chrysalis gives locations by phone (domestic violence program; we could not confirm a public address)</dd>
             <dt>Phone</dt><dd><a href="tel:6029559059">(602) 955-9059</a></dd>
             <dt>Cost</dt><dd>Free</dd>
           </dl>
-          <p class="card-verified"><small>Verified May 2026</small></p>
+          <p class="card-verified"><small>Researched May 2026 · not yet re-confirmed with the provider — call before you go · <a href="mailto:corrections.commonladder@gmail.com?subject=Correction%3A%20Chrysalis%20%E2%80%94%20Employment%20Services%20for%20Domestic%20Violence%20Survivors%20%28help/work-training/index.html%29">Report a problem</a></small></p>
         </div>
       </div>
     </div>
