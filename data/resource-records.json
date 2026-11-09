@@ -1,6 +1,6 @@
 {
   "schema": "commonladder.resource-records.v1",
-  "updated": "2026-10-26",
+  "updated": "2026-11-08",
   "about": "Canonical records for the Arizona services Common Ladder lists. One record per service (not per organization). Every value here was read from the operator's own website or a government source on the 'verified.date' shown, by direct page fetch, not from a directory or search summary. Pages that list these services must match these records; scripts/gate-check.py fails the build if a retired value or a suppressed listing reappears. Where an operator's own sources disagree, the record says so in 'conflicts' and the page tells people to call ahead.",
   "status_values": {
     "active": "Verified against the operator. Safe to list with the details below.",
@@ -25,6 +25,24 @@
       "retired": [{"value": "898-211", "scope": "arizona-pages", "reason": "Text shortcode not published by 211 Arizona"}]
     },
     {
+      "id": "justa-center",
+      "org": "Justa Center",
+      "program": "Senior day center (55+)",
+      "audience": "Adults 55 and older experiencing homelessness",
+      "access": "Walk in during member-service hours. New members call 602-313-3858 to arrange an intake: intakes run daily 7–9 a.m., arrive by 6:30 a.m., first come first served, a limited number a day, and are not done by phone or on holidays.",
+      "phone": "602-254-6524", "tel": "6022546524", "phone_label": "Main office",
+      "phone_alt": [{"label": "New-member intake", "phone": "602-313-3858", "tel": "6023133858"}],
+      "address": "1001 W. Jefferson St., Phoenix, AZ 85007", "walk_in": true,
+      "hours": ["Member services: daily 7 a.m.–2:30 p.m.", "June–October: member services open until 7:30 p.m. for prolonged heat relief", "Donations: daily 8 a.m.–2 p.m."],
+      "cost": "Free",
+      "website": "https://www.justacenter.org/daycenter",
+      "evidence": [{"url": "https://www.justacenter.org/daycenter", "fetched": "2026-11-08", "by": "cl-verification-2026-11-08"}, {"url": "https://www.justacenter.org/contact", "fetched": "2026-11-08", "by": "cl-verification-2026-11-08"}],
+      "verified": {"method": "operator website", "date": "2026-11-08"},
+      "status": "active",
+      "notes": "Justa publishes no separate cooling/hydration phone line. The summer extension is to 7:30 p.m., June–October — not the '3 p.m.–9 p.m. daily through Sept 30' window the cooling pages carried.",
+      "retired": [{"value": "602-783-2175", "digits": "6027832175", "scope": "global", "reason": "Not published by Justa Center on justacenter.org (checked 2026-11-08); was carried as a cooling-center / hydration line"}]
+    },
+    {
       "id": "brian-garcia-welcome-center",
       "org": "Keys to Change",
       "program": "Brian Garcia Welcome Center (Key Campus)",
@@ -34,11 +52,12 @@
       "address": "206 S. 12th Ave., Phoenix, AZ 85007", "walk_in": true,
       "hours": ["Keys to Change publishes both 'open 24 hours a day' and 'visit any time 7 a.m.–11 p.m.' — call ahead"],
       "website": "https://keystochangeaz.org/get-help/",
-      "evidence": [{"url": "https://keystochangeaz.org/get-help/", "fetched": "2026-10-26"}],
-      "verified": {"method": "operator website", "date": "2026-10-26"},
+      "evidence": [{"url": "https://keystochangeaz.org/get-help/", "fetched": "2026-10-26"}, {"url": "https://keystochangeaz.org/key-campus/", "fetched": "2026-11-08", "by": "cl-verification-2026-11-08"}],
+      "verified": {"method": "operator website", "date": "2026-11-08"},
       "status": "active",
       "conflicts": ["Hours: the operator's page says 'Open 24 hours a day' in one section and 'Visit any time from 7am-11pm' in another."],
-      "retired": [{"value": "602-229-5155", "digits": "6022295155", "scope": "global", "reason": "Retired Welcome Center number (operator now publishes 602-883-4509)", "allow_in": ["blog/coordinated-entry-assessment-evidence.html"]}]
+      "notes": "Keys to Change publishes no direct phone line or hours for day services at the Lodestar Day Resource Center building; this Welcome Center number is the published route. The operator's own key-campus page still prints the retired 602-229-5155 alongside 602-883-4509 (checked 2026-11-08).",
+      "retired": [{"value": "602-229-5155", "digits": "6022295155", "scope": "global", "reason": "Retired Welcome Center number (operator now publishes 602-883-4509)", "allow_in": ["blog/coordinated-entry-assessment-evidence.html"]}, {"value": "602-393-9930", "digits": "6023939930", "scope": "global", "reason": "Not published by Keys to Change (checked 2026-11-08); was carried as a Lodestar Day Resource Center day-center line"}]
     },
     {
       "id": "cass-single-adult-shelter",
@@ -175,8 +194,8 @@
       "hours": ["Breakfast: Mon–Fri 7–8 a.m.", "Lunch: daily 11 a.m.–12:45 p.m.", "Dinner: Fridays only, 4–5 p.m.", "Heat relief: June 1–Sept. 30, daily 1:30–5 p.m."],
       "cost": "Free",
       "website": "https://www.svdpaz.org/locations/phoenix-dining-room",
-      "evidence": [{"url": "https://www.svdpaz.org/locations/phoenix-dining-room", "fetched": "2026-10-26"}, {"url": "https://www.svdpaz.org/get-help/shelter-and-weather-relief", "fetched": "2026-10-26"}],
-      "verified": {"method": "operator website", "date": "2026-10-26"},
+      "evidence": [{"url": "https://www.svdpaz.org/locations/phoenix-dining-room", "fetched": "2026-11-08", "by": "cl-verification-2026-11-08"}, {"url": "https://www.svdpaz.org/get-help/shelter-and-weather-relief", "fetched": "2026-10-26"}],
+      "verified": {"method": "operator website", "date": "2026-11-08"},
       "status": "active",
       "notes": "SVdP publishes no general help line. 602-261-6864 is the campus security desk, not a help line. Friday dinner here covers the night Andre House is closed.",
       "retired": [
